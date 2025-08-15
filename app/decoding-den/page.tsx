@@ -155,8 +155,8 @@ export default function DecodingDenPage() {
         {/* Main Content Area */}
         <>
           {/* Section Selection Cards */}
-          <div className="rounded-xl shadow-lg p-2 sm:p-4 pr-2 sm:pr-4 pb-2 mb-4 border-2 border-blue-600" style={{backgroundColor: '#D0EFEA'}}>
-            <div className="mb-2 flex flex-col lg:flex-row gap-2 lg:gap-4">
+          <div className="rounded-xl shadow-lg p-3 sm:p-5 pb-4 mb-4 border-2 border-blue-600" style={{backgroundColor: '#D0EFEA'}}>
+            <div className="mb-3 flex flex-col lg:flex-row gap-3 lg:gap-5">
               {/* Focus Sound Container */}
               <div className="bg-gray-50 rounded-lg p-2 border-2 border-blue-400 w-full lg:w-1/4">
                 <h1 className="text-lg sm:text-2xl font-bold text-oceanBlue mb-2 drop-shadow-lg">
@@ -186,9 +186,9 @@ export default function DecodingDenPage() {
               </div>
                 
                 {/* Button Grid - Responsive Layout */}
-                <div className="flex-1">
+                <div className="flex-1 mt-2 lg:mt-0">
                   {/* Responsive Button Grid */}
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-2.5 auto-rows-fr">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4 lg:gap-5 auto-rows-fr justify-items-center px-2 sm:px-0">
                     {/* Phoneme Insight */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'sound-of-the-day' ? null : 'sound-of-the-day')}
