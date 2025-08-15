@@ -1,0 +1,780 @@
+{
+  "metadata": {
+    "stage": 5,
+    "stage_name": "High-Frequency Vowel Teams",
+    "grade_level": "2nd Grade – Fall Semester",
+    "total_phonemes": 8,
+    "generated_date": "2025-01-02",
+    "description": "Stage 5 phonemes with ALL possible grapheme spellings from comprehensive list"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage5_ee",
+      "stage_id": 5,
+      "phoneme": "/ē/",
+      "graphemes": ["ee", "ea", "e", "ie", "ei", "ey", "y", "i", "e_e", "ay"],
+      "frequency_rank": 41,
+      "complexity_score": 2.8,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 1,
+      "word_examples": ["tree", "see", "need", "feed", "meat", "read", "field", "receive", "key", "happy"],
+      "decodable_sentences": ["I see the tree.", "We need to feed the sheep."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in vowel team recognition",
+        "weekly": "70% accuracy in ee/ea reading",
+        "summative": "80% vowel team mastery"
+      },
+      "teaching_advantages": ["high frequency team", "consistent sound", "many common words"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/e/", "/i/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/e/", "/i/"],
+        "development_notes": "Long e vowel team. Two letters working together.",
+        "articulation_cues": "👄 Slight smile, long 'E' sound. 🗣️ Voiced",
+        "teacher_guidance": "Emphasize two letters, one sound. Start with ee, then ea.",
+        "student_tips": "When two e's are together, they say 'E'!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "vowel team introduction",
+          "prerequisite_check": ["VCe mastery", "long /e/ recognition"],
+          "mastery_criteria": "75% accuracy in ee team reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["ee team introduction", "two letters one sound", "contrast with VCe"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["ee word families", "ea introduction", "team practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed ee/ea reading", "sight word integration", "fluency building"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "vowel_team_recognition",
+            "criterion": "Identifies ee/ea as teams",
+            "frequency": "daily"
+          },
+          {
+            "type": "team_reading_accuracy",
+            "criterion": "Reads ee/ea words correctly",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on ee/ea words",
+          "spelling": "70% accuracy on ee/ea choice",
+          "transfer": "Applies vowel team concept"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended team concept work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily team recognition",
+          "intervention_triggers": ["Reads letters separately", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other /e/ spellings exploration",
+          "enrichment": "Ee/ea spelling patterns",
+          "complexity_increase": "Multisyllabic ee/ea words"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 vowel teams",
+          "visual_cues": "Two letters, one sound cards",
+          "practice_emphasis": "Vowel team concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_ai",
+      "stage_id": 5,
+      "phoneme": "/ā/",
+      "graphemes": ["ai", "ay", "a", "eigh", "ey", "ea", "ei", "aigh", "a_e"],
+      "frequency_rank": 42,
+      "complexity_score": 2.7,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 2,
+      "word_examples": ["rain", "train", "wait", "play", "day", "say", "eight", "they", "great", "vein"],
+      "decodable_sentences": ["It will rain today.", "I like to play in the rain."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in vowel team recognition",
+        "weekly": "70% accuracy in ai/ay reading",
+        "summative": "80% vowel team mastery"
+      },
+      "teaching_advantages": ["position rule teachable", "high frequency", "clear pattern"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Johnston (2001)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "low-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/a/", "/e/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/a/", "/e/"],
+        "development_notes": "Long a vowel team. Position-dependent spelling.",
+        "articulation_cues": "👄 Open mouth, long 'A' sound. 🗣️ Voiced",
+        "teacher_guidance": "Teach position rule: ai in middle, ay at end.",
+        "student_tips": "AI stays in the middle, AY likes the end!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 2,
+          "lesson_position": "second vowel team",
+          "prerequisite_check": ["ee/ea established", "long /a/ recognition"],
+          "mastery_criteria": "75% accuracy in ai/ay reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["ai team introduction", "ay team introduction", "position awareness"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["ai/ay word building", "position rule practice", "pattern recognition"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["ai/ay spelling choice", "mixed practice", "rule application"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "position_rule_application",
+            "criterion": "Chooses ai/ay correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "vowel_team_fluency",
+            "criterion": "Reads ai/ay words fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on ai/ay words",
+          "spelling": "70% accuracy on ai/ay choice",
+          "transfer": "Applies position rule consistently"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended position rule work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily ai/ay checks",
+          "intervention_triggers": ["Position rule confusion", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Exception words exploration",
+          "enrichment": "Ai/ay morphology patterns",
+          "complexity_increase": "Complex ai/ay vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 long /a/ patterns",
+          "visual_cues": "Position rule visual aids",
+          "practice_emphasis": "English position rules"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_oa",
+      "stage_id": 5,
+      "phoneme": "/ō/",
+      "graphemes": ["oa", "ow", "o", "ou", "ough", "oe", "o_e", "eau", "oh"],
+      "frequency_rank": 43,
+      "complexity_score": 2.6,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 3,
+      "word_examples": ["boat", "coat", "road", "snow", "blow", "show", "soul", "dough", "toe", "beau"],
+      "decodable_sentences": ["The boat is on the road.", "I like the snow."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in vowel team recognition",
+        "weekly": "70% accuracy in oa/ow reading",
+        "summative": "80% vowel team mastery"
+      },
+      "teaching_advantages": ["clear mouth rounding", "common words", "predictable in context"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "mid-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/o/", "/u/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/o/", "/u/"],
+        "development_notes": "Long o vowel team. Multiple spellings possible.",
+        "articulation_cues": "👄 Round lips, long 'O' sound. 🗣️ Voiced",
+        "teacher_guidance": "Emphasize lip rounding. Show multiple spellings.",
+        "student_tips": "Round your lips and say a long 'O' sound!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 3,
+          "lesson_position": "third vowel team",
+          "prerequisite_check": ["previous teams established", "long /o/ recognition"],
+          "mastery_criteria": "75% accuracy in oa/ow reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["oa team introduction", "ow team introduction", "rounding emphasis"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["oa/ow word building", "context clues", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed oa/ow reading", "spelling patterns", "vocabulary focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "lip_rounding_check",
+            "criterion": "Maintains rounding for long o",
+            "frequency": "daily"
+          },
+          {
+            "type": "team_discrimination",
+            "criterion": "Distinguishes oa/ow patterns",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on oa/ow words",
+          "spelling": "70% accuracy on oa/ow choice",
+          "transfer": "Recognizes long o teams"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended rounding practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily oa/ow checks",
+          "intervention_triggers": ["No lip rounding", "Team confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other /o/ spellings",
+          "enrichment": "Oa/ow word patterns",
+          "complexity_increase": "Advanced long o vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /o/ variations",
+          "visual_cues": "Rounding + team visuals",
+          "practice_emphasis": "Multiple spelling awareness"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_er",
+      "stage_id": 5,
+      "phoneme": "/ər/",
+      "graphemes": ["er", "ir", "ur", "or", "ar", "ear", "eur", "olo", "our"],
+      "frequency_rank": 44,
+      "complexity_score": 3.0,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 4,
+      "word_examples": ["her", "fern", "bird", "first", "hurt", "turn", "work", "word", "dollar", "colour"],
+      "decodable_sentences": ["The bird hurt her wing.", "I turn to see the fern."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in r-controlled recognition",
+        "weekly": "65% accuracy in er/ir/ur reading",
+        "summative": "75% r-controlled mastery"
+      },
+      "teaching_advantages": ["bossy r concept", "very common pattern", "same sound multiple spellings"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Moats (2000)"],
+      "articulation_data": {
+        "manner": "vowel + r",
+        "place": "central",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–8",
+        "acquisition_age": "6",
+        "common_substitutions": ["vowel without r", "/or/"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["/r/", "vowels"],
+        "development_notes": "R-controlled vowel. R changes vowel sound completely.",
+        "articulation_cues": "👅 Vowel + r blend together. 🗣️ Voiced",
+        "teacher_guidance": "Introduce 'bossy r' concept. R controls the vowel.",
+        "student_tips": "When R follows a vowel, it's bossy and changes the sound!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 4,
+          "lesson_position": "r-controlled introduction",
+          "prerequisite_check": ["/r/ sound established", "vowel team concept"],
+          "mastery_criteria": "70% accuracy in r-controlled reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["bossy r concept", "er/ir/ur introduction", "sound blending"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["r-controlled word building", "pattern practice", "spelling exploration"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed r-controlled reading", "vocabulary focus", "fluency building"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "bossy_r_understanding",
+            "criterion": "Explains r-controlled concept",
+            "frequency": "daily"
+          },
+          {
+            "type": "r_controlled_reading",
+            "criterion": "Reads er/ir/ur correctly",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on r-controlled",
+          "spelling": "65% accuracy on er/ir/ur",
+          "transfer": "Applies bossy r concept"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended bossy r concept work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily r-controlled checks",
+          "intervention_triggers": ["Separates vowel and r", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other r-controlled patterns",
+          "enrichment": "R-controlled morphology",
+          "complexity_increase": "Multisyllabic r-controlled"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 r-vowel combinations",
+          "visual_cues": "Bossy r visual aids",
+          "practice_emphasis": "R-controlled concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_ar",
+      "stage_id": 5,
+      "phoneme": "/är/",
+      "graphemes": ["ar", "a", "ear", "aar"],
+      "frequency_rank": 45,
+      "complexity_score": 2.5,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 5,
+      "word_examples": ["car", "star", "park", "dark", "farm", "heart", "bazaar"],
+      "decodable_sentences": ["The car is in the park.", "I see a star."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in ar recognition",
+        "weekly": "70% accuracy in ar reading",
+        "summative": "80% ar mastery"
+      },
+      "teaching_advantages": ["consistent pattern", "common words", "clear sound"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
+      "articulation_data": {
+        "manner": "vowel + r",
+        "place": "low-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–6",
+        "acquisition_age": "5",
+        "common_substitutions": ["/a/ + /r/", "/or/"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/r/", "/a/"],
+        "development_notes": "R-controlled vowel. More consistent than er/ir/ur.",
+        "articulation_cues": "👄 Open mouth, add /r/ sound. 🗣️ Voiced",
+        "teacher_guidance": "Usually more consistent than other r-controlled vowels.",
+        "student_tips": "AR says 'ar' like in 'car'. The R is still bossy!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 5,
+          "lesson_position": "second r-controlled pattern",
+          "prerequisite_check": ["er/ir/ur established", "bossy r concept"],
+          "mastery_criteria": "75% accuracy in ar reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["ar pattern introduction", "contrast with er/ir/ur", "sound practice"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["ar word building", "word families", "pattern recognition"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed r-controlled practice", "spelling patterns", "fluency focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "ar_pattern_recognition",
+            "criterion": "Identifies ar pattern correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "r_controlled_discrimination",
+            "criterion": "Distinguishes ar from er/ir/ur",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on ar words",
+          "spelling": "70% accuracy on ar spelling",
+          "transfer": "Extends r-controlled understanding"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended ar pattern work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily ar recognition",
+          "intervention_triggers": ["Confuses with other r-controlled", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Ar in multisyllabic words",
+          "enrichment": "Ar word exploration",
+          "complexity_increase": "Advanced ar vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /ar/ sounds",
+          "visual_cues": "Ar pattern visuals",
+          "practice_emphasis": "R-controlled consistency"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_or",
+      "stage_id": 5,
+      "phoneme": "/ôr/",
+      "graphemes": ["or", "ore", "our", "oar", "oor", "ar", "wr", "aur"],
+      "frequency_rank": 46,
+      "complexity_score": 2.7,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 6,
+      "word_examples": ["for", "fork", "more", "store", "four", "pour", "roar", "floor", "warm", "dinosaur"],
+      "decodable_sentences": ["I want more cake.", "The fork is for you."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in or recognition",
+        "weekly": "70% accuracy in or reading",
+        "summative": "80% or mastery"
+      },
+      "teaching_advantages": ["multiple spellings", "common words", "position patterns"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel + r",
+        "place": "mid-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–6",
+        "acquisition_age": "5",
+        "common_substitutions": ["/o/ + /r/", "/ar/"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/r/", "/o/"],
+        "development_notes": "R-controlled vowel with multiple spellings.",
+        "articulation_cues": "👄 Round lips, add /r/ sound. 🗣️ Voiced",
+        "teacher_guidance": "Show multiple spellings. Focus on common patterns.",
+        "student_tips": "OR has many ways to spell it, but sounds the same!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 6,
+          "lesson_position": "third r-controlled pattern",
+          "prerequisite_check": ["ar pattern established", "r-controlled concept solid"],
+          "mastery_criteria": "75% accuracy in or reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["or pattern introduction", "multiple spellings", "sound consistency"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["or word building", "spelling variations", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["all or spellings", "mixed r-controlled", "vocabulary focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "or_spelling_recognition",
+            "criterion": "Recognizes multiple or spellings",
+            "frequency": "daily"
+          },
+          {
+            "type": "r_controlled_mastery",
+            "criterion": "Reads all r-controlled patterns",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on or words",
+          "spelling": "70% accuracy on or patterns",
+          "transfer": "Recognizes or variations"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on most common or spellings",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily or pattern checks",
+          "intervention_triggers": ["Spelling confusion", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Less common or spellings",
+          "enrichment": "Or pattern etymology",
+          "complexity_increase": "Advanced or vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /or/ variations",
+          "visual_cues": "Multiple spelling charts",
+          "practice_emphasis": "Sound consistency"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_oo_long",
+      "stage_id": 5,
+      "phoneme": "/o͞o/",
+      "graphemes": ["oo", "u", "ou", "ue", "ui", "ew", "o", "ough", "wo"],
+      "frequency_rank": 47,
+      "complexity_score": 3.2,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 7,
+      "word_examples": ["moon", "soon", "cool", "true", "blue", "fruit", "suit", "new", "grew", "group", "soup"],
+      "decodable_sentences": ["The moon is cool.", "I like blue fruit."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in long oo recognition",
+        "weekly": "65% accuracy in oo reading",
+        "summative": "75% oo mastery"
+      },
+      "teaching_advantages": ["distinct lip rounding", "common pattern", "multiple spellings"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/u/", "/o/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/u/", "/o/"],
+        "development_notes": "Long oo sound. Multiple spelling patterns.",
+        "articulation_cues": "👄 Round lips tightly, long 'OO' sound. 🗣️ Voiced",
+        "teacher_guidance": "Emphasize tight lip rounding. Show multiple spellings.",
+        "student_tips": "Make your lips very round like a tunnel for a long 'OO'!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 7,
+          "lesson_position": "complex vowel team",
+          "prerequisite_check": ["vowel teams established", "lip rounding ability"],
+          "mastery_criteria": "70% accuracy in long oo reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["long oo introduction", "lip rounding emphasis", "multiple spellings"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["oo word building", "spelling variations", "pattern practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["all oo spellings", "vocabulary focus", "connected reading"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "lip_rounding_consistency",
+            "criterion": "Maintains tight rounding",
+            "frequency": "daily"
+          },
+          {
+            "type": "oo_spelling_recognition",
+            "criterion": "Recognizes multiple oo spellings",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on long oo",
+          "spelling": "65% accuracy on oo patterns",
+          "transfer": "Recognizes oo variations"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended rounding practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily oo production",
+          "intervention_triggers": ["No lip rounding", "Spelling confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Less common oo spellings",
+          "enrichment": "Oo pattern exploration",
+          "complexity_increase": "Advanced oo vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /oo/ sounds",
+          "visual_cues": "Exaggerated rounding visuals",
+          "practice_emphasis": "Multiple spelling awareness"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage5_review",
+      "stage_id": 5,
+      "phoneme": "vowel team review",
+      "graphemes": ["ee", "ea", "ai", "ay", "oa", "ow", "er", "ir", "ur", "ar", "or", "oo"],
+      "frequency_rank": 48,
+      "complexity_score": 3.5,
+      "grade_band": "2nd-Fall",
+      "introduction_week": 8,
+      "word_examples": ["tree", "rain", "boat", "bird", "car", "moon", "play", "snow", "hurt", "more", "cool", "star"],
+      "decodable_sentences": ["The bird sees the moon.", "I play in the rain near the tree."],
+      "assessment_criteria": {
+        "daily": "80% accuracy across all patterns",
+        "weekly": "75% accuracy in mixed reading",
+        "summative": "85% vowel team system mastery"
+      },
+      "teaching_advantages": ["system integration", "pattern consolidation", "transfer preparation"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Johnston (2001)"],
+      "articulation_data": {
+        "manner": "vowel system",
+        "place": "all vowel positions",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–8",
+        "acquisition_age": "6",
+        "common_substitutions": ["pattern confusion", "single vowel"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["all vowels", "/r/"],
+        "development_notes": "Integration of complete vowel team system.",
+        "articulation_cues": "👄 Each pattern maintains distinct position. 🗣️ All voiced",
+        "teacher_guidance": "Systematic review of all patterns. Focus on distinctions.",
+        "student_tips": "Remember: vowel teams work together to make new sounds!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 8,
+          "lesson_position": "system integration",
+          "prerequisite_check": ["all individual patterns", "vowel team concept"],
+          "mastery_criteria": "80% accuracy across all patterns"
+        },
+        "practice_phases": [
+          {
+            "phase": "review",
+            "activities": ["all patterns review", "systematic practice", "error correction"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "integration",
+            "activities": ["mixed pattern reading", "spelling practice", "fluency building"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "mastery",
+            "activities": ["independent application", "transfer tasks", "assessment"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pattern_discrimination",
+            "criterion": "Distinguishes all vowel teams",
+            "frequency": "daily"
+          },
+          {
+            "type": "mixed_reading_fluency",
+            "criterion": "Reads mixed patterns fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "80% accuracy on mixed patterns",
+          "spelling": "75% accuracy on pattern choice",
+          "transfer": "Applies all vowel team knowledge"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended systematic review",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily pattern checks",
+          "intervention_triggers": ["Below 65% mixed accuracy", "Pattern confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Advanced pattern introduction",
+          "enrichment": "Vowel team morphology",
+          "complexity_increase": "Multisyllabic applications"
+        },
+        "english_learners": {
+          "native_language_support": "Review L1 vowel systems",
+          "visual_cues": "Complete pattern chart",
+          "practice_emphasis": "System mastery"
+        }
+      }
+    }
+  ]
+}

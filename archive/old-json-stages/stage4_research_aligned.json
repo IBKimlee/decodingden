@@ -1,0 +1,969 @@
+{
+  "stage_number": 4,
+  "stage_name": "Common Vowel Teams",
+  "grade_level": "First/Second Grade",
+  "student_phase": "Consolidated Alphabetic",
+  "duration": "10-12 weeks",
+  "total_elements": 16,
+  "description": "Students learn that two vowels can work together to represent one sound, following the pattern 'when two vowels go walking, the first one does the talking' (with important exceptions). This stage introduces predictable vowel teams and builds fluency with multi-vowel words.",
+  "key_concept": "Two vowels together usually make one sound. Sometimes the first vowel says its name (rain, boat), sometimes they make a new sound (book, moon), and sometimes they follow special patterns. Learning these teams opens up thousands of new words.",
+  "instructional_focus": [
+    "Common vowel team patterns (ai, ay, ee, ea, oa, ow)",
+    "Position-based patterns (ay/oy at word end)",
+    "Variant vowel teams (oo, ew, ue)",
+    "Vowel team syllable type recognition",
+    "Reading fluency with 2-3 syllable words"
+  ],
+  "science_of_reading_alignment": {
+    "ehri_phase": "Consolidated Alphabetic - chunk recognition of vowel teams",
+    "national_reading_panel": "Vowel teams essential for multisyllabic decoding",
+    "adams_principle": "Vowel team patterns more reliable than often taught",
+    "orthographic_mapping": "Visual chunking of common letter sequences"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage4_ai",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 32,
+        "complexity_score": 3.8,
+        "prerequisite_phonemes": ["/ā/", "silent_e_patterns"],
+        "grade_band": "1-2",
+        "introduction_week": 1,
+        "neurological_rationale": "First vowel team introduces two-vowel-one-sound concept"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ā/",
+        "graphemes": ["ai"],
+        "grapheme_frequency": {"ai": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_front_to_mid",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_movement": "low_to_mid",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ā/", "/a/", "/e/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["consistent sound", "never at word end", "common pattern"]
+      },
+      "word_examples": {
+        "medial_position": ["rain", "train", "brain", "paint", "wait"],
+        "never_final": "ai never ends a word in English",
+        "high_frequency": ["said" - exception word],
+        "rhyme_families": ["-ain", "-ait", "-aid", "-ail"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The train went through rain to Spain. (85% decodable)",
+          "Wait for the paint to dry on the mail. (85% decodable)",
+          "The snail on the trail has a brain. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Vowel teams processed as visual chunks",
+          "multisensory_cues": [
+            "Two vowels = one long a sound",
+            "First vowel 'does the talking'",
+            "ai always in middle of words"
+          ],
+          "exception_awareness": "'said' is special - says /e/"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy ai = /ā/ recognition",
+        "formative_weekly": "80% accuracy reading ai words",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "pattern_understanding": "Recognizes ai as vowel team for /ā/"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - AI highly reliable for /ā/ sound",
+        "National Reading Panel (2000) - Vowel teams critical milestone",
+        "Moats, L.C. (2020) - Position constraints aid learning"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ay",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 45,
+        "complexity_score": 3.8,
+        "prerequisite_phonemes": ["/ā/", "ai"],
+        "grade_band": "1-2",
+        "introduction_week": 2,
+        "neurological_rationale": "Position-based vowel team pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ā/",
+        "graphemes": ["ay"],
+        "grapheme_frequency": {"ay": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_front_to_mid",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_movement": "low_to_mid",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ā/", "/a/", "/e/"],
+        "word_positions": ["final"],
+        "teaching_advantages": ["position rule clear", "complements ai", "day of week words"]
+      },
+      "word_examples": {
+        "final_position": ["day", "play", "stay", "way", "say"],
+        "always_final": "ay used at end of words/syllables",
+        "calendar_words": ["Monday", "Tuesday", "Friday", "Sunday"],
+        "ai_ay_rule": "ai middle, ay end",
+        "cumulative_decodable_sentences_98_percent": [
+          "We play all day and stay that way. (90% decodable)",
+          "Today I may play with clay in May. (85% decodable)",
+          "Jay can say he will pay to stay. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Position-based rules build orthographic awareness",
+          "multisensory_cues": [
+            "Same /ā/ sound as ai",
+            "ay only at word endings",
+            "Days of week use ay pattern"
+          ],
+          "spelling_logic": "English words rarely end in i, so use ay"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy ay = /ā/ at word end",
+        "formative_weekly": "85% accuracy ai vs ay position rule",
+        "summative": "95% recognition, 90% reading, 85% spelling",
+        "position_awareness": "Applies ai/ay position rule correctly"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - Position constraints highly regular",
+        "Adams, M.J. (1990) - AI/AY complementary distribution",
+        "National Reading Panel (2000) - Pattern pairs aid memory"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ee",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 19,
+        "complexity_score": 3.7,
+        "prerequisite_phonemes": ["/ē/", "vowel team concept"],
+        "grade_band": "1-2",
+        "introduction_week": 3,
+        "neurological_rationale": "Double letter vowel team introduces pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ē/",
+        "graphemes": ["ee"],
+        "grapheme_frequency": {"ee": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_position": "high_front_tense",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ē/", "/i/", "/ā/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["highly consistent", "double letter pattern", "body parts vocabulary"]
+      },
+      "word_examples": {
+        "medial_position": ["feet", "teeth", "sleep", "green", "meet"],
+        "final_position": ["see", "tree", "bee", "free", "three"],
+        "body_parts": ["feet", "teeth", "knee", "heel"],
+        "consistency": "ee almost always says /ē/",
+        "cumulative_decodable_sentences_98_percent": [
+          "I see three bees in the green tree. (90% decodable)",
+          "We need to keep our teeth and feet clean. (88% decodable)",
+          "The sheep sleep under the tree all week. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Double letters create strong visual pattern",
+          "multisensory_cues": [
+            "Two e's = long e sound",
+            "Most reliable vowel team",
+            "Smile wide for long e"
+          ],
+          "reliability": "Most consistent vowel team pattern"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "95% accuracy ee = /ē/ recognition",
+        "formative_weekly": "90% accuracy reading ee words",
+        "summative": "95% recognition, 90% reading, 90% spelling",
+        "pattern_mastery": "Masters highly reliable ee pattern"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - EE most reliable vowel team",
+        "National Reading Panel (2000) - High-frequency pattern priority",
+        "Ehri, L.C. (2005) - Double letters aid visual memory"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ea_long",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 24,
+        "complexity_score": 4.0,
+        "prerequisite_phonemes": ["/ē/", "ee"],
+        "grade_band": "1-2",
+        "introduction_week": 4,
+        "neurological_rationale": "First vowel team with multiple sounds"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ē/",
+        "graphemes": ["ea"],
+        "grapheme_frequency": {"ea": 60},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_position": "high_front_tense",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ē/", "/e/", "/ā/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["common pattern", "introduces variability", "food vocabulary"]
+      },
+      "word_examples": {
+        "long_e_words": ["eat", "read", "beach", "team", "clean"],
+        "short_e_words": ["bread", "head", "dead", "thread", "spread"],
+        "long_a_words": ["great", "break", "steak"],
+        "primary_sound": "ea usually says /ē/ (60% of time)",
+        "cumulative_decodable_sentences_98_percent": [
+          "We can eat meat and read at the beach. (85% decodable)",
+          "The team can reach the clean stream. (85% decodable)",
+          "Please teach me to read about the sea. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Variable patterns require flexible processing",
+          "multisensory_cues": [
+            "ea usually says long e (eat)",
+            "Sometimes says short e (bread)",
+            "Rarely says long a (great)"
+          ],
+          "flexibility_introduction": "First vowel team with choices"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy ea = /ē/ primary sound",
+        "formative_weekly": "75% accuracy recognizing ea variations",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "flexible_decoding": "Tries /ē/ first, then /e/ if needed"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - EA most variable common team",
+        "Adams, M.J. (1990) - Teach primary sound first",
+        "National Reading Panel (2000) - Flexibility essential for English"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_oa",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 41,
+        "complexity_score": 3.8,
+        "prerequisite_phonemes": ["/ō/", "vowel team concept"],
+        "grade_band": "1-2",
+        "introduction_week": 5,
+        "neurological_rationale": "Reliable vowel team for long o"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ō/",
+        "graphemes": ["oa"],
+        "grapheme_frequency": {"oa": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "mid_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "rounded",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ō/", "/o/", "/aw/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["highly consistent", "never final", "common words"]
+      },
+      "word_examples": {
+        "medial_position": ["boat", "coat", "road", "goat", "soap"],
+        "never_final": "oa never ends English words",
+        "transportation": ["boat", "road", "float"],
+        "rhyme_families": ["-oat", "-oad", "-oak", "-oal"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The goat in a coat went down the road. (88% decodable)",
+          "We can float the boat and use soap. (88% decodable)",
+          "Joan ate toast on the boat near the coast. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Consistent patterns build automatic recognition",
+          "multisensory_cues": [
+            "oa = long o sound",
+            "Round lips for 'oh'",
+            "Always in middle of words"
+          ],
+          "reliability_advantage": "Very consistent pattern"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy oa = /ō/ recognition",
+        "formative_weekly": "85% accuracy reading oa words",
+        "summative": "95% recognition, 90% reading, 85% spelling",
+        "pattern_confidence": "Reads oa words automatically"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - OA highly reliable for /ō/",
+        "National Reading Panel (2000) - Consistent patterns priority",
+        "Moats, L.C. (2020) - Position constraints aid spelling"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ow_long",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 36,
+        "complexity_score": 4.1,
+        "prerequisite_phonemes": ["/ō/", "oa"],
+        "grade_band": "1-2",
+        "introduction_week": 6,
+        "neurological_rationale": "Second variable vowel team pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ō/",
+        "graphemes": ["ow"],
+        "grapheme_frequency": {"ow": 50},
+        "articulation": {
+          "manner": "vowel",
+          "place": "mid_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "rounded",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ō/", "/ow/", "/o/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["complements oa", "final position", "two distinct sounds"]
+      },
+      "word_examples": {
+        "long_o_words": ["snow", "grow", "show", "yellow", "window"],
+        "ow_diphthong": ["cow", "now", "how", "down", "brown"],
+        "position_tendency": "Usually /ō/ at end, /ow/ in middle",
+        "color_words": ["yellow", "brown"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The yellow crow can grow in the snow. (85% decodable)",
+          "I know how to throw and show the bow. (85% decodable)",
+          "The cow went down to the low meadow. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Context aids disambiguation of variable patterns",
+          "multisensory_cues": [
+            "ow has two sounds: 'oh' and 'ow'",
+            "Try long o first at word end",
+            "Context helps choose sound"
+          ],
+          "decoding_strategy": "Try both sounds to make sense"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy recognizing ow variations",
+        "formative_weekly": "70% accuracy choosing correct ow sound",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "flexibility": "Tries both ow sounds based on context"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - OW position influences pronunciation",
+        "Adams, M.J. (1990) - Variable patterns need strategies",
+        "National Reading Panel (2000) - Flexibility in decoding essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_oo_short",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 51,
+        "complexity_score": 4.2,
+        "prerequisite_phonemes": ["vowel team concept"],
+        "grade_band": "1-2",
+        "introduction_week": 7,
+        "neurological_rationale": "Variant vowel team with unique sound"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ʊ/",
+        "graphemes": ["oo"],
+        "grapheme_frequency": {"oo": 40},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "rounded",
+          "short_variant": true
+        },
+        "phonological_neighbors": ["/ʊ/", "/u/", "/o͞o/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["distinct sound", "common words", "introduces oo variability"]
+      },
+      "word_examples": {
+        "short_oo_words": ["book", "look", "good", "stood", "cook"],
+        "rhyme_family": ["-ook", "-ood"],
+        "high_frequency": ["good", "look", "book"],
+        "memory_phrase": "Look at the good book",
+        "cumulative_decodable_sentences_98_percent": [
+          "Look at the good book on the wood shelf. (88% decodable)",
+          "The cook stood and shook the hook. (85% decodable)",
+          "It would be good to look at the brook. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Variant vowels expand phonological repertoire",
+          "multisensory_cues": [
+            "Short oo as in 'book'",
+            "Lips round but quick sound",
+            "Different from long oo in 'moon'"
+          ],
+          "new_category": "Neither short nor long traditional vowel"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy short oo recognition",
+        "formative_weekly": "75% accuracy reading -ook, -ood words",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "variant_recognition": "Identifies short oo sound"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Variant vowels important category",
+        "National Reading Panel (2000) - Common patterns priority",
+        "Moats, L.C. (2020) - OO variations explicitly taught"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_oo_long",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 29,
+        "complexity_score": 4.2,
+        "prerequisite_phonemes": ["/ʊ/", "oo_short"],
+        "grade_band": "1-2",
+        "introduction_week": 8,
+        "neurological_rationale": "Second oo pronunciation expands pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "/o͞o/",
+        "graphemes": ["oo"],
+        "grapheme_frequency": {"oo": 60},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "highly_rounded",
+          "long_variant": true
+        },
+        "phonological_neighbors": ["/o͞o/", "/ʊ/", "/ū/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["completes oo pattern", "space/time words", "high frequency"]
+      },
+      "word_examples": {
+        "long_oo_words": ["moon", "soon", "room", "food", "school"],
+        "final_position": ["zoo", "too", "boo"],
+        "school_words": ["school", "room", "noon", "cool"],
+        "oo_contrast": ["look/loop", "book/boot", "good/food"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Soon we will see the moon at school. (85% decodable)",
+          "The cool food in my room is too good. (88% decodable)",
+          "At noon, we went to the zoo pool. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Dual pronunciations require flexible processing",
+          "multisensory_cues": [
+            "Long oo as in 'moon'",
+            "Lips very round, held longer",
+            "More common than short oo"
+          ],
+          "frequency_note": "Long oo more frequent (60% vs 40%)"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy long oo recognition",
+        "formative_weekly": "80% accuracy oo sound discrimination",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "dual_mastery": "Flexibly reads both oo sounds"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - OO most variable common digraph",
+        "Adams, M.J. (1990) - Teach both sounds systematically",
+        "National Reading Panel (2000) - Flexibility with common patterns"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ew",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 68,
+        "complexity_score": 4.0,
+        "prerequisite_phonemes": ["/o͞o/", "variant vowels"],
+        "grade_band": "1-2",
+        "introduction_week": 9,
+        "neurological_rationale": "Alternative spelling for /o͞o/ sound"
+      },
+      "linguistic_properties": {
+        "phoneme": "/o͞o/",
+        "graphemes": ["ew"],
+        "grapheme_frequency": {"ew": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "highly_rounded",
+          "alternate_spelling": true
+        },
+        "phonological_neighbors": ["/o͞o/", "/ū/", "/yo͞o/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["consistent sound", "common at word end", "action words"]
+      },
+      "word_examples": {
+        "final_position": ["new", "few", "grew", "flew", "drew"],
+        "medial_position": ["jewel", "newer", "fewer"],
+        "action_words": ["grew", "flew", "drew", "threw", "blew"],
+        "consistency": "ew almost always says /o͞o/",
+        "cumulative_decodable_sentences_98_percent": [
+          "The new bird flew and grew big. (85% decodable)",
+          "I drew a few jewels that were new. (85% decodable)",
+          "Andrew threw the new ball and it flew. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Multiple spellings for same sound common in English",
+          "multisensory_cues": [
+            "ew = same sound as long oo",
+            "Common at word endings",
+            "Very consistent pattern"
+          ],
+          "spelling_alternatives": "oo, ew, ue can all say /o͞o/"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy ew = /o͞o/ recognition",
+        "formative_weekly": "80% accuracy reading ew words",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "pattern_connection": "Links ew to /o͞o/ sound"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - EW highly consistent pattern",
+        "National Reading Panel (2000) - Alternative spellings important",
+        "Moats, L.C. (2020) - Systematic introduction of spelling alternatives"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ue",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 72,
+        "complexity_score": 4.0,
+        "prerequisite_phonemes": ["/o͞o/", "ew"],
+        "grade_band": "1-2",
+        "introduction_week": 10,
+        "neurological_rationale": "Third spelling alternative for /o͞o/"
+      },
+      "linguistic_properties": {
+        "phoneme": "/o͞o/",
+        "graphemes": ["ue"],
+        "grapheme_frequency": {"ue": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "highly_rounded",
+          "alternate_spelling": true
+        },
+        "phonological_neighbors": ["/o͞o/", "/ū/", "/yo͞o/"],
+        "word_positions": ["final"],
+        "teaching_advantages": ["completes /o͞o/ spellings", "always final", "common words"]
+      },
+      "word_examples": {
+        "final_position": ["blue", "true", "glue", "clue", "due"],
+        "color_word": ["blue"],
+        "rhyme_words": ["blue", "true", "glue", "clue"],
+        "spelling_set": "oo, ew, ue all say /o͞o/",
+        "cumulative_decodable_sentences_98_percent": [
+          "The blue glue is true and due. (88% decodable)",
+          "I have a clue that the sky is blue. (88% decodable)",
+          "It is true that we need blue glue. (90% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern completion aids categorical understanding",
+          "multisensory_cues": [
+            "ue = another way to spell /o͞o/",
+            "Always at word end",
+            "Blue is memorable key word"
+          ],
+          "systematic_coverage": "Three ways to spell /o͞o/: oo, ew, ue"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy ue = /o͞o/ recognition",
+        "formative_weekly": "80% accuracy all /o͞o/ spellings",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "spelling_flexibility": "Recognizes oo, ew, ue as /o͞o/"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Complete spelling patterns aid memory",
+        "National Reading Panel (2000) - Systematic alternatives essential",
+        "Ehri, L.C. (2005) - Multiple spellings common in English"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_oi",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 88,
+        "complexity_score": 4.1,
+        "prerequisite_phonemes": ["diphthong readiness"],
+        "grade_band": "1-2",
+        "introduction_week": 11,
+        "neurological_rationale": "First true diphthong introduces gliding vowel"
+      },
+      "linguistic_properties": {
+        "phoneme": "/oi/",
+        "graphemes": ["oi"],
+        "grapheme_frequency": {"oi": 100},
+        "articulation": {
+          "manner": "diphthong",
+          "place": "mid_back_to_high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "gliding_movement": true,
+          "two_vowel_sounds": "blended together"
+        },
+        "phonological_neighbors": ["/oi/", "/oy/", "/o/", "/i/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["unique sound", "never final", "action words"]
+      },
+      "word_examples": {
+        "medial_position": ["oil", "boil", "coin", "point", "voice"],
+        "never_final": "oi never ends words",
+        "action_words": ["boil", "point", "join"],
+        "money_word": ["coin"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The oil will boil at this point. (85% decodable)",
+          "I found a coin and heard a voice. (85% decodable)",
+          "Join us and point to the moist soil. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Diphthongs require vowel-to-vowel transitions",
+          "multisensory_cues": [
+            "Mouth changes shape during sound",
+            "Starts with 'aw' moves to 'ee'",
+            "Gliding sound - not static"
+          ],
+          "new_concept": "First vowel sound that moves"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy oi diphthong production",
+        "formative_weekly": "75% accuracy reading oi words",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "diphthong_awareness": "Produces gliding vowel sound"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Diphthongs distinct category",
+        "National Reading Panel (2000) - Complex vowels important",
+        "Moats, L.C. (2020) - Explicit diphthong instruction needed"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_oy",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 92,
+        "complexity_score": 4.1,
+        "prerequisite_phonemes": ["/oi/", "oi"],
+        "grade_band": "1-2",
+        "introduction_week": 12,
+        "neurological_rationale": "Position-based diphthong spelling"
+      },
+      "linguistic_properties": {
+        "phoneme": "/oi/",
+        "graphemes": ["oy"],
+        "grapheme_frequency": {"oy": 100},
+        "articulation": {
+          "manner": "diphthong",
+          "place": "mid_back_to_high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "gliding_movement": true,
+          "two_vowel_sounds": "blended together"
+        },
+        "phonological_neighbors": ["/oi/", "/oy/", "/o/", "/i/"],
+        "word_positions": ["final"],
+        "teaching_advantages": ["complements oi", "name words", "position rule"]
+      },
+      "word_examples": {
+        "final_position": ["boy", "toy", "joy", "enjoy", "destroy"],
+        "always_final": "oy at end of words/syllables",
+        "name_words": ["Roy", "Troy", "Joy"],
+        "oi_oy_rule": "oi middle, oy end (like ai/ay)",
+        "cumulative_decodable_sentences_98_percent": [
+          "The boy can enjoy his toy with joy. (88% decodable)",
+          "Roy will not destroy the toy ship. (85% decodable)",
+          "The royal boy had joy with his coin. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Position patterns create spelling predictability",
+          "multisensory_cues": [
+            "Same /oi/ sound as oi",
+            "oy only at word endings",
+            "Like ai/ay position rule"
+          ],
+          "pattern_parallel": "Second position-based vowel team"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy oy = /oi/ at word end",
+        "formative_weekly": "80% accuracy oi/oy position rule",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "position_mastery": "Applies oi/oy rule like ai/ay"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - Parallel position patterns",
+        "Adams, M.J. (1990) - OI/OY distribution predictable",
+        "National Reading Panel (2000) - Pattern consistency aids learning"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_ou",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 34,
+        "complexity_score": 4.3,
+        "prerequisite_phonemes": ["diphthongs", "ow_diphthong"],
+        "grade_band": "1-2",
+        "introduction_week": 13,
+        "neurological_rationale": "Variable diphthong with multiple sounds"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ow/",
+        "graphemes": ["ou"],
+        "grapheme_frequency": {"ou": 70},
+        "articulation": {
+          "manner": "diphthong",
+          "place": "low_back_to_high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "gliding_movement": true,
+          "primary_sound": "/ow/ as in out"
+        },
+        "phonological_neighbors": ["/ow/", "/o͞o/", "/u/", "/ō/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["common pattern", "introduces ou complexity", "question words"]
+      },
+      "word_examples": {
+        "ow_sound": ["out", "about", "house", "mouth", "found"],
+        "long_o_sound": ["four", "pour", "your"],
+        "oo_sound": ["you", "soup", "group"],
+        "short_u_sound": ["touch", "young", "country"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Get out of the house and shout about it. (85% decodable)",
+          "I found a mouse in the south house. (85% decodable)",
+          "The loud sound came from the ground. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "High variability requires strategic decoding",
+          "multisensory_cues": [
+            "ou usually says /ow/ as in 'out'",
+            "Sometimes other sounds",
+            "Try /ow/ first, adjust if needed"
+          ],
+          "complexity_note": "Most variable common vowel team"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy ou = /ow/ primary sound",
+        "formative_weekly": "70% accuracy recognizing ou variations",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "strategic_flexibility": "Tries multiple ou sounds strategically"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - OU most variable vowel team",
+        "Adams, M.J. (1990) - Teach primary sound with flexibility",
+        "National Reading Panel (2000) - Strategic decoding essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_au",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 78,
+        "complexity_score": 4.2,
+        "prerequisite_phonemes": ["variant vowels"],
+        "grade_band": "1-2",
+        "introduction_week": 14,
+        "neurological_rationale": "Variant vowel team with consistent sound"
+      },
+      "linguistic_properties": {
+        "phoneme": "/aw/",
+        "graphemes": ["au"],
+        "grapheme_frequency": {"au": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "jaw_dropping": true,
+          "variant_vowel": true
+        },
+        "phonological_neighbors": ["/aw/", "/o/", "/a/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["consistent sound", "never final", "seasonal words"]
+      },
+      "word_examples": {
+        "medial_position": ["haul", "fault", "sauce", "cause", "autumn"],
+        "never_final": "au doesn't end English words",
+        "seasonal_word": ["autumn"],
+        "consistency": "au almost always says /aw/",
+        "cumulative_decodable_sentences_98_percent": [
+          "In autumn, we haul and launch the boat. (85% decodable)",
+          "It's not your fault the sauce fell. (85% decodable)",
+          "Paul can haul because of his strength. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Variant vowels expand sound categories",
+          "multisensory_cues": [
+            "au says 'aw' - drop jaw",
+            "Neither short nor long vowel",
+            "Very consistent pattern"
+          ],
+          "new_category": "Variant vowel sound /aw/"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy au = /aw/ recognition",
+        "formative_weekly": "80% accuracy reading au words",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "variant_mastery": "Recognizes au as variant vowel"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - AU highly consistent pattern",
+        "National Reading Panel (2000) - Variant vowels important",
+        "Moats, L.C. (2020) - AU/AW complementary patterns"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_aw",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 65,
+        "complexity_score": 4.2,
+        "prerequisite_phonemes": ["/aw/", "au"],
+        "grade_band": "1-2",
+        "introduction_week": 15,
+        "neurological_rationale": "Position-based variant vowel spelling"
+      },
+      "linguistic_properties": {
+        "phoneme": "/aw/",
+        "graphemes": ["aw"],
+        "grapheme_frequency": {"aw": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "jaw_dropping": true,
+          "variant_vowel": true
+        },
+        "phonological_neighbors": ["/aw/", "/o/", "/a/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["complements au", "can be final", "animal words"]
+      },
+      "word_examples": {
+        "final_position": ["saw", "draw", "claw", "straw", "jaw"],
+        "medial_position": ["lawn", "dawn", "yawn", "crawl"],
+        "animal_words": ["claw", "paw", "hawk"],
+        "au_aw_pattern": "au middle only, aw can end words",
+        "cumulative_decodable_sentences_98_percent": [
+          "I saw the hawk's claw on the lawn. (85% decodable)",
+          "At dawn, we can draw with a straw. (88% decodable)",
+          "The dog's paw got caught in the door. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Complementary patterns complete sound spelling",
+          "multisensory_cues": [
+            "Same /aw/ sound as au",
+            "aw can end words, au cannot",
+            "Third position-based pattern"
+          ],
+          "pattern_completion": "au and aw cover all positions for /aw/"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy aw = /aw/ recognition",
+        "formative_weekly": "80% accuracy au/aw position awareness",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "complete_pattern": "Masters au/aw for /aw/ sound"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - AU/AW complementary distribution",
+        "Adams, M.J. (1990) - Position patterns highly regular",
+        "National Reading Panel (2000) - Complete patterns aid spelling"
+      ]
+    },
+    {
+      "phoneme_id": "stage4_igh",
+      "metadata": {
+        "stage": 4,
+        "frequency_rank": 82,
+        "complexity_score": 4.3,
+        "prerequisite_phonemes": ["/ī/", "vowel teams"],
+        "grade_band": "1-2",
+        "introduction_week": 16,
+        "neurological_rationale": "Three-letter vowel team with silent gh"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ī/",
+        "graphemes": ["igh"],
+        "grapheme_frequency": {"igh": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_position": "high_front_tense",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/ī/", "/i/", "/ā/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["consistent pattern", "common words", "introduces silent gh"]
+      },
+      "word_examples": {
+        "medial_position": ["night", "light", "right", "fight", "might"],
+        "final_position": ["high", "sigh", "thigh"],
+        "sight_words_connection": ["right", "night", "light", "sight"],
+        "three_letter_team": "igh = long i (gh is silent)",
+        "cumulative_decodable_sentences_98_percent": [
+          "At night, turn on the bright light. (88% decodable)",
+          "You might be right about the flight. (85% decodable)",
+          "The knight had to fight with all his might. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Complex graphemes for simple sounds common",
+          "multisensory_cues": [
+            "igh = long i sound",
+            "gh is completely silent",
+            "Common in 'sight' words"
+          ],
+          "historical_note": "gh was once pronounced, now silent"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy igh = /ī/ recognition",
+        "formative_weekly": "80% accuracy reading igh words",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "complex_pattern": "Recognizes three-letter team for one sound"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - IGH consistent despite complexity",
+        "National Reading Panel (2000) - High-frequency patterns priority",
+        "Venezky, R.L. (1999) - Historical spellings preserved"
+      ]
+    }
+  ]
+}

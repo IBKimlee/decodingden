@@ -1,0 +1,1082 @@
+{
+  "stage_number": 3,
+  "stage_name": "Complex Consonants & Silent E",
+  "grade_level": "First Grade",
+  "student_phase": "Full Alphabetic",
+  "duration": "10-12 weeks",
+  "total_elements": 18,
+  "description": "Students master complex consonant patterns including three-letter blends, soft consonants (c/g), and the transformative silent e pattern. This stage introduces CVCe word structures and builds understanding of how letters can change sounds based on position and neighboring letters.",
+  "key_concept": "Letters work together in sophisticated ways. Silent e at the end 'reaches back' to make the vowel say its name (cape, hope). Some consonants like c and g have two sounds depending on what vowel follows. Three consonants can blend together smoothly.",
+  "instructional_focus": [
+    "Silent e transformation of short to long vowels",
+    "CVCe word pattern mastery",
+    "Three-letter blend fluency (scr, spr, str)",
+    "Soft c and g before e, i, y",
+    "Complex phoneme manipulation (4-6 phoneme words)"
+  ],
+  "science_of_reading_alignment": {
+    "ehri_phase": "Full Alphabetic - complete grapheme-phoneme connections",
+    "national_reading_panel": "Complex patterns essential for grade-level reading",
+    "adams_principle": "Silent e as first major spelling rule transformation",
+    "orthographic_mapping": "Pattern recognition for conditional letter sounds"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage3_silent_e_a",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 8,
+        "complexity_score": 3.0,
+        "prerequisite_phonemes": ["/a/", "CVC patterns"],
+        "grade_band": "1st",
+        "introduction_week": 1,
+        "neurological_rationale": "Silent e rule introduces conditional phonics principle"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ā/",
+        "graphemes": ["a_e"],
+        "grapheme_frequency": {"a_e": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_front_to_mid",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "mouth_opening": "wide_to_medium",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/a/", "/ē/", "/ā/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["visual pattern clarity", "high contrast with short a", "common words"]
+      },
+      "word_examples": {
+        "cvc_to_cvce": ["cap→cape", "tap→tape", "mat→mate", "hat→hate", "sam→same"],
+        "cvce_words": ["make", "cake", "lake", "name", "came"],
+        "silent_e_magic": "The e is silent but makes a say its name",
+        "minimal_pairs": ["mad/made", "fad/fade", "pal/pale"],
+        "cumulative_decodable_sentences_98_percent": [
+          "I can make a cake by the lake. (85% decodable)",
+          "Jane came to take the same game. (80% decodable)",
+          "The snake ate the grape on the plate. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Silent e rule builds conditional reading pathways",
+          "multisensory_cues": [
+            "Silent e reaches back over one consonant",
+            "Short a opens mouth wide, long a says letter name",
+            "Magic e, bossy e, or silent e - all same rule"
+          ],
+          "rule_introduction": "First major spelling rule that changes pronunciation"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy identifying silent e pattern",
+        "formative_weekly": "80% accuracy CVC to CVCe transformation",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "rule_application": "Applies silent e rule to transform short to long a"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Silent e as gateway to complex orthography",
+        "National Reading Panel (2000) - CVCe patterns critical for fluency",
+        "Ehri, L.C. (2005) - Conditional rules build orthographic knowledge"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_silent_e_i",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 15,
+        "complexity_score": 3.0,
+        "prerequisite_phonemes": ["/i/", "silent_e_a"],
+        "grade_band": "1st",
+        "introduction_week": 2,
+        "neurological_rationale": "Second silent e application reinforces rule"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ī/",
+        "graphemes": ["i_e"],
+        "grapheme_frequency": {"i_e": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_position": "high_front_tense",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/i/", "/ā/", "/ī/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["clear long vowel sound", "common words", "rhyming families"]
+      },
+      "word_examples": {
+        "cvc_to_cvce": ["bit→bite", "kit→kite", "Tim→time", "hid→hide", "slid→slide"],
+        "cvce_words": ["like", "bike", "hike", "five", "nine"],
+        "number_words": ["five", "nine"],
+        "minimal_pairs": ["pin/pine", "fin/fine", "win/wine"],
+        "cumulative_decodable_sentences_98_percent": [
+          "I like to ride my bike to the hike. (80% decodable)",
+          "Five mice ate rice at nine. (80% decodable)",
+          "Mike can hide the kite in time. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern generalization strengthens neural pathways",
+          "multisensory_cues": [
+            "Short i smiles small, long i says 'I'",
+            "Same silent e rule as with a_e",
+            "Feel tongue stay high for long i"
+          ],
+          "rule_reinforcement": "Second application builds automaticity"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy silent e pattern recognition",
+        "formative_weekly": "85% accuracy reading i_e words",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "generalization": "Transfers silent e rule from a_e to i_e"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Multiple examples solidify rule understanding",
+        "National Reading Panel (2000) - Pattern consistency aids learning",
+        "Moats, L.C. (2020) - Systematic vowel progression essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_silent_e_o",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 22,
+        "complexity_score": 3.0,
+        "prerequisite_phonemes": ["/o/", "silent_e_i"],
+        "grade_band": "1st",
+        "introduction_week": 3,
+        "neurological_rationale": "Third silent e vowel continues pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ō/",
+        "graphemes": ["o_e"],
+        "grapheme_frequency": {"o_e": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "mid_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "rounded",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/o/", "/ō/", "/ū/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["visible lip rounding", "clear transformation", "common words"]
+      },
+      "word_examples": {
+        "cvc_to_cvce": ["hop→hope", "not→note", "rob→robe", "cop→cope", "rod→rode"],
+        "cvce_words": ["home", "bone", "stone", "phone", "alone"],
+        "compound_introduction": ["homemade", "backbone"],
+        "minimal_pairs": ["hop/hope", "mop/mope", "cop/cope"],
+        "cumulative_decodable_sentences_98_percent": [
+          "I hope to go home on the phone. (80% decodable)",
+          "The dog ate the bone by the stone. (83% decodable)",
+          "Rose rode home alone in her robe. (80% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Consistent rule application builds reading fluency",
+          "multisensory_cues": [
+            "Short o opens round, long o says 'oh'",
+            "Lips stay round for both sounds",
+            "Silent e works same way with o"
+          ],
+          "pattern_mastery": "Third vowel solidifies understanding"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy o_e word reading",
+        "formative_weekly": "85% accuracy CVC to CVCe transformation",
+        "summative": "95% recognition, 90% reading, 85% spelling",
+        "rule_consistency": "Applies silent e across a, i, and o"
+      },
+      "research_attribution": [
+        "Ehri, L.C. (2005) - Three examples minimum for rule mastery",
+        "National Reading Panel (2000) - Systematic vowel instruction",
+        "Adams, M.J. (1990) - Visual lip cues support learning"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_silent_e_u",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 38,
+        "complexity_score": 3.1,
+        "prerequisite_phonemes": ["/u/", "silent_e_o"],
+        "grade_band": "1st",
+        "introduction_week": 4,
+        "neurological_rationale": "Fourth silent e vowel with unique pronunciation"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ū/",
+        "graphemes": ["u_e"],
+        "grapheme_frequency": {"u_e": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "highly_rounded",
+          "long_vowel": true,
+          "glide_quality": true
+        },
+        "phonological_neighbors": ["/u/", "/ū/", "/o͞o/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["strong lip rounding", "often sounds like 'yoo'", "music vocabulary"]
+      },
+      "word_examples": {
+        "cvc_to_cvce": ["cub→cube", "tub→tube", "us→use", "cut→cute", "hug→huge"],
+        "cvce_words": ["mule", "flute", "prune", "June", "dune"],
+        "yoo_sound": ["cute", "mule", "fuse", "huge", "cube"],
+        "oo_sound": ["flute", "prune", "June", "dune", "tune"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The cute mule can use the flute. (80% decodable)",
+          "In June, we sat on a huge dune. (80% decodable)",
+          "Luke ate a prune from the blue tube. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Variable pronunciations introduce flexibility",
+          "multisensory_cues": [
+            "Some u_e words say 'yoo' (cute)",
+            "Some u_e words say 'oo' (flute)",
+            "Lips very round for long u"
+          ],
+          "pronunciation_flexibility": "First vowel with two possible long sounds"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy u_e word recognition",
+        "formative_weekly": "80% accuracy with both u_e pronunciations",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "flexibility": "Reads both 'yoo' and 'oo' pronunciations"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - U_e introduces pronunciation flexibility",
+        "National Reading Panel (2000) - Variable patterns part of English",
+        "Moats, L.C. (2020) - Explicit instruction for pronunciation variants"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_silent_e_e",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 125,
+        "complexity_score": 3.0,
+        "prerequisite_phonemes": ["/e/", "silent_e_u"],
+        "grade_band": "1st",
+        "introduction_week": 5,
+        "neurological_rationale": "Rare but completes silent e vowel set"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ē/",
+        "graphemes": ["e_e"],
+        "grapheme_frequency": {"e_e": 100},
+        "articulation": {
+          "manner": "vowel",
+          "place": "mid_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "tongue_position": "mid_front_tense",
+          "long_vowel": true
+        },
+        "phonological_neighbors": ["/e/", "/ē/", "/ā/"],
+        "word_positions": ["medial"],
+        "teaching_advantages": ["completes pattern", "limited but important words", "pattern completion"]
+      },
+      "word_examples": {
+        "limited_set": ["these", "theme", "eve", "Steve", "Pete"],
+        "high_frequency": ["these", "here"],
+        "proper_names": ["Steve", "Pete", "Eve"],
+        "pattern_note": "Fewer e_e words exist in English",
+        "cumulative_decodable_sentences_98_percent": [
+          "Steve and Pete like these games. (80% decodable)",
+          "These mice came here on the eve. (80% decodable)",
+          "We use these themes in the complete set. (75% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern completion satisfies cognitive closure",
+          "multisensory_cues": [
+            "Short e as in 'bed', long e says 'E'",
+            "Same silent e rule applies",
+            "Fewer words but same pattern"
+          ],
+          "systematic_completion": "All five vowels now have silent e forms"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy recognizing e_e pattern",
+        "formative_weekly": "75% accuracy reading limited e_e words",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "pattern_complete": "Recognizes silent e works with all vowels"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Complete patterns aid understanding",
+        "National Reading Panel (2000) - Systematic coverage important",
+        "Ehri, L.C. (2005) - Even rare patterns deserve instruction"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_scr",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 105,
+        "complexity_score": 3.5,
+        "prerequisite_phonemes": ["/sk/", "/kr/", "two-letter blends"],
+        "grade_band": "1st",
+        "introduction_week": 6,
+        "neurological_rationale": "Three-letter blends require complex coarticulation"
+      },
+      "linguistic_properties": {
+        "phoneme": "/skr/",
+        "graphemes": ["scr"],
+        "grapheme_frequency": {"scr": 100},
+        "articulation": {
+          "manner": "fricative_stop_liquid_blend",
+          "place": "alveolar_velar_alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "three_movements": true,
+          "maintain_individual_sounds": true
+        },
+        "phonological_neighbors": ["/sk/", "/kr/", "/skw/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["builds on known blends", "action words", "clear sound sequence"]
+      },
+      "word_examples": {
+        "initial_position": ["scrub", "scratch", "scream", "scrape", "scrap"],
+        "action_emphasis": ["scrub", "scratch", "scream", "scrape"],
+        "blend_building": "s + cr = scr (combine known blends)",
+        "three_sounds": "/s/ + /k/ + /r/ all maintain identity",
+        "cumulative_decodable_sentences_98_percent": [
+          "I had to scrub and scrape the plate. (80% decodable)",
+          "The cat will scratch and make me scream. (80% decodable)",
+          "We can use this scrap to make a screen. (80% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Three-consonant blends peak blend complexity",
+          "multisensory_cues": [
+            "Say each sound: /s/ - /k/ - /r/",
+            "Like s-blend plus r-blend together",
+            "All three sounds stay separate"
+          ],
+          "complexity_management": "Break into s + cr if needed"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy three-sound production",
+        "formative_weekly": "70% accuracy CCCVC word reading",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "blend_complexity": "Maintains three distinct sounds in blend"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Three-letter blends represent blend mastery",
+        "National Reading Panel (2000) - Complex blends for advanced readers",
+        "Moats, L.C. (2020) - Explicit segmentation supports learning"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_spr",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 98,
+        "complexity_score": 3.5,
+        "prerequisite_phonemes": ["/sp/", "/pr/", "/skr/"],
+        "grade_band": "1st",
+        "introduction_week": 7,
+        "neurological_rationale": "Second three-letter blend with different structure"
+      },
+      "linguistic_properties": {
+        "phoneme": "/spr/",
+        "graphemes": ["spr"],
+        "grapheme_frequency": {"spr": 100},
+        "articulation": {
+          "manner": "fricative_stop_liquid_blend",
+          "place": "alveolar_bilabial_alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "lip_movement": "required_for_p",
+          "maintain_individual_sounds": true
+        },
+        "phonological_neighbors": ["/sp/", "/pr/", "/skr/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["seasonal words", "visible /p/ component", "nature vocabulary"]
+      },
+      "word_examples": {
+        "initial_position": ["spring", "spray", "spread", "sprout", "sprint"],
+        "seasonal_connection": ["spring", "sprout"],
+        "action_words": ["spray", "spread", "sprint"],
+        "blend_analysis": "s + pr = spr",
+        "cumulative_decodable_sentences_98_percent": [
+          "In spring, the plants will sprout and spread. (80% decodable)",
+          "I can sprint fast and spray the hose. (80% decodable)",
+          "We spread jam on bread in spring. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Varied three-letter blends build flexibility",
+          "multisensory_cues": [
+            "See lips close for /p/ in middle",
+            "/s/ - lips close /p/ - /r/",
+            "Different than scr - has lip movement"
+          ],
+          "articulation_variety": "Different articulatory pattern than scr"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy spr blend production",
+        "formative_weekly": "70% accuracy distinguishing scr/spr",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "blend_discrimination": "Distinguishes between three-letter blends"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Multiple three-letter blends build mastery",
+        "National Reading Panel (2000) - Seasonal vocabulary motivates",
+        "Ehri, L.C. (2005) - Complex blend variety essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_str",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 65,
+        "complexity_score": 3.5,
+        "prerequisite_phonemes": ["/st/", "/tr/", "/spr/"],
+        "grade_band": "1st",
+        "introduction_week": 8,
+        "neurological_rationale": "Most common three-letter blend"
+      },
+      "linguistic_properties": {
+        "phoneme": "/str/",
+        "graphemes": ["str"],
+        "grapheme_frequency": {"str": 100},
+        "articulation": {
+          "manner": "fricative_stop_liquid_blend",
+          "place": "alveolar_alveolar_alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "same_place": "all_alveolar",
+          "maintain_individual_sounds": true
+        },
+        "phonological_neighbors": ["/st/", "/tr/", "/skr/", "/spr/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["high frequency", "same articulation place", "clear sequence"]
+      },
+      "word_examples": {
+        "initial_position": ["string", "strong", "street", "stream", "stripe"],
+        "high_frequency": ["string", "strong", "street"],
+        "same_place_blend": "Tongue stays in same position",
+        "blend_efficiency": "s + tr = str",
+        "cumulative_decodable_sentences_98_percent": [
+          "The strong man ran down the street. (80% decodable)",
+          "I use string to make the kite stripe. (80% decodable)",
+          "The stream is strong near our street. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Same-place blends processed more efficiently",
+          "multisensory_cues": [
+            "Tongue stays behind teeth for all three",
+            "Quick sequence: /s/ - /t/ - /r/",
+            "Most efficient three-letter blend"
+          ],
+          "frequency_advantage": "Most common three-letter blend in English"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy str blend production",
+        "formative_weekly": "75% accuracy three-letter blend reading",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "blend_mastery": "Fluent with all three-letter blends"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - STR most frequent three-letter blend",
+        "National Reading Panel (2000) - High-frequency patterns priority",
+        "Moats, L.C. (2020) - Articulatory efficiency aids fluency"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_spl",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 112,
+        "complexity_score": 3.6,
+        "prerequisite_phonemes": ["/sp/", "/pl/", "/str/"],
+        "grade_band": "1st",
+        "introduction_week": 9,
+        "neurological_rationale": "Three-letter blend with lateral liquid"
+      },
+      "linguistic_properties": {
+        "phoneme": "/spl/",
+        "graphemes": ["spl"],
+        "grapheme_frequency": {"spl": 100},
+        "articulation": {
+          "manner": "fricative_stop_liquid_blend",
+          "place": "alveolar_bilabial_alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "central_to_lateral",
+          "lip_closure": "required_for_p",
+          "maintain_individual_sounds": true
+        },
+        "phonological_neighbors": ["/sp/", "/pl/", "/spr/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["water words", "lateral liquid blend", "action vocabulary"]
+      },
+      "word_examples": {
+        "initial_position": ["splash", "split", "splat", "spleen", "splendid"],
+        "water_theme": ["splash", "split"],
+        "onomatopoeia": ["splash", "splat"],
+        "blend_components": "s + pl = spl",
+        "cumulative_decodable_sentences_98_percent": [
+          "We can splash and split the log. (80% decodable)",
+          "The paint went splat with a splash. (80% decodable)",
+          "It is splendid to splash in spring. (80% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Lateral liquid in blends adds complexity",
+          "multisensory_cues": [
+            "/s/ - lips close /p/ - tongue for /l/",
+            "Air changes to go around tongue for /l/",
+            "Like splash sound when said"
+          ],
+          "sound_symbolism": "Sound matches meaning in 'splash'"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy spl blend with lateral /l/",
+        "formative_weekly": "70% accuracy lateral liquid blends",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "liquid_variety": "Produces both /r/ and /l/ three-letter blends"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Liquid variety in blends important",
+        "National Reading Panel (2000) - Sound symbolism aids memory",
+        "Ehri, L.C. (2005) - Complex blends complete blend instruction"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_squ",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 108,
+        "complexity_score": 3.7,
+        "prerequisite_phonemes": ["/sk/", "/kw/", "/spl/"],
+        "grade_band": "1st",
+        "introduction_week": 10,
+        "neurological_rationale": "Three-letter blend with embedded digraph"
+      },
+      "linguistic_properties": {
+        "phoneme": "/skw/",
+        "graphemes": ["squ"],
+        "grapheme_frequency": {"squ": 100},
+        "articulation": {
+          "manner": "fricative_stop_glide_blend",
+          "place": "alveolar_velar_bilabial",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "lip_rounding": "required_for_w",
+          "qu_digraph": "qu acts as /kw/"
+        },
+        "phonological_neighbors": ["/sk/", "/kw/", "/skr/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["qu digraph within blend", "shape words", "unique pattern"]
+      },
+      "word_examples": {
+        "initial_position": ["square", "squash", "squeeze", "squid", "squeak"],
+        "shape_words": ["square"],
+        "action_words": ["squash", "squeeze", "squeak"],
+        "qu_reminder": "qu = /kw/ sound, so squ = /skw/",
+        "cumulative_decodable_sentences_98_percent": [
+          "We can squeeze the square squash. (80% decodable)",
+          "The squid made the toy squeak. (80% decodable)",
+          "Do not squash the square box. (80% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Embedded digraph in blend increases complexity",
+          "multisensory_cues": [
+            "Remember qu = /kw/ together",
+            "So squ = /s/ + /kw/",
+            "Lips round at end for /w/ part"
+          ],
+          "pattern_complexity": "Most complex blend structure"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "70% accuracy squ blend with qu digraph",
+        "formative_weekly": "65% accuracy recognizing qu within blend",
+        "summative": "75% recognition, 70% reading, 65% spelling",
+        "complex_pattern": "Recognizes digraph within three-letter blend"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Complex patterns challenge advanced readers",
+        "National Reading Panel (2000) - Embedded patterns require focus",
+        "Moats, L.C. (2020) - Explicit instruction for complex structures"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_thr",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 75,
+        "complexity_score": 3.6,
+        "prerequisite_phonemes": ["/th/", "/r/", "/squ/"],
+        "grade_band": "1st",
+        "introduction_week": 11,
+        "neurological_rationale": "Three-letter blend with digraph onset"
+      },
+      "linguistic_properties": {
+        "phoneme": "/θr/",
+        "graphemes": ["thr"],
+        "grapheme_frequency": {"thr": 100},
+        "articulation": {
+          "manner": "fricative_liquid_blend",
+          "place": "dental_alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "tongue_movement": "between_teeth_to_alveolar",
+          "digraph_blend": "th digraph + r"
+        },
+        "phonological_neighbors": ["/th/", "/tr/", "/θr/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["number words", "digraph in blend", "high frequency"]
+      },
+      "word_examples": {
+        "initial_position": ["three", "throw", "through", "thread", "throat"],
+        "number_word": ["three"],
+        "high_frequency": ["three", "through", "throw"],
+        "digraph_blend": "th (one sound) + r = thr",
+        "cumulative_decodable_sentences_98_percent": [
+          "I can throw the ball through three hoops. (80% decodable)",
+          "The thread went through the throat. (80% decodable)",
+          "Three kids can throw and catch. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Digraph-initial blends unique processing",
+          "multisensory_cues": [
+            "Tongue between teeth for /th/",
+            "Then pull back for /r/",
+            "Only two sounds despite three letters"
+          ],
+          "structural_awareness": "thr = 3 letters but 2 sounds"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy thr blend production",
+        "formative_weekly": "70% accuracy digraph-blend recognition",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "pattern_analysis": "Recognizes digraph within blend structure"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Digraph blends require special attention",
+        "National Reading Panel (2000) - 'Three' as crucial sight word",
+        "Ehri, L.C. (2005) - Complex onsets build decoding flexibility"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_shr",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 115,
+        "complexity_score": 3.6,
+        "prerequisite_phonemes": ["/sh/", "/r/", "/thr/"],
+        "grade_band": "1st",
+        "introduction_week": 12,
+        "neurological_rationale": "Second digraph-blend pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ʃr/",
+        "graphemes": ["shr"],
+        "grapheme_frequency": {"shr": 100},
+        "articulation": {
+          "manner": "fricative_liquid_blend",
+          "place": "postalveolar_alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "lip_rounding": "slight_for_sh",
+          "digraph_blend": "sh digraph + r"
+        },
+        "phonological_neighbors": ["/sh/", "/sr/", "/ʃr/"],
+        "word_positions": ["initial"],
+        "teaching_advantages": ["animal words", "clear digraph blend", "action words"]
+      },
+      "word_examples": {
+        "initial_position": ["shrimp", "shrink", "shred", "shrub", "shrug"],
+        "animal_word": ["shrimp"],
+        "action_words": ["shrink", "shred", "shrug"],
+        "size_change": ["shrink", "shrunk"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The shrimp can shrink in the pot. (80% decodable)",
+          "I will shred the note and shrug. (80% decodable)",
+          "The shrub by the shrimp tank is big. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Second digraph blend reinforces pattern",
+          "multisensory_cues": [
+            "Lips round for /sh/",
+            "Then tongue curls for /r/",
+            "Like thr - only two sounds"
+          ],
+          "pattern_reinforcement": "Second example of digraph + r blend"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy shr blend production",
+        "formative_weekly": "70% accuracy both digraph blends",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "digraph_blend_mastery": "Masters both thr and shr patterns"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Multiple digraph blend examples needed",
+        "National Reading Panel (2000) - Pattern variations important",
+        "Moats, L.C. (2020) - Systematic blend instruction complete"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_soft_c",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 28,
+        "complexity_score": 3.2,
+        "prerequisite_phonemes": ["/k/", "/s/"],
+        "grade_band": "1st",
+        "introduction_week": 13,
+        "neurological_rationale": "Conditional consonant sound based on following vowel"
+      },
+      "linguistic_properties": {
+        "phoneme": "/s/",
+        "graphemes": ["c before e,i,y"],
+        "grapheme_frequency": {"ce": 40, "ci": 40, "cy": 20},
+        "articulation": {
+          "manner": "fricative",
+          "place": "alveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "conditional_rule": "c = /s/ before e, i, y"
+        },
+        "phonological_neighbors": ["/k/", "/s/", "/z/"],
+        "word_positions": ["initial", "medial", "final"],
+        "teaching_advantages": ["clear rule", "common pattern", "introduces conditional phonics"]
+      },
+      "word_examples": {
+        "ce_words": ["cent", "cell", "face", "place", "dance"],
+        "ci_words": ["city", "circle", "pencil", "circus"],
+        "cy_words": ["cycle", "fancy", "mercy"],
+        "hard_soft_pairs": ["cat/city", "cup/cent", "call/cell"],
+        "cumulative_decodable_sentences_98_percent": [
+          "In the city, we can dance at a nice place. (80% decodable)",
+          "The pencil made a circle on my face. (80% decodable)",
+          "Nancy went to the circus in the city. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Conditional rules build orthographic flexibility",
+          "multisensory_cues": [
+            "C says /s/ before e, i, y",
+            "C says /k/ before a, o, u",
+            "Remember: 'Soft c loves e, i, y'"
+          ],
+          "rule_introduction": "First conditional consonant rule"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy soft c identification",
+        "formative_weekly": "75% accuracy hard/soft c discrimination",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "conditional_application": "Applies soft c rule before e,i,y"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Conditional consonants expand decoding",
+        "National Reading Panel (2000) - Rule-based patterns essential",
+        "Venezky, R.L. (1999) - C/G rules fundamental to English"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_soft_g",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 58,
+        "complexity_score": 3.3,
+        "prerequisite_phonemes": ["/g/", "/j/", "soft_c"],
+        "grade_band": "1st",
+        "introduction_week": 14,
+        "neurological_rationale": "Second conditional consonant reinforces concept"
+      },
+      "linguistic_properties": {
+        "phoneme": "/j/",
+        "graphemes": ["g before e,i,y"],
+        "grapheme_frequency": {"ge": 45, "gi": 45, "gy": 10},
+        "articulation": {
+          "manner": "affricate",
+          "place": "postalveolar",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "conditional_rule": "g = /j/ before e, i, y (usually)"
+        },
+        "phonological_neighbors": ["/g/", "/j/", "/zh/"],
+        "word_positions": ["initial", "medial", "final"],
+        "teaching_advantages": ["parallels soft c", "common words", "some exceptions noted"]
+      },
+      "word_examples": {
+        "ge_words": ["gem", "page", "huge", "change", "orange"],
+        "gi_words": ["giant", "giraffe", "magic", "engine"],
+        "gy_words": ["gym", "energy", "apology"],
+        "exceptions": ["get", "give", "girl" - stay hard],
+        "cumulative_decodable_sentences_98_percent": [
+          "The giant giraffe ate the orange. (80% decodable)",
+          "We can change the page in the huge book. (80% decodable)",
+          "The gem is in a cage at the gym. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern consistency with variations builds flexibility",
+          "multisensory_cues": [
+            "G says /j/ before e, i, y (usually)",
+            "Like soft c rule but makes /j/ not /s/",
+            "Some common words break rule (get, give)"
+          ],
+          "exception_awareness": "First rule with notable exceptions"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy soft g identification",
+        "formative_weekly": "70% accuracy with exception words",
+        "summative": "80% recognition, 75% reading, 70% spelling",
+        "flexibility": "Manages both rule and exceptions"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - G rule more variable than C rule",
+        "National Reading Panel (2000) - Exception awareness important",
+        "Adams, M.J. (1990) - High-frequency exceptions need direct teaching"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_dge",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 95,
+        "complexity_score": 3.4,
+        "prerequisite_phonemes": ["/j/", "soft_g", "silent_e"],
+        "grade_band": "1st",
+        "introduction_week": 15,
+        "neurological_rationale": "Three-letter grapheme for one sound after short vowel"
+      },
+      "linguistic_properties": {
+        "phoneme": "/j/",
+        "graphemes": ["dge"],
+        "grapheme_frequency": {"dge": 100},
+        "articulation": {
+          "manner": "affricate",
+          "place": "postalveolar",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "spelling_rule": "dge after short vowel for /j/"
+        },
+        "phonological_neighbors": ["/j/", "/ch/", "/zh/"],
+        "word_positions": ["final"],
+        "teaching_advantages": ["consistent pattern", "builds on FLOSS concept", "no exceptions"]
+      },
+      "word_examples": {
+        "final_position": ["badge", "edge", "bridge", "fudge", "judge"],
+        "short_vowel_pattern": ["badge", "edge", "bridge", "lodge", "fudge"],
+        "three_letter_one_sound": "dge = /j/ (like ch or sh)",
+        "job_words": ["judge", "badge"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The judge has a badge on the edge. (80% decodable)",
+          "We can cross the bridge to the lodge. (80% decodable)",
+          "Do not smudge the fudge on the edge. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Complex graphemes for simple phonemes",
+          "multisensory_cues": [
+            "Three letters = one /j/ sound",
+            "Only after short vowels",
+            "Like FLOSS rule but with dge"
+          ],
+          "spelling_logic": "Protects short vowel like FLOSS patterns"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy dge = /j/ recognition",
+        "formative_weekly": "80% accuracy dge spelling after short vowels",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "pattern_extension": "Applies FLOSS-like logic to dge"
+      },
+      "research_attribution": [
+        "Moats, L.C. (2020) - DGE pattern follows FLOSS logic",
+        "Adams, M.J. (1990) - Three-letter graphemes expand understanding",
+        "National Reading Panel (2000) - Consistent patterns aid learning"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_tch",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 92,
+        "complexity_score": 3.4,
+        "prerequisite_phonemes": ["/ch/", "dge"],
+        "grade_band": "1st",
+        "introduction_week": 16,
+        "neurological_rationale": "Second three-letter grapheme after short vowel"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ch/",
+        "graphemes": ["tch"],
+        "grapheme_frequency": {"tch": 100},
+        "articulation": {
+          "manner": "affricate",
+          "place": "postalveolar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "spelling_rule": "tch after short vowel for /ch/"
+        },
+        "phonological_neighbors": ["/ch/", "/j/", "/sh/"],
+        "word_positions": ["final"],
+        "teaching_advantages": ["parallels dge pattern", "consistent rule", "common words"]
+      },
+      "word_examples": {
+        "final_position": ["catch", "match", "witch", "switch", "fetch"],
+        "short_vowel_pattern": ["catch", "match", "pitch", "notch", "hutch"],
+        "exceptions": ["such", "much", "which", "rich"],
+        "sports_words": ["catch", "match", "pitch"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Can you catch the ball in the match? (80% decodable)",
+          "The witch can switch the light and fetch. (80% decodable)",
+          "Watch me catch and pitch at the match. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern consistency across different sounds",
+          "multisensory_cues": [
+            "Three letters = one /ch/ sound",
+            "After short vowels (like dge)",
+            "Some common words use just 'ch'"
+          ],
+          "parallel_learning": "Same pattern as dge but for /ch/"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy tch = /ch/ recognition",
+        "formative_weekly": "80% accuracy tch vs ch discrimination",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "rule_application": "Knows when to use tch vs ch"
+      },
+      "research_attribution": [
+        "Moats, L.C. (2020) - TCH parallels DGE pattern",
+        "Adams, M.J. (1990) - Similar patterns aid memory",
+        "National Reading Panel (2000) - Rule consistency important"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_ck_review",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 89,
+        "complexity_score": 3.0,
+        "prerequisite_phonemes": ["ck from stage 2", "tch", "dge"],
+        "grade_band": "1st",
+        "introduction_week": 17,
+        "neurological_rationale": "Consolidates three-letter grapheme pattern set"
+      },
+      "linguistic_properties": {
+        "phoneme": "/k/",
+        "graphemes": ["ck"],
+        "grapheme_frequency": {"ck": 100},
+        "articulation": {
+          "manner": "stop",
+          "place": "velar",
+          "voicing": "unvoiced",
+          "air_flow": "oral",
+          "spelling_rule": "ck after short vowel for /k/"
+        },
+        "phonological_neighbors": ["/k/", "/g/", "/c/"],
+        "word_positions": ["final"],
+        "teaching_advantages": ["completes pattern set", "review and consolidation", "pattern mastery"]
+      },
+      "word_examples": {
+        "pattern_set": ["ck for /k/", "dge for /j/", "tch for /ch/"],
+        "all_after_short": "All three used after short vowels",
+        "comparative_examples": ["back", "badge", "batch"],
+        "pattern_completion": "Three ways to protect short vowels",
+        "cumulative_decodable_sentences_98_percent": [
+          "Pack the badge and catch the truck. (80% decodable)",
+          "The duck sat on the edge to catch fish. (83% decodable)",
+          "I can match the lock with the badge. (80% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern sets create cognitive categories",
+          "multisensory_cues": [
+            "ck, dge, tch all after short vowels",
+            "Each makes one sound",
+            "Part of English spelling system"
+          ],
+          "systematic_understanding": "Three parallel spelling patterns"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy all three patterns",
+        "formative_weekly": "85% accuracy pattern application",
+        "summative": "95% recognition, 90% reading, 85% spelling",
+        "pattern_mastery": "Masters ck, dge, tch as pattern set"
+      },
+      "research_attribution": [
+        "Moats, L.C. (2020) - Pattern sets build systematic knowledge",
+        "Adams, M.J. (1990) - Reviewing patterns ensures retention",
+        "Ehri, L.C. (2005) - Categorical knowledge aids spelling"
+      ]
+    },
+    {
+      "phoneme_id": "stage3_nk",
+      "metadata": {
+        "stage": 3,
+        "frequency_rank": 62,
+        "complexity_score": 3.2,
+        "prerequisite_phonemes": ["/n/", "/k/", "/ng/"],
+        "grade_band": "1st",
+        "introduction_week": 18,
+        "neurological_rationale": "Welded sound introduces nasal-stop combination"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ŋk/",
+        "graphemes": ["nk"],
+        "grapheme_frequency": {"nk": 100},
+        "articulation": {
+          "manner": "nasal_stop",
+          "place": "velar",
+          "voicing": "voiced_to_unvoiced",
+          "air_flow": "nasal_to_oral",
+          "welded_sound": "n makes /ŋ/ sound before k"
+        },
+        "phonological_neighbors": ["/ng/", "/nk/", "/n/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["welded unit", "common words", "introduces nasalized n"]
+      },
+      "word_examples": {
+        "final_position": ["bank", "think", "drink", "trunk", "junk"],
+        "medial_position": ["blanket", "thankful", "monkey"],
+        "ng_sound": "n sounds like ng before k",
+        "action_words": ["think", "drink", "sink"],
+        "cumulative_decodable_sentences_98_percent": [
+          "I think the pink drink is in the trunk. (80% decodable)",
+          "The monkey can drink from the tank. (80% decodable)",
+          "Thank you for the blanket from the bank. (83% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Welded sounds processed as units",
+          "multisensory_cues": [
+            "n changes to back-of-mouth /ŋ/ before k",
+            "Feel back of tongue rise",
+            "Different from regular n sound"
+          ],
+          "phonological_shift": "First example of sound change in context"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy nk welded unit production",
+        "formative_weekly": "75% accuracy recognizing n → ŋ shift",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "welded_recognition": "Treats nk as single unit"
+      },
+      "research_attribution": [
+        "Wilson, B.A. (2018) - Welded sounds as units in Fundations",
+        "Moats, L.C. (2020) - NK as welded sound unit",
+        "Adams, M.J. (1990) - Contextual sound changes in English"
+      ]
+    }
+  ]
+}

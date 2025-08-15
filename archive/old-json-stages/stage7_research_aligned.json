@@ -1,0 +1,735 @@
+{
+  "stage_number": 7,
+  "stage_name": "Advanced Vowels & Diphthongs",
+  "grade_level": "Second/Third Grade",
+  "student_phase": "Advanced Consolidated Alphabetic",
+  "duration": "8-10 weeks",
+  "total_elements": 12,
+  "description": "Students master complex vowel patterns including r-controlled vowels in multisyllabic words, advanced diphthongs, and variant vowel patterns. This stage emphasizes flexibility in vowel sound production and builds automatic recognition of less common but important patterns.",
+  "key_concept": "Vowels can make many different sounds depending on what letters come after them. R-controlled vowels change completely (car, her, bird), diphthongs glide between two sounds (coin, cloud), and some vowel patterns have unique sounds we need to memorize.",
+  "instructional_focus": [
+    "R-controlled vowels in complex words",
+    "Advanced diphthongs and variant vowels",
+    "Vowel pattern flexibility",
+    "Multisyllabic word attack strategies",
+    "Fluent reading of complex texts"
+  ],
+  "science_of_reading_alignment": {
+    "ehri_phase": "Advanced Consolidated - automatic pattern recognition",
+    "national_reading_panel": "Complex patterns for grade-level texts",
+    "adams_principle": "Pattern variations require flexible strategies",
+    "orthographic_mapping": "Consolidated units for efficient reading"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage7_ar_multisyllabic",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 22,
+        "complexity_score": 5.0,
+        "prerequisite_phonemes": ["/ar/", "syllable division"],
+        "grade_band": "2-3",
+        "introduction_week": 1,
+        "neurological_rationale": "R-controlled vowels in complex words"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ar/",
+        "graphemes": ["ar"],
+        "grapheme_frequency": {"ar": 100},
+        "articulation": {
+          "manner": "r_controlled_vowel",
+          "place": "low_central",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "r_influence": "vowel quality changed by r",
+          "multisyllabic_focus": true
+        },
+        "phonological_neighbors": ["/ar/", "/ər/", "/ā/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["builds on known pattern", "academic vocabulary", "suffix combinations"]
+      },
+      "word_examples": {
+        "two_syllable": ["garden", "market", "carpet", "harvest", "partner"],
+        "three_syllable": ["department", "apartment", "carpenter"],
+        "with_suffixes": ["starting", "harder", "smartest", "parking"],
+        "academic_words": ["argument", "article", "participate"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The carpenter started work in the garden apartment. (85% decodable)",
+          "My partner went to the market department. (85% decodable)",
+          "It's harder to harvest in the dark garden. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Known patterns in longer words build fluency",
+          "multisensory_cues": [
+            "Same /ar/ sound in longer words",
+            "Find the ar in each syllable",
+            "R still controls the vowel sound"
+          ],
+          "syllable_awareness": "ar pattern consistent across syllables"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy ar in multisyllabic words",
+        "formative_weekly": "80% accuracy with ar + suffixes",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "transfer_skill": "Applies ar knowledge to longer words"
+      },
+      "research_attribution": [
+        "Ehri, L.C. (2005) - Pattern transfer to multisyllabic words",
+        "National Reading Panel (2000) - Multisyllabic decoding essential",
+        "Moats, L.C. (2020) - R-controlled vowels in complex words"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_er_ir_ur_advanced",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 18,
+        "complexity_score": 5.1,
+        "prerequisite_phonemes": ["/ər/", "schwa awareness"],
+        "grade_band": "2-3",
+        "introduction_week": 2,
+        "neurological_rationale": "Three spellings one sound in complex words"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ər/",
+        "graphemes": ["er", "ir", "ur"],
+        "grapheme_frequency": {"er": 50, "ir": 25, "ur": 25},
+        "articulation": {
+          "manner": "r_controlled_vowel",
+          "place": "central",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "schwa_r_quality": true,
+          "three_spellings": "same sound"
+        },
+        "phonological_neighbors": ["/ər/", "/ar/", "/or/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["spelling choices", "suffix additions", "academic vocabulary"]
+      },
+      "word_examples": {
+        "er_words": ["person", "perfect", "understand", "different", "energy"],
+        "ir_words": ["circle", "birthday", "thirty", "confirm", "firmly"],
+        "ur_words": ["purple", "Thursday", "surface", "disturb", "hamburger"],
+        "suffix_changes": ["stirring", "occurred", "referring", "preferred"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The person had a purple shirt for her birthday. (85% decodable)",
+          "On Thursday, we made perfect circles with purpose. (85% decodable)",
+          "It's certain that learning occurs with energy. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Multiple spellings require visual memory",
+          "multisensory_cues": [
+            "er, ir, ur all say /ər/",
+            "'Her bird's fur' memory phrase",
+            "Look for meaning clues for spelling"
+          ],
+          "spelling_strategy": "Word origin often determines spelling"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy recognizing er/ir/ur = /ər/",
+        "formative_weekly": "75% accuracy in multisyllabic words",
+        "summative": "85% recognition, 80% reading, 70% spelling choice",
+        "spelling_flexibility": "Knows three ways to spell /ər/"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - R-controlled vowel spelling patterns",
+        "Adams, M.J. (1990) - Visual memory for spelling alternatives",
+        "National Reading Panel (2000) - Spelling alternatives common"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_or_ore_oar",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 28,
+        "complexity_score": 5.2,
+        "prerequisite_phonemes": ["/or/", "vowel team knowledge"],
+        "grade_band": "2-3",
+        "introduction_week": 3,
+        "neurological_rationale": "Multiple spellings for /or/ with positional constraints"
+      },
+      "linguistic_properties": {
+        "phoneme": "/or/",
+        "graphemes": ["or", "ore", "oar", "oor"],
+        "grapheme_frequency": {"or": 70, "ore": 15, "oar": 10, "oor": 5},
+        "articulation": {
+          "manner": "r_controlled_vowel",
+          "place": "mid_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": true,
+          "multiple_spellings": true
+        },
+        "phonological_neighbors": ["/or/", "/ər/", "/ō/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["position patterns", "meaning connections", "common words"]
+      },
+      "word_examples": {
+        "or_words": ["morning", "important", "information", "history", "memory"],
+        "ore_words": ["before", "explore", "anymore", "therefore", "ignore"],
+        "oar_words": ["board", "keyboard", "cupboard", "coarse"],
+        "oor_words": ["door", "floor", "poor"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Before morning, explore the door and floor. (85% decodable)",
+          "The keyboard is important for your history report. (85% decodable)",
+          "We soar high to explore more of the shore. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Position and meaning guide spelling choice",
+          "multisensory_cues": [
+            "or most common spelling",
+            "ore often at word end",
+            "oar in 'board' family words"
+          ],
+          "spelling_patterns": "Each spelling has position tendencies"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy recognizing all /or/ spellings",
+        "formative_weekly": "80% accuracy choosing appropriate spelling",
+        "summative": "90% recognition, 85% reading, 75% spelling",
+        "pattern_awareness": "Knows multiple ways to spell /or/"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - OR spelling variations systematic",
+        "Adams, M.J. (1990) - Position influences spelling choice",
+        "Moats, L.C. (2020) - R-controlled vowel complexity"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_air_are_ear",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 42,
+        "complexity_score": 5.3,
+        "prerequisite_phonemes": ["/air/", "r-controlled patterns"],
+        "grade_band": "2-3",
+        "introduction_week": 4,
+        "neurological_rationale": "Three spellings for /air/ sound"
+      },
+      "linguistic_properties": {
+        "phoneme": "/air/",
+        "graphemes": ["air", "are", "ear"],
+        "grapheme_frequency": {"air": 40, "are": 40, "ear": 20},
+        "articulation": {
+          "manner": "r_controlled_diphthong",
+          "place": "mid_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "gliding_quality": true,
+          "three_spellings": true
+        },
+        "phonological_neighbors": ["/air/", "/ar/", "/ēr/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["clear sound", "position patterns", "common words"]
+      },
+      "word_examples": {
+        "air_words": ["chair", "stair", "fair", "hair", "repair"],
+        "are_words": ["care", "share", "compare", "prepare", "square"],
+        "ear_words": ["bear", "wear", "pear", "swear"],
+        "position_note": "are often at word end",
+        "cumulative_decodable_sentences_98_percent": [
+          "Take care when you share the chair on the stairs. (85% decodable)",
+          "The bear will wear the square hat with care. (85% decodable)",
+          "Prepare to repair the chair and compare the pair. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Multiple spellings for same sound category",
+          "multisensory_cues": [
+            "All three spell /air/ sound",
+            "are often ends words",
+            "ear can also say /ēr/ (hear)"
+          ],
+          "spelling_complexity": "Context and meaning guide choice"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy recognizing air/are/ear = /air/",
+        "formative_weekly": "75% accuracy in context",
+        "summative": "85% recognition, 80% reading, 70% spelling",
+        "flexible_decoding": "Recognizes three /air/ spellings"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - AIR sound multiple spellings",
+        "Adams, M.J. (1990) - R-controlled complexity increases",
+        "National Reading Panel (2000) - Advanced pattern mastery"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_eer_ear_long",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 58,
+        "complexity_score": 5.2,
+        "prerequisite_phonemes": ["/ēr/", "ear as /air/"],
+        "grade_band": "2-3",
+        "introduction_week": 5,
+        "neurological_rationale": "Variable ear pattern introduces flexibility"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ēr/",
+        "graphemes": ["eer", "ear"],
+        "grapheme_frequency": {"eer": 30, "ear": 70},
+        "articulation": {
+          "manner": "r_controlled_vowel",
+          "place": "high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "long_e_quality": true,
+          "variable_pattern": "ear has multiple sounds"
+        },
+        "phonological_neighbors": ["/ēr/", "/air/", "/ər/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["contrasts with ear=/air/", "common words", "pattern flexibility"]
+      },
+      "word_examples": {
+        "eer_words": ["deer", "steer", "cheer", "engineer", "volunteer"],
+        "ear_long_words": ["hear", "near", "clear", "year", "appear"],
+        "ear_contrast": ["bear/hear", "wear/year", "pear/dear"],
+        "occupation_words": ["engineer", "volunteer", "pioneer"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The deer is near and we can hear it clear. (88% decodable)",
+          "Each year the volunteer engineer will appear. (85% decodable)",
+          "We cheer when we hear the deer is here. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Same spelling different sounds requires flexibility",
+          "multisensory_cues": [
+            "ear can say /air/ (bear) or /ēr/ (hear)",
+            "eer always says /ēr/",
+            "Try both sounds for ear words"
+          ],
+          "decoding_strategy": "Context helps choose ear pronunciation"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy eer and ear=/ēr/ recognition",
+        "formative_weekly": "75% accuracy ear pronunciation choice",
+        "summative": "85% recognition, 80% reading, 75% spelling",
+        "flexibility": "Manages variable ear pronunciations"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - EAR most variable r-controlled pattern",
+        "Adams, M.J. (1990) - Flexibility essential for English",
+        "National Reading Panel (2000) - Strategic decoding skills"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_oi_oy_advanced",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 88,
+        "complexity_score": 5.0,
+        "prerequisite_phonemes": ["/oi/", "diphthong knowledge"],
+        "grade_band": "2-3",
+        "introduction_week": 6,
+        "neurological_rationale": "Diphthong in complex words and with affixes"
+      },
+      "linguistic_properties": {
+        "phoneme": "/oi/",
+        "graphemes": ["oi", "oy"],
+        "grapheme_frequency": {"oi": 50, "oy": 50},
+        "articulation": {
+          "manner": "diphthong",
+          "place": "mid_back_to_high_front",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "gliding_movement": true,
+          "position_based": true
+        },
+        "phonological_neighbors": ["/oi/", "/o/", "/i/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["suffix additions", "compound words", "multisyllabic"]
+      },
+      "word_examples": {
+        "multisyllabic_oi": ["appointment", "disappoint", "rejoice", "avoid", "poison"],
+        "with_suffixes": ["enjoying", "destroyed", "employed", "annoying"],
+        "compound_words": ["cowboy", "toybox", "joyful"],
+        "advanced_vocabulary": ["voyage", "loyal", "royal", "exploit"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The royal family will enjoy their voyage. (85% decodable)",
+          "Avoid the poison and don't be disappointed. (85% decodable)",
+          "The loyal employee was enjoying the appointment. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Known patterns in complex contexts",
+          "multisensory_cues": [
+            "Same /oi/ sound in longer words",
+            "oi middle, oy end rule holds",
+            "Mouth still glides between sounds"
+          ],
+          "morphological_awareness": "Diphthong maintained with suffixes"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy oi/oy in complex words",
+        "formative_weekly": "80% accuracy with morphological changes",
+        "summative": "90% recognition, 85% reading, 80% spelling",
+        "advanced_application": "Maintains oi/oy in all contexts"
+      },
+      "research_attribution": [
+        "Ehri, L.C. (2005) - Pattern consistency across contexts",
+        "National Reading Panel (2000) - Morphological awareness",
+        "Henry, M.K. (2003) - Diphthongs with affixes"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_ou_ow_advanced",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 34,
+        "complexity_score": 5.4,
+        "prerequisite_phonemes": ["/ow/", "ou/ow variability"],
+        "grade_band": "2-3",
+        "introduction_week": 7,
+        "neurological_rationale": "Most variable vowel pattern in complex words"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ow/ and others",
+        "graphemes": ["ou", "ow"],
+        "grapheme_frequency": {"ou": 60, "ow": 40},
+        "articulation": {
+          "manner": "variable",
+          "place": "variable",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "multiple_sounds": true,
+          "high_variability": true
+        },
+        "phonological_neighbors": ["/ow/", "/ō/", "/o͞o/", "/u/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["strategic thinking", "flexibility", "problem solving"]
+      },
+      "word_examples": {
+        "ow_diphthong": ["powerful", "allowance", "however", "thousand", "mountain"],
+        "long_o_sound": ["although", "narrow", "tomorrow", "following"],
+        "oo_sound": ["group", "through", "routine", "souvenir"],
+        "short_u_sound": ["country", "cousin", "trouble", "younger"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Although it's narrow, we found our way through. (85% decodable)",
+          "The powerful mountain echo was astounding. (80% decodable)",
+          "Tomorrow our group will journey south through the country. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Extreme variability requires strategic decoding",
+          "multisensory_cues": [
+            "Try /ow/ first (most common)",
+            "Use context for meaning",
+            "Some words need memorizing"
+          ],
+          "metacognitive_strategy": "Self-monitoring and adjustment"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy primary ou/ow sounds",
+        "formative_weekly": "70% accuracy strategic sound selection",
+        "summative": "80% recognition, 75% reading, 65% spelling",
+        "strategic_flexibility": "Uses multiple strategies for ou/ow"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - OU/OW most variable English pattern",
+        "Adams, M.J. (1990) - Strategic decoding essential",
+        "National Reading Panel (2000) - Flexibility with complex patterns"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_au_aw_advanced",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 65,
+        "complexity_score": 5.1,
+        "prerequisite_phonemes": ["/aw/", "au/aw patterns"],
+        "grade_band": "2-3",
+        "introduction_week": 8,
+        "neurological_rationale": "Variant vowel in complex vocabulary"
+      },
+      "linguistic_properties": {
+        "phoneme": "/aw/",
+        "graphemes": ["au", "aw", "augh", "ough"],
+        "grapheme_frequency": {"au": 40, "aw": 40, "augh": 15, "ough": 5},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "jaw_dropping": true,
+          "multiple_spellings": true
+        },
+        "phonological_neighbors": ["/aw/", "/o/", "/a/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["expanded spellings", "academic vocabulary", "pattern families"]
+      },
+      "word_examples": {
+        "au_advanced": ["audience", "autumn", "author", "August", "applaud"],
+        "aw_advanced": ["awesome", "awful", "lawyer", "drawer", "strawberry"],
+        "augh_words": ["caught", "taught", "daughter", "naughty"],
+        "ough_words": ["bought", "brought", "thought", "fought"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The author's daughter thought about autumn. (85% decodable)",
+          "I caught and taught the naughty student. (85% decodable)",
+          "We bought strawberries and brought them to August. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Pattern families share sounds despite spelling",
+          "multisensory_cues": [
+            "au, aw, augh, ough can all say /aw/",
+            "augh/ough have silent letters",
+            "Jaw drops for all versions"
+          ],
+          "pattern_families": "Recognizing related patterns"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy recognizing all /aw/ spellings",
+        "formative_weekly": "75% accuracy complex /aw/ words",
+        "summative": "85% recognition, 80% reading, 70% spelling",
+        "pattern_expansion": "Knows four ways to spell /aw/"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - AUGH/OUGH historical patterns",
+        "Adams, M.J. (1990) - Pattern families aid recognition",
+        "Moats, L.C. (2020) - Complex patterns in academic vocabulary"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_ew_ue_ui",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 72,
+        "complexity_score": 5.2,
+        "prerequisite_phonemes": ["/o͞o/", "variant spellings"],
+        "grade_band": "2-3",
+        "introduction_week": 9,
+        "neurological_rationale": "Multiple spellings for /o͞o/ in advanced words"
+      },
+      "linguistic_properties": {
+        "phoneme": "/o͞o/",
+        "graphemes": ["ew", "ue", "ui"],
+        "grapheme_frequency": {"ew": 40, "ue": 40, "ui": 20},
+        "articulation": {
+          "manner": "vowel",
+          "place": "high_back",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "lip_rounding": "highly_rounded",
+          "three_spellings": true
+        },
+        "phonological_neighbors": ["/o͞o/", "/yo͞o/", "/ū/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["advanced vocabulary", "spelling patterns", "meaning connections"]
+      },
+      "word_examples": {
+        "ew_advanced": ["nephew", "jewelry", "renewal", "withdrew"],
+        "ue_advanced": ["continue", "rescue", "tissue", "value", "pursue"],
+        "ui_words": ["fruit", "juice", "cruise", "bruise", "recruit"],
+        "academic_words": ["pursue", "continue", "recruit", "value"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Continue to pursue the fruit juice cruise. (85% decodable)",
+          "My nephew will rescue the recruit's tissue. (85% decodable)",
+          "The jewelry has value on our cruise. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Multiple spellings expand vocabulary access",
+          "multisensory_cues": [
+            "ew, ue, ui can all say /o͞o/",
+            "Lips very round for all",
+            "ui less common spelling"
+          ],
+          "vocabulary_expansion": "Advanced words use these patterns"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy all /o͞o/ spellings",
+        "formative_weekly": "75% accuracy in advanced vocabulary",
+        "summative": "85% recognition, 80% reading, 70% spelling",
+        "spelling_knowledge": "Knows ew, ue, ui for /o͞o/"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - UI French borrowing pattern",
+        "Adams, M.J. (1990) - Multiple spellings common for /o͞o/",
+        "National Reading Panel (2000) - Advanced pattern knowledge"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_eigh_ey_ei",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 95,
+        "complexity_score": 5.3,
+        "prerequisite_phonemes": ["/ā/", "complex vowel patterns"],
+        "grade_band": "2-3",
+        "introduction_week": 10,
+        "neurological_rationale": "Complex spellings for /ā/ sound"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ā/",
+        "graphemes": ["eigh", "ey", "ei"],
+        "grapheme_frequency": {"eigh": 20, "ey": 50, "ei": 30},
+        "articulation": {
+          "manner": "vowel",
+          "place": "low_front_to_mid",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "long_vowel": true,
+          "complex_spellings": true
+        },
+        "phonological_neighbors": ["/ā/", "/ē/", "/ī/"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["completes /ā/ spellings", "number words", "exception patterns"]
+      },
+      "word_examples": {
+        "eigh_words": ["eight", "weight", "neighbor", "freight", "sleigh"],
+        "ey_words": ["they", "prey", "grey", "survey", "obey"],
+        "ei_words": ["vein", "rein", "veil", "beige"],
+        "ei_exceptions": ["receive", "ceiling" - say /ē/],
+        "cumulative_decodable_sentences_98_percent": [
+          "They weigh eight pounds of grey freight. (85% decodable)",
+          "My neighbor will survey the beige veil. (85% decodable)",
+          "The sleigh can convey heavy weight. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Complex graphemes for common sounds",
+          "multisensory_cues": [
+            "eigh, ey, ei can say /ā/",
+            "Eight and weight use eigh",
+            "I before E rule has exceptions"
+          ],
+          "spelling_complexity": "Historical spellings preserved"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy complex /ā/ spellings",
+        "formative_weekly": "70% accuracy with exceptions",
+        "summative": "80% recognition, 75% reading, 65% spelling",
+        "complete_knowledge": "Knows all major /ā/ spellings"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - EIGH historical spelling",
+        "Adams, M.J. (1990) - Complex spellings need explicit teaching",
+        "National Reading Panel (2000) - Complete pattern coverage"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_ie_advanced",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 88,
+        "complexity_score": 5.4,
+        "prerequisite_phonemes": ["multiple vowel sounds", "flexibility"],
+        "grade_band": "2-3",
+        "introduction_week": 11,
+        "neurological_rationale": "Most variable two-letter pattern"
+      },
+      "linguistic_properties": {
+        "phoneme": "multiple",
+        "graphemes": ["ie"],
+        "grapheme_frequency": {"ie": 100},
+        "articulation": {
+          "manner": "variable",
+          "place": "variable",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "three_sounds": "/ē/, /ī/, /i/",
+          "high_variability": true
+        },
+        "phonological_neighbors": ["varies by pronunciation"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["ultimate flexibility", "common words", "strategic thinking"]
+      },
+      "word_examples": {
+        "long_e_sound": ["piece", "field", "believe", "achieve", "chief"],
+        "long_i_sound": ["pie", "tie", "lie", "die", "cries"],
+        "short_i_sound": ["movie", "cookie", "brownie", "collie"],
+        "spelling_rule": "I before E except after C (usually)",
+        "cumulative_decodable_sentences_98_percent": [
+          "I believe the chief ate a piece of pie. (85% decodable)",
+          "The movie about the collie in the field was brief. (85% decodable)",
+          "She cries when she tries to achieve her belief. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Maximum flexibility required for ie",
+          "multisensory_cues": [
+            "ie has three common sounds",
+            "Try /ē/ first (most common)",
+            "Position and origin affect sound"
+          ],
+          "strategic_mastery": "Peak of decoding flexibility"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "70% accuracy ie sound selection",
+        "formative_weekly": "65% accuracy across all ie patterns",
+        "summative": "75% recognition, 70% reading, 60% spelling",
+        "maximum_flexibility": "Manages most variable pattern"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - IE most variable vowel digraph",
+        "Adams, M.J. (1990) - Strategic flexibility essential",
+        "National Reading Panel (2000) - Advanced decoding strategies"
+      ]
+    },
+    {
+      "phoneme_id": "stage7_ough_complete",
+      "metadata": {
+        "stage": 7,
+        "frequency_rank": 105,
+        "complexity_score": 5.5,
+        "prerequisite_phonemes": ["all vowel sounds", "maximum flexibility"],
+        "grade_band": "2-3",
+        "introduction_week": 12,
+        "neurological_rationale": "Most variable four-letter pattern in English"
+      },
+      "linguistic_properties": {
+        "phoneme": "multiple",
+        "graphemes": ["ough"],
+        "grapheme_frequency": {"ough": 100},
+        "articulation": {
+          "manner": "variable",
+          "place": "variable",
+          "voicing": "voiced",
+          "air_flow": "oral",
+          "six_sounds": "/ō/, /o͞o/, /uf/, /aw/, /ow/, /ə/",
+          "maximum_variability": true
+        },
+        "phonological_neighbors": ["all vowel sounds"],
+        "word_positions": ["medial", "final"],
+        "teaching_advantages": ["word families", "historical interest", "ultimate challenge"]
+      },
+      "word_examples": {
+        "long_o": ["though", "although", "dough"],
+        "oo_sound": ["through"],
+        "uff_sound": ["rough", "tough", "enough"],
+        "aw_sound": ["bought", "brought", "thought", "fought"],
+        "ow_sound": ["bough", "plough"],
+        "uh_sound": ["thorough", "borough"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Although it's tough, I thought we had enough. (85% decodable)",
+          "We bought dough and brought it through. (85% decodable)",
+          "The rough bough was thorough throughout. (80% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Extreme variability requires word-specific memory",
+          "multisensory_cues": [
+            "ough has 6+ different sounds",
+            "Learn by word families",
+            "Most variable English pattern"
+          ],
+          "historical_note": "Shows English's complex history"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "70% accuracy common ough words",
+        "formative_weekly": "65% accuracy ough word families",
+        "summative": "75% recognition, 70% reading, 60% spelling",
+        "pinnacle_achievement": "Masters most complex English pattern"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - OUGH represents English complexity",
+        "Adams, M.J. (1990) - Word-specific learning sometimes needed",
+        "Crystal, D. (2012) - Historical accidents in spelling"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,780 @@
+{
+  "metadata": {
+    "stage": 7,
+    "stage_name": "Complex Vowel Patterns",
+    "grade_level": "3rd Grade – Fall Semester",
+    "total_phonemes": 8,
+    "generated_date": "2025-01-02",
+    "description": "Stage 7 phonemes with ALL possible grapheme spellings from comprehensive list"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage7_igh",
+      "stage_id": 7,
+      "phoneme": "/ī/",
+      "graphemes": ["igh", "i", "ie", "y", "ye", "i_e", "ai", "ay", "eigh", "eye"],
+      "frequency_rank": 57,
+      "complexity_score": 3.5,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 1,
+      "word_examples": ["light", "night", "sight", "bright", "fight", "my", "tie", "pie", "buy", "eye"],
+      "decodable_sentences": ["The bright light shines at night.", "I can see the sight with my eye."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in complex pattern recognition",
+        "weekly": "65% accuracy in igh reading",
+        "summative": "75% complex vowel mastery"
+      },
+      "teaching_advantages": ["predictable igh pattern", "common words", "three-letter pattern"],
+      "research_sources": ["Fry (2004)", "Adams (1990)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/i/", "shortened"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/i/", "/y/"],
+        "development_notes": "Long i in complex three-letter pattern.",
+        "articulation_cues": "👄 Smile wide, long 'I' sound. 🗣️ Voiced",
+        "teacher_guidance": "IGH is always /ī/. Very consistent pattern.",
+        "student_tips": "IGH always says long 'I' - it's a team of three letters!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "complex pattern introduction",
+          "prerequisite_check": ["vowel team mastery", "long i recognition"],
+          "mastery_criteria": "70% accuracy in igh reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["igh pattern introduction", "three letters one sound", "consistent pattern"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["igh word building", "word families", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["igh in context", "connected reading", "vocabulary focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pattern_recognition",
+            "criterion": "Identifies igh as long i",
+            "frequency": "daily"
+          },
+          {
+            "type": "word_reading_fluency",
+            "criterion": "Reads igh words fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on igh words",
+          "spelling": "65% accuracy on igh spelling",
+          "transfer": "Recognizes igh in new words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended three-letter pattern work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily igh recognition",
+          "intervention_triggers": ["Reads letters separately", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other complex i patterns",
+          "enrichment": "Igh word exploration",
+          "complexity_increase": "Multisyllabic igh words"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 complex patterns",
+          "visual_cues": "Three letters, one sound cards",
+          "practice_emphasis": "Pattern consistency"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_eigh",
+      "stage_id": 7,
+      "phoneme": "/ā/",
+      "graphemes": ["eigh", "aigh", "ai", "ay", "a_e", "ea", "ei", "ey"],
+      "frequency_rank": 58,
+      "complexity_score": 3.8,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 2,
+      "word_examples": ["eight", "weigh", "sleigh", "neighbor", "straight", "great", "vein", "they"],
+      "decodable_sentences": ["Eight neighbors weigh the sleigh.", "The straight path is great."],
+      "assessment_criteria": {
+        "daily": "65% accuracy in eigh recognition",
+        "weekly": "60% accuracy in eigh reading",
+        "summative": "70% eigh mastery"
+      },
+      "teaching_advantages": ["four-letter pattern", "number word connection", "predictable sound"],
+      "research_sources": ["Fry (2004)", "Adams (1990)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "low-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/a/", "/e/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/a/", "/e/"],
+        "development_notes": "Long a in complex four-letter pattern.",
+        "articulation_cues": "👄 Open mouth, long 'A' sound. 🗣️ Voiced",
+        "teacher_guidance": "EIGH always says /ā/. Connect to number eight.",
+        "student_tips": "EIGH says long 'A' - remember the word 'eight'!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 2,
+          "lesson_position": "four-letter pattern introduction",
+          "prerequisite_check": ["igh pattern established", "long a mastery"],
+          "mastery_criteria": "65% accuracy in eigh reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["eigh pattern introduction", "four letters one sound", "eight connection"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["eigh word building", "vocabulary focus", "pattern practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["eigh in context", "connected reading", "spelling practice"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "complex_pattern_recognition",
+            "criterion": "Identifies eigh as long a",
+            "frequency": "daily"
+          },
+          {
+            "type": "vocabulary_reading",
+            "criterion": "Reads eigh words correctly",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on eigh words",
+          "spelling": "60% accuracy on eigh spelling",
+          "transfer": "Recognizes eigh pattern"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended four-letter pattern work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily eigh recognition",
+          "intervention_triggers": ["Pattern breakdown", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other complex a patterns",
+          "enrichment": "Eigh etymology study",
+          "complexity_increase": "Advanced eigh vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 long patterns",
+          "visual_cues": "Four letters, one sound visuals",
+          "practice_emphasis": "Complex pattern concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_soft_c",
+      "stage_id": 7,
+      "phoneme": "/s/",
+      "graphemes": ["c", "ce", "ci", "cy", "sc", "ps"],
+      "frequency_rank": 59,
+      "complexity_score": 3.2,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 3,
+      "word_examples": ["city", "cent", "ice", "cycle", "scene", "psychology", "dance", "fence", "circle"],
+      "decodable_sentences": ["The city has a nice dance scene.", "I see ice in the circle."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in soft c recognition",
+        "weekly": "65% accuracy in soft c reading",
+        "summative": "75% soft c mastery"
+      },
+      "teaching_advantages": ["rule-based pattern", "common words", "predictable contexts"],
+      "research_sources": ["Venezky (1999)", "Moats (2000)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "fricative",
+        "place": "alveolar",
+        "voicing": "voiceless",
+        "airflow": "oral",
+        "typical_age_range": "3–8",
+        "acquisition_age": "8",
+        "common_substitutions": ["/k/", "hard c"],
+        "referral_age": 9,
+        "related_sounds_to_check": ["/s/", "/k/"],
+        "development_notes": "C says /s/ before e, i, y. Rule-based pattern.",
+        "articulation_cues": "👅 Tongue tip behind teeth, /s/ sound. 🗣️ Voiceless",
+        "teacher_guidance": "Teach soft c rule: c = /s/ before e, i, y.",
+        "student_tips": "C is soft like /s/ before E, I, and Y!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 3,
+          "lesson_position": "soft consonant introduction",
+          "prerequisite_check": ["/s/ and /k/ mastery", "rule readiness"],
+          "mastery_criteria": "70% accuracy in soft c reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["soft c rule", "before e,i,y", "contrast with hard c"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["soft c word building", "rule application", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["hard vs soft c", "rule application", "vocabulary focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "rule_application",
+            "criterion": "Applies soft c rule correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "hard_soft_discrimination",
+            "criterion": "Distinguishes hard/soft c",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on soft c words",
+          "spelling": "65% accuracy on c choice",
+          "transfer": "Applies soft c rule consistently"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended rule practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily soft c checks",
+          "intervention_triggers": ["Rule confusion", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Exception exploration",
+          "enrichment": "Soft c etymology",
+          "complexity_increase": "Advanced soft c vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain English c rules",
+          "visual_cues": "Rule charts with examples",
+          "practice_emphasis": "Predictable pattern"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_soft_g",
+      "stage_id": 7,
+      "phoneme": "/j/",
+      "graphemes": ["g", "ge", "gi", "gy", "j", "dge"],
+      "frequency_rank": 60,
+      "complexity_score": 3.3,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 4,
+      "word_examples": ["gem", "giant", "gym", "giraffe", "gentle", "magic", "large", "bridge", "edge"],
+      "decodable_sentences": ["The giant gem is magic.", "A gentle giraffe lives by the bridge."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in soft g recognition",
+        "weekly": "65% accuracy in soft g reading",
+        "summative": "75% soft g mastery"
+      },
+      "teaching_advantages": ["rule-based like soft c", "common words", "parallel pattern"],
+      "research_sources": ["Venezky (1999)", "Moats (2000)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "affricate",
+        "place": "palato-alveolar",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/g/", "hard g"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/j/", "/g/"],
+        "development_notes": "G says /j/ before e, i, y. Parallel to soft c.",
+        "articulation_cues": "👅 Tongue tip down, /j/ sound. 🗣️ Voiced",
+        "teacher_guidance": "Teach soft g rule: g = /j/ before e, i, y.",
+        "student_tips": "G is soft like /j/ before E, I, and Y - just like soft C!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 4,
+          "lesson_position": "parallel soft consonant",
+          "prerequisite_check": ["soft c established", "/j/ and /g/ mastery"],
+          "mastery_criteria": "70% accuracy in soft g reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["soft g rule", "parallel to soft c", "before e,i,y"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["soft g word building", "rule application", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["hard vs soft g", "parallel rules", "vocabulary focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "soft_g_rule_application",
+            "criterion": "Applies soft g rule correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "parallel_rule_understanding",
+            "criterion": "Connects soft c and g rules",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on soft g words",
+          "spelling": "65% accuracy on g choice",
+          "transfer": "Applies both soft consonant rules"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended parallel rule work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily soft g checks",
+          "intervention_triggers": ["Rule confusion", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Exception words exploration",
+          "enrichment": "Soft g etymology",
+          "complexity_increase": "Advanced soft g vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain parallel rules",
+          "visual_cues": "Side-by-side rule charts",
+          "practice_emphasis": "Consistent rule pattern"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_tch",
+      "stage_id": 7,
+      "phoneme": "/ch/",
+      "graphemes": ["tch", "ch", "tu", "ti", "te"],
+      "frequency_rank": 61,
+      "complexity_score": 3.1,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 5,
+      "word_examples": ["match", "catch", "watch", "kitchen", "future", "question", "nature", "picture"],
+      "decodable_sentences": ["I watch the match in the kitchen.", "The picture shows nature."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in tch recognition",
+        "weekly": "70% accuracy in tch reading",
+        "summative": "80% tch mastery"
+      },
+      "teaching_advantages": ["position rule teachable", "common ending", "predictable pattern"],
+      "research_sources": ["Venezky (1999)", "Moats (2000)", "Treiman (1993)"],
+      "articulation_data": {
+        "manner": "affricate",
+        "place": "palato-alveolar",
+        "voicing": "voiceless",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/t/", "/sh/"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/ch/", "/t/", "/sh/"],
+        "development_notes": "Three-letter spelling after short vowels.",
+        "articulation_cues": "👅 Same as /ch/ sound. 🗣️ Voiceless",
+        "teacher_guidance": "TCH after short vowels, CH after long vowels/consonants.",
+        "student_tips": "After short vowels, use TCH for the /ch/ sound!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 5,
+          "lesson_position": "spelling rule introduction",
+          "prerequisite_check": ["/ch/ mastery", "short vowel recognition"],
+          "mastery_criteria": "75% accuracy in tch reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["tch pattern introduction", "after short vowels", "position rule"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["tch word building", "rule application", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["ch vs tch choice", "spelling rule", "connected reading"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "position_rule_application",
+            "criterion": "Chooses tch after short vowels",
+            "frequency": "daily"
+          },
+          {
+            "type": "ch_tch_discrimination",
+            "criterion": "Distinguishes ch/tch contexts",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on tch words",
+          "spelling": "70% accuracy on ch/tch choice",
+          "transfer": "Applies position rule consistently"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended rule practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily tch recognition",
+          "intervention_triggers": ["Rule confusion", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Exception words exploration",
+          "enrichment": "Tch pattern history",
+          "complexity_increase": "Advanced tch vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain English spelling rules",
+          "visual_cues": "Position rule charts",
+          "practice_emphasis": "After short vowel rule"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_dge",
+      "stage_id": 7,
+      "phoneme": "/j/",
+      "graphemes": ["dge", "ge", "j", "g"],
+      "frequency_rank": 62,
+      "complexity_score": 3.2,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 6,
+      "word_examples": ["edge", "bridge", "judge", "fudge", "large", "page", "cage", "stage"],
+      "decodable_sentences": ["The judge stands on the bridge edge.", "A large cage is on the stage."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in dge recognition",
+        "weekly": "70% accuracy in dge reading",
+        "summative": "80% dge mastery"
+      },
+      "teaching_advantages": ["parallel to tch rule", "common ending", "predictable pattern"],
+      "research_sources": ["Venezky (1999)", "Moats (2000)", "Treiman (1993)"],
+      "articulation_data": {
+        "manner": "affricate",
+        "place": "palato-alveolar",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/d/", "/zh/"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/j/", "/d/", "/g/"],
+        "development_notes": "Three-letter spelling after short vowels, parallel to tch.",
+        "articulation_cues": "👅 Same as /j/ sound. 🗣️ Voiced",
+        "teacher_guidance": "DGE after short vowels, GE after long vowels/consonants.",
+        "student_tips": "After short vowels, use DGE for the /j/ sound - like TCH!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 6,
+          "lesson_position": "parallel spelling rule",
+          "prerequisite_check": ["tch rule established", "/j/ mastery"],
+          "mastery_criteria": "75% accuracy in dge reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["dge pattern introduction", "parallel to tch", "after short vowels"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["dge word building", "parallel rule application", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["ge vs dge choice", "parallel rules", "spelling application"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "parallel_rule_application",
+            "criterion": "Applies dge rule like tch",
+            "frequency": "daily"
+          },
+          {
+            "type": "ge_dge_discrimination",
+            "criterion": "Distinguishes ge/dge contexts",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on dge words",
+          "spelling": "70% accuracy on ge/dge choice",
+          "transfer": "Applies parallel spelling rules"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended parallel rule work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily dge recognition",
+          "intervention_triggers": ["Parallel rule confusion", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Complex spelling patterns",
+          "enrichment": "Dge pattern exploration",
+          "complexity_increase": "Advanced dge vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain parallel spelling rules",
+          "visual_cues": "Side-by-side tch/dge charts",
+          "practice_emphasis": "Consistent rule application"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_silent_l",
+      "stage_id": 7,
+      "phoneme": "silent l patterns",
+      "graphemes": ["lk", "lm", "lf", "ld", "lt", "lp"],
+      "frequency_rank": 63,
+      "complexity_score": 3.6,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 7,
+      "word_examples": ["walk", "talk", "calm", "palm", "half", "calf", "cold", "told", "salt", "malt", "help"],
+      "decodable_sentences": ["I walk and talk in the calm cold.", "Half the salt helps the calf."],
+      "assessment_criteria": {
+        "daily": "65% accuracy in silent l recognition",
+        "weekly": "60% accuracy in silent l reading",
+        "summative": "70% silent l mastery"
+      },
+      "teaching_advantages": ["predictable contexts", "common words", "pattern awareness"],
+      "research_sources": ["Venezky (1999)", "Treiman (2000)", "Nagy & Anderson (1984)"],
+      "articulation_data": {
+        "manner": "consonant clusters",
+        "place": "various",
+        "voicing": "mixed",
+        "airflow": "oral",
+        "typical_age_range": "4–7",
+        "acquisition_age": "6",
+        "common_substitutions": ["full pronunciation", "cluster reduction"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["/l/", "cluster sounds"],
+        "development_notes": "L often silent in certain consonant clusters.",
+        "articulation_cues": "👅 Don't pronounce the L in these patterns. 🗣️ Various",
+        "teacher_guidance": "L is often silent before k, m, f in common words.",
+        "student_tips": "In some words, L is silent - you don't say it!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 7,
+          "lesson_position": "silent letter introduction",
+          "prerequisite_check": ["/l/ mastery", "cluster awareness"],
+          "mastery_criteria": "65% accuracy in silent l recognition"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["silent l concept", "specific patterns", "contrast with pronounced l"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["silent l word reading", "pattern recognition", "vocabulary focus"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed l words", "silent vs pronounced", "spelling awareness"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "silent_letter_recognition",
+            "criterion": "Recognizes silent l patterns",
+            "frequency": "daily"
+          },
+          {
+            "type": "pronunciation_accuracy",
+            "criterion": "Doesn't pronounce silent l",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on silent l words",
+          "spelling": "60% accuracy on silent l patterns",
+          "transfer": "Recognizes silent l in new words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended silent letter concept work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily silent l checks",
+          "intervention_triggers": ["Pronounces silent l", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other silent letter patterns",
+          "enrichment": "Silent l etymology",
+          "complexity_increase": "Advanced silent l vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain English silent letters",
+          "visual_cues": "Crossed-out l visuals",
+          "practice_emphasis": "Silent letter concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage7_review",
+      "stage_id": 7,
+      "phoneme": "complex pattern review",
+      "graphemes": ["igh", "eigh", "soft c", "soft g", "tch", "dge", "silent l"],
+      "frequency_rank": 64,
+      "complexity_score": 4.2,
+      "grade_band": "3rd-Fall",
+      "introduction_week": 8,
+      "word_examples": ["light", "eight", "city", "giant", "catch", "bridge", "walk", "calm", "right", "weigh"],
+      "decodable_sentences": ["Eight giant lights catch the calm city bridge.", "I walk right to weigh the match."],
+      "assessment_criteria": {
+        "daily": "75% accuracy across complex patterns",
+        "weekly": "70% accuracy in mixed reading",
+        "summative": "80% complex pattern mastery"
+      },
+      "teaching_advantages": ["rule integration", "pattern consolidation", "advanced preparation"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Johnston (2001)"],
+      "articulation_data": {
+        "manner": "mixed patterns",
+        "place": "various",
+        "voicing": "mixed",
+        "airflow": "oral",
+        "typical_age_range": "3–8",
+        "acquisition_age": "8",
+        "common_substitutions": ["pattern confusion", "rule breakdown"],
+        "referral_age": 9,
+        "related_sounds_to_check": ["all complex patterns"],
+        "development_notes": "Integration of advanced phonics patterns and rules.",
+        "articulation_cues": "👄 Apply all pattern knowledge flexibly. 🗣️ Mixed",
+        "teacher_guidance": "Systematic review emphasizing rule application and exceptions.",
+        "student_tips": "Use all your advanced pattern knowledge - remember the rules!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 8,
+          "lesson_position": "advanced integration",
+          "prerequisite_check": ["all complex patterns", "rule mastery"],
+          "mastery_criteria": "75% accuracy across complex patterns"
+        },
+        "practice_phases": [
+          {
+            "phase": "review",
+            "activities": ["all complex patterns", "rule integration", "error analysis"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "integration",
+            "activities": ["mixed pattern reading", "rule application", "fluency building"],
+            "duration": "6-7 days"
+          },
+          {
+            "phase": "mastery",
+            "activities": ["independent application", "advanced texts", "transfer tasks"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "rule_integration",
+            "criterion": "Applies all complex rules",
+            "frequency": "daily"
+          },
+          {
+            "type": "pattern_fluency",
+            "criterion": "Reads complex patterns fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on mixed complex patterns",
+          "spelling": "70% accuracy on pattern choices",
+          "transfer": "Applies all advanced phonics knowledge"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended systematic review",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily pattern checks",
+          "intervention_triggers": ["Below 60% mixed accuracy", "Rule confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Morphology introduction",
+          "enrichment": "Advanced pattern exploration",
+          "complexity_increase": "Multisyllabic applications"
+        },
+        "english_learners": {
+          "native_language_support": "Review all English patterns",
+          "visual_cues": "Complete advanced pattern charts",
+          "practice_emphasis": "Rule-based reading"
+        }
+      }
+    }
+  ]
+}

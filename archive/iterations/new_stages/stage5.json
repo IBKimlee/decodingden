@@ -1,0 +1,169 @@
+{
+  "stage_number": "",
+  "stage_name": "",
+  "grade_level": "",
+  "student_phase": "",
+  "duration": "",
+  "description": "",
+  "key_concept": "",
+  "instructional_focus": "",
+  "science_of_reading_alignment": "",
+  "total_elements": 5,
+  "phonemes": [
+    {
+      "phoneme_id": 1,
+      "phoneme": "/ar/",
+      "grapheme": "ar",
+      "keyword": "",
+      "linguistic_properties": {
+        "articulation": {
+          "mouth_position": "Open mouth wider than for short /a/, tongue pulled back and down slightly",
+          "tongue_placement": "Tongue tip curled up toward roof of mouth for 'r' sound",
+          "voice": "Voiced",
+          "duration": "Held longer than short vowels",
+          "mirror_work": "Watch mouth open wide, then see tongue curl up for /r/",
+          "tactile_cues": "Place hand on throat to feel vibration throughout the sound"
+        },
+        "complexity_score": "",
+        "frequency_rank": 1
+      },
+      "word_examples": {
+        "example_words": [],
+        "decodable_sentence": ""
+      },
+      "assessment_framework_enhanced": {
+        "daily_check": "Read and spell ar words with 90% accuracy.",
+        "weekly_progress": "Identify /ar/ in 10 words with 90% accuracy.",
+        "benchmark": "Decode ar in connected text with fluency."
+      },
+      "research_attribution": {
+        "phoneme_order": "Moats (2020), Castles et al. (2018), Seidenberg (2017)",
+        "teaching_rationale": []
+      }
+    },
+    {
+      "phoneme_id": 2,
+      "phoneme": "/or/",
+      "grapheme": "or",
+      "keyword": "",
+      "linguistic_properties": {
+        "articulation": {
+          "mouth_position": "Lips slightly rounded, mouth more closed than /ar/",
+          "tongue_placement": "Tongue pulled back and up toward roof of mouth",
+          "voice": "Voiced",
+          "duration": "Held longer than short vowels",
+          "mirror_work": "Watch lips round slightly, tongue pull back and up",
+          "tactile_cues": "Feel lips round and throat vibrate"
+        },
+        "complexity_score": "",
+        "frequency_rank": 2
+      },
+      "word_examples": {
+        "example_words": [],
+        "decodable_sentence": ""
+      },
+      "assessment_framework_enhanced": {
+        "daily_check": "Read and spell or words with 90% accuracy.",
+        "weekly_progress": "Identify /or/ in 10 words with 90% accuracy.",
+        "benchmark": "Decode or in connected text with fluency."
+      },
+      "research_attribution": {
+        "phoneme_order": "Moats (2020), Castles et al. (2018), Seidenberg (2017)",
+        "teaching_rationale": []
+      }
+    },
+    {
+      "phoneme_id": 3,
+      "phoneme": "/er/",
+      "grapheme": "er",
+      "keyword": "",
+      "linguistic_properties": {
+        "articulation": {
+          "mouth_position": "Mouth slightly open, neutral position",
+          "tongue_placement": "Tongue pulled back and curled up slightly",
+          "voice": "Voiced",
+          "duration": "Held longer than short vowels",
+          "mirror_work": "Watch neutral mouth position with tongue pulling back",
+          "tactile_cues": "Feel tongue tension pulling back and throat vibration"
+        },
+        "complexity_score": "",
+        "frequency_rank": 3
+      },
+      "word_examples": {
+        "example_words": [],
+        "decodable_sentence": ""
+      },
+      "assessment_framework_enhanced": {
+        "daily_check": "Read and spell er words with 90% accuracy.",
+        "weekly_progress": "Identify /er/ in 10 words with 90% accuracy.",
+        "benchmark": "Decode er in connected text with fluency."
+      },
+      "research_attribution": {
+        "phoneme_order": "Moats (2020), Castles et al. (2018), Seidenberg (2017)",
+        "teaching_rationale": []
+      }
+    },
+    {
+      "phoneme_id": 4,
+      "phoneme": "/ir/",
+      "grapheme": "ir",
+      "keyword": "",
+      "linguistic_properties": {
+        "articulation": {
+          "mouth_position": "Mouth slightly open, similar to /er/",
+          "tongue_placement": "Tongue pulled back and curled up",
+          "voice": "Voiced",
+          "duration": "Held longer than short vowels",
+          "mirror_work": "Watch mouth position - very similar to /er/",
+          "tactile_cues": "Feel tongue position identical to /er/"
+        },
+        "complexity_score": "",
+        "frequency_rank": 4
+      },
+      "word_examples": {
+        "example_words": [],
+        "decodable_sentence": ""
+      },
+      "assessment_framework_enhanced": {
+        "daily_check": "Read and spell ir words with 90% accuracy.",
+        "weekly_progress": "Identify /ir/ in 10 words with 90% accuracy.",
+        "benchmark": "Decode ir in connected text with fluency."
+      },
+      "research_attribution": {
+        "phoneme_order": "Moats (2020), Castles et al. (2018), Seidenberg (2017)",
+        "teaching_rationale": []
+      }
+    },
+    {
+      "phoneme_id": 5,
+      "phoneme": "/ur/",
+      "grapheme": "ur",
+      "keyword": "",
+      "linguistic_properties": {
+        "articulation": {
+          "mouth_position": "Mouth slightly open, identical to /er/ and /ir/",
+          "tongue_placement": "Tongue pulled back and curled up",
+          "voice": "Voiced",
+          "duration": "Held longer than short vowels",
+          "mirror_work": "Watch mouth - identical to /er/ and /ir/",
+          "tactile_cues": "Feel tongue position matches /er/ and /ir/"
+        },
+        "complexity_score": "",
+        "frequency_rank": 5
+      },
+      "word_examples": {
+        "example_words": [],
+        "decodable_sentence": ""
+      },
+      "assessment_framework_enhanced": {
+        "daily_check": "Read and spell ur words with 90% accuracy.",
+        "weekly_progress": "Identify /ur/ in 10 words with 90% accuracy.",
+        "benchmark": "Decode ur in connected text with fluency."
+      },
+      "research_attribution": {
+        "phoneme_order": "Moats (2020), Castles et al. (2018), Seidenberg (2017)",
+        "teaching_rationale": []
+      }
+    }
+  ]
+}

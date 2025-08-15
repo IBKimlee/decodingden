@@ -1,0 +1,588 @@
+{
+  "metadata": {
+    "stage": 4,
+    "stage_name": "Long Vowels with Silent E",
+    "grade_level": "1st Grade – Spring Semester",
+    "total_phonemes": 6,
+    "generated_date": "2025-01-02",
+    "description": "Stage 4 phonemes with ALL possible grapheme spellings from comprehensive list"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage4_a_e",
+      "stage_id": 4,
+      "phoneme": "/ā/",
+      "graphemes": ["a_e", "a", "ai", "ay", "eigh", "ey", "ea", "ei", "aigh", "et"],
+      "frequency_rank": 35,
+      "complexity_score": 2.5,
+      "grade_band": "1st-Spring",
+      "introduction_week": 1,
+      "word_examples": ["cake", "make", "take", "name", "same", "table", "rain", "day", "eight", "they", "great", "vein"],
+      "decodable_sentences": ["I can make a cake.", "Take the name tag."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in VCe pattern recognition",
+        "weekly": "70% accuracy in long vowel reading",
+        "summative": "80% silent e understanding"
+      },
+      "teaching_advantages": ["magic e concept", "vowel says its name", "predictable pattern"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Fry (2004)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "low-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/a/", "shortened"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/a/", "/e/"],
+        "development_notes": "Long vowel version of /a/. 'Says its name'.",
+        "articulation_cues": "👄 Open mouth, say letter name 'A'. 🗣️ Voiced",
+        "teacher_guidance": "Emphasize silent e makes vowel say its name.",
+        "student_tips": "The silent e makes the a say 'A' like the letter name!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "VCe pattern introduction",
+          "prerequisite_check": ["short /a/ mastery", "silent e concept"],
+          "mastery_criteria": "75% accuracy in a_e pattern"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["long vs short a", "magic e demonstration", "vowel name concept"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["CVCe word building", "silent e manipulation", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["a_e word families", "spelling patterns", "connected reading"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "long_short_discrimination",
+            "criterion": "Distinguishes long from short a",
+            "frequency": "daily"
+          },
+          {
+            "type": "silent_e_understanding",
+            "criterion": "Explains silent e effect",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on a_e words",
+          "spelling": "70% accuracy on VCe pattern",
+          "transfer": "Applies silent e rule"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended magic e practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily VCe checks",
+          "intervention_triggers": ["Confuses long/short", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other long a patterns",
+          "enrichment": "VCe rule exploration",
+          "complexity_increase": "Multisyllabic a_e words"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 long vowels",
+          "visual_cues": "Magic e visual aids",
+          "practice_emphasis": "English vowel length"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage4_i_e",
+      "stage_id": 4,
+      "phoneme": "/ī/",
+      "graphemes": ["i_e", "i", "y", "ie", "igh", "ye", "ai", "ay", "eye", "uy"],
+      "frequency_rank": 36,
+      "complexity_score": 2.5,
+      "grade_band": "1st-Spring",
+      "introduction_week": 2,
+      "word_examples": ["bike", "like", "time", "mine", "fine", "kind", "my", "pie", "night", "eye", "buy"],
+      "decodable_sentences": ["I like my bike.", "It is time to go."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in VCe pattern recognition",
+        "weekly": "70% accuracy in long vowel reading",
+        "summative": "80% silent e understanding"
+      },
+      "teaching_advantages": ["clear vowel name", "common pattern", "high frequency words"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Fry (2004)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/i/", "shortened"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/i/", "/y/"],
+        "development_notes": "Long vowel version of /i/. 'Says its name'.",
+        "articulation_cues": "👄 Smile wide, say letter name 'I'. 🗣️ Voiced",
+        "teacher_guidance": "Connect to short i. Show silent e effect.",
+        "student_tips": "The silent e makes the i say 'I' like the letter name!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 2,
+          "lesson_position": "second VCe pattern",
+          "prerequisite_check": ["short /i/ mastery", "a_e pattern established"],
+          "mastery_criteria": "75% accuracy in i_e pattern"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["long vs short i", "i_e word building", "vowel name practice"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["CVCe with i_e", "word manipulation", "pattern recognition"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["i_e word families", "mixed VCe practice", "fluency building"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "vowel_length_discrimination",
+            "criterion": "Distinguishes long from short i",
+            "frequency": "daily"
+          },
+          {
+            "type": "pattern_recognition",
+            "criterion": "Identifies i_e pattern",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on i_e words",
+          "spelling": "70% accuracy on i_e spelling",
+          "transfer": "Generalizes VCe pattern"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended long/short practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily i_e recognition",
+          "intervention_triggers": ["Shortens vowel", "Pattern confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Y as long i exploration",
+          "enrichment": "I_e morphology patterns",
+          "complexity_increase": "Complex i_e words"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 vowel systems",
+          "visual_cues": "Long vowel visual cues",
+          "practice_emphasis": "Vowel length concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage4_o_e",
+      "stage_id": 4,
+      "phoneme": "/ō/",
+      "graphemes": ["o_e", "o", "oa", "ow", "ou", "ough", "oe", "eau", "oh", "oo"],
+      "frequency_rank": 37,
+      "complexity_score": 2.5,
+      "grade_band": "1st-Spring",
+      "introduction_week": 3,
+      "word_examples": ["bone", "home", "note", "rope", "hope", "open", "boat", "snow", "soul", "toe", "beau"],
+      "decodable_sentences": ["I hope to go home.", "The rope is on the boat."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in VCe pattern recognition",
+        "weekly": "70% accuracy in long vowel reading",
+        "summative": "80% silent e understanding"
+      },
+      "teaching_advantages": ["clear mouth rounding", "common words", "predictable pattern"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Fry (2004)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "mid-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/o/", "shortened"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/o/", "/u/"],
+        "development_notes": "Long vowel version of /o/. 'Says its name'.",
+        "articulation_cues": "👄 Round lips, say letter name 'O'. 🗣️ Voiced",
+        "teacher_guidance": "Emphasize lip rounding. Connect to short o.",
+        "student_tips": "The silent e makes the o say 'O' like the letter name!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 3,
+          "lesson_position": "third VCe pattern",
+          "prerequisite_check": ["short /o/ mastery", "VCe pattern understanding"],
+          "mastery_criteria": "75% accuracy in o_e pattern"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["long vs short o", "lip rounding emphasis", "o_e word building"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["CVCe with o_e", "word transformation", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["o_e word families", "mixed long vowels", "connected text"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "vowel_rounding_check",
+            "criterion": "Produces rounded long o",
+            "frequency": "daily"
+          },
+          {
+            "type": "o_e_pattern_reading",
+            "criterion": "Reads o_e words correctly",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on o_e words",
+          "spelling": "70% accuracy on o_e pattern",
+          "transfer": "Maintains VCe understanding"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended rounding practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily o_e checks",
+          "intervention_triggers": ["No lip rounding", "Shortens vowel"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other long o patterns",
+          "enrichment": "O_e word exploration",
+          "complexity_increase": "Multisyllabic o_e"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 rounded vowels",
+          "visual_cues": "Lip rounding visuals",
+          "practice_emphasis": "Rounding + length"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage4_u_e",
+      "stage_id": 4,
+      "phoneme": "/ū/ or /o͞o/",
+      "graphemes": ["u_e", "u", "ue", "ui", "ou", "oo", "ew", "eu", "ieu", "ough"],
+      "frequency_rank": 38,
+      "complexity_score": 2.8,
+      "grade_band": "1st-Spring",
+      "introduction_week": 4,
+      "word_examples": ["cube", "cute", "huge", "tune", "prune", "blue", "suit", "group", "moon", "new", "feud"],
+      "decodable_sentences": ["The cute cube is huge.", "I like the blue tune."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in VCe pattern recognition",
+        "weekly": "65% accuracy in long vowel reading",
+        "summative": "75% silent e understanding"
+      },
+      "teaching_advantages": ["two possible sounds", "less frequent pattern", "completes VCe system"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/u/", "shortened"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/u/", "/o/"],
+        "development_notes": "Can be /ū/ (yoo) or /o͞o/ (oo). Complex pattern.",
+        "articulation_cues": "👄 Round lips tightly, say 'U' or 'OO'. 🗣️ Voiced",
+        "teacher_guidance": "Introduce both sounds. Context dependent.",
+        "student_tips": "U_e can say 'U' (cute) or 'OO' (tune). Listen for both!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 4,
+          "lesson_position": "complex VCe pattern",
+          "prerequisite_check": ["short /u/ mastery", "VCe pattern solid"],
+          "mastery_criteria": "70% accuracy in u_e pattern"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["both u_e sounds", "word sorting", "pattern recognition"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["u_e word reading", "sound choice practice", "context clues"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["u_e word families", "mixed practice", "vocabulary focus"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "dual_sound_recognition",
+            "criterion": "Recognizes both u_e sounds",
+            "frequency": "daily"
+          },
+          {
+            "type": "context_reading",
+            "criterion": "Chooses appropriate sound",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on u_e words",
+          "spelling": "65% accuracy on u_e pattern",
+          "transfer": "Applies flexible u_e reading"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on one sound first",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily u_e recognition",
+          "intervention_triggers": ["Consistent wrong sound", "Pattern avoidance"]
+        },
+        "advanced_learners": {
+          "acceleration": "Context rule exploration",
+          "enrichment": "U_e etymology study",
+          "complexity_increase": "Advanced u_e vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /u/ variations",
+          "visual_cues": "Two sound visual aids",
+          "practice_emphasis": "Flexible sound choice"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage4_e_e",
+      "stage_id": 4,
+      "phoneme": "/ē/",
+      "graphemes": ["e_e", "e", "ee", "ea", "ie", "ei", "ey", "y", "i", "ay"],
+      "frequency_rank": 39,
+      "complexity_score": 2.3,
+      "grade_band": "1st-Spring",
+      "introduction_week": 5,
+      "word_examples": ["these", "complete", "athlete", "me", "tree", "meat", "field", "key", "happy", "donkey"],
+      "decodable_sentences": ["These are complete.", "The tree has green leaves."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in VCe pattern recognition",
+        "weekly": "70% accuracy in long vowel reading",
+        "summative": "80% silent e understanding"
+      },
+      "teaching_advantages": ["less common VCe", "completes vowel system", "many spelling patterns"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/e/", "shortened"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/e/", "/i/"],
+        "development_notes": "Long vowel version of /e/. Less common VCe pattern.",
+        "articulation_cues": "👄 Slight smile, say letter name 'E'. 🗣️ Voiced",
+        "teacher_guidance": "Less frequent than other VCe patterns. Focus on recognition.",
+        "student_tips": "The silent e makes the e say 'E' like the letter name!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 5,
+          "lesson_position": "completing VCe system",
+          "prerequisite_check": ["short /e/ mastery", "other VCe patterns solid"],
+          "mastery_criteria": "75% accuracy in e_e recognition"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["e_e pattern introduction", "long vs short e", "word recognition"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["e_e word reading", "VCe review", "pattern consolidation"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["all VCe patterns", "mixed practice", "system review"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "e_e_recognition",
+            "criterion": "Identifies e_e pattern",
+            "frequency": "daily"
+          },
+          {
+            "type": "VCe_system_review",
+            "criterion": "Reads all VCe patterns",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on e_e words",
+          "spelling": "70% accuracy on e_e pattern",
+          "transfer": "Completes VCe system understanding"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on pattern recognition",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily e_e checks",
+          "intervention_triggers": ["Confuses with other VCe", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Alternative e spellings",
+          "enrichment": "E_e word exploration",
+          "complexity_increase": "Advanced e_e vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /e/ variations",
+          "visual_cues": "E_e pattern visuals",
+          "practice_emphasis": "Pattern completion"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage4_vce_review",
+      "stage_id": 4,
+      "phoneme": "VCe pattern review",
+      "graphemes": ["a_e", "i_e", "o_e", "u_e", "e_e"],
+      "frequency_rank": 40,
+      "complexity_score": 3.0,
+      "grade_band": "1st-Spring",
+      "introduction_week": 6,
+      "word_examples": ["bake", "bike", "bone", "cube", "these", "take", "like", "home", "cute", "complete"],
+      "decodable_sentences": ["I like to bake at home.", "Take the cute bike."],
+      "assessment_criteria": {
+        "daily": "80% accuracy across all VCe patterns",
+        "weekly": "75% accuracy in mixed reading",
+        "summative": "85% VCe system mastery"
+      },
+      "teaching_advantages": ["systematic review", "pattern consolidation", "transfer preparation"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Johnston (2001)"],
+      "articulation_data": {
+        "manner": "vowel system",
+        "place": "all vowel positions",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["pattern confusion", "shortening"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["all short vowels", "all long vowels"],
+        "development_notes": "Integration of complete VCe system. Critical for reading development.",
+        "articulation_cues": "👄 Each vowel maintains distinct position. 🗣️ All voiced",
+        "teacher_guidance": "Emphasize silent e rule across all vowels. Systematic practice.",
+        "student_tips": "Silent e is magic for ALL vowels! It makes them say their names."
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 6,
+          "lesson_position": "system integration",
+          "prerequisite_check": ["all individual VCe patterns", "silent e understanding"],
+          "mastery_criteria": "80% accuracy across all VCe patterns"
+        },
+        "practice_phases": [
+          {
+            "phase": "review",
+            "activities": ["all VCe patterns", "systematic practice", "error correction"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "integration",
+            "activities": ["mixed VCe reading", "spelling practice", "fluency building"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "mastery",
+            "activities": ["independent application", "transfer tasks", "assessment"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pattern_discrimination",
+            "criterion": "Distinguishes all VCe patterns",
+            "frequency": "daily"
+          },
+          {
+            "type": "mixed_reading_fluency",
+            "criterion": "Reads mixed VCe fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "80% accuracy on mixed VCe",
+          "spelling": "75% accuracy on VCe spelling",
+          "transfer": "Applies VCe rule consistently"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended systematic review",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily pattern checks",
+          "intervention_triggers": ["Below 65% mixed accuracy", "Pattern confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Vowel team introduction",
+          "enrichment": "VCe morphology exploration",
+          "complexity_increase": "Multisyllabic VCe words"
+        },
+        "english_learners": {
+          "native_language_support": "Review L1 vowel systems",
+          "visual_cues": "Complete VCe system chart",
+          "practice_emphasis": "Silent e rule mastery"
+        }
+      }
+    }
+  ]
+}

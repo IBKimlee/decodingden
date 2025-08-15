@@ -1,0 +1,780 @@
+{
+  "metadata": {
+    "stage": 6,
+    "stage_name": "R-Controlled Vowels & Diphthongs",
+    "grade_level": "2nd Grade – Spring Semester",
+    "total_phonemes": 8,
+    "generated_date": "2025-01-02",
+    "description": "Stage 6 phonemes with ALL possible grapheme spellings from comprehensive list"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage6_ou",
+      "stage_id": 6,
+      "phoneme": "/ou/",
+      "graphemes": ["ou", "ow", "ough", "au", "ao"],
+      "frequency_rank": 49,
+      "complexity_score": 3.0,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 1,
+      "word_examples": ["out", "house", "mouse", "shout", "cow", "how", "now", "brown", "bough", "sauerkraut"],
+      "decodable_sentences": ["The mouse ran out of the house.", "How now brown cow?"],
+      "assessment_criteria": {
+        "daily": "70% accuracy in diphthong recognition",
+        "weekly": "65% accuracy in ou/ow reading",
+        "summative": "75% diphthong mastery"
+      },
+      "teaching_advantages": ["clear mouth movement", "common words", "position patterns"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "diphthong",
+        "place": "low-central to high-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/o/", "/u/", "monophthong"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/o/", "/u/", "/aw/"],
+        "development_notes": "Diphthong - two vowel sounds that glide together.",
+        "articulation_cues": "👄 Start with 'ah', glide to 'oo'. 🗣️ Voiced glide",
+        "teacher_guidance": "Show mouth movement. Emphasize gliding motion.",
+        "student_tips": "Your mouth moves from 'ah' to 'oo' - like saying 'ouch'!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "diphthong introduction",
+          "prerequisite_check": ["vowel team mastery", "mouth movement awareness"],
+          "mastery_criteria": "70% accuracy in diphthong reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["diphthong concept", "mouth movement practice", "ou/ow introduction"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["diphthong word building", "position patterns", "gliding practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed ou/ow reading", "spelling patterns", "connected text"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "diphthong_production",
+            "criterion": "Produces gliding movement",
+            "frequency": "daily"
+          },
+          {
+            "type": "ou_ow_discrimination",
+            "criterion": "Distinguishes ou/ow patterns",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on ou/ow words",
+          "spelling": "65% accuracy on ou/ow choice",
+          "transfer": "Applies diphthong concept"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended mouth movement work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily diphthong checks",
+          "intervention_triggers": ["No gliding movement", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other ou spellings exploration",
+          "enrichment": "Diphthong word patterns",
+          "complexity_increase": "Advanced diphthong vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 diphthong presence",
+          "visual_cues": "Mouth movement visuals",
+          "practice_emphasis": "English diphthong concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_oi",
+      "stage_id": 6,
+      "phoneme": "/oi/",
+      "graphemes": ["oi", "oy", "uoy"],
+      "frequency_rank": 50,
+      "complexity_score": 2.8,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 2,
+      "word_examples": ["oil", "coin", "soil", "boil", "boy", "toy", "joy", "enjoy", "buoy"],
+      "decodable_sentences": ["The boy has a toy.", "I found a coin in the soil."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in diphthong recognition",
+        "weekly": "70% accuracy in oi/oy reading",
+        "summative": "80% diphthong mastery"
+      },
+      "teaching_advantages": ["position rule clear", "distinct sound", "common words"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Johnston (2001)"],
+      "articulation_data": {
+        "manner": "diphthong",
+        "place": "mid-back to high-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/o/", "/i/", "monophthong"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/o/", "/i/", "/ou/"],
+        "development_notes": "Diphthong - glides from /o/ to /i/.",
+        "articulation_cues": "👄 Start with 'aw', glide to 'ee'. 🗣️ Voiced glide",
+        "teacher_guidance": "Show clear position rule: oi in middle, oy at end.",
+        "student_tips": "OI stays in the middle, OY likes the end - like AI and AY!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 2,
+          "lesson_position": "second diphthong",
+          "prerequisite_check": ["ou/ow established", "position rule awareness"],
+          "mastery_criteria": "75% accuracy in oi/oy reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["oi/oy introduction", "position rule teaching", "gliding practice"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["oi/oy word building", "position rule application", "pattern practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["oi/oy spelling choice", "mixed diphthong practice", "rule application"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "position_rule_mastery",
+            "criterion": "Applies oi/oy rule correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "diphthong_gliding",
+            "criterion": "Produces clear glide",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on oi/oy words",
+          "spelling": "70% accuracy on oi/oy choice",
+          "transfer": "Applies position rule consistently"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended position rule work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily oi/oy checks",
+          "intervention_triggers": ["Position rule confusion", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Less common oi spellings",
+          "enrichment": "Oi/oy word exploration",
+          "complexity_increase": "Advanced diphthong words"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /oi/ sounds",
+          "visual_cues": "Position rule visuals",
+          "practice_emphasis": "English position patterns"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_au",
+      "stage_id": 6,
+      "phoneme": "/aw/",
+      "graphemes": ["au", "aw", "augh", "ough", "al", "o"],
+      "frequency_rank": 51,
+      "complexity_score": 3.1,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 3,
+      "word_examples": ["auto", "sauce", "taught", "law", "saw", "draw", "caught", "daughter", "walk", "talk", "dog"],
+      "decodable_sentences": ["I saw the dog walk.", "We taught her to draw."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in au/aw recognition",
+        "weekly": "65% accuracy in au/aw reading",
+        "summative": "75% pattern mastery"
+      },
+      "teaching_advantages": ["multiple spellings", "common words", "position awareness"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "low-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–4",
+        "acquisition_age": "4",
+        "common_substitutions": ["/a/", "/o/"],
+        "referral_age": 5,
+        "related_sounds_to_check": ["/a/", "/o/", "/ou/"],
+        "development_notes": "Low back vowel with multiple spelling patterns.",
+        "articulation_cues": "👄 Open mouth wide, back tongue position. 🗣️ Voiced",
+        "teacher_guidance": "Show multiple spellings. Focus on common patterns first.",
+        "student_tips": "Open your mouth wide and say 'aw' like you hurt yourself!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 3,
+          "lesson_position": "complex vowel pattern",
+          "prerequisite_check": ["diphthong concept", "multiple spelling awareness"],
+          "mastery_criteria": "70% accuracy in au/aw reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["au/aw introduction", "multiple spellings", "mouth position"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["au/aw word building", "spelling patterns", "context practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["all au/aw spellings", "vocabulary focus", "reading fluency"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "multiple_spelling_recognition",
+            "criterion": "Recognizes au/aw variations",
+            "frequency": "daily"
+          },
+          {
+            "type": "sound_production",
+            "criterion": "Produces clear /aw/ sound",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on au/aw words",
+          "spelling": "65% accuracy on au/aw patterns",
+          "transfer": "Recognizes /aw/ in various spellings"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on most common spellings",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily au/aw recognition",
+          "intervention_triggers": ["Spelling confusion", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Less common /aw/ spellings",
+          "enrichment": "Au/aw etymology exploration",
+          "complexity_increase": "Advanced /aw/ vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /aw/ equivalents",
+          "visual_cues": "Multiple spelling charts",
+          "practice_emphasis": "Sound consistency across spellings"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_oo_short",
+      "stage_id": 6,
+      "phoneme": "/oo/",
+      "graphemes": ["oo", "u", "ou", "o", "oul", "ull"],
+      "frequency_rank": 52,
+      "complexity_score": 3.3,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 4,
+      "word_examples": ["book", "look", "took", "good", "put", "push", "pull", "full", "could", "would", "wolf"],
+      "decodable_sentences": ["I took a good book.", "Could you push the door?"],
+      "assessment_criteria": {
+        "daily": "65% accuracy in short oo recognition",
+        "weekly": "60% accuracy in oo discrimination",
+        "summative": "70% oo mastery"
+      },
+      "teaching_advantages": ["contrast with long oo", "common words", "context dependent"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/u/", "/o/", "long oo"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/u/", "/o/", "long oo"],
+        "development_notes": "Shorter version of long oo. Context dependent.",
+        "articulation_cues": "👄 Less rounded than long oo, shorter sound. 🗣️ Voiced",
+        "teacher_guidance": "Contrast with long oo. Context often determines pronunciation.",
+        "student_tips": "This oo is shorter - like in 'book' not 'moon'!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 4,
+          "lesson_position": "vowel variant introduction",
+          "prerequisite_check": ["long oo mastery", "sound discrimination"],
+          "mastery_criteria": "65% accuracy in short oo recognition"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["short vs long oo", "sound discrimination", "word sorting"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["short oo word reading", "context clues", "pattern practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed oo reading", "vocabulary focus", "context application"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "oo_discrimination",
+            "criterion": "Distinguishes long/short oo",
+            "frequency": "daily"
+          },
+          {
+            "type": "context_reading",
+            "criterion": "Uses context for oo choice",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on short oo",
+          "spelling": "60% accuracy on oo choice",
+          "transfer": "Applies context clues for oo"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended discrimination practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily oo distinction",
+          "intervention_triggers": ["No oo discrimination", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Context rule exploration",
+          "enrichment": "Oo pattern etymology",
+          "complexity_increase": "Advanced oo vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 /oo/ variations",
+          "visual_cues": "Long/short oo contrasts",
+          "practice_emphasis": "English oo flexibility"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_ew",
+      "stage_id": 6,
+      "phoneme": "/yoo/ or /oo/",
+      "graphemes": ["ew", "eu", "ue", "u", "iew", "ieu"],
+      "frequency_rank": 53,
+      "complexity_score": 3.4,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 5,
+      "word_examples": ["new", "few", "grew", "threw", "feud", "neutral", "rescue", "value", "view", "review", "adieu"],
+      "decodable_sentences": ["I threw the new ball.", "We grew a few plants."],
+      "assessment_criteria": {
+        "daily": "65% accuracy in ew pattern recognition",
+        "weekly": "60% accuracy in ew reading",
+        "summative": "70% ew mastery"
+      },
+      "teaching_advantages": ["two possible sounds", "common ending pattern", "predictable contexts"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel or glide-vowel",
+        "place": "high-front or high-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/u/", "/o/", "single vowel"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/u/", "/y/", "/oo/"],
+        "development_notes": "Can be /yoo/ (few) or /oo/ (grew). Context dependent.",
+        "articulation_cues": "👄 Either /y/ + /oo/ or just /oo/. 🗣️ Voiced",
+        "teacher_guidance": "Introduce both sounds. Context often determines choice.",
+        "student_tips": "EW can say 'yoo' (new) or 'oo' (grew) - listen for both!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 5,
+          "lesson_position": "flexible pattern introduction",
+          "prerequisite_check": ["oo mastery", "flexible reading readiness"],
+          "mastery_criteria": "65% accuracy in ew reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["both ew sounds", "word sorting", "context awareness"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["ew word reading", "sound flexibility", "context practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["flexible ew reading", "vocabulary focus", "context application"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "flexible_reading",
+            "criterion": "Tries both ew sounds",
+            "frequency": "daily"
+          },
+          {
+            "type": "context_application",
+            "criterion": "Uses context for ew choice",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on ew words",
+          "spelling": "60% accuracy on ew patterns",
+          "transfer": "Applies flexible ew reading"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on one sound initially",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily ew recognition",
+          "intervention_triggers": ["Inflexible reading", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Context rules exploration",
+          "enrichment": "Ew pattern etymology",
+          "complexity_increase": "Advanced ew vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 similar patterns",
+          "visual_cues": "Two sound options",
+          "practice_emphasis": "Flexible sound choice"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_ie",
+      "stage_id": 6,
+      "phoneme": "/ē/ or /ī/",
+      "graphemes": ["ie", "ei", "eigh", "ey"],
+      "frequency_rank": 54,
+      "complexity_score": 3.5,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 6,
+      "word_examples": ["field", "piece", "believe", "ceiling", "receive", "eight", "weigh", "they", "pie", "tie"],
+      "decodable_sentences": ["I believe the field has eight pieces.", "They weigh the pie."],
+      "assessment_criteria": {
+        "daily": "60% accuracy in ie/ei recognition",
+        "weekly": "55% accuracy in ie/ei reading",
+        "summative": "65% ie/ei mastery"
+      },
+      "teaching_advantages": ["rule-based learning", "common exception words", "spelling patterns"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Clymer (1963)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "high-front or low-front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/e/", "/i/", "single vowel"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/e/", "/i/"],
+        "development_notes": "Complex pattern with rules and exceptions.",
+        "articulation_cues": "👄 Either long 'E' or long 'I' sound. 🗣️ Voiced",
+        "teacher_guidance": "Introduce 'i before e except after c' rule with exceptions.",
+        "student_tips": "I before E except after C - but watch for exceptions!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 6,
+          "lesson_position": "complex rule introduction",
+          "prerequisite_check": ["long vowel mastery", "rule readiness"],
+          "mastery_criteria": "60% accuracy in ie/ei reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["ie/ei rule introduction", "exception awareness", "pattern sorting"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["rule application", "exception practice", "word building"],
+            "duration": "6-7 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed ie/ei reading", "rule application", "exception handling"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "rule_application",
+            "criterion": "Applies ie/ei rule correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "exception_recognition",
+            "criterion": "Recognizes common exceptions",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "60% accuracy on ie/ei words",
+          "spelling": "55% accuracy on ie/ei choice",
+          "transfer": "Applies rule with exception awareness"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Simplified rule application",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily ie/ei checks",
+          "intervention_triggers": ["Rule confusion", "Below 45% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Exception pattern exploration",
+          "enrichment": "Etymology of ie/ei words",
+          "complexity_increase": "Advanced ie/ei vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain English spelling complexity",
+          "visual_cues": "Rule and exception charts",
+          "practice_emphasis": "High-frequency ie/ei words"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_ue",
+      "stage_id": 6,
+      "phoneme": "/yoo/ or /oo/",
+      "graphemes": ["ue", "u_e", "ew", "u", "eu"],
+      "frequency_rank": 55,
+      "complexity_score": 3.2,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 7,
+      "word_examples": ["blue", "true", "glue", "rescue", "statue", "argue", "new", "few", "feud", "neutral"],
+      "decodable_sentences": ["The blue glue is true.", "We rescue the statue."],
+      "assessment_criteria": {
+        "daily": "65% accuracy in ue pattern recognition",
+        "weekly": "60% accuracy in ue reading",
+        "summative": "70% ue mastery"
+      },
+      "teaching_advantages": ["position patterns", "common words", "flexible sounds"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "vowel or glide-vowel",
+        "place": "high-front or high-back",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "5",
+        "common_substitutions": ["/u/", "/o/", "single vowel"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/u/", "/y/", "/oo/"],
+        "development_notes": "Can be /yoo/ (rescue) or /oo/ (blue). Context dependent.",
+        "articulation_cues": "👄 Either /y/ + /oo/ or just /oo/. 🗣️ Voiced",
+        "teacher_guidance": "Similar to ew pattern. Context determines sound choice.",
+        "student_tips": "UE can say 'yoo' (rescue) or 'oo' (blue) - try both!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 7,
+          "lesson_position": "pattern completion",
+          "prerequisite_check": ["ew pattern established", "flexible reading skills"],
+          "mastery_criteria": "65% accuracy in ue reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["ue pattern introduction", "sound flexibility", "context awareness"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["ue word reading", "pattern comparison", "context practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["all complex vowel patterns", "mixed practice", "vocabulary focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pattern_flexibility",
+            "criterion": "Tries both ue sounds",
+            "frequency": "daily"
+          },
+          {
+            "type": "context_reading",
+            "criterion": "Uses context for sound choice",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on ue words",
+          "spelling": "60% accuracy on ue patterns",
+          "transfer": "Applies flexible ue reading"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on most common sound",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily ue recognition",
+          "intervention_triggers": ["Pattern confusion", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Complex ue vocabulary",
+          "enrichment": "Pattern comparison study",
+          "complexity_increase": "Advanced flexible reading"
+        },
+        "english_learners": {
+          "native_language_support": "Check L1 similar patterns",
+          "visual_cues": "Flexible sound charts",
+          "practice_emphasis": "Context-dependent reading"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage6_review",
+      "stage_id": 6,
+      "phoneme": "complex vowel review",
+      "graphemes": ["ou", "ow", "oi", "oy", "au", "aw", "oo", "ew", "ue", "ie", "ei"],
+      "frequency_rank": 56,
+      "complexity_score": 4.0,
+      "grade_band": "2nd-Spring",
+      "introduction_week": 8,
+      "word_examples": ["house", "boy", "book", "moon", "new", "blue", "field", "caught", "could", "eight", "receive"],
+      "decodable_sentences": ["The boy could see eight new books in the field.", "I caught the blue mouse in the house."],
+      "assessment_criteria": {
+        "daily": "75% accuracy across complex patterns",
+        "weekly": "70% accuracy in mixed reading",
+        "summative": "80% complex vowel mastery"
+      },
+      "teaching_advantages": ["system integration", "flexible reading skills", "advanced preparation"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Johnston (2001)"],
+      "articulation_data": {
+        "manner": "vowel system",
+        "place": "all vowel positions",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–8",
+        "acquisition_age": "7",
+        "common_substitutions": ["pattern confusion", "simplified reading"],
+        "referral_age": 8,
+        "related_sounds_to_check": ["all vowels", "diphthongs"],
+        "development_notes": "Integration of complex vowel pattern system.",
+        "articulation_cues": "👄 Flexible vowel positioning. 🗣️ All voiced",
+        "teacher_guidance": "Systematic review emphasizing flexible reading strategies.",
+        "student_tips": "Use all your vowel knowledge - try different sounds if needed!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 8,
+          "lesson_position": "advanced system integration",
+          "prerequisite_check": ["all complex patterns", "flexible reading skills"],
+          "mastery_criteria": "75% accuracy across complex patterns"
+        },
+        "practice_phases": [
+          {
+            "phase": "review",
+            "activities": ["all complex patterns", "systematic practice", "error analysis"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "integration",
+            "activities": ["mixed pattern reading", "flexible strategies", "fluency building"],
+            "duration": "6-7 days"
+          },
+          {
+            "phase": "mastery",
+            "activities": ["independent application", "advanced texts", "transfer tasks"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pattern_discrimination",
+            "criterion": "Distinguishes all complex patterns",
+            "frequency": "daily"
+          },
+          {
+            "type": "flexible_reading_fluency",
+            "criterion": "Reads with flexible strategies",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on mixed complex patterns",
+          "spelling": "70% accuracy on pattern choices",
+          "transfer": "Applies all complex vowel knowledge"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended systematic review",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily pattern checks",
+          "intervention_triggers": ["Below 60% mixed accuracy", "Strategy confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Advanced morphology introduction",
+          "enrichment": "Complex pattern exploration",
+          "complexity_increase": "Multisyllabic applications"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 complex patterns",
+          "visual_cues": "Complete complex pattern charts",
+          "practice_emphasis": "Flexible reading strategies"
+        }
+      }
+    }
+  ]
+}

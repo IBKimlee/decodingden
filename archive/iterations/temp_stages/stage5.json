@@ -1,0 +1,407 @@
+{
+  "stage_number": "",
+  "stage_name": "",
+  "grade_level": "",
+  "student_phase": "",
+  "duration": "",
+  "description": "",
+  "key_concept": "",
+  "instructional_focus": "",
+  "science_of_reading_alignment": "",
+  "total_elements": 5,
+  "phonemes": [
+    {
+      "phoneme": "/ar/",
+      "grapheme": "ar",
+      "category": "r-controlled vowel",
+      "frequency_rank": 1,
+      "key_word": "car",
+      "letrs_notes": "LETRS recommends introducing /ar/ first as it is most frequent and has consistent spelling pattern.",
+      "articulation": {
+        "mouth_position": "Open mouth wider than for short /a/, tongue pulled back and down slightly",
+        "tongue_placement": "Tongue tip curled up toward roof of mouth for 'r' sound",
+        "voice": "Voiced",
+        "duration": "Held longer than short vowels",
+        "mirror_work": "Watch mouth open wide, then see tongue curl up for /r/",
+        "tactile_cues": "Place hand on throat to feel vibration throughout the sound"
+      },
+      "teaching_tips": {
+        "multisensory_cues": [
+          "Visual: Use color-coded grapheme cards for 'ar' pattern",
+          "Kinesthetic: Elkonin boxes with 2 sound segments: /k/ /ar/",
+          "Auditory: Practice minimal pairs - 'cat' vs 'cart'",
+          "Tactile: Trace letters while saying /ar/ as single unit, mirror work for articulation"
+        ],
+        "common_errors": [
+          "Substituting short /a/ for /ar/ (e.g., 'car' \u2192 'cat')",
+          "Treating as two separate phonemes /a/ + /r/ instead of single /ar/",
+          "Difficulty with articulatory blending of vowel-r unit"
+        ],
+        "error_corrections": [
+          "Use minimal pairs for contrast: 'cat' vs 'cart'",
+          "Model single phoneme mapping: /k/ /ar/ not /k/ /a/ /r/",
+          "Practice with Elkonin boxes showing 2 sounds total"
+        ]
+      },
+      "word_lists": {
+        "beginning": [
+          "art",
+          "arm",
+          "ark"
+        ],
+        "middle": [
+          "car",
+          "star",
+          "far",
+          "part",
+          "hard",
+          "park",
+          "dark",
+          "mark",
+          "barn",
+          "yarn"
+        ],
+        "end": [
+          "scar"
+        ],
+        "multisyllabic": [
+          "garden",
+          "farmer",
+          "market",
+          "started",
+          "harder"
+        ],
+        "letrs_high_frequency": [
+          "car",
+          "star",
+          "far",
+          "part",
+          "hard"
+        ]
+      },
+      "decodable_sentences": [
+        "The car is in the dark park.",
+        "Mark saw a star far away.",
+        "The farmer has a large garden.",
+        "A shark swims in the water."
+      ],
+      "phonemic_awareness": {
+        "isolation": "What sound do you hear in the middle of 'car'? /ar/ (single phoneme)",
+        "blending": "Blend these sounds: /k/ /ar/ = car (2 phonemes total)",
+        "segmentation": "How many sounds in 'park'? /p/ /ar/ /k/ = 3 sounds",
+        "manipulation": "Change /k/ in 'car' to /f/. What word do you get? (far)",
+        "letrs_focus": "Emphasize /ar/ as single phoneme, not /a/ + /r/"
+      }
+    },
+    {
+      "phoneme": "/or/",
+      "grapheme": "or",
+      "category": "r-controlled vowel",
+      "frequency_rank": 2,
+      "key_word": "for",
+      "letrs_notes": "LETRS recommends introducing /or/ second, following mastery of /ar/ pattern.",
+      "articulation": {
+        "mouth_position": "Lips slightly rounded, mouth more closed than /ar/",
+        "tongue_placement": "Tongue pulled back and up toward roof of mouth",
+        "voice": "Voiced",
+        "duration": "Held longer than short vowels",
+        "mirror_work": "Watch lips round slightly, tongue pull back and up",
+        "tactile_cues": "Feel lips round and throat vibrate"
+      },
+      "teaching_tips": {
+        "multisensory_cues": [
+          "Visual: Show slightly rounded lips and tongue position",
+          "Kinesthetic: Roar like a lion for /or/ sound",
+          "Auditory: 'The sound a lion makes: /or/'",
+          "Tactile: Feel slight lip rounding and throat vibration"
+        ],
+        "common_errors": [
+          "Making /o/ + /r/ as separate sounds",
+          "Not rounding lips enough",
+          "Confusing with /ar/ sound"
+        ],
+        "error_corrections": [
+          "Emphasize blended sound: 'It's /or/, not /o/-/r/'",
+          "Practice lion roar: 'Roar like a lion: /or/'",
+          "Compare with /ar/: 'Car has /ar/, but for has /or/'"
+        ]
+      },
+      "word_lists": {
+        "beginning": [
+          "or"
+        ],
+        "middle": [
+          "for",
+          "corn",
+          "sort",
+          "born",
+          "short",
+          "torn",
+          "horn",
+          "worn",
+          "fort",
+          "sport"
+        ],
+        "end": [
+          "door",
+          "floor"
+        ],
+        "multisyllabic": [
+          "morning",
+          "corner",
+          "story",
+          "forty",
+          "before"
+        ],
+        "letrs_high_frequency": [
+          "for",
+          "corn",
+          "sort",
+          "born",
+          "short"
+        ]
+      },
+      "decodable_sentences": [
+        "The horn is very short.",
+        "Corn grows tall in the field.",
+        "She wore a dress to the party.",
+        "The story was about a fort."
+      ],
+      "phonemic_awareness": {
+        "isolation": "What sound do you hear in the middle of 'torn'? /or/",
+        "blending": "Blend these sounds: /k/ /or/ /n/ = corn",
+        "segmentation": "How many sounds in 'short'? /sh/ /or/ /t/ = 3 sounds",
+        "manipulation": "Change /t/ in 'torn' to /k/. What word do you get? (cork)"
+      }
+    },
+    {
+      "phoneme": "/er/",
+      "grapheme": "er",
+      "category": "r-controlled vowel",
+      "frequency_rank": 3,
+      "key_word": "her",
+      "letrs_notes": "LETRS teaches /er/, /ir/, /ur/ as a group since they represent the identical phoneme /er/ with different spellings.",
+      "articulation": {
+        "mouth_position": "Mouth slightly open, neutral position",
+        "tongue_placement": "Tongue pulled back and curled up slightly",
+        "voice": "Voiced",
+        "duration": "Held longer than short vowels",
+        "mirror_work": "Watch neutral mouth position with tongue pulling back",
+        "tactile_cues": "Feel tongue tension pulling back and throat vibration"
+      },
+      "teaching_tips": {
+        "multisensory_cues": [
+          "Visual: Show neutral mouth with tongue pulled back",
+          "Kinesthetic: Shiver and say 'brr' but with /er/ sound",
+          "Auditory: 'The sound you make when thinking: /er/'",
+          "Tactile: Feel tongue pulling back and throat vibrating"
+        ],
+        "common_errors": [
+          "Making /e/ + /r/ as separate sounds",
+          "Not pulling tongue back enough",
+          "Confusing with other r-controlled vowels"
+        ],
+        "error_corrections": [
+          "Model blended sound: 'It's /er/, not /e/-/r/'",
+          "Practice 'thinking' sound: 'When you're thinking: /er/'",
+          "Compare with other r-controlled: 'Her has /er/, not /ar/ or /or/'"
+        ]
+      },
+      "word_lists": {
+        "beginning": [],
+        "middle": [
+          "her",
+          "term",
+          "fern",
+          "perch",
+          "nerve",
+          "serve",
+          "verse",
+          "merge"
+        ],
+        "end": [
+          "were",
+          "there",
+          "where"
+        ],
+        "multisyllabic": [
+          "better",
+          "sister",
+          "winter",
+          "under",
+          "after"
+        ],
+        "letrs_high_frequency": [
+          "her",
+          "term",
+          "fern",
+          "perch"
+        ]
+      },
+      "decodable_sentences": [
+        "Her sister likes ferns.",
+        "The herd ran under the tree.",
+        "Where were you after dinner?",
+        "Winter is better than summer."
+      ],
+      "phonemic_awareness": {
+        "isolation": "What sound do you hear in the middle of 'fern'? /er/",
+        "blending": "Blend these sounds: /h/ /er/ /d/ = herd",
+        "segmentation": "How many sounds in 'nerve'? /n/ /er/ /v/ = 3 sounds",
+        "manipulation": "Change /f/ in 'fern' to /t/. What word do you get? (tern)"
+      }
+    },
+    {
+      "phoneme": "/ir/",
+      "grapheme": "ir",
+      "category": "r-controlled vowel",
+      "frequency_rank": 4,
+      "key_word": "bird",
+      "articulation": {
+        "mouth_position": "Mouth slightly open, similar to /er/",
+        "tongue_placement": "Tongue pulled back and curled up",
+        "voice": "Voiced",
+        "duration": "Held longer than short vowels",
+        "mirror_work": "Watch mouth position - very similar to /er/",
+        "tactile_cues": "Feel tongue position identical to /er/"
+      },
+      "teaching_tips": {
+        "multisensory_cues": [
+          "Visual: Point out that /ir/ looks different but sounds like /er/",
+          "Kinesthetic: Flap arms like a bird while saying /ir/",
+          "Auditory: 'Bird says /ir/ but it sounds like /er/'",
+          "Tactile: Feel that tongue position matches /er/"
+        ],
+        "common_errors": [
+          "Trying to make /i/ + /r/ as separate sounds",
+          "Not recognizing it sounds identical to /er/",
+          "Spelling confusion between ir and er"
+        ],
+        "error_corrections": [
+          "Emphasize: '/ir/ sounds exactly like /er/'",
+          "Practice pairs: 'fern/firm both have the same sound'",
+          "Spelling practice: 'Different letters, same sound'"
+        ]
+      },
+      "word_lists": {
+        "beginning": [],
+        "middle": [
+          "bird",
+          "first",
+          "girl",
+          "shirt",
+          "dirt",
+          "firm",
+          "third",
+          "whirl",
+          "twirl"
+        ],
+        "end": [
+          "fir",
+          "sir",
+          "stir"
+        ],
+        "multisyllabic": [
+          "thirty",
+          "circle",
+          "birthday",
+          "thirteen",
+          "dirty"
+        ],
+        "letrs_high_frequency": [
+          "bird",
+          "first",
+          "girl",
+          "shirt"
+        ]
+      },
+      "decodable_sentences": [
+        "The girl wore a dirty shirt.",
+        "A bird sat on the fir tree.",
+        "Stir the dirt with a stick.",
+        "It was her thirteenth birthday."
+      ],
+      "phonemic_awareness": {
+        "isolation": "What sound do you hear in the middle of 'bird'? /ir/ (sounds like /er/)",
+        "blending": "Blend these sounds: /g/ /ir/ /l/ = girl",
+        "segmentation": "How many sounds in 'third'? /th/ /ir/ /d/ = 3 sounds",
+        "manipulation": "Change /d/ in 'dirt' to /m/. What word do you get? (dirm - not a word, try 'firm')"
+      }
+    },
+    {
+      "phoneme": "/ur/",
+      "grapheme": "ur",
+      "category": "r-controlled vowel",
+      "frequency_rank": 5,
+      "key_word": "turn",
+      "articulation": {
+        "mouth_position": "Mouth slightly open, identical to /er/ and /ir/",
+        "tongue_placement": "Tongue pulled back and curled up",
+        "voice": "Voiced",
+        "duration": "Held longer than short vowels",
+        "mirror_work": "Watch mouth - identical to /er/ and /ir/",
+        "tactile_cues": "Feel tongue position matches /er/ and /ir/"
+      },
+      "teaching_tips": {
+        "multisensory_cues": [
+          "Visual: Show that /ur/ looks different but sounds like /er/ and /ir/",
+          "Kinesthetic: Turn in a circle while saying /ur/",
+          "Auditory: 'Turn has /ur/ but sounds like /er/'",
+          "Tactile: Feel identical tongue position to /er/ and /ir/"
+        ],
+        "common_errors": [
+          "Trying to make /u/ + /r/ as separate sounds",
+          "Not recognizing it sounds identical to /er/ and /ir/",
+          "Spelling confusion between ur, er, and ir"
+        ],
+        "error_corrections": [
+          "Emphasize: '/ur/ sounds exactly like /er/ and /ir/'",
+          "Practice triplets: 'her/bird/turn all have the same sound'",
+          "Spelling focus: 'Three spellings, one sound'"
+        ]
+      },
+      "word_lists": {
+        "beginning": [],
+        "middle": [
+          "fur",
+          "turn",
+          "curl",
+          "hurt",
+          "burn",
+          "blur",
+          "spur",
+          "purr",
+          "surf"
+        ],
+        "end": [
+          "bur"
+        ],
+        "multisyllabic": [
+          "purple",
+          "turkey",
+          "Thursday",
+          "burglar",
+          "surprise"
+        ],
+        "letrs_high_frequency": [
+          "fur",
+          "turn",
+          "curl",
+          "hurt"
+        ]
+      },
+      "decodable_sentences": [
+        "The cat has soft fur.",
+        "Turn left at the purple house.",
+        "Don't burn your hand!",
+        "We eat turkey on Thursday."
+      ],
+      "phonemic_awareness": {
+        "isolation": "What sound do you hear in the middle of 'turn'? /ur/ (sounds like /er/)",
+        "blending": "Blend these sounds: /b/ /ur/ /n/ = burn",
+        "segmentation": "How many sounds in 'purple'? /p/ /ur/ /p/ /l/ = 4 sounds",
+        "manipulation": "Change /t/ in 'turn' to /b/. What word do you get? (burn)"
+      }
+    }
+  ]
+}

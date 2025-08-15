@@ -1,0 +1,518 @@
+{
+  "metadata": {
+    "generated_date": "2025-01-02",
+    "total_phonemes": 120,
+    "data_sources": [
+      "app/data/allStagesDatabase.ts",
+      "app/data/phonemeDevelopmentDatabase.ts", 
+      "app/types/phoneme.ts",
+      "app/api/generate-lesson/route.ts",
+      "app/teacher/stages/[stage]/page.tsx",
+      "Comprehensive Grapheme List (provided)"
+    ],
+    "description": "Complete phoneme database for Supabase migration with all JSONB column data"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage1_m",
+      "stage_id": 1,
+      "phoneme": "/m/",
+      "graphemes": ["m", "mm"],
+      "frequency_rank": 1,
+      "complexity_score": 1.0,
+      "grade_band": "K-Fall",
+      "introduction_week": 1,
+      "word_examples": ["mat", "mad", "man", "mom", "mud"],
+      "decodable_sentences": ["I am mad.", "Sam has a mat."],
+      "assessment_criteria": {
+        "daily": "90% accuracy in phoneme production",
+        "weekly": "85% accuracy in word reading",
+        "summative": "95% letter-sound correspondence"
+      },
+      "teaching_advantages": ["visible articulation", "continuous sound", "early developing"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "McLeod & Crowe (2018)"],
+      "articulation_data": {
+        "manner": "nasal",
+        "place": "bilabial",
+        "voicing": "voiced",
+        "airflow": "nasal",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["omission", "/n/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/n/", "/ng/"],
+        "development_notes": "One of the earliest sounds acquired. Should be mastered by age 3.",
+        "articulation_cues": "👄 Lips together, vocal cords on. 🗣️ Voiced",
+        "teacher_guidance": "Use mirror work to show lip closure. Easy sound for modeling.",
+        "student_tips": "Put your lips together and hum. Feel the vibration."
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "early",
+          "prerequisite_check": ["phonemic awareness", "letter recognition"],
+          "mastery_criteria": "90% accuracy in isolation and CVC words"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["sound production", "mirror work", "articulation practice"],
+            "duration": "2-3 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["CVC blending", "sound-symbol connection", "word building"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["decodable text", "spelling practice", "connected reading"],
+            "duration": "3-4 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "daily_quick_check",
+            "criterion": "Produces /m/ sound in isolation",
+            "frequency": "daily"
+          },
+          {
+            "type": "word_reading",
+            "criterion": "Reads 5 CVC words with /m/",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "90% accuracy on 10 /m/ words",
+          "spelling": "80% accuracy on 5 /m/ words",
+          "transfer": "Uses /m/ knowledge in new words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Double practice time with multisensory supports",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily data collection",
+          "intervention_triggers": ["Below 70% accuracy after 1 week", "Inconsistent production"]
+        },
+        "advanced_learners": {
+          "acceleration": "Move to blends and advanced patterns",
+          "enrichment": "Word study with morphology",
+          "complexity_increase": "Multisyllabic words with /m/"
+        },
+        "english_learners": {
+          "native_language_connections": true,
+          "visual_supports": "Picture cards, mouth position charts",
+          "oral_language_emphasis": "Vocabulary development with /m/ words",
+          "cultural_considerations": ["Ensure /m/ exists in native language", "Respect cultural naming patterns"]
+        }
+      },
+      "linguistic_properties_extended": {
+        "phonological_neighbors": ["/n/", "/ng/", "/b/", "/p/"],
+        "morphological_role": ["initial", "medial", "final"],
+        "syllable_positions": ["onset", "coda"],
+        "coarticulation_effects": "Influences adjacent vowels minimally",
+        "frequency_distribution": {
+          "initial": 45,
+          "medial": 30,
+          "final": 25
+        }
+      },
+      "weekly_data_override": [
+        {
+          "week": 1,
+          "stage": 1,
+          "focus_words": ["am", "Sam", "mat", "mad"],
+          "decodable_text": "Sam has a mat. I am Sam.",
+          "assessment": "Daily quick check: /m/ sound production",
+          "tips": "Use mirror work. Show lip closure clearly."
+        }
+      ],
+      "content_generation_meta": {
+        "ai_keyword": "man",
+        "example_words": ["mat", "mad", "man", "mom", "mud"],
+        "difficulty_progression": ["CVC", "CVCC", "CCVC", "multisyllabic"],
+        "word_families": ["-am", "-um", "-im"],
+        "context_sentences": "Generated based on decodability requirements"
+      }
+    },
+    {
+      "phoneme_id": "stage1_s",
+      "stage_id": 1,
+      "phoneme": "/s/",
+      "graphemes": ["s", "ss", "se", "c"],
+      "frequency_rank": 2,
+      "complexity_score": 1.0,
+      "grade_band": "K-Fall",
+      "introduction_week": 1,
+      "word_examples": ["sat", "sad", "sun", "sit"],
+      "decodable_sentences": ["Sam is sad.", "I sit."],
+      "assessment_criteria": {
+        "daily": "90% accuracy in phoneme production",
+        "weekly": "85% accuracy in word reading",
+        "summative": "95% letter-sound correspondence"
+      },
+      "teaching_advantages": ["continuous sound", "frequent usage", "visible airflow"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Bowen (2011)"],
+      "articulation_data": {
+        "manner": "fricative",
+        "place": "alveolar",
+        "voicing": "voiceless",
+        "airflow": "oral",
+        "typical_age_range": "4–6",
+        "acquisition_age": "6",
+        "common_substitutions": ["/th/", "/sh/", "/t/", "lateral lisp"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["/z/", "/sh/", "/ch/", "/th/"],
+        "development_notes": "Complex fricative requiring precise tongue placement. Lisps are common until age 6.",
+        "articulation_cues": "👄 Tongue near roof of mouth, air flows quietly. 🗣️ Unvoiced",
+        "teacher_guidance": "Use feather or tissue to show airflow. Common to have lisps initially.",
+        "student_tips": "Make the snake sound. Feel the air on your hand."
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "early",
+          "prerequisite_check": ["phonemic awareness", "letter recognition"],
+          "mastery_criteria": "90% accuracy in isolation and CVC words"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["sound production", "airflow awareness", "articulation practice"],
+            "duration": "2-3 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["CVC blending", "initial/final position", "word building"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["decodable text", "spelling practice", "connected reading"],
+            "duration": "3-4 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "daily_quick_check",
+            "criterion": "Produces /s/ sound without lateral distortion",
+            "frequency": "daily"
+          },
+          {
+            "type": "position_check",
+            "criterion": "Identifies /s/ in initial, medial, final positions",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "90% accuracy on 10 /s/ words",
+          "spelling": "80% accuracy on 5 /s/ words",
+          "transfer": "Uses /s/ knowledge in new words and blends"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on tongue placement with visual/tactile cues",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Track lisp patterns and improvement",
+          "intervention_triggers": ["Persistent lateral lisp", "Frontal lisp", "Inconsistent production"]
+        },
+        "advanced_learners": {
+          "acceleration": "Introduce /s/ blends and clusters",
+          "enrichment": "Compare /s/ and /sh/ articulation",
+          "complexity_increase": "Multisyllabic words and morphology"
+        },
+        "english_learners": {
+          "native_language_connections": true,
+          "visual_supports": "Tongue placement diagrams, airflow demonstrations",
+          "oral_language_emphasis": "Vocabulary with high-frequency /s/ words",
+          "cultural_considerations": ["Check native language /s/ production", "Some languages have different sibilant systems"]
+        }
+      },
+      "linguistic_properties_extended": {
+        "phonological_neighbors": ["/z/", "/sh/", "/th/", "/f/"],
+        "morphological_role": ["initial", "medial", "final"],
+        "syllable_positions": ["onset", "coda"],
+        "coarticulation_effects": "Strong influence on adjacent vowels",
+        "frequency_distribution": {
+          "initial": 40,
+          "medial": 25,
+          "final": 35
+        }
+      },
+      "weekly_data_override": [
+        {
+          "week": 1,
+          "stage": 1,
+          "focus_words": ["Sam", "sad", "sat", "sun"],
+          "decodable_text": "Sam is sad. Sam sat.",
+          "assessment": "Daily quick check: /s/ sound production without lisp",
+          "tips": "Use feather test for airflow. Watch for lisps."
+        }
+      ],
+      "content_generation_meta": {
+        "ai_keyword": "sun",
+        "example_words": ["sat", "sad", "sun", "sit"],
+        "difficulty_progression": ["CVC", "CVCC", "CCVC", "consonant clusters"],
+        "word_families": ["-at", "-it", "-un"],
+        "context_sentences": "High frequency sight words included"
+      }
+    },
+    {
+      "phoneme_id": "stage2_ch",
+      "stage_id": 2,
+      "phoneme": "/ch/",
+      "graphemes": ["ch", "tch", "tu", "ti"],
+      "frequency_rank": 26,
+      "complexity_score": 2.2,
+      "grade_band": "K-Spring",
+      "introduction_week": 4,
+      "word_examples": ["chip", "chat", "much", "such"],
+      "decodable_sentences": ["The chip is much good.", "I chat such a lot."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in phoneme production",
+        "weekly": "70% accuracy in word reading",
+        "summative": "80% digraph recognition"
+      },
+      "teaching_advantages": ["two letters, one sound", "distinctive sound", "affricate combination"],
+      "research_sources": ["Adams (1990)", "FCRR (2005)", "Bowen (2011)"],
+      "articulation_data": {
+        "manner": "affricate",
+        "place": "postalveolar",
+        "voicing": "voiceless",
+        "airflow": "oral",
+        "typical_age_range": "4–6",
+        "acquisition_age": "6",
+        "common_substitutions": ["/sh/", "/t/", "/t/ + /sh/"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["/j/", "/sh/", "/t/"],
+        "development_notes": "Affricate combining /t/ + /sh/. May be produced as separate sounds initially.",
+        "articulation_cues": "👄 Tongue touches and releases quickly. 🗣️ Unvoiced",
+        "teacher_guidance": "Demonstrate /t/ + /sh/ = /ch/. Use gesture of touching and releasing.",
+        "student_tips": "Start with /t/, then add /sh/. Like a sneeze sound."
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 4,
+          "lesson_position": "middle",
+          "prerequisite_check": ["single letter mastery", "/t/ and /sh/ knowledge"],
+          "mastery_criteria": "75% accuracy in digraph recognition"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["digraph concept", "two letters-one sound", "affricate demonstration"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["position practice", "ch vs tch rules", "word building"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["decodable text", "spelling patterns", "connected reading"],
+            "duration": "3-4 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "digraph_recognition",
+            "criterion": "Identifies ch as one sound, not two",
+            "frequency": "daily"
+          },
+          {
+            "type": "spelling_pattern",
+            "criterion": "Chooses ch vs tch appropriately",
+            "frequency": "weekly"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "80% accuracy on ch/tch words",
+          "spelling": "70% accuracy on ch/tch spelling choices",
+          "transfer": "Applies digraph concept to new patterns"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended work on digraph concept with manipulatives",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Track digraph vs. blend confusion",
+          "intervention_triggers": ["Treats ch as two sounds", "Confuses with /sh/", "Unable to hear difference"]
+        },
+        "advanced_learners": {
+          "acceleration": "Introduce -ture words and other /ch/ spellings",
+          "enrichment": "Compare affricates /ch/ and /j/",
+          "complexity_increase": "Multisyllabic words with /ch/"
+        },
+        "english_learners": {
+          "native_language_connections": false,
+          "visual_supports": "Two-letters-one-sound visual cues",
+          "oral_language_emphasis": "Practice with common /ch/ vocabulary",
+          "cultural_considerations": ["/ch/ may not exist in all languages", "May substitute with /sh/ or /t/"]
+        }
+      },
+      "linguistic_properties_extended": {
+        "phonological_neighbors": ["/j/", "/sh/", "/t/", "/k/"],
+        "morphological_role": ["initial", "medial", "final"],
+        "syllable_positions": ["onset", "coda"],
+        "coarticulation_effects": "Complex interaction with adjacent vowels",
+        "frequency_distribution": {
+          "initial": 50,
+          "medial": 20,
+          "final": 30
+        }
+      },
+      "weekly_data_override": [
+        {
+          "week": 4,
+          "stage": 2,
+          "focus_words": ["chip", "chat", "much", "lunch"],
+          "decodable_text": "The chip is much. I chat at lunch.",
+          "assessment": "Digraph recognition: ch = one sound",
+          "tips": "Emphasize 'two letters, one sound' concept. Use hand gestures."
+        }
+      ],
+      "content_generation_meta": {
+        "ai_keyword": "chip",
+        "example_words": ["chip", "chat", "much", "such"],
+        "difficulty_progression": ["CVC with ch", "ch blends", "tch words", "multisyllabic"],
+        "word_families": ["-atch", "-itch", "-unch"],
+        "context_sentences": "Focus on ch vs tch spelling patterns"
+      }
+    },
+    {
+      "phoneme_id": "stage4_a_e",
+      "stage_id": 4,
+      "phoneme": "/ā/",
+      "graphemes": ["a_e", "ai", "ay", "eigh", "ea", "ey", "ei"],
+      "frequency_rank": 35,
+      "complexity_score": 2.8,
+      "grade_band": "1st-Spring",
+      "introduction_week": 1,
+      "word_examples": ["cake", "name", "play", "day"],
+      "decodable_sentences": ["I can make a cake.", "They play all day."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in long vowel production",
+        "weekly": "70% accuracy in VCe pattern recognition",
+        "summative": "80% long vs short vowel discrimination"
+      },
+      "teaching_advantages": ["magic e concept", "vowel says its name", "high frequency pattern"],
+      "research_sources": ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "front",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["/uh/", "/e/", "neutralization"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/e/", "/i/", "/o/", "/u/"],
+        "development_notes": "Long vowel representing alphabet name. Foundation for vowel system.",
+        "articulation_cues": "👄 Mouth open mid-wide, tongue high-mid front. Lips relaxed. 🗣️ Voiced",
+        "teacher_guidance": "Contrast with short /a/. Use 'magic e' concept.",
+        "student_tips": "Say the letter name A. The vowel says its name!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "early",
+          "prerequisite_check": ["short vowel mastery", "basic CVC reading"],
+          "mastery_criteria": "75% accuracy in VCe pattern reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["long vs short contrast", "magic e explanation", "vowel name connection"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["VCe word building", "pattern recognition", "spelling practice"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["decodable text", "vowel team introduction", "connected reading"],
+            "duration": "3-4 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pattern_recognition",
+            "criterion": "Identifies VCe pattern in words",
+            "frequency": "daily"
+          },
+          {
+            "type": "long_short_discrimination",
+            "criterion": "Distinguishes /ā/ from /a/ in word pairs",
+            "frequency": "every 2 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "80% accuracy on VCe words",
+          "spelling": "70% accuracy on a_e spelling",
+          "transfer": "Applies pattern to ai, ay words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended contrast work with short /a/",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Track long/short vowel confusion",
+          "intervention_triggers": ["Cannot distinguish long/short", "Inconsistent VCe reading", "Magic e concept confusion"]
+        },
+        "advanced_learners": {
+          "acceleration": "Introduce all long vowel patterns simultaneously",
+          "enrichment": "Etymology of silent e",
+          "complexity_increase": "Multisyllabic words with VCe"
+        },
+        "english_learners": {
+          "native_language_connections": true,
+          "visual_supports": "Magic e visual representations",
+          "oral_language_emphasis": "Vocabulary development with VCe words",
+          "cultural_considerations": ["Long vowels may not exist in native language", "Silent letters can be confusing"]
+        }
+      },
+      "linguistic_properties_extended": {
+        "phonological_neighbors": ["/e/", "/i/", "/ei/", "/ε/"],
+        "morphological_role": ["initial", "medial", "final"],
+        "syllable_positions": ["nucleus"],
+        "coarticulation_effects": "Influences duration of adjacent consonants",
+        "frequency_distribution": {
+          "a_e": 40,
+          "ai": 30,
+          "ay": 25,
+          "other": 5
+        }
+      },
+      "weekly_data_override": [
+        {
+          "week": 1,
+          "stage": 4,
+          "focus_words": ["make", "cake", "take", "name"],
+          "decodable_text": "I can make a cake. Take the name.",
+          "assessment": "VCe pattern recognition and long/short discrimination",
+          "tips": "Emphasize magic e makes vowel say its name. Use gestures."
+        }
+      ],
+      "content_generation_meta": {
+        "ai_keyword": "cake",
+        "example_words": ["cake", "name", "play", "day"],
+        "difficulty_progression": ["CVCe", "ai words", "ay words", "complex patterns"],
+        "word_families": ["-ake", "-ame", "-ape", "-ate"],
+        "context_sentences": "Focus on most frequent /ā/ spellings first"
+      }
+    }
+  ]
+}

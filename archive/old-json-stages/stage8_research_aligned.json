@@ -1,0 +1,884 @@
+{
+  "stage_number": 8,
+  "stage_name": "Multisyllabic Patterns & Morphology",
+  "grade_level": "Third Grade+",
+  "student_phase": "Morphological/Advanced Reading",
+  "duration": "10-12 weeks",
+  "total_elements": 15,
+  "description": "Students master advanced word analysis through syllable division, morphology (prefixes, suffixes, roots), and complex spelling patterns. This stage emphasizes meaning-based word analysis and prepares students for academic vocabulary across content areas.",
+  "key_concept": "Big words become manageable when we break them into meaningful parts. Prefixes change meaning (un-happy), suffixes change word type (teach-er), and roots carry core meaning. Understanding these parts unlocks thousands of complex words.",
+  "instructional_focus": [
+    "Syllable division patterns (VCCV, VCV, VCCCV)",
+    "Common prefixes and their meanings",
+    "Derivational suffixes and word transformations",
+    "Greek and Latin roots",
+    "Academic vocabulary strategies"
+  ],
+  "science_of_reading_alignment": {
+    "ehri_phase": "Morphological - meaning units drive recognition",
+    "national_reading_panel": "Morphological awareness crucial for comprehension",
+    "adams_principle": "Word parts more reliable than whole word memorization",
+    "orthographic_mapping": "Morphemes as primary units of storage"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage8_syllable_vccv",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 10,
+        "complexity_score": 5.5,
+        "prerequisite_phonemes": ["all basic patterns", "compound words"],
+        "grade_band": "3+",
+        "introduction_week": 1,
+        "neurological_rationale": "Syllable division creates manageable chunks"
+      },
+      "linguistic_properties": {
+        "pattern_type": "syllable_division",
+        "pattern": "VCCV",
+        "division_rule": "divide between consonants",
+        "first_syllable": "usually closed (short vowel)",
+        "second_syllable": "varies",
+        "frequency": "most common pattern"
+      },
+      "pattern_characteristics": {
+        "visual_cue": "two consonants between vowels",
+        "division_point": "between the consonants",
+        "exceptions": "consonant digraphs stay together",
+        "morpheme_awareness": "check for meaning units"
+      },
+      "word_examples": {
+        "basic_vccv": ["rabbit", "button", "happen", "yellow", "letter"],
+        "different_consonants": ["pencil", "winter", "number", "basket", "problem"],
+        "with_digraphs": ["mother", "father", "weather", "feather", "gather"],
+        "compound_overlap": ["football", "popcorn", "notebook"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The rabbit hopped under the yellow basket in winter. (90% decodable)",
+          "My sister wrote a letter about the problem with her pencil. (88% decodable)",
+          "The number on the button will happen to be seven. (90% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Chunking reduces cognitive load",
+          "multisensory_cues": [
+            "Find two consonants between vowels",
+            "Draw line between them",
+            "First syllable usually has short vowel"
+          ],
+          "strategic_approach": "rab/bit, but/ton, hap/pen"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy identifying VCCV pattern",
+        "formative_weekly": "80% accuracy dividing VCCV words",
+        "summative": "90% recognition, 85% division, 85% reading",
+        "syllable_awareness": "Automatically chunks VCCV words"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Syllable division aids decoding",
+        "Moats, L.C. (2020) - VCCV most reliable pattern",
+        "National Reading Panel (2000) - Chunking improves fluency"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_syllable_vcv_open",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 25,
+        "complexity_score": 5.6,
+        "prerequisite_phonemes": ["VCCV pattern", "long vowels"],
+        "grade_band": "3+",
+        "introduction_week": 2,
+        "neurological_rationale": "VCV pattern requires strategic division"
+      },
+      "linguistic_properties": {
+        "pattern_type": "syllable_division",
+        "pattern": "VCV",
+        "division_rule": "usually divide after first vowel",
+        "first_syllable": "usually open (long vowel)",
+        "second_syllable": "starts with consonant",
+        "frequency": "common but variable"
+      },
+      "pattern_characteristics": {
+        "visual_cue": "one consonant between vowels",
+        "primary_division": "V/CV (open syllable)",
+        "alternative_division": "VC/V (closed syllable)",
+        "strategy": "try open first, then closed"
+      },
+      "word_examples": {
+        "open_syllable": ["tiger", "pilot", "music", "paper", "baby"],
+        "long_vowel_signal": ["robot", "moment", "frozen", "basic", "student"],
+        "exceptions_closed": ["river", "lemon", "cabin", "robin", "dragon"],
+        "meaning_units": ["re-turn", "pre-view", "un-der"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The tiger and robot made music on paper. (88% decodable)",
+          "The pilot saw a frozen river from the cabin. (88% decodable)",
+          "My baby sister is a student who likes lemons. (90% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Flexible strategies for variable patterns",
+          "multisensory_cues": [
+            "One consonant = decision point",
+            "Try long vowel first (ti/ger)",
+            "If that doesn't work, try short (riv/er)"
+          ],
+          "strategic_flexibility": "Self-monitoring during division"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy trying VCV strategies",
+        "formative_weekly": "75% accuracy choosing correct division",
+        "summative": "85% recognition, 80% strategic division, 80% reading",
+        "flexible_approach": "Uses both VCV division strategies"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - VCV variability in English",
+        "Adams, M.J. (1990) - Strategic approaches necessary",
+        "Moats, L.C. (2020) - Flexibility with VCV pattern"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_syllable_vcccv",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 45,
+        "complexity_score": 5.7,
+        "prerequisite_phonemes": ["blends", "syllable patterns"],
+        "grade_band": "3+",
+        "introduction_week": 3,
+        "neurological_rationale": "Complex consonant clusters in syllables"
+      },
+      "linguistic_properties": {
+        "pattern_type": "syllable_division",
+        "pattern": "VCCCV",
+        "division_rule": "keep blends/digraphs together",
+        "typical_division": "VC/CCV or VCC/CV",
+        "blend_awareness": "critical for division",
+        "frequency": "less common but important"
+      },
+      "pattern_characteristics": {
+        "visual_cue": "three consonants between vowels",
+        "division_strategy": "find the blend or digraph",
+        "common_clusters": ["str", "spl", "scr", "spr"],
+        "morpheme_check": "watch for prefixes/suffixes"
+      },
+      "word_examples": {
+        "with_blends": ["hundred", "children", "pumpkin", "mushroom", "construct"],
+        "blend_stays": ["in-struct", "con-struct", "ob-struct"],
+        "complex_words": ["instrument", "illustrate", "demonstrate"],
+        "meaning_preservation": ["un-scram-ble", "in-struc-tion"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The children found a hundred pumpkins to construct. (88% decodable)",
+          "Can you demonstrate how to unscramble the instrument? (85% decodable)",
+          "The mushroom illustration was extremely complex. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Blend recognition aids complex division",
+          "multisensory_cues": [
+            "Three consonants = find the blend",
+            "Blends stay together (con/struct)",
+            "Check if it makes sense"
+          ],
+          "pattern_recognition": "Prior knowledge guides division"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "75% accuracy identifying blends in VCCCV",
+        "formative_weekly": "70% accuracy dividing VCCCV words",
+        "summative": "80% recognition, 75% division, 75% reading",
+        "blend_preservation": "Keeps blends together in division"
+      },
+      "research_attribution": [
+        "Moats, L.C. (2020) - Complex clusters require analysis",
+        "Adams, M.J. (1990) - Blend knowledge aids division",
+        "National Reading Panel (2000) - Pattern complexity increases"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_prefix_un_re_dis",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 12,
+        "complexity_score": 5.8,
+        "prerequisite_phonemes": ["syllable division", "meaning awareness"],
+        "grade_band": "3+",
+        "introduction_week": 4,
+        "neurological_rationale": "Morphological units drive word recognition"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "prefix",
+        "common_prefixes": ["un-", "re-", "dis-"],
+        "meaning_change": "reverses or repeats base meaning",
+        "pronunciation": "consistent",
+        "attachment": "beginning of base word"
+      },
+      "morphological_principles": {
+        "un_meaning": "not or opposite",
+        "re_meaning": "again or back",
+        "dis_meaning": "not or opposite",
+        "base_preservation": "base word unchanged",
+        "productive_use": "can create new words"
+      },
+      "word_examples": {
+        "un_words": ["unhappy", "unfair", "unlock", "unable", "unkind"],
+        "re_words": ["return", "reread", "rebuild", "replace", "review"],
+        "dis_words": ["disagree", "disappear", "disconnect", "dislike", "discover"],
+        "meaning_pairs": ["happy/unhappy", "do/redo", "like/dislike"],
+        "cumulative_decodable_sentences_98_percent": [
+          "I will reread the unfair review and disagree. (88% decodable)",
+          "Please unlock and reconnect the cable to discover the problem. (85% decodable)",
+          "It's unkind to disappear and not return the displaced items. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Meaning units processed faster than letters",
+          "multisensory_cues": [
+            "Prefix at beginning changes meaning",
+            "un- and dis- mean 'not'",
+            "re- means 'again'"
+          ],
+          "vocabulary_power": "Three prefixes unlock hundreds of words"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy identifying prefixes",
+        "formative_weekly": "85% accuracy explaining meaning change",
+        "summative": "95% recognition, 90% meaning, 90% reading",
+        "morphological_awareness": "Uses prefix meaning for unknown words"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Morphology central to literacy",
+        "Adams, M.J. (1990) - Meaningful units aid recognition",
+        "Carlisle, J.F. (2010) - Morphological instruction effects"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_prefix_pre_sub_inter",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 28,
+        "complexity_score": 5.9,
+        "prerequisite_phonemes": ["basic prefixes", "Latin awareness"],
+        "grade_band": "3+",
+        "introduction_week": 5,
+        "neurological_rationale": "Latin prefixes expand vocabulary"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "prefix",
+        "origin": "Latin",
+        "prefixes": ["pre-", "sub-", "inter-"],
+        "meaning_precision": "specific spatial/temporal relations",
+        "academic_vocabulary": true
+      },
+      "morphological_principles": {
+        "pre_meaning": "before",
+        "sub_meaning": "under or below",
+        "inter_meaning": "between or among",
+        "compound_possibilities": ["interact", "submarine", "preview"],
+        "cross_curricular": "science and social studies"
+      },
+      "word_examples": {
+        "pre_words": ["preview", "predict", "prepare", "prevent", "preschool"],
+        "sub_words": ["submarine", "subway", "subtract", "subdivide", "submerge"],
+        "inter_words": ["interact", "international", "interrupt", "interview", "internet"],
+        "academic_vocabulary": ["predict", "subtract", "international"],
+        "cumulative_decodable_sentences_98_percent": [
+          "We can predict and prepare for the international submarine race. (85% decodable)",
+          "Please don't interrupt the interview about the subway subdivision. (85% decodable)",
+          "The preschool will preview how to interact on the internet. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Latin morphemes build academic vocabulary",
+          "multisensory_cues": [
+            "pre = before (preview = see before)",
+            "sub = under (submarine = under sea)",
+            "inter = between (interact = act between)"
+          ],
+          "content_connection": "Links to math, science, social studies"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy identifying Latin prefixes",
+        "formative_weekly": "80% accuracy using prefix meaning",
+        "summative": "90% recognition, 85% meaning application, 85% reading",
+        "academic_vocabulary": "Applies prefixes to content learning"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Latin morphology for academics",
+        "Carlisle, J.F. (2010) - Morphology improves comprehension",
+        "National Reading Panel (2000) - Vocabulary through morphology"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_suffix_er_est",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 15,
+        "complexity_score": 5.6,
+        "prerequisite_phonemes": ["adjectives", "comparisons"],
+        "grade_band": "3+",
+        "introduction_week": 6,
+        "neurological_rationale": "Inflectional suffixes show relationships"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "inflectional_suffix",
+        "suffixes": ["-er", "-est"],
+        "function": "comparative and superlative",
+        "spelling_changes": "sometimes doubles consonant or changes y",
+        "maintains_word_class": "adjective stays adjective"
+      },
+      "morphological_principles": {
+        "er_meaning": "more (comparative)",
+        "est_meaning": "most (superlative)",
+        "base_changes": ["big→bigger", "happy→happier"],
+        "spelling_rules": "double, drop, change",
+        "regular_attachment": ["tall→taller→tallest"]
+      },
+      "word_examples": {
+        "regular_forms": ["taller/tallest", "smaller/smallest", "older/oldest"],
+        "doubling_rule": ["bigger/biggest", "hotter/hottest", "thinner/thinnest"],
+        "y_to_i_rule": ["happier/happiest", "prettier/prettiest", "busier/busiest"],
+        "meaning_progression": ["tall→taller→tallest"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The bigger puppy is happier than the smallest one. (88% decodable)",
+          "This is the hottest and busiest day of the summer. (88% decodable)",
+          "My sister is taller and prettier than last year. (90% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Suffixes show grammatical relationships",
+          "multisensory_cues": [
+            "-er compares two things",
+            "-est compares three or more",
+            "Sometimes spelling changes"
+          ],
+          "grammar_connection": "Morphology meets syntax"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy adding -er/-est",
+        "formative_weekly": "85% accuracy with spelling changes",
+        "summative": "95% recognition, 90% application, 85% spelling",
+        "inflectional_mastery": "Applies comparison suffixes correctly"
+      },
+      "research_attribution": [
+        "Carlisle, J.F. (2010) - Inflectional morphology early acquired",
+        "Adams, M.J. (1990) - Suffix patterns highly regular",
+        "Moats, L.C. (2020) - Spelling rules with suffixes"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_suffix_ful_less_ness",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 32,
+        "complexity_score": 5.8,
+        "prerequisite_phonemes": ["derivational awareness", "word class knowledge"],
+        "grade_band": "3+",
+        "introduction_week": 7,
+        "neurological_rationale": "Derivational suffixes change word class"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "derivational_suffix",
+        "suffixes": ["-ful", "-less", "-ness"],
+        "function": "changes word class or meaning",
+        "ful_less_contrast": "opposite meanings",
+        "ness_function": "makes abstract nouns"
+      },
+      "morphological_principles": {
+        "ful_meaning": "full of",
+        "less_meaning": "without",
+        "ness_meaning": "state or quality of",
+        "word_class_change": ["care→careful", "happy→happiness"],
+        "productive_patterns": "can create new words"
+      },
+      "word_examples": {
+        "ful_words": ["helpful", "careful", "beautiful", "powerful", "grateful"],
+        "less_words": ["helpless", "careless", "fearless", "endless", "hopeless"],
+        "ness_words": ["happiness", "kindness", "darkness", "sickness", "goodness"],
+        "opposite_pairs": ["helpful/helpless", "careful/careless", "hopeful/hopeless"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The helpful and careful child showed great kindness. (88% decodable)",
+          "In the darkness, we felt helpless but not hopeless. (88% decodable)",
+          "Her happiness and gratefulness were beautiful and endless. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Derivational morphology builds vocabulary",
+          "multisensory_cues": [
+            "-ful means 'full of' (helpful)",
+            "-less means 'without' (helpless)",
+            "-ness makes it a thing (happiness)"
+          ],
+          "word_building_power": "Three suffixes create dozens of words"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy identifying suffix meaning",
+        "formative_weekly": "80% accuracy creating new words",
+        "summative": "90% recognition, 85% meaning, 85% application",
+        "derivational_awareness": "Uses suffixes to expand vocabulary"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Derivational morphology crucial",
+        "Carlisle, J.F. (2010) - Suffix knowledge predicts comprehension",
+        "Adams, M.J. (1990) - Morphological word building"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_suffix_ment_tion_sion",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 20,
+        "complexity_score": 6.0,
+        "prerequisite_phonemes": ["Latin patterns", "noun formation"],
+        "grade_band": "3+",
+        "introduction_week": 8,
+        "neurological_rationale": "Complex suffixes form abstract nouns"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "derivational_suffix",
+        "suffixes": ["-ment", "-tion", "-sion"],
+        "function": "forms nouns from verbs",
+        "origin": "Latin",
+        "pronunciation_rules": "tion=/shun/, sion=/zhun/ or /shun/"
+      },
+      "morphological_principles": {
+        "verb_to_noun": "action becomes thing",
+        "ment_attachment": ["govern→government", "move→movement"],
+        "tion_spelling": ["educate→education", "create→creation"],
+        "sion_spelling": ["divide→division", "confuse→confusion"],
+        "meaning_abstraction": "concrete to abstract"
+      },
+      "word_examples": {
+        "ment_words": ["movement", "government", "treatment", "development", "improvement"],
+        "tion_words": ["education", "information", "creation", "protection", "direction"],
+        "sion_words": ["division", "television", "decision", "confusion", "permission"],
+        "base_changes": ["educate→education", "divide→division", "improve→improvement"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The government made a decision about education improvement. (85% decodable)",
+          "Television information can cause confusion without direction. (85% decodable)",
+          "The creation and development of the movement needs protection. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Abstract noun formation through morphology",
+          "multisensory_cues": [
+            "These suffixes make nouns from verbs",
+            "-tion says 'shun' (education)",
+            "-sion says 'zhun' or 'shun' (vision, mission)"
+          ],
+          "academic_language": "Essential for content area reading"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy recognizing noun suffixes",
+        "formative_weekly": "75% accuracy with pronunciation rules",
+        "summative": "85% recognition, 80% pronunciation, 75% meaning",
+        "abstract_vocabulary": "Forms abstract nouns from verbs"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Latin suffixes for academic vocabulary",
+        "Carlisle, J.F. (2010) - Morphological complexity increases",
+        "National Reading Panel (2000) - Academic vocabulary essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_greek_root_graph_photo",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 48,
+        "complexity_score": 6.1,
+        "prerequisite_phonemes": ["root awareness", "meaning focus"],
+        "grade_band": "3+",
+        "introduction_week": 9,
+        "neurological_rationale": "Greek roots unlock technical vocabulary"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "root",
+        "origin": "Greek",
+        "roots": ["graph", "photo"],
+        "graph_meaning": "write or draw",
+        "photo_meaning": "light",
+        "combining_forms": true
+      },
+      "morphological_principles": {
+        "root_centrality": "carries core meaning",
+        "combining_power": ["photograph", "autograph"],
+        "prefix_suffix_addition": ["telegraph", "photography"],
+        "meaning_transparency": "parts reveal whole",
+        "technical_vocabulary": "science and arts"
+      },
+      "word_examples": {
+        "graph_words": ["paragraph", "autograph", "biography", "geography", "graphic"],
+        "photo_words": ["photograph", "photographer", "photocopy", "photosynthesis"],
+        "combined_forms": ["photograph", "photographic"],
+        "meaning_equations": ["photo+graph = light+write = photograph"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The photographer took a photograph for the biography. (85% decodable)",
+          "Can you autograph this graphic about geography? (85% decodable)",
+          "The paragraph about photosynthesis has photographs. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Root awareness multiplies vocabulary",
+          "multisensory_cues": [
+            "graph = write/draw (paragraph)",
+            "photo = light (photograph)",
+            "Combine roots for new meanings"
+          ],
+          "vocabulary_explosion": "Two roots unlock dozens of words"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy identifying Greek roots",
+        "formative_weekly": "75% accuracy explaining root meaning",
+        "summative": "85% recognition, 80% meaning connection, 80% reading",
+        "root_application": "Uses roots to decode new words"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Greek roots for technical vocabulary",
+        "Carlisle, J.F. (2010) - Root knowledge predicts vocabulary",
+        "Rasinski, T. (2017) - Greek/Latin roots essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_greek_root_tele_micro",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 55,
+        "complexity_score": 6.1,
+        "prerequisite_phonemes": ["Greek roots", "technical vocabulary"],
+        "grade_band": "3+",
+        "introduction_week": 10,
+        "neurological_rationale": "Scientific roots build STEM vocabulary"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "root",
+        "origin": "Greek",
+        "roots": ["tele", "micro"],
+        "tele_meaning": "far or distant",
+        "micro_meaning": "small",
+        "scientific_usage": true
+      },
+      "morphological_principles": {
+        "measurement_concepts": "size and distance",
+        "technology_words": ["telephone", "microscope"],
+        "compound_creation": ["telescope", "microphone"],
+        "prefix_function": "often act as prefixes",
+        "stem_vocabulary": "science and technology"
+      },
+      "word_examples": {
+        "tele_words": ["telephone", "television", "telescope", "telegram", "teleport"],
+        "micro_words": ["microscope", "microphone", "microwave", "microchip", "microscopic"],
+        "meaning_clarity": ["tele+phone = far+sound", "micro+scope = small+see"],
+        "modern_technology": ["television", "microwave", "microchip"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The scientist used a microscope and telescope for research. (85% decodable)",
+          "The telephone and television use different technology. (85% decodable)",
+          "A microphone can make microscopic sounds louder. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Technical roots essential for STEM",
+          "multisensory_cues": [
+            "tele = far (telephone = far sound)",
+            "micro = small (microscope = see small)",
+            "Science words make sense with roots"
+          ],
+          "stem_connection": "Roots unlock science vocabulary"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy with scientific roots",
+        "formative_weekly": "75% accuracy explaining compound meanings",
+        "summative": "85% recognition, 80% meaning analysis, 80% application",
+        "stem_vocabulary": "Applies roots to science learning"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Greek roots in science",
+        "Rasinski, T. (2017) - STEM vocabulary through morphology",
+        "National Reading Panel (2000) - Content area vocabulary"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_latin_root_port_tract",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 42,
+        "complexity_score": 6.2,
+        "prerequisite_phonemes": ["Latin awareness", "root concept"],
+        "grade_band": "3+",
+        "introduction_week": 11,
+        "neurological_rationale": "Latin roots dominate academic vocabulary"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "root",
+        "origin": "Latin",
+        "roots": ["port", "tract"],
+        "port_meaning": "carry",
+        "tract_meaning": "pull or draw",
+        "academic_frequency": "very high"
+      },
+      "morphological_principles": {
+        "action_concepts": "movement and force",
+        "prefix_combinations": ["transport", "extract"],
+        "suffix_additions": ["portable", "traction"],
+        "meaning_composition": "affixes modify root meaning",
+        "cross_curricular": "all subject areas"
+      },
+      "word_examples": {
+        "port_words": ["transport", "import", "export", "portable", "support"],
+        "tract_words": ["attract", "subtract", "contract", "extract", "tractor"],
+        "meaning_analysis": ["trans+port = across+carry", "ex+tract = out+pull"],
+        "academic_usage": ["import/export", "subtract", "contract"],
+        "cumulative_decodable_sentences_98_percent": [
+          "We will transport the portable equipment to support the team. (85% decodable)",
+          "Can you subtract and extract the important information? (85% decodable)",
+          "The contract will attract people who import and export. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Latin roots core to academic English",
+          "multisensory_cues": [
+            "port = carry (transport, portable)",
+            "tract = pull (attract, extract)",
+            "Prefixes show direction of action"
+          ],
+          "academic_power": "Essential for content area texts"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy identifying Latin roots",
+        "formative_weekly": "75% accuracy analyzing word meanings",
+        "summative": "85% recognition, 80% meaning derivation, 80% usage",
+        "academic_application": "Uses roots for content vocabulary"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Latin roots 60% of academic vocabulary",
+        "Carlisle, J.F. (2010) - Root knowledge crucial for comprehension",
+        "Rasinski, T. (2017) - Latin roots across disciplines"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_latin_root_dict_scrib",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 50,
+        "complexity_score": 6.2,
+        "prerequisite_phonemes": ["Latin roots", "academic vocabulary"],
+        "grade_band": "3+",
+        "introduction_week": 12,
+        "neurological_rationale": "Language-related roots build literacy vocabulary"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "root",
+        "origin": "Latin",
+        "roots": ["dict", "scrib/script"],
+        "dict_meaning": "say or speak",
+        "scrib_meaning": "write",
+        "literacy_connection": true
+      },
+      "morphological_principles": {
+        "communication_roots": "speaking and writing",
+        "form_variations": ["dict/diction", "scrib/script"],
+        "academic_words": ["predict", "manuscript"],
+        "meta_language": "words about words",
+        "literacy_vocabulary": "reading and writing terms"
+      },
+      "word_examples": {
+        "dict_words": ["predict", "dictionary", "dictate", "verdict", "contradict"],
+        "scrib_words": ["describe", "prescribe", "inscription", "subscription", "manuscript"],
+        "meaning_connections": ["pre+dict = before+say", "de+scribe = down+write"],
+        "school_vocabulary": ["dictionary", "describe", "predict"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Use the dictionary to predict and describe the verdict. (85% decodable)",
+          "The prescription has an inscription that contradicts the manuscript. (85% decodable)",
+          "Can you transcribe what the teacher will dictate? (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Meta-linguistic awareness through roots",
+          "multisensory_cues": [
+            "dict = say (predict, dictate)",
+            "scrib = write (describe, scribble)",
+            "Language roots help with language learning"
+          ],
+          "literacy_enhancement": "Roots about communication"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy with literacy roots",
+        "formative_weekly": "80% accuracy connecting roots to meaning",
+        "summative": "90% recognition, 85% application, 85% usage",
+        "metalinguistic_awareness": "Uses roots to understand language"
+      },
+      "research_attribution": [
+        "Henry, M.K. (2003) - Language roots build metalinguistic awareness",
+        "Carlisle, J.F. (2010) - Root knowledge supports literacy",
+        "National Reading Panel (2000) - Vocabulary through morphology"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_compound_words_complex",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 18,
+        "complexity_score": 5.5,
+        "prerequisite_phonemes": ["multisyllabic reading", "morpheme awareness"],
+        "grade_band": "3+",
+        "introduction_week": 13,
+        "neurological_rationale": "Compound words as morphological units"
+      },
+      "linguistic_properties": {
+        "morpheme_type": "compound",
+        "structure": "word + word = new word",
+        "meaning_relationship": "transparent to opaque",
+        "syllable_count": "3-5 syllables",
+        "stress_patterns": "variable"
+      },
+      "morphological_principles": {
+        "meaning_combination": "parts relate to whole",
+        "stress_placement": "usually first word",
+        "hyphenation_rules": "some compounds hyphenated",
+        "productivity": "can create novel compounds",
+        "semantic_transparency": "varies by word"
+      },
+      "word_examples": {
+        "transparent_compounds": ["basketball", "newspaper", "skateboard", "bookshelf"],
+        "semi_transparent": ["butterfly", "understand", "breakfast", "headquarters"],
+        "three_syllable": ["watermelon", "fingernail", "hamburger", "peppermint"],
+        "complex_compounds": ["nevertheless", "commonwealth", "extraordinary"],
+        "cumulative_decodable_sentences_98_percent": [
+          "Nevertheless, the commonwealth has extraordinary strawberries and watermelons. (85% decodable)",
+          "My grandmother's fingernails tapped the newspaper on the bookshelf. (88% decodable)",
+          "At headquarters, they understand we need basketballs and skateboards. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Compound processing as chunks not letters",
+          "multisensory_cues": [
+            "Find the two words inside",
+            "Each part keeps its sound",
+            "Meaning comes from both parts"
+          ],
+          "chunking_efficiency": "Process as two units not many letters"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "90% accuracy identifying compound parts",
+        "formative_weekly": "85% accuracy reading complex compounds",
+        "summative": "95% recognition, 90% reading, 90% meaning",
+        "morphological_chunking": "Processes compounds as units"
+      },
+      "research_attribution": [
+        "Adams, M.J. (1990) - Compounds as morphological units",
+        "Carlisle, J.F. (2010) - Compound awareness aids fluency",
+        "National Reading Panel (2000) - Morphological processing"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_schwa_unstressed",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 8,
+        "complexity_score": 6.0,
+        "prerequisite_phonemes": ["multisyllabic words", "vowel flexibility"],
+        "grade_band": "3+",
+        "introduction_week": 14,
+        "neurological_rationale": "Schwa awareness crucial for multisyllabic reading"
+      },
+      "linguistic_properties": {
+        "phoneme": "/ə/",
+        "graphemes": ["a", "e", "i", "o", "u"],
+        "occurrence": "unstressed syllables",
+        "frequency": "most common vowel sound",
+        "variability": "any vowel letter can be schwa"
+      },
+      "phonological_principles": {
+        "stress_relationship": "unstressed = schwa",
+        "reduction_pattern": "full vowel → schwa",
+        "spelling_challenge": "sound doesn't indicate letter",
+        "prevalence": "in most multisyllabic words",
+        "pronunciation_marker": "indicates unstressed syllable"
+      },
+      "word_examples": {
+        "a_schwa": ["about", "banana", "vitamin", "animal", "separate"],
+        "e_schwa": ["taken", "problem", "celebrate", "different"],
+        "i_schwa": ["pencil", "fossil", "stencil", "April"],
+        "o_schwa": ["lemon", "button", "ribbon", "dragon"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The animal ate a banana and a lemon in April. (88% decodable)",
+          "We celebrate different occasions with ribbons and buttons. (85% decodable)",
+          "The pencil, fossil, and vitamin are in separate containers. (88% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Stress patterns guide pronunciation",
+          "multisensory_cues": [
+            "Unstressed vowels say 'uh'",
+            "Any vowel can be schwa",
+            "Focus on stressed syllable"
+          ],
+          "spelling_strategy": "Meaning and origin guide spelling"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "80% accuracy identifying schwa syllables",
+        "formative_weekly": "75% accuracy in pronunciation",
+        "summative": "85% recognition, 80% reading, 70% spelling",
+        "prosodic_awareness": "Uses stress patterns for schwa"
+      },
+      "research_attribution": [
+        "Venezky, R.L. (1999) - Schwa most common English sound",
+        "Adams, M.J. (1990) - Stress patterns affect vowels",
+        "Moats, L.C. (2020) - Schwa awareness essential"
+      ]
+    },
+    {
+      "phoneme_id": "stage8_morphology_integration",
+      "metadata": {
+        "stage": 8,
+        "frequency_rank": 5,
+        "complexity_score": 6.5,
+        "prerequisite_phonemes": ["all morphological elements"],
+        "grade_band": "3+",
+        "introduction_week": 15,
+        "neurological_rationale": "Integrated morphological processing"
+      },
+      "linguistic_properties": {
+        "skill_type": "integration",
+        "components": ["prefixes", "roots", "suffixes"],
+        "analysis_strategy": "morphological parsing",
+        "word_length": "3-6 morphemes",
+        "academic_focus": true
+      },
+      "strategic_principles": {
+        "word_attack": "prefix + root + suffix",
+        "meaning_composition": "sum of parts plus context",
+        "flexibility": "multiple analysis paths",
+        "verification": "does it make sense?",
+        "transfer": "apply to novel words"
+      },
+      "word_examples": {
+        "three_morpheme": ["un-friend-ly", "re-construct-ion", "dis-agree-ment"],
+        "four_morpheme": ["un-predict-able-ness", "inter-nation-al-ly"],
+        "academic_examples": ["photo-syn-thesis", "trans-port-ation", "micro-scop-ic"],
+        "analysis_practice": ["un+break+able", "pre+dict+ion", "tele+graph+er"],
+        "cumulative_decodable_sentences_98_percent": [
+          "The international transportation system needs reconstruction. (85% decodable)",
+          "Their disagreement about photosynthesis was unpredictable. (85% decodable)",
+          "The microscopic investigation revealed unbelievable information. (85% decodable)"
+        ],
+        "sound_of_day_integration": {
+          "brain_science_connection": "Morphological parsing most efficient strategy",
+          "multisensory_cues": [
+            "Find prefixes first",
+            "Identify root in middle",
+            "Check for suffixes at end"
+          ],
+          "strategic_mastery": "Word analysis through meaning units"
+        }
+      },
+      "assessment_framework_enhanced": {
+        "formative_daily": "85% accuracy parsing complex words",
+        "formative_weekly": "80% accuracy deriving meaning",
+        "summative": "90% analysis, 85% meaning, 85% application",
+        "strategic_integration": "Uses morphology as primary strategy"
+      },
+      "research_attribution": [
+        "Carlisle, J.F. (2010) - Morphological awareness predicts achievement",
+        "Henry, M.K. (2003) - Morphology key to advanced literacy",
+        "National Reading Panel (2000) - Multiple strategies essential"
+      ]
+    }
+  ]
+}

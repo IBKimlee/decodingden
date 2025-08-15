@@ -1,0 +1,972 @@
+{
+  "metadata": {
+    "stage": 8,
+    "stage_name": "Advanced Patterns & Morphology",
+    "grade_level": "3rd Grade – Spring Semester",
+    "total_phonemes": 10,
+    "generated_date": "2025-01-02",
+    "description": "Stage 8 phonemes with ALL possible grapheme spellings from comprehensive list - FINAL STAGE"
+  },
+  "phonemes": [
+    {
+      "phoneme_id": "stage8_kn",
+      "stage_id": 8,
+      "phoneme": "/n/",
+      "graphemes": ["kn", "gn", "pn", "mn"],
+      "frequency_rank": 65,
+      "complexity_score": 4.0,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 1,
+      "word_examples": ["knee", "knife", "know", "knight", "gnome", "sign", "design", "pneumonia", "hymn", "autumn"],
+      "decodable_sentences": ["I know the knight has a knife.", "The gnome can design a sign."],
+      "assessment_criteria": {
+        "daily": "60% accuracy in silent letter recognition",
+        "weekly": "55% accuracy in kn/gn reading",
+        "summative": "65% silent consonant mastery"
+      },
+      "teaching_advantages": ["historical spelling", "consistent patterns", "common words"],
+      "research_sources": ["Nagy & Anderson (1984)", "Treiman (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "nasal",
+        "place": "alveolar",
+        "voicing": "voiced",
+        "airflow": "nasal",
+        "typical_age_range": "2–4",
+        "acquisition_age": "4",
+        "common_substitutions": ["pronounces k/g", "cluster pronunciation"],
+        "referral_age": 5,
+        "related_sounds_to_check": ["/n/", "/k/", "/g/"],
+        "development_notes": "Silent consonants from historical spellings. Only /n/ pronounced.",
+        "articulation_cues": "👅 Just say /n/, ignore the silent letter. 🗣️ Voiced",
+        "teacher_guidance": "K and G are silent in these patterns. Historical spelling.",
+        "student_tips": "The K in KN and G in GN are silent - just say /n/!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 1,
+          "lesson_position": "silent consonant introduction",
+          "prerequisite_check": ["/n/ mastery", "silent letter concept"],
+          "mastery_criteria": "60% accuracy in silent consonant reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["silent letter concept", "kn/gn patterns", "historical spelling"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["silent consonant words", "pattern recognition", "vocabulary focus"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed silent patterns", "spelling awareness", "etymology connections"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "silent_letter_recognition",
+            "criterion": "Doesn't pronounce silent k/g",
+            "frequency": "daily"
+          },
+          {
+            "type": "pattern_reading",
+            "criterion": "Reads kn/gn as /n/",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "60% accuracy on silent consonant words",
+          "spelling": "55% accuracy on kn/gn spelling",
+          "transfer": "Recognizes silent patterns in new words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended silent letter concept work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily silent pattern checks",
+          "intervention_triggers": ["Pronounces silent letters", "Below 45% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Etymology exploration",
+          "enrichment": "Historical spelling study",
+          "complexity_increase": "Advanced silent letter vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain English spelling history",
+          "visual_cues": "Crossed-out silent letters",
+          "practice_emphasis": "Silent letter concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_wr",
+      "stage_id": 8,
+      "phoneme": "/r/",
+      "graphemes": ["wr", "rh", "rrh"],
+      "frequency_rank": 66,
+      "complexity_score": 3.8,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 2,
+      "word_examples": ["write", "wrong", "wrap", "wrist", "rhyme", "rhythm", "rhinoceros", "diarrhea"],
+      "decodable_sentences": ["I write the wrong rhyme.", "Wrap your wrist in rhythm."],
+      "assessment_criteria": {
+        "daily": "65% accuracy in wr recognition",
+        "weekly": "60% accuracy in wr/rh reading",
+        "summative": "70% silent w mastery"
+      },
+      "teaching_advantages": ["consistent pattern", "common words", "predictable spelling"],
+      "research_sources": ["Nagy & Anderson (1984)", "Treiman (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "liquid",
+        "place": "alveolar",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–6",
+        "acquisition_age": "6",
+        "common_substitutions": ["pronounces w", "/w/ + /r/"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["/r/", "/w/"],
+        "development_notes": "Silent W before R. Only /r/ pronounced.",
+        "articulation_cues": "👅 Just say /r/, ignore the silent W. 🗣️ Voiced",
+        "teacher_guidance": "W is silent before R in these patterns.",
+        "student_tips": "The W in WR is silent - just say /r/!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 2,
+          "lesson_position": "second silent pattern",
+          "prerequisite_check": ["kn/gn established", "/r/ mastery"],
+          "mastery_criteria": "65% accuracy in wr reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["wr pattern introduction", "silent w concept", "r sound focus"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["wr word reading", "pattern practice", "vocabulary building"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed wr patterns", "spelling practice", "connected reading"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "silent_w_recognition",
+            "criterion": "Doesn't pronounce w in wr",
+            "frequency": "daily"
+          },
+          {
+            "type": "wr_fluency",
+            "criterion": "Reads wr words fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on wr words",
+          "spelling": "60% accuracy on wr spelling",
+          "transfer": "Applies silent w pattern"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended silent w practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily wr recognition",
+          "intervention_triggers": ["Pronounces w", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other silent w patterns",
+          "enrichment": "Wr etymology study",
+          "complexity_increase": "Advanced wr vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain silent w concept",
+          "visual_cues": "Silent w visual aids",
+          "practice_emphasis": "Consistent silent pattern"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_mb",
+      "stage_id": 8,
+      "phoneme": "/m/",
+      "graphemes": ["mb", "lm"],
+      "frequency_rank": 67,
+      "complexity_score": 3.5,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 3,
+      "word_examples": ["lamb", "thumb", "climb", "bomb", "comb", "calm", "palm", "psalm"],
+      "decodable_sentences": ["The lamb has a calm thumb.", "I climb to the palm tree."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in mb recognition",
+        "weekly": "65% accuracy in mb reading",
+        "summative": "75% silent b mastery"
+      },
+      "teaching_advantages": ["word endings", "common words", "predictable pattern"],
+      "research_sources": ["Nagy & Anderson (1984)", "Treiman (2000)", "Venezky (1999)"],
+      "articulation_data": {
+        "manner": "nasal",
+        "place": "bilabial",
+        "voicing": "voiced",
+        "airflow": "nasal",
+        "typical_age_range": "2–3",
+        "acquisition_age": "3",
+        "common_substitutions": ["pronounces b", "/m/ + /b/"],
+        "referral_age": 4,
+        "related_sounds_to_check": ["/m/", "/b/"],
+        "development_notes": "Silent B after M. Only /m/ pronounced.",
+        "articulation_cues": "👄 Just say /m/, ignore the silent B. 🗣️ Voiced",
+        "teacher_guidance": "B is silent after M in word endings.",
+        "student_tips": "The B after M is silent - just say /m/!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 3,
+          "lesson_position": "third silent pattern",
+          "prerequisite_check": ["wr pattern established", "/m/ mastery"],
+          "mastery_criteria": "70% accuracy in mb reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["mb pattern introduction", "silent b concept", "word endings"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["mb word reading", "ending patterns", "vocabulary focus"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["mixed mb words", "spelling awareness", "pattern recognition"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "silent_b_recognition",
+            "criterion": "Doesn't pronounce b in mb",
+            "frequency": "daily"
+          },
+          {
+            "type": "ending_pattern_reading",
+            "criterion": "Reads mb endings correctly",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on mb words",
+          "spelling": "65% accuracy on mb spelling",
+          "transfer": "Applies silent b pattern"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended ending pattern work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily mb recognition",
+          "intervention_triggers": ["Pronounces b", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other silent b patterns",
+          "enrichment": "Mb etymology exploration",
+          "complexity_increase": "Advanced mb vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Explain silent ending concept",
+          "visual_cues": "Silent b at end visuals",
+          "practice_emphasis": "Word ending patterns"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_schwa",
+      "stage_id": 8,
+      "phoneme": "/ə/",
+      "graphemes": ["a", "e", "i", "o", "u", "y", "ou", "ai", "io"],
+      "frequency_rank": 68,
+      "complexity_score": 4.5,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 4,
+      "word_examples": ["about", "taken", "pencil", "lesson", "circus", "supply", "famous", "captain", "mansion"],
+      "decodable_sentences": ["The captain has a pencil about the circus.", "A famous lesson was taken in the mansion."],
+      "assessment_criteria": {
+        "daily": "55% accuracy in schwa recognition",
+        "weekly": "50% accuracy in schwa reading",
+        "summative": "60% schwa mastery"
+      },
+      "teaching_advantages": ["most common vowel sound", "multisyllabic focus", "stress awareness"],
+      "research_sources": ["Moats (2000)", "Ehri (2005)", "Nagy & Anderson (1984)"],
+      "articulation_data": {
+        "manner": "vowel",
+        "place": "central",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–6",
+        "acquisition_age": "5",
+        "common_substitutions": ["full vowel", "stressed vowel"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["all vowels"],
+        "development_notes": "Unstressed vowel sound. Most common sound in English.",
+        "articulation_cues": "👄 Relaxed, unstressed 'uh' sound. 🗣️ Voiced",
+        "teacher_guidance": "Focus on unstressed syllables in multisyllabic words.",
+        "student_tips": "In unstressed syllables, vowels often say 'uh' (schwa)!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 4,
+          "lesson_position": "unstressed vowel introduction",
+          "prerequisite_check": ["multisyllabic awareness", "stress concept"],
+          "mastery_criteria": "55% accuracy in schwa recognition"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["schwa concept", "unstressed syllables", "multisyllabic words"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["schwa in context", "stress patterns", "syllable division"],
+            "duration": "6-7 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["advanced vocabulary", "reading fluency", "spelling awareness"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "schwa_recognition",
+            "criterion": "Identifies unstressed schwa",
+            "frequency": "daily"
+          },
+          {
+            "type": "multisyllabic_reading",
+            "criterion": "Reads with appropriate stress",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "55% accuracy on schwa words",
+          "spelling": "50% accuracy with schwa awareness",
+          "transfer": "Applies schwa concept in reading"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended unstressed syllable work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily schwa awareness",
+          "intervention_triggers": ["Stresses all syllables", "Below 40% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Advanced stress patterns",
+          "enrichment": "Schwa in academic vocabulary",
+          "complexity_increase": "Complex multisyllabic words"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 stress patterns",
+          "visual_cues": "Stress pattern visuals",
+          "practice_emphasis": "English stress concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_prefix_un",
+      "stage_id": 8,
+      "phoneme": "un- prefix",
+      "graphemes": ["un"],
+      "frequency_rank": 69,
+      "complexity_score": 3.0,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 5,
+      "word_examples": ["unhappy", "unable", "unlock", "unfair", "undo", "unpack", "unsafe", "unwell"],
+      "decodable_sentences": ["I am unhappy and unable to unlock it.", "It is unfair and unsafe to undo that."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in prefix recognition",
+        "weekly": "70% accuracy in un- reading",
+        "summative": "80% prefix mastery"
+      },
+      "teaching_advantages": ["consistent meaning", "common prefix", "morphological awareness"],
+      "research_sources": ["Nagy & Anderson (1984)", "Moats (2000)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "morpheme",
+        "place": "prefix position",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "4–7",
+        "acquisition_age": "6",
+        "common_substitutions": ["ignores prefix", "no meaning connection"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["/u/", "/n/"],
+        "development_notes": "Meaningful prefix meaning 'not' or 'opposite of'.",
+        "articulation_cues": "👄 /un/ at word beginning changes meaning. 🗣️ Voiced",
+        "teacher_guidance": "Focus on meaning: un- = not or opposite of.",
+        "student_tips": "UN- at the beginning means 'not' or 'opposite'!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 5,
+          "lesson_position": "morphology introduction",
+          "prerequisite_check": ["base word recognition", "meaning awareness"],
+          "mastery_criteria": "75% accuracy in prefix reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["prefix concept", "un- meaning", "base word connection"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["prefix + base word", "meaning building", "vocabulary expansion"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["morphological analysis", "meaning in context", "word building"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "prefix_recognition",
+            "criterion": "Identifies un- prefix",
+            "frequency": "daily"
+          },
+          {
+            "type": "meaning_understanding",
+            "criterion": "Explains un- meaning",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on un- words",
+          "spelling": "70% accuracy on un- construction",
+          "transfer": "Applies un- understanding to new words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended meaning work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily prefix recognition",
+          "intervention_triggers": ["No meaning connection", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other prefixes introduction",
+          "enrichment": "Prefix etymology",
+          "complexity_increase": "Complex prefix combinations"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 prefix systems",
+          "visual_cues": "Prefix meaning charts",
+          "practice_emphasis": "Morphological concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_suffix_ing",
+      "stage_id": 8,
+      "phoneme": "-ing suffix",
+      "graphemes": ["ing"],
+      "frequency_rank": 70,
+      "complexity_score": 3.2,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 6,
+      "word_examples": ["running", "jumping", "reading", "writing", "playing", "singing", "walking", "talking"],
+      "decodable_sentences": ["I am running and jumping while reading.", "She is writing and singing while walking."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in suffix recognition",
+        "weekly": "70% accuracy in -ing reading",
+        "summative": "80% suffix mastery"
+      },
+      "teaching_advantages": ["consistent spelling", "common suffix", "verb connection"],
+      "research_sources": ["Nagy & Anderson (1984)", "Moats (2000)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "morpheme",
+        "place": "suffix position",
+        "voicing": "voiced",
+        "airflow": "oral",
+        "typical_age_range": "3–5",
+        "acquisition_age": "4",
+        "common_substitutions": ["ignores suffix", "/in/"],
+        "referral_age": 5,
+        "related_sounds_to_check": ["/i/", "/ng/"],
+        "development_notes": "Verb suffix indicating ongoing action.",
+        "articulation_cues": "👄 /ing/ at word end shows action happening. 🗣️ Voiced",
+        "teacher_guidance": "Connect to ongoing action. Base word + ing.",
+        "student_tips": "-ING at the end means the action is happening now!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 6,
+          "lesson_position": "second morpheme",
+          "prerequisite_check": ["un- prefix established", "verb concept"],
+          "mastery_criteria": "75% accuracy in suffix reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["suffix concept", "-ing meaning", "base word + suffix"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["base word + ing", "action words", "present participle"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["morphological building", "grammar connection", "fluency focus"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "suffix_recognition",
+            "criterion": "Identifies -ing suffix",
+            "frequency": "daily"
+          },
+          {
+            "type": "morphological_analysis",
+            "criterion": "Breaks words into parts",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on -ing words",
+          "spelling": "70% accuracy on -ing construction",
+          "transfer": "Applies -ing to new base words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended base word work",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily suffix recognition",
+          "intervention_triggers": ["No morpheme awareness", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Other verb suffixes",
+          "enrichment": "Suffix rule exploration",
+          "complexity_increase": "Complex suffix combinations"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 verb systems",
+          "visual_cues": "Base word + suffix visuals",
+          "practice_emphasis": "English verb morphology"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_suffix_ed",
+      "stage_id": 8,
+      "phoneme": "-ed suffix",
+      "graphemes": ["ed"],
+      "frequency_rank": 71,
+      "complexity_score": 3.8,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 7,
+      "word_examples": ["walked", "jumped", "played", "wanted", "needed", "started", "ended", "painted"],
+      "decodable_sentences": ["I walked and jumped yesterday.", "She wanted and needed help when it started."],
+      "assessment_criteria": {
+        "daily": "70% accuracy in -ed recognition",
+        "weekly": "65% accuracy in -ed reading",
+        "summative": "75% -ed mastery"
+      },
+      "teaching_advantages": ["three pronunciation rules", "past tense marker", "common suffix"],
+      "research_sources": ["Nagy & Anderson (1984)", "Moats (2000)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "morpheme",
+        "place": "suffix position",
+        "voicing": "mixed",
+        "airflow": "oral",
+        "typical_age_range": "3–6",
+        "acquisition_age": "5",
+        "common_substitutions": ["always /ed/", "no rule application"],
+        "referral_age": 6,
+        "related_sounds_to_check": ["/t/", "/d/", "/ed/"],
+        "development_notes": "Past tense suffix with three pronunciations: /t/, /d/, /ed/.",
+        "articulation_cues": "👄 Three sounds: /t/, /d/, or /ed/. 🗣️ Depends on base word",
+        "teacher_guidance": "Teach three -ed sounds based on final sound of base word.",
+        "student_tips": "-ED can say /t/, /d/, or /ed/ - listen to the base word ending!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 7,
+          "lesson_position": "complex suffix introduction",
+          "prerequisite_check": ["-ing suffix established", "past tense concept"],
+          "mastery_criteria": "70% accuracy in -ed reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["three -ed sounds", "base word endings", "pronunciation rules"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["rule application", "past tense building", "pronunciation practice"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["flexible -ed reading", "grammar connection", "story context"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "pronunciation_rule_application",
+            "criterion": "Pronounces -ed correctly",
+            "frequency": "daily"
+          },
+          {
+            "type": "past_tense_understanding",
+            "criterion": "Connects -ed to past action",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "70% accuracy on -ed words",
+          "spelling": "65% accuracy on -ed construction",
+          "transfer": "Applies -ed rules to new words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Focus on one -ed sound at a time",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily -ed pronunciation",
+          "intervention_triggers": ["No rule application", "Below 55% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Irregular past tense exploration",
+          "enrichment": "-ed rule etymology",
+          "complexity_increase": "Complex -ed applications"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 past tense systems",
+          "visual_cues": "Three -ed sound charts",
+          "practice_emphasis": "English past tense morphology"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_compound_words",
+      "stage_id": 8,
+      "phoneme": "compound words",
+      "graphemes": ["word + word"],
+      "frequency_rank": 72,
+      "complexity_score": 3.5,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 8,
+      "word_examples": ["baseball", "sunshine", "classroom", "playground", "snowman", "rainbow", "butterfly", "grandmother"],
+      "decodable_sentences": ["The butterfly sits in the sunshine.", "My grandmother plays baseball on the playground."],
+      "assessment_criteria": {
+        "daily": "75% accuracy in compound recognition",
+        "weekly": "70% accuracy in compound reading",
+        "summative": "80% compound mastery"
+      },
+      "teaching_advantages": ["meaningful parts", "vocabulary building", "morphological awareness"],
+      "research_sources": ["Nagy & Anderson (1984)", "Moats (2000)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "word combination",
+        "place": "morphological",
+        "voicing": "mixed",
+        "airflow": "oral",
+        "typical_age_range": "4–7",
+        "acquisition_age": "6",
+        "common_substitutions": ["reads as single word", "no part analysis"],
+        "referral_age": 7,
+        "related_sounds_to_check": ["all component sounds"],
+        "development_notes": "Two words combined to make new meaning.",
+        "articulation_cues": "👄 Two words put together make new meaning. 🗣️ Mixed",
+        "teacher_guidance": "Show how two words combine to create new meaning.",
+        "student_tips": "Compound words are two words stuck together to make a new word!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 8,
+          "lesson_position": "word structure culmination",
+          "prerequisite_check": ["morpheme awareness", "two-word concept"],
+          "mastery_criteria": "75% accuracy in compound reading"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["compound concept", "word + word", "meaning building"],
+            "duration": "3-4 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["compound analysis", "part identification", "meaning connection"],
+            "duration": "4-5 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["compound creation", "vocabulary expansion", "reading fluency"],
+            "duration": "4-5 days"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "compound_analysis",
+            "criterion": "Identifies two word parts",
+            "frequency": "daily"
+          },
+          {
+            "type": "meaning_synthesis",
+            "criterion": "Combines meanings correctly",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "75% accuracy on compound words",
+          "spelling": "70% accuracy on compound construction",
+          "transfer": "Creates new compound words"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended word part analysis",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily compound recognition",
+          "intervention_triggers": ["No part analysis", "Below 60% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Complex compound exploration",
+          "enrichment": "Compound word creation",
+          "complexity_increase": "Three-part compounds"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 compound systems",
+          "visual_cues": "Word + word visuals",
+          "practice_emphasis": "English compound concept"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_syllable_division",
+      "stage_id": 8,
+      "phoneme": "syllable patterns",
+      "graphemes": ["VCCV", "VCV", "V/CV", "VC/V", "VCCCV"],
+      "frequency_rank": 73,
+      "complexity_score": 4.2,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 9,
+      "word_examples": ["happen", "tiger", "wagon", "robot", "napkin", "picnic", "fantastic", "important"],
+      "decodable_sentences": ["The tiger happens to be important.", "A fantastic robot sits in the wagon."],
+      "assessment_criteria": {
+        "daily": "65% accuracy in syllable division",
+        "weekly": "60% accuracy in pattern reading",
+        "summative": "70% syllable mastery"
+      },
+      "teaching_advantages": ["systematic approach", "multisyllabic reading", "advanced preparation"],
+      "research_sources": ["Moats (2000)", "Ehri (2005)", "Henry (2003)"],
+      "articulation_data": {
+        "manner": "syllable structure",
+        "place": "morphological",
+        "voicing": "mixed",
+        "airflow": "oral",
+        "typical_age_range": "5–8",
+        "acquisition_age": "7",
+        "common_substitutions": ["no division", "random breaks"],
+        "referral_age": 8,
+        "related_sounds_to_check": ["all vowel patterns"],
+        "development_notes": "Systematic approach to dividing multisyllabic words.",
+        "articulation_cues": "👄 Break words into manageable parts. 🗣️ Mixed",
+        "teacher_guidance": "Teach systematic syllable division patterns.",
+        "student_tips": "Break long words into syllables to read them easier!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 9,
+          "lesson_position": "advanced strategy introduction",
+          "prerequisite_check": ["vowel patterns mastery", "multisyllabic awareness"],
+          "mastery_criteria": "65% accuracy in syllable division"
+        },
+        "practice_phases": [
+          {
+            "phase": "isolation",
+            "activities": ["syllable concept", "division patterns", "systematic approach"],
+            "duration": "5-6 days"
+          },
+          {
+            "phase": "blending",
+            "activities": ["pattern application", "multisyllabic reading", "strategy use"],
+            "duration": "6-7 days"
+          },
+          {
+            "phase": "application",
+            "activities": ["advanced vocabulary", "independent division", "fluency building"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "division_strategy_use",
+            "criterion": "Applies syllable patterns",
+            "frequency": "daily"
+          },
+          {
+            "type": "multisyllabic_fluency",
+            "criterion": "Reads long words fluently",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "65% accuracy on multisyllabic words",
+          "spelling": "60% accuracy with syllable awareness",
+          "transfer": "Applies division strategies independently"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Extended pattern practice",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Daily strategy use",
+          "intervention_triggers": ["No strategy use", "Below 50% accuracy"]
+        },
+        "advanced_learners": {
+          "acceleration": "Complex academic vocabulary",
+          "enrichment": "Etymology and syllable connection",
+          "complexity_increase": "Advanced multisyllabic analysis"
+        },
+        "english_learners": {
+          "native_language_support": "Compare L1 syllable systems",
+          "visual_cues": "Division pattern charts",
+          "practice_emphasis": "English syllable concepts"
+        }
+      }
+    },
+    {
+      "phoneme_id": "stage8_final_review",
+      "stage_id": 8,
+      "phoneme": "complete system mastery",
+      "graphemes": ["all patterns mastered"],
+      "frequency_rank": 74,
+      "complexity_score": 5.0,
+      "grade_band": "3rd-Spring",
+      "introduction_week": 10,
+      "word_examples": ["extraordinary", "unfortunately", "responsibility", "investigation", "communication", "transformation", "international", "understanding"],
+      "decodable_sentences": ["Unfortunately, the extraordinary investigation requires international communication.", "Understanding the transformation shows great responsibility."],
+      "assessment_criteria": {
+        "daily": "80% accuracy across all patterns",
+        "weekly": "75% accuracy in advanced reading",
+        "summative": "85% complete system mastery"
+      },
+      "teaching_advantages": ["complete integration", "advanced preparation", "transfer mastery"],
+      "research_sources": ["Ehri (2005)", "NRP (2000)", "Moats (2000)", "Nagy & Anderson (1984)"],
+      "articulation_data": {
+        "manner": "complete phonics system",
+        "place": "all positions",
+        "voicing": "mixed",
+        "airflow": "oral",
+        "typical_age_range": "6–9",
+        "acquisition_age": "8",
+        "common_substitutions": ["pattern breakdown", "strategy failure"],
+        "referral_age": 9,
+        "related_sounds_to_check": ["complete phonics system"],
+        "development_notes": "Integration and mastery of complete English phonics system.",
+        "articulation_cues": "👄 Apply all learned patterns flexibly. 🗣️ Mixed",
+        "teacher_guidance": "Culminating integration of all phonics knowledge and strategies.",
+        "student_tips": "Use everything you've learned - you're a phonics expert now!"
+      },
+      "instructional_sequence": {
+        "introduction_phase": {
+          "week": 10,
+          "lesson_position": "complete system integration",
+          "prerequisite_check": ["all previous stages", "strategy mastery"],
+          "mastery_criteria": "80% accuracy across all patterns"
+        },
+        "practice_phases": [
+          {
+            "phase": "integration",
+            "activities": ["all patterns review", "strategy application", "error analysis"],
+            "duration": "6-7 days"
+          },
+          {
+            "phase": "mastery",
+            "activities": ["independent reading", "advanced texts", "transfer tasks"],
+            "duration": "7-8 days"
+          },
+          {
+            "phase": "celebration",
+            "activities": ["phonics mastery recognition", "advanced reader identity", "next steps"],
+            "duration": "ongoing"
+          }
+        ]
+      },
+      "assessment_framework_details": {
+        "formative_assessments": [
+          {
+            "type": "complete_system_application",
+            "criterion": "Uses all phonics knowledge",
+            "frequency": "daily"
+          },
+          {
+            "type": "advanced_text_reading",
+            "criterion": "Reads grade-level+ texts",
+            "frequency": "every 2-3 days"
+          }
+        ],
+        "summative_assessment": {
+          "word_reading": "80% accuracy on advanced vocabulary",
+          "spelling": "75% accuracy on complex patterns",
+          "transfer": "Independent application of all strategies"
+        }
+      },
+      "differentiation_protocols": {
+        "struggling_learners": {
+          "additional_practice": "Continued systematic support",
+          "multisensory_emphasis": true,
+          "progress_monitoring": "Ongoing comprehensive assessment",
+          "intervention_triggers": ["Below 65% system accuracy", "Strategy breakdown"]
+        },
+        "advanced_learners": {
+          "acceleration": "Advanced linguistic study",
+          "enrichment": "Etymology and morphology exploration",
+          "complexity_increase": "Academic and technical vocabulary"
+        },
+        "english_learners": {
+          "native_language_support": "Celebrate bilingual literacy",
+          "visual_cues": "Complete system mastery charts",
+          "practice_emphasis": "English phonics system mastery"
+        }
+      }
+    }
+  ]
+}
