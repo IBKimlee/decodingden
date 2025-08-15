@@ -124,20 +124,20 @@ export default function DecodingDenPage() {
     <div className="min-h-screen bg-yellow-100 text-deepNavy">
       {/* Header */}
       <header className="bg-gradient-to-r from-darkOcean to-oceanBlue via-indigo-600 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center py-4 sm:py-6 gap-4 sm:gap-0">
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-white hover:text-gray-200 transition-colors">
                 <span className="text-2xl">←</span>
               </Link>
               <div>
-                <h1 className="text-3xl font-bold text-white flex items-center">
+                <h1 className="text-xl sm:text-3xl font-bold text-white flex items-center">
                   Decoding Den
                 </h1>
-                <p className="text-white/80 text-sm">Phoneme mastery at your fingertips</p>
+                <p className="text-white/80 text-xs sm:text-sm">Phoneme mastery at your fingertips</p>
               </div>
             </div>
-            <div className="flex-1 max-w-md ml-8">
+            <div className="w-full sm:flex-1 max-w-md sm:ml-8">
               <PhonemeSearch 
                 onSearch={handlePhonemeSearch}
                 isLoading={isLoading}
@@ -150,24 +150,24 @@ export default function DecodingDenPage() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" style={{maxWidth: '82rem'}}>
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4" style={{maxWidth: '82rem'}}>
 
         {/* Main Content Area */}
         <>
           {/* Section Selection Cards */}
-          <div className="rounded-xl shadow-lg p-4 pr-4 pb-2 mb-4 border-2 border-blue-600" style={{backgroundColor: '#D0EFEA'}}>
-            <div className="mb-2 flex gap-4">
+          <div className="rounded-xl shadow-lg p-2 sm:p-4 pr-2 sm:pr-4 pb-2 mb-4 border-2 border-blue-600" style={{backgroundColor: '#D0EFEA'}}>
+            <div className="mb-2 flex flex-col lg:flex-row gap-2 lg:gap-4">
               {/* Focus Sound Container */}
-              <div className="bg-gray-50 rounded-lg p-2 border-2 border-blue-400" style={{width: 'calc(25% - 10px)'}}>
-                <h1 className="text-2xl font-bold text-oceanBlue mb-2 drop-shadow-lg">
+              <div className="bg-gray-50 rounded-lg p-2 border-2 border-blue-400 w-full lg:w-1/4">
+                <h1 className="text-lg sm:text-2xl font-bold text-oceanBlue mb-2 drop-shadow-lg">
                   FOCUS SOUND
                 </h1>
                 <div className="space-y-1">
-                  <p className="text-xl font-semibold text-deepNavy whitespace-nowrap">
-                    <strong>Phoneme:</strong> {phonemeData ? <span className="text-2xl">{phonemeData.phoneme.ipa_symbol}</span> : ''}
+                  <p className="text-sm sm:text-xl font-semibold text-deepNavy">
+                    <strong>Phoneme:</strong> {phonemeData ? <span className="text-lg sm:text-2xl">{phonemeData.phoneme.ipa_symbol}</span> : ''}
                   </p>
-                  <p className="text-xl font-semibold text-deepNavy">
-                    <strong>Grapheme{phonemeData && phonemeData.graphemes.length > 1 ? 's' : ''}:</strong>{phonemeData ? <span className="text-2xl">{phonemeData.graphemes.map((g: any) => `〈 ${g.grapheme} 〉`).join(', ')}</span> : ''}
+                  <p className="text-sm sm:text-xl font-semibold text-deepNavy">
+                    <strong>Grapheme{phonemeData && phonemeData.graphemes.length > 1 ? 's' : ''}:</strong>{phonemeData ? <span className="text-lg sm:text-2xl">{phonemeData.graphemes.map((g: any) => `〈 ${g.grapheme} 〉`).join(', ')}</span> : ''}
                   </p>
                 </div>
                 
@@ -185,14 +185,14 @@ export default function DecodingDenPage() {
                 )}
               </div>
                 
-                {/* Button Grid - 2 rows */}
+                {/* Button Grid - Responsive Layout */}
                 <div className="flex-1">
-                  {/* Top Row: Phoneme Insight, Let's Learn It, Articulation Guidance, Word List Practice, Simple Sentences, Short Story */}
-                  <div className="flex justify-start gap-2.5 mb-3">
+                  {/* Responsive Button Grid */}
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-2.5">
                     {/* Phoneme Insight */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'sound-of-the-day' ? null : 'sound-of-the-day')}
-                      className={`relative rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-28 h-22 ${
+                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
                         activeSection === 'sound-of-the-day' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -202,17 +202,17 @@ export default function DecodingDenPage() {
                         <Image 
                           src="/images/phoneme insight.png" 
                           alt="Phoneme Insight" 
-                          width={40} 
-                          height={40} 
-                          className="mx-auto"
+                          width={32} 
+                          height={32} 
+                          className="mx-auto sm:w-10 sm:h-10"
                         />
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'sound-of-the-day' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'sound-of-the-day' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Phoneme</div>
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'sound-of-the-day' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'sound-of-the-day' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Insight</div>
                       </div>
                     </button>
@@ -237,10 +237,10 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'lets-learn-it' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'lets-learn-it' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Let&apos;s</div>
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'lets-learn-it' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'lets-learn-it' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Learn It</div>
                       </div>
                     </button>
@@ -265,10 +265,10 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'articulation-guidance' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'articulation-guidance' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Articulation</div>
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'articulation-guidance' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'articulation-guidance' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Guidance</div>
                       </div>
                     </button>
@@ -293,10 +293,10 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-none whitespace-nowrap ${
-                          activeSection === 'word-list-practice' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'word-list-practice' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Word List</div>
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'word-list-practice' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'word-list-practice' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Practice</div>
                       </div>
                     </button>
@@ -304,7 +304,7 @@ export default function DecodingDenPage() {
                     {/* Simple Sentences */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'practice-text' ? null : 'practice-text')}
-                      className={`relative rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-28 h-22 ${
+                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
                         activeSection === 'practice-text' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -321,10 +321,10 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'practice-text' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'practice-text' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Simple</div>
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'practice-text' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'practice-text' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Sentences</div>
                       </div>
                     </button>
@@ -332,7 +332,7 @@ export default function DecodingDenPage() {
                     {/* Short Story */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'short-story' ? null : 'short-story')}
-                      className={`relative rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-28 h-22 ${
+                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
                         activeSection === 'short-story' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -349,10 +349,10 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'short-story' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'short-story' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Short</div>
                         <div className={`font-semibold leading-none ${
-                          activeSection === 'short-story' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'short-story' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Story</div>
                       </div>
                     </button>
@@ -360,7 +360,7 @@ export default function DecodingDenPage() {
                     {/* Differentiation */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'customize-lesson' ? null : 'customize-lesson')}
-                      className={`relative rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-28 h-22 ${
+                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
                         activeSection === 'customize-lesson' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -378,7 +378,7 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-tight ${
-                          activeSection === 'customize-lesson' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'customize-lesson' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Differentiation</div>
                       </div>
                     </button>
@@ -386,7 +386,7 @@ export default function DecodingDenPage() {
                     {/* Word Workspace */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'word-workspace' ? null : 'word-workspace')}
-                      className={`relative rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-28 h-22 ${
+                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
                         activeSection === 'word-workspace' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -403,19 +403,19 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-tight ${
-                          activeSection === 'word-workspace' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'word-workspace' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Word Practice</div>
                         <div className={`font-semibold leading-tight ${
-                          activeSection === 'word-workspace' ? 'text-white text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'word-workspace' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
                         }`}>Space</div>
                       </div>
                     </button>
                   </div>
 
                   {/* Learning Intention */}
-                  <div className="flex justify-start gap-3 mt-6">
-                    <div className="bg-blue-50 rounded-xl p-2 border-2 border-blue-400" style={{width: '100%'}}>
-                      <p className="text-lg font-semibold text-deepNavy text-center">
+                  <div className="flex justify-start gap-3 mt-4 lg:mt-6">
+                    <div className="bg-blue-50 rounded-xl p-2 border-2 border-blue-400 w-full">
+                      <p className="text-sm sm:text-lg font-semibold text-deepNavy text-center">
                         <strong className="text-green-600 drop-shadow-lg">Learning Intention:</strong> {phonemeData ? (
                           <>
                             I can read and spell words with the <strong>{phonemeData.phoneme.ipa_symbol}</strong> sound spelled〈<strong>{phonemeData.graphemes[0].grapheme}</strong>〉
