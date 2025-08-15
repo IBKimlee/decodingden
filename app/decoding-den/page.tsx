@@ -188,11 +188,11 @@ export default function DecodingDenPage() {
                 {/* Button Grid - Responsive Layout */}
                 <div className="flex-1 mt-2 lg:mt-0">
                   {/* Responsive Button Grid */}
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4 lg:gap-5 auto-rows-fr justify-items-center px-2 sm:px-0">
+                  <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                     {/* Phoneme Insight */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'sound-of-the-day' ? null : 'sound-of-the-day')}
-                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 ${
                         activeSection === 'sound-of-the-day' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -304,7 +304,7 @@ export default function DecodingDenPage() {
                     {/* Simple Sentences */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'practice-text' ? null : 'practice-text')}
-                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 ${
                         activeSection === 'practice-text' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -332,7 +332,7 @@ export default function DecodingDenPage() {
                     {/* Short Story */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'short-story' ? null : 'short-story')}
-                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 ${
                         activeSection === 'short-story' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -360,7 +360,7 @@ export default function DecodingDenPage() {
                     {/* Differentiation */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'customize-lesson' ? null : 'customize-lesson')}
-                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 ${
                         activeSection === 'customize-lesson' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -386,7 +386,7 @@ export default function DecodingDenPage() {
                     {/* Word Workspace */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'word-workspace' ? null : 'word-workspace')}
-                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 ${
                         activeSection === 'word-workspace' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
