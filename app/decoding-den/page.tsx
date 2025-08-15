@@ -188,31 +188,31 @@ export default function DecodingDenPage() {
                 {/* Button Grid - Responsive Layout */}
                 <div className="flex-1">
                   {/* Responsive Button Grid */}
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-2.5">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 sm:gap-2.5 auto-rows-fr">
                     {/* Phoneme Insight */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'sound-of-the-day' ? null : 'sound-of-the-day')}
-                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
                         activeSection === 'sound-of-the-day' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="-mb-2">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/phoneme insight.png" 
                           alt="Phoneme Insight" 
-                          width={32} 
-                          height={32} 
-                          className="mx-auto sm:w-10 sm:h-10"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'sound-of-the-day' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'sound-of-the-day' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Phoneme</div>
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'sound-of-the-day' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'sound-of-the-day' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Insight</div>
                       </div>
                     </button>
@@ -226,21 +226,21 @@ export default function DecodingDenPage() {
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-0">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/lets learn it.png" 
                           alt="Let's Learn It" 
-                          width={48} 
-                          height={48} 
-                          className="mx-auto"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'lets-learn-it' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'lets-learn-it' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Let&apos;s</div>
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'lets-learn-it' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'lets-learn-it' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Learn It</div>
                       </div>
                     </button>
@@ -254,21 +254,21 @@ export default function DecodingDenPage() {
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-0.5">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/articulation guidance.png" 
                           alt="Articulation Guidance" 
-                          width={44} 
-                          height={44} 
-                          className="mx-auto"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'articulation-guidance' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'articulation-guidance' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Articulation</div>
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'articulation-guidance' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'articulation-guidance' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Guidance</div>
                       </div>
                     </button>
@@ -282,21 +282,21 @@ export default function DecodingDenPage() {
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-1">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/word list practice.png" 
                           alt="Word List Practice" 
-                          width={40} 
-                          height={40} 
-                          className="mx-auto"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
-                        <div className={`font-semibold leading-none whitespace-nowrap ${
-                          activeSection === 'word-list-practice' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'word-list-practice' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Word List</div>
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'word-list-practice' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'word-list-practice' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Practice</div>
                       </div>
                     </button>
@@ -304,27 +304,27 @@ export default function DecodingDenPage() {
                     {/* Simple Sentences */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'practice-text' ? null : 'practice-text')}
-                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
                         activeSection === 'practice-text' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-1">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/simple sentences.png" 
                           alt="Simple Sentences" 
-                          width={40} 
-                          height={40} 
-                          className="mx-auto"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'practice-text' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'practice-text' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Simple</div>
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'practice-text' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'practice-text' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Sentences</div>
                       </div>
                     </button>
@@ -332,27 +332,27 @@ export default function DecodingDenPage() {
                     {/* Short Story */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'short-story' ? null : 'short-story')}
-                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
                         activeSection === 'short-story' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-1">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/short story.png" 
                           alt="Short Story" 
-                          width={44} 
-                          height={44} 
-                          className="mx-auto"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'short-story' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'short-story' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Short</div>
-                        <div className={`font-semibold leading-none ${
-                          activeSection === 'short-story' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                        <div className={`font-semibold leading-tight ${
+                          activeSection === 'short-story' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Story</div>
                       </div>
                     </button>
@@ -360,7 +360,7 @@ export default function DecodingDenPage() {
                     {/* Differentiation */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'customize-lesson' ? null : 'customize-lesson')}
-                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
                         activeSection === 'customize-lesson' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
@@ -378,7 +378,7 @@ export default function DecodingDenPage() {
                       </div>
                       <div className="text-center">
                         <div className={`font-semibold leading-tight ${
-                          activeSection === 'customize-lesson' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'customize-lesson' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Differentiation</div>
                       </div>
                     </button>
@@ -386,27 +386,27 @@ export default function DecodingDenPage() {
                     {/* Word Workspace */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'word-workspace' ? null : 'word-workspace')}
-                      className={`relative rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full h-20 sm:h-22 ${
+                      className={`relative rounded-lg p-1 sm:p-2 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-full aspect-square min-h-[80px] sm:min-h-[90px] ${
                         activeSection === 'word-workspace' 
                           ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-1">
+                      <div className="flex-shrink-0 mb-1">
                         <Image 
                           src="/images/word workspace.png" 
                           alt="Word Workspace" 
-                          width={40} 
-                          height={40} 
-                          className="mx-auto"
+                          width={24} 
+                          height={24} 
+                          className="mx-auto w-6 h-6 sm:w-8 sm:h-8"
                         />
                       </div>
-                      <div className="text-center">
+                      <div className="text-center flex-1 flex flex-col justify-center">
                         <div className={`font-semibold leading-tight ${
-                          activeSection === 'word-workspace' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'word-workspace' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Word Practice</div>
                         <div className={`font-semibold leading-tight ${
-                          activeSection === 'word-workspace' ? 'text-white text-xs sm:text-sm' : 'text-deepNavy text-xs'
+                          activeSection === 'word-workspace' ? 'text-white text-xs' : 'text-deepNavy text-xs'
                         }`}>Space</div>
                       </div>
                     </button>
