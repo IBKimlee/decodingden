@@ -33,6 +33,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
    - Accessibility requirements for educational software
    - Legal compliance (COPPA/FERPA) considerations
 
+5. **Git Commit Guidelines**: 
+   - **NEVER commit or push changes to GitHub without explicit permission**
+   - Always end responses with "Would you like me to commit these changes to GitHub and Vercel?"
+   - Only commit and push if the user explicitly says "yes"
+   - If the user says "no" or ignores, do not commit - they will continue with other tasks
+
 ## Site Access
 
 ### Password Protection
