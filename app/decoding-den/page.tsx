@@ -87,6 +87,7 @@ export default function DecodingDenPage() {
     setIsLoading(true);
     setError(null);
     setCorrectionMessage(null);
+    console.log('Search input:', phonemeInput);
 
     try {
       const response = await fetch('/api/decoding-den', {
@@ -106,6 +107,7 @@ export default function DecodingDenPage() {
         throw new Error(data.message || data.error || 'Failed to fetch phoneme data');
       }
 
+      console.log('API response data:', data.phoneme_data);
       setPhonemeData(data.phoneme_data);
       setCorrectionMessage(data.correction_message);
       setActiveSection(null); // Reset section when new phoneme is loaded
@@ -167,7 +169,13 @@ export default function DecodingDenPage() {
                     <strong>Phoneme:</strong> {phonemeData ? <span className="text-lg sm:text-2xl">{phonemeData.phoneme.ipa_symbol}</span> : ''}
                   </p>
                   <p className="text-sm sm:text-xl font-semibold text-deepNavy">
-                    <strong>Grapheme{phonemeData && phonemeData.graphemes.length > 1 ? 's' : ''}:</strong>{phonemeData ? <span className="text-lg sm:text-2xl">{phonemeData.graphemes.map((g: any) => `〈 ${g.grapheme} 〉`).join(', ')}</span> : ''}
+                    <strong>Grapheme:</strong>{phonemeData ? (
+                      <span className="text-lg sm:text-2xl">
+                        〈 {phonemeData.show_specific_grapheme && phonemeData.requested_specific_grapheme 
+                          ? phonemeData.requested_specific_grapheme 
+                          : phonemeData.graphemes[0].grapheme} 〉
+                      </span>
+                    ) : ''}
                   </p>
                 </div>
                 
@@ -418,7 +426,9 @@ export default function DecodingDenPage() {
                       <p className="text-sm sm:text-lg font-semibold text-deepNavy text-center">
                         <strong className="text-green-600 drop-shadow-lg">Learning Intention:</strong> {phonemeData ? (
                           <>
-                            I can read and spell words with the <strong>{phonemeData.phoneme.ipa_symbol}</strong> sound spelled〈<strong>{phonemeData.graphemes[0].grapheme}</strong>〉
+                            I can read and spell words with the <strong>{phonemeData.phoneme.ipa_symbol}</strong> sound spelled〈<strong>{phonemeData.show_specific_grapheme && phonemeData.requested_specific_grapheme 
+                              ? phonemeData.requested_specific_grapheme 
+                              : phonemeData.graphemes[0].grapheme}</strong>〉
                           </>
                         ) : ''}
                       </p>

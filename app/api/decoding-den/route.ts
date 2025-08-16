@@ -72,10 +72,53 @@ interface DecodingDenResponse {
 }
 
 /**
+ * Find specific grapheme for a phoneme (e.g., "sh spelled ss")
+ */
+async function findSpecificGraphemeForPhoneme(phoneme: string, grapheme: string): Promise<any | null> {
+  try {
+    // Normalize phoneme input
+    let normalizedPhoneme = phoneme.toLowerCase().trim();
+    if (!normalizedPhoneme.startsWith('/')) {
+      normalizedPhoneme = `/${normalizedPhoneme}/`;
+    }
+    
+    // First, find the phoneme
+    const { data: phonemeData, error } = await supabase
+      .from('phonemes')
+      .select('*')
+      .eq('phoneme', normalizedPhoneme)
+      .single();
+
+    if (!phonemeData || error) {
+      return null; // Phoneme doesn't exist
+    }
+
+    // Always return the phoneme data with the requested grapheme for display
+    return {
+      ...phonemeData,
+      requested_specific_grapheme: grapheme,
+      show_specific_grapheme: true
+    };
+  } catch (error) {
+    console.error('Error in findSpecificGraphemeForPhoneme:', error);
+    return null;
+  }
+}
+
+/**
  * Find phoneme by various input formats
  */
 async function findPhonemeByInput(input: string): Promise<any | null> {
   const normalizedInput = input.toLowerCase().trim();
+  
+  // Check for "phoneme spelled grapheme" syntax
+  const spelledPattern = /^(.+?)\s+spelled\s+(.+)$/i;
+  const spelledMatch = normalizedInput.match(spelledPattern);
+  
+  if (spelledMatch) {
+    const [, requestedPhoneme, requestedGrapheme] = spelledMatch;
+    return await findSpecificGraphemeForPhoneme(requestedPhoneme.trim(), requestedGrapheme.trim());
+  }
   
   try {
     // Try direct phoneme match first (e.g., "/sh/", "/m/")
@@ -444,6 +487,11 @@ export async function POST(request: NextRequest) {
         { status: 404 }
       );
     }
+
+    // Note: We no longer block invalid grapheme combinations here
+    // Instead, we let them pass through with invalid_grapheme flag
+    // so the frontend can display the requested combination while
+    // providing educational content about correct spellings
 
     // Transform Supabase data to expected frontend format
     const transformedData = transformPhonemeData(phonemeData);
