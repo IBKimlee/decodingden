@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Image from 'next/image';
-import { renderContentWithBold, renderAlignmentSpacer } from '@/app/utils/phonemeFormatting';
 
 interface PhonemeData {
   phoneme: {
@@ -51,15 +49,11 @@ interface SoundOfTheDayProps {
 export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   const [showAlternatives, setShowAlternatives] = useState(true);
   const [showSources, setShowSources] = useState(false);
-  const [showArticulationNotes, setShowArticulationNotes] = useState(true);
   const [showReferralNotes, setShowReferralNotes] = useState(true);
-  const [showAssessment, setShowAssessment] = useState(false);
-  const [showDevelopmentalInfo, setShowDevelopmentalInfo] = useState(false);
-  const [showSpelling, setShowSpelling] = useState(false);
   
   if (!phonemeData) return null;
 
-  const { phoneme, graphemes, articulation, teaching_content, research_citations } = phonemeData;
+  const { phoneme, graphemes, articulation, research_citations } = phonemeData;
   
 
   // Get phoneme label for display
@@ -173,109 +167,13 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         </div>
       </div>
 
-      {/* Articulation Guidance */}
-      {articulation && (
-        <div className="bg-blue-100 rounded-lg border-2 border-blue-500 overflow-hidden">
-          <button
-            onClick={() => setShowArticulationNotes(!showArticulationNotes)}
-            className="w-full p-6 pb-3 text-left hover:bg-blue-100 transition-colors rounded-t-lg"
-          >
-            <h4 className="text-lg font-semibold text-oceanBlue flex items-center justify-between -mt-2 -ml-4">
-              <span className="flex items-center">
-                <Image 
-                  src="/images/articulation guidance.png" 
-                  alt="Articulation Guidance" 
-                  width={24} 
-                  height={24} 
-                  className="mr-2"
-                />
-                Articulation Guidance
-              </span>
-              <span className={`transform transition-transform text-oceanBlue ml-2 ${showArticulationNotes ? 'rotate-180' : ''}`}>
-                ▼
-              </span>
-            </h4>
-          </button>
-          {showArticulationNotes && (
-            <div className="px-6 pb-2 -mt-3 rounded-b-lg">
-              <div className="bg-white rounded-lg p-4 border border-blue-200 mt-2">
-                <div className="flex gap-4">
-                  {/* Articulation Features - different labels for vowels vs consonants */}
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 w-1/2">
-                    {(articulation as any).is_vowel ? (
-                      <>
-                        <p className="text-gray-700 mt-2 text-justify">
-                          <strong>Sound Type:</strong> vowel
-                        </p>
-                        <p className="text-gray-700 mt-3 text-justify">
-                          <strong>Airflow:</strong> {(articulation as any).lip_position || 'open (no blockage)'}
-                        </p>
-                        <p className="text-gray-700 mt-3 text-justify">
-                          <strong>Tongue Position:</strong> {articulation.place_of_articulation}
-                        </p>
-                        <p className="text-gray-700 mt-3 text-justify">
-                          <strong>Lip Shape:</strong> {(articulation as any).lip_shape || (articulation as any).tongue_position}
-                        </p>
-                        <p className="text-gray-700 mt-3 text-justify">
-                          <strong>Voicing:</strong> {articulation.voicing}
-                        </p>
-                      </>
-                    ) : (
-                      <>
-                        <p className="text-gray-700 mt-2 text-justify">
-                          <strong>Place:</strong> {articulation.place_of_articulation}
-                        </p>
-                        <p className="text-gray-700 mt-3 text-justify">
-                          <strong>Manner:</strong> {articulation.manner_of_articulation}
-                        </p>
-                        <p className="text-gray-700 mt-3 text-justify">
-                          <strong>Voicing:</strong> {articulation.voicing}
-                        </p>
-                        {articulation.airflow_description && (
-                          <p className="text-gray-600 text-sm italic mt-2">
-                            {articulation.airflow_description}
-                          </p>
-                        )}
-                      </>
-                    )}
-                  </div>
-
-                  {/* Teaching Tips */}
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-200 w-1/2">
-                    <h5 className="font-semibold text-black mb-2">💡 Teaching Tips</h5>
-                    {articulation.teacher_tips.length > 0 ? (
-                      <ul className="text-gray-700 space-y-1">
-                        {articulation.teacher_tips.map((tip, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="text-green-600 mr-2 mt-0.5">•</span>
-                            {tip}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-gray-600 italic">No specific tips available</p>
-                    )}
-                    
-                    {articulation.step_by_step_instructions.length > 0 && (
-                      <div className="mt-3">
-                        <h6 className="font-medium text-gray-800 mb-1">Instructions:</h6>
-                        <ul className="text-gray-700 space-y-1">
-                          {articulation.step_by_step_instructions.map((instruction, index) => (
-                            <li key={index} className="flex items-start">
-                              <span className="text-blue-600 mr-2 mt-0.5">•</span>
-                              {instruction}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+      {/* Reference to Articulation Guidance Tab */}
+      <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+        <p className="text-sm text-gray-700 flex items-center">
+          <span className="mr-2">👄</span>
+          <span>For mouth position and production guidance, see the <strong className="text-oceanBlue">Articulation Guidance</strong> tab.</span>
+        </p>
+      </div>
 
       {/* Common Errors */}
       {articulation && articulation.common_errors.length > 0 && (
@@ -313,133 +211,14 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
       )}
 
 
-      {/* Teaching Content */}
-      {teaching_content && (teaching_content.explanations.length > 0 || teaching_content.rules.length > 0 || teaching_content.tips.length > 0) && (
-        <div className="bg-purple-100 rounded-lg border-2 border-blue-500 overflow-hidden">
-          <button
-            onClick={() => setShowDevelopmentalInfo(!showDevelopmentalInfo)}
-            className="w-full p-6 pb-3 text-left hover:bg-purple-100 transition-colors rounded-t-lg"
-          >
-            <h4 className="text-lg font-semibold text-oceanBlue flex items-center justify-between -mt-2 -ml-4">
-              <span className="flex items-center">
-                <span>📚</span>
-                <span className="ml-2">Teaching Content</span>
-              </span>
-              <span className={`transform transition-transform text-oceanBlue ml-2 ${showDevelopmentalInfo ? 'rotate-180' : ''}`}>
-                ▼
-              </span>
-            </h4>
-          </button>
-          {showDevelopmentalInfo && (
-            <div className="px-6 pb-3 -mt-3 rounded-b-lg">
-              <div className="space-y-4 mt-2">
-                {/* Explanations */}
-                {teaching_content.explanations.length > 0 && (
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                    <h5 className="font-semibold text-blue-800 mb-2">💙 Explanations</h5>
-                    <div className="space-y-2">
-                      {teaching_content.explanations.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-1">
-                          <span className="text-xl flex-shrink-0">➜</span>
-                          {renderAlignmentSpacer(item.content)}
-                          <p className="text-gray-700">{renderContentWithBold(item.content)}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+      {/* Reference to Let's Learn It Tab */}
+      <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+        <p className="text-sm text-gray-700 flex items-center">
+          <span className="mr-2">📚</span>
+          <span>For explanations, rules, and teaching tips, see the <strong className="text-oceanBlue">Let&apos;s Learn It</strong> tab.</span>
+        </p>
+      </div>
 
-                {/* Rules */}
-                {teaching_content.rules.length > 0 && (
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                    <h5 className="font-semibold text-green-800 mb-2">💚 Rules</h5>
-                    <div className="space-y-2">
-                      {teaching_content.rules.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-1">
-                          <span className="text-xl flex-shrink-0">➜</span>
-                          {renderAlignmentSpacer(item.content)}
-                          <p className="text-gray-700">{renderContentWithBold(item.content)}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Tips */}
-                {teaching_content.tips.length > 0 && (
-                  <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
-                    <h5 className="font-semibold text-yellow-800 mb-2">💛 Tips</h5>
-                    <div className="space-y-2">
-                      {teaching_content.tips.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-1">
-                          <span className="text-xl flex-shrink-0">➜</span>
-                          {renderAlignmentSpacer(item.content)}
-                          <p className="text-gray-700">{renderContentWithBold(item.content)}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Spelling Information */}
-      {graphemes.length > 0 && (
-        <div className="bg-yellow-100 rounded-lg border-2 border-blue-500 overflow-hidden">
-          <button
-            onClick={() => setShowSpelling(!showSpelling)}
-            className="w-full px-6 pt-6 pb-4 text-left hover:bg-yellow-100 transition-colors rounded-t-lg"
-          >
-            <h4 className="text-lg font-semibold text-oceanBlue flex items-center justify-between -ml-4 -mt-4">
-              <span className="flex items-center">
-                <span>📝</span>
-                <span className="ml-2">Spelling Patterns</span>
-              </span>
-              <span className={`transform transition-transform text-oceanBlue ml-2 ${showSpelling ? 'rotate-180' : ''}`}>
-                ▼
-              </span>
-            </h4>
-          </button>
-          {showSpelling && (
-            <div className="px-6 pb-4 -mt-2 rounded-b-lg">
-              <div className="bg-white rounded-lg p-4 border border-yellow-200">
-                <div className="space-y-4">
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                    <h5 className="font-semibold text-green-800 mb-3">✅ Grapheme Options for {phoneme.ipa_symbol}</h5>
-                    <div className="space-y-2">
-                      {graphemes.map((grapheme, index) => (
-                        <div key={grapheme.id} className="flex items-start">
-                          <span className="text-green-600 mr-2 mt-0.5 font-bold">{index + 1}.</span>
-                          <div>
-                            <p className="text-gray-700">
-                              <strong>〈{grapheme.grapheme}〉</strong> 
-                              {index === 0 && <span className="text-green-700 ml-2">(Most common)</span>}
-                            </p>
-                            {grapheme.notes && (
-                              <p className="text-sm text-gray-600 ml-4">{grapheme.notes}</p>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                    <h5 className="font-semibold text-blue-800 mb-2">🎯 Key Pattern</h5>
-                    <p className="text-gray-700">
-                      The most reliable spelling for {phoneme.ipa_symbol} is <strong className="text-green-700">〈{graphemes[0]?.grapheme}〉</strong>.
-                      {graphemes.length > 1 && ` This phoneme can also be spelled ${graphemes.length - 1} other way${graphemes.length > 2 ? 's' : ''}.`}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
 
 
       {/* Research Sources */}

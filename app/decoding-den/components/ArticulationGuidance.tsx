@@ -8,7 +8,8 @@ interface ArticulationGuidanceProps {
 }
 
 export default function ArticulationGuidance({ phonemeData, viewMode = 'teacher' }: ArticulationGuidanceProps) {
-  const [activeView, setActiveView] = useState<'teacher' | 'student'>(viewMode);
+  // Use viewMode prop directly - controlled by parent header buttons
+  const activeView = viewMode;
   const [showSources, setShowSources] = useState(false);
 
   if (!phonemeData) {
@@ -37,30 +38,6 @@ export default function ArticulationGuidance({ phonemeData, viewMode = 'teacher'
 
   return (
     <div className="space-y-6">
-      {/* View Toggle */}
-      <div className="flex gap-2 mb-4">
-        <button
-          onClick={() => setActiveView('teacher')}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
-            activeView === 'teacher'
-              ? 'bg-oceanBlue text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          👩‍🏫 Teacher View
-        </button>
-        <button
-          onClick={() => setActiveView('student')}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
-            activeView === 'student'
-              ? 'bg-oceanBlue text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          🧒 Student View
-        </button>
-      </div>
-
       {/* Teacher View */}
       {activeView === 'teacher' && (
         <div className="space-y-6">
@@ -123,23 +100,6 @@ export default function ArticulationGuidance({ phonemeData, viewMode = 'teacher'
                   <li key={index} className="flex items-start bg-white rounded p-3 border border-green-100">
                     <span className="text-green-600 mr-2">•</span>
                     <span className="text-gray-700">{tip}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Common Errors */}
-          {articulationFeatures.common_errors && articulationFeatures.common_errors.length > 0 && (
-            <div className="bg-amber-50 rounded-lg p-6 border border-amber-200">
-              <h3 className="text-lg font-semibold text-deepNavy mb-4 flex items-center">
-                ⚠️ Watch for Common Errors
-              </h3>
-              <ul className="space-y-2">
-                {articulationFeatures.common_errors.map((error: string, index: number) => (
-                  <li key={index} className="flex items-start bg-white rounded p-3 border border-amber-100">
-                    <span className="text-amber-600 mr-2">•</span>
-                    <span className="text-gray-700">{error}</span>
                   </li>
                 ))}
               </ul>
