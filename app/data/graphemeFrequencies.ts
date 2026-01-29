@@ -42,6 +42,36 @@ export const GRAPHEME_FREQUENCIES: PhonemeFrequencyMap = {
     { grapheme: 'al', percentage: 0.5, usage_label: 'Exception', context_notes: 'half, calf' }
   ],
 
+  '/e/': [
+    { grapheme: 'e', percentage: 91, usage_label: 'Primary' },
+    { grapheme: 'ea', percentage: 5, usage_label: 'Secondary', context_notes: 'bread, head, dead' },
+    { grapheme: 'ai', percentage: 2, usage_label: 'Rare', context_notes: 'said, again' },
+    { grapheme: 'ie', percentage: 1, usage_label: 'Exception', context_notes: 'friend' },
+    { grapheme: 'a', percentage: 1, usage_label: 'Exception', context_notes: 'any, many' }
+  ],
+
+  '/i/': [
+    { grapheme: 'i', percentage: 91, usage_label: 'Primary' },
+    { grapheme: 'y', percentage: 5, usage_label: 'Secondary', context_notes: 'gym, myth, symbol' },
+    { grapheme: 'ui', percentage: 2, usage_label: 'Rare', context_notes: 'build, guilt' },
+    { grapheme: 'e', percentage: 1, usage_label: 'Exception', context_notes: 'pretty, English' },
+    { grapheme: 'o', percentage: 1, usage_label: 'Exception', context_notes: 'women' }
+  ],
+
+  '/o/': [
+    { grapheme: 'o', percentage: 93, usage_label: 'Primary' },
+    { grapheme: 'a', percentage: 4, usage_label: 'Secondary', context_notes: 'watch, want, wash' },
+    { grapheme: 'ou', percentage: 2, usage_label: 'Rare', context_notes: 'cough' },
+    { grapheme: 'ow', percentage: 1, usage_label: 'Exception', context_notes: 'knowledge' }
+  ],
+
+  '/u/': [
+    { grapheme: 'u', percentage: 86, usage_label: 'Primary' },
+    { grapheme: 'o', percentage: 8, usage_label: 'Secondary', context_notes: 'son, come, love, some' },
+    { grapheme: 'ou', percentage: 4, usage_label: 'Secondary', context_notes: 'touch, young, enough' },
+    { grapheme: 'oo', percentage: 2, usage_label: 'Rare', context_notes: 'blood, flood' }
+  ],
+
   '/t/': [
     { grapheme: 't', percentage: 79, usage_label: 'Primary' },
     { grapheme: 'tt', percentage: 12, usage_label: 'Secondary', context_notes: 'Doubled consonant' },
