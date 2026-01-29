@@ -72,7 +72,7 @@ interface DecodingDenResponse {
 }
 
 /**
- * Find specific grapheme for a phoneme (e.g., "sh spelled ss")
+ * Find specific grapheme for a phoneme (e.g., "sh spelled ch")
  */
 async function findSpecificGraphemeForPhoneme(phoneme: string, grapheme: string): Promise<any | null> {
   try {
@@ -90,14 +90,42 @@ async function findSpecificGraphemeForPhoneme(phoneme: string, grapheme: string)
       .single();
 
     if (!phonemeData || error) {
+      console.log(`Phoneme ${normalizedPhoneme} not found, trying alternative searches...`);
+      
+      // Try alternative searches for common phoneme patterns
+      const alternativeSearches = [
+        phoneme, // Try without IPA formatting
+        phoneme.replace(/^\/|\/$/g, ''), // Remove any existing slashes
+      ];
+      
+      for (const alt of alternativeSearches) {
+        const { data: altData, error: altError } = await supabase
+          .from('phonemes')
+          .select('*')
+          .contains('graphemes', [alt])
+          .single();
+          
+        if (altData && !altError) {
+          return {
+            ...altData,
+            requested_specific_grapheme: grapheme,
+            show_specific_grapheme: true
+          };
+        }
+      }
+      
       return null; // Phoneme doesn't exist
     }
 
+    // Check if the requested grapheme is valid for this phoneme
+    const hasGrapheme = phonemeData.graphemes?.includes(grapheme);
+    
     // Always return the phoneme data with the requested grapheme for display
     return {
       ...phonemeData,
       requested_specific_grapheme: grapheme,
-      show_specific_grapheme: true
+      show_specific_grapheme: true,
+      invalid_grapheme: !hasGrapheme // Flag if this is an invalid combination
     };
   } catch (error) {
     console.error('Error in findSpecificGraphemeForPhoneme:', error);
@@ -178,6 +206,25 @@ async function findPhonemeByInput(input: string): Promise<any | null> {
     ];
 
     for (const pattern of commonPatterns) {
+      // Special case: if searching for "short" + single vowel, prioritize short vowel phonemes
+      // Short vowels are in Stage 1, so look for stage1_a, stage1_e, etc.
+      if (normalizedInput.toLowerCase().includes('short') &&
+          ['a', 'e', 'i', 'o', 'u'].includes(pattern.toLowerCase())) {
+
+        // Try to find short vowel phoneme first (Stage 1 vowels)
+        ({ data: phonemeData, error } = await supabase
+          .from('phonemes')
+          .select('*')
+          .eq('phoneme', `/${pattern}/`)
+          .eq('stage_id', 1)
+          .limit(1)
+          .single());
+
+        if (phonemeData && !error) {
+          return phonemeData;
+        }
+      }
+
       // Try as grapheme
       ({ data: phonemeData, error } = await supabase
         .from('phonemes')
@@ -216,40 +263,93 @@ async function findPhonemeByInput(input: string): Promise<any | null> {
 function transformPhonemeData(supabaseData: any): PhonemeData {
   const articulation = supabaseData.articulation_data;
   
-  return {
+  // Safely extract string values and ensure no objects are passed to React
+  const safeString = (value: any): string => {
+    if (typeof value === 'string') return value;
+    if (value == null) return '';
+    return String(value);
+  };
+  
+  const safeArray = (value: any): string[] => {
+    if (Array.isArray(value)) return value.map(v => safeString(v));
+    if (typeof value === 'string') return [value];
+    return [];
+  };
+
+  // Extract stories from content_generation_meta
+  const extractStories = (meta: any): string[] => {
+    if (!meta?.short_stories || !Array.isArray(meta.short_stories)) return [];
+    return meta.short_stories.map((story: any) => {
+      if (typeof story === 'string') return story;
+      if (story?.title && story?.text) return `${story.title}\n${story.text}`;
+      if (story?.text) return story.text;
+      return '';
+    }).filter((s: string) => s.length > 0);
+  };
+
+  // Extract word ladders from content_generation_meta
+  const extractWordLadders = (meta: any): string[] => {
+    if (!meta?.word_ladders || !Array.isArray(meta.word_ladders)) return [];
+    return meta.word_ladders.map((ladder: any) => {
+      if (typeof ladder === 'string') return ladder;
+      if (ladder?.words && Array.isArray(ladder.words)) {
+        const wordsStr = ladder.words.join(' → ');
+        return ladder.instructions ? `${wordsStr} (${ladder.instructions})` : wordsStr;
+      }
+      return '';
+    }).filter((s: string) => s.length > 0);
+  };
+
+  const result: any = {
     phoneme: {
-      id: supabaseData.phoneme_id,
-      ipa_symbol: supabaseData.phoneme,
-      common_name: supabaseData.phoneme.replace(/[\/]/g, '') + ' sound',
+      id: safeString(supabaseData.phoneme_id),
+      ipa_symbol: safeString(supabaseData.phoneme),
+      common_name: safeString(supabaseData.phoneme).replace(/[\/]/g, '') + ' sound',
       phoneme_type: getPhonemeType(supabaseData),
-      frequency_rank: supabaseData.frequency_rank || 0,
+      frequency_rank: typeof supabaseData.frequency_rank === 'number' ? supabaseData.frequency_rank : 0,
       is_voiced: articulation?.voicing === 'voiced' || false,
     },
-    graphemes: supabaseData.graphemes?.map((grapheme: string, index: number) => {
-      // Get frequency data for this phoneme
-      const frequencyData = getGraphemeFrequencies(supabaseData.phoneme);
-      const graphemeFreq = frequencyData.find(f => f.grapheme === grapheme);
-      
-      return {
-        id: `${supabaseData.phoneme_id}_${index}`,
-        grapheme: grapheme,
-        spelling_frequency: graphemeFreq ? graphemeFreq.percentage / 100 : (index === 0 ? 1 : 0.5),
-        percentage: graphemeFreq?.percentage,
-        usage_label: graphemeFreq?.usage_label,
-        context_notes: graphemeFreq?.context_notes,
-        notes: graphemeFreq?.context_notes || (index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : undefined),
-      };
-    }) || [],
+    graphemes: (supabaseData.graphemes || [])
+      .map((grapheme: string, index: number) => {
+        // Get frequency data for this phoneme
+        const frequencyData = getGraphemeFrequencies(supabaseData.phoneme);
+        const graphemeFreq = frequencyData.find(f => f.grapheme === grapheme);
+        
+        // Return grapheme data with validation flag
+        return {
+          id: `${safeString(supabaseData.phoneme_id)}_${index}`,
+          grapheme: safeString(grapheme),
+          spelling_frequency: graphemeFreq ? graphemeFreq.percentage / 100 : (index === 0 ? 1 : 0.5),
+          percentage: graphemeFreq?.percentage,
+          usage_label: graphemeFreq?.usage_label,
+          context_notes: safeString(graphemeFreq?.context_notes),
+          notes: safeString(graphemeFreq?.context_notes || (index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : '')),
+          isValid: !!graphemeFreq, // Flag to indicate if this grapheme is linguistically valid
+        };
+      })
+      .filter((graphemeData) => {
+        // Filter out invalid graphemes that don't have frequency data
+        // This removes database inconsistencies like 's' and 'ss' for /sh/
+        return graphemeData.isValid;
+      })
+      .map((graphemeData, newIndex) => {
+        // Re-index after filtering and clean up the validation flag
+        const { isValid, ...cleanedData } = graphemeData;
+        return {
+          ...cleanedData,
+          id: `${safeString(supabaseData.phoneme_id)}_${newIndex}`,
+        };
+      }),
     articulation: articulation ? {
-      place_of_articulation: articulation.place || '',
-      manner_of_articulation: articulation.manner || '',
-      voicing: articulation.voicing || '',
-      tongue_position: articulation.teacher_guidance || '',
-      lip_position: articulation.articulation_cues || '',
+      place_of_articulation: safeString(articulation.place || generatePlaceOfArticulation(supabaseData)),
+      manner_of_articulation: safeString(articulation.manner || generateMannerOfArticulation(supabaseData)),
+      voicing: safeString(articulation.voicing || generateVoicing(supabaseData)),
+      tongue_position: safeString(articulation.teacher_guidance || articulation.cue || generateTonguePosition(supabaseData)),
+      lip_position: safeString(articulation.articulation_cues || generateLipPosition(supabaseData)),
       airflow_description: generateAirflowDescription(supabaseData),
-      step_by_step_instructions: articulation.student_tips ? [articulation.student_tips] : [],
+      step_by_step_instructions: articulation.student_tips ? [safeString(articulation.student_tips)] : generateStepByStepInstructions(supabaseData),
       common_errors: generateCommonErrors(supabaseData),
-      teacher_tips: articulation.teacher_guidance ? [articulation.teacher_guidance] : [],
+      teacher_tips: articulation.teacher_guidance ? [safeString(articulation.teacher_guidance)] : generateTeacherTips(supabaseData),
     } : null,
     teaching_content: {
       explanations: generateTeachingExplanations(supabaseData),
@@ -258,16 +358,25 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
     },
     word_lists: generateWordLists(supabaseData),
     practice_texts: {
-      sentences: supabaseData.decodable_sentences || [],
-      stories: [], // Could be generated from word examples
-      word_ladders: [], // Could be generated from similar phonemes
+      sentences: safeArray(supabaseData.decodable_sentences),
+      stories: extractStories(supabaseData.content_generation_meta),
+      word_ladders: extractWordLadders(supabaseData.content_generation_meta),
     },
-    research_citations: supabaseData.research_sources?.map((source: string, index: number) => ({
-      source_name: source,
+    research_citations: (supabaseData.research_sources || []).map((source: any, index: number) => ({
+      source_name: safeString(source),
       citation_text: `Research-based phonics instruction supporting ${supabaseData.phoneme} sound development.`,
       url: undefined,
-    })) || [],
+    })),
   };
+  
+  // Add fields for "spelled" syntax support
+  if (supabaseData.show_specific_grapheme) {
+    result.show_specific_grapheme = true;
+    result.requested_specific_grapheme = safeString(supabaseData.requested_specific_grapheme);
+    result.invalid_grapheme = Boolean(supabaseData.invalid_grapheme);
+  }
+  
+  return result;
 }
 
 /**
@@ -360,18 +469,119 @@ function generateTeachingTips(data: any): Array<{ content: string; icon_emoji: s
 }
 
 /**
- * Generate word lists from word examples
+ * Generate word lists from word examples with proper phoneme position detection
+ * Only includes words that are appropriate for each specific grapheme
  */
 function generateWordLists(data: any): { [grapheme: string]: { beginning: string[]; medial: string[]; ending: string[] } } {
   const wordLists: any = {};
   
   if (data.graphemes?.length > 0 && data.word_examples?.length > 0) {
-    const primaryGrapheme = data.graphemes[0];
-    wordLists[primaryGrapheme] = {
-      beginning: data.word_examples.slice(0, 5) || [],
-      medial: [],
-      ending: [],
-    };
+    const phoneme = data.phoneme?.replace(/[\/]/g, ''); // Remove IPA slashes
+    const frequencyData = getGraphemeFrequencies(data.phoneme);
+    
+    // Only process valid graphemes that have frequency data
+    const validGraphemes = data.graphemes.filter((grapheme: string) => 
+      frequencyData.some(f => f.grapheme === grapheme)
+    );
+    
+    validGraphemes.forEach((grapheme: string) => {
+      wordLists[grapheme] = {
+        beginning: [],
+        medial: [],
+        ending: [],
+      };
+      
+      // Filter words that actually contain this specific grapheme spelling
+      const relevantWords = data.word_examples.filter((word: string) => {
+        const lowerWord = word.toLowerCase();
+        
+        // Special cases for different graphemes
+        if (phoneme === 'sh') {
+          switch (grapheme) {
+            case 'sh':
+              return lowerWord.includes('sh');
+            case 'ti':
+              return lowerWord.includes('ti') && (lowerWord.endsWith('tion') || lowerWord.includes('tia') || lowerWord.includes('tio'));
+            case 'ci':
+              return lowerWord.includes('ci') && (lowerWord.includes('cia') || lowerWord.includes('cio') || lowerWord.includes('cial'));
+            case 'si':
+              // Only include 'si' if it doesn't contain 'ssi' (to avoid overlap)
+              return lowerWord.includes('si') && !lowerWord.includes('ssi') && (lowerWord.endsWith('sion') || lowerWord.includes('sia'));
+            case 'ssi':
+              return lowerWord.includes('ssi');
+            case 'ch':
+              return lowerWord.includes('ch') && (lowerWord.includes('machine') || lowerWord.includes('chef') || lowerWord.includes('chalet'));
+            default:
+              return false;
+          }
+        }
+        // For other phonemes, check if word contains the grapheme
+        else {
+          return lowerWord.includes(grapheme.toLowerCase());
+        }
+      });
+      
+      // Categorize filtered words by phoneme position
+      relevantWords.forEach((word: string) => {
+        const lowerWord = word.toLowerCase();
+        
+        if (phoneme === 'sh') {
+          // Determine position based on the specific grapheme
+          switch (grapheme) {
+            case 'sh':
+              if (lowerWord.startsWith('sh')) {
+                wordLists[grapheme].beginning.push(word);
+              } else if (lowerWord.endsWith('sh')) {
+                wordLists[grapheme].ending.push(word);
+              } else if (lowerWord.includes('sh')) {
+                wordLists[grapheme].medial.push(word);
+              }
+              break;
+            case 'ti':
+            case 'ci': 
+            case 'si':
+            case 'ssi':
+              // These typically appear in endings
+              wordLists[grapheme].ending.push(word);
+              break;
+            case 'ch':
+              // Machine-type words - usually beginning or medial
+              if (lowerWord.startsWith('ch')) {
+                wordLists[grapheme].beginning.push(word);
+              } else {
+                wordLists[grapheme].medial.push(word);
+              }
+              break;
+          }
+        }
+        // For vowels, check grapheme position
+        else if (['a', 'e', 'i', 'o', 'u'].includes(phoneme)) {
+          const graphemeIndex = lowerWord.indexOf(grapheme.toLowerCase());
+          if (graphemeIndex === 0) {
+            wordLists[grapheme].beginning.push(word);
+          } else if (graphemeIndex === lowerWord.length - grapheme.length) {
+            wordLists[grapheme].ending.push(word);
+          } else if (graphemeIndex > 0) {
+            wordLists[grapheme].medial.push(word);
+          }
+        }
+        // For other consonants, check grapheme position
+        else {
+          if (lowerWord.startsWith(grapheme.toLowerCase())) {
+            wordLists[grapheme].beginning.push(word);
+          } else if (lowerWord.endsWith(grapheme.toLowerCase())) {
+            wordLists[grapheme].ending.push(word);
+          } else if (lowerWord.includes(grapheme.toLowerCase())) {
+            wordLists[grapheme].medial.push(word);
+          }
+        }
+      });
+      
+      // Remove duplicates and limit to 5 words per position
+      wordLists[grapheme].beginning = [...new Set(wordLists[grapheme].beginning)].slice(0, 5);
+      wordLists[grapheme].medial = [...new Set(wordLists[grapheme].medial)].slice(0, 5);
+      wordLists[grapheme].ending = [...new Set(wordLists[grapheme].ending)].slice(0, 5);
+    });
   }
   
   return wordLists;
@@ -444,6 +654,172 @@ function generateCommonErrors(data: any): string[] {
   }
   
   return errors.length > 0 ? errors : [`Monitor for substitutions of similar sounds for ${phoneme}`];
+}
+
+/**
+ * Generate place of articulation for phonemes without detailed articulation data
+ */
+function generatePlaceOfArticulation(data: any): string {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  const stageId = data.stage_id;
+  
+  // Vowels
+  if (stageId <= 2 && ['a', 'e', 'i', 'o', 'u'].some(v => phoneme.includes(v))) {
+    return 'central (tongue position varies by vowel)';
+  }
+  
+  // Common consonants
+  if (phoneme.includes('m') || phoneme.includes('p') || phoneme.includes('b')) {
+    return 'bilabial (both lips)';
+  }
+  if (phoneme.includes('t') || phoneme.includes('d') || phoneme.includes('n')) {
+    return 'alveolar (tongue tip to ridge behind teeth)';
+  }
+  if (phoneme.includes('k') || phoneme.includes('g')) {
+    return 'velar (back of tongue to soft palate)';
+  }
+  
+  return 'varies by sound';
+}
+
+/**
+ * Generate manner of articulation for phonemes without detailed articulation data
+ */
+function generateMannerOfArticulation(data: any): string {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  const stageId = data.stage_id;
+  
+  // Vowels
+  if (stageId <= 2 && ['a', 'e', 'i', 'o', 'u'].some(v => phoneme.includes(v))) {
+    return 'vowel (open vocal tract)';
+  }
+  
+  // Common consonants
+  if (phoneme.includes('m') || phoneme.includes('n')) {
+    return 'nasal (air through nose)';
+  }
+  if (phoneme.includes('p') || phoneme.includes('b') || phoneme.includes('t') || phoneme.includes('d') || phoneme.includes('k') || phoneme.includes('g')) {
+    return 'stop (brief blockage of airflow)';
+  }
+  if (phoneme.includes('f') || phoneme.includes('v') || phoneme.includes('s') || phoneme.includes('z')) {
+    return 'fricative (continuous airflow through narrow opening)';
+  }
+  
+  return 'consonant';
+}
+
+/**
+ * Generate voicing information for phonemes without detailed articulation data
+ */
+function generateVoicing(data: any): string {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  
+  // Vowels are always voiced
+  if (['a', 'e', 'i', 'o', 'u'].some(v => phoneme.includes(v))) {
+    return 'voiced (vocal cords vibrate)';
+  }
+  
+  // Common voiceless consonants
+  if (['p', 't', 'k', 'f', 's'].some(c => phoneme.includes(c))) {
+    return 'voiceless (no vocal cord vibration)';
+  }
+  
+  // Common voiced consonants
+  if (['b', 'd', 'g', 'v', 'z', 'm', 'n', 'l', 'r'].some(c => phoneme.includes(c))) {
+    return 'voiced (vocal cords vibrate)';
+  }
+  
+  return 'varies';
+}
+
+/**
+ * Generate tongue position guidance for phonemes without detailed articulation data
+ */
+function generateTonguePosition(data: any): string {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  const articulationData = data.articulation_data;
+  
+  if (articulationData?.cue) {
+    return articulationData.cue;
+  }
+  
+  if (phoneme.includes('a')) {
+    return 'Jaw drops, tongue low and back';
+  }
+  if (phoneme.includes('e')) {
+    return 'Tongue slightly raised, mouth more closed than /a/';
+  }
+  if (phoneme.includes('i')) {
+    return 'Tongue high and forward, corners of mouth spread';
+  }
+  if (phoneme.includes('o')) {
+    return 'Tongue back and raised, lips rounded';
+  }
+  if (phoneme.includes('u')) {
+    return 'Tongue high and back, lips very rounded';
+  }
+  
+  return 'Position tongue for clear sound production';
+}
+
+/**
+ * Generate lip position guidance for phonemes without detailed articulation data
+ */
+function generateLipPosition(data: any): string {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  
+  if (phoneme.includes('o') || phoneme.includes('u')) {
+    return 'Lips rounded';
+  }
+  if (phoneme.includes('i') || phoneme.includes('e')) {
+    return 'Lips slightly spread';
+  }
+  if (phoneme.includes('a')) {
+    return 'Lips neutral, jaw dropped';
+  }
+  
+  return 'Natural lip position for sound';
+}
+
+/**
+ * Generate step-by-step instructions for phonemes without detailed articulation data
+ */
+function generateStepByStepInstructions(data: any): string[] {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  
+  if (phoneme.includes('a')) {
+    return ['Open your mouth', 'Drop your jaw', 'Make a short /a/ sound'];
+  }
+  if (phoneme.includes('e')) {
+    return ['Open your mouth slightly', 'Say /a/ but lift your tongue a bit', 'Make a short /e/ sound'];
+  }
+  if (phoneme.includes('i')) {
+    return ['Spread corners of your mouth', 'Lift your tongue high', 'Make a short /i/ sound'];
+  }
+  if (phoneme.includes('o')) {
+    return ['Round your lips', 'Keep mouth more closed', 'Make a short /o/ sound'];
+  }
+  if (phoneme.includes('u')) {
+    return ['Round your lips tightly', 'Lift back of tongue', 'Make a short /u/ sound'];
+  }
+  
+  return ['Listen to the teacher model', 'Try to copy the sound', 'Practice in words'];
+}
+
+/**
+ * Generate teacher tips for phonemes without detailed articulation data
+ */
+function generateTeacherTips(data: any): string[] {
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  
+  if (phoneme.includes('a')) {
+    return ['Model with exaggerated jaw drop', 'Use visual cues like opening mouth wide', 'Practice with familiar words like "cat"'];
+  }
+  if (['e', 'i', 'o', 'u'].some(v => phoneme.includes(v))) {
+    return [`Model clear ${phoneme} sound`, 'Use hand gestures to show mouth shape', 'Practice with simple CVC words'];
+  }
+  
+  return ['Model the sound clearly', 'Use visual and tactile cues', 'Practice in simple words first'];
 }
 
 /**
