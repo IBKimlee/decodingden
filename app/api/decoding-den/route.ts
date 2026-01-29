@@ -556,43 +556,12 @@ function generateTeachingRules(data: any): Array<{ content: string; icon_emoji: 
   const phoneme = data.phoneme?.toLowerCase() || '';
 
   // Short vowel rules (Stage 1)
+  // One clean, structural rule that applies to all short vowels
   if (data.stage_id === 1) {
     rules.push({
-      content: 'In closed syllables, a single vowel followed by a consonant is usually short.',
+      content: 'In closed syllables, a single vowel followed by one or more consonants is usually short.',
       icon_emoji: '💚'
     });
-    rules.push({
-      content: 'The vowel sound is "closed in" by consonants, which makes it say its short sound.',
-      icon_emoji: '💚'
-    });
-
-    // Position-specific rule based on phoneme
-    if (phoneme === '/a/') {
-      rules.push({
-        content: 'The /ă/ sound occurs most often in the beginning or middle of single-syllable words.',
-        icon_emoji: '💚'
-      });
-    } else if (phoneme === '/e/') {
-      rules.push({
-        content: 'The /ĕ/ sound occurs most often in the middle of single-syllable words.',
-        icon_emoji: '💚'
-      });
-    } else if (phoneme === '/i/') {
-      rules.push({
-        content: 'The /ĭ/ sound occurs most often in the middle of single-syllable words.',
-        icon_emoji: '💚'
-      });
-    } else if (phoneme === '/o/') {
-      rules.push({
-        content: 'The /ŏ/ sound occurs most often in the middle of single-syllable words.',
-        icon_emoji: '💚'
-      });
-    } else if (phoneme === '/u/') {
-      rules.push({
-        content: 'The /ŭ/ sound occurs most often in the middle of single-syllable words.',
-        icon_emoji: '💚'
-      });
-    }
   }
 
   // Digraph rules (Stage 3)
@@ -616,24 +585,143 @@ function generateTeachingRules(data: any): Array<{ content: string; icon_emoji: 
 
 /**
  * Generate teaching tips from Supabase data
+ * These are PEDAGOGICAL tips (how to teach), NOT articulation tips (how to produce the sound)
+ * Articulation content belongs in the Articulation Guidance section only
  */
 function generateTeachingTips(data: any): Array<{ content: string; icon_emoji: string }> {
-  const tips = [];
-  
-  if (data.articulation_data?.teacher_guidance) {
+  const tips: Array<{ content: string; icon_emoji: string }> = [];
+  const phoneme = data.phoneme?.toLowerCase() || '';
+  const displayPhoneme = formatPhonemeSymbol(data.phoneme, data.stage_id);
+  const primaryGrapheme = data.graphemes?.[0] || '';
+
+  // Short vowels (Stage 1) - pedagogical tips for teaching short vowels
+  if (data.stage_id === 1) {
     tips.push({
-      content: data.articulation_data.teacher_guidance,
+      content: `Use Elkonin boxes to help students segment CVC words with the ${displayPhoneme} sound.`,
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Practice continuous blending (stretching sounds together) rather than choppy, segmented blending.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: `Use word chains to build phonemic awareness: change one sound at a time (e.g., cat → cot → cop).`,
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: `Multi-sensory practice: Have students sky-write 〈${primaryGrapheme}〉 while saying ${displayPhoneme}.`,
       icon_emoji: '💛'
     });
   }
-  
-  if (data.articulation_data?.student_tips) {
+
+  // Consonants (Stage 2) - pedagogical tips
+  else if (data.stage_id === 2) {
     tips.push({
-      content: data.articulation_data.student_tips,
+      content: `Use picture sorts to help students identify words that begin or end with ${displayPhoneme}.`,
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Connect the sound to a key word and picture that students can reference (anchor chart).',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: `Practice blending ${displayPhoneme} with known vowels to build simple CVC words.`,
       icon_emoji: '💛'
     });
   }
-  
+
+  // Digraphs (Stage 3) - pedagogical tips
+  else if (data.stage_id === 3) {
+    tips.push({
+      content: `Use letter tiles that show 〈${primaryGrapheme}〉 as ONE unit to reinforce "two letters, one sound."`,
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Create an anchor chart comparing this digraph to similar sounds students already know.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: `Word sorts: Have students categorize words by whether they contain 〈${primaryGrapheme}〉 or not.`,
+      icon_emoji: '💛'
+    });
+  }
+
+  // Long vowels (Stage 4) - pedagogical tips
+  else if (data.stage_id === 4) {
+    tips.push({
+      content: 'Compare and contrast short vs. long vowel sounds explicitly (e.g., "cap" vs. "cape").',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Teach the silent-e pattern as a visual cue: "When e is at the end, the vowel says its name."',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Use word sorts to help students discover the pattern themselves before stating the rule.',
+      icon_emoji: '💛'
+    });
+  }
+
+  // Vowel teams (Stage 5) - pedagogical tips
+  else if (data.stage_id === 5) {
+    tips.push({
+      content: `Teach 〈${primaryGrapheme}〉 as a team: "These letters work together to make one sound."`,
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Use color-coding to highlight vowel teams in text during reading practice.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Connect to known words first, then introduce new decodable words with the same pattern.',
+      icon_emoji: '💛'
+    });
+  }
+
+  // R-controlled vowels (Stage 6) - pedagogical tips
+  else if (data.stage_id === 6) {
+    tips.push({
+      content: 'Teach that "r" changes the vowel sound — it\'s "bossy r" that controls the vowel.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Compare r-controlled vowels to their short vowel counterparts (e.g., "cat" vs. "car").',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Use word sorts to group words by their r-controlled vowel pattern.',
+      icon_emoji: '💛'
+    });
+  }
+
+  // Advanced patterns (Stage 7+) - pedagogical tips
+  else if (data.stage_id >= 7) {
+    tips.push({
+      content: 'Build on students\' existing phonics knowledge — connect new patterns to known ones.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Use morphology: Help students see how prefixes, roots, and suffixes affect spelling.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Provide extensive reading practice with texts that feature the target pattern.',
+      icon_emoji: '💛'
+    });
+  }
+
+  // Fallback for any stage
+  if (tips.length === 0) {
+    tips.push({
+      content: 'Use explicit, systematic instruction: model, guide, then release to independent practice.',
+      icon_emoji: '💛'
+    });
+    tips.push({
+      content: 'Provide cumulative review — regularly revisit previously taught sounds and patterns.',
+      icon_emoji: '💛'
+    });
+  }
+
   return tips;
 }
 
