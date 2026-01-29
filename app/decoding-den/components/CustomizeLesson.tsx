@@ -114,7 +114,7 @@ export default function CustomizeLesson({ phonemeData }: CustomizeLessonProps) {
               Build chains of words that change one sound at a time.
             </p>
             <div className="text-xs text-gray-600 bg-gray-50 p-2 rounded">
-              <strong>Example:</strong> cat → bat → bit → sit
+              <strong>Example:</strong> cat → bat → rat → sat
             </div>
           </div>
 
@@ -131,7 +131,7 @@ export default function CustomizeLesson({ phonemeData }: CustomizeLessonProps) {
           <div className="bg-white rounded p-4 border border-purple-100">
             <h5 className="font-semibold text-deepNavy mb-2">🎲 Sound Games</h5>
             <p className="text-sm text-gray-700 mb-3">
-              Interactive games to practice the target sound.
+              Interactive games to practice the target sound in decodable words.
             </p>
             <div className="text-xs text-gray-600 bg-gray-50 p-2 rounded">
               Sound bingo, phoneme hunt, word building
@@ -170,68 +170,53 @@ export default function CustomizeLesson({ phonemeData }: CustomizeLessonProps) {
         </div>
       </div>
 
-      {/* Articulation Support for Struggling Students */}
+      {/* Targeted Articulation Support (Intervention Only) */}
       {articulation && (
         <div className="bg-amber-50 rounded-lg p-6 border border-amber-200">
-          <h3 className="text-xl font-semibold text-deepNavy mb-4">🗣️ Articulation Support for {phoneme.ipa_symbol}</h3>
-          <p className="text-gray-700 mb-4">
-            For students who have difficulty articulating the {phoneme.ipa_symbol} sound:
+          <h3 className="text-xl font-semibold text-deepNavy mb-2">🎯 Targeted Articulation Support</h3>
+          <p className="text-sm text-gray-600 mb-4 italic">
+            Use only if students struggle after core instruction. For full articulation guidance, see the <strong>Articulation Guidance</strong> tab.
           </p>
+
+          {/* Common errors - this is the key intervention content */}
+          {articulation.common_errors.length > 0 && (
+            <div className="mb-4 p-4 bg-red-50 rounded border border-red-200">
+              <h5 className="font-semibold text-red-700 mb-3">⚠️ Common Errors & Corrections</h5>
+              <ul className="text-sm text-gray-700 space-y-2">
+                {articulation.common_errors.map((error, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-red-500 mr-2">•</span>
+                    <span>{error}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Targeted prompts and scaffolds */}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-white rounded p-4 border border-amber-100">
-              <h5 className="font-semibold text-deepNavy mb-2">👄 Articulation Details</h5>
-              <ul className="text-sm text-gray-700 space-y-1">
-                <li>• <strong>Place:</strong> {articulation.place_of_articulation}</li>
-                <li>• <strong>Manner:</strong> {articulation.manner_of_articulation}</li>
-                <li>• <strong>Voicing:</strong> {articulation.voicing}</li>
-                {articulation.tongue_position && <li>• <strong>Tongue:</strong> {articulation.tongue_position}</li>}
+              <h5 className="font-semibold text-deepNavy mb-2">💬 Targeted Teacher Prompts</h5>
+              <ul className="text-sm text-gray-700 space-y-2">
+                <li>• &quot;Drop your jaw more.&quot;</li>
+                <li>• &quot;Keep your lips relaxed, not rounded.&quot;</li>
+                <li>• &quot;Say it slowly — watch my mouth.&quot;</li>
               </ul>
             </div>
             <div className="bg-white rounded p-4 border border-amber-100">
-              <h5 className="font-semibold text-deepNavy mb-2">🎯 Teacher Tips</h5>
-              {articulation.teacher_tips.length > 0 ? (
-                <ul className="text-sm text-gray-700 space-y-1">
-                  {articulation.teacher_tips.map((tip, index) => (
-                    <li key={index}>• {tip}</li>
-                  ))}
-                </ul>
-              ) : (
-                <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• Use mirrors for mouth position awareness</li>
-                  <li>• Model correct production clearly</li>
-                  <li>• Provide frequent positive feedback</li>
-                </ul>
-              )}
-            </div>
-          </div>
-          
-          {/* Step-by-step instructions */}
-          {articulation.step_by_step_instructions.length > 0 && (
-            <div className="mt-4 bg-white rounded p-4 border border-amber-100">
-              <h5 className="font-semibold text-deepNavy mb-2">📋 Step-by-Step Instructions</h5>
-              <ol className="text-sm text-gray-700 space-y-1">
-                {articulation.step_by_step_instructions.map((instruction, index) => (
-                  <li key={index}>{index + 1}. {instruction}</li>
-                ))}
-              </ol>
-            </div>
-          )}
-          
-          {/* Common errors */}
-          {articulation.common_errors.length > 0 && (
-            <div className="mt-4 p-3 bg-red-50 rounded border border-red-200">
-              <h5 className="font-semibold text-red-700 mb-2">⚠️ Common Errors to Watch For</h5>
-              <ul className="text-sm text-red-700 space-y-1">
-                {articulation.common_errors.map((error, index) => (
-                  <li key={index}>• {error}</li>
-                ))}
+              <h5 className="font-semibold text-deepNavy mb-2">🛠️ Intervention Scaffolds</h5>
+              <ul className="text-sm text-gray-700 space-y-2">
+                <li>• Mirror practice for mouth awareness</li>
+                <li>• Slower, exaggerated modeling</li>
+                <li>• One-sound-at-a-time repetition in CVC words</li>
+                <li>• Hand cues for jaw position</li>
               </ul>
             </div>
-          )}
-          
+          </div>
+
           <div className="mt-4 p-3 bg-amber-100 rounded border border-amber-200">
             <p className="text-sm text-amber-800">
-              <strong>🤝 SLP Collaboration:</strong> For persistent difficulties, consider consulting with a 
+              <strong>🤝 SLP Collaboration:</strong> For persistent difficulties, consider consulting with a
               Speech-Language Pathologist for specialized intervention strategies.
             </p>
           </div>
@@ -245,7 +230,7 @@ export default function CustomizeLesson({ phonemeData }: CustomizeLessonProps) {
           <div>
             <h5 className="font-semibold text-blue-700 mb-2">For English Language Learners:</h5>
             <p className="text-sm text-gray-700">
-              Provide native language cognates when available, use visual supports, and allow extra processing time.
+              Emphasize clear articulation modeling, visual mouth cues, and extra oral practice with the target sound in CVC words. Allow extra processing time.
             </p>
           </div>
           <div>
@@ -257,7 +242,7 @@ export default function CustomizeLesson({ phonemeData }: CustomizeLessonProps) {
           <div>
             <h5 className="font-semibold text-blue-700 mb-2">For Advanced Learners:</h5>
             <p className="text-sm text-gray-700">
-              Add vocabulary extensions, creative writing activities, and morphology connections.
+              Contrast with other vowel sounds in mixed CVC word lists and apply accurately in controlled decodable sentences.
             </p>
           </div>
         </div>

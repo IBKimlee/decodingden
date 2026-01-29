@@ -65,6 +65,8 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   // Get phoneme label for display
   const getPhonemeLabel = (phoneme: PhonemeData['phoneme']) => {
     switch (phoneme.phoneme_type) {
+      case 'short_vowel':
+        return 'short vowel';
       case 'consonant_digraph':
         return 'consonant digraph';
       case 'consonant_trigraph':
@@ -77,6 +79,8 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         return 'r-controlled vowel';
       case 'vowel_diphthong':
         return 'diphthong';
+      case 'advanced_pattern':
+        return 'advanced pattern';
       default:
         return phoneme.phoneme_type.replace('_', ' ');
     }
@@ -196,21 +200,43 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
             <div className="px-6 pb-2 -mt-3 rounded-b-lg">
               <div className="bg-white rounded-lg p-4 border border-blue-200 mt-2">
                 <div className="flex gap-4">
-                  {/* Placement and Manner */}
+                  {/* Articulation Features - different labels for vowels vs consonants */}
                   <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 w-1/2">
-                    <p className="text-gray-700 mt-2 text-justify">
-                      <strong>Place:</strong> {articulation.place_of_articulation}
-                    </p>
-                    <p className="text-gray-700 mt-3 text-justify">
-                      <strong>Manner:</strong> {articulation.manner_of_articulation}
-                    </p>
-                    <p className="text-gray-700 mt-3 text-justify">
-                      <strong>Voicing:</strong> {articulation.voicing}
-                    </p>
-                    {articulation.airflow_description && (
-                      <p className="text-gray-600 text-sm italic mt-2">
-                        {articulation.airflow_description}
-                      </p>
+                    {(articulation as any).is_vowel ? (
+                      <>
+                        <p className="text-gray-700 mt-2 text-justify">
+                          <strong>Sound Type:</strong> vowel
+                        </p>
+                        <p className="text-gray-700 mt-3 text-justify">
+                          <strong>Airflow:</strong> {(articulation as any).lip_position || 'open (no blockage)'}
+                        </p>
+                        <p className="text-gray-700 mt-3 text-justify">
+                          <strong>Tongue Position:</strong> {articulation.place_of_articulation}
+                        </p>
+                        <p className="text-gray-700 mt-3 text-justify">
+                          <strong>Lip Shape:</strong> {(articulation as any).lip_shape || (articulation as any).tongue_position}
+                        </p>
+                        <p className="text-gray-700 mt-3 text-justify">
+                          <strong>Voicing:</strong> {articulation.voicing}
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-gray-700 mt-2 text-justify">
+                          <strong>Place:</strong> {articulation.place_of_articulation}
+                        </p>
+                        <p className="text-gray-700 mt-3 text-justify">
+                          <strong>Manner:</strong> {articulation.manner_of_articulation}
+                        </p>
+                        <p className="text-gray-700 mt-3 text-justify">
+                          <strong>Voicing:</strong> {articulation.voicing}
+                        </p>
+                        {articulation.airflow_description && (
+                          <p className="text-gray-600 text-sm italic mt-2">
+                            {articulation.airflow_description}
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
 

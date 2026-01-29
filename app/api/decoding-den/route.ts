@@ -303,53 +303,65 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
   const result: any = {
     phoneme: {
       id: safeString(supabaseData.phoneme_id),
-      ipa_symbol: safeString(supabaseData.phoneme),
-      common_name: safeString(supabaseData.phoneme).replace(/[\/]/g, '') + ' sound',
+      ipa_symbol: formatPhonemeSymbol(supabaseData.phoneme, supabaseData.stage_id),
+      common_name: getPhonemeCommonName(supabaseData.phoneme, supabaseData.stage_id),
       phoneme_type: getPhonemeType(supabaseData),
       frequency_rank: typeof supabaseData.frequency_rank === 'number' ? supabaseData.frequency_rank : 0,
-      is_voiced: articulation?.voicing === 'voiced' || false,
+      is_voiced: isVoicedPhoneme(supabaseData.phoneme, articulation),
     },
-    graphemes: (supabaseData.graphemes || [])
-      .map((grapheme: string, index: number) => {
-        // Get frequency data for this phoneme
-        const frequencyData = getGraphemeFrequencies(supabaseData.phoneme);
-        const graphemeFreq = frequencyData.find(f => f.grapheme === grapheme);
-        
-        // Return grapheme data with validation flag
-        return {
+    graphemes: (() => {
+      // Use frequency data as the authoritative source for graphemes
+      // This ensures we show all linguistically valid spellings, not just what's in the database
+      const frequencyData = getGraphemeFrequencies(supabaseData.phoneme);
+
+      if (frequencyData.length > 0) {
+        // Use frequency data - it has the complete list of valid graphemes
+        return frequencyData.map((freqData, index) => ({
+          id: `${safeString(supabaseData.phoneme_id)}_${index}`,
+          grapheme: safeString(freqData.grapheme),
+          spelling_frequency: freqData.percentage / 100,
+          percentage: freqData.percentage,
+          usage_label: freqData.usage_label,
+          context_notes: safeString(freqData.context_notes),
+          notes: safeString(freqData.context_notes || (index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : '')),
+        }));
+      } else {
+        // Fallback to database graphemes if no frequency data available
+        return (supabaseData.graphemes || []).map((grapheme: string, index: number) => ({
           id: `${safeString(supabaseData.phoneme_id)}_${index}`,
           grapheme: safeString(grapheme),
-          spelling_frequency: graphemeFreq ? graphemeFreq.percentage / 100 : (index === 0 ? 1 : 0.5),
-          percentage: graphemeFreq?.percentage,
-          usage_label: graphemeFreq?.usage_label,
-          context_notes: safeString(graphemeFreq?.context_notes),
-          notes: safeString(graphemeFreq?.context_notes || (index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : '')),
-          isValid: !!graphemeFreq, // Flag to indicate if this grapheme is linguistically valid
-        };
-      })
-      .filter((graphemeData: any) => {
-        // Filter out invalid graphemes that don't have frequency data
-        // This removes database inconsistencies like 's' and 'ss' for /sh/
-        return graphemeData.isValid;
-      })
-      .map((graphemeData: any, newIndex: number) => {
-        // Re-index after filtering and clean up the validation flag
-        const { isValid, ...cleanedData } = graphemeData;
-        return {
-          ...cleanedData,
-          id: `${safeString(supabaseData.phoneme_id)}_${newIndex}`,
-        };
-      }),
+          spelling_frequency: index === 0 ? 1 : 0.5,
+          percentage: undefined,
+          usage_label: undefined,
+          context_notes: '',
+          notes: index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : '',
+        }));
+      }
+    })(),
     articulation: articulation ? {
-      place_of_articulation: safeString(articulation.place || generatePlaceOfArticulation(supabaseData)),
-      manner_of_articulation: safeString(articulation.manner || generateMannerOfArticulation(supabaseData)),
+      // For vowels, use vowel-specific terminology; for consonants, use standard terms
+      place_of_articulation: articulation.sound_type === 'vowel'
+        ? safeString(articulation.tongue_position)
+        : safeString(articulation.place || generatePlaceOfArticulation(supabaseData)),
+      manner_of_articulation: articulation.sound_type === 'vowel'
+        ? safeString(articulation.sound_type)
+        : safeString(articulation.manner || generateMannerOfArticulation(supabaseData)),
       voicing: safeString(articulation.voicing || generateVoicing(supabaseData)),
-      tongue_position: safeString(articulation.teacher_guidance || articulation.cue || generateTonguePosition(supabaseData)),
-      lip_position: safeString(articulation.articulation_cues || generateLipPosition(supabaseData)),
-      airflow_description: generateAirflowDescription(supabaseData),
+      tongue_position: articulation.sound_type === 'vowel'
+        ? safeString(articulation.lip_shape)
+        : safeString(articulation.teacher_guidance || articulation.cue || generateTonguePosition(supabaseData)),
+      lip_position: articulation.sound_type === 'vowel'
+        ? safeString(articulation.airflow)
+        : safeString(articulation.articulation_cues || generateLipPosition(supabaseData)),
+      airflow_description: safeString(articulation.airflow_description) || safeString(articulation.airflow) || generateAirflowDescription(supabaseData),
       step_by_step_instructions: articulation.student_tips ? [safeString(articulation.student_tips)] : generateStepByStepInstructions(supabaseData),
       common_errors: generateCommonErrors(supabaseData),
       teacher_tips: articulation.teacher_guidance ? [safeString(articulation.teacher_guidance)] : generateTeacherTips(supabaseData),
+      // Vowel-specific fields
+      is_vowel: articulation.sound_type === 'vowel',
+      vowel_height: articulation.tongue_position?.split(',')[0]?.trim(),
+      vowel_backness: articulation.tongue_position?.split(',')[1]?.trim(),
+      lip_shape: safeString(articulation.lip_shape),
     } : null,
     teaching_content: {
       explanations: generateTeachingExplanations(supabaseData),
@@ -380,17 +392,108 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
 }
 
 /**
+ * Format phoneme symbol for display (e.g., /a/ → /ă/ for short vowels)
+ * Uses breve notation for short vowels per LETRS/SoR standards
+ */
+function formatPhonemeSymbol(phoneme: string, stageId: number): string {
+  const p = phoneme?.toLowerCase() || '';
+
+  // Short vowels (Stage 1) should use breve notation
+  const shortVowelMap: { [key: string]: string } = {
+    '/a/': '/ă/',
+    '/e/': '/ĕ/',
+    '/i/': '/ĭ/',
+    '/o/': '/ŏ/',
+    '/u/': '/ŭ/',
+  };
+
+  if (stageId === 1 && shortVowelMap[p]) {
+    return shortVowelMap[p];
+  }
+
+  return phoneme;
+}
+
+/**
+ * Get common name for phoneme (e.g., "short a sound")
+ */
+function getPhonemeCommonName(phoneme: string, stageId: number): string {
+  const p = phoneme?.toLowerCase() || '';
+
+  // Short vowels
+  const shortVowelNames: { [key: string]: string } = {
+    '/a/': 'short a sound',
+    '/e/': 'short e sound',
+    '/i/': 'short i sound',
+    '/o/': 'short o sound',
+    '/u/': 'short u sound',
+  };
+
+  if (stageId === 1 && shortVowelNames[p]) {
+    return shortVowelNames[p];
+  }
+
+  // Default: strip slashes and add "sound"
+  return phoneme.replace(/[\/]/g, '') + ' sound';
+}
+
+/**
+ * Determine if a phoneme is voiced
+ */
+function isVoicedPhoneme(phoneme: string, articulation: any): boolean {
+  const p = phoneme?.toLowerCase() || '';
+
+  // All vowels are voiced
+  const vowelPatterns = ['/a/', '/e/', '/i/', '/o/', '/u/', '/ā/', '/ē/', '/ī/', '/ō/', '/ū/',
+    '/ar/', '/er/', '/ir/', '/or/', '/ur/', '/oi/', '/ou/', '/aw/', '/oo/'];
+  if (vowelPatterns.some(v => p === v || p.includes(v.replace(/\//g, '')))) {
+    return true;
+  }
+
+  // Voiced consonants
+  const voicedConsonants = ['/b/', '/d/', '/g/', '/v/', '/z/', '/m/', '/n/', '/l/', '/r/', '/w/', '/j/', '/ng/'];
+  if (voicedConsonants.includes(p)) {
+    return true;
+  }
+
+  // Check articulation data if available
+  if (articulation?.voicing === 'voiced') {
+    return true;
+  }
+
+  // Default to voiceless for remaining consonants
+  return false;
+}
+
+/**
  * Determine phoneme type from Supabase data
  */
 function getPhonemeType(data: any): string {
   const phoneme = data.phoneme?.toLowerCase() || '';
-  const stageName = data.stage_id;
-  
-  if (stageName <= 2) return 'consonant';
-  if (stageName === 3) return 'consonant_digraph';
-  if (stageName === 4) return 'long_vowel';
-  if (stageName >= 5) return 'vowel_team';
-  
+  const stageId = data.stage_id;
+
+  // Check if it's a vowel sound (short vowels are a, e, i, o, u)
+  const shortVowels = ['/a/', '/e/', '/i/', '/o/', '/u/'];
+  const longVowels = ['/ā/', '/ē/', '/ī/', '/ō/', '/ū/'];
+  const rControlledVowels = ['/ar/', '/er/', '/ir/', '/or/', '/ur/', '/ər/'];
+
+  if (shortVowels.includes(phoneme)) {
+    return 'short_vowel';
+  }
+  if (longVowels.includes(phoneme)) {
+    return 'long_vowel';
+  }
+  if (rControlledVowels.includes(phoneme)) {
+    return 'vowel_r_controlled';
+  }
+
+  // Check by stage for other patterns
+  if (stageId === 3) return 'consonant_digraph';
+  if (stageId === 4) return 'long_vowel';
+  if (stageId === 5) return 'vowel_team';
+  if (stageId === 6) return 'vowel_r_controlled';
+  if (stageId >= 7) return 'advanced_pattern';
+
   return 'consonant';
 }
 
@@ -399,26 +502,29 @@ function getPhonemeType(data: any): string {
  */
 function generateTeachingExplanations(data: any): Array<{ content: string; icon_emoji: string }> {
   const explanations = [];
-  
+
+  // Get properly formatted phoneme symbol (with breve for short vowels)
+  const displayPhoneme = formatPhonemeSymbol(data.phoneme, data.stage_id);
+
   if (data.graphemes?.length > 1) {
     explanations.push({
       content: `<strong>〈${data.graphemes[0]}〉</strong> can be spelled ${data.graphemes.length} different ways.`,
       icon_emoji: '💙'
     });
   }
-  
+
   if (data.articulation_data?.voicing) {
     explanations.push({
-      content: `The ${data.phoneme} sound is ${data.articulation_data.voicing}. ${data.articulation_data.voicing === 'voiced' ? 'Your vocal cords vibrate when it is said.' : 'Your vocal cords do not vibrate when it is said.'}`,
+      content: `The ${displayPhoneme} sound is ${data.articulation_data.voicing}. ${data.articulation_data.voicing === 'voiced' ? 'Your vocal cords vibrate when it is said.' : 'Your vocal cords do not vibrate when it is said.'}`,
       icon_emoji: '💙'
     });
   }
-  
+
   explanations.push({
     content: `You can hear this sound in different positions in words.`,
     icon_emoji: '💙'
   });
-  
+
   return explanations;
 }
 
@@ -620,11 +726,20 @@ function generateAirflowDescription(data: any): string {
 function generateCommonErrors(data: any): string[] {
   const articulation = data.articulation_data;
   const phoneme = data.phoneme?.toLowerCase() || '';
-  const errors = [];
-  
+  const displayPhoneme = formatPhonemeSymbol(data.phoneme, data.stage_id);
+  const errors: string[] = [];
+
   // Get base substitutions from database
   const baseErrors = articulation?.common_substitutions || [];
-  
+
+  // If database has well-formatted errors (containing parentheses with examples), use them directly
+  if (baseErrors.length > 0 && baseErrors.some((e: string) => e.includes('('))) {
+    baseErrors.forEach((error: string) => {
+      errors.push(`Students may substitute ${error}`);
+    });
+    return errors;
+  }
+
   // Make errors more explicit based on phoneme
   if (phoneme.includes('sh')) {
     errors.push('Students may substitute /s/ for /sh/ (saying "sip" instead of "ship")');
@@ -642,18 +757,18 @@ function generateCommonErrors(data: any): string[] {
     // For other phonemes, make the substitutions more explicit
     baseErrors.forEach((error: string) => {
       if (error === '/s/') {
-        errors.push(`Students may substitute /s/ for ${phoneme} (confusion with similar sounds)`);
+        errors.push(`Students may substitute /s/ for ${displayPhoneme} (confusion with similar sounds)`);
       } else if (error === '/f/') {
-        errors.push(`Students may substitute /f/ for ${phoneme} (similar mouth position)`);
+        errors.push(`Students may substitute /f/ for ${displayPhoneme} (similar mouth position)`);
       } else if (error === 'omission') {
-        errors.push(`Students may omit the ${phoneme} sound in words`);
+        errors.push(`Students may omit the ${displayPhoneme} sound in words`);
       } else {
-        errors.push(`Students may substitute ${error} for ${phoneme}`);
+        errors.push(`Students may substitute ${error} for ${displayPhoneme}`);
       }
     });
   }
-  
-  return errors.length > 0 ? errors : [`Monitor for substitutions of similar sounds for ${phoneme}`];
+
+  return errors.length > 0 ? errors : [`Monitor for substitutions of similar sounds for ${displayPhoneme}`];
 }
 
 /**
@@ -786,23 +901,23 @@ function generateLipPosition(data: any): string {
  */
 function generateStepByStepInstructions(data: any): string[] {
   const phoneme = data.phoneme?.toLowerCase() || '';
-  
+
   if (phoneme.includes('a')) {
-    return ['Open your mouth', 'Drop your jaw', 'Make a short /a/ sound'];
+    return ['Open your mouth', 'Drop your jaw', 'Make a short /ă/ sound'];
   }
   if (phoneme.includes('e')) {
-    return ['Open your mouth slightly', 'Say /a/ but lift your tongue a bit', 'Make a short /e/ sound'];
+    return ['Open your mouth slightly', 'Say /ă/ but lift your tongue a bit', 'Make a short /ĕ/ sound'];
   }
   if (phoneme.includes('i')) {
-    return ['Spread corners of your mouth', 'Lift your tongue high', 'Make a short /i/ sound'];
+    return ['Spread corners of your mouth', 'Lift your tongue high', 'Make a short /ĭ/ sound'];
   }
   if (phoneme.includes('o')) {
-    return ['Round your lips', 'Keep mouth more closed', 'Make a short /o/ sound'];
+    return ['Round your lips', 'Keep mouth more closed', 'Make a short /ŏ/ sound'];
   }
   if (phoneme.includes('u')) {
-    return ['Round your lips tightly', 'Lift back of tongue', 'Make a short /u/ sound'];
+    return ['Relax your mouth', 'Keep tongue in the middle', 'Make a short /ŭ/ sound'];
   }
-  
+
   return ['Listen to the teacher model', 'Try to copy the sound', 'Practice in words'];
 }
 
@@ -811,14 +926,15 @@ function generateStepByStepInstructions(data: any): string[] {
  */
 function generateTeacherTips(data: any): string[] {
   const phoneme = data.phoneme?.toLowerCase() || '';
-  
+  const displayPhoneme = formatPhonemeSymbol(data.phoneme, data.stage_id);
+
   if (phoneme.includes('a')) {
     return ['Model with exaggerated jaw drop', 'Use visual cues like opening mouth wide', 'Practice with familiar words like "cat"'];
   }
   if (['e', 'i', 'o', 'u'].some(v => phoneme.includes(v))) {
-    return [`Model clear ${phoneme} sound`, 'Use hand gestures to show mouth shape', 'Practice with simple CVC words'];
+    return [`Model clear ${displayPhoneme} sound`, 'Use hand gestures to show mouth shape', 'Practice with simple CVC words'];
   }
-  
+
   return ['Model the sound clearly', 'Use visual and tactile cues', 'Practice in simple words first'];
 }
 

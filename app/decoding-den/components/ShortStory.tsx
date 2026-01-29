@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+// Story can be either a simple string or an object with metadata
+interface StoryObject {
+  title: string;
+  text: string;
+  level: 'easy' | 'medium' | 'advanced';
+  word_count: number;
+}
+
+type StoryItem = string | StoryObject;
+
 interface PhonemeData {
   phoneme: {
     id: string;
@@ -41,7 +51,7 @@ interface PhonemeData {
   };
   practice_texts: {
     sentences: string[];
-    stories: string[];
+    stories: StoryItem[];
     word_ladders: string[];
   };
   research_citations: Array<{
@@ -56,12 +66,31 @@ interface ShortStoryProps {
   onClose?: () => void;
 }
 
+// Helper to check if story is an object or string
+function isStoryObject(story: StoryItem): story is StoryObject {
+  return typeof story === 'object' && story !== null && 'text' in story;
+}
+
+// Helper to get level badge styling
+function getLevelBadge(level: string): { bg: string; text: string; label: string } {
+  switch (level) {
+    case 'easy':
+      return { bg: 'bg-green-500', text: 'text-white', label: 'Easy' };
+    case 'medium':
+      return { bg: 'bg-yellow-500', text: 'text-white', label: 'Medium' };
+    case 'advanced':
+      return { bg: 'bg-red-500', text: 'text-white', label: 'Advanced' };
+    default:
+      return { bg: 'bg-gray-500', text: 'text-white', label: level };
+  }
+}
+
 export default function ShortStory({ phonemeData }: ShortStoryProps) {
   // State to track which stories are expanded (all expanded by default)
   const [expandedStories, setExpandedStories] = useState<boolean[]>([]);
 
   // Get stories from practice texts
-  const stories = phonemeData.practice_texts?.stories || [];
+  const stories: StoryItem[] = phonemeData.practice_texts?.stories || [];
   
   // Initialize expanded stories if not already set
   useEffect(() => {
@@ -107,57 +136,79 @@ export default function ShortStory({ phonemeData }: ShortStoryProps) {
     <div className="space-y-6">
 
       {/* Stories */}
-      {stories.map((story, index) => (
-        <div key={index} className="rounded-xl p-4 border border-blue-200 shadow-lg bg-gradient-to-br from-blue-200 to-blue-400">
-          <div className="mb-1">
-            {/* Clickable Header */}
-            <div 
-              className="flex items-center justify-between mb-2 cursor-pointer hover:bg-white/10 rounded-lg p-2 transition-colors"
-              onClick={() => toggleStory(index)}
-            >
-              <h3 className="text-2xl font-bold text-deepNavy flex items-center">
-                <Image 
-                  src="/images/short story.png" 
-                  alt="Short Story" 
-                  width={32} 
-                  height={32} 
-                  className="mr-2"
-                />
-                Story {index + 1}
-                {/* Expand/Collapse Arrow */}
-                <span className="ml-2 text-deepNavy transition-transform duration-200">
-                  {expandedStories[index] ? (
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-                    </svg>
-                  ) : (
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
+      {stories.map((story, index) => {
+        const storyObj = isStoryObject(story) ? story : null;
+        const storyText: string = storyObj ? storyObj.text : (story as string);
+        const storyTitle = storyObj?.title || `Story ${index + 1}`;
+        const levelBadge = storyObj ? getLevelBadge(storyObj.level) : null;
+
+        return (
+          <div key={index} className="rounded-xl p-4 border border-blue-200 shadow-lg bg-gradient-to-br from-blue-200 to-blue-400">
+            <div className="mb-1">
+              {/* Clickable Header */}
+              <div
+                className="flex items-center justify-between mb-2 cursor-pointer hover:bg-white/10 rounded-lg p-2 transition-colors"
+                onClick={() => toggleStory(index)}
+              >
+                <h3 className="text-2xl font-bold text-deepNavy flex items-center">
+                  <Image
+                    src="/images/short story.png"
+                    alt="Short Story"
+                    width={32}
+                    height={32}
+                    className="mr-2"
+                  />
+                  {storyTitle}
+                  {/* Expand/Collapse Arrow */}
+                  <span className="ml-2 text-deepNavy transition-transform duration-200">
+                    {expandedStories[index] ? (
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+                      </svg>
+                    ) : (
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </span>
+                </h3>
+                <div className="flex items-center gap-2">
+                  {/* Level Badge */}
+                  {levelBadge && (
+                    <div className={`${levelBadge.bg} ${levelBadge.text} px-3 py-1 rounded-full text-sm font-medium`}>
+                      {levelBadge.label}
+                    </div>
                   )}
-                </span>
-              </h3>
-              <div className="bg-oceanBlue text-white px-3 py-1 rounded-full text-sm font-medium">
-                Target: {phoneme.ipa_symbol}
+                  {/* Word Count Badge */}
+                  {storyObj?.word_count && (
+                    <div className="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {storyObj.word_count} words
+                    </div>
+                  )}
+                  {/* Target Phoneme Badge */}
+                  <div className="bg-oceanBlue text-white px-3 py-1 rounded-full text-sm font-medium">
+                    Target: {phoneme.ipa_symbol}
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* Collapsible Story Content */}
+            {expandedStories[index] && (
+              <div className="bg-white rounded-lg p-3 border border-blue-100 shadow-sm transition-all duration-300 ease-in-out">
+                <div className="prose prose-lg max-w-none">
+                  {storyText.split('\n').map((paragraph: string, pIndex: number) => (
+                    <p key={pIndex} className="text-gray-800 leading-relaxed text-xl mb-4 last:mb-0">
+                      {paragraph.trim()}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </div>
-
-          {/* Collapsible Story Content */}
-          {expandedStories[index] && (
-            <div className="bg-white rounded-lg p-3 border border-blue-100 shadow-sm transition-all duration-300 ease-in-out">
-              <div className="prose prose-lg max-w-none">
-                {story.split('\n').map((paragraph, pIndex) => (
-                  <p key={pIndex} className="text-gray-800 leading-relaxed text-xl mb-4 last:mb-0">
-                    {paragraph.trim()}
-                  </p>
-                ))}
-              </div>
-            </div>
-          )}
-
-        </div>
-      ))}
+        );
+      })}
 
       {/* Reading Activities */}
       <div className="bg-green-50 rounded-lg p-6 border border-green-200">

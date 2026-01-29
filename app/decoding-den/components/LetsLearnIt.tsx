@@ -158,25 +158,30 @@ export default function LetsLearnIt({ phonemeData }: LetsLearnItProps) {
       )}
 
 
-      {/* Interactive Elements */}
+      {/* Explicit Phonics Teaching Routine */}
       <div className="bg-oceanBlue/10 rounded-lg p-6 border border-oceanBlue/30">
-        <h4 className="text-lg font-semibold text-deepNavy mb-4">🎯 Quick Teaching Strategy</h4>
+        <h4 className="text-lg font-semibold text-deepNavy mb-4">🎯 Explicit Teaching Routine</h4>
         <div className="space-y-3">
-          <div className="bg-white rounded p-3 border border-oceanBlue/20">
+          <div className="bg-white rounded p-4 border border-oceanBlue/20">
             <p className="text-sm text-gray-700">
-              <strong>1. Start with Explanation:</strong> Help students understand what this sound is and how it works.
+              <strong className="text-oceanBlue">1. Model the Sound (I Do):</strong> Say the {phonemeData.phoneme.ipa_symbol} sound aloud. Show the mouth position and model the sound in CVC words. Students repeat after you.
             </p>
           </div>
-          <div className="bg-white rounded p-3 border border-oceanBlue/20">
+          <div className="bg-white rounded p-4 border border-oceanBlue/20">
             <p className="text-sm text-gray-700">
-              <strong>2. Teach the Rules:</strong> Give them clear patterns to follow and remember.
+              <strong className="text-oceanBlue">2. Map Sound to Print (We Do):</strong> Write the letter 〈{phonemeData.graphemes[0]?.grapheme || 'a'}〉. Say the sound and have students match the sound to the letter. Stretch and blend CVC words together.
             </p>
           </div>
-          <div className="bg-white rounded p-3 border border-oceanBlue/20">
+          <div className="bg-white rounded p-4 border border-oceanBlue/20">
             <p className="text-sm text-gray-700">
-              <strong>3. Apply the Tips:</strong> Use practical strategies to help them master and remember the sound.
+              <strong className="text-oceanBlue">3. Practice & Check (You Do):</strong> Students read and spell {phonemeData.phoneme.ipa_symbol} words in isolation, then in simple decodable sentences. Monitor for errors and correct immediately.
             </p>
           </div>
+        </div>
+        <div className="mt-4 p-3 bg-white/50 rounded border border-oceanBlue/10">
+          <p className="text-xs text-gray-600 italic">
+            <strong>Teacher Routine:</strong> Say the sound → show the letter → blend the word → read it → spell it → repeat.
+          </p>
         </div>
       </div>
     </div>

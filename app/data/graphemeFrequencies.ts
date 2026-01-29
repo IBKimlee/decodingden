@@ -35,41 +35,27 @@ export const GRAPHEME_FREQUENCIES: PhonemeFrequencyMap = {
     { grapheme: 'x', percentage: 0.3, usage_label: 'Exception', context_notes: 'Final position: six' }
   ],
 
+  // SHORT VOWELS - LETRS/SoR Aligned
+  // Short vowels have 1:1 grapheme-phoneme correspondence
+  // Irregular words (laugh, plaid, half) are lexical exceptions, NOT alternative spellings
   '/a/': [
-    { grapheme: 'a', percentage: 96, usage_label: 'Primary' },
-    { grapheme: 'au', percentage: 2, usage_label: 'Rare', context_notes: 'laugh, aunt' },
-    { grapheme: 'ai', percentage: 1.5, usage_label: 'Rare', context_notes: 'plaid' },
-    { grapheme: 'al', percentage: 0.5, usage_label: 'Exception', context_notes: 'half, calf' }
+    { grapheme: 'a', percentage: 100, usage_label: 'Primary', context_notes: 'The only spelling for short /ă/' }
   ],
 
   '/e/': [
-    { grapheme: 'e', percentage: 91, usage_label: 'Primary' },
-    { grapheme: 'ea', percentage: 5, usage_label: 'Secondary', context_notes: 'bread, head, dead' },
-    { grapheme: 'ai', percentage: 2, usage_label: 'Rare', context_notes: 'said, again' },
-    { grapheme: 'ie', percentage: 1, usage_label: 'Exception', context_notes: 'friend' },
-    { grapheme: 'a', percentage: 1, usage_label: 'Exception', context_notes: 'any, many' }
+    { grapheme: 'e', percentage: 100, usage_label: 'Primary', context_notes: 'The only spelling for short /ĕ/' }
   ],
 
   '/i/': [
-    { grapheme: 'i', percentage: 91, usage_label: 'Primary' },
-    { grapheme: 'y', percentage: 5, usage_label: 'Secondary', context_notes: 'gym, myth, symbol' },
-    { grapheme: 'ui', percentage: 2, usage_label: 'Rare', context_notes: 'build, guilt' },
-    { grapheme: 'e', percentage: 1, usage_label: 'Exception', context_notes: 'pretty, English' },
-    { grapheme: 'o', percentage: 1, usage_label: 'Exception', context_notes: 'women' }
+    { grapheme: 'i', percentage: 100, usage_label: 'Primary', context_notes: 'The only spelling for short /ĭ/' }
   ],
 
   '/o/': [
-    { grapheme: 'o', percentage: 93, usage_label: 'Primary' },
-    { grapheme: 'a', percentage: 4, usage_label: 'Secondary', context_notes: 'watch, want, wash' },
-    { grapheme: 'ou', percentage: 2, usage_label: 'Rare', context_notes: 'cough' },
-    { grapheme: 'ow', percentage: 1, usage_label: 'Exception', context_notes: 'knowledge' }
+    { grapheme: 'o', percentage: 100, usage_label: 'Primary', context_notes: 'The only spelling for short /ŏ/' }
   ],
 
   '/u/': [
-    { grapheme: 'u', percentage: 86, usage_label: 'Primary' },
-    { grapheme: 'o', percentage: 8, usage_label: 'Secondary', context_notes: 'son, come, love, some' },
-    { grapheme: 'ou', percentage: 4, usage_label: 'Secondary', context_notes: 'touch, young, enough' },
-    { grapheme: 'oo', percentage: 2, usage_label: 'Rare', context_notes: 'blood, flood' }
+    { grapheme: 'u', percentage: 100, usage_label: 'Primary', context_notes: 'The only spelling for short /ŭ/' }
   ],
 
   '/t/': [

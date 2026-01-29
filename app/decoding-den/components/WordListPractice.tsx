@@ -267,15 +267,45 @@ export default function WordListPractice({ phonemeData }: WordListPracticeProps)
           <p>
             <strong>✅ Decodable Words:</strong> All words are systematically chosen to support phonics instruction for {phoneme.ipa_symbol}.
           </p>
-          <p>
-            <strong>📊 Position Practice:</strong> Start with beginning position (easiest), then ending, then medial (most challenging).
-          </p>
+          {/* Dynamic position practice guidance based on phoneme type */}
+          {(() => {
+            const firstGrapheme = Object.keys(word_lists)[0];
+            const positions = word_lists[firstGrapheme] || {};
+            const hasBeginning = positions.beginning?.length > 0;
+            const hasMedial = positions.medial?.length > 0;
+            const hasEnding = positions.ending?.length > 0;
+            const isShortVowel = phoneme.phoneme_type === 'short_vowel';
+
+            if (isShortVowel || (!hasBeginning && !hasEnding && hasMedial)) {
+              return (
+                <p>
+                  <strong>📊 Position Practice:</strong> Short vowels appear in the <span className="bg-yellow-200 px-1 rounded">medial (middle) position</span> of CVC words. Focus practice on hearing and spelling the vowel in the middle of words.
+                </p>
+              );
+            } else if (hasBeginning && hasMedial && hasEnding) {
+              return (
+                <p>
+                  <strong>📊 Position Practice:</strong> This sound appears in beginning, medial, and ending positions. For consonants, start with beginning position, then ending, then medial.
+                </p>
+              );
+            } else {
+              const availablePositions = [];
+              if (hasBeginning) availablePositions.push('beginning');
+              if (hasMedial) availablePositions.push('medial');
+              if (hasEnding) availablePositions.push('ending');
+              return (
+                <p>
+                  <strong>📊 Position Practice:</strong> This sound appears in {availablePositions.join(' and ')} position{availablePositions.length > 1 ? 's' : ''}.
+                </p>
+              );
+            }
+          })()}
           <p>
             <strong>🎯 Systematic Approach:</strong> Practice words in isolation before using in sentences or connected text.
           </p>
           {Object.keys(word_lists).length > 1 && (
             <p>
-              <strong>📚 Multiple Spellings:</strong> The phoneme {phoneme.ipa_symbol} has {Object.keys(word_lists).length} different spelling patterns. 
+              <strong>📚 Multiple Spellings:</strong> The phoneme {phoneme.ipa_symbol} has {Object.keys(word_lists).length} different spelling patterns.
               Teach the most common spelling first (〈{Object.keys(word_lists)[0]}〉).
             </p>
           )}
@@ -312,19 +342,19 @@ export default function WordListPractice({ phonemeData }: WordListPracticeProps)
           <div>
             <strong className="text-blue-700">Struggling Learners:</strong>
             <p className="text-sm text-gray-700 mt-1">
-              Start with 3-5 words from beginning position only. Use visual supports and multi-sensory practice.
+              Start with 3-5 simple CVC words. Use visual supports, Elkonin boxes, and multi-sensory practice (tapping, writing in sand).
             </p>
           </div>
           <div>
             <strong className="text-blue-700">On-Level Learners:</strong>
             <p className="text-sm text-gray-700 mt-1">
-              Practice all positions with 5-8 words each. Include word building and spelling activities.
+              Practice with 5-8 words. Include word building with letter tiles and spelling dictation activities.
             </p>
           </div>
           <div>
             <strong className="text-blue-700">Advanced Learners:</strong>
             <p className="text-sm text-gray-700 mt-1">
-              Use all words and create sentences or stories. Explore meaning and vocabulary connections.
+              Use all words to create sentences or short stories. Explore vocabulary meanings and word family connections.
             </p>
           </div>
         </div>
