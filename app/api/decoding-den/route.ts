@@ -354,7 +354,9 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
         ? safeString(articulation.airflow)
         : safeString(articulation.articulation_cues || generateLipPosition(supabaseData)),
       airflow_description: safeString(articulation.airflow_description) || safeString(articulation.airflow) || generateAirflowDescription(supabaseData),
-      step_by_step_instructions: articulation.student_tips ? [safeString(articulation.student_tips)] : generateStepByStepInstructions(supabaseData),
+      step_by_step_instructions: articulation.student_tips
+        ? safeString(articulation.student_tips).split(/(?<=[.!?])\s+/).filter((s: string) => s.trim().length > 0)
+        : generateStepByStepInstructions(supabaseData),
       common_errors: generateCommonErrors(supabaseData),
       teacher_tips: articulation.teacher_guidance ? [safeString(articulation.teacher_guidance)] : generateTeacherTips(supabaseData),
       // Vowel-specific fields
@@ -505,25 +507,43 @@ function generateTeachingExplanations(data: any): Array<{ content: string; icon_
 
   // Get properly formatted phoneme symbol (with breve for short vowels)
   const displayPhoneme = formatPhonemeSymbol(data.phoneme, data.stage_id);
+  const primaryGrapheme = data.graphemes?.[0] || '';
 
-  if (data.graphemes?.length > 1) {
+  // Short vowel explanations (Stage 1)
+  if (data.stage_id === 1) {
     explanations.push({
-      content: `<strong>〈${data.graphemes[0]}〉</strong> can be spelled ${data.graphemes.length} different ways.`,
+      content: `The grapheme <strong>〈${primaryGrapheme}〉</strong> represents the ${displayPhoneme} sound in closed syllables.`,
+      icon_emoji: '💙'
+    });
+    explanations.push({
+      content: `It's one of the five short vowel sounds introduced early in phonics instruction.`,
+      icon_emoji: '💙'
+    });
+    explanations.push({
+      content: `The ${displayPhoneme} sound is common in simple CVC words (consonant-vowel-consonant).`,
+      icon_emoji: '💙'
+    });
+  } else {
+    // Non-short-vowel explanations
+    if (data.graphemes?.length > 1) {
+      explanations.push({
+        content: `<strong>〈${primaryGrapheme}〉</strong> can be spelled ${data.graphemes.length} different ways.`,
+        icon_emoji: '💙'
+      });
+    }
+
+    if (data.articulation_data?.voicing) {
+      explanations.push({
+        content: `The ${displayPhoneme} sound is ${data.articulation_data.voicing}. ${data.articulation_data.voicing === 'voiced' ? 'Your vocal cords vibrate when it is said.' : 'Your vocal cords do not vibrate when it is said.'}`,
+        icon_emoji: '💙'
+      });
+    }
+
+    explanations.push({
+      content: `You can hear this sound in different positions in words.`,
       icon_emoji: '💙'
     });
   }
-
-  if (data.articulation_data?.voicing) {
-    explanations.push({
-      content: `The ${displayPhoneme} sound is ${data.articulation_data.voicing}. ${data.articulation_data.voicing === 'voiced' ? 'Your vocal cords vibrate when it is said.' : 'Your vocal cords do not vibrate when it is said.'}`,
-      icon_emoji: '💙'
-    });
-  }
-
-  explanations.push({
-    content: `You can hear this sound in different positions in words.`,
-    icon_emoji: '💙'
-  });
 
   return explanations;
 }
@@ -533,21 +553,64 @@ function generateTeachingExplanations(data: any): Array<{ content: string; icon_
  */
 function generateTeachingRules(data: any): Array<{ content: string; icon_emoji: string }> {
   const rules = [];
-  
+  const phoneme = data.phoneme?.toLowerCase() || '';
+
+  // Short vowel rules (Stage 1)
+  if (data.stage_id === 1) {
+    rules.push({
+      content: 'In closed syllables, a single vowel followed by a consonant is usually short.',
+      icon_emoji: '💚'
+    });
+    rules.push({
+      content: 'The vowel sound is "closed in" by consonants, which makes it say its short sound.',
+      icon_emoji: '💚'
+    });
+
+    // Position-specific rule based on phoneme
+    if (phoneme === '/a/') {
+      rules.push({
+        content: 'The /ă/ sound occurs most often in the beginning or middle of single-syllable words.',
+        icon_emoji: '💚'
+      });
+    } else if (phoneme === '/e/') {
+      rules.push({
+        content: 'The /ĕ/ sound occurs most often in the middle of single-syllable words.',
+        icon_emoji: '💚'
+      });
+    } else if (phoneme === '/i/') {
+      rules.push({
+        content: 'The /ĭ/ sound occurs most often in the middle of single-syllable words.',
+        icon_emoji: '💚'
+      });
+    } else if (phoneme === '/o/') {
+      rules.push({
+        content: 'The /ŏ/ sound occurs most often in the middle of single-syllable words.',
+        icon_emoji: '💚'
+      });
+    } else if (phoneme === '/u/') {
+      rules.push({
+        content: 'The /ŭ/ sound occurs most often in the middle of single-syllable words.',
+        icon_emoji: '💚'
+      });
+    }
+  }
+
+  // Digraph rules (Stage 3)
   if (data.stage_id === 3) {
     rules.push({
       content: 'Digraphs are two letters making one sound.',
       icon_emoji: '💚'
     });
   }
-  
-  if (data.teaching_advantages?.length > 0) {
+
+  // Add teaching advantages if available and not already covered
+  if (data.teaching_advantages?.length > 0 && data.stage_id !== 1) {
     rules.push({
       content: data.teaching_advantages[0],
       icon_emoji: '💚'
     });
   }
-  
+
   return rules;
 }
 

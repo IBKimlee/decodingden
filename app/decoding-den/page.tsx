@@ -24,18 +24,18 @@ const DECODING_DEN_SECTIONS = [
     component: SoundOfTheDay,
   },
   {
-    id: 'lets-learn-it' as DecodingDenSection,
-    title: '🧠 Let\'s Learn It',
-    description: 'Explanations, rules, and tips with emoji organization',
-    icon: '🧠',
-    component: LetsLearnIt,
-  },
-  {
     id: 'articulation-guidance' as DecodingDenSection,
     title: '👄 Articulation Guidance',
     description: 'Step-by-step pronunciation instructions',
     icon: '👄',
     component: ArticulationGuidance,
+  },
+  {
+    id: 'lets-learn-it' as DecodingDenSection,
+    title: '🧠 Let\'s Learn It',
+    description: 'Explanations, rules, and tips with emoji organization',
+    icon: '🧠',
+    component: LetsLearnIt,
   },
   {
     id: 'word-list-practice' as DecodingDenSection,
@@ -225,49 +225,21 @@ export default function DecodingDenPage() {
                       </div>
                     </button>
 
-                    {/* Let's Learn It */}
-                    <button
-                      onClick={() => setActiveSection(activeSection === 'lets-learn-it' ? null : 'lets-learn-it')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'lets-learn-it' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
-                      }`}
-                    >
-                      <div className="flex-shrink-0 mb-0.5">
-                        <Image 
-                          src="/images/lets learn it.png" 
-                          alt="Let's Learn It" 
-                          width={24} 
-                          height={24} 
-                          className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
-                        />
-                      </div>
-                      <div className="text-center flex-1 flex flex-col justify-center">
-                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
-                          activeSection === 'lets-learn-it' ? 'text-white' : 'text-deepNavy'
-                        }`}>Let&apos;s</div>
-                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
-                          activeSection === 'lets-learn-it' ? 'text-white' : 'text-deepNavy'
-                        }`}>Learn It</div>
-                      </div>
-                    </button>
-
                     {/* Articulation Guidance */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'articulation-guidance' ? null : 'articulation-guidance')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'articulation-guidance' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
+                        activeSection === 'articulation-guidance'
+                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
-                        <Image 
-                          src="/images/articulation guidance.png" 
-                          alt="Articulation Guidance" 
-                          width={24} 
-                          height={24} 
+                        <Image
+                          src="/images/articulation guidance.png"
+                          alt="Articulation Guidance"
+                          width={24}
+                          height={24}
                           className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
                         />
                       </div>
@@ -278,6 +250,34 @@ export default function DecodingDenPage() {
                         <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
                           activeSection === 'articulation-guidance' ? 'text-white' : 'text-deepNavy'
                         }`}>Guidance</div>
+                      </div>
+                    </button>
+
+                    {/* Let's Learn It */}
+                    <button
+                      onClick={() => setActiveSection(activeSection === 'lets-learn-it' ? null : 'lets-learn-it')}
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
+                        activeSection === 'lets-learn-it'
+                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
+                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                      }`}
+                    >
+                      <div className="flex-shrink-0 mb-0.5">
+                        <Image
+                          src="/images/lets learn it.png"
+                          alt="Let's Learn It"
+                          width={24}
+                          height={24}
+                          className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+                        />
+                      </div>
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
+                          activeSection === 'lets-learn-it' ? 'text-white' : 'text-deepNavy'
+                        }`}>Let&apos;s</div>
+                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
+                          activeSection === 'lets-learn-it' ? 'text-white' : 'text-deepNavy'
+                        }`}>Learn It</div>
                       </div>
                     </button>
 
