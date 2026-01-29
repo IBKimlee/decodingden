@@ -327,12 +327,12 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
           isValid: !!graphemeFreq, // Flag to indicate if this grapheme is linguistically valid
         };
       })
-      .filter((graphemeData) => {
+      .filter((graphemeData: any) => {
         // Filter out invalid graphemes that don't have frequency data
         // This removes database inconsistencies like 's' and 'ss' for /sh/
         return graphemeData.isValid;
       })
-      .map((graphemeData, newIndex) => {
+      .map((graphemeData: any, newIndex: number) => {
         // Re-index after filtering and clean up the validation flag
         const { isValid, ...cleanedData } = graphemeData;
         return {
