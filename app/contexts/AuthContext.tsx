@@ -203,8 +203,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setStudent(studentData);
       setUserRole('student');
 
-      // Sign out any teacher session
-      await authSignOut();
+      // Clear teacher data (but don't call authSignOut - it triggers a listener that resets userRole)
       setUser(null);
       setTeacher(null);
 
