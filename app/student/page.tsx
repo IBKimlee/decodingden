@@ -1,14 +1,68 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useStudent } from '@/app/contexts/AuthContext';
+import { supabase } from '@/lib/supabase/client';
+import type { StudentAssignment } from '@/lib/supabase/client';
+
+// Activity type to route mapping
+const ACTIVITY_ROUTES: Record<string, string> = {
+  'elkonin_box': '/student/elkonin-box',
+  'whiteboard': '/student/whiteboard',
+  'word_work': '/student/phoneme-keyboard',
+  'phoneme_keyboard': '/student/phoneme-keyboard',
+  'story_circle': '/student/story-circle',
+};
 
 export default function StudentDenPage() {
   const router = useRouter();
+  const { student, isStudent } = useStudent();
   const [selectedTheme, setSelectedTheme] = useState(''); // forest, dragon, mountain, mixed
   const [darkMode, setDarkMode] = useState(false);
+  const [assignments, setAssignments] = useState<StudentAssignment[]>([]);
+  const [assignmentCounts, setAssignmentCounts] = useState<Record<string, number>>({});
+
+  // Fetch student's assigned activities
+  const fetchAssignments = useCallback(async () => {
+    if (!student?.id) return;
+
+    try {
+      const { data, error } = await supabase
+        .from('student_assignments')
+        .select(`
+          *,
+          assignment:assignments(*)
+        `)
+        .eq('student_id', student.id)
+        .in('status', ['assigned', 'in_progress'])
+        .order('created_at', { ascending: false });
+
+      if (!error && data) {
+        setAssignments(data as StudentAssignment[]);
+
+        // Count assignments per activity type
+        const counts: Record<string, number> = {};
+        data.forEach((sa: StudentAssignment) => {
+          const activityType = sa.assignment?.activity_type;
+          if (activityType) {
+            counts[activityType] = (counts[activityType] || 0) + 1;
+          }
+        });
+        setAssignmentCounts(counts);
+      }
+    } catch (err) {
+      console.error('Error fetching assignments:', err);
+    }
+  }, [student?.id]);
+
+  useEffect(() => {
+    if (isStudent && student) {
+      fetchAssignments();
+    }
+  }, [isStudent, student, fetchAssignments]);
 
   // Load selected mascot from localStorage on page load
   useEffect(() => {
@@ -27,6 +81,7 @@ export default function StudentDenPage() {
       localStorage.setItem('selectedMascot', selectedTheme);
     }
   }, [selectedTheme]);
+
 
   return (
     <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${
@@ -104,7 +159,29 @@ export default function StudentDenPage() {
 
       {/* Main Den Activities */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
-        
+
+        {/* Student Welcome Banner - only shown when logged in with assignments */}
+        {isStudent && student && assignments.length > 0 && (
+          <div className="mb-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl shadow-lg p-4 border-4 border-green-600">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-4xl">🎯</span>
+                <div>
+                  <h2 className="text-xl font-bold text-white">
+                    Hi {student.display_name}! You have {assignments.length} task{assignments.length !== 1 ? 's' : ''} to complete!
+                  </h2>
+                  <p className="text-green-100">
+                    Look for the bouncing numbers on your activities!
+                  </p>
+                </div>
+              </div>
+              <div className="text-5xl animate-bounce">
+                ⭐
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Greeting Section */}
         <div className="text-center mb-8">
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl px-3 sm:px-6 border-4 border-blue-700">
@@ -230,10 +307,16 @@ export default function StudentDenPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           
           {/* Sound Tracks */}
-          <a 
+          <a
             href="/student/elkonin-box"
-            className="bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl shadow-2xl p-6 border-4 border-emerald-700 hover:scale-105 transition-all duration-300 cursor-pointer block"
+            className="bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl shadow-2xl p-6 border-4 border-emerald-700 hover:scale-105 transition-all duration-300 cursor-pointer block relative"
           >
+            {/* Assignment Badge */}
+            {assignmentCounts['elkonin_box'] > 0 && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
+                {assignmentCounts['elkonin_box']}
+              </div>
+            )}
             <div className="text-center">
               <div className="text-6xl -mb-1">
                 <svg width="120" height="96" viewBox="0 0 128 128" fill="none" className="mx-auto">
@@ -241,13 +324,13 @@ export default function StudentDenPage() {
                   <rect x="2" y="36" width="40" height="40" stroke="black" strokeWidth="3" fill="white"/>
                   <rect x="42" y="36" width="40" height="40" stroke="black" strokeWidth="3" fill="white"/>
                   <rect x="82" y="36" width="40" height="40" stroke="black" strokeWidth="3" fill="white"/>
-                  
+
                   {/* Blue circle in first box */}
                   <circle cx="22" cy="56" r="14" fill="#3B82F6" stroke="black" strokeWidth="2"/>
-                  
+
                   {/* Red circle in middle box (vowel) */}
                   <circle cx="62" cy="56" r="14" fill="#EF4444" stroke="black" strokeWidth="2"/>
-                  
+
                   {/* Blue circle in third box */}
                   <circle cx="102" cy="56" r="14" fill="#3B82F6" stroke="black" strokeWidth="2"/>
                 </svg>
@@ -260,17 +343,23 @@ export default function StudentDenPage() {
           </a>
 
           {/* Magic Drawing Cave */}
-          <div 
+          <div
             onClick={() => router.push('/student/whiteboard')}
-            className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl shadow-2xl p-6 border-4 border-purple-700 hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl shadow-2xl p-6 border-4 border-purple-700 hover:scale-105 transition-all duration-300 cursor-pointer relative"
           >
+            {/* Assignment Badge */}
+            {assignmentCounts['whiteboard'] > 0 && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
+                {assignmentCounts['whiteboard']}
+              </div>
+            )}
             <div className="text-center">
               <div className="text-6xl -mb-1">
-                <Image 
-                  src="/images/pencil2.png" 
-                  alt="Drawing Den" 
-                  width={48} 
-                  height={48} 
+                <Image
+                  src="/images/pencil2.png"
+                  alt="Drawing Den"
+                  width={48}
+                  height={48}
                   className="mx-auto"
                 />
               </div>
@@ -282,17 +371,23 @@ export default function StudentDenPage() {
           </div>
 
           {/* Phoneme Keyboard */}
-          <a 
+          <a
             href="/student/phoneme-keyboard"
-            className="bg-gradient-to-br from-indigo-400 to-purple-600 rounded-3xl shadow-2xl p-6 border-4 border-indigo-700 hover:scale-105 transition-all duration-300 cursor-pointer block"
+            className="bg-gradient-to-br from-indigo-400 to-purple-600 rounded-3xl shadow-2xl p-6 border-4 border-indigo-700 hover:scale-105 transition-all duration-300 cursor-pointer block relative"
           >
+            {/* Assignment Badge - combines word_work and phoneme_keyboard */}
+            {((assignmentCounts['word_work'] || 0) + (assignmentCounts['phoneme_keyboard'] || 0)) > 0 && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
+                {(assignmentCounts['word_work'] || 0) + (assignmentCounts['phoneme_keyboard'] || 0)}
+              </div>
+            )}
             <div className="text-center">
               <div className="text-6xl -mb-1">
-                <Image 
-                  src="/images/word workspace.png" 
-                  alt="Word Workspace" 
-                  width={48} 
-                  height={48} 
+                <Image
+                  src="/images/word workspace.png"
+                  alt="Word Workspace"
+                  width={48}
+                  height={48}
                   className="mx-auto rounded-2xl"
                 />
               </div>
@@ -387,15 +482,24 @@ export default function StudentDenPage() {
           </div>
 
           {/* Story Circle */}
-          <div className="bg-gradient-to-br from-red-400 to-pink-600 rounded-3xl shadow-2xl p-6 border-4 border-red-700 hover:scale-105 transition-all duration-300 cursor-pointer">
+          <Link
+            href="/student/story-circle"
+            className="bg-gradient-to-br from-red-400 to-pink-600 rounded-3xl shadow-2xl p-6 border-4 border-red-700 hover:scale-105 transition-all duration-300 block focus:outline-none focus:ring-4 focus:ring-red-300 relative"
+          >
+            {/* Assignment Badge */}
+            {assignmentCounts['story_circle'] > 0 && (
+              <div className="absolute -top-2 -right-2 bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
+                {assignmentCounts['story_circle']}
+              </div>
+            )}
             <div className="text-center">
               <div className="text-6xl -mb-1 animate-pulse">📚</div>
               <h3 className="text-2xl font-bold text-white mb-0 mt-2">Story Circle</h3>
               <p className="text-red-100 text-lg">
-                Read magical decodable stories!
+                Tap here to build a decodable story using your sound!
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Trophy Tree */}
           <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl shadow-2xl p-6 border-4 border-yellow-600 hover:scale-105 transition-all duration-300 cursor-pointer">

@@ -147,7 +147,23 @@ export default function TeacherPortal() {
 
         {/* Main Actions Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-4">
-          <button 
+          <button
+            onClick={() => router.push('/teacher/students')}
+            className="bg-oceanBlue text-white p-3 sm:p-4 rounded-xl shadow-md hover:bg-darkOcean transition group">
+            <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">👨‍👩‍👧‍👦</div>
+            <h3 className="font-semibold text-xs sm:text-sm">Manage Students</h3>
+            <p className="text-xs text-white/80 hidden sm:block">Add students & groups</p>
+          </button>
+
+          <button
+            onClick={() => router.push('/teacher/push-activities')}
+            className="bg-green-500 text-white p-3 sm:p-4 rounded-xl shadow-md hover:bg-green-600 transition group">
+            <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">🚀</div>
+            <h3 className="font-semibold text-xs sm:text-sm">Push Activities</h3>
+            <p className="text-xs text-white/80 hidden sm:block">Assign work after small group</p>
+          </button>
+
+          <button
             onClick={() => router.push('/teacher/stages')}
             className="bg-forestMist p-3 sm:p-4 rounded-xl shadow-md hover:bg-forestMist/80 transition group">
             <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">📚</div>
@@ -155,7 +171,7 @@ export default function TeacherPortal() {
             <p className="text-xs text-pineShadow/70 hidden sm:block">8-Stage phonics progression</p>
           </button>
 
-          <button 
+          <button
             onClick={() => router.push('/teacher/assessments')}
             className="bg-roseAccent/30 p-3 sm:p-4 rounded-xl shadow-md hover:bg-roseAccent/40 transition group">
             <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">📋</div>
