@@ -422,7 +422,7 @@ export async function getGroupStudents(groupId: string): Promise<{ students: Stu
       return { students: [], error };
     }
 
-    const students = data.map((m: { students: Student }) => m.students).filter(Boolean);
+    const students = (data as unknown as Array<{ students: Student }>).map((m) => m.students).filter(Boolean);
     return { students, error: null };
   } catch (error) {
     return { students: [], error: error as Error };
