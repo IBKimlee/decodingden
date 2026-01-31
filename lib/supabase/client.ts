@@ -3,7 +3,13 @@ import { createClient } from '@supabase/supabase-js';
 // Browser client - uses anon key, relies on RLS for security
 export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+    },
+  }
 );
 
 // Types for our database tables
@@ -13,6 +19,8 @@ export interface Teacher {
   display_name: string;
   school_name?: string;
   grade_levels?: string[];
+  is_approved: boolean;
+  is_admin: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -39,6 +47,7 @@ export interface StudentGroup {
   name: string;
   description?: string;
   color: string;
+  type: 'class' | 'group';  // 'class' = homeroom roster, 'group' = skill-based grouping
   skill_focus?: string;  // e.g., 'short_a', 'blend_st', 'digraph_sh'
   created_at: string;
   updated_at: string;

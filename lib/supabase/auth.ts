@@ -1,4 +1,4 @@
-import { supabase, Teacher, Student, StudentGroup } from './client';
+import { supabase, Teacher, Student, StudentGroup, StudentAssignment } from './client';
 import type { User, AuthError } from '@supabase/supabase-js';
 
 // ============================================================================
@@ -15,10 +15,18 @@ export async function signUpTeacher(
   schoolName?: string
 ): Promise<{ user: User | null; error: AuthError | Error | null }> {
   try {
-    // 1. Create auth user
+    // Create auth user with metadata
+    // A database trigger will automatically create the teacher profile
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          display_name: displayName,
+          school_name: schoolName || null,
+          role: 'teacher',
+        },
+      },
     });
 
     if (authError) {
@@ -27,23 +35,6 @@ export async function signUpTeacher(
 
     if (!authData.user) {
       return { user: null, error: new Error('Failed to create user') };
-    }
-
-    // 2. Create teacher profile
-    const { error: profileError } = await supabase
-      .from('teachers')
-      .insert({
-        id: authData.user.id,
-        email: email,
-        display_name: displayName,
-        school_name: schoolName,
-      });
-
-    if (profileError) {
-      // If profile creation fails, we should clean up the auth user
-      // But Supabase doesn't allow deleting users from client side
-      console.error('Failed to create teacher profile:', profileError);
-      return { user: null, error: profileError };
     }
 
     return { user: authData.user, error: null };
@@ -60,32 +51,44 @@ export async function signInTeacher(
   password: string
 ): Promise<{ user: User | null; teacher: Teacher | null; error: AuthError | Error | null }> {
   try {
+    console.log('[Auth] Starting sign-in...', Date.now());
+
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
+    console.log('[Auth] Supabase auth complete', Date.now(), { hasUser: !!authData?.user, hasError: !!authError });
+
     if (authError) {
+      console.log('[Auth] Auth error:', authError.message);
       return { user: null, teacher: null, error: authError };
     }
 
     if (!authData.user) {
+      console.log('[Auth] No user returned');
       return { user: null, teacher: null, error: new Error('Failed to sign in') };
     }
 
     // Fetch teacher profile
+    console.log('[Auth] Fetching teacher profile...', Date.now());
     const { data: teacherData, error: teacherError } = await supabase
       .from('teachers')
       .select('*')
       .eq('id', authData.user.id)
       .single();
 
+    console.log('[Auth] Teacher profile fetch complete', Date.now(), { hasTeacher: !!teacherData, hasError: !!teacherError });
+
     if (teacherError) {
+      console.log('[Auth] Teacher fetch error:', teacherError.message);
       return { user: authData.user, teacher: null, error: teacherError };
     }
 
+    console.log('[Auth] Sign-in complete!', Date.now());
     return { user: authData.user, teacher: teacherData as Teacher, error: null };
   } catch (error) {
+    console.log('[Auth] Caught error:', error);
     return { user: null, teacher: null, error: error as Error };
   }
 }
@@ -301,12 +304,13 @@ export async function deactivateStudent(studentId: string): Promise<{ error: Err
 // ============================================================================
 
 /**
- * Create a new student group
+ * Create a new student group or class
  */
 export async function createGroup(
   name: string,
   description?: string,
-  color?: string
+  color?: string,
+  type: 'class' | 'group' = 'group'
 ): Promise<{ group: StudentGroup | null; error: Error | null }> {
   try {
     const { user, error: userError } = await getCurrentUser();
@@ -322,6 +326,7 @@ export async function createGroup(
         name,
         description,
         color: color || '#4a90a4',
+        type,
       })
       .select()
       .single();
@@ -337,9 +342,20 @@ export async function createGroup(
 }
 
 /**
- * Get all groups for the current teacher
+ * Create a new class (convenience wrapper)
  */
-export async function getMyGroups(): Promise<{ groups: StudentGroup[]; error: Error | null }> {
+export async function createClass(
+  name: string,
+  description?: string,
+  color?: string
+): Promise<{ group: StudentGroup | null; error: Error | null }> {
+  return createGroup(name, description, color, 'class');
+}
+
+/**
+ * Get all groups for the current teacher (optionally filtered by type)
+ */
+export async function getMyGroups(type?: 'class' | 'group'): Promise<{ groups: StudentGroup[]; error: Error | null }> {
   try {
     const { user, error: userError } = await getCurrentUser();
 
@@ -347,11 +363,16 @@ export async function getMyGroups(): Promise<{ groups: StudentGroup[]; error: Er
       return { groups: [], error: new Error('Not authenticated') };
     }
 
-    const { data, error } = await supabase
+    let query = supabase
       .from('student_groups')
       .select('*')
-      .eq('teacher_id', user.id)
-      .order('name');
+      .eq('teacher_id', user.id);
+
+    if (type) {
+      query = query.eq('type', type);
+    }
+
+    const { data, error } = await query.order('name');
 
     if (error) {
       return { groups: [], error };
@@ -361,6 +382,21 @@ export async function getMyGroups(): Promise<{ groups: StudentGroup[]; error: Er
   } catch (error) {
     return { groups: [], error: error as Error };
   }
+}
+
+/**
+ * Get all classes for the current teacher
+ */
+export async function getMyClasses(): Promise<{ classes: StudentGroup[]; error: Error | null }> {
+  const { groups, error } = await getMyGroups('class');
+  return { classes: groups, error };
+}
+
+/**
+ * Get all skill groups for the current teacher
+ */
+export async function getMySkillGroups(): Promise<{ groups: StudentGroup[]; error: Error | null }> {
+  return getMyGroups('group');
 }
 
 /**
@@ -426,5 +462,170 @@ export async function getGroupStudents(groupId: string): Promise<{ students: Stu
     return { students, error: null };
   } catch (error) {
     return { students: [], error: error as Error };
+  }
+}
+
+// ============================================================================
+// STUDENT PROGRESS TRACKING
+// ============================================================================
+
+/**
+ * Update student assignment progress (for completion tracking)
+ */
+export async function updateStudentProgress(
+  assignmentId: string,
+  studentId: string,
+  updates: {
+    status?: 'assigned' | 'in_progress' | 'completed' | 'skipped';
+    score?: number;
+    time_spent_seconds?: number;
+    attempts?: number;
+    response_data?: Record<string, unknown>;
+  }
+): Promise<{ error: Error | null }> {
+  try {
+    const updateData: Record<string, unknown> = { ...updates };
+
+    if (updates.status === 'completed') {
+      updateData.completed_at = new Date().toISOString();
+    }
+    if (updates.status === 'in_progress' && !updates.score) {
+      updateData.started_at = new Date().toISOString();
+    }
+
+    const { error } = await supabase
+      .from('student_assignments')
+      .update(updateData)
+      .eq('assignment_id', assignmentId)
+      .eq('student_id', studentId);
+
+    return { error };
+  } catch (error) {
+    return { error: error as Error };
+  }
+}
+
+/**
+ * Get a student's assignments with progress
+ */
+export async function getStudentAssignments(
+  studentId: string
+): Promise<{ assignments: StudentAssignment[]; error: Error | null }> {
+  try {
+    const { data, error } = await supabase
+      .from('student_assignments')
+      .select('*, assignment:assignments(*)')
+      .eq('student_id', studentId)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      return { assignments: [], error };
+    }
+
+    return { assignments: data as StudentAssignment[], error: null };
+  } catch (error) {
+    return { assignments: [], error: error as Error };
+  }
+}
+
+/**
+ * Get progress summary for all students (for teacher dashboard)
+ */
+export async function getTeacherProgressSummary(): Promise<{
+  progress: Array<{
+    student: Student;
+    assigned_count: number;
+    completed_count: number;
+    avg_score: number | null;
+    total_time_seconds: number;
+    last_activity: string | null;
+  }>;
+  error: Error | null;
+}> {
+  try {
+    const { user, error: userError } = await getCurrentUser();
+    if (userError || !user) {
+      return { progress: [], error: new Error('Not authenticated') };
+    }
+
+    // Get all students for this teacher
+    const { data: students, error: studentsError } = await supabase
+      .from('students')
+      .select('*')
+      .eq('teacher_id', user.id)
+      .eq('is_active', true);
+
+    if (studentsError) {
+      return { progress: [], error: studentsError };
+    }
+
+    // Get all student assignments for these students
+    const studentIds = students.map(s => s.id);
+    const { data: assignments, error: assignmentsError } = await supabase
+      .from('student_assignments')
+      .select('*')
+      .in('student_id', studentIds);
+
+    if (assignmentsError) {
+      return { progress: [], error: assignmentsError };
+    }
+
+    // Calculate progress for each student
+    const progress = students.map(student => {
+      const studentAssignments = assignments.filter(a => a.student_id === student.id);
+      const completedAssignments = studentAssignments.filter(a => a.status === 'completed');
+
+      const scores = completedAssignments
+        .map(a => a.score)
+        .filter((s): s is number => s !== null && s !== undefined);
+
+      const avgScore = scores.length > 0
+        ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+        : null;
+
+      const totalTime = studentAssignments.reduce((sum, a) => sum + (a.time_spent_seconds || 0), 0);
+
+      const lastCompleted = completedAssignments
+        .map(a => a.completed_at)
+        .filter(Boolean)
+        .sort()
+        .reverse()[0] || null;
+
+      return {
+        student,
+        assigned_count: studentAssignments.length,
+        completed_count: completedAssignments.length,
+        avg_score: avgScore,
+        total_time_seconds: totalTime,
+        last_activity: lastCompleted,
+      };
+    });
+
+    return { progress, error: null };
+  } catch (error) {
+    return { progress: [], error: error as Error };
+  }
+}
+
+/**
+ * Get which groups/classes a student belongs to
+ */
+export async function getStudentGroups(studentId: string): Promise<{ groups: StudentGroup[]; error: Error | null }> {
+  try {
+    const { data, error } = await supabase
+      .from('group_memberships')
+      .select('group_id, student_groups(*)')
+      .eq('student_id', studentId);
+
+    if (error) {
+      return { groups: [], error };
+    }
+
+    const groups = (data as unknown as Array<{ student_groups: StudentGroup }>)
+      .map((m) => m.student_groups)
+      .filter(Boolean);
+    return { groups, error: null };
+  } catch (error) {
+    return { groups: [], error: error as Error };
   }
 }

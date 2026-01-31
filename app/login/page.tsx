@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '../contexts/AuthContext';
 
-type LoginMode = 'select' | 'teacher' | 'student' | 'teacher-signup';
+type LoginMode = 'select' | 'teacher' | 'student' | 'teacher-signup' | 'signup-success';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { signInAsTeacher, signUpAsTeacher, signInAsStudent, login } = useAuth();
+  const { signInAsTeacher, signUpAsTeacher, signInAsStudent } = useAuth();
 
   const [mode, setMode] = useState<LoginMode>('select');
   const [isLoading, setIsLoading] = useState(false);
@@ -24,21 +24,38 @@ export default function LoginPage() {
   // Student form state
   const [loginCode, setLoginCode] = useState('');
 
-  // Legacy password state
-  const [legacyPassword, setLegacyPassword] = useState('');
-
   const handleTeacherSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[LoginPage] handleTeacherSignIn called', Date.now());
     setIsLoading(true);
     setError(null);
 
-    const { error } = await signInAsTeacher(email, password);
+    try {
+      // Add timeout to prevent hanging
+      const timeoutPromise = new Promise<{ error: Error }>((_, reject) =>
+        setTimeout(() => {
+          console.log('[LoginPage] TIMEOUT triggered!', Date.now());
+          reject(new Error('Sign in timed out. Please try again.'));
+        }, 10000)
+      );
 
-    if (error) {
-      setError(error.message);
+      console.log('[LoginPage] Starting sign-in race...', Date.now());
+      const signInPromise = signInAsTeacher(email, password);
+      const { error } = await Promise.race([signInPromise, timeoutPromise]);
+      console.log('[LoginPage] Race complete', Date.now(), { hasError: !!error });
+
+      if (error) {
+        setError(error.message);
+        setIsLoading(false);
+      } else {
+        // The teacher page will handle redirecting to pending-approval if not approved
+        console.log('[LoginPage] Success! Navigating to /teacher');
+        router.push('/teacher');
+      }
+    } catch (err: any) {
+      console.log('[LoginPage] Caught error:', err.message);
+      setError(err.message || 'Sign in failed. Please try again.');
       setIsLoading(false);
-    } else {
-      router.push('/teacher');
     }
   };
 
@@ -59,7 +76,9 @@ export default function LoginPage() {
       setError(error.message);
       setIsLoading(false);
     } else {
-      router.push('/teacher');
+      // Show success message - user needs to confirm email then wait for approval
+      setIsLoading(false);
+      setMode('signup-success');
     }
   };
 
@@ -75,15 +94,6 @@ export default function LoginPage() {
       setIsLoading(false);
     } else {
       router.push('/student');
-    }
-  };
-
-  const handleLegacyLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (login(legacyPassword)) {
-      router.push('/');
-    } else {
-      setError('Invalid password');
     }
   };
 
@@ -138,28 +148,6 @@ export default function LoginPage() {
                   </div>
                 </div>
               </button>
-
-              {/* Legacy Access (temporary) */}
-              <div className="pt-4 border-t border-gray-200 mt-4">
-                <p className="text-sm text-gray-500 text-center mb-3">
-                  Or use site password (legacy access)
-                </p>
-                <form onSubmit={handleLegacyLogin} className="flex gap-2">
-                  <input
-                    type="password"
-                    value={legacyPassword}
-                    onChange={(e) => setLegacyPassword(e.target.value)}
-                    placeholder="Enter password"
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-oceanBlue focus:border-oceanBlue"
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
-                  >
-                    Go
-                  </button>
-                </form>
-              </div>
             </div>
           )}
 
@@ -323,6 +311,35 @@ export default function LoginPage() {
                   {isLoading ? 'Creating account...' : 'Create Account'}
                 </button>
               </form>
+            </div>
+          )}
+
+          {/* Signup Success */}
+          {mode === 'signup-success' && (
+            <div className="text-center">
+              <div className="text-6xl mb-4">✅</div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                Account Created!
+              </h2>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-left">
+                <p className="text-blue-800 mb-3">
+                  <strong>Next steps:</strong>
+                </p>
+                <ol className="text-blue-700 text-sm space-y-2 list-decimal list-inside">
+                  <li>Sign in with your email and password</li>
+                  <li>Your account will be pending admin approval</li>
+                  <li>You&apos;ll get access once an administrator approves you</li>
+                </ol>
+              </div>
+              <button
+                onClick={() => {
+                  setMode('teacher');
+                  setError(null);
+                }}
+                className="w-full py-3 bg-oceanBlue text-white rounded-lg font-semibold hover:bg-darkOcean transition-colors"
+              >
+                Go to Sign In
+              </button>
             </div>
           )}
 

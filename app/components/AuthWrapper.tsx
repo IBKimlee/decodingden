@@ -2,17 +2,22 @@
 
 import { usePathname } from 'next/navigation';
 import { useAuth } from '../contexts/AuthContext';
-import PasswordLogin from './PasswordLogin';
 import LogoutButton from './LogoutButton';
 
-// Pages that don't require the legacy password protection
-const PUBLIC_ROUTES = ['/login'];
+// Pages that are fully public (no auth required)
+const PUBLIC_ROUTES = ['/login', '/'];
+
+// Pages that require teacher auth
+const TEACHER_ROUTES = ['/teacher'];
+
+// Pages that require student auth
+const STUDENT_ROUTES = ['/student'];
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, userRole, isLoading } = useAuth();
+  const { userRole, isLoading } = useAuth();
   const pathname = usePathname();
 
-  // Allow public routes without authentication
+  // Always allow public routes
   if (PUBLIC_ROUTES.includes(pathname)) {
     return <>{children}</>;
   }
@@ -29,20 +34,17 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     );
   }
 
-  // If user is logged in via Supabase (teacher or student), bypass legacy password
+  // If logged in as teacher or student, show logout button and content
   if (userRole === 'teacher' || userRole === 'student') {
-    return <>{children}</>;
+    return (
+      <>
+        <LogoutButton />
+        {children}
+      </>
+    );
   }
 
-  // Otherwise, check legacy auth
-  if (!isAuthenticated) {
-    return <PasswordLogin />;
-  }
-
-  return (
-    <>
-      <LogoutButton />
-      {children}
-    </>
-  );
+  // For all other pages (like /decoding-den), allow access without auth
+  // Individual pages handle their own auth requirements
+  return <>{children}</>;
 }

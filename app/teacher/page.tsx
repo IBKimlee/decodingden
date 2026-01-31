@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { getAllStages, type PhonicsStage } from '@/lib/supabase/phonics-queries';
+import { useTeacher } from '../contexts/AuthContext';
 
 export default function TeacherPortal() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,6 +12,23 @@ export default function TeacherPortal() {
   const [stages, setStages] = useState<PhonicsStage[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const { teacher, isTeacher, isLoading: authLoading } = useTeacher();
+
+  // Redirect based on auth status
+  useEffect(() => {
+    if (authLoading) return;
+
+    if (!isTeacher) {
+      router.push('/login');
+      return;
+    }
+
+    // Check if teacher is approved
+    if (teacher && !teacher.is_approved) {
+      router.push('/pending-approval');
+      return;
+    }
+  }, [authLoading, isTeacher, teacher, router]);
 
   // Load stages from Supabase
   useEffect(() => {
@@ -24,8 +42,10 @@ export default function TeacherPortal() {
         setLoading(false);
       }
     }
-    loadStages();
-  }, []);
+    if (isTeacher) {
+      loadStages();
+    }
+  }, [isTeacher]);
 
   // Enhanced phoneme suggestions with stage information
   const phonemeSuggestions = [
@@ -75,6 +95,18 @@ export default function TeacherPortal() {
   };
 
 
+  // Show loading while checking auth or approval
+  if (authLoading || !isTeacher || (teacher && !teacher.is_approved)) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-softSand">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-oceanBlue mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-softSand text-pineShadow flex flex-col">
       {/* Header */}
@@ -85,9 +117,19 @@ export default function TeacherPortal() {
               <h1 className="text-lg sm:text-xl font-bold text-pineShadow">Teacher Portal</h1>
               <p className="text-xs text-mossGray hidden sm:block">Welcome back! Let&apos;s build strong readers together.</p>
             </div>
-            <Link href="/" className="text-xs sm:text-sm text-pineShadow/70 hover:text-pineShadow transition">
-              ← Back to Home
-            </Link>
+            <div className="flex items-center gap-3">
+              {teacher?.is_admin && (
+                <Link
+                  href="/admin"
+                  className="text-xs sm:text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition"
+                >
+                  Admin Panel
+                </Link>
+              )}
+              <Link href="/" className="text-xs sm:text-sm text-pineShadow/70 hover:text-pineShadow transition">
+                ← Back to Home
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -179,7 +221,9 @@ export default function TeacherPortal() {
             <p className="text-xs text-pineShadow/70 hidden sm:block">Create formal assessments</p>
           </button>
 
-          <button className="bg-roseAccent/30 p-3 sm:p-4 rounded-xl shadow-md hover:bg-roseAccent/40 transition group">
+          <button
+            onClick={() => router.push('/teacher/progress')}
+            className="bg-roseAccent/30 p-3 sm:p-4 rounded-xl shadow-md hover:bg-roseAccent/40 transition group">
             <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">📊</div>
             <h3 className="font-semibold text-xs sm:text-sm">Progress Analytics</h3>
             <p className="text-xs text-pineShadow/70 hidden sm:block">Real-time student data</p>

@@ -29,16 +29,11 @@ interface AuthContextType {
 
   // Sign out
   signOut: () => Promise<void>;
-
-  // Legacy support (for existing pages using old auth)
-  login: (password: string) => boolean;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Legacy password for backward compatibility during transition
-const LEGACY_PASSWORD = '177617761314!';
 const STUDENT_STORAGE_KEY = 'decodingden_student';
 
 // ============================================================================
@@ -152,25 +147,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     email: string,
     password: string
   ): Promise<{ error: Error | null }> => {
+    console.log('[AuthContext] signInAsTeacher called', Date.now());
     setIsLoading(true);
     try {
+      console.log('[AuthContext] Calling signInTeacher...', Date.now());
       const { user: authUser, teacher: teacherData, error } = await signInTeacher(email, password);
+      console.log('[AuthContext] signInTeacher returned', Date.now(), { hasUser: !!authUser, hasError: !!error });
 
       if (error) {
         return { error: error as Error };
       }
 
       if (authUser) {
+        console.log('[AuthContext] Setting state...', Date.now());
         setUser(authUser);
         setTeacher(teacherData);
         setUserRole('teacher');
         // Clear any student session
         setStudent(null);
         localStorage.removeItem(STUDENT_STORAGE_KEY);
+        console.log('[AuthContext] State set', Date.now());
       }
 
       return { error: null };
     } finally {
+      console.log('[AuthContext] Setting isLoading to false', Date.now());
       setIsLoading(false);
     }
   }, []);
@@ -241,34 +242,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // ============================================================================
-  // LEGACY SUPPORT
-  // ============================================================================
-
-  // For backward compatibility with existing pages
-  const login = useCallback((password: string): boolean => {
-    if (password === LEGACY_PASSWORD) {
-      localStorage.setItem('decodingden_auth', 'true');
-      return true;
-    }
-    return false;
-  }, []);
-
-  const logout = useCallback(() => {
-    signOut();
+  // Logout helper
+  const logout = useCallback(async () => {
+    await signOut();
   }, [signOut]);
 
-  // Computed auth state - check for browser environment
-  const [legacyAuth, setLegacyAuth] = useState(false);
-
-  useEffect(() => {
-    // Check legacy auth on client side only
-    if (typeof window !== 'undefined') {
-      setLegacyAuth(localStorage.getItem('decodingden_auth') === 'true');
-    }
-  }, []);
-
-  const isAuthenticated = userRole !== null || legacyAuth;
+  // User is authenticated if they have a role (teacher or student)
+  const isAuthenticated = userRole !== null;
 
   // ============================================================================
   // RENDER
@@ -285,7 +265,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signInAsTeacher,
     signInAsStudent,
     signOut,
-    login,
     logout,
   };
 
