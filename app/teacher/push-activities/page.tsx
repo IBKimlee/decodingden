@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth, useTeacher } from '@/app/contexts/AuthContext';
@@ -17,7 +17,7 @@ const ACTIVITY_TYPES = [
   { id: 'story_circle', name: 'Story Circle', icon: '📖', description: 'Decodable reading practice' },
 ];
 
-export default function PushActivitiesPage() {
+function PushActivitiesContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { isLoading: authLoading, userRole } = useAuth();
@@ -25,7 +25,8 @@ export default function PushActivitiesPage() {
 
   // Data state
   const [students, setStudents] = useState<Student[]>([]);
-  const [groups, setGroups] = useState<StudentGroup[]>([]);
+  const [classes, setClasses] = useState<StudentGroup[]>([]);
+  const [skillGroups, setSkillGroups] = useState<StudentGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -33,13 +34,14 @@ export default function PushActivitiesPage() {
   // Selection state
   const [selectedPhoneme, setSelectedPhoneme] = useState(searchParams.get('phoneme') || '');
   const [selectedStudents, setSelectedStudents] = useState<string[]>([]);
+  const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
   const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
   const [assignmentTitle, setAssignmentTitle] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Selection mode: 'students' or 'groups'
-  const [selectionMode, setSelectionMode] = useState<'students' | 'groups'>('students');
+  // Selection mode: 'class', 'group', or 'students'
+  const [selectionMode, setSelectionMode] = useState<'class' | 'group' | 'students'>('class');
 
   const loadData = useCallback(async () => {
     setLoading(true);
@@ -50,7 +52,12 @@ export default function PushActivitiesPage() {
       ]);
 
       if (!studentsResult.error) setStudents(studentsResult.students);
-      if (!groupsResult.error) setGroups(groupsResult.groups);
+      if (!groupsResult.error) {
+        // Separate classes from skill groups
+        const allGroups = groupsResult.groups;
+        setClasses(allGroups.filter(g => g.type === 'class'));
+        setSkillGroups(allGroups.filter(g => g.type === 'group' || !g.type));
+      }
     } catch (err) {
       console.error('Error loading data:', err);
     } finally {
@@ -81,6 +88,14 @@ export default function PushActivitiesPage() {
       prev.includes(studentId)
         ? prev.filter(id => id !== studentId)
         : [...prev, studentId]
+    );
+  };
+
+  const toggleClass = (classId: string) => {
+    setSelectedClasses(prev =>
+      prev.includes(classId)
+        ? prev.filter(id => id !== classId)
+        : [...prev, classId]
     );
   };
 
@@ -116,6 +131,30 @@ export default function PushActivitiesPage() {
     }
   };
 
+  // Get count of selected recipients based on mode
+  const getSelectedCount = () => {
+    switch (selectionMode) {
+      case 'class':
+        return selectedClasses.length;
+      case 'group':
+        return selectedGroups.length;
+      case 'students':
+        return selectedStudents.length;
+    }
+  };
+
+  const getSelectedLabel = () => {
+    const count = getSelectedCount();
+    switch (selectionMode) {
+      case 'class':
+        return `${count} class${count !== 1 ? 'es' : ''}`;
+      case 'group':
+        return `${count} group${count !== 1 ? 's' : ''}`;
+      case 'students':
+        return `${count} student${count !== 1 ? 's' : ''}`;
+    }
+  };
+
   const handlePushActivities = async () => {
     // Validation
     if (!selectedPhoneme.trim()) {
@@ -128,7 +167,12 @@ export default function PushActivitiesPage() {
       return;
     }
 
-    if (selectionMode === 'groups' && selectedGroups.length === 0) {
+    if (selectionMode === 'class' && selectedClasses.length === 0) {
+      setError('Please select at least one class');
+      return;
+    }
+
+    if (selectionMode === 'group' && selectedGroups.length === 0) {
       setError('Please select at least one group');
       return;
     }
@@ -185,8 +229,43 @@ export default function PushActivitiesPage() {
               console.error('Student assignment error:', studentAssignError);
               throw studentAssignError;
             }
+          } else if (selectionMode === 'class') {
+            // Assign to classes
+            const groupAssignments = selectedClasses.map(classId => ({
+              assignment_id: assignment.id,
+              group_id: classId
+            }));
+
+            const { error: groupAssignError } = await supabase
+              .from('group_assignments')
+              .insert(groupAssignments);
+
+            if (groupAssignError) {
+              console.error('Class assignment error:', groupAssignError);
+              throw groupAssignError;
+            }
+
+            // Also create student_assignments for all students in the classes
+            for (const classId of selectedClasses) {
+              const { data: memberships } = await supabase
+                .from('group_memberships')
+                .select('student_id')
+                .eq('group_id', classId);
+
+              if (memberships && memberships.length > 0) {
+                const studentAssignments = memberships.map(m => ({
+                  assignment_id: assignment.id,
+                  student_id: m.student_id,
+                  status: 'assigned'
+                }));
+
+                await supabase
+                  .from('student_assignments')
+                  .upsert(studentAssignments, { onConflict: 'assignment_id,student_id' });
+              }
+            }
           } else {
-            // Assign to groups
+            // Assign to skill groups
             const groupAssignments = selectedGroups.map(groupId => ({
               assignment_id: assignment.id,
               group_id: groupId
@@ -224,14 +303,11 @@ export default function PushActivitiesPage() {
         }
       }
 
-      setSuccess(`Successfully pushed ${selectedActivities.length} activities to ${
-        selectionMode === 'students'
-          ? `${selectedStudents.length} student(s)`
-          : `${selectedGroups.length} group(s)`
-      }!`);
+      setSuccess(`Successfully pushed ${selectedActivities.length} activities to ${getSelectedLabel()}!`);
 
       // Reset selections
       setSelectedStudents([]);
+      setSelectedClasses([]);
       setSelectedGroups([]);
       setSelectedActivities([]);
       setSelectedPhoneme('');
@@ -318,34 +394,139 @@ export default function PushActivitiesPage() {
             Who should practice?
           </h2>
 
-          {/* Toggle between students and groups */}
-          <div className="flex gap-2 mb-4">
+          {/* Three-tab selection: Class, Group, Individual */}
+          <div className="flex gap-2 mb-4 border-b border-gray-200 pb-3">
+            <button
+              onClick={() => setSelectionMode('class')}
+              className={`px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 ${
+                selectionMode === 'class'
+                  ? 'bg-oceanBlue text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              <span>🏫</span> Classes
+            </button>
+            <button
+              onClick={() => setSelectionMode('group')}
+              className={`px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 ${
+                selectionMode === 'group'
+                  ? 'bg-oceanBlue text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              <span>👥</span> Skill Groups
+            </button>
             <button
               onClick={() => setSelectionMode('students')}
-              className={`px-4 py-2 rounded-lg font-medium transition ${
+              className={`px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 ${
                 selectionMode === 'students'
                   ? 'bg-oceanBlue text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              Individual Students
-            </button>
-            <button
-              onClick={() => setSelectionMode('groups')}
-              className={`px-4 py-2 rounded-lg font-medium transition ${
-                selectionMode === 'groups'
-                  ? 'bg-oceanBlue text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              Groups
+              <span>🧒</span> Individuals
             </button>
           </div>
 
-          {selectionMode === 'students' ? (
+          {/* Class selection */}
+          {selectionMode === 'class' && (
             <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm text-gray-600">{selectedStudents.length} selected</span>
+              <p className="text-sm text-gray-500 mb-3">
+                Assign to entire classes (all students in the class will receive the activity)
+              </p>
+              {classes.length === 0 ? (
+                <div className="text-center py-6 text-gray-500 bg-gray-50 rounded-lg">
+                  <p className="text-lg mb-1">🏫</p>
+                  <p>No classes yet.</p>
+                  <Link href="/teacher/students" className="text-oceanBlue hover:underline">
+                    Create a class first →
+                  </Link>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-3">
+                  {classes.map(cls => (
+                    <button
+                      key={cls.id}
+                      onClick={() => toggleClass(cls.id)}
+                      className={`p-4 rounded-lg border-2 text-left transition ${
+                        selectedClasses.includes(cls.id)
+                          ? 'border-oceanBlue bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-10 h-10 rounded-lg flex items-center justify-center text-white text-lg"
+                          style={{ backgroundColor: cls.color }}
+                        >
+                          🏫
+                        </div>
+                        <div>
+                          <span className="font-semibold block">{cls.name}</span>
+                          <span className="text-xs text-gray-500">Homeroom Class</span>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Skill Group selection */}
+          {selectionMode === 'group' && (
+            <div>
+              <p className="text-sm text-gray-500 mb-3">
+                Assign to skill groups (targeted practice for specific needs)
+              </p>
+              {skillGroups.length === 0 ? (
+                <div className="text-center py-6 text-gray-500 bg-gray-50 rounded-lg">
+                  <p className="text-lg mb-1">👥</p>
+                  <p>No skill groups yet.</p>
+                  <Link href="/teacher/students" className="text-oceanBlue hover:underline">
+                    Create a skill group first →
+                  </Link>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-3">
+                  {skillGroups.map(group => (
+                    <button
+                      key={group.id}
+                      onClick={() => toggleGroup(group.id)}
+                      className={`p-4 rounded-lg border-2 text-left transition ${
+                        selectedGroups.includes(group.id)
+                          ? 'border-oceanBlue bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-10 h-10 rounded-lg flex items-center justify-center text-white text-lg"
+                          style={{ backgroundColor: group.color }}
+                        >
+                          👥
+                        </div>
+                        <div>
+                          <span className="font-semibold block">{group.name}</span>
+                          {group.skill_focus && (
+                            <span className="text-xs text-gray-500">Focus: {group.skill_focus}</span>
+                          )}
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Individual Student selection */}
+          {selectionMode === 'students' && (
+            <div>
+              <div className="flex justify-between items-center mb-3">
+                <p className="text-sm text-gray-500">
+                  Assign to specific students
+                </p>
                 <button
                   onClick={selectAllStudents}
                   className="text-sm text-oceanBlue hover:text-darkOcean"
@@ -355,7 +536,8 @@ export default function PushActivitiesPage() {
               </div>
 
               {students.length === 0 ? (
-                <div className="text-center py-6 text-gray-500">
+                <div className="text-center py-6 text-gray-500 bg-gray-50 rounded-lg">
+                  <p className="text-lg mb-1">🧒</p>
                   <p>No students yet.</p>
                   <Link href="/teacher/students" className="text-oceanBlue hover:underline">
                     Add students first →
@@ -375,48 +557,25 @@ export default function PushActivitiesPage() {
                     >
                       <div className="flex items-center gap-2">
                         <span className="text-lg">🧒</span>
-                        <span className="text-sm font-medium truncate">{student.display_name}</span>
+                        <div>
+                          <span className="text-sm font-medium truncate block">{student.display_name}</span>
+                          {student.grade_level && (
+                            <span className="text-xs text-gray-500">Grade {student.grade_level}</span>
+                          )}
+                        </div>
                       </div>
                     </button>
                   ))}
                 </div>
               )}
             </div>
-          ) : (
-            <div>
-              {groups.length === 0 ? (
-                <div className="text-center py-6 text-gray-500">
-                  <p>No groups yet.</p>
-                  <Link href="/teacher/students" className="text-oceanBlue hover:underline">
-                    Create groups first →
-                  </Link>
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 gap-2">
-                  {groups.map(group => (
-                    <button
-                      key={group.id}
-                      onClick={() => toggleGroup(group.id)}
-                      className={`p-3 rounded-lg border-2 text-left transition ${
-                        selectedGroups.includes(group.id)
-                          ? 'border-oceanBlue bg-blue-50'
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-4 h-4 rounded-full"
-                          style={{ backgroundColor: group.color }}
-                        />
-                        <span className="font-medium">{group.name}</span>
-                      </div>
-                      {group.skill_focus && (
-                        <p className="text-xs text-gray-500 mt-1">Focus: {group.skill_focus}</p>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
+          )}
+
+          {/* Selection summary */}
+          {getSelectedCount() > 0 && (
+            <div className="mt-3 p-2 bg-blue-50 rounded-lg text-sm text-oceanBlue flex items-center gap-2">
+              <span>✓</span>
+              <span>{getSelectedLabel()} selected</span>
             </div>
           )}
         </div>
@@ -467,16 +626,12 @@ export default function PushActivitiesPage() {
             <div>
               <h3 className="font-semibold">Ready to push?</h3>
               <p className="text-sm text-white/80">
-                {selectedActivities.length} activities → {' '}
-                {selectionMode === 'students'
-                  ? `${selectedStudents.length} students`
-                  : `${selectedGroups.length} groups`}
+                {selectedActivities.length} {selectedActivities.length === 1 ? 'activity' : 'activities'} → {getSelectedLabel()}
               </p>
             </div>
             <button
               onClick={handlePushActivities}
-              disabled={isSubmitting || selectedActivities.length === 0 ||
-                (selectionMode === 'students' ? selectedStudents.length === 0 : selectedGroups.length === 0)}
+              disabled={isSubmitting || selectedActivities.length === 0 || getSelectedCount() === 0}
               className="px-8 py-3 bg-white text-oceanBlue rounded-lg font-bold hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {isSubmitting ? (
@@ -493,5 +648,20 @@ export default function PushActivitiesPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function PushActivitiesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-softSand flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-oceanBlue mx-auto mb-4"></div>
+          <p className="text-mossGray">Loading...</p>
+        </div>
+      </div>
+    }>
+      <PushActivitiesContent />
+    </Suspense>
   );
 }

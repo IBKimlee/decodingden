@@ -118,7 +118,7 @@ export interface ResearchCitationsProps {
 }
 
 // Section identifiers for the UI
-export type DecodingDenSection = 
+export type DecodingDenSection =
   | 'sound-of-the-day'
   | 'lets-learn-it'
   | 'articulation-guidance'
@@ -126,7 +126,8 @@ export type DecodingDenSection =
   | 'practice-text'
   | 'short-story'
   | 'customize-lesson'
-  | 'word-workspace';
+  | 'word-workspace'
+  | 'read-along';
 
 export interface DecodingDenSectionConfig {
   id: DecodingDenSection;

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import PhonemeKeyboard from '@/app/components/PhonemeKeyboard';
 import HomeButton from '@/app/components/HomeButton';
 import { useSimpleAudio } from '@/app/lib/simpleAudio';
+import ActivityCompletion from '@/app/components/ActivityCompletion';
 
 export default function PhonemeKeyboardPage() {
   const [selectedLetters, setSelectedLetters] = useState<(string | {letter: string, styled: boolean})[]>(['', '', '', '', '', '']);
@@ -480,6 +481,9 @@ export default function PhonemeKeyboardPage() {
           Word building interface inspired by educational phonics research and tools from the Florida Center for Reading Research (FCRR)
         </p>
       </footer>
+
+      {/* Activity Completion Tracking */}
+      <ActivityCompletion activityType="phoneme_keyboard" />
     </div>
   );
 }

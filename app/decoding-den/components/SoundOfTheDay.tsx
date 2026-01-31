@@ -167,13 +167,6 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         </div>
       </div>
 
-      {/* Reference to Articulation Guidance Tab */}
-      <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-        <p className="text-sm text-gray-700 flex items-center">
-          <span className="mr-2">👄</span>
-          <span>For mouth position and production guidance, see the <strong className="text-oceanBlue">Articulation Guidance</strong> tab.</span>
-        </p>
-      </div>
 
       {/* Common Errors */}
       {articulation && articulation.common_errors.length > 0 && (

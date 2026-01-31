@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import HomeButton from '@/app/components/HomeButton';
+import ActivityCompletion from '@/app/components/ActivityCompletion';
 
 interface DrawingTool {
   type: 'pen' | 'highlighter' | 'eraser';
@@ -1950,6 +1951,9 @@ export default function MagicWhiteboardPage() {
       )}
 
     </div>
+
+    {/* Activity Completion Tracking */}
+    <ActivityCompletion activityType="whiteboard" />
     </>
   );
 }

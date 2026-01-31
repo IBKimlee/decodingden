@@ -14,6 +14,7 @@ import ShortStory from './components/ShortStory';
 import CustomizeLesson from './components/CustomizeLesson';
 import WordWorkspace from './components/WordWorkspace';
 import ExitTicketModal from './components/ExitTicketModal';
+import InteractiveReadAlong from './components/InteractiveReadAlong';
 
 const DECODING_DEN_SECTIONS = [
   {
@@ -71,6 +72,13 @@ const DECODING_DEN_SECTIONS = [
     description: 'Interactive word building and spelling practice',
     icon: '📝',
     component: WordWorkspace,
+  },
+  {
+    id: 'read-along' as DecodingDenSection,
+    title: '📖 Read Along',
+    description: 'Interactive read-along with text-to-speech',
+    icon: '📖',
+    component: InteractiveReadAlong,
   },
 ];
 
@@ -395,17 +403,17 @@ export default function DecodingDenPage() {
                     <button
                       onClick={() => setActiveSection(activeSection === 'word-workspace' ? null : 'word-workspace')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'word-workspace' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
+                        activeSection === 'word-workspace'
+                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
-                        <Image 
-                          src="/images/word workspace.png" 
-                          alt="Word Workspace" 
-                          width={24} 
-                          height={24} 
+                        <Image
+                          src="/images/word workspace.png"
+                          alt="Word Workspace"
+                          width={24}
+                          height={24}
                           className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
                         />
                       </div>
@@ -416,6 +424,28 @@ export default function DecodingDenPage() {
                         <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
                           activeSection === 'word-workspace' ? 'text-white' : 'text-deepNavy'
                         }`}>Practice</div>
+                      </div>
+                    </button>
+
+                    {/* Read Along */}
+                    <button
+                      onClick={() => setActiveSection(activeSection === 'read-along' ? null : 'read-along')}
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
+                        activeSection === 'read-along'
+                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
+                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                      }`}
+                    >
+                      <div className="flex-shrink-0 mb-0.5 text-xl sm:text-2xl lg:text-3xl">
+                        📖
+                      </div>
+                      <div className="text-center flex-1 flex flex-col justify-center">
+                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
+                          activeSection === 'read-along' ? 'text-white' : 'text-deepNavy'
+                        }`}>Read</div>
+                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
+                          activeSection === 'read-along' ? 'text-white' : 'text-deepNavy'
+                        }`}>Along</div>
                       </div>
                     </button>
                   </div>
@@ -495,13 +525,16 @@ export default function DecodingDenPage() {
                             <div className="text-3xl mr-3">⚙️</div>
                           )}
                           {activeSection === 'word-workspace' && (
-                            <Image 
-                              src="/images/word workspace.png" 
-                              alt="Word Workspace" 
-                              width={32} 
-                              height={32} 
+                            <Image
+                              src="/images/word workspace.png"
+                              alt="Word Workspace"
+                              width={32}
+                              height={32}
                               className="mr-3"
                             />
+                          )}
+                          {activeSection === 'read-along' && (
+                            <span className="text-3xl mr-3">📖</span>
                           )}
                           {DECODING_DEN_SECTIONS.find(s => s.id === activeSection)?.title.replace(/^🔠 /, '').replace(/^🧠 /, '').replace(/^👄 /, '').replace(/^📚 /, '').replace(/^📖 /, '').replace(/^⚙️ /, '').replace(/^📝 /, '')}
                         </h2>

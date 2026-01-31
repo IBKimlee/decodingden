@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import HomeButton from '@/app/components/HomeButton';
+import ActivityCompletion from '@/app/components/ActivityCompletion';
 
 const ANIMAL_CHIPS = [
   { name: 'Petrel', color: 'bg-orange-400', emoji: '🐦' },
@@ -477,6 +478,9 @@ export default function ElkoninBoxPage() {
         </div>
         
       </div>
+
+      {/* Activity Completion Tracking */}
+      <ActivityCompletion activityType="elkonin_box" />
     </div>
   );
 }

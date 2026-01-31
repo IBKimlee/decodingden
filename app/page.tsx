@@ -35,9 +35,9 @@ export default function Home() {
               <Link href="#" className="hidden sm:block text-white/80 hover:text-white transition-colors font-medium text-sm">About</Link>
               <Link href="#" className="hidden sm:block text-white/80 hover:text-white transition-colors font-medium text-sm">Resources</Link>
               <Link href="#" className="hidden sm:block text-white/80 hover:text-white transition-colors font-medium text-sm">Contact</Link>
-              <button className="bg-white/20 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-white/30 transition-all duration-200 text-xs sm:text-sm font-medium border border-white/30 hover:shadow-lg transform hover:scale-105 hover:-translate-y-0.5">
+              <Link href="/login" className="bg-white/20 text-white px-2 py-1 sm:px-4 sm:py-2 rounded-lg hover:bg-white/30 transition-all duration-200 text-xs sm:text-sm font-medium border border-white/30 hover:shadow-lg transform hover:scale-105 hover:-translate-y-0.5">
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function Home() {
               }}>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center sm:justify-evenly items-center px-2 sm:px-4">
                 <div className="flex flex-col items-center w-full sm:flex-1 sm:max-w-[140px]">
-                  <Link href="/teacher/stages" className="bg-gradient-to-br from-emerald-600/80 via-teal-600/80 to-cyan-700/80 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:shadow-lg hover:shadow-emerald-800/40 transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium shadow-md mb-1 flex flex-col items-center group border-2 border-blue-500 w-full">
+                  <Link href="/teacher" className="bg-gradient-to-br from-emerald-600/80 via-teal-600/80 to-cyan-700/80 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg hover:shadow-lg hover:shadow-emerald-800/40 transform hover:scale-105 transition-all duration-200 text-sm sm:text-base font-medium shadow-md mb-1 flex flex-col items-center group border-2 border-blue-500 w-full">
                     <div className="relative w-12 h-14 mb-1 overflow-hidden">
                       {/* Tree trunk */}
                       <div className="absolute inset-0 bg-gradient-to-b from-amber-700/60 to-amber-800/60 rounded-t-lg rounded-b-sm overflow-hidden">

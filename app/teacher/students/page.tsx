@@ -10,16 +10,22 @@ import {
   getMyGroups,
   createGroup,
   deactivateStudent,
-  generateLoginCode
+  getGroupStudents,
+  addStudentToGroup,
+  removeStudentFromGroup,
 } from '@/lib/supabase/auth';
 import type { Student, StudentGroup } from '@/lib/supabase/client';
+
+type TabType = 'classes' | 'groups' | 'students';
 
 export default function StudentsPage() {
   const router = useRouter();
   const { isLoading: authLoading, userRole } = useAuth();
   const { teacher, isTeacher } = useTeacher();
 
+  const [activeTab, setActiveTab] = useState<TabType>('classes');
   const [students, setStudents] = useState<Student[]>([]);
+  const [classes, setClasses] = useState<StudentGroup[]>([]);
   const [groups, setGroups] = useState<StudentGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,52 +38,71 @@ export default function StudentsPage() {
   const [readingLevel, setReadingLevel] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Add group form state
-  const [showAddGroup, setShowAddGroup] = useState(false);
+  // Add class/group form state
+  const [showAddClassOrGroup, setShowAddClassOrGroup] = useState<'class' | 'group' | null>(null);
   const [groupName, setGroupName] = useState('');
   const [groupDescription, setGroupDescription] = useState('');
   const [groupColor, setGroupColor] = useState('#4a90a4');
 
-  // Selected student for details view
+  // Selected items for detail views
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [selectedClassOrGroup, setSelectedClassOrGroup] = useState<StudentGroup | null>(null);
+  const [selectedRosterStudents, setSelectedRosterStudents] = useState<Student[]>([]);
+  const [loadingRoster, setLoadingRoster] = useState(false);
+
+  // Manage members modal
+  const [showManageMembers, setShowManageMembers] = useState(false);
 
   const loadData = useCallback(async () => {
     setLoading(true);
+    setError(null);
     try {
-      const [studentsResult, groupsResult] = await Promise.all([
+      console.log('Loading students and groups...');
+      const [studentsResult, allGroupsResult] = await Promise.all([
         getMyStudents(),
-        getMyGroups()
+        getMyGroups() // Get all (both classes and groups)
       ]);
 
+      console.log('Students result:', studentsResult);
+      console.log('Groups result:', allGroupsResult);
+
       if (studentsResult.error) {
+        console.error('Students error:', studentsResult.error);
         setError(studentsResult.error.message);
       } else {
         setStudents(studentsResult.students);
       }
 
-      if (groupsResult.error) {
-        console.error('Error loading groups:', groupsResult.error);
+      if (allGroupsResult.error) {
+        console.error('Groups error:', allGroupsResult.error);
       } else {
-        setGroups(groupsResult.groups);
+        // Separate classes and groups
+        const allGroups = allGroupsResult.groups;
+        setClasses(allGroups.filter(g => g.type === 'class'));
+        setGroups(allGroups.filter(g => g.type === 'group' || !g.type)); // Default to group if no type
       }
     } catch (err) {
-      setError('Failed to load data');
-      console.error(err);
+      console.error('Load data error:', err);
+      setError('Failed to load data. Please try refreshing.');
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
+    // Wait for auth to finish loading
+    if (authLoading) {
+      return;
+    }
+
     // Redirect if not a teacher
-    if (!authLoading && !isTeacher && userRole !== 'teacher') {
+    if (!isTeacher && userRole !== 'teacher') {
       router.push('/login');
       return;
     }
 
-    if (isTeacher) {
-      loadData();
-    }
+    // Load data once we know we're a teacher
+    loadData();
   }, [authLoading, isTeacher, userRole, router, loadData]);
 
   const handleAddStudent = async (e: React.FormEvent) => {
@@ -109,9 +134,9 @@ export default function StudentsPage() {
     setIsSubmitting(false);
   };
 
-  const handleAddGroup = async (e: React.FormEvent) => {
+  const handleAddClassOrGroup = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!groupName.trim()) return;
+    if (!groupName.trim() || !showAddClassOrGroup) return;
 
     setIsSubmitting(true);
     setError(null);
@@ -119,18 +144,23 @@ export default function StudentsPage() {
     const { group, error } = await createGroup(
       groupName.trim(),
       groupDescription.trim() || undefined,
-      groupColor
+      groupColor,
+      showAddClassOrGroup
     );
 
     if (error) {
       setError(error.message);
     } else if (group) {
-      setGroups(prev => [...prev, group]);
+      if (showAddClassOrGroup === 'class') {
+        setClasses(prev => [...prev, group]);
+      } else {
+        setGroups(prev => [...prev, group]);
+      }
       // Reset form
       setGroupName('');
       setGroupDescription('');
       setGroupColor('#4a90a4');
-      setShowAddGroup(false);
+      setShowAddClassOrGroup(null);
     }
 
     setIsSubmitting(false);
@@ -149,6 +179,64 @@ export default function StudentsPage() {
       setStudents(prev => prev.filter(s => s.id !== studentId));
       setSelectedStudent(null);
     }
+  };
+
+  const handleViewRoster = async (classOrGroup: StudentGroup) => {
+    setSelectedClassOrGroup(classOrGroup);
+    setLoadingRoster(true);
+
+    const { students: rosterStudents, error } = await getGroupStudents(classOrGroup.id);
+
+    if (error) {
+      setError(error.message);
+    } else {
+      setSelectedRosterStudents(rosterStudents);
+    }
+
+    setLoadingRoster(false);
+  };
+
+  const handleAddToClassOrGroup = async (studentId: string) => {
+    if (!selectedClassOrGroup) return;
+
+    setIsSubmitting(true);
+    const { error } = await addStudentToGroup(selectedClassOrGroup.id, studentId);
+
+    if (error) {
+      setError(error.message);
+    } else {
+      // Refresh the roster
+      const { students: rosterStudents } = await getGroupStudents(selectedClassOrGroup.id);
+      setSelectedRosterStudents(rosterStudents);
+    }
+    setIsSubmitting(false);
+  };
+
+  const handleRemoveFromClassOrGroup = async (studentId: string) => {
+    if (!selectedClassOrGroup) return;
+
+    setIsSubmitting(true);
+    const { error } = await removeStudentFromGroup(selectedClassOrGroup.id, studentId);
+
+    if (error) {
+      setError(error.message);
+    } else {
+      // Refresh the roster
+      const { students: rosterStudents } = await getGroupStudents(selectedClassOrGroup.id);
+      setSelectedRosterStudents(rosterStudents);
+    }
+    setIsSubmitting(false);
+  };
+
+  const formatReadingLevel = (level: string | undefined) => {
+    if (!level) return '-';
+    const levels: Record<string, string> = {
+      below: 'Below Grade',
+      approaching: 'Approaching',
+      at: 'At Grade',
+      above: 'Above Grade',
+    };
+    return levels[level] || level;
   };
 
   if (authLoading || loading) {
@@ -171,7 +259,7 @@ export default function StudentsPage() {
             <div>
               <h1 className="text-lg sm:text-xl font-bold text-pineShadow">Student Management</h1>
               <p className="text-xs text-mossGray">
-                {teacher?.display_name ? `Welcome, ${teacher.display_name}` : 'Manage your students and groups'}
+                {teacher?.display_name ? `Welcome, ${teacher.display_name}` : 'Manage your classes, groups, and students'}
               </p>
             </div>
             <Link href="/teacher" className="text-xs sm:text-sm text-pineShadow/70 hover:text-pineShadow transition">
@@ -190,21 +278,212 @@ export default function StudentsPage() {
           </div>
         )}
 
-        {/* Action Buttons */}
-        <div className="flex gap-3 mb-6">
+        {/* Tabs */}
+        <div className="flex gap-1 mb-4 bg-white rounded-lg p-1 shadow-sm">
           <button
-            onClick={() => setShowAddStudent(true)}
-            className="px-4 py-2 bg-oceanBlue text-white rounded-lg font-semibold hover:bg-darkOcean transition-colors flex items-center gap-2"
+            onClick={() => setActiveTab('classes')}
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+              activeTab === 'classes'
+                ? 'bg-oceanBlue text-white'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
           >
-            <span>➕</span> Add Student
+            🏫 My Classes ({classes.length})
           </button>
           <button
-            onClick={() => setShowAddGroup(true)}
-            className="px-4 py-2 bg-forestMist text-pineShadow rounded-lg font-semibold hover:bg-forestMist/80 transition-colors flex items-center gap-2"
+            onClick={() => setActiveTab('groups')}
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+              activeTab === 'groups'
+                ? 'bg-oceanBlue text-white'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
           >
-            <span>📁</span> Create Group
+            📁 Skill Groups ({groups.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('students')}
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+              activeTab === 'students'
+                ? 'bg-oceanBlue text-white'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
+          >
+            👨‍👩‍👧‍👦 All Students ({students.length})
           </button>
         </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 mb-6">
+          {activeTab === 'classes' && (
+            <button
+              onClick={() => setShowAddClassOrGroup('class')}
+              className="px-4 py-2 bg-oceanBlue text-white rounded-lg font-semibold hover:bg-darkOcean transition-colors flex items-center gap-2"
+            >
+              <span>➕</span> Create Class
+            </button>
+          )}
+          {activeTab === 'groups' && (
+            <button
+              onClick={() => setShowAddClassOrGroup('group')}
+              className="px-4 py-2 bg-oceanBlue text-white rounded-lg font-semibold hover:bg-darkOcean transition-colors flex items-center gap-2"
+            >
+              <span>➕</span> Create Skill Group
+            </button>
+          )}
+          {activeTab === 'students' && (
+            <button
+              onClick={() => setShowAddStudent(true)}
+              className="px-4 py-2 bg-oceanBlue text-white rounded-lg font-semibold hover:bg-darkOcean transition-colors flex items-center gap-2"
+            >
+              <span>➕</span> Add Student
+            </button>
+          )}
+        </div>
+
+        {/* Classes Tab Content */}
+        {activeTab === 'classes' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {classes.length === 0 ? (
+              <div className="col-span-full text-center py-12 text-gray-500 bg-white rounded-xl">
+                <p className="text-5xl mb-3">🏫</p>
+                <p className="text-lg font-medium">No classes yet</p>
+                <p className="text-sm">Create a class to organize your students into homeroom rosters.</p>
+              </div>
+            ) : (
+              classes.map(cls => (
+                <div
+                  key={cls.id}
+                  onClick={() => handleViewRoster(cls)}
+                  className="bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow border-l-4"
+                  style={{ borderLeftColor: cls.color }}
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg"
+                      style={{ backgroundColor: cls.color }}
+                    >
+                      🏫
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{cls.name}</h3>
+                      {cls.description && (
+                        <p className="text-xs text-gray-500">{cls.description}</p>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600">Click to view roster →</p>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
+        {/* Groups Tab Content */}
+        {activeTab === 'groups' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {groups.length === 0 ? (
+              <div className="col-span-full text-center py-12 text-gray-500 bg-white rounded-xl">
+                <p className="text-5xl mb-3">📁</p>
+                <p className="text-lg font-medium">No skill groups yet</p>
+                <p className="text-sm">Create skill groups for targeted intervention and practice.</p>
+              </div>
+            ) : (
+              groups.map(group => (
+                <div
+                  key={group.id}
+                  onClick={() => handleViewRoster(group)}
+                  className="bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-lg transition-shadow border-l-4"
+                  style={{ borderLeftColor: group.color }}
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg"
+                      style={{ backgroundColor: group.color }}
+                    >
+                      📁
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{group.name}</h3>
+                      {group.description && (
+                        <p className="text-xs text-gray-500">{group.description}</p>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600">Click to view members →</p>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
+        {/* Students Tab Content */}
+        {activeTab === 'students' && (
+          <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            {students.length === 0 ? (
+              <div className="text-center py-12 text-gray-500">
+                <p className="text-5xl mb-3">🧒</p>
+                <p className="text-lg font-medium">No students yet</p>
+                <p className="text-sm">Add students to get started.</p>
+              </div>
+            ) : (
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Student</th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Grade</th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Reading Level</th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Login Code</th>
+                    <th className="px-4 py-3 text-right text-sm font-semibold text-gray-700">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {students.map(student => (
+                    <tr key={student.id} className="hover:bg-gray-50">
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-oceanBlue/20 rounded-full flex items-center justify-center text-sm">
+                            🧒
+                          </div>
+                          <div>
+                            <p className="font-medium">{student.display_name}</p>
+                            <p className="text-xs text-gray-500">{student.first_name} {student.last_name}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        {student.grade_level ? `Grade ${student.grade_level}` : '-'}
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        <span className={`px-2 py-1 rounded-full text-xs ${
+                          student.reading_level === 'above' ? 'bg-green-100 text-green-700' :
+                          student.reading_level === 'at' ? 'bg-blue-100 text-blue-700' :
+                          student.reading_level === 'approaching' ? 'bg-yellow-100 text-yellow-700' :
+                          student.reading_level === 'below' ? 'bg-red-100 text-red-700' :
+                          'bg-gray-100 text-gray-600'
+                        }`}>
+                          {formatReadingLevel(student.reading_level)}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        <code className="text-sm font-mono bg-gray-100 px-2 py-1 rounded">
+                          {student.login_code}
+                        </code>
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <button
+                          onClick={() => setSelectedStudent(student)}
+                          className="text-oceanBlue hover:text-darkOcean text-sm font-medium"
+                        >
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        )}
 
         {/* Add Student Modal */}
         {showAddStudent && (
@@ -307,18 +586,19 @@ export default function StudentsPage() {
           </div>
         )}
 
-        {/* Add Group Modal */}
-        {showAddGroup && (
+        {/* Add Class/Group Modal */}
+        {showAddClassOrGroup && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-xl shadow-xl p-6 max-w-md w-full">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <span>📁</span> Create Student Group
+                <span>{showAddClassOrGroup === 'class' ? '🏫' : '📁'}</span>
+                Create {showAddClassOrGroup === 'class' ? 'Class' : 'Skill Group'}
               </h2>
 
-              <form onSubmit={handleAddGroup} className="space-y-4">
+              <form onSubmit={handleAddClassOrGroup} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Group Name *
+                    {showAddClassOrGroup === 'class' ? 'Class' : 'Group'} Name *
                   </label>
                   <input
                     type="text"
@@ -326,7 +606,7 @@ export default function StudentsPage() {
                     onChange={(e) => setGroupName(e.target.value)}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-oceanBlue focus:border-oceanBlue"
-                    placeholder="e.g., Short Vowels Group"
+                    placeholder={showAddClassOrGroup === 'class' ? "e.g., Mrs. Smith's 2nd Grade" : "e.g., Short Vowel Practice"}
                   />
                 </div>
 
@@ -339,13 +619,13 @@ export default function StudentsPage() {
                     onChange={(e) => setGroupDescription(e.target.value)}
                     rows={2}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-oceanBlue focus:border-oceanBlue"
-                    placeholder="Students working on short vowel sounds"
+                    placeholder={showAddClassOrGroup === 'class' ? "Room 204, Morning class" : "Students working on short vowel sounds"}
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Group Color
+                    Color
                   </label>
                   <div className="flex gap-2">
                     {['#4a90a4', '#6b8e4e', '#d4a574', '#c17e7e', '#8b7bb8', '#e8a87c'].map(color => (
@@ -363,7 +643,7 @@ export default function StudentsPage() {
                 <div className="flex gap-3 justify-end">
                   <button
                     type="button"
-                    onClick={() => setShowAddGroup(false)}
+                    onClick={() => setShowAddClassOrGroup(null)}
                     className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
                   >
                     Cancel
@@ -373,7 +653,7 @@ export default function StudentsPage() {
                     disabled={isSubmitting || !groupName.trim()}
                     className="px-4 py-2 bg-oceanBlue text-white rounded-lg font-semibold hover:bg-darkOcean transition-colors disabled:opacity-50"
                   >
-                    {isSubmitting ? 'Creating...' : 'Create Group'}
+                    {isSubmitting ? 'Creating...' : `Create ${showAddClassOrGroup === 'class' ? 'Class' : 'Group'}`}
                   </button>
                 </div>
               </form>
@@ -411,11 +691,11 @@ export default function StudentsPage() {
                   </div>
                   <div>
                     <span className="text-gray-500">Grade Level:</span>
-                    <p className="font-medium">{selectedStudent.grade_level || '-'}</p>
+                    <p className="font-medium">{selectedStudent.grade_level ? `Grade ${selectedStudent.grade_level}` : '-'}</p>
                   </div>
                   <div>
                     <span className="text-gray-500">Reading Level:</span>
-                    <p className="font-medium">{selectedStudent.reading_level || '-'}</p>
+                    <p className="font-medium">{formatReadingLevel(selectedStudent.reading_level)}</p>
                   </div>
                 </div>
 
@@ -438,96 +718,171 @@ export default function StudentsPage() {
           </div>
         )}
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Students List */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <span>👨‍👩‍👧‍👦</span> Your Students ({students.length})
-              </h2>
+        {/* Class/Group Roster Modal */}
+        {selectedClassOrGroup && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-xl shadow-xl p-6 max-w-2xl w-full max-h-[80vh] overflow-auto">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold flex items-center gap-2">
+                  <span
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white"
+                    style={{ backgroundColor: selectedClassOrGroup.color }}
+                  >
+                    {selectedClassOrGroup.type === 'class' ? '🏫' : '📁'}
+                  </span>
+                  {selectedClassOrGroup.name}
+                </h2>
+                <button
+                  onClick={() => {
+                    setSelectedClassOrGroup(null);
+                    setSelectedRosterStudents([]);
+                    setShowManageMembers(false);
+                  }}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ×
+                </button>
+              </div>
 
-              {students.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
-                  <p className="text-4xl mb-2">🧒</p>
-                  <p>No students yet.</p>
-                  <p className="text-sm">Click &quot;Add Student&quot; to get started!</p>
+              {selectedClassOrGroup.description && (
+                <p className="text-gray-600 text-sm mb-4">{selectedClassOrGroup.description}</p>
+              )}
+
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={() => setShowManageMembers(!showManageMembers)}
+                  className="px-3 py-1.5 bg-oceanBlue text-white text-sm rounded-lg hover:bg-darkOcean transition-colors"
+                >
+                  {showManageMembers ? '← Back to Roster' : '➕ Manage Members'}
+                </button>
+              </div>
+
+              {loadingRoster ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-oceanBlue mx-auto"></div>
+                </div>
+              ) : showManageMembers ? (
+                /* Manage Members View */
+                <div>
+                  <h3 className="font-semibold mb-3">Add or Remove Students</h3>
+                  <div className="space-y-2 max-h-96 overflow-auto">
+                    {students.map(student => {
+                      const isInGroup = selectedRosterStudents.some(s => s.id === student.id);
+                      return (
+                        <div
+                          key={student.id}
+                          className={`flex items-center justify-between p-3 rounded-lg ${
+                            isInGroup ? 'bg-green-50 border border-green-200' : 'bg-gray-50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-oceanBlue/20 rounded-full flex items-center justify-center text-sm">
+                              🧒
+                            </div>
+                            <div>
+                              <p className="font-medium">{student.display_name}</p>
+                              <p className="text-xs text-gray-500">
+                                {student.grade_level && `Grade ${student.grade_level}`}
+                                {student.grade_level && student.reading_level && ' • '}
+                                {formatReadingLevel(student.reading_level)}
+                              </p>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => isInGroup
+                              ? handleRemoveFromClassOrGroup(student.id)
+                              : handleAddToClassOrGroup(student.id)
+                            }
+                            disabled={isSubmitting}
+                            className={`px-3 py-1 text-sm rounded-lg font-medium transition-colors ${
+                              isInGroup
+                                ? 'bg-red-100 text-red-700 hover:bg-red-200'
+                                : 'bg-green-100 text-green-700 hover:bg-green-200'
+                            } disabled:opacity-50`}
+                          >
+                            {isInGroup ? 'Remove' : 'Add'}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               ) : (
-                <div className="space-y-2">
-                  {students.map(student => (
-                    <div
-                      key={student.id}
-                      onClick={() => setSelectedStudent(student)}
-                      className="flex items-center justify-between p-3 bg-forestMist/20 rounded-lg hover:bg-forestMist/40 transition cursor-pointer"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-oceanBlue/20 rounded-full flex items-center justify-center text-lg">
-                          {student.avatar_url ? (
-                            <img src={student.avatar_url} alt="" className="w-full h-full rounded-full" />
-                          ) : (
-                            '🧒'
-                          )}
-                        </div>
-                        <div>
-                          <p className="font-medium">{student.display_name}</p>
-                          <p className="text-xs text-gray-500">
-                            {student.grade_level && `Grade ${student.grade_level}`}
-                            {student.grade_level && student.reading_level && ' • '}
-                            {student.reading_level && `${student.reading_level} level`}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-mono text-gray-600">{student.login_code}</p>
-                        <p className="text-xs text-gray-400">Login code</p>
-                      </div>
+                /* Roster View */
+                <div>
+                  <h3 className="font-semibold mb-3">
+                    {selectedClassOrGroup.type === 'class' ? 'Class' : 'Group'} Roster ({selectedRosterStudents.length} students)
+                  </h3>
+                  {selectedRosterStudents.length === 0 ? (
+                    <div className="text-center py-8 text-gray-500">
+                      <p className="text-3xl mb-2">👥</p>
+                      <p>No students in this {selectedClassOrGroup.type === 'class' ? 'class' : 'group'} yet.</p>
+                      <p className="text-sm">Click &quot;Manage Members&quot; to add students.</p>
                     </div>
-                  ))}
+                  ) : (
+                    <table className="w-full">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th className="px-3 py-2 text-left text-sm font-semibold text-gray-700">Name</th>
+                          <th className="px-3 py-2 text-left text-sm font-semibold text-gray-700">Grade</th>
+                          <th className="px-3 py-2 text-left text-sm font-semibold text-gray-700">Reading</th>
+                          <th className="px-3 py-2 text-left text-sm font-semibold text-gray-700">Code</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100">
+                        {selectedRosterStudents.map(student => (
+                          <tr key={student.id} className="hover:bg-gray-50">
+                            <td className="px-3 py-2">
+                              <div className="flex items-center gap-2">
+                                <span>🧒</span>
+                                <span className="font-medium">{student.display_name}</span>
+                              </div>
+                            </td>
+                            <td className="px-3 py-2 text-sm">
+                              {student.grade_level ? `${student.grade_level}` : '-'}
+                            </td>
+                            <td className="px-3 py-2 text-sm">
+                              <span className={`px-2 py-0.5 rounded-full text-xs ${
+                                student.reading_level === 'above' ? 'bg-green-100 text-green-700' :
+                                student.reading_level === 'at' ? 'bg-blue-100 text-blue-700' :
+                                student.reading_level === 'approaching' ? 'bg-yellow-100 text-yellow-700' :
+                                student.reading_level === 'below' ? 'bg-red-100 text-red-700' :
+                                'bg-gray-100 text-gray-600'
+                              }`}>
+                                {formatReadingLevel(student.reading_level)}
+                              </span>
+                            </td>
+                            <td className="px-3 py-2">
+                              <code className="text-sm font-mono bg-gray-100 px-1.5 py-0.5 rounded">
+                                {student.login_code}
+                              </code>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
                 </div>
               )}
             </div>
           </div>
+        )}
 
-          {/* Groups Sidebar */}
-          <div>
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <span>📁</span> Groups ({groups.length})
-              </h2>
-
-              {groups.length === 0 ? (
-                <div className="text-center py-6 text-gray-500">
-                  <p className="text-3xl mb-2">📁</p>
-                  <p className="text-sm">No groups yet.</p>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {groups.map(group => (
-                    <div
-                      key={group.id}
-                      className="p-3 rounded-lg border-l-4 hover:bg-gray-50 transition cursor-pointer"
-                      style={{ borderLeftColor: group.color }}
-                    >
-                      <p className="font-medium">{group.name}</p>
-                      {group.description && (
-                        <p className="text-xs text-gray-500 mt-1">{group.description}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
+        {/* Quick Info */}
+        <div className="mt-6 bg-blue-50 rounded-xl p-4">
+          <h3 className="font-semibold text-sm mb-2 text-blue-800">Quick Guide</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-blue-700">
+            <div>
+              <p className="font-medium">🏫 Classes</p>
+              <p>Homeroom rosters for your students. Assign activities to entire classes at once.</p>
             </div>
-
-            {/* Quick Info */}
-            <div className="mt-4 bg-blue-50 rounded-xl p-4">
-              <h3 className="font-semibold text-sm mb-2 text-blue-800">How Student Login Works</h3>
-              <ul className="text-xs text-blue-700 space-y-1">
-                <li>• Each student gets a unique 6-digit code</li>
-                <li>• Students enter their code on the login page</li>
-                <li>• No email or password needed for students</li>
-                <li>• COPPA-compliant: no personal data collected</li>
-              </ul>
+            <div>
+              <p className="font-medium">📁 Skill Groups</p>
+              <p>Targeted intervention groups. Students can be in multiple skill groups.</p>
+            </div>
+            <div>
+              <p className="font-medium">👨‍👩‍👧‍👦 Students</p>
+              <p>Individual student profiles with 6-digit login codes. COPPA compliant.</p>
             </div>
           </div>
         </div>
