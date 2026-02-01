@@ -184,13 +184,6 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   return (
     <div className="space-y-5">
 
-      {/* Phoneme Being Explored Header */}
-      <div className="bg-gradient-to-r from-oceanBlue to-darkOcean text-white rounded-lg px-4 py-3 shadow-md">
-        <p className="text-lg font-bold">
-          {phoneme.ipa_symbol} — Spelled 〈{graphemes[0]?.grapheme || 'N/A'}〉
-        </p>
-      </div>
-
       {/* 3-Column Grid: Left = Type+Voicing stacked, Middle = Frequency, Right = Spelling */}
       <div className="grid md:grid-cols-3 gap-3 items-stretch">
 
@@ -199,6 +192,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
           {/* Phoneme Type */}
           <div className="bg-blue-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
             <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Phoneme Type</h5>
+            <p className="text-sm text-gray-600">{phoneme.ipa_symbol} — Spelled 〈{graphemes[0]?.grapheme || 'N/A'}〉</p>
             <p className="text-gray-700 capitalize font-bold">{getPhonemeLabel(phoneme)}</p>
           </div>
 
@@ -206,6 +200,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
           {phoneme.is_voiced !== null && (
             <div className="bg-purple-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
               <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Voicing</h5>
+              <p className="text-sm text-gray-600">{phoneme.ipa_symbol} — Spelled 〈{graphemes[0]?.grapheme || 'N/A'}〉</p>
               <p className="text-gray-700">
                 <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
               </p>
@@ -220,11 +215,12 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         {frequencyData && (
           <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col h-full">
             <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Frequency in English</h5>
-            <p className="text-gray-700 mt-4">
+            <p className="text-sm text-gray-600">{phoneme.ipa_symbol} — Spelled 〈{graphemes[0]?.grapheme || 'N/A'}〉</p>
+            <p className="text-gray-700 mt-3">
               <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
               <span className="text-sm ml-1">of phonemes</span>
             </p>
-            <p className="mt-3">
+            <p className="mt-2">
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
                 #{frequencyData.rank} most common
               </span>
