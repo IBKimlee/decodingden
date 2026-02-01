@@ -214,6 +214,14 @@ export default function TeacherPortal() {
           </button>
 
           <button
+            onClick={() => router.push('/teacher/decoding-den')}
+            className="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-3 sm:p-4 rounded-xl shadow-md hover:from-blue-600 hover:to-purple-700 transition group">
+            <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">🔍</div>
+            <h3 className="font-semibold text-xs sm:text-sm">Decoding Den</h3>
+            <p className="text-xs text-white/80 hidden sm:block">Phoneme lookup & words</p>
+          </button>
+
+          <button
             onClick={() => router.push('/teacher/assessments')}
             className="bg-roseAccent/30 p-3 sm:p-4 rounded-xl shadow-md hover:bg-roseAccent/40 transition group">
             <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">📋</div>

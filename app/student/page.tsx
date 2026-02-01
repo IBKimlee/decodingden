@@ -17,13 +17,45 @@ const ACTIVITY_ROUTES: Record<string, string> = {
   'story_circle': '/student/story-circle',
 };
 
+// Activity display info
+const ACTIVITY_INFO: Record<string, { name: string; icon: string; color: string; description: string }> = {
+  'elkonin_box': {
+    name: 'Sound Boxes',
+    icon: '📦',
+    color: 'from-emerald-400 to-teal-600',
+    description: 'Break words into sounds!'
+  },
+  'whiteboard': {
+    name: 'Drawing Den',
+    icon: '✏️',
+    color: 'from-purple-500 to-pink-600',
+    description: 'Practice writing!'
+  },
+  'word_work': {
+    name: 'Word Workspace',
+    icon: '🔤',
+    color: 'from-indigo-400 to-purple-600',
+    description: 'Build words!'
+  },
+  'phoneme_keyboard': {
+    name: 'Word Workspace',
+    icon: '🔤',
+    color: 'from-indigo-400 to-purple-600',
+    description: 'Build words!'
+  },
+  'story_circle': {
+    name: 'Story Circle',
+    icon: '📚',
+    color: 'from-red-400 to-pink-600',
+    description: 'Read a story!'
+  },
+};
+
 export default function StudentDenPage() {
   const router = useRouter();
   const { student, isStudent } = useStudent();
-  const [selectedTheme, setSelectedTheme] = useState(''); // forest, dragon, mountain, mixed
-  const [darkMode, setDarkMode] = useState(false);
   const [assignments, setAssignments] = useState<StudentAssignment[]>([]);
-  const [assignmentCounts, setAssignmentCounts] = useState<Record<string, number>>({});
+  const [loading, setLoading] = useState(true);
 
   // Fetch student's assigned activities
   const fetchAssignments = useCallback(async () => {
@@ -42,543 +74,192 @@ export default function StudentDenPage() {
 
       if (!error && data) {
         setAssignments(data as StudentAssignment[]);
-
-        // Count assignments per activity type
-        const counts: Record<string, number> = {};
-        data.forEach((sa: StudentAssignment) => {
-          const activityType = sa.assignment?.activity_type;
-          if (activityType) {
-            counts[activityType] = (counts[activityType] || 0) + 1;
-          }
-        });
-        setAssignmentCounts(counts);
       }
     } catch (err) {
       console.error('Error fetching assignments:', err);
+    } finally {
+      setLoading(false);
     }
   }, [student?.id]);
 
   useEffect(() => {
     if (isStudent && student) {
       fetchAssignments();
+    } else {
+      setLoading(false);
     }
   }, [isStudent, student, fetchAssignments]);
 
-  // Load selected mascot from localStorage on page load
-  useEffect(() => {
-    const savedMascot = localStorage.getItem('selectedMascot');
-    if (savedMascot) {
-      setSelectedTheme(savedMascot);
-    } else {
-      // Set default if no saved mascot
-      setSelectedTheme('placeholder1');
-    }
-  }, []);
-
-  // Save selected mascot to localStorage only when user makes a selection
-  useEffect(() => {
-    if (selectedTheme) {
-      localStorage.setItem('selectedMascot', selectedTheme);
-    }
-  }, [selectedTheme]);
-
+  // Get first name for greeting
+  const firstName = student?.display_name?.split(' ')[0] || 'Friend';
 
   return (
-    <div className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${
-      darkMode 
-        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' 
-        : 'bg-gradient-to-br from-amber-50 via-orange-50 to-red-50'
-    }`}>
-      
-      {/* Magical Background Patterns */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(34, 139, 34, 0.2) 0%, transparent 50%)
-          `,
-          backgroundSize: '100% 100%'
-        }}>
-          {/* Animated paw prints */}
-          <div className="absolute top-10 left-10 animate-pulse">🐾</div>
-          <div className="absolute top-32 right-20 animate-pulse delay-300">🐾</div>
-          <div className="absolute bottom-40 left-1/4 animate-pulse delay-700">🐾</div>
-          <div className="absolute top-1/2 right-1/3 animate-pulse delay-500">✨</div>
-          <div className="absolute bottom-20 right-10 animate-pulse delay-1000">🔥</div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100">
 
-      {/* Header with Mascot */}
-      <header className={`relative z-10 shadow-2xl p-4 border-b-4 transition-colors duration-300 ${
-        darkMode 
-          ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-gray-600' 
-          : 'bg-gradient-to-r from-blue-400 to-indigo-600 border-blue-700'
-      }`}>
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-2 sm:space-x-3 -ml-4 sm:-ml-12 md:-ml-24">
-            <Link href="/" className="cursor-pointer hover:scale-110 transition-all" title="Go Home">
-              <Image 
-                src="/images/dhole mascot.png" 
-                alt="Go Home" 
-                width={45} 
-                height={45} 
+      {/* Big Welcome Header */}
+      <header className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-8 px-4 shadow-xl">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-4 mb-2">
+            <Link href="/" className="hover:scale-110 transition-transform">
+              <Image
+                src="/images/dhole mascot.png"
+                alt="Home"
+                width={60}
+                height={60}
               />
             </Link>
-            <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white drop-shadow-2xl" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.8)'}}>
-                Welcome to Your Cozy Den!
-              </h1>
-              <p className={`text-sm sm:text-base md:text-xl transition-colors duration-300 ${
-                darkMode ? 'text-gray-200' : 'text-blue-100'
-              }`}>
-                Ready for a magical reading adventure? 🌟
-              </p>
-            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold drop-shadow-lg">
+              Hi, {firstName}! 👋
+            </h1>
           </div>
-          
-          {/* Dark Mode Toggle */}
-          <div className="bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full p-1 backdrop-blur-sm ml-auto -mr-4 sm:-mr-12 md:-mr-24 border border-white/40">
-            <button 
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-full transition-all duration-300 ${
-                darkMode 
-                  ? 'bg-gradient-to-br from-sky-300 to-blue-400 shadow-md shadow-blue-400/50' 
-                  : 'bg-gradient-to-br from-blue-800 to-indigo-900 shadow-md shadow-indigo-900/50'
-              } text-white hover:scale-110 hover:rotate-12 flex items-center justify-center border border-white/50`}
-            >
-              {darkMode ? (
-                <span className="text-base">☀️</span>
-              ) : (
-                <span className="text-sm">🌙</span>
-              )}
-            </button>
-          </div>
+          <p className="text-xl sm:text-2xl text-white/90">
+            Welcome to your Decoding Den!
+          </p>
         </div>
       </header>
 
-      {/* Main Den Activities */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
+      <main className="max-w-4xl mx-auto px-4 py-8">
 
-        {/* Student Welcome Banner - only shown when logged in with assignments */}
-        {isStudent && student && assignments.length > 0 && (
-          <div className="mb-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl shadow-lg p-4 border-4 border-green-600">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-4xl">🎯</span>
-                <div>
-                  <h2 className="text-xl font-bold text-white">
-                    Hi {student.display_name}! You have {assignments.length} task{assignments.length !== 1 ? 's' : ''} to complete!
-                  </h2>
-                  <p className="text-green-100">
-                    Look for the bouncing numbers on your activities!
-                  </p>
-                </div>
-              </div>
-              <div className="text-5xl animate-bounce">
-                ⭐
-              </div>
+        {/* My Tasks Section - Shows First if there are assignments */}
+        {assignments.length > 0 && (
+          <section className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-4xl animate-bounce">⭐</span>
+              <h2 className="text-3xl font-bold text-gray-800">
+                My Tasks
+              </h2>
+              <span className="bg-red-500 text-white text-xl font-bold px-3 py-1 rounded-full">
+                {assignments.length}
+              </span>
             </div>
+
+            <div className="grid gap-4">
+              {assignments.map((assignment) => {
+                const activityType = assignment.assignment?.activity_type || '';
+                const info = ACTIVITY_INFO[activityType] || {
+                  name: 'Activity',
+                  icon: '📝',
+                  color: 'from-gray-400 to-gray-600',
+                  description: 'Complete this activity!'
+                };
+                const route = ACTIVITY_ROUTES[activityType];
+
+                return (
+                  <button
+                    key={assignment.id}
+                    onClick={() => route && router.push(route)}
+                    className={`w-full bg-gradient-to-r ${info.color} rounded-2xl shadow-xl p-6 text-left hover:scale-102 hover:shadow-2xl transition-all border-4 border-white/50`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="text-5xl">{info.icon}</span>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-white">
+                          {info.name}
+                        </h3>
+                        <p className="text-white/80 text-lg">
+                          {assignment.assignment?.title || info.description}
+                        </p>
+                      </div>
+                      <div className="text-4xl">▶️</div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* No Tasks Message */}
+        {!loading && assignments.length === 0 && (
+          <div className="mb-10 bg-white rounded-3xl shadow-xl p-8 text-center border-4 border-green-300">
+            <div className="text-6xl mb-4">🎉</div>
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">
+              All Done!
+            </h2>
+            <p className="text-xl text-gray-600">
+              No tasks right now. Explore the activities below!
+            </p>
           </div>
         )}
 
-        {/* Greeting Section */}
-        <div className="text-center mb-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl px-3 sm:px-6 border-4 border-blue-700">
-            <div className="flex flex-col sm:flex-row items-center py-3 sm:py-5 gap-4 sm:gap-0">
-              <div className="rounded-2xl p-2 px-3 sm:p-3 sm:px-6 relative" style={{backgroundColor: '#f87171'}}>
-                <h3 className="text-blue-800 font-bold text-lg sm:text-2xl">Choose your mascot</h3>
-              </div>
-              <svg width="60" height="100" viewBox="0 0 60 100" className="hidden sm:block flex-shrink-0 -ml-3 z-10">
-                <path d="M0 10 Q0 0 10 0 L50 40 Q60 50 50 60 L10 100 Q0 100 0 90 Z" fill="#f87171" stroke="none" />
-              </svg>
-              <div className="flex flex-wrap justify-center sm:ml-auto gap-2 sm:gap-4">
-              <button 
-                onClick={() => setSelectedTheme('forest')}
-                className={`p-3 sm:p-5 rounded-lg text-3xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'forest' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Forest Den"
-              >
-                <Image 
-                  src="/images/dhole.png" 
-                  alt="Dhole" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-12 sm:h-12"
-                />
-              </button>
-              <button 
-                onClick={() => setSelectedTheme('squirrel')}
-                className={`p-3 sm:p-5 rounded-lg text-2xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'squirrel' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Raccoon Den"
-              >
-                <Image 
-                  src="/images/raccoon.png" 
-                  alt="Raccoon" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-14 sm:h-14"
-                />
-              </button>
-              <button 
-                onClick={() => setSelectedTheme('mountain')}
-                className={`p-3 sm:p-5 rounded-lg text-5xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'mountain' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Mountain Den"
-              >
-                <Image 
-                  src="/images/armadillo.png" 
-                  alt="Armadillo" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-12 sm:h-12"
-                />
-              </button>
-              <button 
-                onClick={() => setSelectedTheme('mixed')}
-                className={`p-3 sm:p-5 rounded-lg text-2xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'mixed' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Wombat Den"
-              >
-                <Image 
-                  src="/images/wombat.png" 
-                  alt="Wombat" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-12 sm:h-12"
-                />
-              </button>
-              <button 
-                onClick={() => setSelectedTheme('placeholder1')}
-                className={`p-3 sm:p-5 rounded-lg text-2xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'placeholder1' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Coming Soon"
-              >
-                <Image 
-                  src="/images/white headed petrel.png" 
-                  alt="White Headed Petrel" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-14 sm:h-14"
-                />
-              </button>
-              <button 
-                onClick={() => setSelectedTheme('placeholder2')}
-                className={`p-3 sm:p-5 rounded-lg text-2xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'placeholder2' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Coming Soon"
-              >
-                <Image 
-                  src="/images/meerkat.png" 
-                  alt="Meerkat" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-14 sm:h-14"
-                />
-              </button>
-              <button 
-                onClick={() => setSelectedTheme('placeholder3')}
-                className={`p-3 sm:p-5 rounded-lg text-5xl transition-all duration-300 border-4 drop-shadow-md ${
-                  selectedTheme === 'placeholder3' ? 'bg-gradient-to-br from-emerald-400 to-teal-600 shadow-xl text-white scale-110 border-emerald-700' : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-700 hover:border-orange-500 hover:scale-110 hover:shadow-xl hover:bg-gradient-to-br hover:from-yellow-400 hover:to-orange-500 text-deepNavy'
-                }`}
-                title="Hedgehog Den"
-              >
-                <Image 
-                  src="/images/hedgehog.png" 
-                  alt="Hedgehog" 
-                  width={32} 
-                  height={32} 
-                  className="mx-auto sm:w-12 sm:h-12"
-                />
-              </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* All Activities Section */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-700 mb-4 flex items-center gap-2">
+            <span>🎮</span> All Activities
+          </h2>
 
-        {/* Activity Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          
-          {/* Sound Tracks */}
-          <a
-            href="/student/elkonin-box"
-            className="bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl shadow-2xl p-6 border-4 border-emerald-700 hover:scale-105 transition-all duration-300 cursor-pointer block relative"
-          >
-            {/* Assignment Badge */}
-            {assignmentCounts['elkonin_box'] > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
-                {assignmentCounts['elkonin_box']}
-              </div>
-            )}
-            <div className="text-center">
-              <div className="text-6xl -mb-1">
-                <svg width="120" height="96" viewBox="0 0 128 128" fill="none" className="mx-auto">
-                  {/* Three connected boxes */}
-                  <rect x="2" y="36" width="40" height="40" stroke="black" strokeWidth="3" fill="white"/>
-                  <rect x="42" y="36" width="40" height="40" stroke="black" strokeWidth="3" fill="white"/>
-                  <rect x="82" y="36" width="40" height="40" stroke="black" strokeWidth="3" fill="white"/>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
 
-                  {/* Blue circle in first box */}
-                  <circle cx="22" cy="56" r="14" fill="#3B82F6" stroke="black" strokeWidth="2"/>
-
-                  {/* Red circle in middle box (vowel) */}
-                  <circle cx="62" cy="56" r="14" fill="#EF4444" stroke="black" strokeWidth="2"/>
-
-                  {/* Blue circle in third box */}
-                  <circle cx="102" cy="56" r="14" fill="#3B82F6" stroke="black" strokeWidth="2"/>
+            {/* Sound Boxes */}
+            <Link
+              href="/student/elkonin-box"
+              className="bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl shadow-lg p-5 text-center hover:scale-105 transition-all border-4 border-emerald-700"
+            >
+              <div className="text-4xl mb-2">
+                <svg width="60" height="48" viewBox="0 0 128 128" fill="none" className="mx-auto">
+                  <rect x="2" y="36" width="40" height="40" stroke="white" strokeWidth="4" fill="none"/>
+                  <rect x="42" y="36" width="40" height="40" stroke="white" strokeWidth="4" fill="none"/>
+                  <rect x="82" y="36" width="40" height="40" stroke="white" strokeWidth="4" fill="none"/>
+                  <circle cx="22" cy="56" r="10" fill="white"/>
+                  <circle cx="62" cy="56" r="10" fill="white"/>
+                  <circle cx="102" cy="56" r="10" fill="white"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-0 mt-5">Elkonin Sound Boxes</h3>
-              <p className="text-emerald-100 text-lg">
-                Sound Segmenting Made Simple
-              </p>
-            </div>
-          </a>
+              <h3 className="text-lg font-bold text-white">Sound Boxes</h3>
+            </Link>
 
-          {/* Magic Drawing Cave */}
-          <div
-            onClick={() => router.push('/student/whiteboard')}
-            className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl shadow-2xl p-6 border-4 border-purple-700 hover:scale-105 transition-all duration-300 cursor-pointer relative"
-          >
-            {/* Assignment Badge */}
-            {assignmentCounts['whiteboard'] > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
-                {assignmentCounts['whiteboard']}
-              </div>
-            )}
-            <div className="text-center">
-              <div className="text-6xl -mb-1">
-                <Image
-                  src="/images/pencil2.png"
-                  alt="Drawing Den"
-                  width={48}
-                  height={48}
-                  className="mx-auto"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-0 mt-5">Drawing Den</h3>
-              <p className="text-purple-100 text-lg">
-                Practice with Pizzazz!
-              </p>
-            </div>
-          </div>
+            {/* Drawing Den */}
+            <Link
+              href="/student/whiteboard"
+              className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl shadow-lg p-5 text-center hover:scale-105 transition-all border-4 border-purple-700"
+            >
+              <div className="text-4xl mb-2">✏️</div>
+              <h3 className="text-lg font-bold text-white">Drawing Den</h3>
+            </Link>
 
-          {/* Phoneme Keyboard */}
-          <a
-            href="/student/phoneme-keyboard"
-            className="bg-gradient-to-br from-indigo-400 to-purple-600 rounded-3xl shadow-2xl p-6 border-4 border-indigo-700 hover:scale-105 transition-all duration-300 cursor-pointer block relative"
-          >
-            {/* Assignment Badge - combines word_work and phoneme_keyboard */}
-            {((assignmentCounts['word_work'] || 0) + (assignmentCounts['phoneme_keyboard'] || 0)) > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
-                {(assignmentCounts['word_work'] || 0) + (assignmentCounts['phoneme_keyboard'] || 0)}
-              </div>
-            )}
-            <div className="text-center">
-              <div className="text-6xl -mb-1">
-                <Image
-                  src="/images/word workspace.png"
-                  alt="Word Workspace"
-                  width={48}
-                  height={48}
-                  className="mx-auto rounded-2xl"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-0 mt-5">Word Workspace</h3>
-              <p className="text-indigo-100 text-lg">
-                Build words letter by letter!
-              </p>
-            </div>
-          </a>
+            {/* Word Workspace */}
+            <Link
+              href="/student/phoneme-keyboard"
+              className="bg-gradient-to-br from-indigo-400 to-purple-600 rounded-2xl shadow-lg p-5 text-center hover:scale-105 transition-all border-4 border-indigo-700"
+            >
+              <div className="text-4xl mb-2">🔤</div>
+              <h3 className="text-lg font-bold text-white">Word Workspace</h3>
+            </Link>
 
-          {/* Den Friends */}
-          <div className="bg-gradient-to-br from-blue-400 to-indigo-600 rounded-3xl shadow-2xl p-6 border-4 border-blue-700 hover:scale-105 transition-all duration-300 cursor-pointer">
-            <div className="text-center">
-              <div className="text-6xl -mb-1">
-                {selectedTheme === 'squirrel' ? (
-                  <Image 
-                    src="/images/raccoon.png" 
-                    alt="Raccoon Head" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) : 
-                 selectedTheme === 'mountain' ? (
-                  <Image 
-                    src="/images/armadillo.png" 
-                    alt="Armadillo" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) : 
-                 selectedTheme === 'forest' ? (
-                  <Image 
-                    src="/images/dhole.png" 
-                    alt="Dhole Head" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) : 
-                 selectedTheme === 'mixed' ? (
-                  <Image 
-                    src="/images/wombat.png" 
-                    alt="Wombat Head" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) : 
-                 selectedTheme === 'placeholder1' ? (
-                  <Image 
-                    src="/images/white headed petrel.png" 
-                    alt="White Headed Petrel" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) : 
-                 selectedTheme === 'placeholder2' ? (
-                  <Image 
-                    src="/images/meerkat.png" 
-                    alt="Meerkat" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) :
-                 selectedTheme === 'placeholder3' ? (
-                  <Image 
-                    src="/images/hedgehog.png" 
-                    alt="Hedgehog" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                ) : (
-                  <Image 
-                    src="/images/dhole.png" 
-                    alt="Dhole Head" 
-                    width={80} 
-                    height={80} 
-                    className="mx-auto"
-                  />
-                )}
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-0 mt-2">Den Friends</h3>
-              <p className="text-blue-100 text-lg">
-                Meet your reading buddies!
-              </p>
-            </div>
-          </div>
+            {/* Story Circle */}
+            <Link
+              href="/student/story-circle"
+              className="bg-gradient-to-br from-red-400 to-pink-600 rounded-2xl shadow-lg p-5 text-center hover:scale-105 transition-all border-4 border-red-700"
+            >
+              <div className="text-4xl mb-2">📚</div>
+              <h3 className="text-lg font-bold text-white">Story Circle</h3>
+            </Link>
 
-          {/* Story Circle */}
-          <Link
-            href="/student/story-circle"
-            className="bg-gradient-to-br from-red-400 to-pink-600 rounded-3xl shadow-2xl p-6 border-4 border-red-700 hover:scale-105 transition-all duration-300 block focus:outline-none focus:ring-4 focus:ring-red-300 relative"
-          >
-            {/* Assignment Badge */}
-            {assignmentCounts['story_circle'] > 0 && (
-              <div className="absolute -top-2 -right-2 bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm border-2 border-white shadow-lg animate-bounce">
-                {assignmentCounts['story_circle']}
-              </div>
-            )}
-            <div className="text-center">
-              <div className="text-6xl -mb-1 animate-pulse">📚</div>
-              <h3 className="text-2xl font-bold text-white mb-0 mt-2">Story Circle</h3>
-              <p className="text-red-100 text-lg">
-                Tap here to build a decodable story using your sound!
-              </p>
-            </div>
-          </Link>
-
-          {/* Trophy Tree */}
-          <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl shadow-2xl p-6 border-4 border-yellow-600 hover:scale-105 transition-all duration-300 cursor-pointer">
-            <div className="text-center">
-              <div className="text-6xl -mb-1 animate-pulse">🌟</div>
-              <h3 className="text-2xl font-bold text-white mb-0 mt-2">Trophy Tree</h3>
-              <p className="text-yellow-100 text-lg">
-                See all your amazing achievements!
-              </p>
-            </div>
-          </div>
-
-
-        </div>
-
-        {/* My Den Map - Learning Goals */}
-        <div className="mt-12 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-amber-300">
-          <h2 className="text-3xl font-bold text-amber-800 mb-6 text-center flex items-center justify-center">
-            <span className="mr-3">🗺️</span>
-            My Den Adventure Map
-            <span className="ml-3">🗺️</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            {/* Today's Trail */}
-            <div className="bg-gradient-to-r from-green-200 to-green-300 rounded-2xl p-6 border-3 border-green-400">
-              <h3 className="text-xl font-bold text-green-800 mb-3 flex items-center">
-                🐾 Today&apos;s Trail
-              </h3>
-              <p className="text-green-700 text-lg">
-                Follow the paw prints to learn /ch/ and /sh/ sounds!
-              </p>
-              <div className="mt-4 flex space-x-2">
-                <span className="text-2xl animate-pulse">🐾</span>
-                <span className="text-2xl animate-pulse delay-300">🐾</span>
-                <span className="text-2xl animate-pulse delay-600">🐾</span>
-              </div>
+            {/* Den Friends - Coming Soon */}
+            <div className="bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl shadow-lg p-5 text-center border-4 border-blue-700 opacity-75">
+              <div className="text-4xl mb-2">🦊</div>
+              <h3 className="text-lg font-bold text-white">Den Friends</h3>
+              <p className="text-xs text-white/70">Coming Soon!</p>
             </div>
 
-            {/* Honey Pot Goals */}
-            <div className="bg-gradient-to-r from-yellow-200 to-amber-300 rounded-2xl p-6 border-3 border-yellow-400">
-              <h3 className="text-xl font-bold text-amber-800 mb-3 flex items-center">
-                🍯 Honey Pot Goals
-              </h3>
-              <p className="text-amber-700 text-lg">
-                Fill your honey pot by reading 5 words!
-              </p>
-              <div className="mt-4 flex space-x-1">
-                <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
-                <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
-                <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>
-                <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
-                <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
-              </div>
-            </div>
-
-            {/* Cozy Confidence */}
-            <div className="bg-gradient-to-r from-orange-200 to-red-300 rounded-2xl p-6 border-3 border-orange-400">
-              <h3 className="text-xl font-bold text-red-800 mb-3 flex items-center">
-                🏠 Cozy Confidence
-              </h3>
-              <p className="text-red-700 text-lg">
-                How cozy do you feel with today&apos;s sounds?
-              </p>
-              <div className="mt-4 flex justify-between">
-                <button className="text-3xl hover:scale-125 transition-all">😰</button>
-                <button className="text-3xl hover:scale-125 transition-all">😐</button>
-                <button className="text-3xl hover:scale-125 transition-all bg-green-200 rounded-full p-1">😊</button>
-                <button className="text-3xl hover:scale-125 transition-all">🤩</button>
-              </div>
+            {/* Trophy Tree - Coming Soon */}
+            <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-lg p-5 text-center border-4 border-yellow-600 opacity-75">
+              <div className="text-4xl mb-2">🏆</div>
+              <h3 className="text-lg font-bold text-white">Trophy Tree</h3>
+              <p className="text-xs text-white/70">Coming Soon!</p>
             </div>
 
           </div>
+        </section>
+
+        {/* Fun Footer */}
+        <div className="mt-10 text-center">
+          <p className="text-gray-500 text-lg">
+            Keep learning, {firstName}! You&apos;re doing great! 🌟
+          </p>
         </div>
 
       </main>
-
-
     </div>
   );
 }

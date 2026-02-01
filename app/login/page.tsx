@@ -111,39 +111,37 @@ export default function LoginPage() {
           {/* Mode Selection */}
           {mode === 'select' && (
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+              <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
                 Who are you?
               </h2>
 
+              {/* Student Button - Big and Kid Friendly */}
+              <button
+                onClick={() => setMode('student')}
+                className="w-full p-8 rounded-2xl border-4 border-green-500 bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 transition-all text-center group hover:scale-105 shadow-lg"
+              >
+                <div className="text-7xl mb-2">🎒</div>
+                <h3 className="text-3xl font-bold text-white drop-shadow-md">
+                  I&apos;m a Student!
+                </h3>
+                <p className="text-green-100 text-lg mt-1">
+                  Tap here to enter your code
+                </p>
+              </button>
+
+              {/* Teacher Button - Smaller, Professional */}
               <button
                 onClick={() => setMode('teacher')}
-                className="w-full p-6 rounded-xl border-2 border-oceanBlue bg-blue-50 hover:bg-blue-100 transition-colors text-left group"
+                className="w-full p-4 rounded-xl border-2 border-oceanBlue bg-blue-50 hover:bg-blue-100 transition-colors text-left group"
               >
                 <div className="flex items-center gap-4">
-                  <span className="text-4xl">👩‍🏫</span>
+                  <span className="text-3xl">👩‍🏫</span>
                   <div>
-                    <h3 className="text-xl font-bold text-oceanBlue group-hover:text-darkOcean">
+                    <h3 className="text-lg font-bold text-oceanBlue group-hover:text-darkOcean">
                       I&apos;m a Teacher
                     </h3>
                     <p className="text-gray-600 text-sm">
-                      Access your dashboard, manage students, and assign activities
-                    </p>
-                  </div>
-                </div>
-              </button>
-
-              <button
-                onClick={() => setMode('student')}
-                className="w-full p-6 rounded-xl border-2 border-green-500 bg-green-50 hover:bg-green-100 transition-colors text-left group"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-4xl">🧒</span>
-                  <div>
-                    <h3 className="text-xl font-bold text-green-600 group-hover:text-green-700">
-                      I&apos;m a Student
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      Enter your login code to see your activities
+                      Access your dashboard
                     </p>
                   </div>
                 </div>
@@ -343,53 +341,105 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Student Sign In */}
+          {/* Student Sign In - Kid Friendly PIN Pad */}
           {mode === 'student' && (
-            <div>
+            <div className="text-center">
               <button
                 onClick={() => setMode('select')}
-                className="mb-4 text-oceanBlue hover:text-darkOcean flex items-center gap-1"
+                className="mb-4 text-oceanBlue hover:text-darkOcean flex items-center gap-1 text-lg"
               >
                 ← Back
               </button>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                <span>🧒</span> Student Login
+              <div className="text-6xl mb-2">🎒</div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                Hi there!
               </h2>
+              <p className="text-xl text-gray-600 mb-6">
+                Type your secret code!
+              </p>
 
               {error && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                <div className="mb-4 p-4 bg-red-100 border-2 border-red-300 text-red-700 rounded-xl text-lg">
                   {error}
                 </div>
               )}
 
-              <form onSubmit={handleStudentSignIn} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Enter your login code
-                  </label>
-                  <input
-                    type="text"
-                    value={loginCode}
-                    onChange={(e) => setLoginCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                    required
-                    maxLength={6}
-                    className="w-full px-4 py-4 text-center text-3xl tracking-widest font-mono border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                    placeholder="000000"
-                  />
-                  <p className="mt-2 text-sm text-gray-500 text-center">
-                    Ask your teacher for your 6-digit code
-                  </p>
-                </div>
+              {/* Code Display */}
+              <div className="flex justify-center gap-2 mb-6">
+                {[0, 1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className={`w-12 h-14 rounded-xl border-4 flex items-center justify-center text-3xl font-bold transition-all ${
+                      loginCode[i]
+                        ? 'bg-green-100 border-green-500 text-green-700'
+                        : 'bg-gray-100 border-gray-300 text-gray-400'
+                    }`}
+                  >
+                    {loginCode[i] || '•'}
+                  </div>
+                ))}
+              </div>
 
+              {/* Number Pad */}
+              <div className="grid grid-cols-3 gap-3 max-w-xs mx-auto mb-6">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+                  <button
+                    key={num}
+                    type="button"
+                    onClick={() => {
+                      if (loginCode.length < 6) {
+                        setLoginCode(loginCode + num);
+                      }
+                    }}
+                    className="w-full aspect-square text-4xl font-bold bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-2xl shadow-lg hover:scale-105 hover:from-blue-500 hover:to-blue-700 active:scale-95 transition-all border-4 border-blue-700"
+                  >
+                    {num}
+                  </button>
+                ))}
                 <button
-                  type="submit"
-                  disabled={isLoading || loginCode.length !== 6}
-                  className="w-full py-4 bg-green-500 text-white rounded-lg font-semibold text-xl hover:bg-green-600 transition-colors disabled:opacity-50"
+                  type="button"
+                  onClick={() => setLoginCode(loginCode.slice(0, -1))}
+                  className="w-full aspect-square text-3xl font-bold bg-gradient-to-br from-orange-400 to-red-500 text-white rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition-all border-4 border-orange-600"
                 >
-                  {isLoading ? 'Logging in...' : 'Let\'s Go! 🚀'}
+                  ⌫
                 </button>
-              </form>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (loginCode.length < 6) {
+                      setLoginCode(loginCode + '0');
+                    }
+                  }}
+                  className="w-full aspect-square text-4xl font-bold bg-gradient-to-br from-blue-400 to-blue-600 text-white rounded-2xl shadow-lg hover:scale-105 hover:from-blue-500 hover:to-blue-700 active:scale-95 transition-all border-4 border-blue-700"
+                >
+                  0
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLoginCode('')}
+                  className="w-full aspect-square text-2xl font-bold bg-gradient-to-br from-gray-400 to-gray-600 text-white rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition-all border-4 border-gray-600"
+                >
+                  Clear
+                </button>
+              </div>
+
+              {/* Go Button */}
+              <button
+                onClick={handleStudentSignIn}
+                disabled={isLoading || loginCode.length !== 6}
+                className={`w-full max-w-xs mx-auto py-5 rounded-2xl font-bold text-2xl shadow-lg transition-all border-4 ${
+                  loginCode.length === 6
+                    ? 'bg-gradient-to-br from-green-400 to-green-600 text-white border-green-700 hover:scale-105 animate-pulse'
+                    : 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed'
+                }`}
+              >
+                {isLoading ? 'Opening...' : "Let's Go! 🚀"}
+              </button>
+
+              <p className="mt-4 text-gray-500">
+                Ask your teacher for your code!
+              </p>
             </div>
           )}
         </div>

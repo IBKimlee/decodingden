@@ -2,7 +2,7 @@
 // Simple assessment modal for phoneme mastery checking
 
 import { useState } from 'react';
-import { getEnhancedPhonemeData } from '../../../lib/contentGeneration/uiIntegration';
+import { getEnhancedPhonemeData } from '@/lib/contentGeneration/uiIntegration';
 
 interface ExitTicketModalProps {
   isOpen: boolean;

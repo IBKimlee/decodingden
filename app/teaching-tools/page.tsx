@@ -96,8 +96,8 @@ export default function TeachingToolsPage() {
                       </div>
 
                       <div className="flex items-center space-x-4">
-                        <Link 
-                          href="/decoding-den" 
+                        <Link
+                          href="/teacher/decoding-den"
                           className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 font-medium"
                         >
                           Access Decoding Den Platform

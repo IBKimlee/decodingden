@@ -1,24 +1,55 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import LogoutButton from './LogoutButton';
 
-// Pages that are fully public (no auth required)
-const PUBLIC_ROUTES = ['/login', '/'];
+// Public pages - no login required
+const PUBLIC_ROUTES = ['/login', '/', '/research', '/teaching-tools'];
 
-// Pages that require teacher auth
-const TEACHER_ROUTES = ['/teacher'];
+// Teacher-only pages
+const TEACHER_ROUTES = ['/teacher', '/admin', '/pending-approval'];
 
-// Pages that require student auth
+// Student-only pages
 const STUDENT_ROUTES = ['/student'];
+
+function isTeacherRoute(pathname: string): boolean {
+  return TEACHER_ROUTES.some(route => pathname === route || pathname.startsWith(route + '/'));
+}
+
+function isStudentRoute(pathname: string): boolean {
+  return STUDENT_ROUTES.some(route => pathname === route || pathname.startsWith(route + '/'));
+}
+
+function isPublicRoute(pathname: string): boolean {
+  return PUBLIC_ROUTES.includes(pathname);
+}
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
   const { userRole, isLoading } = useAuth();
   const pathname = usePathname();
+  const router = useRouter();
 
-  // Always allow public routes
-  if (PUBLIC_ROUTES.includes(pathname)) {
+  // Handle redirects after auth loading completes
+  useEffect(() => {
+    if (isLoading) return;
+
+    // Teacher routes require teacher login
+    if (isTeacherRoute(pathname) && userRole !== 'teacher') {
+      router.push('/login');
+      return;
+    }
+
+    // Student routes require student login
+    if (isStudentRoute(pathname) && userRole !== 'student') {
+      router.push('/login');
+      return;
+    }
+  }, [isLoading, userRole, pathname, router]);
+
+  // Public routes - always accessible
+  if (isPublicRoute(pathname)) {
     return <>{children}</>;
   }
 
@@ -34,17 +65,33 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     );
   }
 
-  // If logged in as teacher or student, show logout button and content
-  if (userRole === 'teacher' || userRole === 'student') {
+  // Teacher route but not logged in as teacher
+  if (isTeacherRoute(pathname) && userRole !== 'teacher') {
     return (
-      <>
-        <LogoutButton />
-        {children}
-      </>
+      <div className="min-h-screen flex items-center justify-center bg-softSand">
+        <div className="text-center">
+          <p className="text-gray-600">Redirecting to login...</p>
+        </div>
+      </div>
     );
   }
 
-  // For all other pages (like /decoding-den), allow access without auth
-  // Individual pages handle their own auth requirements
-  return <>{children}</>;
+  // Student route but not logged in as student
+  if (isStudentRoute(pathname) && userRole !== 'student') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-softSand">
+        <div className="text-center">
+          <p className="text-gray-600">Redirecting to login...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Authorized - show logout button and content
+  return (
+    <>
+      <LogoutButton />
+      {children}
+    </>
+  );
 }

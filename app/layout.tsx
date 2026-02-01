@@ -23,15 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`} style={{ minHeight: '100vh' }}>
+      <body className={`${poppins.className} antialiased`}>
         <AuthProvider>
           <AuthWrapper>
-            <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ flex: 1 }}>
-                {children}
-              </div>
-              <Footer />
-            </div>
+            {children}
           </AuthWrapper>
         </AuthProvider>
       </body>
