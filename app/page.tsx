@@ -1,10 +1,51 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import TwoPortalLogin from './components/TwoPortalLogin';
+import { useAuth } from './contexts/AuthContext';
 
 export default function Home() {
+  const router = useRouter();
+  const { isAuthenticated, userRole, isLoading } = useAuth();
+
+  // Redirect authenticated users to their portal
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      if (userRole === 'teacher') {
+        router.replace('/teacher');
+      } else if (userRole === 'student') {
+        router.replace('/student');
+      }
+    }
+  }, [isLoading, isAuthenticated, userRole, router]);
+
+  // Show loading while checking auth
+  if (isLoading) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-warmBeige via-creamyWhite to-softSand">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-oceanBlue mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't show login form if already authenticated (will redirect)
+  if (isAuthenticated) {
+    return (
+      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-warmBeige via-creamyWhite to-softSand">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-oceanBlue mx-auto mb-4"></div>
+          <p className="text-gray-600">Redirecting...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-screen overflow-hidden bg-gradient-to-br from-warmBeige via-creamyWhite to-softSand text-deepNavy font-sans flex flex-col relative">
       {/* Subtle background pattern */}
