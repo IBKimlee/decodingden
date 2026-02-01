@@ -211,9 +211,9 @@ export default function DecodingDenPage() {
                     {/* Phoneme Insight */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'sound-of-the-day' ? null : 'sound-of-the-day')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'sound-of-the-day' 
-                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
+                        activeSection === 'sound-of-the-day'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
@@ -239,7 +239,7 @@ export default function DecodingDenPage() {
                     {/* Articulation Guidance */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'articulation-guidance' ? null : 'articulation-guidance')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
                         activeSection === 'articulation-guidance'
                           ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
@@ -267,7 +267,7 @@ export default function DecodingDenPage() {
                     {/* Let's Learn It */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'lets-learn-it' ? null : 'lets-learn-it')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
                         activeSection === 'lets-learn-it'
                           ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
@@ -295,9 +295,9 @@ export default function DecodingDenPage() {
                     {/* Word List Practice */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'word-list-practice' ? null : 'word-list-practice')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'word-list-practice' 
-                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
+                        activeSection === 'word-list-practice'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
@@ -323,9 +323,9 @@ export default function DecodingDenPage() {
                     {/* Simple Sentences */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'practice-text' ? null : 'practice-text')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'practice-text' 
-                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
+                        activeSection === 'practice-text'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
@@ -351,9 +351,9 @@ export default function DecodingDenPage() {
                     {/* Short Story */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'short-story' ? null : 'short-story')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'short-story' 
-                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
+                        activeSection === 'short-story'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
@@ -379,23 +379,22 @@ export default function DecodingDenPage() {
                     {/* Differentiation */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'customize-lesson' ? null : 'customize-lesson')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
-                        activeSection === 'customize-lesson' 
-                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
+                        activeSection === 'customize-lesson'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
-                      <div className="mb-1">
-                        <Image 
-                          src="/images/differentiation.png" 
-                          alt="Differentiation" 
-                          width={48} 
-                          height={48} 
-                          className="mx-auto"
-                          key={Date.now() + Math.random()}
+                      <div className="flex-shrink-0 mb-0.5">
+                        <Image
+                          src="/images/differentiation.png"
+                          alt="Differentiation"
+                          width={24}
+                          height={24}
+                          className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
                         />
                       </div>
-                      <div className="text-center">
+                      <div className="text-center flex-1 flex flex-col justify-center">
                         <div className={`font-semibold leading-none text-[9px] sm:text-[10px] lg:text-[11px] ${
                           activeSection === 'customize-lesson' ? 'text-white' : 'text-deepNavy'
                         }`}>Differentiation</div>
@@ -405,7 +404,7 @@ export default function DecodingDenPage() {
                     {/* Word Workspace */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'word-workspace' ? null : 'word-workspace')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
                         activeSection === 'word-workspace'
                           ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
@@ -433,13 +432,13 @@ export default function DecodingDenPage() {
                     {/* Read Along */}
                     <button
                       onClick={() => setActiveSection(activeSection === 'read-along' ? null : 'read-along')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
+                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
                         activeSection === 'read-along'
                           ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
-                      <div className="flex-shrink-0 mb-0.5 text-xl sm:text-2xl lg:text-3xl">
+                      <div className="flex-shrink-0 mb-0.5 text-base sm:text-lg lg:text-xl">
                         📖
                       </div>
                       <div className="text-center flex-1 flex flex-col justify-center">
