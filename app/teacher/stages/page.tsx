@@ -296,10 +296,7 @@ export default function TeachingStages() {
               </h1>
               <p className="text-sm text-white/90 mt-1 text-left ml-1">Rooted in the Science of Reading</p>
             </div>
-            <Link
-              href="/teacher"
-              className="text-white/80 hover:text-white transition-colors text-sm"
-            >
+            <Link href="/teacher" className="text-xs sm:text-sm text-white/80 hover:text-white transition">
               ← Teacher Portal
             </Link>
           </div>
