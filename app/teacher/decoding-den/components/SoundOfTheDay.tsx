@@ -211,18 +211,18 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
         {/* MIDDLE COLUMN: Frequency in English */}
         {frequencyData && (
-          <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col justify-center h-full">
+          <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col h-full">
             <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Frequency in English</h5>
-            <p className="text-gray-700 mt-1">
+            <p className="text-gray-700 mt-4">
               <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
               <span className="text-sm ml-1">of phonemes</span>
             </p>
-            <p className="mt-1">
+            <p className="mt-3">
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
                 #{frequencyData.rank} most common
               </span>
             </p>
-            <p className="text-xs text-gray-500 mt-2 italic">
+            <p className="text-xs text-gray-500 mt-auto italic">
               Mines, Hanson & Shoup (1978)
             </p>
           </div>
