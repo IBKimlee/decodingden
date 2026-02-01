@@ -300,7 +300,7 @@ export default function TeachingStages() {
               href="/teacher"
               className="text-white/80 hover:text-white transition-colors text-sm"
             >
-              ← Back to Teacher Portal
+              ← Teacher Portal
             </Link>
           </div>
         </div>

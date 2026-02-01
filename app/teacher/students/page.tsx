@@ -262,7 +262,7 @@ export default function StudentsPage() {
               </p>
             </div>
             <Link href="/teacher" className="text-xs sm:text-sm text-pineShadow/70 hover:text-pineShadow transition">
-              ← Back to Teacher Portal
+              ← Teacher Portal
             </Link>
           </div>
         </div>

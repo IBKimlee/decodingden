@@ -162,7 +162,7 @@ function CreateLessonContent() {
               <p className="text-sm text-mossGray">Building a lesson for {phoneme || 'selected phoneme'}</p>
             </div>
             <a href="/teacher" className="text-sm text-pineShadow/70 hover:text-pineShadow transition">
-              ← Back to Portal
+              ← Teacher Portal
             </a>
           </div>
         </div>

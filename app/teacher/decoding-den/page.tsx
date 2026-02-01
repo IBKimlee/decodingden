@@ -148,7 +148,7 @@ export default function DecodingDenPage() {
               href="/teacher"
               className="text-white/80 hover:text-white transition-colors text-sm"
             >
-              ← Back to Teacher Portal
+              ← Teacher Portal
             </Link>
             <div className="w-full sm:flex-1 max-w-md sm:ml-8">
               <PhonemeSearch 

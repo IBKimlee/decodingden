@@ -26,7 +26,7 @@ export default function ScopeAndSequence() {
               <p className="text-xs text-mossGray">Decoding Den&apos;s research-based progression for phonics instruction</p>
             </div>
             <a href="/teacher" className="text-xs text-pineShadow/70 hover:text-pineShadow transition">
-              ← Back to Portal
+              ← Teacher Portal
             </a>
           </div>
         </div>
