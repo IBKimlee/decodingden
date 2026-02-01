@@ -7,7 +7,7 @@ import { DecodingDenSection } from '@/app/types/decodingDen';
 import PhonemeSearch from './components/PhonemeSearch';
 import SoundOfTheDay from './components/SoundOfTheDay';
 import LetsLearnIt from './components/LetsLearnIt';
-import ArticulationGuidance from './components/ArticulationGuidance';
+// ArticulationGuidance content is now integrated into SoundOfTheDay (Phoneme Insight)
 import WordListPractice from './components/WordListPractice';
 import PracticeText from './components/PracticeText';
 import ShortStory from './components/ShortStory';
@@ -23,13 +23,6 @@ const DECODING_DEN_SECTIONS = [
     description: 'Display phoneme and grapheme with bold formatting',
     icon: '🔠',
     component: SoundOfTheDay,
-  },
-  {
-    id: 'articulation-guidance' as DecodingDenSection,
-    title: '👄 Articulation Guidance',
-    description: 'Step-by-step pronunciation instructions',
-    icon: '👄',
-    component: ArticulationGuidance,
   },
   {
     id: 'lets-learn-it' as DecodingDenSection,
@@ -88,8 +81,7 @@ export default function DecodingDenPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [correctionMessage, setCorrectionMessage] = useState<string | null>(null);
-  const [articulationViewMode, setArticulationViewMode] = useState<'teacher' | 'student'>('teacher');
-  const [showExitTicket, setShowExitTicket] = useState(false);
+    const [showExitTicket, setShowExitTicket] = useState(false);
 
   const handlePhonemeSearch = async (phonemeInput: string) => {
     setIsLoading(true);
@@ -233,34 +225,6 @@ export default function DecodingDenPage() {
                         <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
                           activeSection === 'sound-of-the-day' ? 'text-white' : 'text-deepNavy'
                         }`}>Insight</div>
-                      </div>
-                    </button>
-
-                    {/* Articulation Guidance */}
-                    <button
-                      onClick={() => setActiveSection(activeSection === 'articulation-guidance' ? null : 'articulation-guidance')}
-                      className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-start w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 pt-2 ${
-                        activeSection === 'articulation-guidance'
-                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
-                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
-                      }`}
-                    >
-                      <div className="flex-shrink-0 mb-0.5">
-                        <Image
-                          src="/images/articulation guidance.png"
-                          alt="Articulation Guidance"
-                          width={24}
-                          height={24}
-                          className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
-                        />
-                      </div>
-                      <div className="text-center flex-1 flex flex-col justify-center">
-                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
-                          activeSection === 'articulation-guidance' ? 'text-white' : 'text-deepNavy'
-                        }`}>Articulation</div>
-                        <div className={`font-semibold leading-none text-[10px] sm:text-[11px] lg:text-xs ${
-                          activeSection === 'articulation-guidance' ? 'text-white' : 'text-deepNavy'
-                        }`}>Guidance</div>
                       </div>
                     </button>
 
@@ -487,15 +451,6 @@ export default function DecodingDenPage() {
                               className="mr-3"
                             />
                           )}
-                          {activeSection === 'articulation-guidance' && (
-                            <Image 
-                              src="/images/articulation guidance.png" 
-                              alt="Articulation Guidance" 
-                              width={32} 
-                              height={32} 
-                              className="mr-3"
-                            />
-                          )}
                           {activeSection === 'word-list-practice' && (
                             <Image 
                               src="/images/word list practice.png" 
@@ -541,31 +496,6 @@ export default function DecodingDenPage() {
                           {DECODING_DEN_SECTIONS.find(s => s.id === activeSection)?.title.replace(/^🔠 /, '').replace(/^🧠 /, '').replace(/^👄 /, '').replace(/^📚 /, '').replace(/^📖 /, '').replace(/^⚙️ /, '').replace(/^📝 /, '')}
                         </h2>
                         
-                        {/* Articulation Guidance Toggle Buttons */}
-                        {activeSection === 'articulation-guidance' && (
-                          <div className="bg-oceanBlue/10 rounded-lg p-1">
-                            <button
-                              onClick={() => setArticulationViewMode('teacher')}
-                              className={`px-3 py-1 rounded text-sm font-medium transition-all ${
-                                articulationViewMode === 'teacher' 
-                                  ? 'bg-oceanBlue text-white shadow-sm' 
-                                  : 'text-oceanBlue hover:bg-oceanBlue/20'
-                              }`}
-                            >
-                              👩‍🏫 Teacher View
-                            </button>
-                            <button
-                              onClick={() => setArticulationViewMode('student')}
-                              className={`px-3 py-1 rounded text-sm font-medium transition-all ${
-                                articulationViewMode === 'student' 
-                                  ? 'bg-oceanBlue text-white shadow-sm' 
-                                  : 'text-oceanBlue hover:bg-oceanBlue/20'
-                              }`}
-                            >
-                              🧒 Student View
-                            </button>
-                          </div>
-                        )}
                       </div>
                     )}
                     {activeSection === 'sound-of-the-day' ? (
@@ -592,10 +522,9 @@ export default function DecodingDenPage() {
                   </div>
                 </div>
                 <div className="px-6 pt-4 pb-6">
-                  <ActiveComponent 
+                  <ActiveComponent
                     phonemeData={phonemeData}
                     onClose={() => setActiveSection(null)}
-                    viewMode={activeSection === 'articulation-guidance' ? articulationViewMode : undefined}
                   />
                 </div>
               </div>

@@ -118,10 +118,10 @@ export interface ResearchCitationsProps {
 }
 
 // Section identifiers for the UI
+// Note: articulation-guidance removed - content now integrated into sound-of-the-day (Phoneme Insight)
 export type DecodingDenSection =
   | 'sound-of-the-day'
   | 'lets-learn-it'
-  | 'articulation-guidance'
   | 'word-list-practice'
   | 'practice-text'
   | 'short-story'

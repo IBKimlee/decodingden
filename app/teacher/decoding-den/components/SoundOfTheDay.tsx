@@ -149,6 +149,8 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   const [showAlternatives, setShowAlternatives] = useState(true);
   const [showSources, setShowSources] = useState(false);
   const [showReferralNotes, setShowReferralNotes] = useState(true);
+  const [showTeachingTips, setShowTeachingTips] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   if (!phonemeData) return null;
 
@@ -301,6 +303,106 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         </div>
       </div>
 
+      {/* Articulation Details - Collapsible Sections */}
+      {articulation && (
+        <div className="space-y-2">
+
+          {/* Articulation Features - Always Visible */}
+          <div className="bg-blue-50 rounded-lg border border-oceanBlue/30 overflow-hidden">
+            <div className="px-4 py-3">
+              <span className="text-sm font-semibold text-oceanBlue flex items-center mb-2">
+                <span className="mr-2">🎯</span>
+                Articulation Features
+              </span>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
+                  <p className="text-xs text-gray-500 uppercase">Place <span className="normal-case">(where in mouth)</span></p>
+                  <p className="font-semibold text-sm text-gray-800">{articulation.place_of_articulation}</p>
+                </div>
+                <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
+                  <p className="text-xs text-gray-500 uppercase">Manner <span className="normal-case">(how air releases)</span></p>
+                  <p className="font-semibold text-sm text-gray-800">{articulation.manner_of_articulation}</p>
+                </div>
+                <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
+                  <p className="text-xs text-gray-500 uppercase">Voicing <span className="normal-case">(vocal cord vibration)</span></p>
+                  <p className="font-semibold text-sm text-gray-800">{articulation.voicing}</p>
+                </div>
+                <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
+                  <p className="text-xs text-gray-500 uppercase">Airflow <span className="normal-case">(mouth or nose)</span></p>
+                  <p className="font-semibold text-sm text-gray-800">{articulation.airflow_description || 'oral'}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Teaching Tips - Compact Collapsible */}
+          {articulation.teacher_tips && articulation.teacher_tips.length > 0 && (
+            <div className="bg-yellow-50 rounded-lg border border-yellow-300/50 overflow-hidden">
+              <button
+                onClick={() => setShowTeachingTips(!showTeachingTips)}
+                className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-yellow-100 transition-colors"
+              >
+                <span className="text-sm font-semibold text-yellow-700 flex items-center">
+                  <span className="mr-2">💡</span>
+                  Teaching Tips
+                  <span className="ml-2 text-xs font-normal text-gray-500">
+                    ({articulation.teacher_tips.length} tip{articulation.teacher_tips.length > 1 ? 's' : ''})
+                  </span>
+                </span>
+                <span className={`transform transition-transform text-yellow-600 ${showTeachingTips ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
+              </button>
+              {showTeachingTips && (
+                <div className="px-4 pb-3">
+                  <ul className="space-y-1">
+                    {articulation.teacher_tips.map((tip, index) => (
+                      <li key={index} className="text-sm text-gray-700 flex items-start bg-white rounded px-3 py-2 border border-yellow-200">
+                        <span className="text-yellow-500 mr-2">•</span>
+                        {tip}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Step-by-Step Instructions - Compact Collapsible */}
+          {articulation.step_by_step_instructions && articulation.step_by_step_instructions.length > 0 && (
+            <div className="bg-green-50 rounded-lg border border-green-300/50 overflow-hidden">
+              <button
+                onClick={() => setShowInstructions(!showInstructions)}
+                className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-green-100 transition-colors"
+              >
+                <span className="text-sm font-semibold text-green-700 flex items-center">
+                  <span className="mr-2">📋</span>
+                  Step-by-Step Instructions
+                  <span className="ml-2 text-xs font-normal text-gray-500">
+                    ({articulation.step_by_step_instructions.length} step{articulation.step_by_step_instructions.length > 1 ? 's' : ''})
+                  </span>
+                </span>
+                <span className={`transform transition-transform text-green-600 ${showInstructions ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
+              </button>
+              {showInstructions && (
+                <div className="px-4 pb-3">
+                  <ol className="space-y-1">
+                    {articulation.step_by_step_instructions.map((step, index) => (
+                      <li key={index} className="text-sm text-gray-700 flex items-start bg-white rounded px-3 py-2 border border-green-200">
+                        <span className="text-green-600 font-bold mr-2 min-w-[20px]">{index + 1}.</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+          )}
+
+        </div>
+      )}
 
       {/* Common Errors */}
       {articulation && articulation.common_errors.length > 0 && (
