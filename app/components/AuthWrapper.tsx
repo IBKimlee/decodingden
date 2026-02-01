@@ -3,7 +3,6 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import LogoutButton from './LogoutButton';
 
 // Public pages - no login required
 const PUBLIC_ROUTES = ['/login', '/', '/research', '/teaching-tools'];
@@ -87,11 +86,6 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     );
   }
 
-  // Authorized - show logout button and content
-  return (
-    <>
-      <LogoutButton />
-      {children}
-    </>
-  );
+  // Authorized - show content
+  return <>{children}</>;
 }
