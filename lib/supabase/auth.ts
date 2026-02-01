@@ -51,44 +51,32 @@ export async function signInTeacher(
   password: string
 ): Promise<{ user: User | null; teacher: Teacher | null; error: AuthError | Error | null }> {
   try {
-    console.log('[Auth] Starting sign-in...', Date.now());
-
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    console.log('[Auth] Supabase auth complete', Date.now(), { hasUser: !!authData?.user, hasError: !!authError });
-
     if (authError) {
-      console.log('[Auth] Auth error:', authError.message);
       return { user: null, teacher: null, error: authError };
     }
 
     if (!authData.user) {
-      console.log('[Auth] No user returned');
       return { user: null, teacher: null, error: new Error('Failed to sign in') };
     }
 
     // Fetch teacher profile
-    console.log('[Auth] Fetching teacher profile...', Date.now());
     const { data: teacherData, error: teacherError } = await supabase
       .from('teachers')
       .select('*')
       .eq('id', authData.user.id)
       .single();
 
-    console.log('[Auth] Teacher profile fetch complete', Date.now(), { hasTeacher: !!teacherData, hasError: !!teacherError });
-
     if (teacherError) {
-      console.log('[Auth] Teacher fetch error:', teacherError.message);
       return { user: authData.user, teacher: null, error: teacherError };
     }
 
-    console.log('[Auth] Sign-in complete!', Date.now());
     return { user: authData.user, teacher: teacherData as Teacher, error: null };
   } catch (error) {
-    console.log('[Auth] Caught error:', error);
     return { user: null, teacher: null, error: error as Error };
   }
 }

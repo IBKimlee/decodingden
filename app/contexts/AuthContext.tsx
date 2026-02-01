@@ -96,23 +96,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     initializeAuth();
 
     // Listen for auth changes (teachers only)
+    // Note: signInAsTeacher already sets state, so we skip redundant fetches
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
+        // Only fetch if not already set (avoids duplicate fetch during sign-in)
         setUser(session.user);
-        const { teacher: teacherData } = await getCurrentTeacher(session.user.id);
-        if (teacherData) {
-          setTeacher(teacherData);
-          setUserRole('teacher');
-        }
-        // Clear any student session
-        setStudent(null);
-        localStorage.removeItem(STUDENT_STORAGE_KEY);
+        // Teacher data is already set by signInAsTeacher, skip redundant fetch
       } else if (event === 'SIGNED_OUT') {
         setUser(null);
         setTeacher(null);
-        if (!student) {
-          setUserRole(null);
-        }
+        setStudent(null);
+        setUserRole(null);
+        localStorage.removeItem(STUDENT_STORAGE_KEY);
       }
     });
 
@@ -154,31 +149,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     email: string,
     password: string
   ): Promise<{ error: Error | null }> => {
-    console.log('[AuthContext] signInAsTeacher called', Date.now());
     setIsLoading(true);
     try {
-      console.log('[AuthContext] Calling signInTeacher...', Date.now());
       const { user: authUser, teacher: teacherData, error } = await signInTeacher(email, password);
-      console.log('[AuthContext] signInTeacher returned', Date.now(), { hasUser: !!authUser, hasError: !!error });
 
       if (error) {
         return { error: error as Error };
       }
 
       if (authUser) {
-        console.log('[AuthContext] Setting state...', Date.now());
         setUser(authUser);
         setTeacher(teacherData);
         setUserRole('teacher');
         // Clear any student session
         setStudent(null);
         localStorage.removeItem(STUDENT_STORAGE_KEY);
-        console.log('[AuthContext] State set', Date.now());
       }
 
       return { error: null };
     } finally {
-      console.log('[AuthContext] Setting isLoading to false', Date.now());
       setIsLoading(false);
     }
   }, []);
