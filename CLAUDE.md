@@ -98,10 +98,11 @@ The application is organized around two primary user interfaces:
 ### Core Data Architecture
 
 The phonics curriculum is built on an 8-stage progression system stored in:
-- `app/data/allStagesDatabase.ts` - Complete phoneme database with research citations
-- `app/data/researchJustifications.ts` - Academic sources and methodology
-- `app/data/phonemeDatabase.ts` - Phoneme-grapheme mappings
+- `app/data/allStagesDatabase.ts` - Complete phoneme database, research citations, and research justifications
 - `app/data/scopeAndSequence.ts` - Curriculum sequencing logic
+- `app/data/assessmentDatabase.ts` - Checkpoint assessments by stage
+- `app/data/graphemeFrequencies.ts` - Grapheme spelling percentages
+- `app/data/comprehensivePhonemeFrequencies.ts` - Detailed frequency data
 
 ### API Design
 

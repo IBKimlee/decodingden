@@ -86,7 +86,13 @@
       "Bash(identify:*)",
       "Bash(sips:*)",
       "Bash(for img in '/Users/kimlee/Desktop/decodingden/public/images/articulation guidance.png' '/Users/kimlee/Desktop/decodingden/public/images/lets learn it.png' '/Users/kimlee/Desktop/decodingden/public/images/word list practice.png' '/Users/kimlee/Desktop/decodingden/public/images/simple sentences.png' '/Users/kimlee/Desktop/decodingden/public/images/short story.png' /Users/kimlee/Desktop/decodingden/public/images/differentiation.png '/Users/kimlee/Desktop/decodingden/public/images/word workspace.png')",
-      "Bash(do echo '=== $img ===' sips -g pixelWidth -g pixelHeight $img)"
+      "Bash(do echo '=== $img ===' sips -g pixelWidth -g pixelHeight $img)",
+      "Bash(for comp in /Users/kimlee/Desktop/decodingden/app/components/*.tsx)",
+      "Bash(do basename \"$comp\")",
+      "Bash(while read name)",
+      "Bash(do if ! grep -r \"from.*components/$name\\\\|import.*$name.*from.*components\" /Users/kimlee/Desktop/decodingden/app --include=*.ts --include=*.tsx)",
+      "Bash(then echo \"UNUSED: $name\" fi done done)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
