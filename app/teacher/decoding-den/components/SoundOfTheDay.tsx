@@ -184,6 +184,13 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   return (
     <div className="space-y-5">
 
+      {/* Phoneme Being Explored Header */}
+      <div className="bg-gradient-to-r from-oceanBlue to-darkOcean text-white rounded-lg px-4 py-3 shadow-md">
+        <p className="text-lg font-bold">
+          {phoneme.ipa_symbol} — Spelled 〈{graphemes[0]?.grapheme || 'N/A'}〉
+        </p>
+      </div>
+
       {/* 3-Column Grid: Left = Type+Voicing stacked, Middle = Frequency, Right = Spelling */}
       <div className="grid md:grid-cols-3 gap-3 items-stretch">
 
