@@ -214,15 +214,15 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         {/* MIDDLE COLUMN: Frequency in English */}
         {frequencyData && (
           <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col h-full">
-            <h5 className="font-semibold text-oceanBlue drop-shadow-md">Frequency in English</h5>
+            <h5 className="font-semibold text-oceanBlue drop-shadow-md">How Common Is This Sound?</h5>
             <p className="text-sm text-gray-600 font-medium">{phoneme.ipa_symbol}</p>
             <p className="text-gray-700 mt-2">
               <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
-              <span className="text-sm ml-1">of phonemes</span>
+              <span className="text-sm ml-1">of all sounds spoken</span>
             </p>
             <p className="mt-2">
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
-                #{frequencyData.rank} most common
+                #{frequencyData.rank} most common sound
               </span>
             </p>
             <p className="text-xs text-gray-500 mt-auto italic">
