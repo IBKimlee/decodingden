@@ -191,16 +191,20 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         <div className="flex flex-col gap-2">
           {/* Phoneme Type */}
           <div className="bg-blue-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
-            <h5 className="font-semibold text-oceanBlue drop-shadow-md">Phoneme Type</h5>
-            <p className="text-sm text-gray-600 font-medium">{phoneme.ipa_symbol}</p>
+            <h5 className="font-semibold drop-shadow-md">
+              <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
+              <span className="text-oceanBlue ml-2">Phoneme Type</span>
+            </h5>
             <p className="text-gray-700 capitalize font-bold">{getPhonemeLabel(phoneme)}</p>
           </div>
 
           {/* Voicing */}
           {phoneme.is_voiced !== null && (
             <div className="bg-purple-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
-              <h5 className="font-semibold text-oceanBlue drop-shadow-md">Voicing</h5>
-              <p className="text-sm text-gray-600 font-medium">{phoneme.ipa_symbol}</p>
+              <h5 className="font-semibold drop-shadow-md">
+                <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
+                <span className="text-oceanBlue ml-2">Voicing</span>
+              </h5>
               <p className="text-gray-700">
                 <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
               </p>
@@ -214,8 +218,10 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         {/* MIDDLE COLUMN: Frequency in English */}
         {frequencyData && (
           <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col h-full">
-            <h5 className="font-semibold text-oceanBlue drop-shadow-md">How Common Is This Sound?</h5>
-            <p className="text-sm text-gray-600 font-medium">{phoneme.ipa_symbol}</p>
+            <h5 className="font-semibold drop-shadow-md">
+              <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
+              <span className="text-oceanBlue ml-2">How Common?</span>
+            </h5>
             <p className="text-gray-700 mt-2">
               <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
               <span className="text-sm ml-1">of all sounds in English</span>
