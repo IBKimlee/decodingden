@@ -11,8 +11,8 @@ export default function LogoutButton() {
     // Sign out from Supabase (don't wait for it)
     supabase.auth.signOut();
 
-    // Redirect to login immediately
-    window.location.href = '/login';
+    // Redirect to homepage
+    window.location.href = '/';
   };
 
   return (

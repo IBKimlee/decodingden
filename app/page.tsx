@@ -50,7 +50,7 @@ export default function Home() {
       </div>
 
       {/* Main Content - fills remaining space */}
-      <div className="flex-1 flex flex-col justify-center px-4 py-4 relative z-10 bg-gradient-to-br from-oceanBlue/10 to-lightOcean/15 overflow-hidden">
+      <div className="flex-1 flex flex-col justify-center px-4 py-2 relative z-10 bg-gradient-to-br from-oceanBlue/10 to-lightOcean/15 overflow-hidden">
         <div className="max-w-4xl mx-auto w-full">
 
           {/* Two Portal Login Section in soft container */}

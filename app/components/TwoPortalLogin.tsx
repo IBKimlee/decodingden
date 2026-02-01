@@ -95,9 +95,9 @@ export default function TwoPortalLogin() {
     <div className="flex flex-col sm:flex-row gap-8 justify-center items-stretch max-w-4xl mx-auto">
 
       {/* Teacher Portal - Single unified card */}
-      <div className="flex-1 bg-gradient-to-br from-emerald-600/80 via-teal-600/80 to-cyan-700/80 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 px-4 py-12 flex flex-col items-center group border-2 border-amber-400/50 min-w-[320px] min-h-[420px]">
+      <div className="flex-1 bg-gradient-to-br from-emerald-600/80 via-teal-600/80 to-cyan-700/80 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 px-4 py-8 flex flex-col items-center group border-2 border-amber-400/50 min-w-[320px] min-h-[380px]">
         {/* Icon */}
-        <div className="relative w-20 h-24 mb-4 mt-6 overflow-hidden">
+        <div className="relative w-20 h-24 mb-3 mt-4 overflow-hidden">
           {/* Tree trunk */}
           <div className="absolute inset-0 bg-gradient-to-b from-amber-700/60 to-amber-800/60 rounded-t-lg rounded-b-sm overflow-hidden">
             <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-amber-900/30"></div>
@@ -234,9 +234,9 @@ export default function TwoPortalLogin() {
       </div>
 
       {/* Student Portal - Single unified card */}
-      <div className="flex-1 bg-gradient-to-br from-slate-500/80 via-slate-600/80 to-yellow-600/70 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 px-4 py-12 flex flex-col items-center group border-2 border-amber-400/50 min-w-[320px] min-h-[420px]">
+      <div className="flex-1 bg-gradient-to-br from-slate-500/80 via-slate-600/80 to-yellow-600/70 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 px-4 py-8 flex flex-col items-center group border-2 border-amber-400/50 min-w-[320px] min-h-[380px]">
         {/* Icon */}
-        <div className="relative w-24 h-24 mb-4 mt-7">
+        <div className="relative w-24 h-24 mb-3 mt-5">
           {/* Pot body */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-16 bg-gradient-to-b from-amber-200/70 to-amber-300/70 rounded-lg shadow-sm">
             {/* HONEY label */}

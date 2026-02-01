@@ -37,13 +37,13 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
 
     // Teacher routes require teacher login
     if (isTeacherRoute(pathname) && userRole !== 'teacher') {
-      router.push('/login');
+      router.push('/');
       return;
     }
 
     // Student routes require student login
     if (isStudentRoute(pathname) && userRole !== 'student') {
-      router.push('/login');
+      router.push('/');
       return;
     }
   }, [isLoading, userRole, pathname, router]);
