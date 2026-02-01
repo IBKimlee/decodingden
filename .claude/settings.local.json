@@ -92,7 +92,8 @@
       "Bash(while read name)",
       "Bash(do if ! grep -r \"from.*components/$name\\\\|import.*$name.*from.*components\" /Users/kimlee/Desktop/decodingden/app --include=*.ts --include=*.tsx)",
       "Bash(then echo \"UNUSED: $name\" fi done done)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(xargs basename:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
