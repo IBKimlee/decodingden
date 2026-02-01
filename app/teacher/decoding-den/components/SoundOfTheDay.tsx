@@ -46,15 +46,116 @@ interface SoundOfTheDayProps {
   onClose?: () => void;
 }
 
+/**
+ * Phoneme frequency in spoken English (percentage of all phonemes)
+ * Source: Mines, Hanson & Shoup (1978) "Frequency of occurrence of phonemes in conversational English"
+ * Additional data from Denes & Pinson (1993) "The Speech Chain"
+ */
+const PHONEME_FREQUENCY_PERCENT: Record<string, { percent: number; rank: number }> = {
+  // Vowels - using common notations
+  '/ə/': { percent: 11.49, rank: 1 },    // schwa
+  '/ĭ/': { percent: 3.61, rank: 7 },     // short i
+  '/ĕ/': { percent: 2.39, rank: 15 },    // short e
+  '/ă/': { percent: 1.93, rank: 17 },    // short a
+  '/ŭ/': { percent: 1.66, rank: 20 },    // short u
+  '/ŏ/': { percent: 1.02, rank: 27 },    // short o
+  '/ē/': { percent: 2.41, rank: 14 },    // long e
+  '/ā/': { percent: 1.64, rank: 22 },    // long a
+  '/ō/': { percent: 1.48, rank: 24 },    // long o
+  '/ī/': { percent: 1.01, rank: 28 },    // long i
+  '/ū/': { percent: 0.86, rank: 30 },    // long u
+  // R-controlled
+  '/er/': { percent: 1.95, rank: 16 },   // er/ir/ur
+  '/ar/': { percent: 0.65, rank: 33 },   // ar
+  '/or/': { percent: 0.58, rank: 34 },   // or
+  // Diphthongs
+  '/ow/': { percent: 0.53, rank: 35 },   // ow/ou
+  '/oy/': { percent: 0.10, rank: 40 },   // oi/oy
+  '/aw/': { percent: 0.44, rank: 36 },   // aw/au
+  '/oo/': { percent: 0.91, rank: 29 },   // oo (book)
+  // Consonants
+  '/n/': { percent: 7.11, rank: 2 },
+  '/t/': { percent: 6.91, rank: 3 },
+  '/s/': { percent: 4.55, rank: 4 },
+  '/d/': { percent: 4.14, rank: 5 },
+  '/l/': { percent: 3.81, rank: 6 },
+  '/r/': { percent: 3.41, rank: 8 },
+  '/z/': { percent: 2.95, rank: 10 },
+  '/m/': { percent: 2.78, rank: 11 },
+  '/k/': { percent: 2.71, rank: 12 },
+  '/w/': { percent: 2.47, rank: 13 },
+  '/b/': { percent: 2.11, rank: 16 },
+  '/p/': { percent: 1.86, rank: 18 },
+  '/h/': { percent: 1.83, rank: 19 },
+  '/f/': { percent: 1.65, rank: 21 },
+  '/v/': { percent: 1.32, rank: 25 },
+  '/g/': { percent: 1.06, rank: 26 },
+  '/y/': { percent: 0.81, rank: 31 },
+  '/j/': { percent: 0.44, rank: 37 },    // j as in "jump"
+  // Digraphs
+  '/th(v)/': { percent: 3.29, rank: 9 }, // voiced th (the, this)
+  '/ng/': { percent: 1.60, rank: 23 },
+  '/sh/': { percent: 0.96, rank: 29 },
+  '/ch/': { percent: 0.56, rank: 34 },
+  '/th/': { percent: 0.41, rank: 38 },   // unvoiced th (think)
+  '/zh/': { percent: 0.07, rank: 41 },
+  // Blends
+  '/ks/': { percent: 0.15, rank: 39 },   // x
+  '/kw/': { percent: 0.06, rank: 42 },   // qu
+};
+
+function getPhonemeFrequency(ipaSymbol: string): { percent: number; rank: number } | null {
+  // Normalize the input
+  const normalized = ipaSymbol.toLowerCase().trim();
+
+  // Try direct match
+  if (PHONEME_FREQUENCY_PERCENT[normalized]) {
+    return PHONEME_FREQUENCY_PERCENT[normalized];
+  }
+
+  // Try with slashes
+  const withSlashes = normalized.startsWith('/') ? normalized : `/${normalized}/`;
+  if (PHONEME_FREQUENCY_PERCENT[withSlashes]) {
+    return PHONEME_FREQUENCY_PERCENT[withSlashes];
+  }
+
+  // Try common aliases
+  const aliases: Record<string, string> = {
+    'short a': '/ă/',
+    'short e': '/ĕ/',
+    'short i': '/ĭ/',
+    'short o': '/ŏ/',
+    'short u': '/ŭ/',
+    'long a': '/ā/',
+    'long e': '/ē/',
+    'long i': '/ī/',
+    'long o': '/ō/',
+    'long u': '/ū/',
+    '/a/': '/ă/',
+    '/e/': '/ĕ/',
+    '/i/': '/ĭ/',
+    '/o/': '/ŏ/',
+    '/u/': '/ŭ/',
+  };
+
+  if (aliases[normalized] && PHONEME_FREQUENCY_PERCENT[aliases[normalized]]) {
+    return PHONEME_FREQUENCY_PERCENT[aliases[normalized]];
+  }
+
+  return null;
+}
+
 export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   const [showAlternatives, setShowAlternatives] = useState(true);
   const [showSources, setShowSources] = useState(false);
   const [showReferralNotes, setShowReferralNotes] = useState(true);
-  
+
   if (!phonemeData) return null;
 
   const { phoneme, graphemes, articulation, research_citations } = phonemeData;
-  
+
+  // Get actual frequency data for this phoneme
+  const frequencyData = getPhonemeFrequency(phoneme.ipa_symbol);
 
   // Get phoneme label for display
   const getPhonemeLabel = (phoneme: PhonemeData['phoneme']) => {
@@ -83,36 +184,56 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   return (
     <div className="space-y-5">
 
-      {/* Additional Information */}
+      {/* Main Grid: Left = Type/Voicing/Frequency, Right = Spelling Chart */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-blue-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-          <h5 className="font-semibold text-oceanBlue mb-2 -mt-0.5 drop-shadow-md">Phoneme Type</h5>
-          <p className="text-gray-700 capitalize">
-            <strong>{getPhonemeLabel(phoneme)}</strong>
-          </p>
-        </div>
-        
 
-        {phoneme.is_voiced !== null && (
-          <div className="bg-purple-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-            <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">
-              Voicing
-            </h5>
-            <p className="text-gray-700">
-              <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
-              {phoneme.is_voiced ? ' (vocal cords vibrate)' : ' (no vocal cord vibration)'}
+        {/* LEFT COLUMN: Phoneme Type, Voicing, Frequency */}
+        <div className="space-y-4">
+          {/* Phoneme Type */}
+          <div className="bg-blue-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+            <h5 className="font-semibold text-oceanBlue mb-1 drop-shadow-md">Phoneme Type</h5>
+            <p className="text-gray-700 capitalize">
+              <strong>{getPhonemeLabel(phoneme)}</strong>
             </p>
           </div>
-        )}
 
-        <div className="bg-orange-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-          <h5 className="font-semibold text-oceanBlue mb-2 -mt-0.5 drop-shadow-md">
+          {/* Voicing */}
+          {phoneme.is_voiced !== null && (
+            <div className="bg-purple-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+              <h5 className="font-semibold text-oceanBlue mb-1 drop-shadow-md">Voicing</h5>
+              <p className="text-gray-700">
+                <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
+                {phoneme.is_voiced ? ' (vocal cords vibrate)' : ' (no vocal cord vibration)'}
+              </p>
+            </div>
+          )}
+
+          {/* Frequency in English */}
+          {frequencyData && (
+            <div className="bg-green-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+              <h5 className="font-semibold text-oceanBlue mb-1 drop-shadow-md">Frequency in English</h5>
+              <p className="text-gray-700">
+                <strong>{frequencyData.percent.toFixed(2)}%</strong> of spoken phonemes
+                <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                  #{frequencyData.rank} most common
+                </span>
+              </p>
+              <p className="text-xs text-gray-500 mt-1 italic">
+                Source: Mines, Hanson & Shoup (1978)
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* RIGHT COLUMN: Spelling Chart */}
+        <div className="bg-orange-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+          <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">
             Most Common Spelling - <span className="text-black">
               〈{graphemes[0]?.grapheme || 'N/A'}〉
             </span>
             {graphemes[0]?.percentage != null && graphemes[0].percentage > 0 && (
               <span className="ml-2 text-sm font-semibold text-emerald-600">
-                ({typeof graphemes[0].percentage === 'number' ? graphemes[0].percentage.toFixed(1) : graphemes[0].percentage}% of usage)
+                ({typeof graphemes[0].percentage === 'number' ? graphemes[0].percentage.toFixed(1) : graphemes[0].percentage}%)
               </span>
             )}
             {graphemes[0]?.usage_label && (
@@ -126,15 +247,11 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               </span>
             )}
           </h5>
-          {(graphemes[0]?.context_notes || graphemes[0]?.notes) && (
-            <p className="text-sm text-gray-600 mb-2">
-              {graphemes[0].context_notes || graphemes[0].notes}
-            </p>
-          )}
+
           {graphemes.length > 1 && (
             <div className="text-gray-700">
-              <div className="flex items-center gap-2 mb-1 -mt-0.5">
-                <p className="font-semibold text-oceanBlue">Alternative spellings</p>
+              <div className="flex items-center gap-2 mb-2">
+                <p className="font-semibold text-oceanBlue text-sm">Alternative spellings</p>
                 <button
                   onClick={() => setShowAlternatives(!showAlternatives)}
                   className="px-2 py-0.5 text-xs bg-oceanBlue text-white rounded hover:bg-darkOcean transition-colors"
@@ -143,30 +260,23 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
                 </button>
               </div>
               {showAlternatives && (
-                <div className="space-y-2">
+                <div className="space-y-1.5 max-h-64 overflow-y-auto">
                   {graphemes.slice(1).map((grapheme) => (
-                    <div key={grapheme.id} className="flex items-center justify-between bg-white/80 rounded-lg px-3 py-2 border border-oceanBlue/20">
-                      <div className="flex items-center flex-wrap gap-1">
-                        <span className="text-lg font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
-                        {grapheme.percentage != null && grapheme.percentage > 0 && (
-                          <span className="ml-2 text-sm font-semibold text-blue-600">
-                            {typeof grapheme.percentage === 'number' ? grapheme.percentage.toFixed(1) : grapheme.percentage}%
-                          </span>
-                        )}
-                        {grapheme.usage_label && (
-                          <span className={`ml-1 px-2 py-0.5 rounded-full text-xs font-medium ${
-                            grapheme.usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
-                            grapheme.usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
-                            grapheme.usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
-                            'bg-red-100 text-red-700'
-                          }`}>
-                            {grapheme.usage_label}
-                          </span>
-                        )}
-                      </div>
-                      {(grapheme.context_notes || grapheme.notes) && (
-                        <span className="text-xs text-gray-500 ml-2 italic">
-                          {grapheme.context_notes || grapheme.notes}
+                    <div key={grapheme.id} className="flex items-center bg-white/80 rounded-lg px-3 py-1.5 border border-oceanBlue/20">
+                      <span className="text-base font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
+                      {grapheme.percentage != null && grapheme.percentage > 0 && (
+                        <span className="ml-2 text-sm font-semibold text-blue-600">
+                          {typeof grapheme.percentage === 'number' ? grapheme.percentage.toFixed(1) : grapheme.percentage}%
+                        </span>
+                      )}
+                      {grapheme.usage_label && (
+                        <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-medium ${
+                          grapheme.usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
+                          grapheme.usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
+                          grapheme.usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>
+                          {grapheme.usage_label}
                         </span>
                       )}
                     </div>
@@ -239,7 +349,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               ▼
             </span>
           </button>
-          
+
           {showSources && (
             <div className="px-4 pb-4 border-t border-gray-200 rounded-b-lg">
               <div className="bg-white rounded-lg p-3 border border-gray-200 mt-2">
