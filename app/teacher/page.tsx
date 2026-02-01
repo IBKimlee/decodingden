@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { getAllStages, type PhonicsStage } from '@/lib/supabase/phonics-queries';
-import { useTeacher } from '../contexts/AuthContext';
+import { useTeacher, useAuth } from '../contexts/AuthContext';
 
 export default function TeacherPortal() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,6 +12,7 @@ export default function TeacherPortal() {
   const [stages, setStages] = useState<PhonicsStage[]>([]);
   const router = useRouter();
   const { teacher, isTeacher, isLoading: authLoading } = useTeacher();
+  const { logout } = useAuth();
 
   // Redirect based on auth status
   useEffect(() => {
@@ -123,9 +124,15 @@ export default function TeacherPortal() {
                   Admin Panel
                 </Link>
               )}
-              <Link href="/" className="text-xs sm:text-sm text-pineShadow/70 hover:text-pineShadow transition">
-                ← Back to Home
-              </Link>
+              <button
+                onClick={async () => {
+                  await logout();
+                  router.push('/');
+                }}
+                className="text-xs sm:text-sm text-pineShadow/70 hover:text-pineShadow transition"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </div>
