@@ -5,7 +5,6 @@ import { ALL_COMPREHENSIVE_PHONEMES } from '../../data/allComprehensivePhonemes'
 import {
   getPhonemeFrequencyData,
   getGraphemeFrequenciesForPhoneme,
-  getPhonemeFrequencyRank,
   COMPREHENSIVE_PHONEME_FREQUENCIES
 } from '../../data/comprehensivePhonemeFrequencies';
 
@@ -80,14 +79,9 @@ interface DecodingDenResponse {
 
 /**
  * Get frequency rank from local data when database value is missing
- * Uses new comprehensive frequency data as primary source
+ * Note: This returns the teaching sequence order from curriculum data, not actual frequency in English
  */
 function getFrequencyRankFromLocalData(phonemeSymbol: string): number {
-  // Try new comprehensive data first
-  const rank = getPhonemeFrequencyRank(phonemeSymbol);
-  if (rank > 0) return rank;
-
-  // Fallback to old ALL_COMPREHENSIVE_PHONEMES data
   const normalized = phonemeSymbol.replace(/^\/|\/$/g, '').toLowerCase();
   const withSlashes = `/${normalized}/`;
 

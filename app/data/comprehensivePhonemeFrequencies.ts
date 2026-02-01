@@ -794,53 +794,6 @@ export const COMPREHENSIVE_PHONEME_FREQUENCIES: PhonemeFrequencyData[] = [
   }
 ];
 
-// Phoneme frequency rank lookup (how common the sound is in English)
-export const PHONEME_FREQUENCY_RANKS: Record<string, number> = {
-  '/m/': 1,
-  '/s/': 2,
-  '/t/': 3,
-  '/ă/': 4,
-  '/n/': 5,
-  '/d/': 6,
-  '/ĭ/': 7,
-  '/r/': 8,
-  '/l/': 9,
-  '/k/': 10,
-  '/p/': 11,
-  '/ĕ/': 12,
-  '/ŏ/': 13,
-  '/ŭ/': 14,
-  '/b/': 15,
-  '/f/': 16,
-  '/h/': 17,
-  '/g/': 18,
-  '/w/': 19,
-  '/v/': 20,
-  '/j/': 21,
-  '/y/': 22,
-  '/z/': 23,
-  '/ā/': 24,
-  '/ē/': 25,
-  '/ī/': 26,
-  '/ō/': 27,
-  '/ū/': 28,
-  '/sh/': 29,
-  '/ch/': 30,
-  '/th/': 31,
-  '/th(v)/': 32,
-  '/ng/': 33,
-  '/er/': 34,
-  '/aw/': 35,
-  '/ow/': 36,
-  '/oy/': 37,
-  '/oo/': 38,
-  '/kw/': 39,
-  '/ks/': 40,
-  '/zh/': 41,
-  '/yū/': 42,
-  '/ŭl/': 43
-};
-
 // Aliases for phoneme lookups (handles different notation formats)
 const PHONEME_ALIASES: Record<string, string> = {
   // Short vowels with breve
@@ -972,45 +925,3 @@ export function getGraphemeFrequenciesForPhoneme(phonemeSymbol: string): Graphem
   return [...phonemeData.graphemes].sort((a, b) => b.weighted_percent - a.weighted_percent);
 }
 
-/**
- * Get the frequency rank of a phoneme (how common it is in English)
- */
-export function getPhonemeFrequencyRank(phonemeSymbol: string): number {
-  if (!phonemeSymbol) return 0;
-
-  const normalized = phonemeSymbol.trim().toLowerCase();
-
-  // Direct lookup
-  if (PHONEME_FREQUENCY_RANKS[normalized]) {
-    return PHONEME_FREQUENCY_RANKS[normalized];
-  }
-
-  // Try with slashes
-  const withSlashes = normalized.startsWith('/') ? normalized : `/${normalized}/`;
-  if (PHONEME_FREQUENCY_RANKS[withSlashes]) {
-    return PHONEME_FREQUENCY_RANKS[withSlashes];
-  }
-
-  // Try alias
-  const aliasKey = PHONEME_ALIASES[normalized] || PHONEME_ALIASES[normalized.replace(/^\/|\/$/g, '')];
-  if (aliasKey && PHONEME_FREQUENCY_RANKS[aliasKey]) {
-    return PHONEME_FREQUENCY_RANKS[aliasKey];
-  }
-
-  return 0;
-}
-
-/**
- * Get a human-readable description of how common a phoneme is
- */
-export function getPhonemeFrequencyDescription(phonemeSymbol: string): string {
-  const rank = getPhonemeFrequencyRank(phonemeSymbol);
-
-  if (rank === 0) return 'Frequency data not available';
-  if (rank <= 5) return `#${rank} - One of the most common sounds in English`;
-  if (rank <= 10) return `#${rank} - Very high frequency`;
-  if (rank <= 20) return `#${rank} - High frequency`;
-  if (rank <= 30) return `#${rank} - Common`;
-  if (rank <= 40) return `#${rank} - Moderately common`;
-  return `#${rank} - Less common`;
-}
