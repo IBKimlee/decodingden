@@ -112,18 +112,23 @@ export async function getCurrentUser(): Promise<{ user: User | null; error: Auth
 /**
  * Get the current teacher profile
  */
-export async function getCurrentTeacher(): Promise<{ teacher: Teacher | null; error: Error | null }> {
+export async function getCurrentTeacher(userId?: string): Promise<{ teacher: Teacher | null; error: Error | null }> {
   try {
-    const { user, error: userError } = await getCurrentUser();
+    let id = userId;
 
-    if (userError || !user) {
-      return { teacher: null, error: userError || new Error('Not authenticated') };
+    // Only fetch current user if userId not provided
+    if (!id) {
+      const { user, error: userError } = await getCurrentUser();
+      if (userError || !user) {
+        return { teacher: null, error: userError || new Error('Not authenticated') };
+      }
+      id = user.id;
     }
 
     const { data, error } = await supabase
       .from('teachers')
       .select('*')
-      .eq('id', user.id)
+      .eq('id', id)
       .single();
 
     if (error) {

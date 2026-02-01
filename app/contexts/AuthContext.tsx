@@ -66,8 +66,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         if (session?.user) {
           setUser(session.user);
-          // Fetch teacher profile
-          const { teacher: teacherData } = await getCurrentTeacher();
+          // Fetch teacher profile (pass user.id to skip redundant auth check)
+          const { teacher: teacherData } = await getCurrentTeacher(session.user.id);
           if (teacherData) {
             setTeacher(teacherData);
             setUserRole('teacher');
@@ -99,7 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session?.user) {
         setUser(session.user);
-        const { teacher: teacherData } = await getCurrentTeacher();
+        const { teacher: teacherData } = await getCurrentTeacher(session.user.id);
         if (teacherData) {
           setTeacher(teacherData);
           setUserRole('teacher');

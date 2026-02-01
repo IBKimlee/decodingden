@@ -95,7 +95,7 @@ export default function StudentsPage() {
     // Redirect if not a teacher
     if (!isTeacher || !teacher?.id) {
       if (userRole !== 'teacher') {
-        router.push('/login');
+        router.push('/');
       }
       return;
     }

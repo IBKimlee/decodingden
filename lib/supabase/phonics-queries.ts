@@ -88,28 +88,28 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 // STAGE QUERIES
 // ============================================================================
 
+// Cache for stages data (static, doesn't change)
+let stagesCache: PhonicsStage[] | null = null;
+
 /**
- * Get all phonics stages
+ * Get all phonics stages (cached)
  */
 export async function getAllStages(): Promise<PhonicsStage[]> {
-  console.log('🔍 getAllStages called');
-  console.log('🔍 Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL);
-  console.log('🔍 Supabase Key exists:', !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-  
+  // Return cached data if available
+  if (stagesCache) {
+    return stagesCache;
+  }
+
   const { data, error } = await supabase
     .from('phonics_stages')
     .select('*')
     .order('id');
 
-  console.log('🔍 Supabase response:', { data: data?.length || 0, error });
-
   if (error) {
-    console.error('❌ Error fetching stages:', error);
+    console.error('Error fetching stages:', error);
     throw error;
   }
 
-  console.log('✅ Stages fetched successfully:', data?.length || 0);
-  
   // Map database fields to component-expected fields
   const mappedData = (data || []).map(stage => ({
     ...stage,
@@ -117,7 +117,10 @@ export async function getAllStages(): Promise<PhonicsStage[]> {
     stage_name: stage.name,
     grade_level: stage.grade_band
   }));
-  
+
+  // Cache the result
+  stagesCache = mappedData;
+
   return mappedData;
 }
 

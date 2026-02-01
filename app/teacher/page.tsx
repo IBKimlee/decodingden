@@ -10,7 +10,6 @@ export default function TeacherPortal() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [stages, setStages] = useState<PhonicsStage[]>([]);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { teacher, isTeacher, isLoading: authLoading } = useTeacher();
 
@@ -19,7 +18,7 @@ export default function TeacherPortal() {
     if (authLoading) return;
 
     if (!isTeacher) {
-      router.push('/login');
+      router.push('/');
       return;
     }
 
@@ -30,7 +29,7 @@ export default function TeacherPortal() {
     }
   }, [authLoading, isTeacher, teacher, router]);
 
-  // Load stages from Supabase
+  // Load stages from Supabase (cached, non-blocking)
   useEffect(() => {
     async function loadStages() {
       try {
@@ -38,8 +37,6 @@ export default function TeacherPortal() {
         setStages(stagesData);
       } catch (error) {
         console.error('Error loading stages:', error);
-      } finally {
-        setLoading(false);
       }
     }
     if (isTeacher) {

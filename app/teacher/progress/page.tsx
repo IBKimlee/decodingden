@@ -62,7 +62,7 @@ export default function ProgressDashboardPage() {
 
   useEffect(() => {
     if (!authLoading && !isTeacher && userRole !== 'teacher') {
-      router.push('/login');
+      router.push('/');
       return;
     }
 

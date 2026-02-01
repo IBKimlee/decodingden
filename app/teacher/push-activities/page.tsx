@@ -67,7 +67,7 @@ function PushActivitiesContent() {
 
   useEffect(() => {
     if (!authLoading && !isTeacher && userRole !== 'teacher') {
-      router.push('/login');
+      router.push('/');
       return;
     }
 
