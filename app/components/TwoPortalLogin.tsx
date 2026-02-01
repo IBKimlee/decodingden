@@ -32,8 +32,9 @@ export default function TwoPortalLogin() {
     setError(null);
   };
 
-  const handleTeacherSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleTeacherSignIn = async () => {
+    if (!email || !password) return;
+
     setIsLoading(true);
     setError(null);
 
@@ -145,12 +146,12 @@ export default function TwoPortalLogin() {
                 <div className="text-xs text-red-200 mb-1">{error}</div>
               )}
 
-              <form onSubmit={handleTeacherSignIn} className="space-y-1.5">
+              <div className="space-y-1.5">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
+                  autoComplete="off"
                   className="w-full px-2 py-1.5 text-sm border-0 rounded-lg focus:ring-2 focus:ring-white bg-white/90"
                   placeholder="Email"
                 />
@@ -158,18 +159,19 @@ export default function TwoPortalLogin() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
+                  autoComplete="off"
                   className="w-full px-2 py-1.5 text-sm border-0 rounded-lg focus:ring-2 focus:ring-white bg-white/90"
                   placeholder="Password"
                 />
                 <button
-                  type="submit"
-                  disabled={isLoading}
+                  type="button"
+                  onClick={handleTeacherSignIn}
+                  disabled={isLoading || !email || !password}
                   className="w-full py-1.5 bg-white/90 text-emerald-700 rounded-lg font-medium text-sm hover:bg-white transition-colors disabled:opacity-50"
                 >
                   {isLoading ? 'Signing in...' : 'Sign In'}
                 </button>
-              </form>
+              </div>
             </div>
           ) : (
             <div className="w-full">
