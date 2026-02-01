@@ -316,19 +316,19 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               </span>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
-                  <p className="text-xs text-gray-500 uppercase">Place <span className="normal-case">(where in mouth)</span></p>
+                  <p className="text-xs text-gray-500 uppercase">Place <span className="normal-case">- Where in mouth</span></p>
                   <p className="font-semibold text-sm text-gray-800">{articulation.place_of_articulation}</p>
                 </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
-                  <p className="text-xs text-gray-500 uppercase">Manner <span className="normal-case">(how air releases)</span></p>
+                  <p className="text-xs text-gray-500 uppercase">Manner <span className="normal-case">- How air releases</span></p>
                   <p className="font-semibold text-sm text-gray-800">{articulation.manner_of_articulation}</p>
                 </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
-                  <p className="text-xs text-gray-500 uppercase">Voicing <span className="normal-case">(vocal cord vibration)</span></p>
+                  <p className="text-xs text-gray-500 uppercase">Voicing <span className="normal-case">- Vocal cord vibration</span></p>
                   <p className="font-semibold text-sm text-gray-800">{articulation.voicing}</p>
                 </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
-                  <p className="text-xs text-gray-500 uppercase">Airflow <span className="normal-case">(mouth or nose)</span></p>
+                  <p className="text-xs text-gray-500 uppercase">Airflow <span className="normal-case">- Mouth or nose</span></p>
                   <p className="font-semibold text-sm text-gray-800">{articulation.airflow_description || 'oral'}</p>
                 </div>
               </div>
