@@ -232,19 +232,25 @@ export async function createStudent(
 
 /**
  * Get all students for the current teacher
+ * @param teacherId - Optional teacher ID to skip auth check (faster)
  */
-export async function getMyStudents(): Promise<{ students: Student[]; error: Error | null }> {
+export async function getMyStudents(teacherId?: string): Promise<{ students: Student[]; error: Error | null }> {
   try {
-    const { user, error: userError } = await getCurrentUser();
+    let userId = teacherId;
 
-    if (userError || !user) {
-      return { students: [], error: new Error('Not authenticated') };
+    // Only fetch current user if teacherId not provided
+    if (!userId) {
+      const { user, error: userError } = await getCurrentUser();
+      if (userError || !user) {
+        return { students: [], error: new Error('Not authenticated') };
+      }
+      userId = user.id;
     }
 
     const { data, error } = await supabase
       .from('students')
       .select('*')
-      .eq('teacher_id', user.id)
+      .eq('teacher_id', userId)
       .eq('is_active', true)
       .order('first_name');
 
@@ -354,19 +360,26 @@ export async function createClass(
 
 /**
  * Get all groups for the current teacher (optionally filtered by type)
+ * @param type - Optional filter by 'class' or 'group'
+ * @param teacherId - Optional teacher ID to skip auth check (faster)
  */
-export async function getMyGroups(type?: 'class' | 'group'): Promise<{ groups: StudentGroup[]; error: Error | null }> {
+export async function getMyGroups(type?: 'class' | 'group', teacherId?: string): Promise<{ groups: StudentGroup[]; error: Error | null }> {
   try {
-    const { user, error: userError } = await getCurrentUser();
+    let userId = teacherId;
 
-    if (userError || !user) {
-      return { groups: [], error: new Error('Not authenticated') };
+    // Only fetch current user if teacherId not provided
+    if (!userId) {
+      const { user, error: userError } = await getCurrentUser();
+      if (userError || !user) {
+        return { groups: [], error: new Error('Not authenticated') };
+      }
+      userId = user.id;
     }
 
     let query = supabase
       .from('student_groups')
       .select('*')
-      .eq('teacher_id', user.id);
+      .eq('teacher_id', userId);
 
     if (type) {
       query = query.eq('type', type);

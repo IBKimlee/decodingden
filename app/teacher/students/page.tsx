@@ -53,18 +53,15 @@ export default function StudentsPage() {
   // Manage members modal
   const [showManageMembers, setShowManageMembers] = useState(false);
 
-  const loadData = useCallback(async () => {
+  const loadData = useCallback(async (teacherId: string) => {
     setLoading(true);
     setError(null);
     try {
-      console.log('Loading students and groups...');
+      // Pass teacherId to skip redundant auth checks (faster loading)
       const [studentsResult, allGroupsResult] = await Promise.all([
-        getMyStudents(),
-        getMyGroups() // Get all (both classes and groups)
+        getMyStudents(teacherId),
+        getMyGroups(undefined, teacherId) // Get all (both classes and groups)
       ]);
-
-      console.log('Students result:', studentsResult);
-      console.log('Groups result:', allGroupsResult);
 
       if (studentsResult.error) {
         console.error('Students error:', studentsResult.error);
@@ -96,14 +93,16 @@ export default function StudentsPage() {
     }
 
     // Redirect if not a teacher
-    if (!isTeacher && userRole !== 'teacher') {
-      router.push('/login');
+    if (!isTeacher || !teacher?.id) {
+      if (userRole !== 'teacher') {
+        router.push('/login');
+      }
       return;
     }
 
-    // Load data once we know we're a teacher
-    loadData();
-  }, [authLoading, isTeacher, userRole, router, loadData]);
+    // Load data once we know we're a teacher (pass teacher.id to skip auth checks)
+    loadData(teacher.id);
+  }, [authLoading, isTeacher, userRole, teacher?.id, router, loadData]);
 
   const handleAddStudent = async (e: React.FormEvent) => {
     e.preventDefault();

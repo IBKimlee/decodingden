@@ -43,12 +43,12 @@ function PushActivitiesContent() {
   // Selection mode: 'class', 'group', or 'students'
   const [selectionMode, setSelectionMode] = useState<'class' | 'group' | 'students'>('class');
 
-  const loadData = useCallback(async () => {
+  const loadData = useCallback(async (teacherId: string) => {
     setLoading(true);
     try {
       const [studentsResult, groupsResult] = await Promise.all([
-        getMyStudents(),
-        getMyGroups()
+        getMyStudents(teacherId),
+        getMyGroups(undefined, teacherId)
       ]);
 
       if (!studentsResult.error) setStudents(studentsResult.students);
@@ -71,10 +71,10 @@ function PushActivitiesContent() {
       return;
     }
 
-    if (isTeacher) {
-      loadData();
+    if (isTeacher && teacher?.id) {
+      loadData(teacher.id);
     }
-  }, [authLoading, isTeacher, userRole, router, loadData]);
+  }, [authLoading, isTeacher, userRole, teacher?.id, router, loadData]);
 
   // Auto-generate title when phoneme changes
   useEffect(() => {

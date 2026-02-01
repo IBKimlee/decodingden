@@ -31,12 +31,12 @@ export default function ProgressDashboardPage() {
   const [filterType, setFilterType] = useState<'all' | 'class' | 'group'>('all');
   const [selectedFilter, setSelectedFilter] = useState<string>('');
 
-  const loadData = useCallback(async () => {
+  const loadData = useCallback(async (teacherId: string) => {
     setLoading(true);
     try {
       const [progressResult, allGroupsResult] = await Promise.all([
         getTeacherProgressSummary(),
-        getMyGroups()
+        getMyGroups(undefined, teacherId)
       ]);
 
       if (progressResult.error) {
@@ -66,10 +66,10 @@ export default function ProgressDashboardPage() {
       return;
     }
 
-    if (isTeacher) {
-      loadData();
+    if (isTeacher && teacher?.id) {
+      loadData(teacher.id);
     }
-  }, [authLoading, isTeacher, userRole, router, loadData]);
+  }, [authLoading, isTeacher, userRole, teacher?.id, router, loadData]);
 
   const formatTime = (seconds: number) => {
     if (seconds < 60) return `${seconds}s`;
@@ -243,7 +243,7 @@ export default function ProgressDashboardPage() {
             )}
 
             <button
-              onClick={loadData}
+              onClick={() => teacher?.id && loadData(teacher.id)}
               className="ml-auto px-3 py-1.5 bg-gray-100 text-gray-600 rounded-lg text-sm hover:bg-gray-200 transition-colors"
             >
               ↻ Refresh
