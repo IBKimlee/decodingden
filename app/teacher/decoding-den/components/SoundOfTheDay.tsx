@@ -185,19 +185,19 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
     <div className="space-y-5">
 
       {/* 3-Column Grid: Left = Type+Voicing stacked, Middle = Frequency, Right = Spelling */}
-      <div className="grid md:grid-cols-3 gap-3">
+      <div className="grid md:grid-cols-3 gap-3 items-stretch">
 
-        {/* LEFT COLUMN: Phoneme Type + Voicing (stacked) */}
-        <div className="space-y-2">
+        {/* LEFT COLUMN: Phoneme Type + Voicing (stacked, equal height to other columns) */}
+        <div className="flex flex-col gap-2">
           {/* Phoneme Type */}
-          <div className="bg-blue-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40">
+          <div className="bg-blue-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
             <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Phoneme Type</h5>
             <p className="text-gray-700 capitalize font-bold">{getPhonemeLabel(phoneme)}</p>
           </div>
 
           {/* Voicing */}
           {phoneme.is_voiced !== null && (
-            <div className="bg-purple-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40">
+            <div className="bg-purple-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
               <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Voicing</h5>
               <p className="text-gray-700">
                 <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
@@ -211,7 +211,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
         {/* MIDDLE COLUMN: Frequency in English */}
         {frequencyData && (
-          <div className="bg-green-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex flex-col justify-center">
+          <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col justify-center h-full">
             <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Frequency in English</h5>
             <p className="text-gray-700 mt-1">
               <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
@@ -229,7 +229,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         )}
 
         {/* RIGHT COLUMN: Spelling Chart */}
-        <div className="bg-orange-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40">
+        <div className="bg-orange-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 h-full">
           <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">
             Most Common Spelling - <span className="text-black">
               〈{graphemes[0]?.grapheme || 'N/A'}〉
