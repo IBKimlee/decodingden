@@ -131,7 +131,7 @@ export default function DecodingDenPage() {
     DECODING_DEN_SECTIONS.find(s => s.id === activeSection)?.component : null;
 
   return (
-    <div className="min-h-screen bg-yellow-100 text-deepNavy">
+    <div className="min-h-screen bg-gradient-to-br from-warmBeige via-creamyWhite to-softSand text-deepNavy">
       {/* Header */}
       <header className="bg-gradient-to-r from-darkOcean to-oceanBlue via-indigo-600 shadow-lg">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
@@ -168,10 +168,10 @@ export default function DecodingDenPage() {
         {/* Main Content Area */}
         <>
           {/* Section Selection Cards */}
-          <div className="rounded-xl shadow-lg p-3 sm:p-5 pb-4 mb-4 border-2 border-blue-600" style={{backgroundColor: '#D0EFEA'}}>
+          <div className="rounded-xl shadow-lg p-3 sm:p-5 pb-4 mb-4 border-2 border-oceanBlue/30 bg-gradient-to-br from-oceanBlue/10 to-lightOcean/15">
             <div className="mb-3 flex flex-col lg:flex-row gap-3 lg:gap-5">
               {/* Focus Sound Container */}
-              <div className="bg-gray-50 rounded-lg p-2 border-2 border-blue-400 w-full lg:w-1/4">
+              <div className="bg-white/70 rounded-lg p-2 border-2 border-oceanBlue/40 w-full lg:w-1/4">
                 <h1 className="text-lg sm:text-2xl font-bold text-oceanBlue mb-2 drop-shadow-lg">
                   FOCUS SOUND
                 </h1>
@@ -192,10 +192,10 @@ export default function DecodingDenPage() {
                 
                 {/* Exit Ticket Button */}
                 {phonemeData && (
-                  <div className="mt-3 pt-1.5 border-t border-blue-200">
+                  <div className="mt-3 pt-1.5 border-t border-oceanBlue/30">
                     <button
                       onClick={() => setShowExitTicket(true)}
-                      className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-0.5 px-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+                      className="w-full bg-gradient-to-r from-emerald-400/80 to-teal-500/80 hover:from-emerald-500/90 hover:to-teal-600/90 text-white font-semibold py-0.5 px-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
                     >
                       <span className="text-lg">🎟️</span>
                       <span className="text-sm">Exit Ticket</span>
@@ -213,8 +213,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'sound-of-the-day' ? null : 'sound-of-the-day')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'sound-of-the-day' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -241,8 +241,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'articulation-guidance' ? null : 'articulation-guidance')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'articulation-guidance'
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -269,8 +269,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'lets-learn-it' ? null : 'lets-learn-it')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'lets-learn-it'
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -297,8 +297,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'word-list-practice' ? null : 'word-list-practice')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'word-list-practice' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -325,8 +325,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'practice-text' ? null : 'practice-text')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'practice-text' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -353,8 +353,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'short-story' ? null : 'short-story')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'short-story' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -381,8 +381,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'customize-lesson' ? null : 'customize-lesson')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'customize-lesson' 
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white' 
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white' 
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="mb-1">
@@ -407,8 +407,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'word-workspace' ? null : 'word-workspace')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'word-workspace'
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5">
@@ -435,8 +435,8 @@ export default function DecodingDenPage() {
                       onClick={() => setActiveSection(activeSection === 'read-along' ? null : 'read-along')}
                       className={`relative rounded-lg p-1 shadow-sm hover:shadow-md transition-all duration-200 border-2 flex flex-col items-center justify-center w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] lg:w-[100px] lg:h-[100px] flex-shrink-0 ${
                         activeSection === 'read-along'
-                          ? 'bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 border-white shadow-[0_0_20px_rgba(59,130,246,0.8)]  shadow-xl text-white'
-                          : 'bg-gradient-to-br from-blue-500/70 via-purple-500/70 to-indigo-600/70 border-blue-600 hover:border-blue-700 text-deepNavy'
+                          ? 'bg-gradient-to-br from-oceanBlue via-indigo-500 to-darkOcean border-white shadow-[0_0_15px_rgba(74,144,164,0.6)]  shadow-xl text-white'
+                          : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
                       <div className="flex-shrink-0 mb-0.5 text-xl sm:text-2xl lg:text-3xl">
@@ -455,9 +455,9 @@ export default function DecodingDenPage() {
 
                   {/* Learning Intention */}
                   <div className="flex justify-start gap-3 mt-4 lg:mt-6">
-                    <div className="bg-blue-50 rounded-xl p-2 border-2 border-blue-400 w-full">
+                    <div className="bg-white/70 rounded-xl p-2 border-2 border-oceanBlue/40 w-full">
                       <p className="text-sm sm:text-lg font-semibold text-deepNavy text-center">
-                        <strong className="text-green-600 drop-shadow-lg">Learning Intention:</strong> {phonemeData ? (
+                        <strong className="text-emerald-600/90 drop-shadow-lg">Learning Intention:</strong> {phonemeData ? (
                           <>
                             I can read and spell words with the <strong>{phonemeData.phoneme.ipa_symbol}</strong> sound spelled〈<strong>{phonemeData.show_specific_grapheme && phonemeData.requested_specific_grapheme 
                               ? phonemeData.requested_specific_grapheme 
@@ -473,8 +473,8 @@ export default function DecodingDenPage() {
 
             {/* Active Section Content - Shows below the cards */}
             {activeSection && ActiveComponent && phonemeData && (
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden animate-slideDown border-2 border-blue-600">
-                <div className="bg-gradient-to-r from-indigo-200 to-indigo-100 p-4 border-b border-blue-200 h-16 rounded-t-xl">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden animate-slideDown border-2 border-oceanBlue/40">
+                <div className="bg-gradient-to-r from-oceanBlue/20 to-lightOcean/30 p-4 border-b border-oceanBlue/20 h-16 rounded-t-xl">
                   <div className="flex justify-between items-center">
                     {activeSection !== 'sound-of-the-day' && (
                       <div className="flex items-center space-x-4">

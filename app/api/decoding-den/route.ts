@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getGraphemeFrequencies } from '../../data/graphemeFrequencies';
+import { ALL_COMPREHENSIVE_PHONEMES } from '../../data/allComprehensivePhonemes';
+import {
+  getPhonemeFrequencyData,
+  getGraphemeFrequenciesForPhoneme,
+  getPhonemeFrequencyRank,
+  COMPREHENSIVE_PHONEME_FREQUENCIES
+} from '../../data/comprehensivePhonemeFrequencies';
 
 // Supabase client setup
 const supabase = createClient(
@@ -69,6 +76,28 @@ interface DecodingDenResponse {
   error?: string;
   message?: string;
   suggestions?: string[];
+}
+
+/**
+ * Get frequency rank from local data when database value is missing
+ * Uses new comprehensive frequency data as primary source
+ */
+function getFrequencyRankFromLocalData(phonemeSymbol: string): number {
+  // Try new comprehensive data first
+  const rank = getPhonemeFrequencyRank(phonemeSymbol);
+  if (rank > 0) return rank;
+
+  // Fallback to old ALL_COMPREHENSIVE_PHONEMES data
+  const normalized = phonemeSymbol.replace(/^\/|\/$/g, '').toLowerCase();
+  const withSlashes = `/${normalized}/`;
+
+  // Search in local comprehensive phoneme data
+  const match = ALL_COMPREHENSIVE_PHONEMES.find(p => {
+    const pNormalized = p.phoneme.replace(/^\/|\/$/g, '').toLowerCase();
+    return pNormalized === normalized || p.phoneme === withSlashes;
+  });
+
+  return match?.frequency_rank || 0;
 }
 
 /**
@@ -306,12 +335,35 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
       ipa_symbol: formatPhonemeSymbol(supabaseData.phoneme, supabaseData.stage_id),
       common_name: getPhonemeCommonName(supabaseData.phoneme, supabaseData.stage_id),
       phoneme_type: getPhonemeType(supabaseData),
-      frequency_rank: typeof supabaseData.frequency_rank === 'number' ? supabaseData.frequency_rank : 0,
+      frequency_rank: (typeof supabaseData.frequency_rank === 'number' && supabaseData.frequency_rank > 0)
+        ? supabaseData.frequency_rank
+        : getFrequencyRankFromLocalData(supabaseData.phoneme),
       is_voiced: isVoicedPhoneme(supabaseData.phoneme, articulation),
     },
     graphemes: (() => {
-      // Use frequency data as the authoritative source for graphemes
-      // This ensures we show all linguistically valid spellings, not just what's in the database
+      // Try new comprehensive frequency data first
+      const comprehensiveData = getGraphemeFrequenciesForPhoneme(supabaseData.phoneme);
+
+      if (comprehensiveData.length > 0) {
+        // Use new comprehensive frequency data - has detailed weighted percentages
+        return comprehensiveData.map((freqData, index) => ({
+          id: `${safeString(supabaseData.phoneme_id)}_${index}`,
+          grapheme: safeString(freqData.grapheme),
+          spelling_frequency: freqData.weighted_percent / 100,
+          percentage: freqData.weighted_percent,
+          usage_label: freqData.usage_label,
+          context_notes: '',
+          notes: index === 0
+            ? `Most common spelling for ${supabaseData.phoneme} sound (${freqData.weighted_percent.toFixed(1)}% of usage)`
+            : freqData.weighted_percent >= 10
+              ? `Common spelling (${freqData.weighted_percent.toFixed(1)}% of usage)`
+              : freqData.weighted_percent >= 1
+                ? `Less common (${freqData.weighted_percent.toFixed(1)}% of usage)`
+                : `Rare spelling (<1% of usage)`,
+        }));
+      }
+
+      // Fallback to old graphemeFrequencies data
       const frequencyData = getGraphemeFrequencies(supabaseData.phoneme);
 
       if (frequencyData.length > 0) {

@@ -66,6 +66,111 @@ export const GRAPHEME_FREQUENCIES: PhonemeFrequencyMap = {
     { grapheme: 'tw', percentage: 0.3, usage_label: 'Exception', context_notes: 'two' }
   ],
 
+  '/n/': [
+    { grapheme: 'n', percentage: 91, usage_label: 'Primary' },
+    { grapheme: 'nn', percentage: 5, usage_label: 'Secondary', context_notes: 'Doubled consonant: dinner, funny' },
+    { grapheme: 'kn', percentage: 3, usage_label: 'Rare', context_notes: 'Silent k: know, knee' },
+    { grapheme: 'gn', percentage: 1, usage_label: 'Exception', context_notes: 'Silent g: gnat, gnaw' }
+  ],
+
+  '/p/': [
+    { grapheme: 'p', percentage: 96, usage_label: 'Primary' },
+    { grapheme: 'pp', percentage: 4, usage_label: 'Secondary', context_notes: 'Doubled consonant: happy, pepper' }
+  ],
+
+  '/d/': [
+    { grapheme: 'd', percentage: 90, usage_label: 'Primary' },
+    { grapheme: 'dd', percentage: 6, usage_label: 'Secondary', context_notes: 'Doubled consonant: ladder, added' },
+    { grapheme: 'ed', percentage: 4, usage_label: 'Secondary', context_notes: 'Past tense: played, called' }
+  ],
+
+  '/f/': [
+    { grapheme: 'f', percentage: 78, usage_label: 'Primary' },
+    { grapheme: 'ff', percentage: 14, usage_label: 'Secondary', context_notes: 'Doubled consonant: staff, puff' },
+    { grapheme: 'ph', percentage: 5, usage_label: 'Secondary', context_notes: 'Greek origin: phone, photo' },
+    { grapheme: 'gh', percentage: 3, usage_label: 'Rare', context_notes: 'laugh, cough, enough' }
+  ],
+
+  '/l/': [
+    { grapheme: 'l', percentage: 85, usage_label: 'Primary' },
+    { grapheme: 'll', percentage: 15, usage_label: 'Secondary', context_notes: 'Doubled consonant: bell, full' }
+  ],
+
+  '/h/': [
+    { grapheme: 'h', percentage: 98, usage_label: 'Primary' },
+    { grapheme: 'wh', percentage: 2, usage_label: 'Rare', context_notes: 'Some dialects: who' }
+  ],
+
+  '/b/': [
+    { grapheme: 'b', percentage: 97, usage_label: 'Primary' },
+    { grapheme: 'bb', percentage: 3, usage_label: 'Rare', context_notes: 'Doubled consonant: rabbit, cabbage' }
+  ],
+
+  '/r/': [
+    { grapheme: 'r', percentage: 92, usage_label: 'Primary' },
+    { grapheme: 'rr', percentage: 5, usage_label: 'Secondary', context_notes: 'Doubled consonant: carrot, mirror' },
+    { grapheme: 'wr', percentage: 2, usage_label: 'Rare', context_notes: 'Silent w: write, wrong' },
+    { grapheme: 'rh', percentage: 1, usage_label: 'Exception', context_notes: 'Greek origin: rhythm' }
+  ],
+
+  '/g/': [
+    { grapheme: 'g', percentage: 88, usage_label: 'Primary' },
+    { grapheme: 'gg', percentage: 8, usage_label: 'Secondary', context_notes: 'Doubled consonant: egg, bigger' },
+    { grapheme: 'gh', percentage: 3, usage_label: 'Rare', context_notes: 'ghost, ghoul' },
+    { grapheme: 'gu', percentage: 1, usage_label: 'Exception', context_notes: 'Before e, i: guess, guide' }
+  ],
+
+  '/k/': [
+    { grapheme: 'c', percentage: 52, usage_label: 'Primary', context_notes: 'Before a, o, u: cat, cot, cup' },
+    { grapheme: 'k', percentage: 26, usage_label: 'Primary', context_notes: 'Before i, e: kid, kite' },
+    { grapheme: 'ck', percentage: 13, usage_label: 'Secondary', context_notes: 'After short vowel: back, stick' },
+    { grapheme: 'ch', percentage: 4, usage_label: 'Rare', context_notes: 'Greek origin: school, chrome' },
+    { grapheme: 'cc', percentage: 3, usage_label: 'Rare', context_notes: 'account, occasion' },
+    { grapheme: 'qu', percentage: 2, usage_label: 'Rare', context_notes: 'As /kw/: queen, quick' }
+  ],
+
+  '/j/': [
+    { grapheme: 'j', percentage: 48, usage_label: 'Primary' },
+    { grapheme: 'g', percentage: 34, usage_label: 'Primary', context_notes: 'Before e, i, y: gem, giraffe' },
+    { grapheme: 'dge', percentage: 12, usage_label: 'Secondary', context_notes: 'After short vowel: badge, bridge' },
+    { grapheme: 'ge', percentage: 6, usage_label: 'Secondary', context_notes: 'End of word: cage, page' }
+  ],
+
+  '/v/': [
+    { grapheme: 'v', percentage: 99.5, usage_label: 'Primary' },
+    { grapheme: 'f', percentage: 0.5, usage_label: 'Exception', context_notes: 'of' }
+  ],
+
+  '/w/': [
+    { grapheme: 'w', percentage: 92, usage_label: 'Primary' },
+    { grapheme: 'wh', percentage: 6, usage_label: 'Secondary', context_notes: 'what, when, where' },
+    { grapheme: 'u', percentage: 2, usage_label: 'Rare', context_notes: 'After q: queen, quick' }
+  ],
+
+  '/y/': [
+    { grapheme: 'y', percentage: 85, usage_label: 'Primary', context_notes: 'Initial position: yes, you' },
+    { grapheme: 'i', percentage: 15, usage_label: 'Secondary', context_notes: 'Before vowel: onion, million' }
+  ],
+
+  '/z/': [
+    { grapheme: 'z', percentage: 23, usage_label: 'Primary' },
+    { grapheme: 's', percentage: 64, usage_label: 'Primary', context_notes: 'Between vowels or final: rose, is, has' },
+    { grapheme: 'zz', percentage: 8, usage_label: 'Secondary', context_notes: 'Doubled: buzz, fizz' },
+    { grapheme: 'x', percentage: 3, usage_label: 'Rare', context_notes: 'As /gz/: exam, exist' },
+    { grapheme: 'ss', percentage: 2, usage_label: 'Exception', context_notes: 'scissors, dessert' }
+  ],
+
+  '/ks/': [
+    { grapheme: 'x', percentage: 85, usage_label: 'Primary', context_notes: 'box, fox, mix' },
+    { grapheme: 'ks', percentage: 8, usage_label: 'Secondary', context_notes: 'books, looks' },
+    { grapheme: 'cks', percentage: 5, usage_label: 'Secondary', context_notes: 'backs, sticks' },
+    { grapheme: 'cc', percentage: 2, usage_label: 'Rare', context_notes: 'Before i, e: accept, accident' }
+  ],
+
+  '/kw/': [
+    { grapheme: 'qu', percentage: 100, usage_label: 'Primary', context_notes: 'queen, quick, quiet' }
+  ],
+
   // ============================================
   // STAGE 4: Long Vowels with Silent E
   // ============================================
@@ -198,8 +303,56 @@ export const GRAPHEME_FREQUENCIES: PhonemeFrequencyMap = {
 };
 
 // Helper function to get frequency data for a phoneme
+// Handles multiple input formats: "/a/", "a", "/ă/", etc.
 export function getGraphemeFrequencies(phonemeSymbol: string): GraphemeFrequencyData[] {
-  return GRAPHEME_FREQUENCIES[phonemeSymbol] || [];
+  if (!phonemeSymbol) return [];
+
+  // Try exact match first
+  if (GRAPHEME_FREQUENCIES[phonemeSymbol]) {
+    return GRAPHEME_FREQUENCIES[phonemeSymbol];
+  }
+
+  // Normalize the input - remove slashes and try again
+  const normalized = phonemeSymbol.replace(/^\/|\/$/g, '').toLowerCase();
+  const withSlashes = `/${normalized}/`;
+
+  if (GRAPHEME_FREQUENCIES[withSlashes]) {
+    return GRAPHEME_FREQUENCIES[withSlashes];
+  }
+
+  // Try matching short vowels with breve notation
+  // Map breve vowels to standard: ă→a, ĕ→e, ĭ→i, ŏ→o, ŭ→u
+  const breveMap: { [key: string]: string } = {
+    'ă': 'a', 'ĕ': 'e', 'ĭ': 'i', 'ŏ': 'o', 'ŭ': 'u'
+  };
+
+  let debreved = normalized;
+  for (const [breve, plain] of Object.entries(breveMap)) {
+    debreved = debreved.replace(breve, plain);
+  }
+
+  const debrevedWithSlashes = `/${debreved}/`;
+  if (GRAPHEME_FREQUENCIES[debrevedWithSlashes]) {
+    return GRAPHEME_FREQUENCIES[debrevedWithSlashes];
+  }
+
+  // Try matching long vowels with macron notation
+  // Map macron vowels: ā→a (for long vowels lookup)
+  const macronMap: { [key: string]: string } = {
+    'ā': 'ā', 'ē': 'ē', 'ī': 'ī', 'ō': 'ō', 'ū': 'ū'
+  };
+
+  // Check if input contains macron and try exact macron match
+  for (const macron of Object.keys(macronMap)) {
+    if (normalized.includes(macron)) {
+      const macronWithSlashes = `/${macron}/`;
+      if (GRAPHEME_FREQUENCIES[macronWithSlashes]) {
+        return GRAPHEME_FREQUENCIES[macronWithSlashes];
+      }
+    }
+  }
+
+  return [];
 }
 
 // Helper function to determine usage label based on percentage

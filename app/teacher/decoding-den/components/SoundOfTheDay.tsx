@@ -85,25 +85,50 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
       {/* Additional Information */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-blue-100 rounded-lg px-4 py-2 border-2 border-blue-500">
+        <div className="bg-blue-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
           <h5 className="font-semibold text-oceanBlue mb-2 -mt-0.5 drop-shadow-md">Phoneme Type</h5>
           <p className="text-gray-700 capitalize">
             <strong>{getPhonemeLabel(phoneme)}</strong>
           </p>
         </div>
         
-        <div className="bg-green-100 rounded-lg px-4 py-2 border-2 border-blue-500">
-          <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">Frequency Rank</h5>
+        <div className="bg-green-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
+          <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">How Common Is This Sound?</h5>
           <p className="text-gray-700">
-            <span className="font-bold">#{phoneme.frequency_rank}</span> most common in English
-            {phoneme.frequency_rank <= 10 && (
-              <span className="text-green-600 ml-2 font-medium">(High frequency)</span>
+            {phoneme.frequency_rank > 0 ? (
+              <>
+                <span className="font-bold">#{phoneme.frequency_rank}</span> most common sound in English
+                {phoneme.frequency_rank <= 5 && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Essential</span>
+                )}
+                {phoneme.frequency_rank > 5 && phoneme.frequency_rank <= 10 && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">High frequency</span>
+                )}
+                {phoneme.frequency_rank > 10 && phoneme.frequency_rank <= 20 && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Common</span>
+                )}
+                {phoneme.frequency_rank > 20 && phoneme.frequency_rank <= 30 && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">Moderately common</span>
+                )}
+                {phoneme.frequency_rank > 30 && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700">Less common</span>
+                )}
+                <p className="text-xs text-gray-500 mt-1 italic">
+                  {phoneme.frequency_rank <= 10
+                    ? 'This sound appears very frequently in text - prioritize for early instruction.'
+                    : phoneme.frequency_rank <= 20
+                      ? 'This is a commonly encountered sound in reading materials.'
+                      : 'This sound is less frequent but still important for reading fluency.'}
+                </p>
+              </>
+            ) : (
+              <span className="text-gray-500 italic">Frequency data not available</span>
             )}
           </p>
         </div>
 
         {phoneme.is_voiced !== null && (
-          <div className="bg-purple-100 rounded-lg px-4 py-2 border-2 border-blue-500">
+          <div className="bg-purple-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
             <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">
               Voicing
             </h5>
@@ -114,12 +139,32 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
           </div>
         )}
 
-        <div className="bg-orange-100 rounded-lg px-4 py-2 border-2 border-blue-500">
+        <div className="bg-orange-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
           <h5 className="font-semibold text-oceanBlue mb-2 -mt-0.5 drop-shadow-md">
             Most Common Spelling - <span className="text-black">
               〈{graphemes[0]?.grapheme || 'N/A'}〉
             </span>
+            {graphemes[0]?.percentage != null && graphemes[0].percentage > 0 && (
+              <span className="ml-2 text-sm font-semibold text-emerald-600">
+                ({typeof graphemes[0].percentage === 'number' ? graphemes[0].percentage.toFixed(1) : graphemes[0].percentage}% of usage)
+              </span>
+            )}
+            {graphemes[0]?.usage_label && (
+              <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-medium ${
+                graphemes[0].usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
+                graphemes[0].usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
+                graphemes[0].usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
+                'bg-red-100 text-red-700'
+              }`}>
+                {graphemes[0].usage_label}
+              </span>
+            )}
           </h5>
+          {(graphemes[0]?.context_notes || graphemes[0]?.notes) && (
+            <p className="text-sm text-gray-600 mb-2">
+              {graphemes[0].context_notes || graphemes[0].notes}
+            </p>
+          )}
           {graphemes.length > 1 && (
             <div className="text-gray-700">
               <div className="flex items-center gap-2 mb-1 -mt-0.5">
@@ -134,16 +179,16 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               {showAlternatives && (
                 <div className="space-y-2">
                   {graphemes.slice(1).map((grapheme) => (
-                    <div key={grapheme.id} className="flex items-center justify-between bg-blue-50 rounded-lg px-3 py-2 border border-blue-200">
-                      <div className="flex items-center">
+                    <div key={grapheme.id} className="flex items-center justify-between bg-white/80 rounded-lg px-3 py-2 border border-oceanBlue/20">
+                      <div className="flex items-center flex-wrap gap-1">
                         <span className="text-lg font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
-                        {grapheme.percentage && (
-                          <span className="ml-3 text-sm font-semibold text-blue-600">
-                            {grapheme.percentage}%
+                        {grapheme.percentage != null && grapheme.percentage > 0 && (
+                          <span className="ml-2 text-sm font-semibold text-blue-600">
+                            {typeof grapheme.percentage === 'number' ? grapheme.percentage.toFixed(1) : grapheme.percentage}%
                           </span>
                         )}
                         {grapheme.usage_label && (
-                          <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-medium ${
+                          <span className={`ml-1 px-2 py-0.5 rounded-full text-xs font-medium ${
                             grapheme.usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
                             grapheme.usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
                             grapheme.usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
@@ -154,8 +199,8 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
                         )}
                       </div>
                       {(grapheme.context_notes || grapheme.notes) && (
-                        <span className="text-sm text-gray-600 ml-2">
-                          ({grapheme.context_notes || grapheme.notes})
+                        <span className="text-xs text-gray-500 ml-2 italic">
+                          {grapheme.context_notes || grapheme.notes}
                         </span>
                       )}
                     </div>
@@ -170,7 +215,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
       {/* Common Errors */}
       {articulation && articulation.common_errors.length > 0 && (
-        <div className="bg-orange-100 rounded-lg border-2 border-blue-500 overflow-hidden">
+        <div className="bg-orange-50 rounded-lg border-2 border-oceanBlue/40 overflow-hidden">
           <button
             onClick={() => setShowReferralNotes(!showReferralNotes)}
             className="w-full px-6 pt-6 pb-4 text-left hover:bg-amber-100 transition-colors rounded-t-lg"
@@ -216,7 +261,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
       {/* Research Sources */}
       {research_citations && research_citations.length > 0 && (
-        <div className="bg-gray-100 rounded-lg border-2 border-blue-500 overflow-hidden">
+        <div className="bg-gray-50 rounded-lg border-2 border-oceanBlue/40 overflow-hidden">
           <button
             onClick={() => setShowSources(!showSources)}
             className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors rounded-t-lg"
