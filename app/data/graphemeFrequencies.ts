@@ -35,7 +35,7 @@ export const GRAPHEME_FREQUENCIES: PhonemeFrequencyMap = {
     { grapheme: 'x', percentage: 0.3, usage_label: 'Exception', context_notes: 'Final position: six' }
   ],
 
-  // SHORT VOWELS - LETRS/SoR Aligned
+  // SHORT VOWELS - Science of Reading Aligned
   // Short vowels have 1:1 grapheme-phoneme correspondence
   // Irregular words (laugh, plaid, half) are lexical exceptions, NOT alternative spellings
   '/a/': [

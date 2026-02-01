@@ -46,7 +46,7 @@ const shortVowelData = [
         { content: 'Use hand gesture: pat your lap for short a', icon_emoji: '👋' }
       ]
     },
-    research_sources: ['Science of Reading', 'Orton-Gillingham'],
+    research_sources: ['Science of Reading', 'National Reading Panel (2000)'],
     stage_id: 2
   },
   {
@@ -79,7 +79,7 @@ const shortVowelData = [
         { content: 'Use hand gesture: edge hand like cutting', icon_emoji: '👋' }
       ]
     },
-    research_sources: ['Science of Reading', 'Orton-Gillingham'],
+    research_sources: ['Science of Reading', 'National Reading Panel (2000)'],
     stage_id: 2
   },
   {
@@ -112,7 +112,7 @@ const shortVowelData = [
         { content: 'Use hand gesture: point to grin/smile', icon_emoji: '👋' }
       ]
     },
-    research_sources: ['Science of Reading', 'Orton-Gillingham'],
+    research_sources: ['Science of Reading', 'National Reading Panel (2000)'],
     stage_id: 2
   },
   {
@@ -145,7 +145,7 @@ const shortVowelData = [
         { content: 'Use hand gesture: make O shape with mouth', icon_emoji: '👋' }
       ]
     },
-    research_sources: ['Science of Reading', 'Orton-Gillingham'],
+    research_sources: ['Science of Reading', 'National Reading Panel (2000)'],
     stage_id: 2
   },
   {
@@ -178,7 +178,7 @@ const shortVowelData = [
         { content: 'Use hand gesture: pat tummy for "uh"', icon_emoji: '👋' }
       ]
     },
-    research_sources: ['Science of Reading', 'Orton-Gillingham'],
+    research_sources: ['Science of Reading', 'National Reading Panel (2000)'],
     stage_id: 2
   }
 ];

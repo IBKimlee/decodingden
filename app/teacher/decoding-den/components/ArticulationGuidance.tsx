@@ -143,7 +143,7 @@ export default function ArticulationGuidance({ phonemeData, viewMode = 'teacher'
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="pl-4 relative">
                       <span className="absolute left-0">•</span>
-                      <strong>LETRS (Language Essentials for Teachers of Reading and Spelling)</strong> - Moats & Tolman
+                      <strong>National Reading Panel Report</strong> (2000) - Teaching Children to Read
                     </li>
                     <li className="pl-4 relative">
                       <span className="absolute left-0">•</span>

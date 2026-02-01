@@ -436,7 +436,7 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
 
 /**
  * Format phoneme symbol for display (e.g., /a/ → /ă/ for short vowels)
- * Uses breve notation for short vowels per LETRS/SoR standards
+ * Uses breve notation for short vowels per Science of Reading standards
  */
 function formatPhonemeSymbol(phoneme: string, stageId: number): string {
   const p = phoneme?.toLowerCase() || '';
