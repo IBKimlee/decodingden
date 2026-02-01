@@ -353,13 +353,8 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
           percentage: freqData.weighted_percent,
           usage_label: freqData.usage_label,
           context_notes: '',
-          notes: index === 0
-            ? `Most common spelling for ${supabaseData.phoneme} sound (${freqData.weighted_percent.toFixed(1)}% of usage)`
-            : freqData.weighted_percent >= 10
-              ? `Common spelling (${freqData.weighted_percent.toFixed(1)}% of usage)`
-              : freqData.weighted_percent >= 1
-                ? `Less common (${freqData.weighted_percent.toFixed(1)}% of usage)`
-                : `Rare spelling (<1% of usage)`,
+          // Notes are now minimal since percentage and label are shown in the UI
+          notes: '',
         }));
       }
 
