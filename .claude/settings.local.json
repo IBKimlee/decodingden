@@ -82,7 +82,8 @@
       "Bash(wc:*)",
       "Bash(wrong!\" error when searching for short vowels like \"short o\". The file\npreviously only had /a/ for short vowels, causing empty grapheme arrays.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "WebFetch(domain:decodingden-git-main-kimbartolotti3gmailcoms-projects.vercel.app)",
-      "Bash(killall node:*)"
+      "Bash(killall node:*)",
+      "Bash(git revert:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
