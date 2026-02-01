@@ -184,47 +184,43 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   return (
     <div className="space-y-5">
 
-      {/* Main Grid: Left = Type/Frequency/Voicing, Right = Spelling Chart */}
+      {/* Main Grid: Left = Type/Voicing/Frequency, Right = Spelling Chart */}
       <div className="grid md:grid-cols-2 gap-4">
 
-        {/* LEFT COLUMN: Phoneme Type, Frequency, Voicing (stacked, compact) */}
-        <div className="space-y-2">
+        {/* LEFT COLUMN: Phoneme Type, Voicing, Frequency */}
+        <div className="space-y-4">
           {/* Phoneme Type */}
-          <div className="bg-blue-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-            <div className="flex items-center justify-between">
-              <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Phoneme Type</h5>
-              <p className="text-gray-700 capitalize font-bold">{getPhonemeLabel(phoneme)}</p>
-            </div>
+          <div className="bg-blue-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+            <h5 className="font-semibold text-oceanBlue mb-1 drop-shadow-md">Phoneme Type</h5>
+            <p className="text-gray-700 capitalize">
+              <strong>{getPhonemeLabel(phoneme)}</strong>
+            </p>
           </div>
-
-          {/* Frequency in English */}
-          {frequencyData && (
-            <div className="bg-green-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-              <div className="flex items-center justify-between">
-                <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Frequency in English</h5>
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-gray-700">{frequencyData.percent.toFixed(2)}%</span>
-                  <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
-                    #{frequencyData.rank}
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500 italic text-right">Mines, Hanson & Shoup (1978)</p>
-            </div>
-          )}
 
           {/* Voicing */}
           {phoneme.is_voiced !== null && (
-            <div className="bg-purple-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-              <div className="flex items-center justify-between">
-                <h5 className="font-semibold text-oceanBlue text-sm drop-shadow-md">Voicing</h5>
-                <p className="text-gray-700">
-                  <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
-                  <span className="text-sm text-gray-500 ml-1">
-                    {phoneme.is_voiced ? '(vibrating)' : '(no vibration)'}
-                  </span>
-                </p>
-              </div>
+            <div className="bg-purple-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+              <h5 className="font-semibold text-oceanBlue mb-1 drop-shadow-md">Voicing</h5>
+              <p className="text-gray-700">
+                <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
+                {phoneme.is_voiced ? ' (vocal cords vibrate)' : ' (no vocal cord vibration)'}
+              </p>
+            </div>
+          )}
+
+          {/* Frequency in English */}
+          {frequencyData && (
+            <div className="bg-green-50 rounded-lg px-4 py-3 border-2 border-oceanBlue/40">
+              <h5 className="font-semibold text-oceanBlue mb-1 drop-shadow-md">Frequency in English</h5>
+              <p className="text-gray-700">
+                <strong>{frequencyData.percent.toFixed(2)}%</strong> of spoken phonemes
+                <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                  #{frequencyData.rank} most common
+                </span>
+              </p>
+              <p className="text-xs text-gray-500 mt-1 italic">
+                Source: Mines, Hanson & Shoup (1978)
+              </p>
             </div>
           )}
         </div>
