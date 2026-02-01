@@ -93,36 +93,36 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         </div>
         
         <div className="bg-green-50 rounded-lg px-4 py-2 border-2 border-oceanBlue/40">
-          <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">How Common Is This Sound?</h5>
+          <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">Teaching Sequence</h5>
           <p className="text-gray-700">
             {phoneme.frequency_rank > 0 ? (
               <>
-                <span className="font-bold">#{phoneme.frequency_rank}</span> most common sound in English
+                <span className="font-bold">#{phoneme.frequency_rank}</span> in phonics instruction sequence
                 {phoneme.frequency_rank <= 5 && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Essential</span>
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Foundational</span>
                 )}
                 {phoneme.frequency_rank > 5 && phoneme.frequency_rank <= 10 && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">High frequency</span>
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Early</span>
                 )}
                 {phoneme.frequency_rank > 10 && phoneme.frequency_rank <= 20 && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Common</span>
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Core</span>
                 )}
                 {phoneme.frequency_rank > 20 && phoneme.frequency_rank <= 30 && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">Moderately common</span>
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">Intermediate</span>
                 )}
                 {phoneme.frequency_rank > 30 && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700">Less common</span>
+                  <span className="ml-2 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700">Advanced</span>
                 )}
                 <p className="text-xs text-gray-500 mt-1 italic">
                   {phoneme.frequency_rank <= 10
-                    ? 'This sound appears very frequently in text - prioritize for early instruction.'
+                    ? 'Taught early due to ease of articulation and high utility.'
                     : phoneme.frequency_rank <= 20
-                      ? 'This is a commonly encountered sound in reading materials.'
-                      : 'This sound is less frequent but still important for reading fluency.'}
+                      ? 'Part of core phonics instruction.'
+                      : 'Introduced after foundational sounds are mastered.'}
                 </p>
               </>
             ) : (
-              <span className="text-gray-500 italic">Frequency data not available</span>
+              <span className="text-gray-500 italic">Sequence data not available</span>
             )}
           </p>
         </div>
