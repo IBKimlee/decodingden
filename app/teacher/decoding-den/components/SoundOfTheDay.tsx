@@ -218,7 +218,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
             <p className="text-sm text-gray-600 font-medium">{phoneme.ipa_symbol}</p>
             <p className="text-gray-700 mt-2">
               <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
-              <span className="text-sm ml-1">of all sounds spoken</span>
+              <span className="text-sm ml-1">of all sounds in English</span>
             </p>
             <p className="mt-2">
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
