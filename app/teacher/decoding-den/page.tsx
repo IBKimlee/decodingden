@@ -217,13 +217,13 @@ export default function DecodingDenPage() {
                           : 'bg-gradient-to-br from-oceanBlue/60 via-indigo-400/50 to-oceanBlue/60 border-oceanBlue/50 hover:border-oceanBlue/70 text-deepNavy'
                       }`}
                     >
-                      <div className="flex-shrink-0 mb-0.5">
-                        <Image 
-                          src="/images/phoneme insight.png" 
-                          alt="Phoneme Insight" 
-                          width={24} 
-                          height={24} 
-                          className="mx-auto w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+                      <div className="flex-shrink-0 mb-0.5 h-5 sm:h-6 lg:h-7 flex items-center justify-center">
+                        <Image
+                          src="/images/phoneme insight.png"
+                          alt="Phoneme Insight"
+                          width={24}
+                          height={36}
+                          className="mx-auto h-full w-auto object-contain"
                         />
                       </div>
                       <div className="text-center flex-1 flex flex-col justify-center">
