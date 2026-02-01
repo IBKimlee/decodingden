@@ -185,31 +185,31 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
     <div className="space-y-5">
 
       {/* 3-Column Grid: Left = Type+Voicing stacked, Middle = Frequency, Right = Spelling */}
-      <div className="grid md:grid-cols-3 gap-3 items-stretch">
+      <div className="grid md:grid-cols-3 gap-3 items-stretch min-h-[340px]">
 
         {/* LEFT COLUMN: Phoneme Type + Voicing (stacked, equal height to other columns) */}
         <div className="flex flex-col gap-2">
           {/* Phoneme Type */}
-          <div className="bg-blue-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
-            <h5 className="font-semibold drop-shadow-md">
+          <div className="bg-blue-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex-1 flex flex-col">
+            <h5 className="font-semibold text-lg">
               <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
-              <span className="text-oceanBlue ml-2">Phoneme Type</span>
+              <span className="text-oceanBlue font-bold ml-2">Phoneme Type</span>
             </h5>
-            <p className="text-gray-700 capitalize font-bold">{getPhonemeLabel(phoneme)}</p>
+            <p className="text-gray-700 capitalize font-bold mt-5">{getPhonemeLabel(phoneme)}</p>
           </div>
 
           {/* Voicing */}
           {phoneme.is_voiced !== null && (
-            <div className="bg-purple-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col justify-center">
-              <h5 className="font-semibold drop-shadow-md">
+            <div className="bg-purple-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex-1 flex flex-col">
+              <h5 className="font-semibold text-lg">
                 <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
-                <span className="text-oceanBlue ml-2">Voicing</span>
+                <span className="text-oceanBlue font-bold ml-2">Voicing</span>
               </h5>
-              <p className="text-gray-700">
+              <p className="text-gray-700 mt-5">
                 <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
-              </p>
-              <p className="text-xs text-gray-500">
-                {phoneme.is_voiced ? 'vocal cords vibrate' : 'no vibration'}
+                <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 ml-2">
+                  {phoneme.is_voiced ? 'Vocal Cords Vibrate' : 'No Vibration'}
+                </span>
               </p>
             </div>
           )}
@@ -218,18 +218,17 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
         {/* MIDDLE COLUMN: Frequency in English */}
         {frequencyData && (
           <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col h-full">
-            <h5 className="font-semibold drop-shadow-md">
+            <h5 className="font-semibold text-lg">
               <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
-              <span className="text-oceanBlue ml-2">How Common?</span>
+              <span className="text-oceanBlue font-bold ml-2">How Common Is This Sound?</span>
             </h5>
-            <p className="text-gray-700 mt-2">
-              <span className="text-xl font-bold">{frequencyData.percent.toFixed(2)}%</span>
-              <span className="text-sm ml-1">of all sounds in English</span>
+            <p className="text-gray-700 mt-5 flex items-center">
+              <span className="text-xl font-bold w-16">{frequencyData.percent.toFixed(2)}%</span>
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Of All Sounds In English</span>
             </p>
-            <p className="mt-2">
-              <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
-                #{frequencyData.rank} most common sound
-              </span>
+            <p className="text-gray-700 mt-5 flex items-center">
+              <span className="text-xl font-bold text-black w-16">#{frequencyData.rank}</span>
+              <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Most Common Sound</span>
             </p>
             <p className="text-xs text-gray-500 mt-auto italic">
               Mines, Hanson & Shoup (1978)
@@ -239,8 +238,8 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
         {/* RIGHT COLUMN: Spelling Chart */}
         <div className="bg-orange-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 h-full">
-          <h5 className="font-semibold text-oceanBlue mb-2 drop-shadow-md">
-            Most Common Spelling - <span className="text-black">
+          <h5 className="font-bold text-oceanBlue text-lg mb-2">
+            Most Common Spelling - <span className="text-black font-bold">
               〈{graphemes[0]?.grapheme || 'N/A'}〉
             </span>
             {graphemes[0]?.percentage != null && graphemes[0].percentage > 0 && (
@@ -263,7 +262,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
           {graphemes.length > 1 && (
             <div className="text-gray-700">
               <div className="flex items-center gap-2 mb-2">
-                <p className="font-semibold text-oceanBlue text-sm">Alternative spellings</p>
+                <p className="font-semibold text-oceanBlue text-sm w-32">Alternative spellings</p>
                 <button
                   onClick={() => setShowAlternatives(!showAlternatives)}
                   className="px-2 py-0.5 text-xs bg-oceanBlue text-white rounded hover:bg-darkOcean transition-colors"
@@ -275,14 +274,16 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
                 <div className="space-y-1.5 max-h-64 overflow-y-auto">
                   {graphemes.slice(1).map((grapheme) => (
                     <div key={grapheme.id} className="flex items-center bg-white/80 rounded-lg px-3 py-1.5 border border-oceanBlue/20">
-                      <span className="text-base font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
-                      {grapheme.percentage != null && grapheme.percentage > 0 && (
-                        <span className="ml-2 text-sm font-semibold text-blue-600">
-                          {typeof grapheme.percentage === 'number' ? grapheme.percentage.toFixed(1) : grapheme.percentage}%
-                        </span>
-                      )}
+                      <div className="w-32 flex items-center">
+                        <span className="text-base font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
+                        {grapheme.percentage != null && grapheme.percentage > 0 && (
+                          <span className="ml-2 text-sm font-semibold text-blue-600">
+                            {typeof grapheme.percentage === 'number' ? grapheme.percentage.toFixed(1) : grapheme.percentage}%
+                          </span>
+                        )}
+                      </div>
                       {grapheme.usage_label && (
-                        <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-medium ${
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                           grapheme.usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
                           grapheme.usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
                           grapheme.usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
@@ -335,15 +336,6 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
           )}
         </div>
       )}
-
-
-      {/* Reference to Let's Learn It Tab */}
-      <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
-        <p className="text-sm text-gray-700 flex items-center">
-          <span className="mr-2">📚</span>
-          <span>For explanations, rules, and teaching tips, see the <strong className="text-oceanBlue">Let&apos;s Learn It</strong> tab.</span>
-        </p>
-      </div>
 
 
 
