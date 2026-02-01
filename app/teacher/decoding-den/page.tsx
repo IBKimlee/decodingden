@@ -137,9 +137,6 @@ export default function DecodingDenPage() {
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center py-4 sm:py-6 gap-4 sm:gap-0">
             <div className="flex items-center space-x-4">
-              <Link href="/" className="text-white hover:text-gray-200 transition-colors">
-                <span className="text-2xl">←</span>
-              </Link>
               <div>
                 <h1 className="text-xl sm:text-3xl font-bold text-white flex items-center">
                   Decoding Den
@@ -147,6 +144,12 @@ export default function DecodingDenPage() {
                 <p className="text-white/80 text-xs sm:text-sm">Phoneme mastery at your fingertips</p>
               </div>
             </div>
+            <Link
+              href="/teacher"
+              className="text-white/80 hover:text-white transition-colors text-sm"
+            >
+              ← Back to Teacher Portal
+            </Link>
             <div className="w-full sm:flex-1 max-w-md sm:ml-8">
               <PhonemeSearch 
                 onSearch={handlePhonemeSearch}
