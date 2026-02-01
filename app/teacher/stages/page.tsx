@@ -289,20 +289,19 @@ export default function TeachingStages() {
       {/* Header */}
       <header className="bg-gradient-to-r from-darkOcean to-oceanBlue via-indigo-600 shadow-2xl p-3 border-b border-oceanBlue/50">
         <div className="px-4">
-          <div className="flex items-center relative z-50">
+          <div className="flex items-center justify-between relative z-50">
             <div>
-              <div className="flex items-center gap-2">
-                <Link href="/" className="cursor-pointer hover:scale-110 transition-transform duration-200" title="Go to Home">
-                  <span className="text-white text-3xl">←</span>
-                </Link>
-                <div>
-                  <h1 className="text-4xl font-bold text-white drop-shadow-2xl leading-none" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-                    8 Stage Reading Matrix Framework
-                  </h1>
-                  <p className="text-sm text-white/90 mt-1 text-left ml-1">Rooted in the Science of Reading</p>
-                </div>
-              </div>
+              <h1 className="text-4xl font-bold text-white drop-shadow-2xl leading-none" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+                8 Stage Reading Matrix Framework
+              </h1>
+              <p className="text-sm text-white/90 mt-1 text-left ml-1">Rooted in the Science of Reading</p>
             </div>
+            <Link
+              href="/teacher"
+              className="text-white/80 hover:text-white transition-colors text-sm"
+            >
+              ← Back to Teacher Portal
+            </Link>
           </div>
         </div>
       </header>
