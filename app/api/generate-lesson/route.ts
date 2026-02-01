@@ -1,14 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllStages, getAllPhonemes, getStageById } from '../../../lib/supabase/phonics-queries';
-
-// Legal compliance for generated content
-const LEGAL_COMPLIANCE = {
-  copyright_notice: "© 2025 Decoding Den. All rights reserved.",
-  disclaimer: "Decoding Den is an independent educational platform built entirely on publicly available Science of Reading research. Our content is original and research-informed, drawing from peer-reviewed studies by Ehri, Seidenberg, Adams, and other leading scientists. We are not affiliated with, derived from, or endorsed by any commercial reading program or proprietary curriculum.",
-  research_attribution: "Our instructional design is based on findings from the National Reading Panel, IES Practice Guides, and decades of cognitive and linguistic research. All content is independently developed using evidence-based principles.",
-  compliance_verification: "This content contains zero proprietary material and is built exclusively from publicly available research sources.",
-  prohibited_associations: "This content is not derived from, affiliated with, or endorsed by LETRS, Wilson Reading System, Orton-Gillingham programs, or any commercial curriculum."
-};
+import { LEGAL_COMPLIANCE } from '@/app/data/allStagesDatabase';
 
 // 🎯 Decoding Den AI-Powered Lesson Generator
 // ✅ Science of Reading Aligned • FCRR Standards • Evidence-Based
