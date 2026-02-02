@@ -2,9 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { getStageById, getPhonemesByStage, type PhonicsStage, type Phoneme } from '@/lib/supabase/phonics-queries';
+import { EIGHT_STAGE_SYSTEM } from '@/app/data/allStagesDatabase';
 import SimpleAssessmentDownload from '@/app/components/SimpleAssessmentDownload';
 import { jsPDF } from 'jspdf';
+
+// Stage info interface matching TypeScript data structure
+interface StageInfo {
+  name: string;
+  grade_band: string;
+  student_phase: string;
+  duration: string;
+  total_elements: number;
+  key_concept: string;
+  instructional_focus: string[];
+}
 
 // RESEARCH-VALIDATED Stage 1 Weekly Data - 15 Core Phonemes Only
 // Extended to 10 weeks for better mastery and spiral review
@@ -798,9 +809,8 @@ export default function StageDetailPage() {
   const [homeConnectionOpen, setHomeConnectionOpen] = useState(false);
   const [showDifferentiationTreeModal, setShowDifferentiationTreeModal] = useState(false);
   
-  // Supabase data state
-  const [stageInfo, setStageInfo] = useState<PhonicsStage | null>(null);
-  const [phonemes, setPhonemes] = useState<Phoneme[]>([]);
+  // Stage data state (from TypeScript)
+  const [stageInfo, setStageInfo] = useState<StageInfo | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Download week resources function
@@ -1129,23 +1139,23 @@ export default function StageDetailPage() {
     pdf.save(`Stage-${stageNumber}-Week-${weekNumber}-Resources.pdf`);
   };
 
-  // Load stage data from Supabase
+  // Load stage data from TypeScript (no Supabase needed)
   useEffect(() => {
-    async function loadStageData() {
-      try {
-        const [stage, stagePhonemes] = await Promise.all([
-          getStageById(stageNumber),
-          getPhonemesByStage(stageNumber)
-        ]);
-        setStageInfo(stage);
-        setPhonemes(stagePhonemes);
-      } catch (error) {
-        console.error('Error loading stage data:', error);
-      } finally {
-        setLoading(false);
-      }
+    // Find stage in TypeScript data (array is 0-indexed, stages are 1-indexed)
+    const stageData = EIGHT_STAGE_SYSTEM[stageNumber - 1];
+    if (stageData) {
+      // Map TypeScript fields to component interface
+      setStageInfo({
+        name: stageData.stage_name,
+        grade_band: stageData.grade_level,
+        student_phase: stageData.student_phase,
+        duration: stageData.duration,
+        total_elements: stageData.total_elements,
+        key_concept: stageData.key_concept,
+        instructional_focus: stageData.instructional_focus
+      });
     }
-    loadStageData();
+    setLoading(false);
   }, [stageNumber]);
   
   if (loading) {

@@ -94,7 +94,8 @@
       "Bash(then echo \"UNUSED: $name\" fi done done)",
       "Bash(git rm:*)",
       "Bash(xargs basename:*)",
-      "Bash(xargs ls:*)"
+      "Bash(xargs ls:*)",
+      "Bash(git diff:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
