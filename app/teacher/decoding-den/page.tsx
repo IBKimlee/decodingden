@@ -210,7 +210,7 @@ export default function DecodingDenPage() {
       console.log('API response data:', data.phoneme_data);
       setPhonemeData(data.phoneme_data);
       setCorrectionMessage(data.correction_message);
-      setActiveSection(null); // Reset section when new phoneme is loaded
+      setActiveSection('sound-of-the-day'); // Auto-open Phoneme Insight when phoneme is loaded
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setPhonemeData(null);
