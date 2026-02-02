@@ -729,8 +729,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       student_tips: 'Round your lips slightly. Keep your tongue behind your teeth. Push air through quietly like you\'re saying "shh" to be quiet.',
       common_substitutions: ['/s/', '/ch/', '/t/ + /h/'],
       articulation_cues: 'Lips slightly rounded, tongue raised near roof of mouth',
-      airflow: 'Continuous airflow through narrow channel',
-      airflow_description: 'Continuous airflow through a narrow channel between tongue and roof of mouth'
+      airflow_description: 'oral'
     },
     instructional_sequence: {
       pre_teaching: ["Quiet/shh games", "Feel airflow", "Compare to /s/"],
