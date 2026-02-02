@@ -13,8 +13,66 @@ import PracticeText from './components/PracticeText';
 import ShortStory from './components/ShortStory';
 import CustomizeLesson from './components/CustomizeLesson';
 import WordWorkspace from './components/WordWorkspace';
-import ExitTicketModal from './components/ExitTicketModal';
 import InteractiveReadAlong from './components/InteractiveReadAlong';
+
+// Anchor words for each phoneme - iconic words that represent the sound
+const ANCHOR_WORDS: Record<string, string> = {
+  // Short vowels
+  '/ă/': 'apple', '/a/': 'apple',
+  '/ĕ/': 'elephant', '/e/': 'elephant',
+  '/ĭ/': 'itchy', '/i/': 'itchy',
+  '/ŏ/': 'octopus', '/o/': 'octopus',
+  '/ŭ/': 'umbrella', '/u/': 'umbrella',
+  // Long vowels
+  '/ā/': 'acorn', '/eɪ/': 'acorn',
+  '/ē/': 'eagle', '/iː/': 'eagle',
+  '/ī/': 'ice', '/aɪ/': 'ice',
+  '/ō/': 'open', '/oʊ/': 'open',
+  '/ū/': 'unicorn', '/uː/': 'unicorn',
+  // R-controlled vowels
+  '/ar/': 'car', '/ɑr/': 'car',
+  '/er/': 'her', '/ɜr/': 'her',
+  '/ir/': 'bird', '/ɪr/': 'bird',
+  '/or/': 'horse', '/ɔr/': 'horse',
+  '/ur/': 'nurse', '/ʊr/': 'nurse',
+  // Consonants
+  '/b/': 'ball',
+  '/d/': 'dog',
+  '/f/': 'fish',
+  '/g/': 'goat',
+  '/h/': 'hat',
+  '/j/': 'jump',
+  '/k/': 'kite',
+  '/l/': 'lion',
+  '/m/': 'moon',
+  '/n/': 'nest',
+  '/p/': 'pig',
+  '/r/': 'rabbit',
+  '/s/': 'sun',
+  '/t/': 'top',
+  '/v/': 'van',
+  '/w/': 'water',
+  '/y/': 'yellow',
+  '/z/': 'zebra',
+  // Digraphs
+  '/sh/': 'ship',
+  '/ch/': 'cheese',
+  '/th/': 'thumb',
+  '/th(v)/': 'this',
+  '/wh/': 'whale',
+  '/ng/': 'ring',
+  '/ph/': 'phone',
+  // Other
+  '/ks/': 'box',
+  '/kw/': 'queen',
+  '/zh/': 'treasure',
+};
+
+function getAnchorWord(phonemeSymbol: string): string | null {
+  if (!phonemeSymbol) return null;
+  const normalized = phonemeSymbol.toLowerCase().trim();
+  return ANCHOR_WORDS[normalized] || ANCHOR_WORDS[`/${normalized}/`] || null;
+}
 
 const DECODING_DEN_SECTIONS = [
   {
@@ -81,8 +139,7 @@ export default function DecodingDenPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [correctionMessage, setCorrectionMessage] = useState<string | null>(null);
-    const [showExitTicket, setShowExitTicket] = useState(false);
-
+    
   const handlePhonemeSearch = async (phonemeInput: string) => {
     setIsLoading(true);
     setError(null);
@@ -182,16 +239,11 @@ export default function DecodingDenPage() {
                   </p>
                 </div>
                 
-                {/* Exit Ticket Button */}
-                {phonemeData && (
+                {/* Anchor Word Display */}
+                {phonemeData && getAnchorWord(phonemeData.phoneme.ipa_symbol) && (
                   <div className="mt-3 pt-1.5 border-t border-oceanBlue/30">
-                    <button
-                      onClick={() => setShowExitTicket(true)}
-                      className="w-full bg-gradient-to-r from-emerald-400/80 to-teal-500/80 hover:from-emerald-500/90 hover:to-teal-600/90 text-white font-semibold py-0.5 px-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
-                    >
-                      <span className="text-lg">🎟️</span>
-                      <span className="text-sm">Exit Ticket</span>
-                    </button>
+                    <p className="text-xs text-gray-500 uppercase">Anchor Word</p>
+                    <p className="text-lg font-bold text-deepNavy">{getAnchorWord(phonemeData.phoneme.ipa_symbol)}</p>
                   </div>
                 )}
               </div>
@@ -532,12 +584,6 @@ export default function DecodingDenPage() {
         </>
       </div>
 
-      {/* Exit Ticket Modal */}
-      <ExitTicketModal
-        isOpen={showExitTicket}
-        onClose={() => setShowExitTicket(false)}
-        phonemeData={phonemeData}
-      />
     </div>
   );
 }

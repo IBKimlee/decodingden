@@ -138,6 +138,7 @@ function getMannerExplanation(manner: string): string {
     'tap': 'Quick tap of tongue',
     'flap': 'Quick tap of tongue',
     'trill': 'Tongue vibrates rapidly',
+    'vowel': 'Air flows freely, no obstruction',
   };
   const key = manner.toLowerCase().trim();
   return explanations[key] || manner;
@@ -371,17 +372,21 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
                 <span className="mr-2">🎯</span>
                 Articulation Features
               </span>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              {/* For vowels: 3 columns (no Manner), for consonants: 4 columns */}
+              <div className={`grid grid-cols-2 gap-2 ${articulation.manner_of_articulation?.toLowerCase() === 'vowel' ? 'md:grid-cols-3' : 'md:grid-cols-4'}`}>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Place <span className="normal-case">- Where in mouth</span></p>
                   <p className="font-bold text-base text-gray-800">{articulation.place_of_articulation}</p>
                   <p className="text-xs text-gray-500 italic mt-1">{getPlaceExplanation(articulation.place_of_articulation)}</p>
                 </div>
-                <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
-                  <p className="text-xs text-gray-500 uppercase">Manner <span className="normal-case">- How air releases</span></p>
-                  <p className="font-bold text-base text-gray-800">{articulation.manner_of_articulation}</p>
-                  <p className="text-xs text-gray-500 italic mt-1">{getMannerExplanation(articulation.manner_of_articulation)}</p>
-                </div>
+                {/* Only show Manner for consonants (not vowels) */}
+                {articulation.manner_of_articulation?.toLowerCase() !== 'vowel' && (
+                  <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
+                    <p className="text-xs text-gray-500 uppercase">Manner <span className="normal-case">- How air releases</span></p>
+                    <p className="font-bold text-base text-gray-800">{articulation.manner_of_articulation}</p>
+                    <p className="text-xs text-gray-500 italic mt-1">{getMannerExplanation(articulation.manner_of_articulation)}</p>
+                  </div>
+                )}
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Voicing <span className="normal-case">- Vocal cord vibration</span></p>
                   <p className="font-bold text-base text-gray-800">{articulation.voicing}</p>
