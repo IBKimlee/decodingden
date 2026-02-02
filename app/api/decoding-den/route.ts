@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getGraphemeFrequencies } from '../../data/graphemeFrequencies';
 import { ALL_COMPREHENSIVE_PHONEMES } from '../../data/allComprehensivePhonemes';
+import { STAGE_PHONEME_SAMPLES } from '../../data/allStagesDatabase';
 import {
   getPhonemeFrequencyData,
   getGraphemeFrequenciesForPhoneme,
@@ -8,6 +9,7 @@ import {
 } from '../../data/comprehensivePhonemeFrequencies';
 
 // Note: Supabase removed - all phoneme data now comes from TypeScript files
+// Search both ALL_COMPREHENSIVE_PHONEMES and STAGE_PHONEME_SAMPLES for complete coverage
 
 interface PhonemeData {
   phoneme: {
@@ -91,6 +93,7 @@ function getFrequencyRankFromLocalData(phonemeSymbol: string): number {
 
 /**
  * Search for phoneme in TypeScript data (replaces Supabase queries)
+ * Searches both ALL_COMPREHENSIVE_PHONEMES and STAGE_PHONEME_SAMPLES for full coverage
  * Returns data in the same shape as the old Supabase queries for compatibility
  */
 function findPhonemeInTypeScript(input: string): any | null {
@@ -98,6 +101,9 @@ function findPhonemeInTypeScript(input: string): any | null {
 
   // Remove "sound" suffix if present
   const cleanInput = normalizedInput.replace(/\s+sound$/i, '');
+
+  // Combine both phoneme arrays for searching
+  const allPhonemes = [...ALL_COMPREHENSIVE_PHONEMES, ...STAGE_PHONEME_SAMPLES];
 
   // Handle "short X" and "long X" vowel searches
   const shortVowelMatch = cleanInput.match(/^short\s+([aeiou])$/i);
@@ -108,20 +114,20 @@ function findPhonemeInTypeScript(input: string): any | null {
   if (shortVowelMatch) {
     // Short vowels are in Stage 1
     const vowel = shortVowelMatch[1].toLowerCase();
-    match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    match = allPhonemes.find(p =>
       p.stage === 1 && p.graphemes.includes(vowel) && p.phoneme === `/${vowel}/`
     );
   } else if (longVowelMatch) {
     // Long vowels are in Stage 4 (VCe patterns)
     const vowel = longVowelMatch[1].toLowerCase();
-    match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    match = allPhonemes.find(p =>
       p.stage === 4 && p.graphemes.some(g => g.includes(vowel))
     );
   }
 
   if (!match) {
     // Try exact phoneme match (e.g., "/sh/", "/m/")
-    match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    match = allPhonemes.find(p =>
       p.phoneme.toLowerCase() === normalizedInput ||
       p.phoneme.toLowerCase() === `/${cleanInput}/`
     );
@@ -129,14 +135,14 @@ function findPhonemeInTypeScript(input: string): any | null {
 
   if (!match) {
     // Try phoneme_id match (e.g., "stage1_m", "stage3_sh")
-    match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    match = allPhonemes.find(p =>
       p.phoneme_id.toLowerCase() === normalizedInput
     );
   }
 
   if (!match) {
     // Try grapheme match (e.g., "sh", "ch", "m")
-    match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    match = allPhonemes.find(p =>
       p.graphemes.some(g => g.toLowerCase() === cleanInput)
     );
   }
@@ -144,7 +150,7 @@ function findPhonemeInTypeScript(input: string): any | null {
   if (!match) {
     // Try partial match on phoneme symbol
     const withSlashes = cleanInput.startsWith('/') ? cleanInput : `/${cleanInput}/`;
-    match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    match = allPhonemes.find(p =>
       p.phoneme.toLowerCase().includes(cleanInput) ||
       p.phoneme.toLowerCase() === withSlashes
     );
@@ -153,6 +159,9 @@ function findPhonemeInTypeScript(input: string): any | null {
   if (!match) return null;
 
   // Map TypeScript fields to the shape expected by transformPhonemeData
+  // Use optional chaining for extended fields that only exist in ComprehensivePhonemeEntry
+  // (STAGE_PHONEME_SAMPLES uses simpler PhonemeEntry type without these fields)
+  const matchAny = match as any;
   return {
     phoneme_id: match.phoneme_id,
     phoneme: match.phoneme,
@@ -161,15 +170,16 @@ function findPhonemeInTypeScript(input: string): any | null {
     graphemes: match.graphemes,
     word_examples: match.word_examples,
     decodable_sentences: match.decodable_sentences,
-    articulation_data: match.articulation_data,
-    content_generation_meta: match.content_generation_meta,
-    research_sources: match.research_sources,
-    assessment_criteria: match.assessment_criteria,
-    teaching_advantages: match.teaching_advantages,
-    linguistic_properties_extended: match.linguistic_properties_extended,
-    complexity_score: match.complexity_score,
-    grade_band: match.grade_band,
-    introduction_week: match.introduction_week,
+    // Extended fields - may be undefined for STAGE_PHONEME_SAMPLES entries
+    articulation_data: matchAny.articulation_data,
+    content_generation_meta: matchAny.content_generation_meta,
+    research_sources: matchAny.research_sources,
+    assessment_criteria: matchAny.assessment_criteria,
+    teaching_advantages: matchAny.teaching_advantages,
+    linguistic_properties_extended: matchAny.linguistic_properties_extended,
+    complexity_score: matchAny.complexity_score,
+    grade_band: matchAny.grade_band,
+    introduction_week: matchAny.introduction_week,
   };
 }
 
