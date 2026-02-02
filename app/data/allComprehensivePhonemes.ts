@@ -700,6 +700,81 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     }
   },
 
+  {
+    phoneme_id: "stage3_sh",
+    stage: 3,
+    phoneme: "/sh/",
+    graphemes: ["sh", "ti", "ci", "si", "ssi", "ch"],
+    frequency_rank: 29,
+    complexity_score: 2.0,
+    grade_band: "1st-Fall",
+    introduction_week: 2,
+    word_examples: ["ship", "shop", "fish", "dish", "wish", "shell", "sheep", "shirt", "nation", "special"],
+    decodable_sentences: ["The ship is big.", "I wish for a fish.", "She has a shell."],
+    assessment_criteria: {
+      daily: "80% accuracy in digraph recognition",
+      weekly: "75% accuracy in word reading",
+      summative: "85% mastery in digraph pattern"
+    },
+    teaching_advantages: ["Continuous sound", "High frequency", "Clear auditory distinction from /s/"],
+    research_sources: ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
+    articulation_data: {
+      phoneme: '/sh/',
+      sound_type: 'consonant',
+      place: 'Postalveolar',
+      manner: 'Fricative',
+      voicing: 'voiceless',
+      cue: 'Quiet sound - like telling someone to be quiet',
+      teacher_guidance: 'Have students feel the continuous airflow. Compare to /s/ - tongue is further back for /sh/.',
+      student_tips: 'Round your lips slightly. Keep your tongue behind your teeth. Push air through quietly like you\'re saying "shh" to be quiet.',
+      common_substitutions: ['/s/', '/ch/', '/t/ + /h/'],
+      articulation_cues: 'Lips slightly rounded, tongue raised near roof of mouth',
+      airflow: 'Continuous airflow through narrow channel',
+      airflow_description: 'Continuous airflow through a narrow channel between tongue and roof of mouth'
+    },
+    instructional_sequence: {
+      pre_teaching: ["Quiet/shh games", "Feel airflow", "Compare to /s/"],
+      explicit_instruction: ["Model /sh/ sound", "Show lip rounding", "Practice airflow"],
+      guided_practice: ["Sound discrimination /s/ vs /sh/", "Picture sorting", "Word building"],
+      independent_practice: ["Find sh words", "Circle digraphs", "Read word lists"],
+      assessment_checkpoints: ["Daily digraph ID", "Weekly word reading", "Monthly assessment"]
+    },
+    assessment_framework_details: {
+      formative: ["Daily sound checks", "Weekly reviews", "Progress tracking"],
+      summative: ["Digraph assessments", "Reading benchmarks", "Pattern mastery"],
+      mastery_criteria: ["80% recognition", "Automatic recall", "Word application"]
+    },
+    differentiation_protocols: {
+      struggling: ["Extended practice", "Visual supports", "Individual coaching"],
+      on_level: ["Standard instruction", "Center activities", "Partner work"],
+      advanced: ["Alternative spellings", "Complex patterns", "Leadership roles"]
+    },
+    linguistic_properties_extended: {
+      description: "Voiceless postalveolar fricative",
+      place: "Postalveolar",
+      manner: "Fricative",
+      voicing: "Voiceless"
+    },
+    weekly_data_override: {
+      focus: "Master sh digraph in all positions",
+      emphasis: ["Two letters one sound", "Beginning and ending positions", "Word recognition"],
+      priorities: ["Clear production", "Digraph recognition", "Word application"]
+    },
+    content_generation_meta: {
+      rules: ["Digraph emphasis", "High frequency", "Decodability"],
+      guidelines: ["Simple structures", "Taught sounds", "Clear meaning"],
+      short_stories: [
+        {
+          title: "The Shell Shop",
+          text: "Shelly has a shop. She sells shells. The shells shine in the sun. I wish I had a shell!"
+        }
+      ],
+      word_ladders: [
+        { words: ["ship", "shop", "chop", "chip"], instructions: "Change one letter at a time" }
+      ]
+    }
+  },
+
   // ============================================
   // STAGE 4: Long Vowels with Silent E (6 phonemes)
   // ============================================
