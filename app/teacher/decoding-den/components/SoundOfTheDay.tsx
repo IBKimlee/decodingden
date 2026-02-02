@@ -292,6 +292,16 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               <span className="text-xl font-bold text-black w-16">#{frequencyData.rank}</span>
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Most Common Sound</span>
             </p>
+            <div className="mt-2 pt-2 border-t border-green-200">
+              <p className="text-xs text-gray-600">
+                <strong>{phoneme.ipa_symbol}</strong> appears in about 1 out of every <strong>{Math.round(100 / frequencyData.percent)}</strong> sounds you speak
+              </p>
+              {graphemes[0]?.percentage && (
+                <p className="text-xs text-gray-600 mt-1">
+                  When written, about {Math.round(graphemes[0].percentage)}% of the time it&apos;s spelled 〈<strong>{graphemes[0].grapheme}</strong>〉
+                </p>
+              )}
+            </div>
             <p className="text-xs text-gray-500 mt-auto italic">
               Mines, Hanson & Shoup (1978)
             </p>
