@@ -719,30 +719,17 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     teaching_advantages: ["Continuous sound", "High frequency", "Clear auditory distinction from /s/"],
     research_sources: ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
     articulation_data: {
-      place: 'palatal-alveolar',
-      manner: 'fricative',
-      voicing: 'unvoiced',
-      tongue_position: 'Tongue rests high, near the front of the mouth, just behind the top teeth',
-      lip_position: 'Lips slightly rounded and protruded',
-      airflow_description: 'Continuous air flows over the tongue without vibration',
-      step_by_step_instructions: [
-        'Step 1: Place tongue high and forward in the mouth',
-        'Step 2: Round lips slightly',
-        'Step 3: Push air continuously over the tongue',
-        'Step 4: No vocal cord vibration - whisper the sound'
-      ],
-      common_substitutions: [
-        'Substituting /s/ for /sh/ (saying "sip" instead of "ship")',
-        'Adding voice (making it sound like /zh/)'
-      ],
-      teacher_tips: [
-        'Use a "be quiet" gesture with finger to lips',
-        'Compare to a snake hissing softly',
-        'Practice with mirror to see lip rounding'
-      ],
+      phoneme: '/sh/',
+      sound_type: 'consonant',
+      place: 'Postalveolar',
+      manner: 'Fricative',
+      voicing: 'voiceless',
       cue: 'Quiet sound - like telling someone to be quiet',
-      teacher_guidance: 'Use a "be quiet" gesture with finger to lips. Compare to a snake hissing softly.',
-      student_tips: 'Round your lips slightly. Place tongue high and forward. Push air continuously - whisper the sound.'
+      teacher_guidance: 'Have students feel the continuous airflow. Compare to /s/ - tongue is further back for /sh/.',
+      student_tips: 'Round your lips slightly. Keep your tongue behind your teeth. Push air through quietly like you\'re saying "shh" to be quiet.',
+      common_substitutions: ['/s/', '/ch/', '/t/ + /h/'],
+      articulation_cues: 'Lips slightly rounded, tongue raised near roof of mouth',
+      airflow_description: 'oral'
     },
     instructional_sequence: {
       pre_teaching: ["Quiet/shh games", "Feel airflow", "Compare to /s/"],
