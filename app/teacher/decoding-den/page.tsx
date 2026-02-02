@@ -16,26 +16,34 @@ import WordWorkspace from './components/WordWorkspace';
 import InteractiveReadAlong from './components/InteractiveReadAlong';
 
 // Anchor words for each phoneme - iconic words that represent the sound
+// Covers all phonemes in the database including IPA variants
 const ANCHOR_WORDS: Record<string, string> = {
-  // Short vowels
-  '/ă/': 'apple', '/a/': 'apple',
-  '/ĕ/': 'elephant', '/e/': 'elephant',
-  '/ĭ/': 'itchy', '/i/': 'itchy',
-  '/ŏ/': 'octopus', '/o/': 'octopus',
-  '/ŭ/': 'umbrella', '/u/': 'umbrella',
-  // Long vowels
+  // ===== SHORT VOWELS =====
+  // Multiple notation systems for teacher flexibility
+  '/ă/': 'apple', '/a/': 'apple', '/æ/': 'apple',
+  '/ĕ/': 'elephant', '/e/': 'elephant', '/ɛ/': 'elephant',
+  '/ĭ/': 'itchy', '/i/': 'itchy', '/ɪ/': 'itchy',
+  '/ŏ/': 'octopus', '/o/': 'octopus', '/ɒ/': 'octopus',
+  '/ŭ/': 'umbrella', '/u/': 'umbrella', '/ʌ/': 'umbrella',
+
+  // ===== LONG VOWELS =====
   '/ā/': 'acorn', '/eɪ/': 'acorn',
-  '/ē/': 'eagle', '/iː/': 'eagle',
+  '/ē/': 'eagle', '/iː/': 'eagle', '/i:/': 'eagle',
   '/ī/': 'ice', '/aɪ/': 'ice',
   '/ō/': 'open', '/oʊ/': 'open',
-  '/ū/': 'unicorn', '/uː/': 'unicorn',
-  // R-controlled vowels
-  '/ar/': 'car', '/ɑr/': 'car',
-  '/er/': 'her', '/ɜr/': 'her',
+  '/ū/': 'unicorn', '/uː/': 'unicorn', '/ju:/': 'unicorn',
+
+  // ===== SCHWA =====
+  '/ə/': 'about',
+
+  // ===== R-CONTROLLED VOWELS =====
+  '/ar/': 'car', '/ɑr/': 'car', '/är/': 'car',
+  '/er/': 'her', '/ɜr/': 'her', '/ər/': 'her',
   '/ir/': 'bird', '/ɪr/': 'bird',
   '/or/': 'horse', '/ɔr/': 'horse',
   '/ur/': 'nurse', '/ʊr/': 'nurse',
-  // Consonants
+
+  // ===== CONSONANTS =====
   '/b/': 'ball',
   '/d/': 'dog',
   '/f/': 'fish',
@@ -54,18 +62,53 @@ const ANCHOR_WORDS: Record<string, string> = {
   '/w/': 'water',
   '/y/': 'yellow',
   '/z/': 'zebra',
-  // Digraphs
+  '/x/': 'fox',
+
+  // ===== CONSONANT DIGRAPHS =====
   '/sh/': 'ship',
   '/ch/': 'cheese',
-  '/th/': 'thumb',
-  '/th(v)/': 'this',
+  '/th/': 'thumb',           // voiceless th
+  '/ð/': 'this',             // voiced th (IPA)
+  '/th(v)/': 'this',         // voiced th (alternate)
   '/wh/': 'whale',
   '/ng/': 'ring',
   '/ph/': 'phone',
-  // Other
+  '/ck/': 'duck',
+  '/tch/': 'catch',
+  '/dge/': 'bridge',
+
+  // ===== DIPHTHONGS =====
+  '/ou/': 'house',
+  '/ow/': 'cow',
+  '/oi/': 'coin',
+  '/oy/': 'boy',
+  '/aw/': 'saw',
+  '/au/': 'haul',
+
+  // ===== VOWEL TEAMS =====
+  '/ee/': 'tree',
+  '/ea/': 'eat',
+  '/ai/': 'rain',
+  '/ay/': 'play',
+  '/oa/': 'boat',
+  '/oo/': 'moon',
+  '/igh/': 'light',
+  '/ew/': 'new',
+  '/ie/': 'pie',
+  '/ue/': 'blue',
+
+  // ===== OTHER PATTERNS =====
   '/ks/': 'box',
   '/kw/': 'queen',
   '/zh/': 'treasure',
+  '/qu/': 'queen',
+
+  // ===== SILENT LETTER PATTERNS (Stage 8) =====
+  '/kn/': 'knee',
+  '/wr/': 'write',
+  '/mb/': 'lamb',
+  '/gn/': 'sign',
+  '/gh/': 'ghost',
 };
 
 function getAnchorWord(phonemeSymbol: string): string | null {
