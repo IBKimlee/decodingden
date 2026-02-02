@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 import { getGraphemeFrequencies } from '../../data/graphemeFrequencies';
 import { ALL_COMPREHENSIVE_PHONEMES } from '../../data/allComprehensivePhonemes';
-import { STAGE_PHONEME_SAMPLES } from '../../data/allStagesDatabase';
 import {
   getPhonemeFrequencyData,
   getGraphemeFrequenciesForPhoneme,
   COMPREHENSIVE_PHONEME_FREQUENCIES
 } from '../../data/comprehensivePhonemeFrequencies';
 
-// Note: Supabase removed - all phoneme data now comes from TypeScript files
-// Search both ALL_COMPREHENSIVE_PHONEMES and STAGE_PHONEME_SAMPLES for complete coverage
+// Supabase client setup
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 interface PhonemeData {
   phoneme: {
@@ -92,139 +95,189 @@ function getFrequencyRankFromLocalData(phonemeSymbol: string): number {
 }
 
 /**
- * Search for phoneme in TypeScript data (replaces Supabase queries)
- * Searches both ALL_COMPREHENSIVE_PHONEMES and STAGE_PHONEME_SAMPLES for full coverage
- * Returns data in the same shape as the old Supabase queries for compatibility
- */
-function findPhonemeInTypeScript(input: string): any | null {
-  const normalizedInput = input.toLowerCase().trim();
-
-  // Remove "sound" suffix if present
-  const cleanInput = normalizedInput.replace(/\s+sound$/i, '');
-
-  // Combine both phoneme arrays for searching
-  const allPhonemes = [...ALL_COMPREHENSIVE_PHONEMES, ...STAGE_PHONEME_SAMPLES];
-
-  // Handle "short X" and "long X" vowel searches
-  const shortVowelMatch = cleanInput.match(/^short\s+([aeiou])$/i);
-  const longVowelMatch = cleanInput.match(/^long\s+([aeiou])$/i);
-
-  let match = null;
-
-  if (shortVowelMatch) {
-    // Short vowels are in Stage 1
-    const vowel = shortVowelMatch[1].toLowerCase();
-    match = allPhonemes.find(p =>
-      p.stage === 1 && p.graphemes.includes(vowel) && p.phoneme === `/${vowel}/`
-    );
-  } else if (longVowelMatch) {
-    // Long vowels are in Stage 4 (VCe patterns)
-    const vowel = longVowelMatch[1].toLowerCase();
-    match = allPhonemes.find(p =>
-      p.stage === 4 && p.graphemes.some(g => g.includes(vowel))
-    );
-  }
-
-  if (!match) {
-    // Try exact phoneme match (e.g., "/sh/", "/m/")
-    match = allPhonemes.find(p =>
-      p.phoneme.toLowerCase() === normalizedInput ||
-      p.phoneme.toLowerCase() === `/${cleanInput}/`
-    );
-  }
-
-  if (!match) {
-    // Try phoneme_id match (e.g., "stage1_m", "stage3_sh")
-    match = allPhonemes.find(p =>
-      p.phoneme_id.toLowerCase() === normalizedInput
-    );
-  }
-
-  if (!match) {
-    // Try grapheme match (e.g., "sh", "ch", "m")
-    match = allPhonemes.find(p =>
-      p.graphemes.some(g => g.toLowerCase() === cleanInput)
-    );
-  }
-
-  if (!match) {
-    // Try partial match on phoneme symbol
-    const withSlashes = cleanInput.startsWith('/') ? cleanInput : `/${cleanInput}/`;
-    match = allPhonemes.find(p =>
-      p.phoneme.toLowerCase().includes(cleanInput) ||
-      p.phoneme.toLowerCase() === withSlashes
-    );
-  }
-
-  if (!match) return null;
-
-  // Map TypeScript fields to the shape expected by transformPhonemeData
-  // Use optional chaining for extended fields that only exist in ComprehensivePhonemeEntry
-  // (STAGE_PHONEME_SAMPLES uses simpler PhonemeEntry type without these fields)
-  const matchAny = match as any;
-  return {
-    phoneme_id: match.phoneme_id,
-    phoneme: match.phoneme,
-    stage_id: match.stage,  // Map 'stage' to 'stage_id' for compatibility
-    frequency_rank: match.frequency_rank,
-    graphemes: match.graphemes,
-    word_examples: match.word_examples,
-    decodable_sentences: match.decodable_sentences,
-    // Extended fields - may be undefined for STAGE_PHONEME_SAMPLES entries
-    articulation_data: matchAny.articulation_data,
-    content_generation_meta: matchAny.content_generation_meta,
-    research_sources: matchAny.research_sources,
-    assessment_criteria: matchAny.assessment_criteria,
-    teaching_advantages: matchAny.teaching_advantages,
-    linguistic_properties_extended: matchAny.linguistic_properties_extended,
-    complexity_score: matchAny.complexity_score,
-    grade_band: matchAny.grade_band,
-    introduction_week: matchAny.introduction_week,
-  };
-}
-
-/**
  * Find specific grapheme for a phoneme (e.g., "sh spelled ch")
- * Uses TypeScript data only
  */
-function findSpecificGraphemeForPhoneme(phoneme: string, grapheme: string): any | null {
-  // Find the phoneme in TypeScript data
-  const phonemeData = findPhonemeInTypeScript(phoneme);
+async function findSpecificGraphemeForPhoneme(phoneme: string, grapheme: string): Promise<any | null> {
+  try {
+    // Normalize phoneme input
+    let normalizedPhoneme = phoneme.toLowerCase().trim();
+    if (!normalizedPhoneme.startsWith('/')) {
+      normalizedPhoneme = `/${normalizedPhoneme}/`;
+    }
+    
+    // First, find the phoneme
+    const { data: phonemeData, error } = await supabase
+      .from('phonemes')
+      .select('*')
+      .eq('phoneme', normalizedPhoneme)
+      .single();
 
-  if (!phonemeData) {
+    if (!phonemeData || error) {
+      console.log(`Phoneme ${normalizedPhoneme} not found, trying alternative searches...`);
+      
+      // Try alternative searches for common phoneme patterns
+      const alternativeSearches = [
+        phoneme, // Try without IPA formatting
+        phoneme.replace(/^\/|\/$/g, ''), // Remove any existing slashes
+      ];
+      
+      for (const alt of alternativeSearches) {
+        const { data: altData, error: altError } = await supabase
+          .from('phonemes')
+          .select('*')
+          .contains('graphemes', [alt])
+          .single();
+          
+        if (altData && !altError) {
+          return {
+            ...altData,
+            requested_specific_grapheme: grapheme,
+            show_specific_grapheme: true
+          };
+        }
+      }
+      
+      return null; // Phoneme doesn't exist
+    }
+
+    // Check if the requested grapheme is valid for this phoneme
+    const hasGrapheme = phonemeData.graphemes?.includes(grapheme);
+    
+    // Always return the phoneme data with the requested grapheme for display
+    return {
+      ...phonemeData,
+      requested_specific_grapheme: grapheme,
+      show_specific_grapheme: true,
+      invalid_grapheme: !hasGrapheme // Flag if this is an invalid combination
+    };
+  } catch (error) {
+    console.error('Error in findSpecificGraphemeForPhoneme:', error);
     return null;
   }
-
-  // Check if the requested grapheme is valid for this phoneme
-  const hasGrapheme = phonemeData.graphemes?.includes(grapheme.toLowerCase());
-
-  // Return the phoneme data with the requested grapheme for display
-  return {
-    ...phonemeData,
-    requested_specific_grapheme: grapheme,
-    show_specific_grapheme: true,
-    invalid_grapheme: !hasGrapheme
-  };
 }
 
 /**
  * Find phoneme by various input formats
- * Uses TypeScript data only (no Supabase)
  */
-function findPhonemeByInput(input: string): any | null {
+async function findPhonemeByInput(input: string): Promise<any | null> {
   const normalizedInput = input.toLowerCase().trim();
-
+  
   // Check for "phoneme spelled grapheme" syntax
   const spelledPattern = /^(.+?)\s+spelled\s+(.+)$/i;
   const spelledMatch = normalizedInput.match(spelledPattern);
-
+  
   if (spelledMatch) {
     const [, requestedPhoneme, requestedGrapheme] = spelledMatch;
-    return findSpecificGraphemeForPhoneme(requestedPhoneme.trim(), requestedGrapheme.trim());
+    return await findSpecificGraphemeForPhoneme(requestedPhoneme.trim(), requestedGrapheme.trim());
   }
+  
+  try {
+    // Try direct phoneme match first (e.g., "/sh/", "/m/")
+    let { data: phonemeData, error } = await supabase
+      .from('phonemes')
+      .select('*')
+      .eq('phoneme', normalizedInput)
+      .single();
 
-  // Use TypeScript search for all other inputs
-  return findPhonemeInTypeScript(input);
+    if (phonemeData && !error) {
+      return phonemeData;
+    }
+
+    // Try with IPA formatting if not already formatted
+    if (!normalizedInput.startsWith('/')) {
+      const ipaFormatted = `/${normalizedInput}/`;
+      ({ data: phonemeData, error } = await supabase
+        .from('phonemes')
+        .select('*')
+        .eq('phoneme', ipaFormatted)
+        .single());
+
+      if (phonemeData && !error) {
+        return phonemeData;
+      }
+    }
+
+    // Try searching in graphemes array
+    ({ data: phonemeData, error } = await supabase
+      .from('phonemes')
+      .select('*')
+      .contains('graphemes', [normalizedInput])
+      .limit(1)
+      .single());
+
+    if (phonemeData && !error) {
+      return phonemeData;
+    }
+
+    // Try searching by phoneme_id (e.g., "stage1_m")
+    ({ data: phonemeData, error } = await supabase
+      .from('phonemes')
+      .select('*')
+      .eq('phoneme_id', normalizedInput)
+      .single());
+
+    if (phonemeData && !error) {
+      return phonemeData;
+    }
+
+    // Try fuzzy search in common patterns
+    const commonPatterns = [
+      normalizedInput.replace(/\s+sound$/i, ''),
+      normalizedInput.replace(/^long\s+/i, ''),
+      normalizedInput.replace(/^short\s+/i, ''),
+      normalizedInput.replace(/\s+/g, ''),
+    ];
+
+    for (const pattern of commonPatterns) {
+      // Special case: if searching for "short" + single vowel, prioritize short vowel phonemes
+      // Short vowels are in Stage 1, so look for stage1_a, stage1_e, etc.
+      if (normalizedInput.toLowerCase().includes('short') &&
+          ['a', 'e', 'i', 'o', 'u'].includes(pattern.toLowerCase())) {
+
+        // Try to find short vowel phoneme first (Stage 1 vowels)
+        ({ data: phonemeData, error } = await supabase
+          .from('phonemes')
+          .select('*')
+          .eq('phoneme', `/${pattern}/`)
+          .eq('stage_id', 1)
+          .limit(1)
+          .single());
+
+        if (phonemeData && !error) {
+          return phonemeData;
+        }
+      }
+
+      // Try as grapheme
+      ({ data: phonemeData, error } = await supabase
+        .from('phonemes')
+        .select('*')
+        .contains('graphemes', [pattern])
+        .limit(1)
+        .single());
+
+      if (phonemeData && !error) {
+        return phonemeData;
+      }
+
+      // Try as IPA
+      const ipaPattern = `/${pattern}/`;
+      ({ data: phonemeData, error } = await supabase
+        .from('phonemes')
+        .select('*')
+        .eq('phoneme', ipaPattern)
+        .single());
+
+      if (phonemeData && !error) {
+        return phonemeData;
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error searching for phoneme:', error);
+    return null;
+  }
 }
 
 /**
@@ -837,13 +890,26 @@ function generateWordLists(data: any): { [grapheme: string]: { beginning: string
  */
 function generateAirflowDescription(data: any): string {
   const phoneme = data.phoneme?.toLowerCase() || '';
-
-  // Return short values like "oral" or "nasal"
-  if (phoneme.includes('m') || phoneme.includes('n') || phoneme.includes('ng')) {
-    return 'nasal';
+  const stageName = data.stage_id;
+  
+  // Provide specific airflow descriptions based on phoneme characteristics
+  if (phoneme.includes('sh')) {
+    return 'Continuous airflow through a narrow channel between tongue and roof of mouth.';
   }
-
-  return 'oral';
+  if (phoneme.includes('ch')) {
+    return 'Brief blockage followed by release with friction.';
+  }
+  if (phoneme.includes('th')) {
+    return 'Airflow passes between tongue and teeth.';
+  }
+  if (stageName === 3) {
+    return 'Two letters working together to create one sound with continuous airflow.';
+  }
+  if (stageName >= 4) {
+    return 'Smooth, unobstructed airflow for vowel production.';
+  }
+  
+  return 'Controlled airflow for precise sound production.';
 }
 
 /**
@@ -1087,8 +1153,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Find the phoneme in TypeScript data
-    const phonemeData = findPhonemeByInput(phoneme_input);
+    // Find the phoneme in Supabase
+    const phonemeData = await findPhonemeByInput(phoneme_input);
     
     if (!phonemeData) {
       return NextResponse.json(
@@ -1154,41 +1220,43 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '20');
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    // Filter and paginate from TypeScript data
-    let phonemes = [...ALL_COMPREHENSIVE_PHONEMES];
+    let query = supabase
+      .from('phonemes')
+      .select('phoneme_id, phoneme, stage_id, frequency_rank, graphemes');
 
     if (stage) {
-      phonemes = phonemes.filter(p => p.stage === parseInt(stage));
+      query = query.eq('stage_id', parseInt(stage));
     }
 
-    // Sort by frequency_rank
-    phonemes.sort((a, b) => (a.frequency_rank || 999) - (b.frequency_rank || 999));
+    const { data: phonemes, error, count } = await query
+      .order('frequency_rank', { ascending: true })
+      .range(offset, offset + limit - 1);
 
-    // Apply pagination
-    const total = phonemes.length;
-    const paginatedPhonemes = phonemes.slice(offset, offset + limit);
+    if (error) {
+      throw error;
+    }
 
-    const transformedPhonemes = paginatedPhonemes.map(phoneme => ({
+    const transformedPhonemes = phonemes?.map(phoneme => ({
       id: phoneme.phoneme_id,
       ipa_symbol: phoneme.phoneme,
       common_name: phoneme.phoneme.replace(/[\/]/g, '') + ' sound',
-      phoneme_type: getPhonemeType({ ...phoneme, stage_id: phoneme.stage }),
+      phoneme_type: getPhonemeType(phoneme),
       frequency_rank: phoneme.frequency_rank || 0,
-      stage_id: phoneme.stage,
+      stage_id: phoneme.stage_id,
       graphemes: phoneme.graphemes || [],
-    }));
+    })) || [];
 
     return NextResponse.json({
       success: true,
       phonemes: transformedPhonemes,
-      total: total,
+      total: count || 0,
       generated_at: new Date().toISOString(),
     });
 
   } catch (error) {
     console.error('Error in decoding-den GET:', error);
     return NextResponse.json(
-      {
+      { 
         success: false,
         error: 'Internal server error',
         generated_at: new Date().toISOString(),
