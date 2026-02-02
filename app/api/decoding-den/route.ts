@@ -837,26 +837,13 @@ function generateWordLists(data: any): { [grapheme: string]: { beginning: string
  */
 function generateAirflowDescription(data: any): string {
   const phoneme = data.phoneme?.toLowerCase() || '';
-  const stageName = data.stage_id;
-  
-  // Provide specific airflow descriptions based on phoneme characteristics
-  if (phoneme.includes('sh')) {
-    return 'Continuous airflow through a narrow channel between tongue and roof of mouth.';
+
+  // Return short values like "oral" or "nasal"
+  if (phoneme.includes('m') || phoneme.includes('n') || phoneme.includes('ng')) {
+    return 'nasal';
   }
-  if (phoneme.includes('ch')) {
-    return 'Brief blockage followed by release with friction.';
-  }
-  if (phoneme.includes('th')) {
-    return 'Airflow passes between tongue and teeth.';
-  }
-  if (stageName === 3) {
-    return 'Two letters working together to create one sound with continuous airflow.';
-  }
-  if (stageName >= 4) {
-    return 'Smooth, unobstructed airflow for vowel production.';
-  }
-  
-  return 'Controlled airflow for precise sound production.';
+
+  return 'oral';
 }
 
 /**
