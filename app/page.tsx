@@ -112,10 +112,12 @@ export default function Home() {
 
           {/* Features */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
-            <div className="bg-gradient-to-br from-oceanBlue/10 to-lightOcean/15 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-oceanBlue/20">
-              <h3 className="text-sm font-semibold mb-1 text-deepNavy">Sound-Based Instruction</h3>
-              <p className="text-mediumGray text-xs">Explicit lessons from phoneme to meaning, one skill at a time.</p>
-            </div>
+            <Link href="/sound-based-instruction" className="block">
+              <div className="bg-gradient-to-br from-oceanBlue/10 to-lightOcean/15 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-oceanBlue/20 cursor-pointer">
+                <h3 className="text-sm font-semibold mb-1 text-deepNavy">Sound-Based Instruction</h3>
+                <p className="text-mediumGray text-xs">Explicit lessons from phoneme to meaning, one skill at a time.</p>
+              </div>
+            </Link>
             <Link href="/teaching-tools" className="block">
               <div className="bg-gradient-to-br from-accentCoral/15 to-accentCoral/25 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-accentCoral/30 cursor-pointer">
                 <h3 className="text-sm font-semibold mb-1 text-deepNavy">Teaching Tools & Printables</h3>
