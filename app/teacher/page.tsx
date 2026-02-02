@@ -3,13 +3,11 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getAllStages, type PhonicsStage } from '@/lib/supabase/phonics-queries';
 import { useTeacher, useAuth } from '../contexts/AuthContext';
 
 export default function TeacherPortal() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
-  const [stages, setStages] = useState<PhonicsStage[]>([]);
   const router = useRouter();
   const { teacher, isTeacher, isLoading: authLoading } = useTeacher();
   const { logout } = useAuth();
@@ -29,21 +27,6 @@ export default function TeacherPortal() {
       return;
     }
   }, [authLoading, isTeacher, teacher, router]);
-
-  // Load stages from Supabase (cached, non-blocking)
-  useEffect(() => {
-    async function loadStages() {
-      try {
-        const stagesData = await getAllStages();
-        setStages(stagesData);
-      } catch (error) {
-        console.error('Error loading stages:', error);
-      }
-    }
-    if (isTeacher) {
-      loadStages();
-    }
-  }, [isTeacher]);
 
   // Enhanced phoneme suggestions with stage information
   const phonemeSuggestions = [

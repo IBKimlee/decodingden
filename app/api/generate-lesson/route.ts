@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllStages, getAllPhonemes, getStageById } from '../../../lib/supabase/phonics-queries';
-import { LEGAL_COMPLIANCE } from '@/app/data/allStagesDatabase';
+import { LEGAL_COMPLIANCE, EIGHT_STAGE_SYSTEM } from '@/app/data/allStagesDatabase';
 
 // 🎯 Decoding Den AI-Powered Lesson Generator
 // ✅ Science of Reading Aligned • FCRR Standards • Evidence-Based
@@ -51,16 +50,16 @@ async function generateAILesson(phoneme: string) {
 
   // Content generation using 8-stage database
   const keyword = getKeywordForPhoneme(phoneme);
-  const stageInfo = await getStageById(phonemeData.stage);
+  const stageInfo = EIGHT_STAGE_SYSTEM[phonemeData.stage - 1]; // TypeScript data (0-indexed)
   const assessmentBenchmarks = {
     daily: "90% accuracy in sound production",
-    weekly: "85% accuracy in blending exercises", 
+    weekly: "85% accuracy in blending exercises",
     summative: "95% mastery in connected reading"
   };
   const isDigraph = phoneme.includes('sh') || phoneme.includes('ch') || phoneme.includes('th') || phoneme.includes('ng');
-  
+
   // 🎯 Generate comprehensive lesson using 8-stage system data
-  const gradeLevel = stageInfo ? stageInfo.grade_band : 'K-2';
+  const gradeLevel = stageInfo ? stageInfo.grade_level : 'K-2';
   const stageDescription = stageInfo ? stageInfo.description : 'Phonics instruction';
   
   return {
