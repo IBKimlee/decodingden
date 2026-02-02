@@ -104,6 +104,65 @@ const PHONEME_FREQUENCY_PERCENT: Record<string, { percent: number; rank: number 
   '/kw/': { percent: 0.06, rank: 42 },   // qu
 };
 
+/**
+ * Teacher-friendly explanations for technical phonetic terms
+ */
+function getPlaceExplanation(place: string): string {
+  const explanations: Record<string, string> = {
+    'bilabial': 'Both lips together',
+    'labiodental': 'Bottom lip touches top teeth',
+    'dental': 'Tongue touches teeth',
+    'interdental': 'Tongue between teeth',
+    'alveolar': 'Tongue touches ridge behind teeth',
+    'palato-alveolar': 'Tongue behind the ridge, toward roof',
+    'post-alveolar': 'Tongue behind the ridge, toward roof',
+    'palatal': 'Tongue touches hard palate (roof)',
+    'velar': 'Back of tongue touches soft palate',
+    'glottal': 'Sound made in throat',
+  };
+  const key = place.toLowerCase().trim();
+  return explanations[key] || place;
+}
+
+function getMannerExplanation(manner: string): string {
+  const explanations: Record<string, string> = {
+    'stop': 'Air completely blocked, then released',
+    'plosive': 'Air completely blocked, then released',
+    'fricative': 'Air squeezed through narrow gap',
+    'affricate': 'Starts blocked, ends with friction',
+    'nasal': 'Air flows through nose',
+    'liquid': 'Air flows around tongue',
+    'lateral': 'Air flows around sides of tongue',
+    'approximant': 'Tongue close but not touching',
+    'glide': 'Quick movement, almost like a vowel',
+    'tap': 'Quick tap of tongue',
+    'flap': 'Quick tap of tongue',
+    'trill': 'Tongue vibrates rapidly',
+  };
+  const key = manner.toLowerCase().trim();
+  return explanations[key] || manner;
+}
+
+function getVoicingExplanation(voicing: string): string {
+  const explanations: Record<string, string> = {
+    'voiced': 'Vocal cords vibrate',
+    'voiceless': 'No vocal cord vibration',
+    'unvoiced': 'No vocal cord vibration',
+  };
+  const key = voicing.toLowerCase().trim();
+  return explanations[key] || voicing;
+}
+
+function getAirflowExplanation(airflow: string): string {
+  const explanations: Record<string, string> = {
+    'oral': 'Air exits through mouth',
+    'nasal': 'Air exits through nose',
+    'pulmonic': 'Air from lungs',
+  };
+  const key = airflow.toLowerCase().trim();
+  return explanations[key] || airflow;
+}
+
 function getPhonemeFrequency(ipaSymbol: string): { percent: number; rank: number } | null {
   // Normalize the input
   const normalized = ipaSymbol.toLowerCase().trim();
@@ -151,6 +210,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   const [showReferralNotes, setShowReferralNotes] = useState(true);
   const [showTeachingTips, setShowTeachingTips] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
+  const [showAllSpellingsModal, setShowAllSpellingsModal] = useState(false);
 
   if (!phonemeData) return null;
 
@@ -187,27 +247,27 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
     <div className="space-y-5">
 
       {/* 3-Column Grid: Left = Type+Voicing stacked, Middle = Frequency, Right = Spelling */}
-      <div className="grid md:grid-cols-3 gap-3 items-stretch min-h-[340px]">
+      <div className="grid md:grid-cols-3 gap-3 items-stretch min-h-[220px]">
 
         {/* LEFT COLUMN: Phoneme Type + Voicing (stacked, equal height to other columns) */}
         <div className="flex flex-col gap-2">
           {/* Phoneme Type */}
-          <div className="bg-blue-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex-1 flex flex-col">
+          <div className="bg-blue-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col">
             <h5 className="font-semibold text-lg">
               <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
               <span className="text-oceanBlue font-bold ml-2">Phoneme Type</span>
             </h5>
-            <p className="text-gray-700 capitalize font-bold mt-5">{getPhonemeLabel(phoneme)}</p>
+            <p className="text-gray-700 capitalize font-bold mt-1">{getPhonemeLabel(phoneme)}</p>
           </div>
 
           {/* Voicing */}
           {phoneme.is_voiced !== null && (
-            <div className="bg-purple-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex-1 flex flex-col">
+            <div className="bg-purple-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex-1 flex flex-col">
               <h5 className="font-semibold text-lg">
                 <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
                 <span className="text-oceanBlue font-bold ml-2">Voicing</span>
               </h5>
-              <p className="text-gray-700 mt-5">
+              <p className="text-gray-700 mt-1">
                 <strong>{phoneme.is_voiced ? 'Voiced' : 'Unvoiced'}</strong>
                 <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 ml-2">
                   {phoneme.is_voiced ? 'Vocal Cords Vibrate' : 'No Vibration'}
@@ -219,16 +279,16 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
 
         {/* MIDDLE COLUMN: Frequency in English */}
         {frequencyData && (
-          <div className="bg-green-50 rounded-lg px-3 py-3 border-2 border-oceanBlue/40 flex flex-col h-full">
+          <div className="bg-green-50 rounded-lg px-3 py-2 border-2 border-oceanBlue/40 flex flex-col h-full">
             <h5 className="font-semibold text-lg">
               <span className="text-black font-bold">{phoneme.ipa_symbol}</span>
               <span className="text-oceanBlue font-bold ml-2">How Common Is This Sound?</span>
             </h5>
-            <p className="text-gray-700 mt-5 flex items-center">
+            <p className="text-gray-700 mt-1 flex items-center">
               <span className="text-xl font-bold w-16">{frequencyData.percent.toFixed(2)}%</span>
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Of All Sounds In English</span>
             </p>
-            <p className="text-gray-700 mt-5 flex items-center">
+            <p className="text-gray-700 mt-1 flex items-center">
               <span className="text-xl font-bold text-black w-16">#{frequencyData.rank}</span>
               <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Most Common Sound</span>
             </p>
@@ -244,19 +304,9 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
             Most Common Spelling - <span className="text-black font-bold">
               〈{graphemes[0]?.grapheme || 'N/A'}〉
             </span>
-            {graphemes[0]?.percentage != null && graphemes[0].percentage > 0 && (
+            {graphemes[0]?.percentage != null && (
               <span className="ml-2 text-sm font-semibold text-emerald-600">
-                ({typeof graphemes[0].percentage === 'number' ? graphemes[0].percentage.toFixed(1) : graphemes[0].percentage}%)
-              </span>
-            )}
-            {graphemes[0]?.usage_label && (
-              <span className={`ml-2 px-2 py-0.5 rounded-full text-xs font-medium ${
-                graphemes[0].usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
-                graphemes[0].usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
-                graphemes[0].usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
-                'bg-red-100 text-red-700'
-              }`}>
-                {graphemes[0].usage_label}
+                ({graphemes[0].percentage < 0.05 ? '<0.05%' : `${graphemes[0].percentage.toFixed(1)}%`})
               </span>
             )}
           </h5>
@@ -264,36 +314,33 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
           {graphemes.length > 1 && (
             <div className="text-gray-700">
               <div className="flex items-center gap-2 mb-2">
-                <p className="font-semibold text-oceanBlue text-sm w-32">Alternative spellings</p>
+                <p className="font-semibold text-oceanBlue text-base">Alternative spellings</p>
+                <span className="text-xs text-gray-500">({graphemes.length - 1} total)</span>
                 <button
                   onClick={() => setShowAlternatives(!showAlternatives)}
                   className="px-2 py-0.5 text-xs bg-oceanBlue text-white rounded hover:bg-darkOcean transition-colors"
                 >
                   {showAlternatives ? 'Hide' : 'Show'}
                 </button>
+                <button
+                  onClick={() => setShowAllSpellingsModal(true)}
+                  className="px-2 py-0.5 text-xs bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
+                >
+                  Show All
+                </button>
               </div>
               {showAlternatives && (
-                <div className="space-y-1.5 max-h-64 overflow-y-auto">
+                <div className="space-y-1.5 max-h-[46px] overflow-y-auto">
                   {graphemes.slice(1).map((grapheme) => (
                     <div key={grapheme.id} className="flex items-center bg-white/80 rounded-lg px-3 py-1.5 border border-oceanBlue/20">
                       <div className="w-32 flex items-center">
                         <span className="text-base font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
-                        {grapheme.percentage != null && grapheme.percentage > 0 && (
+                        {grapheme.percentage != null && (
                           <span className="ml-2 text-sm font-semibold text-blue-600">
-                            {typeof grapheme.percentage === 'number' ? grapheme.percentage.toFixed(1) : grapheme.percentage}%
+                            {grapheme.percentage < 0.05 ? '<0.05%' : `${grapheme.percentage.toFixed(1)}%`}
                           </span>
                         )}
                       </div>
-                      {grapheme.usage_label && (
-                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-                          grapheme.usage_label === 'Primary' ? 'bg-green-100 text-green-700' :
-                          grapheme.usage_label === 'Secondary' ? 'bg-blue-100 text-blue-700' :
-                          grapheme.usage_label === 'Rare' ? 'bg-yellow-100 text-yellow-700' :
-                          'bg-red-100 text-red-700'
-                        }`}>
-                          {grapheme.usage_label}
-                        </span>
-                      )}
                     </div>
                   ))}
                 </div>
@@ -317,19 +364,23 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Place <span className="normal-case">- Where in mouth</span></p>
-                  <p className="font-semibold text-sm text-gray-800">{articulation.place_of_articulation}</p>
+                  <p className="font-bold text-base text-gray-800">{articulation.place_of_articulation}</p>
+                  <p className="text-xs text-gray-500 italic mt-1">{getPlaceExplanation(articulation.place_of_articulation)}</p>
                 </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Manner <span className="normal-case">- How air releases</span></p>
-                  <p className="font-semibold text-sm text-gray-800">{articulation.manner_of_articulation}</p>
+                  <p className="font-bold text-base text-gray-800">{articulation.manner_of_articulation}</p>
+                  <p className="text-xs text-gray-500 italic mt-1">{getMannerExplanation(articulation.manner_of_articulation)}</p>
                 </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Voicing <span className="normal-case">- Vocal cord vibration</span></p>
-                  <p className="font-semibold text-sm text-gray-800">{articulation.voicing}</p>
+                  <p className="font-bold text-base text-gray-800">{articulation.voicing}</p>
+                  <p className="text-xs text-gray-500 italic mt-1">{getVoicingExplanation(articulation.voicing)}</p>
                 </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Airflow <span className="normal-case">- Mouth or nose</span></p>
-                  <p className="font-semibold text-sm text-gray-800">{articulation.airflow_description || 'oral'}</p>
+                  <p className="font-bold text-base text-gray-800">{articulation.airflow_description || 'oral'}</p>
+                  <p className="text-xs text-gray-500 italic mt-1">{getAirflowExplanation(articulation.airflow_description || 'oral')}</p>
                 </div>
               </div>
             </div>
@@ -476,6 +527,54 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* All Spellings Modal */}
+      {showAllSpellingsModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setShowAllSpellingsModal(false)}>
+          <div className="bg-white rounded-xl shadow-2xl max-w-xl w-full mx-4" onClick={e => e.stopPropagation()}>
+            <div className="bg-gradient-to-r from-oceanBlue to-darkOcean p-4">
+              <div className="flex justify-between items-center">
+                <h3 className="text-xl font-bold text-white">
+                  All Spellings for {phoneme.ipa_symbol}
+                </h3>
+                <button
+                  onClick={() => setShowAllSpellingsModal(false)}
+                  className="text-white/80 hover:text-white text-2xl leading-none"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className={`grid gap-2 ${graphemes.length > 6 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                {graphemes.map((grapheme, index) => (
+                  <div key={grapheme.id} className={`grid grid-cols-[80px_70px_1fr] items-center rounded-lg px-4 py-2 border ${index === 0 ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200'}`}>
+                    <span className="text-lg font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
+                    <span className="text-sm font-semibold text-blue-600">
+                      {grapheme.percentage != null ? (grapheme.percentage < 0.05 ? '<0.05%' : `${grapheme.percentage.toFixed(1)}%`) : '—'}
+                    </span>
+                    <div className="flex items-center justify-end">
+                      {index === 0 && (
+                        <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                          #1
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="p-4 border-t border-gray-200 bg-gray-50">
+              <button
+                onClick={() => setShowAllSpellingsModal(false)}
+                className="w-full py-2 bg-oceanBlue text-white rounded-lg hover:bg-darkOcean transition-colors font-semibold"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
