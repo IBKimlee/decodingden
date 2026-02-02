@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 
 // Public pages - no login required
-const PUBLIC_ROUTES = ['/login', '/', '/research', '/teaching-tools'];
+const PUBLIC_ROUTES = ['/login', '/', '/research', '/teaching-tools', '/sound-based-instruction'];
 
 // Teacher-only pages
 const TEACHER_ROUTES = ['/teacher', '/admin', '/pending-approval'];
