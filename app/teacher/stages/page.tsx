@@ -470,6 +470,9 @@ export default function TeachingStages() {
                     New Patterns
                   </h3>
                   <p className="text-sm text-black/90 font-medium group-hover:text-black group-hover:scale-105 transition-all duration-300 drop-shadow-sm relative z-10">{stage.totalElements}</p>
+                  {stage.stage === 8 && (
+                    <p className="text-[10px] text-black/60 mt-0.5 relative z-10">31 taught · 19 exposure ref.</p>
+                  )}
                 </button>
 
                 {/* Duration Button */}

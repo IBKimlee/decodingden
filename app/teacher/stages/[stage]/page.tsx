@@ -1811,8 +1811,12 @@ export default function StageDetailPage() {
                      stageNumber === 8 ? stage8WeeklyData : [];
   const hasDetailedData = weeklyData.length > 0;
 
-  // Calculate taught vs exposure counts for Stage 8
+  // Calculate taught vs exposure counts for Stage 8 (exclude Week 10 mastery and review weeks)
   const intensityCounts = stageNumber === 8 ? weeklyData.reduce((acc, week) => {
+    // Skip Week 10 and any week with "All Stage" review graphemes
+    if (week.week === 10 || week.graphemes?.some(g => g.startsWith('All Stage'))) {
+      return acc;
+    }
     week.intensity?.forEach(i => {
       if (i === 'CORE' || i === 'TEACH') {
         acc.taught++;
@@ -2396,7 +2400,7 @@ export default function StageDetailPage() {
                               >
                                 <span className={`transform transition-transform ${isExposureExpanded ? 'rotate-90' : ''}`}>▶</span>
                                 <span className="font-medium">Exposure Reference</span>
-                                <span className="text-gray-400">({exposureItems.length} items)</span>
+                                <span className="text-gray-400">({exposureItems.length} {exposureItems.length === 1 ? 'item' : 'items'})</span>
                               </button>
                               {isExposureExpanded && (
                                 <div className="mt-2 pl-4 flex flex-wrap gap-1">
