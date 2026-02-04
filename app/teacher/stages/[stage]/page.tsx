@@ -990,7 +990,8 @@ const stage6WeeklyData: WeeklyData[] = [
 // ═══════════════════════════════════════════════════════════════════════════════
 // STAGE 7: Complex & Variable Patterns (v4.1)
 // Grade: 3rd-Fall | Duration: 10 weeks | Phase: Consolidated (Proficient)
-// Intensity Profile: 2 ★ CORE | 9 ▲ TEACH | 5 ○ EXPOSURE
+// Intensity Profile: 2 ★ CORE | 7 ▲ TEACH | 3 ○ EXPOSURE
+// Note: Silent letters (kn, wr, gn, mb) moved to Stage 8 for morphological context
 // ═══════════════════════════════════════════════════════════════════════════════
 const stage7WeeklyData: WeeklyData[] = [
   {
@@ -1109,20 +1110,19 @@ const stage7WeeklyData: WeeklyData[] = [
   },
   {
     week: 8,
-    phonemes: ['Silent letters'],
-    graphemes: ['kn', 'wr', 'gn', 'mb'],
-    intensity: ['TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE'],
-    focusWords: ['know', 'knife', 'knock', 'knee', 'write', 'wrong', 'wrist', 'wrap', 'gnat', 'gnaw', 'sign', 'lamb', 'climb', 'comb'],
-    decodableText: 'I know the knife is by the knee. Write the wrong sign on your wrist. Wrap the lamb. The gnat will gnaw and climb the comb.',
+    phonemes: ['Review'],
+    graphemes: ['All Stage 7 patterns'],
+    intensity: ['CORE'],
+    focusWords: ['measure', 'treasure', 'school', 'stomach', 'through', 'though', 'thought', 'guess', 'guard', 'have', 'give', 'please'],
+    decodableText: 'I will measure the treasure at school. My stomach felt strange through the thought. I guess the guard will have and give, please.',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
+    isReview: true,
     teachingTips: [
-      'Silent letter patterns — the first letter is silent:',
-      'kn→/n/ (know, knife, knock, knee) — TEACH',
-      'wr→/r/ (write, wrong, wrist, wrap) — TEACH',
-      'gn→/n/ (gnat, gnaw, sign) — EXPOSURE',
-      'mb→/m/ (lamb, climb, comb) — EXPOSURE'
+      'Review all Stage 7 patterns: /zh/, soft c/g mastery, ough (5 sounds), Greek/French ch, gu/ue protectors, ve/se finals',
+      'Focus on flex strategies for variable patterns',
+      'Silent letters (kn, wr, gn, mb) moved to Stage 8 for morphological instruction'
     ]
   },
   {
@@ -1159,7 +1159,7 @@ const stage7WeeklyData: WeeklyData[] = [
 // ═══════════════════════════════════════════════════════════════════════════════
 // STAGE 8: Morphology, Schwa & Advanced Patterns (v4.1)
 // Grade: 3rd-Spring | Duration: 10 weeks | Phase: Consolidated (Advanced)
-// Intensity Profile: 7 ★ CORE | 35 ▲ TEACH | 11 ○ EXPOSURE
+// Intensity Profile: 9 ★ CORE | 22 ▲ TEACH | 19 ○ EXPOSURE
 // Phase 8A (Weeks 1-5): Core Morphology | Phase 8B (Weeks 6-10): Extended Patterns
 // ═══════════════════════════════════════════════════════════════════════════════
 const stage8WeeklyData: WeeklyData[] = [
@@ -1168,28 +1168,30 @@ const stage8WeeklyData: WeeklyData[] = [
   // ─────────────────────────────────────────────────────────────────────────────
   {
     week: 1,
-    phonemes: ['-ed (3 sounds)'],
-    graphemes: ['-ed→/t/', '-ed→/d/', '-ed→/əd/'],
-    intensity: ['CORE', 'CORE', 'CORE'],
-    focusWords: ['jumped', 'walked', 'played', 'called', 'wanted', 'needed', 'started', 'ended'],
-    decodableText: 'I jumped and walked. She played and called. We wanted and needed to have started and ended.',
-    assessment: 'Daily: -ed suffix (3 pronunciations)',
+    phonemes: ['-ed (3 sounds)', 'Silent letters'],
+    graphemes: ['-ed→/t/', '-ed→/d/', '-ed→/əd/', 'kn', 'wr'],
+    intensity: ['CORE', 'CORE', 'CORE', 'TEACH', 'TEACH'],
+    focusWords: ['jumped', 'walked', 'played', 'called', 'wanted', 'needed', 'know', 'knife', 'knock', 'knee', 'write', 'wrong', 'wrist', 'wrap'],
+    decodableText: 'I jumped and walked. She played and called. We wanted and needed it. I know the knife is by the knee. Write the wrong word on your wrist. Wrap it up!',
+    assessment: 'Daily: -ed suffix + silent letters kn/wr',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
       '-ed has THREE sounds based on final consonant:',
       '/t/ after voiceless consonants (jumped, walked, stopped)',
       '/d/ after voiced consonants and vowels (played, called, rained)',
-      '/əd/ after t or d (wanted, needed, started, ended)'
+      '/əd/ after t or d (wanted, needed, started, ended)',
+      'kn→/n/ — k is silent (know, knife, knock, knee)',
+      'wr→/r/ — w is silent (write, wrong, wrist, wrap)'
     ]
   },
   {
     week: 2,
-    phonemes: ['-s/-es', '-ing'],
-    graphemes: ['-s', '-es', '-ing'],
-    intensity: ['CORE', 'CORE', 'CORE'],
-    focusWords: ['cats', 'dogs', 'boxes', 'wishes', 'running', 'jumping', 'hopping', 'playing'],
-    decodableText: 'The cats and dogs are running and jumping. The boxes have wishes. Hopping and playing!',
+    phonemes: ['-s/-es', '-ing', 'Silent letters'],
+    graphemes: ['-s', '-es', '-ing', 'mb', 'gn'],
+    intensity: ['CORE', 'CORE', 'CORE', 'EXPOSURE', 'EXPOSURE'],
+    focusWords: ['cats', 'dogs', 'boxes', 'wishes', 'running', 'jumping', 'hopping', 'playing', 'lamb', 'climb', 'comb', 'thumb', 'gnat', 'gnaw', 'sign', 'design'],
+    decodableText: 'The cats and dogs are running and jumping. The boxes have wishes. Hopping and playing! The lamb will climb. Use the comb and thumb. The gnat will gnaw at the sign. What a design!',
     assessment: 'CHECKPOINT Weeks 1-2',
     isCheckpoint: true,
     isMastery: false,
@@ -1197,14 +1199,16 @@ const stage8WeeklyData: WeeklyData[] = [
       '-s/-es plurals: -es after s, x, z, ch, sh (boxes, wishes)',
       '-ing: progressive tense',
       'Doubling rule: hop→hopping (double consonant after short vowel)',
-      'Drop e rule: make→making'
+      'Drop e rule: make→making',
+      'mb→/m/ — b is silent at word end (lamb, climb, comb, thumb) — EXPOSURE',
+      'gn→/n/ — g is silent (gnat, gnaw, sign, design) — EXPOSURE'
     ]
   },
   {
     week: 3,
     phonemes: ['un-', 're-'],
     graphemes: ['un-', 're-'],
-    intensity: ['CORE', 'TEACH'],
+    intensity: ['CORE', 'CORE'],
     focusWords: ['undo', 'unfair', 'unhappy', 'unlock', 'redo', 'reread', 'return', 'rebuild'],
     decodableText: 'It is unfair to be unhappy. Undo and unlock it. Reread, redo, return, and rebuild!',
     assessment: 'Daily: un- and re- prefixes',
@@ -1212,7 +1216,7 @@ const stage8WeeklyData: WeeklyData[] = [
     isMastery: false,
     teachingTips: [
       'un- means "not" or "opposite" (CORE — most common prefix)',
-      're- means "again" (TEACH — second most common prefix)',
+      're- means "again" (CORE — second most common prefix)',
       'Fry data: un- and re- together cover 50%+ of all prefixed words!'
     ]
   },
@@ -1234,11 +1238,11 @@ const stage8WeeklyData: WeeklyData[] = [
   },
   {
     week: 5,
-    phonemes: ['-er', '-est', '-ly', '-y'],
-    graphemes: ['-er', '-est', '-ly', '-y'],
-    intensity: ['CORE', 'TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['faster', 'fastest', 'quickly', 'slowly', 'carefully', 'sunny', 'rainy', 'cloudy'],
-    decodableText: 'Run faster — be the fastest! Go quickly and carefully, not slowly. It is sunny, not rainy or cloudy.',
+    phonemes: ['-er', '-est', '-ly', '-y', 'in-/im-'],
+    graphemes: ['-er', '-est', '-ly', '-y', 'in-', 'im-'],
+    intensity: ['CORE', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['faster', 'fastest', 'quickly', 'slowly', 'carefully', 'sunny', 'rainy', 'cloudy', 'inside', 'incorrect', 'impossible', 'impatient'],
+    decodableText: 'Run faster — be the fastest! Go quickly and carefully, not slowly. It is sunny, not rainy or cloudy. Go inside. That is incorrect and impossible! Do not be impatient.',
     assessment: '8A MASTERY CHECK (End of Phase 8A)',
     isCheckpoint: false,
     isMastery: true,
@@ -1247,6 +1251,7 @@ const stage8WeeklyData: WeeklyData[] = [
       '-est superlative (fastest, biggest)',
       '-ly makes adverbs (quickly, slowly, carefully)',
       '-y makes adjectives (sunny, rainy, cloudy)',
+      'in- means "not" or "into" (inside, incorrect) — im- before m, p, b (impossible, impatient)',
       'Phase 8A complete — assess inflectional suffixes and core prefixes'
     ]
   },
@@ -1289,16 +1294,18 @@ const stage8WeeklyData: WeeklyData[] = [
   {
     week: 8,
     phonemes: ['/sh/', 'Tier 2 suffixes'],
-    graphemes: ['ti→/sh/', 'ci→/sh/', '-ful', '-less', '-ness', '-ment'],
-    intensity: ['TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['patient', 'partial', 'special', 'official', 'helpful', 'careless', 'kindness', 'movement'],
-    decodableText: 'The patient was partial to the special official. Be helpful, not careless. Show kindness with movement.',
-    assessment: 'Daily: ti/ci→/sh/ and Tier 2 suffixes',
+    graphemes: ['ti→/sh/', 'ci→/sh/', 'ssi→/sh/', 'sci→/sh/', '-ful', '-less', '-ness', '-ment'],
+    intensity: ['TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['patient', 'partial', 'special', 'official', 'mission', 'permission', 'conscience', 'conscious', 'helpful', 'careless', 'kindness', 'movement'],
+    decodableText: 'The patient was partial to the special official. The mission needs permission. Be conscious of your conscience. Be helpful, not careless. Show kindness with movement.',
+    assessment: 'Daily: ti/ci/ssi/sci→/sh/ and Tier 2 suffixes',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
       'ti says /sh/ before a vowel (patient, partial, nation)',
       'ci says /sh/ before a vowel (special, official, ancient)',
+      'ssi says /sh/ (mission, permission) — EXPOSURE',
+      'sci says /sh/ (conscience, conscious) — EXPOSURE',
       '-ful means "full of" (helpful, careful)',
       '-less means "without" (careless, homeless)',
       '-ness makes nouns (kindness, happiness)',
@@ -1307,11 +1314,11 @@ const stage8WeeklyData: WeeklyData[] = [
   },
   {
     week: 9,
-    phonemes: ['Advanced suffixes'],
-    graphemes: ['-ture', '-ous', '-ent/-ant', '-al', '-or'],
-    intensity: ['EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'EXPOSURE'],
-    focusWords: ['picture', 'nature', 'famous', 'dangerous', 'different', 'important', 'natural', 'musical', 'actor', 'inventor'],
-    decodableText: 'The picture of nature is famous but dangerous. It is different and important. The natural, musical actor was an inventor.',
+    phonemes: ['Advanced suffixes', 'Rare patterns', 'Doubled consonants'],
+    graphemes: ['-ture', '-ous', '-ent/-ant', '-al', '-or', 'augh', 'eau', 'que', 'gh→/f/', 'x→/gz/', 'wh→/h/', 'dd', 'gg', 'nn', 'pp', 'tt', 'rr'],
+    intensity: ['EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
+    focusWords: ['picture', 'nature', 'famous', 'dangerous', 'different', 'important', 'natural', 'musical', 'actor', 'inventor', 'daughter', 'caught', 'beautiful', 'unique', 'enough', 'laugh', 'exam', 'exact', 'who', 'whole', 'added', 'bigger', 'dinner', 'happy', 'butter', 'carry'],
+    decodableText: 'The picture of nature is famous but dangerous. It is different and important. The natural, musical actor was an inventor. My daughter caught a beautiful, unique thing. Enough! She will laugh. The exam was exact. Who ate the whole dinner? I added bigger butter. I am happy to carry it.',
     assessment: 'CHECKPOINT Weeks 8-9',
     isCheckpoint: true,
     isMastery: false,
@@ -1321,7 +1328,14 @@ const stage8WeeklyData: WeeklyData[] = [
       '-ous makes adjectives (famous, dangerous) — TEACH',
       '-ent/-ant makes adjectives (different, important) — TEACH',
       '-al makes adjectives (natural, musical) — TEACH',
-      '-or makes nouns for people (actor, inventor) — EXPOSURE'
+      '-or makes nouns for people (actor, inventor) — EXPOSURE',
+      'augh says /aw/ (daughter, caught) — EXPOSURE',
+      'eau says /ō/ (beautiful) — French origin, EXPOSURE',
+      'que says /k/ (unique) — French origin, EXPOSURE',
+      'gh says /f/ (enough, laugh) — EXPOSURE',
+      'x says /gz/ before stressed vowel (exam, exact) — EXPOSURE',
+      'wh says /h/ (who, whole) — EXPOSURE',
+      'Doubled consonants (dd, gg, nn, pp, tt, rr) mark short vowels — EXPOSURE'
     ]
   },
   {

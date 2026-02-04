@@ -227,8 +227,8 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "3rd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Proficient",
     duration: "10 weeks",
-    total_elements: 16,
-    description: "Variable pronunciation patterns, the last consonant phoneme (/zh/), Greek and French origin spellings, and silent letter consonants. Develops flexible decoding.",
+    total_elements: 12,
+    description: "Variable pronunciation patterns, the last consonant phoneme (/zh/), and Greek and French origin spellings. Develops flexible decoding strategies for etymology-based patterns.",
     key_concept: "English has patterns from Greek, French, and Old English. Skilled readers try multiple pronunciations and check meaning. The same spelling can make different sounds in different words.",
     instructional_focus: [
       "/zh/ phoneme (measure, vision)",
@@ -241,8 +241,8 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     ],
     intensity: {
       core: 2,
-      teach: 9,
-      exposure: 5
+      teach: 7,
+      exposure: 3
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
@@ -256,7 +256,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "3rd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Advanced",
     duration: "10 weeks",
-    total_elements: 53,
+    total_elements: 50,
     description: "Instruction shifts from phoneme-level decoding to morpheme-based word analysis. Students recognize meaningful word parts that unlock both pronunciation and meaning.",
     key_concept: "Words are built from meaningful parts: prefixes change meaning, suffixes change how words work in sentences, and roots carry core meaning. Unstressed vowels relax to schwa.",
     instructional_focus: [
@@ -266,14 +266,14 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Tier 1 suffixes (-er, -est, -ly, -y, -ful, -less, -ness, -ment)",
       "Tier 2 suffixes (-tion, -sion, -cian, -ture, -ous, -ent, -ant, -al, -or)",
       "Schwa vowel patterns",
-      "/sh/ alternate spellings (ti, ci, si, ssi, sci)",
-      "Advanced and rare spellings",
-      "Doubled consonants formalized"
+      "/sh/ alternate spellings (ti, ci, ssi, sci)",
+      "Advanced and rare spellings (augh, eau, que, gh→/f/, x→/gz/, wh→/h/)",
+      "Doubled consonants formalized (dd, gg, nn, pp, tt, rr)"
     ],
     intensity: {
-      core: 7,
-      teach: 35,
-      exposure: 11
+      core: 9,
+      teach: 22,
+      exposure: 19
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Advanced: morpheme-based word analysis and schwa awareness",
