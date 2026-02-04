@@ -172,12 +172,12 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "2nd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Emerging",
     duration: "10 weeks",
-    total_elements: 21,
+    total_elements: 19,
     description: "Bossy R changes vowel sounds. The two sounds of 'oo.' W-influence patterns where 'w' changes the expected vowel sound.",
     key_concept: "When r follows a vowel, it changes the sound. The letter w can change how nearby vowels sound. Some spellings have multiple pronunciations — flex and check.",
     instructional_focus: [
       "Core r-controlled vowels (ar, er, ir, ur, or)",
-      "Extended r-controlled (air, are, ear, eer, oar, our, ore)",
+      "Extended r-controlled (air, are, ear, oar, our, ore)",
       "Two sounds of oo (moon vs book)",
       "W-influence patterns (wa, wor, war)",
       "Ear has THREE sounds (critical flex pattern)",
@@ -185,7 +185,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     ],
     intensity: {
       core: 9,
-      teach: 12,
+      teach: 10,
       exposure: 0
     },
     science_of_reading_alignment: {
@@ -200,7 +200,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "2nd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Developing",
     duration: "10 weeks",
-    total_elements: 18,
+    total_elements: 17,
     description: "Diphthongs (vowel sounds that glide) and the remaining less-common long vowel spellings. Variable 'ere' patterns.",
     key_concept: "Some vowel sounds glide from one position to another. English borrowed spellings from other languages. When a pattern has multiple sounds, try each one and check meaning.",
     instructional_focus: [
@@ -213,7 +213,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     intensity: {
       core: 6,
       teach: 8,
-      exposure: 4
+      exposure: 3
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Developing: automatic processing of diphthongs and extended vowel patterns",

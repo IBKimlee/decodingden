@@ -321,8 +321,8 @@ const stage2WeeklyData: WeeklyData[] = [
   {
     week: 9,
     phonemes: ['/ng/', 'Review'],
-    graphemes: ['ng', 'All digraphs'],
-    intensity: ['CORE', 'CORE'],
+    graphemes: ['ng'],
+    intensity: ['CORE'],
     focusWords: ['ring', 'sing', 'long', 'king', 'hang', 'wing', 'song', 'thing'],
     decodableText: 'The king can sing a long song. Hang the ring on the thing.',
     assessment: 'Daily: final digraph + mixed review',
@@ -779,34 +779,35 @@ const stage5WeeklyData: WeeklyData[] = [
   },
   {
     week: 8,
-    phonemes: ['/ēr/', '/âr/'],
-    graphemes: ['ear→/ēr/', 'ear→/âr/', 'air', 'are'],
-    intensity: ['TEACH', 'TEACH', 'CORE', 'CORE'],
-    focusWords: ['hear', 'near', 'clear', 'year', 'bear', 'pear', 'wear', 'tear', 'hair', 'fair', 'pair', 'care', 'share', 'stare'],
-    decodableText: 'I hear a clear sound near the bear. The pear will wear and tear. The fair hair is a pair. Care and share at the stare.',
+    phonemes: ['/ēr/', '/âr/', '/ʊ/'],
+    graphemes: ['ear→/ēr/', 'ear→/âr/', 'air', 'are', 'oul'],
+    intensity: ['TEACH', 'TEACH', 'CORE', 'CORE', 'TEACH'],
+    focusWords: ['hear', 'near', 'clear', 'year', 'bear', 'pear', 'wear', 'tear', 'hair', 'fair', 'pair', 'care', 'share', 'stare', 'could', 'would', 'should'],
+    decodableText: 'I hear a clear sound near the bear. The pear will wear and tear. The fair hair is a pair. Care and share at the stare. Could you? Would you? Should you!',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
       'ear has THREE sounds: /er/ (learn), /ēr/ (hear), /âr/ (bear) — flex pattern!',
       'air says /âr/ (hair, fair) — very consistent',
-      'are says /âr/ (care, share) — consistent word-final pattern'
+      'are says /âr/ (care, share) — consistent word-final pattern',
+      'oul says /ʊ/ (could, would, should) — Fry top 100 words, must know!'
     ]
   },
   {
     week: 9,
-    phonemes: ['/ʊ/', 'Review'],
-    graphemes: ['oul', 'All Stage 5'],
-    intensity: ['TEACH', 'CORE'],
-    focusWords: ['could', 'would', 'should', 'starfish', 'airport', 'earring', 'bedroom'],
+    phonemes: ['Review'],
+    graphemes: ['All Stage 5'],
+    intensity: ['CORE'],
+    focusWords: ['starfish', 'airport', 'earring', 'bedroom', 'could', 'would', 'should'],
     decodableText: 'Could you find the starfish? Would the airport have an earring? You should go to the bedroom.',
-    assessment: 'Daily: oul + mixed review',
+    assessment: 'Daily: mixed review',
     isCheckpoint: false,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      'oul says /ʊ/ (could, would, should) — Fry top 100 words, must know!',
-      'Review all r-controlled and /oo/ patterns in compound words'
+      'Review all r-controlled and /oo/ patterns in compound words',
+      'Reinforce oul words (could, would, should) from Week 8'
     ]
   },
   {
@@ -957,18 +958,18 @@ const stage6WeeklyData: WeeklyData[] = [
   },
   {
     week: 9,
-    phonemes: ['/ow/', 'Review'],
-    graphemes: ['ough→/ow/', 'All Stage 6'],
-    intensity: ['EXPOSURE', 'CORE'],
-    focusWords: ['bough', 'drought', 'plough', 'joyful', 'powerful', 'downtown', 'playground'],
-    decodableText: 'The drought hit the bough. Plough the joyful downtown playground. It was powerful.',
-    assessment: 'Daily: ough preview + mixed review',
+    phonemes: ['Review'],
+    graphemes: ['All Stage 6'],
+    intensity: ['CORE'],
+    focusWords: ['joyful', 'powerful', 'downtown', 'playground', 'bough', 'drought'],
+    decodableText: 'The drought hit the bough. The joyful downtown playground was powerful.',
+    assessment: 'Daily: mixed review',
     isCheckpoint: false,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      'ough→/ow/ (bough, drought) — EXPOSURE only, full ough in Stage 7',
-      'Review all diphthongs in compound words'
+      'Review all diphthongs in compound words',
+      'ough→/ow/ (bough, drought) previewed here — full ough instruction in Stage 7'
     ]
   },
   {
