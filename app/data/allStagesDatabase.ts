@@ -227,13 +227,13 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "3rd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Proficient",
     duration: "10 weeks",
-    total_elements: 12,
+    total_elements: 15,
     description: "Variable pronunciation patterns, the last consonant phoneme (/zh/), and Greek and French origin spellings. Develops flexible decoding strategies for etymology-based patterns.",
     key_concept: "English has patterns from Greek, French, and Old English. Skilled readers try multiple pronunciations and check meaning. The same spelling can make different sounds in different words.",
     instructional_focus: [
       "/zh/ phoneme (measure, vision)",
-      "Soft c and g mastery (introduced Stage 3, mastered here)",
-      "Variable patterns (ough has 5 sounds)",
+      "Soft c and g mastery review (introduced Stage 3, assessed here — not counted as new GPCs)",
+      "Variable ough (5 distinct GPCs: /ō/, /oo/, /aw/, /ŭf/, /ow/)",
       "Greek origin (ch→/k/, sc, rh)",
       "French origin (ch→/sh/)",
       "Hard-g protector (gu→/g/)",
@@ -241,8 +241,8 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     ],
     intensity: {
       core: 1,
-      teach: 8,
-      exposure: 3
+      teach: 9,
+      exposure: 5
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
@@ -256,7 +256,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "3rd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Advanced",
     duration: "10 weeks",
-    total_elements: 50,
+    total_elements: 51,
     description: "Instruction shifts from phoneme-level decoding to morpheme-based word analysis. Students recognize meaningful word parts that unlock both pronunciation and meaning.",
     key_concept: "Words are built from meaningful parts: prefixes change meaning, suffixes change how words work in sentences, and roots carry core meaning. Unstressed vowels relax to schwa.",
     instructional_focus: [
@@ -272,7 +272,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     ],
     intensity: {
       core: 9,
-      teach: 22,
+      teach: 23,
       exposure: 19
     },
     science_of_reading_alignment: {

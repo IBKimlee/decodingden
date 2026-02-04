@@ -1012,24 +1012,25 @@ const stage7WeeklyData: WeeklyData[] = [
   },
   {
     week: 2,
-    phonemes: ['/s/', '/j/'],
-    graphemes: ['soft c (mastery)', 'soft g (mastery)'],
-    intensity: ['TEACH', 'TEACH'],
+    phonemes: ['Review'],
+    graphemes: [],
+    intensity: [],
     focusWords: ['celebrate', 'citizen', 'bicycle', 'decimal', 'generous', 'original', 'giraffe', 'gymnasium'],
     decodableText: 'The generous citizen will celebrate on the bicycle. The original giraffe ran to the gymnasium with the decimal.',
     assessment: 'CHECKPOINT Weeks 1-2',
     isCheckpoint: true,
     isMastery: false,
+    isReview: true,
     teachingTips: [
-      'Soft c/g MASTERY — introduced in Stage 3, now assessed for automaticity',
+      'Soft c/g MASTERY REVIEW — introduced in Stage 3, assessed here for automaticity (not counted as new GPCs)',
       'c says /s/ before e, i, y (celebrate, citizen, bicycle)',
       'g says /j/ before e, i, y (generous, giraffe, gymnasium)'
     ]
   },
   {
     week: 3,
-    phonemes: ['Variable'],
-    graphemes: ['ough (5 sounds!)'],
+    phonemes: ['/ō/', '/oo/', '/aw/', '/ŭf/', '/ow/'],
+    graphemes: ['ough→/ō/', 'ough→/oo/', 'ough→/aw/', 'ough→/ŭf/', 'ough→/ow/'],
     intensity: ['TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE'],
     focusWords: ['through', 'though', 'thought', 'rough', 'cough', 'bough', 'dough', 'thorough'],
     decodableText: 'I thought the dough was rough. Through and through, though the bough fell with a cough. Be thorough!',
@@ -1038,12 +1039,11 @@ const stage7WeeklyData: WeeklyData[] = [
     isMastery: false,
     teachingTips: [
       'ough has FIVE sounds — teach flex strategy:',
-      '/oo/ — through',
-      '/ō/ — though, dough',
-      '/aw/ — thought, bought',
-      '/ŭf/ — rough, tough, enough',
-      '/ŏf/ — cough (EXPOSURE)',
-      '/ow/ — bough (EXPOSURE)'
+      'ough→/oo/ — through (TEACH)',
+      'ough→/ō/ — though, dough (TEACH)',
+      'ough→/aw/ — thought, bought (TEACH)',
+      'ough→/ŭf/ — rough, tough, enough (EXPOSURE)',
+      'ough→/ow/ — bough (EXPOSURE)'
     ]
   },
   {
@@ -1315,8 +1315,8 @@ const stage8WeeklyData: WeeklyData[] = [
   {
     week: 9,
     phonemes: ['Advanced suffixes', 'Rare patterns', 'Doubled consonants'],
-    graphemes: ['-ture', '-ous', '-ent/-ant', '-al', '-or', 'augh', 'eau', 'que', 'gh→/f/', 'x→/gz/', 'wh→/h/', 'dd', 'gg', 'nn', 'pp', 'tt', 'rr'],
-    intensity: ['EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
+    graphemes: ['-ture', '-ous', '-ent', '-ant', '-al', '-or', 'augh', 'eau', 'que', 'gh→/f/', 'x→/gz/', 'wh→/h/', 'dd', 'gg', 'nn', 'pp', 'tt', 'rr'],
+    intensity: ['EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
     focusWords: ['picture', 'nature', 'famous', 'dangerous', 'different', 'important', 'natural', 'musical', 'actor', 'inventor', 'daughter', 'caught', 'beautiful', 'unique', 'enough', 'laugh', 'exam', 'exact', 'who', 'whole', 'added', 'bigger', 'dinner', 'happy', 'butter', 'carry'],
     decodableText: 'The picture of nature is famous but dangerous. It is different and important. The natural, musical actor was an inventor. My daughter caught a beautiful, unique thing. Enough! She will laugh. The exam was exact. Who ate the whole dinner? I added bigger butter. I am happy to carry it.',
     assessment: 'CHECKPOINT Weeks 8-9',
@@ -1326,7 +1326,8 @@ const stage8WeeklyData: WeeklyData[] = [
     teachingTips: [
       '-ture says /chər/ (picture, nature) — EXPOSURE',
       '-ous makes adjectives (famous, dangerous) — TEACH',
-      '-ent/-ant makes adjectives (different, important) — TEACH',
+      '-ent makes adjectives (different, confident) — TEACH',
+      '-ant makes adjectives (important, pleasant) — TEACH',
       '-al makes adjectives (natural, musical) — TEACH',
       '-or makes nouns for people (actor, inventor) — EXPOSURE',
       'augh says /aw/ (daughter, caught) — EXPOSURE',
