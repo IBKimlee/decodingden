@@ -240,8 +240,8 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Final position patterns (ve, se)"
     ],
     intensity: {
-      core: 2,
-      teach: 7,
+      core: 1,
+      teach: 8,
       exposure: 3
     },
     science_of_reading_alignment: {

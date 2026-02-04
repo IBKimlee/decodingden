@@ -990,7 +990,7 @@ const stage6WeeklyData: WeeklyData[] = [
 // ═══════════════════════════════════════════════════════════════════════════════
 // STAGE 7: Complex & Variable Patterns (v4.1)
 // Grade: 3rd-Fall | Duration: 10 weeks | Phase: Consolidated (Proficient)
-// Intensity Profile: 2 ★ CORE | 7 ▲ TEACH | 3 ○ EXPOSURE
+// Intensity Profile: 1 ★ CORE | 8 ▲ TEACH | 3 ○ EXPOSURE
 // Note: Silent letters (kn, wr, gn, mb) moved to Stage 8 for morphological context
 // ═══════════════════════════════════════════════════════════════════════════════
 const stage7WeeklyData: WeeklyData[] = [
@@ -998,7 +998,7 @@ const stage7WeeklyData: WeeklyData[] = [
     week: 1,
     phonemes: ['/zh/'],
     graphemes: ['s→/zh/', 'si→/zh/'],
-    intensity: ['CORE', 'CORE'],
+    intensity: ['CORE', 'TEACH'],
     focusWords: ['measure', 'treasure', 'pleasure', 'leisure', 'vision', 'decision', 'television', 'division'],
     decodableText: 'I take pleasure in the treasure. The vision and decision are on the television. Measure the division with leisure.',
     assessment: 'Daily: /zh/ phoneme introduction',
