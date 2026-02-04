@@ -1368,7 +1368,22 @@ export default function StageDetailPage() {
   const [differentiationOpen, setDifferentiationOpen] = useState(false);
   const [homeConnectionOpen, setHomeConnectionOpen] = useState(false);
   const [showDifferentiationTreeModal, setShowDifferentiationTreeModal] = useState(false);
-  
+  const [expandedExposureWeeks, setExpandedExposureWeeks] = useState<Set<number>>(new Set());
+
+  // Toggle exposure section for a week
+  const toggleExposureSection = (weekNum: number, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click
+    setExpandedExposureWeeks(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(weekNum)) {
+        newSet.delete(weekNum);
+      } else {
+        newSet.add(weekNum);
+      }
+      return newSet;
+    });
+  };
+
   // Stage data state (from TypeScript)
   const [stageInfo, setStageInfo] = useState<StageInfo | null>(null);
   const [loading, setLoading] = useState(true);
@@ -1784,15 +1799,27 @@ export default function StageDetailPage() {
   }
 
   // Select the appropriate weekly data based on stage number
-  const weeklyData = stageNumber === 1 ? stage1WeeklyData : 
-                     stageNumber === 2 ? stage2WeeklyData : 
-                     stageNumber === 3 ? stage3WeeklyData : 
-                     stageNumber === 4 ? stage4WeeklyData : 
-                     stageNumber === 5 ? stage5WeeklyData : 
-                     stageNumber === 6 ? stage6WeeklyData : 
-                     stageNumber === 7 ? stage7WeeklyData : 
+  const weeklyData = stageNumber === 1 ? stage1WeeklyData :
+                     stageNumber === 2 ? stage2WeeklyData :
+                     stageNumber === 3 ? stage3WeeklyData :
+                     stageNumber === 4 ? stage4WeeklyData :
+                     stageNumber === 5 ? stage5WeeklyData :
+                     stageNumber === 6 ? stage6WeeklyData :
+                     stageNumber === 7 ? stage7WeeklyData :
                      stageNumber === 8 ? stage8WeeklyData : [];
   const hasDetailedData = weeklyData.length > 0;
+
+  // Calculate taught vs exposure counts for Stage 8
+  const intensityCounts = stageNumber === 8 ? weeklyData.reduce((acc, week) => {
+    week.intensity?.forEach(i => {
+      if (i === 'CORE' || i === 'TEACH') {
+        acc.taught++;
+      } else if (i === 'EXPOSURE') {
+        acc.exposure++;
+      }
+    });
+    return acc;
+  }, { taught: 0, exposure: 0 }) : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-300 to-slate-600 text-deepNavy relative overflow-hidden">
@@ -1813,6 +1840,11 @@ export default function StageDetailPage() {
               </h1>
               <p className="text-sm text-white/90 mt-1">
                 {stageInfo.grade_band} • {stageInfo.duration} • {stageInfo.total_elements} elements
+                {stageNumber === 8 && intensityCounts && (
+                  <span className="ml-2 text-white/70">
+                    ({intensityCounts.taught} taught · {intensityCounts.exposure} exposure reference)
+                  </span>
+                )}
               </p>
             </div>
             <div className="relative z-50 pr-4">
@@ -2271,61 +2303,126 @@ export default function StageDetailPage() {
             {/* List View */}
             {viewMode === 'list' && (
               <div className="space-y-4">
-                {weeklyData.map((week) => (
-                  <button
-                    key={week.week}
-                    onClick={() => setSelectedWeek(week.week)}
-                    className={`w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-all text-left border-2 border-cyan-400 ${
-                      selectedWeek === week.week 
-                        ? 'ring-2 ring-cyan-400' 
-                        : ''
-                    }`}
-                    style={{
-                      background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                    }}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-grow">
-                        <h3 className="font-bold text-xl text-black mb-2">
-                          Week {week.week}: {week.phonemes.join(', ')}
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                          <div className="flex items-baseline flex-wrap">
-                            <span className="text-black/70">Graphemes:</span>
-                            <span className="ml-2 font-medium flex flex-wrap gap-1">
-                              {week.graphemes.map((grapheme, idx) => {
-                                const intensity = week.intensity?.[idx] || 'CORE';
-                                const badge = getIntensityBadge(intensity);
-                                return (
-                                  <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
-                                    <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
-                                    <span className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor}>
-                                      {grapheme}
-                                    </span>
-                                  </span>
-                                );
-                              })}
-                            </span>
+                {weeklyData.map((week) => {
+                  // For Stage 8, separate CORE/TEACH from EXPOSURE items
+                  const hasExposure = stageNumber === 8 && week.intensity?.some(i => i === 'EXPOSURE');
+                  const coreTeachItems: { grapheme: string; intensity: IntensityLevel; idx: number }[] = [];
+                  const exposureItems: { grapheme: string; intensity: IntensityLevel; idx: number }[] = [];
+
+                  if (stageNumber === 8) {
+                    week.graphemes.forEach((grapheme, idx) => {
+                      const intensity = week.intensity?.[idx] || 'CORE';
+                      if (intensity === 'EXPOSURE') {
+                        exposureItems.push({ grapheme, intensity, idx });
+                      } else {
+                        coreTeachItems.push({ grapheme, intensity, idx });
+                      }
+                    });
+                  }
+
+                  const isExposureExpanded = expandedExposureWeeks.has(week.week);
+
+                  return (
+                    <div
+                      key={week.week}
+                      onClick={() => setSelectedWeek(week.week)}
+                      className={`w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-all text-left border-2 border-cyan-400 cursor-pointer ${
+                        selectedWeek === week.week
+                          ? 'ring-2 ring-cyan-400'
+                          : ''
+                      }`}
+                      style={{
+                        background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                      }}
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex-grow">
+                          <h3 className="font-bold text-xl text-black mb-2">
+                            Week {week.week}: {week.phonemes.join(', ')}
+                          </h3>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div className="flex items-baseline flex-wrap">
+                              <span className="text-black/70">Graphemes:</span>
+                              <span className="ml-2 font-medium flex flex-wrap gap-1">
+                                {stageNumber === 8 ? (
+                                  // Stage 8: Show only CORE/TEACH items inline
+                                  coreTeachItems.map(({ grapheme, intensity, idx }) => {
+                                    const badge = getIntensityBadge(intensity);
+                                    return (
+                                      <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
+                                        <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
+                                        <span className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor}>
+                                          {grapheme}
+                                        </span>
+                                      </span>
+                                    );
+                                  })
+                                ) : (
+                                  // Other stages: Show all items
+                                  week.graphemes.map((grapheme, idx) => {
+                                    const intensity = week.intensity?.[idx] || 'CORE';
+                                    const badge = getIntensityBadge(intensity);
+                                    return (
+                                      <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
+                                        <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
+                                        <span className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor}>
+                                          {grapheme}
+                                        </span>
+                                      </span>
+                                    );
+                                  })
+                                )}
+                              </span>
+                            </div>
+                            <div className="flex items-baseline">
+                              <span className="text-black/70" style={{minWidth: '90px', display: 'inline-block'}}>Focus Words:</span>
+                              <span className="ml-2 text-black">{week.focusWords.slice(0, 3).join(', ')}...</span>
+                            </div>
+                            <div className="flex items-baseline">
+                              <span className="text-black/70">Assessment:</span>
+                              <span className="ml-2 text-black">{week.assessment.split(':')[0]}</span>
+                            </div>
                           </div>
-                          <div className="flex items-baseline">
-                            <span className="text-black/70" style={{minWidth: '90px', display: 'inline-block'}}>Focus Words:</span>
-                            <span className="ml-2 text-black">{week.focusWords.slice(0, 3).join(', ')}...</span>
-                          </div>
-                          <div className="flex items-baseline">
-                            <span className="text-black/70">Assessment:</span>
-                            <span className="ml-2 text-black">{week.assessment.split(':')[0]}</span>
-                          </div>
+
+                          {/* Collapsible Exposure Reference section for Stage 8 */}
+                          {hasExposure && exposureItems.length > 0 && (
+                            <div className="mt-3 pt-2 border-t border-amber-300/50">
+                              <button
+                                onClick={(e) => toggleExposureSection(week.week, e)}
+                                className="flex items-center gap-2 text-xs text-gray-600 hover:text-gray-800 transition-colors"
+                              >
+                                <span className={`transform transition-transform ${isExposureExpanded ? 'rotate-90' : ''}`}>▶</span>
+                                <span className="font-medium">Exposure Reference</span>
+                                <span className="text-gray-400">({exposureItems.length} items)</span>
+                              </button>
+                              {isExposureExpanded && (
+                                <div className="mt-2 pl-4 flex flex-wrap gap-1">
+                                  {exposureItems.map(({ grapheme, intensity, idx }) => {
+                                    const badge = getIntensityBadge(intensity);
+                                    return (
+                                      <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
+                                        <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
+                                        <span className={badge.textColor}>
+                                          {grapheme}
+                                        </span>
+                                      </span>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
+                        {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
+                          <span className="ml-4 px-3 py-1 bg-dustyRose/20 text-dustyRose text-sm rounded font-medium">
+                            Assessment
+                          </span>
+                        )}
                       </div>
-                      {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
-                        <span className="ml-4 px-3 py-1 bg-dustyRose/20 text-dustyRose text-sm rounded font-medium">
-                          Assessment
-                        </span>
-                      )}
                     </div>
-                  </button>
-                ))}
+                  );
+                })}
               </div>
             )}
 
