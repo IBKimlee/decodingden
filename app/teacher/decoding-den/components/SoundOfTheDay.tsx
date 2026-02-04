@@ -212,6 +212,71 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
   const [showTeachingTips, setShowTeachingTips] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
   const [showAllSpellingsModal, setShowAllSpellingsModal] = useState(false);
+  const [selectedGrapheme, setSelectedGrapheme] = useState<string | null>(null);
+
+  // Example words for common grapheme-phoneme correspondences
+  const getExampleWord = (grapheme: string, phonemeSymbol: string): string => {
+    const examples: Record<string, Record<string, string>> = {
+      // Consonants
+      '/m/': { m: 'map', mm: 'hammer', mb: 'lamb', mn: 'hymn', gm: 'diaphragm' },
+      '/n/': { n: 'net', nn: 'penny', kn: 'knee', gn: 'gnat' },
+      '/p/': { p: 'pen', pp: 'happy' },
+      '/b/': { b: 'bat', bb: 'rabbit' },
+      '/t/': { t: 'top', tt: 'butter', ed: 'jumped' },
+      '/d/': { d: 'dog', dd: 'ladder', ed: 'played' },
+      '/g/': { g: 'go', gg: 'egg', gh: 'ghost' },
+      '/h/': { h: 'hat', wh: 'who' },
+      '/w/': { w: 'win', wh: 'when' },
+      '/j/': { y: 'yes', i: 'onion' },
+      '/l/': { l: 'lip', ll: 'ball', le: 'little' },
+      '/r/': { r: 'run', rr: 'berry', wr: 'write' },
+      '/v/': { v: 'van', ve: 'have' },
+      '/sh/': { sh: 'ship', ti: 'nation', ci: 'special', si: 'tension', ssi: 'mission', s: 'sure', ss: 'pressure', ch: 'chef' },
+      '/ch/': { ch: 'church', tch: 'catch', tu: 'picture', t: 'question' },
+      '/th/': { th: 'think' },
+      '/th(v)/': { th: 'this' },
+      '/ð/': { th: 'this' },
+      '/θ/': { th: 'think' },
+      '/tʃ/': { ch: 'church', tch: 'catch', tu: 'picture' },
+      '/dʒ/': { j: 'jam', g: 'gem', dge: 'edge', ge: 'page' },
+      '/ŋ/': { ng: 'sing', n: 'think' },
+      '/ʒ/': { si: 'vision', s: 'measure', ge: 'beige' },
+      '/f/': { f: 'fish', ff: 'stuff', ph: 'phone', gh: 'laugh' },
+      '/k/': { c: 'cat', k: 'kite', ck: 'back', ch: 'school', q: 'queen' },
+      '/s/': { s: 'sun', ss: 'miss', c: 'city', sc: 'scene' },
+      '/z/': { z: 'zoo', zz: 'buzz', s: 'is', se: 'rose' },
+      '/ā/': { 'a_e': 'cake', ai: 'rain', ay: 'play', a: 'apron' },
+      '/ē/': { ee: 'tree', ea: 'read', e: 'me', 'e_e': 'these', y: 'happy' },
+      '/ī/': { 'i_e': 'bike', igh: 'light', y: 'fly', ie: 'pie', i: 'find' },
+      '/ō/': { 'o_e': 'home', oa: 'boat', ow: 'slow', o: 'go' },
+      '/ū/': { 'u_e': 'cube', ue: 'blue', ew: 'new', u: 'music' },
+      '/ōō/': { oo: 'moon', ew: 'grew', ue: 'blue', ui: 'fruit' },
+      '/ʊ/': { oo: 'book', u: 'put', ou: 'could' },
+      '/oi/': { oi: 'coin', oy: 'boy' },
+      '/ou/': { ou: 'out', ow: 'cow' },
+      '/ar/': { ar: 'car', a: 'father' },
+      '/or/': { or: 'for', ore: 'more', oar: 'roar' },
+      '/er/': { er: 'her', ir: 'bird', ur: 'turn', ear: 'learn', or: 'work' },
+      '/air/': { air: 'fair', are: 'care', ear: 'bear' },
+      '/ear/': { ear: 'hear', eer: 'deer', ere: 'here' },
+      '/ă/': { a: 'cat' },
+      '/ĕ/': { e: 'bed', ea: 'bread' },
+      '/ĭ/': { i: 'sit', y: 'gym' },
+      '/ŏ/': { o: 'hot', a: 'watch' },
+      '/ŭ/': { u: 'cup', o: 'son', ou: 'touch' },
+      '/ə/': { a: 'about', e: 'taken', i: 'pencil', o: 'lemon', u: 'circus' },
+      // Aliases for different notations
+      '/ʃ/': { sh: 'ship', ti: 'nation', ci: 'special', si: 'tension', ssi: 'mission', s: 'sure', ss: 'pressure', ch: 'chef' },
+      '/oo/': { oo: 'book', u: 'put', ou: 'could' },
+      '/ow/': { ou: 'out', ow: 'cow' },
+      '/a/': { a: 'cat' },
+      '/är/': { ar: 'car', a: 'father' },
+      '/ər/': { er: 'her', ir: 'bird', ur: 'turn', ear: 'learn', or: 'work' },
+    };
+
+    const phonemeExamples = examples[phonemeSymbol] || examples[phonemeSymbol.replace(/\//g, '')] || {};
+    return phonemeExamples[grapheme] || '';
+  };
 
   if (!phonemeData) return null;
 
@@ -372,8 +437,8 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
                 <span className="mr-2">🎯</span>
                 Articulation Features
               </span>
-              {/* For vowels: 3 columns (no Manner), for consonants: 4 columns */}
-              <div className={`grid grid-cols-2 gap-2 ${articulation.manner_of_articulation?.toLowerCase() === 'vowel' ? 'md:grid-cols-3' : 'md:grid-cols-4'}`}>
+              {/* For vowels: 2 columns (no Manner), for consonants: 3 columns */}
+              <div className={`grid grid-cols-2 gap-2 ${articulation.manner_of_articulation?.toLowerCase() === 'vowel' ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Place <span className="normal-case">- Where in mouth</span></p>
                   <p className="font-bold text-base text-gray-800">{articulation.place_of_articulation}</p>
@@ -387,11 +452,6 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
                     <p className="text-xs text-gray-500 italic mt-1">{getMannerExplanation(articulation.manner_of_articulation)}</p>
                   </div>
                 )}
-                <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
-                  <p className="text-xs text-gray-500 uppercase">Voicing <span className="normal-case">- Vocal cord vibration</span></p>
-                  <p className="font-bold text-base text-gray-800">{articulation.voicing}</p>
-                  <p className="text-xs text-gray-500 italic mt-1">{getVoicingExplanation(articulation.voicing)}</p>
-                </div>
                 <div className="bg-white rounded-lg px-3 py-2 border border-oceanBlue/20">
                   <p className="text-xs text-gray-500 uppercase">Airflow <span className="normal-case">- Mouth or nose</span></p>
                   <p className="font-bold text-base text-gray-800">{articulation.airflow_description || 'oral'}</p>
@@ -564,21 +624,34 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
             </div>
             <div className="p-4">
               <div className={`grid gap-2 ${graphemes.length > 6 ? 'grid-cols-2' : 'grid-cols-1'}`}>
-                {graphemes.map((grapheme, index) => (
-                  <div key={grapheme.id} className={`grid grid-cols-[80px_70px_1fr] items-center rounded-lg px-4 py-2 border ${index === 0 ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200'}`}>
-                    <span className="text-lg font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
-                    <span className="text-sm font-semibold text-blue-600">
-                      {grapheme.percentage != null ? (grapheme.percentage < 0.05 ? '<0.05%' : `${grapheme.percentage.toFixed(1)}%`) : '—'}
-                    </span>
-                    <div className="flex items-center justify-end">
-                      {index === 0 && (
-                        <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
-                          #1
-                        </span>
-                      )}
+                {graphemes.map((grapheme, index) => {
+                  const exampleWord = getExampleWord(grapheme.grapheme, phoneme.ipa_symbol);
+                  return (
+                    <div
+                      key={grapheme.id}
+                      className={`grid grid-cols-[80px_60px_1fr] items-center rounded-lg px-4 py-2 border ${
+                        index === 0 ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200'
+                      }`}
+                    >
+                      <span className="text-lg font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>
+                      <span className="text-sm font-semibold text-blue-600">
+                        {grapheme.percentage != null ? (grapheme.percentage < 0.05 ? '<0.05%' : `${grapheme.percentage.toFixed(1)}%`) : '—'}
+                      </span>
+                      <div className="flex items-center justify-end gap-2">
+                        {index === 0 && (
+                          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                            #1
+                          </span>
+                        )}
+                        {exampleWord && (
+                          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700 italic">
+                            {exampleWord}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
             <div className="p-4 border-t border-gray-200 bg-gray-50">

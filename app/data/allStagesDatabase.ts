@@ -40,10 +40,20 @@ export interface StageInfo {
   description: string;
   key_concept: string;
   instructional_focus: string[];
+  intensity: {
+    core: number;
+    teach: number;
+    exposure: number;
+  };
   science_of_reading_alignment: {
     ehri_phase: string;
     research_principle: string;
     orthographic_mapping: string;
+  };
+  // Stage 8 specific: Phase 8A/8B split
+  phase_split?: {
+    phase_a: { weeks: string; name: string };
+    phase_b: { weeks: string; name: string };
   };
 }
 
@@ -64,6 +74,11 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Letter-sound correspondence mastery",
       "Basic decoding skills development"
     ],
+    intensity: {
+      core: 15,
+      teach: 0,
+      exposure: 0
+    },
     science_of_reading_alignment: {
       ehri_phase: "Pre-alphabetic to Partial Alphabetic - children use first and last sounds in words",
       research_principle: "Ehri (2005); NRP (2000) - Foundational consonants and short vowels prioritized for transparent mappings",
@@ -72,19 +87,24 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 2,
-    stage_name: "Remaining Single Letters & Basic Digraphs",
-    grade_level: "Kindergarten – Spring Semester", 
+    stage_name: "Remaining Letters & Digraphs",
+    grade_level: "Kindergarten – Spring Semester",
     student_phase: "Partial to Full Alphabetic Phase",
     duration: "10 weeks",
-    total_elements: 15,
-    description: "Students learn consonant digraphs (two letters, one sound) and remaining single letters, building on their CVC foundation to read more complex words.",
-    key_concept: "Two letters can work together to make ONE sound! We also learn the last single letters to complete our alphabet knowledge.",
+    total_elements: 18,
+    description: "Students complete single-letter knowledge and learn consonant digraphs. Students can now decode any CVC word and begin CCVC/CVCC words.",
+    key_concept: "Some sounds need two letters working together (digraphs). The same sound can sometimes be spelled different ways.",
     instructional_focus: [
-      "Consonant digraphs: two letters, one sound (sh, ch, th, ng)",
-      "Remaining single letter-sound correspondences (r, g, k, j, v, w, y, z)", 
-      "CVCC and CCVC word patterns with digraphs",
-      "Contrast between digraphs and single letters"
+      "Complete alphabetic code",
+      "Consonant digraph mastery (ch, sh, th, ng)",
+      "C/K/CK spelling pattern",
+      "Question words with wh"
     ],
+    intensity: {
+      core: 18,
+      teach: 0,
+      exposure: 0
+    },
     science_of_reading_alignment: {
       ehri_phase: "Partial to Full Alphabetic - ready for two-letter, one-sound patterns",
       research_principle: "Adams (1990); Moats (2020); NRP (2000) - Common digraphs introduced when students master CVC patterns",
@@ -93,128 +113,176 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 3,
-    stage_name: "Complex Consonants & Silent E",
+    stage_name: "VCe Patterns & Consonant Complexities",
     grade_level: "1st Grade – Fall Semester",
-    student_phase: "Full Alphabetic Phase - Emerging", 
+    student_phase: "Full Alphabetic Phase – Emerging",
     duration: "10 weeks",
-    total_elements: 8,
-    description: "Students learn complex consonant blends, three-letter blends, and Silent E patterns to read longer, more complex words.",
-    key_concept: "Silent 'e' is magic! When 'e' comes at the end, it makes the vowel say its name. We also learn complex blends.",
+    total_elements: 15,
+    description: "The magic e (VCe) pattern, FLOSS rule doubles, and common complex consonant spellings. Students learn that one sound can be spelled multiple ways.",
+    key_concept: "Silent e changes the vowel sound. Some patterns use doubled letters or three-letter combinations.",
     instructional_focus: [
-      "VCe Silent E patterns (a_e, i_e, o_e, u_e, e_e)",
-      "Complex consonant blends (bl, cl, fl, pl, br, cr, dr, tr)",
-      "Three-letter blends (str, spl, spr, scr)",
-      "Contrast between short and long vowel sounds"
+      "VCe (magic e) patterns for all 5 vowels",
+      "FLOSS rule (ff, ll, ss, zz)",
+      "Trigraphs (tch, dge)",
+      "Complex consonants (nk, ph)",
+      "Soft c and g introduction"
     ],
+    intensity: {
+      core: 9,
+      teach: 6,
+      exposure: 0
+    },
     science_of_reading_alignment: {
-      ehri_phase: "Full Alphabetic - ready for complex vowel patterns and advanced blends",
-      research_principle: "Adams (1990); Moats (2020) - VCe patterns most consistent long vowel representation, complex blends after digraph mastery",
-      orthographic_mapping: "Silent E influence on vowel sounds and complex consonant cluster recognition"
+      ehri_phase: "Full Alphabetic – Emerging: ready for complex vowel patterns and spelling generalizations",
+      research_principle: "Adams (1990); Moats (2020) - VCe patterns most consistent long vowel representation; FLOSS rule builds spelling pattern awareness",
+      orthographic_mapping: "Silent E influence on vowel sounds; doubled consonants and trigraphs stored as chunks"
     }
   },
   {
     stage_number: 4,
-    stage_name: "Long Vowels with Silent E",
-    grade_level: "1st Grade – Spring Semester", 
+    stage_name: "Common Vowel Teams & Vowel Discrimination",
+    grade_level: "1st Grade – Spring Semester",
     student_phase: "Full Alphabetic Phase",
     duration: "10 weeks",
-    total_elements: 6,
-    description: "Students learn the VCe pattern where silent 'e' makes the vowel say its name, building on their digraph understanding.",
-    key_concept: "Silent 'e' is magic! When 'e' comes at the end, it makes the vowel say its name instead of its short sound.",
+    total_elements: 15,
+    description: "The most common vowel team spellings of long vowels, the critical o→/ŭ/ pattern, and long vowel exception patterns. Heavy emphasis on vowel flexing.",
+    key_concept: "Two vowels can work as a team to make one sound. The letter 'o' can make three different sounds. Some words break the short vowel rule.",
     instructional_focus: [
-      "VCe pattern recognition and application",
-      "Long vs. short vowel discrimination",
-      "Silent 'e' concept and its effect on vowels", 
-      "Systematic practice with a_e, i_e, o_e, u_e, e_e patterns"
+      "Common vowel teams (ai, ay, ee, ea, oa, ow, igh)",
+      "y as a vowel (two sounds)",
+      "o→/ŭ/ exception pattern (love, come, some)",
+      "Long vowel exception patterns (-ind, -ild, -old, -olt, -oll)",
+      "Open syllable awareness",
+      "Vowel flexing strategy"
     ],
+    intensity: {
+      core: 10,
+      teach: 5,
+      exposure: 0
+    },
     science_of_reading_alignment: {
-      ehri_phase: "Full Alphabetic - systematic long vowel pattern recognition",
-      research_principle: "Fry (2004); NRP (2000); Ehri (2005) - VCe patterns high frequency and systematic",
-      orthographic_mapping: "Silent 'e' pattern stored as systematic long vowel rule"
+      ehri_phase: "Full Alphabetic - systematic vowel team pattern recognition and flexible decoding",
+      research_principle: "Fry (2004); NRP (2000); Ehri (2005) - High-frequency vowel teams prioritized; o→/ŭ/ covers 20+ Fry top-100 words",
+      orthographic_mapping: "Vowel teams stored as chunks; flexing strategy develops when patterns have multiple sounds"
     }
   },
   {
     stage_number: 5,
-    stage_name: "High-Frequency Vowel Teams",
+    stage_name: "R-Controlled Vowels, /oo/ Patterns & W-Influence",
     grade_level: "2nd Grade – Fall Semester",
-    student_phase: "Consolidated Alphabetic Phase - Emerging", 
+    student_phase: "Consolidated Alphabetic Phase – Emerging",
     duration: "10 weeks",
-    total_elements: 8,
-    description: "Students learn the most frequent vowel teams and r-controlled patterns based on Fry frequency data.",
-    key_concept: "Two vowels can work together as a team! We learn the most common vowel teams first, including the super-frequent 'er' pattern.",
+    total_elements: 21,
+    description: "Bossy R changes vowel sounds. The two sounds of 'oo.' W-influence patterns where 'w' changes the expected vowel sound.",
+    key_concept: "When r follows a vowel, it changes the sound. The letter w can change how nearby vowels sound. Some spellings have multiple pronunciations — flex and check.",
     instructional_focus: [
-      "Highest-frequency vowel teams (er, ee, ea, ai, ay)",
-      "Vowel team vs. VCe pattern comparison",
-      "Most common r-controlled vowel (ar)", 
-      "Systematic introduction based on Fry frequency rankings"
+      "Core r-controlled vowels (ar, er, ir, ur, or)",
+      "Extended r-controlled (air, are, ear, eer, oar, our, ore)",
+      "Two sounds of oo (moon vs book)",
+      "W-influence patterns (wa, wor, war)",
+      "Ear has THREE sounds (critical flex pattern)",
+      "Could/would/should (oul pattern)"
     ],
+    intensity: {
+      core: 9,
+      teach: 12,
+      exposure: 0
+    },
     science_of_reading_alignment: {
-      ehri_phase: "Consolidated Alphabetic - chunking high-frequency vowel teams",
-      research_principle: "Fry (2004); NRP (2000); Ehri (2005) - Highest frequency vowel teams prioritized for efficiency",
-      orthographic_mapping: "High-frequency vowel teams stored as automatic chunks"
+      ehri_phase: "Consolidated Alphabetic – Emerging: chunking r-controlled patterns and developing flexible decoding",
+      research_principle: "Fry (2004); NRP (2000); UFLI/Wilson - R-controlled vowels essential; W-influence is consistent pattern; oul words are Fry top-100",
+      orthographic_mapping: "R-controlled patterns stored as units; flex strategy for multi-sound spellings (ear)"
     }
   },
   {
     stage_number: 6,
-    stage_name: "R-Controlled Vowels & Diphthongs",
+    stage_name: "Diphthongs & Extended Vowel Spellings",
     grade_level: "2nd Grade – Spring Semester",
-    student_phase: "Consolidated Alphabetic Phase - Developing",
+    student_phase: "Consolidated Alphabetic Phase – Developing",
     duration: "10 weeks",
-    total_elements: 8,
-    description: "Students master r-controlled vowel patterns and simple diphthongs, completing their foundation in vowel teams.",
-    key_concept: "R-controlled vowels sound different when followed by 'r' (car, bird, hurt). Diphthongs are two vowel sounds that glide together (oil, out).",
+    total_elements: 18,
+    description: "Diphthongs (vowel sounds that glide) and the remaining less-common long vowel spellings. Variable 'ere' patterns.",
+    key_concept: "Some vowel sounds glide from one position to another. English borrowed spellings from other languages. When a pattern has multiple sounds, try each one and check meaning.",
     instructional_focus: [
-      "Complete r-controlled vowel system (or, ir, ur)",
-      "Common diphthongs (ou, oi/oy, au/aw)",
-      "Systematic practice with high-frequency r-controlled words",
-      "Diphthong mouth movement and sound gliding"
+      "Diphthongs (ou/ow for /ow/, oi/oy for /oi/, au/aw for /aw/)",
+      "Extended long vowel spellings (eigh, ey, ei)",
+      "Variable ere patterns (where vs here)",
+      "ui vowel team (fruit, juice)",
+      "Position rules (oi middle, oy end; au middle, aw end)"
     ],
+    intensity: {
+      core: 6,
+      teach: 8,
+      exposure: 4
+    },
     science_of_reading_alignment: {
-      ehri_phase: "Consolidated Alphabetic - automatic processing of complex vowel patterns",
-      research_principle: "Fry (2004); NRP (2000) - R-controlled vowels and diphthongs are essential for grade-level reading",
-      orthographic_mapping: "R-controlled patterns and diphthongs stored as complete units"
+      ehri_phase: "Consolidated Alphabetic – Developing: automatic processing of diphthongs and extended vowel patterns",
+      research_principle: "Fry (2004); NRP (2000) - Diphthongs essential for grade-level reading; extended spellings require reading exposure",
+      orthographic_mapping: "Diphthongs stored as gliding units; rare spellings (ea→/ā/, oe, eu) learned individually"
     }
   },
   {
     stage_number: 7,
-    stage_name: "Complex Vowel Patterns",
+    stage_name: "Complex & Variable Patterns",
     grade_level: "3rd Grade – Fall Semester",
-    student_phase: "Consolidated Alphabetic Phase - Proficient",
+    student_phase: "Consolidated Alphabetic Phase – Proficient",
     duration: "10 weeks",
-    total_elements: 8,
-    description: "Students learn complex vowel patterns including variable teams and soft consonants to decode sophisticated vocabulary.",
-    key_concept: "Some vowel teams have multiple sounds (oo in 'moon' vs 'book') and consonants can be 'soft' (c and g before e, i, y).",
+    total_elements: 16,
+    description: "Variable pronunciation patterns, the last consonant phoneme (/zh/), Greek and French origin spellings, and silent letter consonants. Develops flexible decoding.",
+    key_concept: "English has patterns from Greek, French, and Old English. Skilled readers try multiple pronunciations and check meaning. The same spelling can make different sounds in different words.",
     instructional_focus: [
-      "Variable vowel teams (oo long/short, igh, ew, ie, ue)",
-      "Soft consonant rules (c before e,i,y = /s/; g before e,i,y = /j/)",
-      "Complex pattern recognition and flexible decoding",
-      "Advanced orthographic mapping for multisyllabic words"
+      "/zh/ phoneme (measure, vision)",
+      "Soft c and g mastery (introduced Stage 3, mastered here)",
+      "Variable patterns (ough has 5 sounds)",
+      "Greek origin (ch→/k/, sc, rh)",
+      "French origin (ch→/sh/)",
+      "Hard-g protector (gu→/g/)",
+      "Final position patterns (ve, se)"
     ],
+    intensity: {
+      core: 2,
+      teach: 9,
+      exposure: 5
+    },
     science_of_reading_alignment: {
-      ehri_phase: "Consolidated Alphabetic - flexible decoding of complex vowel patterns",
-      research_principle: "Fry (2004); Adams (1990) - Complex vowel patterns essential for grade-level vocabulary",
-      orthographic_mapping: "Variable patterns require flexible retrieval strategies"
+      ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
+      research_principle: "Fry (2004); Adams (1990) - Variable patterns essential for grade-level vocabulary; etymology awareness supports spelling",
+      orthographic_mapping: "Variable patterns require flexible retrieval; Greek/French origins stored with spelling-meaning connections"
     }
   },
   {
     stage_number: 8,
-    stage_name: "Advanced Patterns & Morphology",
+    stage_name: "Morphology, Schwa & Advanced Patterns",
     grade_level: "3rd Grade – Spring Semester",
-    student_phase: "Consolidated Alphabetic Phase - Advanced",
+    student_phase: "Consolidated Alphabetic Phase – Advanced",
     duration: "10 weeks",
-    total_elements: 10,
-    description: "Students learn silent letter patterns and morphological awareness to decode complex vocabulary and understand word structure.",
-    key_concept: "English has silent letters from history (knee, write, lamb) and meaningful word parts (un-, -ing, -ed) that help us read and understand big words.",
+    total_elements: 53,
+    description: "Instruction shifts from phoneme-level decoding to morpheme-based word analysis. Students recognize meaningful word parts that unlock both pronunciation and meaning.",
+    key_concept: "Words are built from meaningful parts: prefixes change meaning, suffixes change how words work in sentences, and roots carry core meaning. Unstressed vowels relax to schwa.",
     instructional_focus: [
-      "Silent consonant patterns (kn, wr, mb, lk, lm, gn)",
-      "Schwa sound recognition in multisyllabic words",
-      "Common morphemes (un-, -ing, -ed) for meaning and spelling",
-      "Advanced pattern recognition for complex vocabulary"
+      "Silent letter patterns (kn, wr, mb, gn)",
+      "Inflectional suffixes (-ed, -s/-es, -ing) with spelling change rules",
+      "Derivational prefixes (un-, re-, pre-, dis-, mis-, in-/im-)",
+      "Tier 1 suffixes (-er, -est, -ly, -y, -ful, -less, -ness, -ment)",
+      "Tier 2 suffixes (-tion, -sion, -cian, -ture, -ous, -ent, -ant, -al, -or)",
+      "Schwa vowel patterns",
+      "/sh/ alternate spellings (ti, ci, si, ssi, sci)",
+      "Advanced and rare spellings",
+      "Doubled consonants formalized"
     ],
+    intensity: {
+      core: 7,
+      teach: 35,
+      exposure: 11
+    },
     science_of_reading_alignment: {
-      ehri_phase: "Consolidated Alphabetic - advanced pattern recognition and morphological awareness",
-      research_principle: "Nagy & Anderson (1984); Treiman (2000) - Silent letters and morphemes essential for advanced reading",
-      orthographic_mapping: "Silent patterns and morphemes stored as meaningful chunks"
+      ehri_phase: "Consolidated Alphabetic – Advanced: morpheme-based word analysis and schwa awareness",
+      research_principle: "Nagy & Anderson (1984); Treiman (2000); Fry data - un- and re- cover 50%+ of prefixed words; morphology unlocks meaning and spelling",
+      orthographic_mapping: "Morphemes stored as meaningful chunks; schwa spelling requires related-word strategy"
+    },
+    phase_split: {
+      phase_a: { weeks: "1-5", name: "Core Morphology" },
+      phase_b: { weeks: "6-10", name: "Extended Patterns" }
     }
   }
 ];

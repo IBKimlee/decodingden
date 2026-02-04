@@ -1,18 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 import { getGraphemeFrequencies } from '../../data/graphemeFrequencies';
-import { ALL_COMPREHENSIVE_PHONEMES } from '../../data/allComprehensivePhonemes';
+import { ALL_COMPREHENSIVE_PHONEMES, ComprehensivePhonemeEntry } from '../../data/allComprehensivePhonemes';
+import { STAGE_PHONEME_SAMPLES } from '../../data/allStagesDatabase';
 import {
   getPhonemeFrequencyData,
   getGraphemeFrequenciesForPhoneme,
   COMPREHENSIVE_PHONEME_FREQUENCIES
 } from '../../data/comprehensivePhonemeFrequencies';
 
-// Supabase client setup
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// TypeScript is the single source of truth - no Supabase dependency
 
 interface PhonemeData {
   phoneme: {
@@ -78,221 +74,107 @@ interface DecodingDenResponse {
 }
 
 /**
- * Get frequency rank from local data when database value is missing
- * Note: This returns the teaching sequence order from curriculum data, not actual frequency in English
+ * Find phoneme in TypeScript data sources
+ * TypeScript is the single source of truth
  */
-function getFrequencyRankFromLocalData(phonemeSymbol: string): number {
-  const normalized = phonemeSymbol.replace(/^\/|\/$/g, '').toLowerCase();
-  const withSlashes = `/${normalized}/`;
+function findPhonemeInTypeScript(input: string): ComprehensivePhonemeEntry | null {
+  const normalizedInput = input.toLowerCase().trim();
+  const withoutSlashes = normalizedInput.replace(/^\/|\/$/g, '');
+  const withSlashes = withoutSlashes.startsWith('/') ? withoutSlashes : `/${withoutSlashes}/`;
 
-  // Search in local comprehensive phoneme data
-  const match = ALL_COMPREHENSIVE_PHONEMES.find(p => {
+  // Search ALL_COMPREHENSIVE_PHONEMES first (has full articulation data)
+  let match = ALL_COMPREHENSIVE_PHONEMES.find(p => {
     const pNormalized = p.phoneme.replace(/^\/|\/$/g, '').toLowerCase();
-    return pNormalized === normalized || p.phoneme === withSlashes;
+    return pNormalized === withoutSlashes ||
+           p.phoneme.toLowerCase() === withSlashes ||
+           p.phoneme.toLowerCase() === normalizedInput ||
+           p.phoneme_id.toLowerCase() === normalizedInput ||
+           p.graphemes.some(g => g.toLowerCase() === withoutSlashes);
   });
 
-  return match?.frequency_rank || 0;
-}
+  if (match) return match;
 
-/**
- * Find specific grapheme for a phoneme (e.g., "sh spelled ch")
- */
-async function findSpecificGraphemeForPhoneme(phoneme: string, grapheme: string): Promise<any | null> {
-  try {
-    // Normalize phoneme input
-    let normalizedPhoneme = phoneme.toLowerCase().trim();
-    if (!normalizedPhoneme.startsWith('/')) {
-      normalizedPhoneme = `/${normalizedPhoneme}/`;
-    }
-    
-    // First, find the phoneme
-    const { data: phonemeData, error } = await supabase
-      .from('phonemes')
-      .select('*')
-      .eq('phoneme', normalizedPhoneme)
-      .single();
+  // Try searching by common name patterns
+  const patterns = [
+    normalizedInput.replace(/\s+sound$/i, ''),
+    normalizedInput.replace(/^long\s+/i, ''),
+    normalizedInput.replace(/^short\s+/i, ''),
+    normalizedInput.replace(/\s+/g, ''),
+  ];
 
-    if (!phonemeData || error) {
-      console.log(`Phoneme ${normalizedPhoneme} not found, trying alternative searches...`);
-      
-      // Try alternative searches for common phoneme patterns
-      const alternativeSearches = [
-        phoneme, // Try without IPA formatting
-        phoneme.replace(/^\/|\/$/g, ''), // Remove any existing slashes
-      ];
-      
-      for (const alt of alternativeSearches) {
-        const { data: altData, error: altError } = await supabase
-          .from('phonemes')
-          .select('*')
-          .contains('graphemes', [alt])
-          .single();
-          
-        if (altData && !altError) {
-          return {
-            ...altData,
-            requested_specific_grapheme: grapheme,
-            show_specific_grapheme: true
-          };
-        }
-      }
-      
-      return null; // Phoneme doesn't exist
-    }
-
-    // Check if the requested grapheme is valid for this phoneme
-    const hasGrapheme = phonemeData.graphemes?.includes(grapheme);
-    
-    // Always return the phoneme data with the requested grapheme for display
-    return {
-      ...phonemeData,
-      requested_specific_grapheme: grapheme,
-      show_specific_grapheme: true,
-      invalid_grapheme: !hasGrapheme // Flag if this is an invalid combination
-    };
-  } catch (error) {
-    console.error('Error in findSpecificGraphemeForPhoneme:', error);
-    return null;
+  for (const pattern of patterns) {
+    match = ALL_COMPREHENSIVE_PHONEMES.find(p => {
+      const pNormalized = p.phoneme.replace(/^\/|\/$/g, '').toLowerCase();
+      return pNormalized === pattern ||
+             p.graphemes.some(g => g.toLowerCase() === pattern);
+    });
+    if (match) return match;
   }
+
+  // Also search STAGE_PHONEME_SAMPLES as fallback (but prefer ALL_COMPREHENSIVE_PHONEMES)
+  const stageSample = STAGE_PHONEME_SAMPLES.find(p => {
+    const pNormalized = p.phoneme.replace(/^\/|\/$/g, '').toLowerCase();
+    return pNormalized === withoutSlashes ||
+           p.phoneme.toLowerCase() === withSlashes ||
+           p.graphemes.some(g => g.toLowerCase() === withoutSlashes);
+  });
+
+  // If found in STAGE_PHONEME_SAMPLES, try to find matching entry in ALL_COMPREHENSIVE_PHONEMES
+  if (stageSample) {
+    const comprehensiveMatch = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+      p.phoneme.toLowerCase() === stageSample.phoneme.toLowerCase()
+    );
+    if (comprehensiveMatch) return comprehensiveMatch;
+  }
+
+  return null;
 }
 
 /**
- * Find phoneme by various input formats
+ * Find phoneme by various input formats - uses TypeScript as single source of truth
  */
-async function findPhonemeByInput(input: string): Promise<any | null> {
+function findPhonemeByInput(input: string): any | null {
   const normalizedInput = input.toLowerCase().trim();
-  
+
   // Check for "phoneme spelled grapheme" syntax
   const spelledPattern = /^(.+?)\s+spelled\s+(.+)$/i;
   const spelledMatch = normalizedInput.match(spelledPattern);
-  
+
   if (spelledMatch) {
     const [, requestedPhoneme, requestedGrapheme] = spelledMatch;
-    return await findSpecificGraphemeForPhoneme(requestedPhoneme.trim(), requestedGrapheme.trim());
-  }
-  
-  try {
-    // Try direct phoneme match first (e.g., "/sh/", "/m/")
-    let { data: phonemeData, error } = await supabase
-      .from('phonemes')
-      .select('*')
-      .eq('phoneme', normalizedInput)
-      .single();
-
-    if (phonemeData && !error) {
-      return phonemeData;
+    const phonemeData = findPhonemeInTypeScript(requestedPhoneme.trim());
+    if (phonemeData) {
+      const hasGrapheme = phonemeData.graphemes.some(g => g.toLowerCase() === requestedGrapheme.trim().toLowerCase());
+      return {
+        ...phonemeData,
+        requested_specific_grapheme: requestedGrapheme.trim(),
+        show_specific_grapheme: true,
+        invalid_grapheme: !hasGrapheme
+      };
     }
-
-    // Try with IPA formatting if not already formatted
-    if (!normalizedInput.startsWith('/')) {
-      const ipaFormatted = `/${normalizedInput}/`;
-      ({ data: phonemeData, error } = await supabase
-        .from('phonemes')
-        .select('*')
-        .eq('phoneme', ipaFormatted)
-        .single());
-
-      if (phonemeData && !error) {
-        return phonemeData;
-      }
-    }
-
-    // Try searching in graphemes array
-    ({ data: phonemeData, error } = await supabase
-      .from('phonemes')
-      .select('*')
-      .contains('graphemes', [normalizedInput])
-      .limit(1)
-      .single());
-
-    if (phonemeData && !error) {
-      return phonemeData;
-    }
-
-    // Try searching by phoneme_id (e.g., "stage1_m")
-    ({ data: phonemeData, error } = await supabase
-      .from('phonemes')
-      .select('*')
-      .eq('phoneme_id', normalizedInput)
-      .single());
-
-    if (phonemeData && !error) {
-      return phonemeData;
-    }
-
-    // Try fuzzy search in common patterns
-    const commonPatterns = [
-      normalizedInput.replace(/\s+sound$/i, ''),
-      normalizedInput.replace(/^long\s+/i, ''),
-      normalizedInput.replace(/^short\s+/i, ''),
-      normalizedInput.replace(/\s+/g, ''),
-    ];
-
-    for (const pattern of commonPatterns) {
-      // Special case: if searching for "short" + single vowel, prioritize short vowel phonemes
-      // Short vowels are in Stage 1, so look for stage1_a, stage1_e, etc.
-      if (normalizedInput.toLowerCase().includes('short') &&
-          ['a', 'e', 'i', 'o', 'u'].includes(pattern.toLowerCase())) {
-
-        // Try to find short vowel phoneme first (Stage 1 vowels)
-        ({ data: phonemeData, error } = await supabase
-          .from('phonemes')
-          .select('*')
-          .eq('phoneme', `/${pattern}/`)
-          .eq('stage_id', 1)
-          .limit(1)
-          .single());
-
-        if (phonemeData && !error) {
-          return phonemeData;
-        }
-      }
-
-      // Try as grapheme
-      ({ data: phonemeData, error } = await supabase
-        .from('phonemes')
-        .select('*')
-        .contains('graphemes', [pattern])
-        .limit(1)
-        .single());
-
-      if (phonemeData && !error) {
-        return phonemeData;
-      }
-
-      // Try as IPA
-      const ipaPattern = `/${pattern}/`;
-      ({ data: phonemeData, error } = await supabase
-        .from('phonemes')
-        .select('*')
-        .eq('phoneme', ipaPattern)
-        .single());
-
-      if (phonemeData && !error) {
-        return phonemeData;
-      }
-    }
-
-    return null;
-  } catch (error) {
-    console.error('Error searching for phoneme:', error);
     return null;
   }
+
+  // Find in TypeScript data
+  return findPhonemeInTypeScript(input);
 }
 
 /**
- * Transform Supabase phoneme data to expected frontend format
+ * Transform TypeScript phoneme data to expected frontend format
+ * Uses TypeScript ComprehensivePhonemeEntry as the source
  */
-function transformPhonemeData(supabaseData: any): PhonemeData {
-  const articulation = supabaseData.articulation_data;
-  
+function transformPhonemeData(tsData: any): PhonemeData {
+  // Handle both formats: TypeScript uses 'stage', might have 'stage_id' from extended data
+  const stageId = tsData.stage || tsData.stage_id || 1;
+  const articulation = tsData.articulation_data;
+
   // Safely extract string values and ensure no objects are passed to React
   const safeString = (value: any): string => {
     if (typeof value === 'string') return value;
     if (value == null) return '';
     return String(value);
   };
-  
+
   const safeArray = (value: any): string[] => {
     if (Array.isArray(value)) return value.map(v => safeString(v));
     if (typeof value === 'string') return [value];
@@ -323,59 +205,61 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
     }).filter((s: string) => s.length > 0);
   };
 
+  // Create normalized data object for helper functions (they expect stage_id)
+  const normalizedData = {
+    ...tsData,
+    stage_id: stageId
+  };
+
   const result: any = {
     phoneme: {
-      id: safeString(supabaseData.phoneme_id),
-      ipa_symbol: formatPhonemeSymbol(supabaseData.phoneme, supabaseData.stage_id),
-      common_name: getPhonemeCommonName(supabaseData.phoneme, supabaseData.stage_id),
-      phoneme_type: getPhonemeType(supabaseData),
-      frequency_rank: (typeof supabaseData.frequency_rank === 'number' && supabaseData.frequency_rank > 0)
-        ? supabaseData.frequency_rank
-        : getFrequencyRankFromLocalData(supabaseData.phoneme),
-      is_voiced: isVoicedPhoneme(supabaseData.phoneme, articulation),
+      id: safeString(tsData.phoneme_id),
+      ipa_symbol: formatPhonemeSymbol(tsData.phoneme, stageId),
+      common_name: getPhonemeCommonName(tsData.phoneme, stageId),
+      phoneme_type: getPhonemeType(normalizedData),
+      frequency_rank: tsData.frequency_rank || 0,
+      is_voiced: isVoicedPhoneme(tsData.phoneme, articulation),
     },
     graphemes: (() => {
       // Try new comprehensive frequency data first
-      const comprehensiveData = getGraphemeFrequenciesForPhoneme(supabaseData.phoneme);
+      const comprehensiveData = getGraphemeFrequenciesForPhoneme(tsData.phoneme);
 
       if (comprehensiveData.length > 0) {
         // Use new comprehensive frequency data - has detailed weighted percentages
         return comprehensiveData.map((freqData, index) => ({
-          id: `${safeString(supabaseData.phoneme_id)}_${index}`,
+          id: `${safeString(tsData.phoneme_id)}_${index}`,
           grapheme: safeString(freqData.grapheme),
           spelling_frequency: freqData.weighted_percent / 100,
           percentage: freqData.weighted_percent,
           usage_label: freqData.usage_label,
           context_notes: '',
-          // Notes are now minimal since percentage and label are shown in the UI
           notes: '',
         }));
       }
 
       // Fallback to old graphemeFrequencies data
-      const frequencyData = getGraphemeFrequencies(supabaseData.phoneme);
+      const frequencyData = getGraphemeFrequencies(tsData.phoneme);
 
       if (frequencyData.length > 0) {
-        // Use frequency data - it has the complete list of valid graphemes
         return frequencyData.map((freqData, index) => ({
-          id: `${safeString(supabaseData.phoneme_id)}_${index}`,
+          id: `${safeString(tsData.phoneme_id)}_${index}`,
           grapheme: safeString(freqData.grapheme),
           spelling_frequency: freqData.percentage / 100,
           percentage: freqData.percentage,
           usage_label: freqData.usage_label,
           context_notes: safeString(freqData.context_notes),
-          notes: safeString(freqData.context_notes || (index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : '')),
+          notes: safeString(freqData.context_notes || (index === 0 ? `Most common spelling for ${tsData.phoneme} sound` : '')),
         }));
       } else {
-        // Fallback to database graphemes if no frequency data available
-        return (supabaseData.graphemes || []).map((grapheme: string, index: number) => ({
-          id: `${safeString(supabaseData.phoneme_id)}_${index}`,
+        // Fallback to TypeScript graphemes array
+        return (tsData.graphemes || []).map((grapheme: string, index: number) => ({
+          id: `${safeString(tsData.phoneme_id)}_${index}`,
           grapheme: safeString(grapheme),
           spelling_frequency: index === 0 ? 1 : 0.5,
           percentage: undefined,
           usage_label: undefined,
           context_notes: '',
-          notes: index === 0 ? `Most common spelling for ${supabaseData.phoneme} sound` : '',
+          notes: index === 0 ? `Most common spelling for ${tsData.phoneme} sound` : '',
         }));
       }
     })(),
@@ -383,23 +267,23 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
       // For vowels, use vowel-specific terminology; for consonants, use standard terms
       place_of_articulation: articulation.sound_type === 'vowel'
         ? safeString(articulation.tongue_position)
-        : safeString(articulation.place || generatePlaceOfArticulation(supabaseData)),
+        : safeString(articulation.place || generatePlaceOfArticulation(normalizedData)),
       manner_of_articulation: articulation.sound_type === 'vowel'
         ? safeString(articulation.sound_type)
-        : safeString(articulation.manner || generateMannerOfArticulation(supabaseData)),
-      voicing: safeString(articulation.voicing || generateVoicing(supabaseData)),
+        : safeString(articulation.manner || generateMannerOfArticulation(normalizedData)),
+      voicing: safeString(articulation.voicing || generateVoicing(normalizedData)),
       tongue_position: articulation.sound_type === 'vowel'
         ? safeString(articulation.lip_shape)
-        : safeString(articulation.teacher_guidance || articulation.cue || generateTonguePosition(supabaseData)),
+        : safeString(articulation.teacher_guidance || articulation.cue || generateTonguePosition(normalizedData)),
       lip_position: articulation.sound_type === 'vowel'
         ? safeString(articulation.airflow)
-        : safeString(articulation.articulation_cues || generateLipPosition(supabaseData)),
-      airflow_description: safeString(articulation.airflow_description) || safeString(articulation.airflow) || generateAirflowDescription(supabaseData),
+        : safeString(articulation.articulation_cues || generateLipPosition(normalizedData)),
+      airflow_description: safeString(articulation.airflow_description) || safeString(articulation.airflow) || generateAirflowDescription(normalizedData),
       step_by_step_instructions: articulation.student_tips
         ? safeString(articulation.student_tips).split(/(?<=[.!?])\s+/).filter((s: string) => s.trim().length > 0)
-        : generateStepByStepInstructions(supabaseData),
-      common_errors: generateCommonErrors(supabaseData),
-      teacher_tips: articulation.teacher_guidance ? [safeString(articulation.teacher_guidance)] : generateTeacherTips(supabaseData),
+        : generateStepByStepInstructions(normalizedData),
+      common_errors: generateCommonErrors(normalizedData),
+      teacher_tips: articulation.teacher_guidance ? [safeString(articulation.teacher_guidance)] : generateTeacherTips(normalizedData),
       // Vowel-specific fields
       is_vowel: articulation.sound_type === 'vowel',
       vowel_height: articulation.tongue_position?.split(',')[0]?.trim(),
@@ -407,30 +291,30 @@ function transformPhonemeData(supabaseData: any): PhonemeData {
       lip_shape: safeString(articulation.lip_shape),
     } : null,
     teaching_content: {
-      explanations: generateTeachingExplanations(supabaseData),
-      rules: generateTeachingRules(supabaseData),
-      tips: generateTeachingTips(supabaseData),
+      explanations: generateTeachingExplanations(normalizedData),
+      rules: generateTeachingRules(normalizedData),
+      tips: generateTeachingTips(normalizedData),
     },
-    word_lists: generateWordLists(supabaseData),
+    word_lists: generateWordLists(normalizedData),
     practice_texts: {
-      sentences: safeArray(supabaseData.decodable_sentences),
-      stories: extractStories(supabaseData.content_generation_meta),
-      word_ladders: extractWordLadders(supabaseData.content_generation_meta),
+      sentences: safeArray(tsData.decodable_sentences),
+      stories: extractStories(tsData.content_generation_meta),
+      word_ladders: extractWordLadders(tsData.content_generation_meta),
     },
-    research_citations: (supabaseData.research_sources || []).map((source: any, index: number) => ({
+    research_citations: (tsData.research_sources || []).map((source: any, index: number) => ({
       source_name: safeString(source),
-      citation_text: `Research-based phonics instruction supporting ${supabaseData.phoneme} sound development.`,
+      citation_text: `Research-based phonics instruction supporting ${tsData.phoneme} sound development.`,
       url: undefined,
     })),
   };
-  
+
   // Add fields for "spelled" syntax support
-  if (supabaseData.show_specific_grapheme) {
+  if (tsData.show_specific_grapheme) {
     result.show_specific_grapheme = true;
-    result.requested_specific_grapheme = safeString(supabaseData.requested_specific_grapheme);
-    result.invalid_grapheme = Boolean(supabaseData.invalid_grapheme);
+    result.requested_specific_grapheme = safeString(tsData.requested_specific_grapheme);
+    result.invalid_grapheme = Boolean(tsData.invalid_grapheme);
   }
-  
+
   return result;
 }
 
@@ -768,31 +652,46 @@ function generateTeachingTips(data: any): Array<{ content: string; icon_emoji: s
 
 /**
  * Generate word lists from word examples with proper phoneme position detection
- * Only includes words that are appropriate for each specific grapheme
+ * Uses pre-defined word_lists from data when available, otherwise auto-generates
  */
 function generateWordLists(data: any): { [grapheme: string]: { beginning: string[]; medial: string[]; ending: string[] } } {
+  // If pre-defined word_lists exist in the data, use them directly
+  if (data.word_lists && typeof data.word_lists === 'object' && Object.keys(data.word_lists).length > 0) {
+    const wordLists: any = {};
+    for (const grapheme of Object.keys(data.word_lists)) {
+      const lists = data.word_lists[grapheme];
+      wordLists[grapheme] = {
+        beginning: Array.isArray(lists.beginning) ? lists.beginning.slice(0, 5) : [],
+        medial: Array.isArray(lists.medial) ? lists.medial.slice(0, 5) : [],
+        ending: Array.isArray(lists.ending) ? lists.ending.slice(0, 5) : [],
+      };
+    }
+    return wordLists;
+  }
+
+  // Fallback: auto-generate from word_examples
   const wordLists: any = {};
-  
+
   if (data.graphemes?.length > 0 && data.word_examples?.length > 0) {
     const phoneme = data.phoneme?.replace(/[\/]/g, ''); // Remove IPA slashes
     const frequencyData = getGraphemeFrequencies(data.phoneme);
-    
+
     // Only process valid graphemes that have frequency data
-    const validGraphemes = data.graphemes.filter((grapheme: string) => 
+    const validGraphemes = data.graphemes.filter((grapheme: string) =>
       frequencyData.some(f => f.grapheme === grapheme)
     );
-    
+
     validGraphemes.forEach((grapheme: string) => {
       wordLists[grapheme] = {
         beginning: [],
         medial: [],
         ending: [],
       };
-      
+
       // Filter words that actually contain this specific grapheme spelling
       const relevantWords = data.word_examples.filter((word: string) => {
         const lowerWord = word.toLowerCase();
-        
+
         // Special cases for different graphemes
         if (phoneme === 'sh') {
           switch (grapheme) {
@@ -818,11 +717,11 @@ function generateWordLists(data: any): { [grapheme: string]: { beginning: string
           return lowerWord.includes(grapheme.toLowerCase());
         }
       });
-      
+
       // Categorize filtered words by phoneme position
       relevantWords.forEach((word: string) => {
         const lowerWord = word.toLowerCase();
-        
+
         if (phoneme === 'sh') {
           // Determine position based on the specific grapheme
           switch (grapheme) {
@@ -836,7 +735,7 @@ function generateWordLists(data: any): { [grapheme: string]: { beginning: string
               }
               break;
             case 'ti':
-            case 'ci': 
+            case 'ci':
             case 'si':
             case 'ssi':
               // These typically appear in endings
@@ -874,14 +773,14 @@ function generateWordLists(data: any): { [grapheme: string]: { beginning: string
           }
         }
       });
-      
+
       // Remove duplicates and limit to 5 words per position
       wordLists[grapheme].beginning = [...new Set(wordLists[grapheme].beginning)].slice(0, 5);
       wordLists[grapheme].medial = [...new Set(wordLists[grapheme].medial)].slice(0, 5);
       wordLists[grapheme].ending = [...new Set(wordLists[grapheme].ending)].slice(0, 5);
     });
   }
-  
+
   return wordLists;
 }
 
@@ -1131,15 +1030,10 @@ function generateTeacherTips(data: any): string[] {
 }
 
 /**
- * Log usage analytics to Supabase
+ * Log usage analytics (console only - no database dependency)
  */
-async function logUsage(phonemeId: string, sectionsViewed: string[], userId?: string) {
-  try {
-    // You could implement usage logging here if you have a usage_logs table
-    console.log('Usage logged:', { phonemeId, sectionsViewed, userId });
-  } catch (error) {
-    console.error('Error logging usage:', error);
-  }
+function logUsage(phonemeId: string, sectionsViewed: string[], userId?: string) {
+  console.log('Usage logged:', { phonemeId, sectionsViewed, userId });
 }
 
 export async function POST(request: NextRequest) {
@@ -1153,17 +1047,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Find the phoneme in Supabase
-    const phonemeData = await findPhonemeByInput(phoneme_input);
-    
+    // Find the phoneme in TypeScript data (single source of truth)
+    const phonemeData = findPhonemeByInput(phoneme_input);
+
     if (!phonemeData) {
       return NextResponse.json(
-        { 
+        {
           error: 'Phoneme not found',
           message: `Could not find phoneme for input: "${phoneme_input}". Try using IPA notation (e.g., "/sh/") or common names (e.g., "sh").`,
           suggestions: [
-            'Try "/sh/" for the sh sound', 
-            'Use "/m/" for the m sound', 
+            'Try "/sh/" for the sh sound',
+            'Use "/m/" for the m sound',
             'Use "ai" for the ai vowel team',
             'Use stage and phoneme like "stage1_m"'
           ]
@@ -1172,17 +1066,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Note: We no longer block invalid grapheme combinations here
-    // Instead, we let them pass through with invalid_grapheme flag
-    // so the frontend can display the requested combination while
-    // providing educational content about correct spellings
-
-    // Transform Supabase data to expected frontend format
+    // Transform TypeScript data to expected frontend format
     const transformedData = transformPhonemeData(phonemeData);
 
     // Log usage analytics
     const requestedSections = sections_requested || ['all'];
-    await logUsage(phonemeData.phoneme_id, requestedSections, user_id);
+    logUsage(phonemeData.phoneme_id, requestedSections, user_id);
 
     // Check if this was an auto-corrected input
     let correction = null;
@@ -1202,7 +1091,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error in decoding-den API:', error);
     return NextResponse.json(
-      { 
+      {
         success: false,
         error: 'Internal server error',
         generated_at: new Date().toISOString(),
@@ -1212,7 +1101,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET endpoint for browsing phonemes
+// GET endpoint for browsing phonemes - uses TypeScript data
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -1220,43 +1109,40 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '20');
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    let query = supabase
-      .from('phonemes')
-      .select('phoneme_id, phoneme, stage_id, frequency_rank, graphemes');
+    // Filter phonemes from TypeScript data
+    let phonemes = ALL_COMPREHENSIVE_PHONEMES;
 
     if (stage) {
-      query = query.eq('stage_id', parseInt(stage));
+      phonemes = phonemes.filter(p => p.stage === parseInt(stage));
     }
 
-    const { data: phonemes, error, count } = await query
-      .order('frequency_rank', { ascending: true })
-      .range(offset, offset + limit - 1);
+    // Sort by frequency_rank
+    phonemes = phonemes.sort((a, b) => a.frequency_rank - b.frequency_rank);
 
-    if (error) {
-      throw error;
-    }
+    // Apply pagination
+    const paginatedPhonemes = phonemes.slice(offset, offset + limit);
 
-    const transformedPhonemes = phonemes?.map(phoneme => ({
+    const transformedPhonemes = paginatedPhonemes.map(phoneme => ({
       id: phoneme.phoneme_id,
       ipa_symbol: phoneme.phoneme,
       common_name: phoneme.phoneme.replace(/[\/]/g, '') + ' sound',
-      phoneme_type: getPhonemeType(phoneme),
+      phoneme_type: getPhonemeType({ ...phoneme, stage_id: phoneme.stage }),
       frequency_rank: phoneme.frequency_rank || 0,
-      stage_id: phoneme.stage_id,
+      stage_id: phoneme.stage,
       graphemes: phoneme.graphemes || [],
-    })) || [];
+    }));
 
     return NextResponse.json({
       success: true,
       phonemes: transformedPhonemes,
-      total: count || 0,
+      total: phonemes.length,
       generated_at: new Date().toISOString(),
     });
 
   } catch (error) {
     console.error('Error in decoding-den GET:', error);
     return NextResponse.json(
-      { 
+      {
         success: false,
         error: 'Internal server error',
         generated_at: new Date().toISOString(),

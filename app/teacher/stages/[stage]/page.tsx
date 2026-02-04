@@ -17,783 +17,1329 @@ interface StageInfo {
   instructional_focus: string[];
 }
 
-// RESEARCH-VALIDATED Stage 1 Weekly Data - 15 Core Phonemes Only
-// Extended to 10 weeks for better mastery and spiral review
-const stage1WeeklyData = [
+// v4.1 Weekly data structure with intensity flags
+type IntensityLevel = "CORE" | "TEACH" | "EXPOSURE";
+
+interface WeeklyData {
+  week: number;
+  phonemes: string[];
+  graphemes: string[];
+  intensity: IntensityLevel[];
+  focusWords: string[];
+  decodableText: string;
+  assessment: string;
+  isCheckpoint: boolean;
+  isMastery: boolean;
+  isReview?: boolean;
+  teachingTips: string[];
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 1: Core Consonants & Short Vowels (v4.1)
+// Grade: K-Fall | Duration: 10 weeks | Phase: Pre → Partial Alphabetic
+// Intensity Profile: 15 ★ CORE | 0 ▲ TEACH | 0 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage1WeeklyData: WeeklyData[] = [
   {
     week: 1,
-    phonemes: ['/m/', '/s/', '/a/'],
+    phonemes: ['/m/', '/s/', '/ă/'],
     graphemes: ['m', 's', 'a'],
-    focusWords: ['am', 'Sam', 'as', 'mam', 'sas'],
-    decodableText: 'Mam! Sam! Sam can sas, mam!',
-    assessment: 'Daily quick check: letter-sound correspondence',
-    tips: '/m/ - continuous sound (can be held)\n/s/ - continuous sound (can be held)\n/a/ - clear open vowel articulation'
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['am', 'Sam', 'as', 'mas'],
+    decodableText: 'Mam! Sam! Sam am mas.',
+    assessment: 'Daily: letter-sound correspondence',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/m/ — continuous sound (can be held), ideal for blending instruction',
+      '/s/ — continuous sound (can be held), ideal for blending instruction',
+      '/ă/ — clear open vowel articulation'
+    ]
   },
   {
     week: 2,
     phonemes: ['/t/', '/n/'],
     graphemes: ['t', 'n'],
-    focusWords: ['at', 'sat', 'mat', 'man', 'tan'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['at', 'sat', 'mat', 'man', 'tan', 'ant'],
     decodableText: 'The man sat. Sam sat. Sam and the man sat on a tan mat.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/t/ - stop sound (quick release)\n/n/ - continuous nasal sound\nContrast stop vs. continuous production'
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '/t/ — stop sound (quick release), voiceless',
+      '/n/ — continuous nasal, tongue behind teeth'
+    ]
   },
   {
     week: 3,
-    phonemes: ['/p/', '/i/'],
+    phonemes: ['/p/', '/ĭ/'],
     graphemes: ['p', 'i'],
-    focusWords: ['pat', 'pit', 'sip', 'sit', 'tip'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['pat', 'pit', 'sip', 'sit', 'tip', 'pin', 'nap'],
     decodableText: 'Pat can sit. Tip can sip. I can sit and sip.',
-    assessment: 'Daily quick check + dictation (3-5 words)',
-    tips: '/p/ - visible bilabial stop\n/i/ - high front vowel\nPractice /i/ vs /a/ discrimination (high front vs. low central vowels)'
+    assessment: 'Daily: dictation (3-5 words)',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/p/ — stop sound, voiceless bilabial (visible lip pop)',
+      '/ĭ/ — short i, lips slightly spread'
+    ]
   },
   {
     week: 4,
     phonemes: ['/d/', '/f/'],
     graphemes: ['d', 'f'],
-    focusWords: ['dad', 'mad', 'sad', 'fat', 'if'],
-    decodableText: 'Dad sat. The fat cat is mad. Dad sat.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: '/d/ - voiced alveolar stop (hand on throat to feel vibration)\n/f/ - voiceless labiodental fricative\nContrast /d/ with voiceless /t/'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['dad', 'mad', 'sad', 'fat', 'if', 'fin', 'fit'],
+    decodableText: 'Dad sat. The fat cat is mad. Dad is sad.',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '/d/ — stop sound, voiced (feel throat vibration), pair with /t/',
+      '/f/ — continuous fricative, voiceless (teeth on lower lip)'
+    ]
   },
   {
     week: 5,
-    phonemes: ['/o/', '/l/'],
+    phonemes: ['/ŏ/', '/l/'],
     graphemes: ['o', 'l'],
-    focusWords: ['dot', 'pot', 'lot', 'lap', 'lit'],
-    decodableText: 'I sit by the pot a lot. The pot is hot.',
-    assessment: 'Daily quick check + word chain activity',
-    tips: '/o/ - rounded mid-back vowel\n/l/ - lateral liquid (tongue tip to alveolar ridge)'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['dot', 'pot', 'lot', 'lap', 'lit', 'log', 'flip'],
+    decodableText: 'I sit by the pot a lot. The pot is hot. Flip the lid.',
+    assessment: 'Daily: word chain activity',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/ŏ/ — short o, open mouth rounded',
+      '/l/ — continuous liquid, tongue tip on ridge'
+    ]
   },
   {
     week: 6,
     phonemes: ['/h/', '/b/'],
     graphemes: ['h', 'b'],
-    focusWords: ['Bob', 'has', 'hat', 'hot', 'sud', 'dud'],
-    decodableText: 'Not the hot hat! It is a dud. Bob has it in the sud.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: '/h/ - voiceless fricative with aspirated airflow\n/b/ - voiced bilabial stop\n/b/ and /p/ minimal pairs: Practice contrasting voiced/voiceless (bat-pat)'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['Bob', 'has', 'hat', 'hot', 'bat', 'bit', 'bib'],
+    decodableText: 'Not the hot hat! Bob has a bat and a bib.',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '/h/ — voiceless glottal fricative (breath sound), initial position only',
+      '/b/ — stop sound, voiced bilabial, pair with /p/'
+    ]
   },
   {
     week: 7,
-    phonemes: ['/e/', '/u/'],
+    phonemes: ['/ĕ/', '/ŭ/'],
     graphemes: ['e', 'u'],
-    focusWords: ['pet', 'hen', 'mud', 'Ben', 'fed', 'sud', 'set', 'tub'],
-    decodableText: 'Ben fed the hen. The pet hen is in the mud. Not the mud! Sud in the tub! Hen in the tub! Sud and hen in the tub!',
-    assessment: 'Daily quick check + spelling assessment',
-    tips: '/e/ - mid-front vowel\n/u/ - high-back rounded vowel\nAll 5 short vowels complete - focus on discrimination practice'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['pet', 'hen', 'mud', 'Ben', 'fed', 'tub', 'bus', 'fun'],
+    decodableText: 'Ben fed the hen. The pet hen is in the mud. The bus is fun.',
+    assessment: 'Daily: spelling assessment',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/ĕ/ — short e, mouth slightly open',
+      '/ŭ/ — short u, relaxed central vowel'
+    ]
   },
   {
     week: 8,
-    phonemes: ['Review Consonants'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['hot', 'mud', 'pet', 'sit', 'tan', 'lab', 'fun', 'nap', 'big'],
-    decodableText: 'The hot sun hit the mud. Ben let his pet sit on the tan mat. The big lab had fun. It had a nap!',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-8',
-    tips: 'Review all consonants - focus on challenging sounds for each student'
+    phonemes: ['Review'],
+    graphemes: ['All Stage 1 consonants'],
+    intensity: ['CORE'],
+    focusWords: ['hot', 'mud', 'pet', 'sit', 'tan', 'lab', 'fun', 'nap', 'big', 'tub'],
+    decodableText: 'The hot sun hit the mud. Ben let his pet sit on the tan mat in the tub.',
+    assessment: 'CHECKPOINT Weeks 1-8',
+    isCheckpoint: true,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Review all consonant sounds — focus on any sounds students are still confusing'
+    ]
   },
   {
     week: 9,
-    phonemes: ['Review All Vowels'],
-    graphemes: ['Review All Elements'],
+    phonemes: ['Review'],
+    graphemes: ['All Stage 1 vowels'],
+    intensity: ['CORE'],
     focusWords: ['cat', 'sat', 'bed', 'dog', 'dug', 'mud', 'fun', 'hit', 'lap', 'pen', 'log'],
-    decodableText: 'The cat sat on the bed to nap. The hen hid in the pen to nap. The dog sat on his lap to nap. Mud, mud, mud on the bed, in the pen, on his lap.',
-    assessment: 'Daily quick check: all vowel discrimination practice',
-    tips: 'Review all 5 short vowels - use minimal pairs for discrimination'
+    decodableText: 'The cat sat on the bed to nap. The hen hid in the pen to nap.',
+    assessment: 'Daily: vowel discrimination',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Focus on vowel discrimination — students often confuse /ĕ/ and /ĭ/, and /ŏ/ and /ŭ/'
+    ]
   },
   {
     week: 10,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 1 Elements'],
-    focusWords: ['Sam', 'am', 'sat', 'mat', 'man', 'Pat', 'sit', 'sip', 'tip', 'dad', 'mad', 'fat', 'pot', 'hot', 'lot', 'lap', 'hat', 'Bob', 'bat', 'bit', 'bed', 'pet', 'but', 'mud', 'hut'],
-    decodableText: 'Sam sat on the mat. His pal Pat had a pet. The pet sat on his lap. Dad sat. Bob sat. Dad and Bob pat the pet.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery! Ready for consonant blends and digraphs!'
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 1'],
+    intensity: ['CORE'],
+    focusWords: ['Sam', 'sat', 'mat', 'man', 'Pat', 'sit', 'sip', 'tip', 'dad', 'mad', 'fat', 'pot', 'hot', 'lot', 'lap', 'hat', 'Bob', 'bat', 'bed', 'pet', 'mud', 'hut', 'bus', 'fun', 'hen'],
+    decodableText: 'Sam sat on the mat. His pal Pat had a pet. The pet sat on his lap. Fun in the sun!',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess all 15 GPCs — both reading and spelling. Students should decode CVC words automatically.'
+    ]
   }
 ];
 
-// RESEARCH-VALIDATED Stage 2 Weekly Data (10 weeks)
-// Research-aligned 15 elements: consonants, digraphs & final consonants
-// Extended to 10 weeks for better mastery and spiral review
-const stage2WeeklyData = [
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 2: Remaining Letters & Digraphs (v4.1)
+// Grade: K-Spring | Duration: 10 weeks | Phase: Partial → Full Alphabetic
+// Intensity Profile: 18 ★ CORE | 0 ▲ TEACH | 0 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage2WeeklyData: WeeklyData[] = [
   {
     week: 1,
     phonemes: ['/r/', '/g/'],
     graphemes: ['r', 'g'],
-    focusWords: ['red', 'rag', 'rat', 'got', 'gab', 'gap'],
-    decodableText: 'Dad had a red rat. The red rat had a bit of mud.',
-    assessment: 'Daily quick check: new consonant recognition',
-    tips: '/r/ - clear articulation with tongue tip up\n/g/ - back of tongue touches roof of mouth'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['red', 'rag', 'rat', 'got', 'gab', 'gap', 'rug', 'grin'],
+    decodableText: 'Dad had a red rug. The rat got in the gap.',
+    assessment: 'Daily: new consonant recognition',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/r/ — liquid, tongue curled back, continuous',
+      '/g/ — stop sound, voiced velar, pair with /k/'
+    ]
   },
   {
     week: 2,
-    phonemes: ['/k/', '/j/'],
-    graphemes: ['k', 'c', 'j'],
-    focusWords: ['can', 'cat', 'kit', 'cap', 'jam', 'Jim'],
-    decodableText: 'Jim had a cap and a can. The cat had a kit and some jam.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/k/ - can be spelled with c or k\n/j/ - always at word beginnings'
+    phonemes: ['/k/'],
+    graphemes: ['k', 'c (hard)', 'ck'],
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['can', 'cat', 'kit', 'cap', 'kid', 'kick', 'duck', 'back', 'sick'],
+    decodableText: 'The kid can kick. The cat sat on the cap. The duck is in the back.',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '/k/ has THREE spellings: c before a, o, u; k before e, i; ck after a short vowel at the end of a one-syllable word'
+    ]
   },
   {
     week: 3,
-    phonemes: ['/v/'],
-    graphemes: ['v'],
-    focusWords: ['van', 'vet', 'vat', 'vim', 'Val'],
-    decodableText: 'Val the vet had a red van. Val had a cat that sat in the van.',
-    assessment: 'Daily quick check: Can student produce /v/ sound correctly and read /v/ words',
-    tips: '/v/ - teeth on bottom lip, voiced fricative (continuous sound made with vibration)'
+    phonemes: ['/j/', '/v/'],
+    graphemes: ['j', 'v'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['jam', 'jet', 'jog', 'van', 'vet', 'vat', 'Val'],
+    decodableText: 'Val the vet had a red van. Jim had jam on his vest.',
+    assessment: 'Daily: /j/ and /v/ production',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/j/ — voiced affricate',
+      '/v/ — voiced fricative, teeth on lower lip, pair with /f/'
+    ]
   },
   {
     week: 4,
-    phonemes: ['/w/', '/y/'],
-    graphemes: ['w', 'y'],
-    focusWords: ['wet', 'win', 'was', 'yes', 'yam', 'yet'],
-    decodableText: 'Is the yam wet yet? Yes, the yam is wet.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: '/w/ - round lips and blow air (like blowing out candles)\n/y/ - tongue touches roof of mouth, used as a consonant at the beginning of words'
+    phonemes: ['/w/'],
+    graphemes: ['w', 'wh'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['wet', 'win', 'wag', 'when', 'what', 'whip', 'which'],
+    decodableText: 'When is it wet? What did the dog wag? Which hat is his?',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '/w/ — glide sound, lips rounded',
+      'wh — most wh words are question words (when, what, where, which, why)'
+    ]
   },
   {
     week: 5,
-    phonemes: ['/z/', '/x/'],
-    graphemes: ['z', 'x'],
-    focusWords: ['zip', 'zap', 'zag', 'fox', 'box', 'mix'],
-    decodableText: 'The fox is in the box. Zip, zap, zag — what a mix!',
-    assessment: 'Daily quick check: /z/ and /ks/ sounds',
-    tips: '/z/ - voiced version of /s/\n/x/ - represents two sounds /k/+/s/'
+    phonemes: ['/y/', '/z/'],
+    graphemes: ['y', 'z'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['yes', 'yet', 'yam', 'zip', 'zap', 'zag'],
+    decodableText: 'Yes, the yam is hot. Zip, zap, zag!',
+    assessment: 'Daily: /y/ and /z/ sounds',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/y/ — glide sound, tongue high and forward',
+      '/z/ — voiced fricative, pair with /s/'
+    ]
   },
   {
     week: 6,
-    phonemes: ['/kw/'],
-    graphemes: ['qu'],
-    focusWords: ['quit', 'quiz', 'quip', 'quest'],
-    decodableText: 'I quit the quest. I had a quiz.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: '/qu/ - always together, represents /kw/ sound'
+    phonemes: ['/ks/', '/kw/'],
+    graphemes: ['x', 'qu'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['fox', 'box', 'mix', 'six', 'quit', 'quiz', 'quest'],
+    decodableText: 'The fox is in the box. Six can quit the quiz.',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'x represents TWO sounds: /k/+/s/',
+      'qu — q and u always together, makes /kw/'
+    ]
   },
   {
     week: 7,
     phonemes: ['/ch/', '/sh/'],
     graphemes: ['ch', 'sh'],
-    focusWords: ['chip', 'Chad', 'chat', 'shop', 'fish', 'dish'],
-    decodableText: 'Chip and Chad had fish on a dish at the shop.',
-    assessment: 'Daily quick check: first digraphs',
-    tips: '/ch/ - two letters make one sound\n/sh/ - two letters make one sound\nTwo letters that make one sound are called digraphs'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['chip', 'chat', 'chop', 'much', 'shop', 'fish', 'dish', 'shed'],
+    decodableText: 'Chip and Chad had fish on a dish at the shop. Much fun in the shed.',
+    assessment: 'Daily: first digraphs',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'Digraphs: two letters, one sound',
+      '/ch/ — voiceless affricate',
+      '/sh/ — voiceless fricative'
+    ]
   },
   {
     week: 8,
-    phonemes: ['/th/', '/th/'],
+    phonemes: ['/th/ (voiceless)', '/th/ (voiced)'],
     graphemes: ['th', 'th'],
-    focusWords: ['thin', 'math', 'path'],
-    decodableText: 'A thin path. Math is fun.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: '/th/ - voiceless, tongue between teeth\n/th/ - voiced, tongue between teeth\nSame spelling, different sounds'
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['thin', 'math', 'path', 'thick', 'this', 'that', 'them', 'then'],
+    decodableText: 'A thin path. This is thick. That math is fun. Then them sat.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'th has two sounds — voiceless (thin, math) and voiced (this, that)',
+      'Voiceless: air only. Voiced: feel throat vibration.'
+    ]
   },
   {
     week: 9,
-    phonemes: ['/ng/'],
-    graphemes: ['ng'],
-    focusWords: ['ring', 'sing', 'long', 'king', 'hang', 'wing'],
-    decodableText: 'The king can sing a long song. Hang the ring on the wing.',
-    assessment: 'Daily quick check: final consonant digraph',
-    tips: '/ng/ - only at end of words or syllables, never at beginning'
+    phonemes: ['/ng/', 'Review'],
+    graphemes: ['ng', 'All digraphs'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['ring', 'sing', 'long', 'king', 'hang', 'wing', 'song', 'thing'],
+    decodableText: 'The king can sing a long song. Hang the ring on the thing.',
+    assessment: 'Daily: final digraph + mixed review',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      '/ng/ — nasal sound, back of tongue, always at end of syllable'
+    ]
   },
   {
     week: 10,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 2 Elements'],
-    focusWords: ['strong', 'spring', 'church', 'fresh', 'quickly', 'thinking'],
-    decodableText: 'The strong spring church is fresh. We are quickly thinking about the long path.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery! Ready for silent e and complex consonants!'
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 2'],
+    intensity: ['CORE'],
+    focusWords: ['strong', 'fresh', 'church', 'thinking', 'quickly', 'spring', 'bring', 'which'],
+    decodableText: 'The strong spring church is fresh. We are quickly thinking about which long path to bring.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess all 18 new GPCs plus all Stage 1 GPCs. Students should decode CCVC and CVCC words.'
+    ]
   }
 ];
 
-// FRY+NRP+EHRI Stage 3 Weekly Data (10 weeks)
-// Consonant Digraphs - 1st Grade Fall - "Two letters, one sound"
-const stage3WeeklyData = [
-  {
-    week: 1,
-    phonemes: ['/th/'],
-    graphemes: ['th'],
-    focusWords: ['thin', 'math', 'path', 'with', 'both', 'cloth'],
-    decodableText: 'The thin math book is on the path. Both kids put cloth with it.',
-    assessment: 'Daily quick check: voiceless th recognition',
-    tips: '/th/ - tongue between teeth, two letters make ONE sound'
-  },
-  {
-    week: 2,
-    phonemes: ['/sh/'],
-    graphemes: ['sh'],
-    focusWords: ['shop', 'fish', 'dish', 'rush', 'fresh', 'splash'],
-    decodableText: 'Rush to the shop for fresh fish. Put it in the dish with a splash.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/sh/ - sounds like "shh", continuous sound you can stretch'
-  },
-  {
-    week: 3,
-    phonemes: ['/ng/'],
-    graphemes: ['ng'],
-    focusWords: ['ring', 'sing', 'long', 'hang', 'king', 'strong'],
-    decodableText: 'The strong king can sing a long song. Hang the ring up.',
-    assessment: 'Daily quick check: ng at word endings',
-    tips: '/ng/ - only comes at the end of words or syllables'
-  },
-  {
-    week: 4,
-    phonemes: ['/ch/'],
-    graphemes: ['ch'],
-    focusWords: ['chip', 'chat', 'much', 'lunch', 'bench', 'church'],
-    decodableText: 'Much fun to chat at lunch. Sit on the bench by the church with a chip.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: '/ch/ - can come at beginning, middle, or end of words'
-  },
-  {
-    week: 5,
-    phonemes: ['/qu/'],
-    graphemes: ['qu'],
-    focusWords: ['quit', 'quick', 'queen', 'quiet', 'quack', 'quest'],
-    decodableText: 'The quick queen went on a quiet quest. The duck can quack but must quit.',
-    assessment: 'Daily quick check: qu always together',
-    tips: '/qu/ - q and u are always together, sounds like /kw/'
-  },
-  {
-    week: 6,
-    phonemes: ['/TH/'],
-    graphemes: ['th'],
-    focusWords: ['the', 'they', 'then', 'this', 'that', 'there'],
-    decodableText: 'They went there with this and that. Then the dog ran to them.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: '/TH/ - same spelling as voiceless th, but voice box vibrates'
-  },
-  {
-    week: 7,
-    phonemes: ['/wh/'],
-    graphemes: ['wh'],
-    focusWords: ['when', 'what', 'where', 'which', 'while', 'white'],
-    decodableText: 'When will you tell me what and where? Which white dog ran while we chat?',
-    assessment: 'Daily quick check: question words',
-    tips: '/wh/ - most wh words are question words'
-  },
-  {
-    week: 8,
-    phonemes: ['/f/'],
-    graphemes: ['ph'],
-    focusWords: ['phone', 'graph', 'photo', 'elephant', 'alphabet', 'dolphin'],
-    decodableText: 'The elephant is in the photo. Use the phone to call about the graph and alphabet.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: '/f/ - ph makes /f/ sound\nOften in Greek origin words'
-  },
-  {
-    week: 9,
-    phonemes: ['Review All Digraphs'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['something', 'fishing', 'nothing', 'watching'],
-    decodableText: 'Nothing is better than fishing and watching something splash in the fresh water.',
-    assessment: 'Daily quick check: mixed digraph practice',
-    tips: 'Review all digraphs - two letters, one sound'
-  },
-  {
-    week: 10,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 3 Elements'],
-    focusWords: ['everything', 'somewhere', 'anything', 'nowhere'],
-    decodableText: 'Everything we need is somewhere. We have nothing to worry about anywhere.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery of consonant digraphs!'
-  }
-];
-
-// FRY+NRP+EHRI Stage 4 Weekly Data (10 weeks)
-// Long Vowels with Silent E - 1st Grade Spring - "Magic E"
-const stage4WeeklyData = [
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 3: VCe Patterns & Consonant Complexities (v4.1)
+// Grade: 1st-Fall | Duration: 10 weeks | Phase: Full Alphabetic (Emerging)
+// Intensity Profile: 9 ★ CORE | 6 ▲ TEACH | 0 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage3WeeklyData: WeeklyData[] = [
   {
     week: 1,
     phonemes: ['/ā/'],
     graphemes: ['a_e'],
-    focusWords: ['make', 'cake', 'take', 'name', 'game', 'same'],
-    decodableText: 'Jake will make a cake. We can take the same name for the game.',
-    assessment: 'Daily quick check: a_e pattern recognition',
-    tips: '/ā/ - magic e makes the a say its name\nChanges from short /a/ to long /ā/'
+    intensity: ['CORE'],
+    focusWords: ['make', 'cake', 'take', 'name', 'game', 'same', 'bake', 'lake'],
+    decodableText: 'Jake will make a cake at the lake. We can take the same name for the game. Bake it!',
+    assessment: 'Daily: a_e pattern recognition',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'Magic E: the silent e at the end makes the vowel say its name. Contrast: mad→made, cap→cape'
+    ]
   },
   {
     week: 2,
-    phonemes: ['/ī/'],
-    graphemes: ['i_e'],
-    focusWords: ['bike', 'time', 'ride', 'like', 'fine', 'nine'],
-    decodableText: 'Mike will ride his bike at nine. That is a fine time. I like it.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/ī/ - magic e makes the i say its name\nChanges from short /i/ to long /ī/'
+    phonemes: ['/ī/', '/ō/'],
+    graphemes: ['i_e', 'o_e'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['bike', 'time', 'ride', 'like', 'home', 'bone', 'nose', 'hope'],
+    decodableText: 'Mike will ride his bike home in time. I like the bone on his nose. I hope so!',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'Continue VCe pattern — kit→kite, hop→hope',
+      'Students should now recognize the VCe pattern across three vowels'
+    ]
   },
   {
     week: 3,
-    phonemes: ['/ō/'],
-    graphemes: ['o_e'],
-    focusWords: ['home', 'bone', 'nose', 'hope', 'note', 'rope'],
-    decodableText: 'I hope to go home. The dog has a bone by his nose. Write a note about the rope.',
-    assessment: 'Daily quick check: o_e pattern practice',
-    tips: '/ō/ - magic e makes the o say its name\nChanges from short /o/ to long /ō/'
+    phonemes: ['/ū/', '/ē/'],
+    graphemes: ['u_e', 'e_e'],
+    intensity: ['CORE', 'TEACH'],
+    focusWords: ['cute', 'use', 'tube', 'huge', 'rule', 'theme', 'these'],
+    decodableText: 'The cute cat will use the huge tube. These kids like the theme and the rule.',
+    assessment: 'Daily: u_e and e_e patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'u_e is CORE — high frequency',
+      'e_e is TEACH — far fewer words use this pattern (theme, these, Steve, eve). Teach explicitly but don\'t drill as heavily.'
+    ]
   },
   {
     week: 4,
+    phonemes: ['/f/', '/l/'],
+    graphemes: ['ff', 'll'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['cliff', 'stuff', 'off', 'puff', 'bell', 'hill', 'doll', 'tell', 'well', 'shell'],
+    decodableText: 'Tell the doll on the hill. We fell off the cliff. The bell is in the shell.',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'FLOSS Rule: ff, ll, ss, zz double after a single short vowel at the end of a one-syllable word'
+    ]
+  },
+  {
+    week: 5,
+    phonemes: ['/s/', '/z/'],
+    graphemes: ['ss', 'zz'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['miss', 'dress', 'boss', 'less', 'mess', 'buzz', 'fizz', 'jazz', 'fuzz'],
+    decodableText: 'The boss made a mess. Do not miss the jazz. The buzz and fizz made less fuzz.',
+    assessment: 'Daily: FLOSS rule practice',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'Complete the FLOSS pattern — ss and zz follow the same doubling rule as ff and ll'
+    ]
+  },
+  {
+    week: 6,
+    phonemes: ['/ch/', '/j/'],
+    graphemes: ['tch', 'dge'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['catch', 'match', 'watch', 'kitchen', 'bridge', 'fudge', 'badge', 'judge'],
+    decodableText: 'Catch the match! Watch the judge on the bridge. Fudge in the kitchen!',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'tch and dge are trigraphs — three letters, one sound',
+      'They appear after short vowels: catch (short a), bridge (short i)',
+      'Students already know ch and j — these are positional variants'
+    ]
+  },
+  {
+    week: 7,
+    phonemes: ['/ngk/', '/f/'],
+    graphemes: ['nk', 'ph'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['think', 'drink', 'bank', 'pink', 'thank', 'phone', 'graph', 'photo'],
+    decodableText: 'Think and drink at the bank. Thank the pink phone for the photo and graph.',
+    assessment: 'Daily: nk and ph patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'nk always makes /ngk/ — the n borrows the ng sound before k',
+      'ph makes /f/ — Greek origin (phone, photo, graph, elephant)'
+    ]
+  },
+  {
+    week: 8,
+    phonemes: ['/s/', '/j/'],
+    graphemes: ['soft c', 'soft g'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['city', 'cent', 'circle', 'ice', 'gem', 'giant', 'gym', 'age', 'stage'],
+    decodableText: 'The giant in the city had a gem on stage. The ice is a cent in the circle. She ran at the gym.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'Soft c: c says /s/ before e, i, y (city, cent, circle)',
+      'Soft g: g says /j/ before e, i, y (gem, giant, gym)',
+      'INTRODUCTION only — mastery expected by Stage 7'
+    ]
+  },
+  {
+    week: 9,
+    phonemes: ['Review'],
+    graphemes: ['All Stage 3'],
+    intensity: ['CORE'],
+    focusWords: ['sunshine', 'himself', 'napkin', 'mistake', 'pancake'],
+    decodableText: 'He made a mistake with the pancake. The napkin fell in the sunshine. He did it himself.',
+    assessment: 'Daily: mixed pattern practice',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Review VCe + FLOSS + trigraphs in multisyllabic words'
+    ]
+  },
+  {
+    week: 10,
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 3'],
+    intensity: ['CORE'],
+    focusWords: ['cupcake', 'lunchtime', 'bathrobe', 'lifeline', 'homesick'],
+    decodableText: 'She felt homesick at lunchtime. The cupcake was a lifeline. She put on her bathrobe.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess VCe patterns, FLOSS doubles, tch/dge, nk, ph. Soft c/g is awareness only — not assessed for mastery yet.'
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 4: Common Vowel Teams & Vowel Discrimination (v4.1)
+// Grade: 1st-Spring | Duration: 10 weeks | Phase: Full Alphabetic
+// Intensity Profile: 10 ★ CORE | 5 ▲ TEACH | 0 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage4WeeklyData: WeeklyData[] = [
+  {
+    week: 1,
+    phonemes: ['/ā/'],
+    graphemes: ['ai', 'ay'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['rain', 'wait', 'paint', 'train', 'day', 'play', 'stay', 'say', 'way'],
+    decodableText: 'Wait for the rain on the train. Play all day and stay this way. I say paint!',
+    assessment: 'Daily: ai (middle) vs ay (end)',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ai and ay both say /ā/ — position rule: ai in the middle of words (rain, wait), ay at the end (day, play)'
+    ]
+  },
+  {
+    week: 2,
+    phonemes: ['/ē/'],
+    graphemes: ['ee', 'ea'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['tree', 'see', 'green', 'sleep', 'eat', 'read', 'team', 'beach', 'dream'],
+    decodableText: 'The team will eat and read by the green tree. Sleep on the beach and dream.',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'ee is very reliable — almost always says /ē/',
+      'ea usually says /ē/ but can say /ĕ/ (bread) or /ā/ (great) — teach /ē/ first, flex later'
+    ]
+  },
+  {
+    week: 3,
+    phonemes: ['/ē/', '/ī/'],
+    graphemes: ['y→/ē/', 'igh'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['happy', 'puppy', 'sunny', 'funny', 'night', 'light', 'right', 'bright', 'sight'],
+    decodableText: 'The happy puppy ran in the bright light. What a funny, sunny night! The sight is right.',
+    assessment: 'Daily: y and igh patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'y says /ē/ at the end of multi-syllable words (happy, puppy)',
+      'igh — three letters, one sound /ī/ (night, light, right)'
+    ]
+  },
+  {
+    week: 4,
+    phonemes: ['/ī/', '/ō/'],
+    graphemes: ['y→/ī/', 'oa'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['my', 'fly', 'sky', 'try', 'why', 'boat', 'road', 'coat', 'toast'],
+    decodableText: 'My boat is on the road. Try to fly in the sky! Why is the coat on the toast?',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'y says /ī/ at the end of one-syllable words (my, fly, sky, try)',
+      'oa says /ō/ — very consistent, always in middle of words'
+    ]
+  },
+  {
+    week: 5,
+    phonemes: ['/ō/', '/ŭ/'],
+    graphemes: ['ow→/ō/', 'o→/ŭ/'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['show', 'grow', 'snow', 'slow', 'know', 'love', 'come', 'some', 'done', 'from', 'mother'],
+    decodableText: 'I know the snow will grow. Come from the show. My mother has some love. We are done!',
+    assessment: 'Daily: ow→/ō/ and o→/ŭ/ (critical)',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ow can say /ō/ (show, grow) — the OTHER sound /ow/ (cow) comes in Stage 6',
+      'o→/ŭ/ is CRITICAL: "o" now has THREE sounds: /ŏ/ (hot), /ō/ (home), /ŭ/ (love, come, some, done, from, mother, other, brother, money). These are Fry top 100 words.'
+    ]
+  },
+  {
+    week: 6,
     phonemes: ['/ū/'],
-    graphemes: ['u_e'],
-    focusWords: ['cute', 'use', 'tube', 'huge', 'rude', 'June'],
-    decodableText: 'The cute puppy will use the huge tube in June. Do not be rude.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: '/ū/ - magic e makes the u say its name\nChanges from short /u/ to long /ū/'
-  },
-  {
-    week: 5,
-    phonemes: ['/ē/'],
-    graphemes: ['e_e'],
-    focusWords: ['these', 'Pete', 'theme', 'compete', 'complete', 'delete'],
-    decodableText: 'These kids will compete with Pete. The theme is complete. Do not delete it.',
-    assessment: 'Daily quick check: e_e pattern recognition',
-    tips: '/ē/ - magic e makes the e say its name\nChanges from short /e/ to long /ē/'
-  },
-  {
-    week: 6,
-    phonemes: ['Silent e'],
-    graphemes: ['_e'],
-    focusWords: ['make', 'bike', 'home', 'cute', 'these', 'quite'],
-    decodableText: 'I quite like to make things at home. Bike there and use these.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: 'Silent e - changes the vowel sound but stays quiet\nAll VCe patterns create long vowel sounds'
+    graphemes: ['ew', 'ue'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['new', 'few', 'blew', 'grew', 'chew', 'blue', 'true', 'glue', 'clue', 'due'],
+    decodableText: 'A few new birds grew and flew. The true blue clue is due. Chew the glue!',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'ew and ue both say /ū/ — moderate frequency, TEACH level',
+      'ew usually at word end; ue at word end'
+    ]
   },
   {
     week: 7,
-    phonemes: ['Long vowel sounds'],
-    graphemes: ['VCe'],
-    focusWords: ['snake', 'white', 'stone', 'flute', 'theme', 'brave'],
-    decodableText: 'The brave white snake saw a stone flute. It had a shine like a globe.',
-    assessment: 'Daily quick check: mixed VCe practice',
-    tips: 'Long vowel sounds - review all VCe patterns\nPractice with longer words'
+    phonemes: ['/ē/', '/ī/', 'Open syllable'],
+    graphemes: ['ie→/ē/', 'ie→/ī/', 'open syllable'],
+    intensity: ['TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['chief', 'field', 'piece', 'pie', 'tie', 'lie', 'me', 'go', 'baby', 'music'],
+    decodableText: 'The chief found a piece in the field. The baby will tie the pie. Go play me some music!',
+    assessment: 'Daily: ie flexibility + open syllable',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ie says /ē/ in the middle of words (chief, field, piece)',
+      'ie says /ī/ at the end of words (pie, tie, lie)',
+      'Open syllable: when a syllable ends in a vowel, it usually says its long sound (me, go, ba-by, mu-sic)'
+    ]
   },
   {
     week: 8,
-    phonemes: ['Long Vowels vs Short Vowels'],
-    graphemes: ['Review VCe vs CVC'],
-    focusWords: ['mad/made', 'cap/cape', 'kit/kite', 'hop/hope', 'cut/cute'],
-    decodableText: 'Tim was mad but then made a cape. The kit became a kite. We hop with hope.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: 'Long vs Short Vowels - compare with and without magic e\nMinimal pairs help show the difference'
+    phonemes: ['Long vowel exceptions'],
+    graphemes: ['-ind', '-ild', '-old', '-olt', '-oll', '-ost'],
+    intensity: ['TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['find', 'kind', 'mind', 'wild', 'child', 'old', 'cold', 'gold', 'hold', 'bold', 'roll', 'most', 'post'],
+    decodableText: 'Find the kind, wild child. The old, cold gold is bold. Hold and roll to the most far post.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'Long Vowel Exception Patterns (UFLI/Wilson "Welded Sounds")',
+      'Before -nd, -ild, -old, -olt, -oll, -ost, the vowel is often LONG despite being in a closed syllable',
+      'Teach: try the long vowel first, then short. If it makes a real word, you got it!',
+      'Very high frequency: find, kind, old, cold, gold, told, hold, most'
+    ]
   },
   {
     week: 9,
-    phonemes: ['Review Long Vowels'],
-    graphemes: ['Review All VCe'],
-    focusWords: ['surprise', 'complete', 'invite', 'suppose', 'extreme'],
-    decodableText: 'The complete surprise was extreme. Suppose we invite them to compete.',
-    assessment: 'Daily quick check: multisyllabic VCe words',
-    tips: 'Review Long Vowels - VCe patterns work in longer words too'
+    phonemes: ['Review'],
+    graphemes: ['All Stage 4'],
+    intensity: ['CORE'],
+    focusWords: ['rainbow', 'nightlight', 'toaster', 'snowflake', 'daydream'],
+    decodableText: 'The rainbow shone on the nightlight. The snowflake fell on the toaster. What a daydream!',
+    assessment: 'Daily: mixed vowel team practice',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Review all vowel teams in compound and multisyllabic words'
+    ]
   },
   {
     week: 10,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 4 Elements'],
-    focusWords: ['celebrate', 'telephone', 'complete', 'athlete', 'concrete'],
-    decodableText: 'The athlete will celebrate with a telephone call. The concrete work is complete.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery of magic e patterns!'
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 4'],
+    intensity: ['CORE'],
+    focusWords: ['sailboat', 'blindfold', 'sunshine', 'bluebird', 'meanwhile'],
+    decodableText: 'The bluebird sailed the sailboat in the sunshine. Meanwhile she wore a blindfold.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess all vowel teams, o→/ŭ/, and long vowel exception patterns. Welded sounds are TEACH — assess for recognition, not timed automaticity.'
+    ]
   }
 ];
 
-// FRY+NRP+EHRI Stage 5 Weekly Data (10 weeks)
-// High-Frequency Vowel Teams - 2nd Grade Fall
-const stage5WeeklyData = [
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 5: R-Controlled Vowels, /oo/ Patterns & W-Influence (v4.1)
+// Grade: 2nd-Fall | Duration: 10 weeks | Phase: Consolidated (Emerging)
+// Intensity Profile: 9 ★ CORE | 12 ▲ TEACH | 0 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage5WeeklyData: WeeklyData[] = [
   {
     week: 1,
-    phonemes: ['/ər/'],
-    graphemes: ['er'],
-    focusWords: ['her', 'fern', 'term', 'tiger', 'sister', 'water'],
-    decodableText: 'Her sister gave water to the tiger by the fern. The term is over.',
-    assessment: 'Daily quick check: er pattern recognition',
-    tips: '/ər/ - highest frequency vowel team (Fry: 1,979)\nControlled vowel sound'
+    phonemes: ['/ar/', '/er/'],
+    graphemes: ['ar', 'er'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['car', 'star', 'park', 'farm', 'her', 'fern', 'term', 'sister', 'water'],
+    decodableText: 'Her sister parked the car by the farm. Start near the fern for the term. The water is far from the star.',
+    assessment: 'Daily: ar and er recognition',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/ar/ — very consistent, always says /ar/ (Fry: 474)',
+      '/er/ — highest frequency r-controlled (Fry: 1,979), "Bossy R changes the vowel sound"'
+    ]
   },
   {
     week: 2,
-    phonemes: ['/ē/'],
-    graphemes: ['ee'],
-    focusWords: ['tree', 'see', 'green', 'feet', 'sleep', 'keep'],
-    decodableText: 'I see a green tree. Keep your feet still and sleep deep.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/ē/ - ee is very reliable (Fry: 249)\nAlmost always says /ē/'
+    phonemes: ['/er/'],
+    graphemes: ['ir', 'ur'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['bird', 'first', 'girl', 'shirt', 'hurt', 'turn', 'burn', 'church', 'nurse'],
+    decodableText: 'The girl in the shirt hurt her first bird. The nurse will turn and burn at the church.',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'ir, er, and ur all make the same sound /er/ — teach as "same sound, different spelling"',
+      'ir is most common in -ird, -irt, -irst words'
+    ]
   },
   {
     week: 3,
-    phonemes: ['/ē/'],
-    graphemes: ['ea'],
-    focusWords: ['eat', 'read', 'team', 'beach', 'clean', 'dream'],
-    decodableText: 'The team will eat and read at the beach. Clean up and dream.',
-    assessment: 'Daily quick check: ea pattern recognition',
-    tips: '/ē/ - ea is high frequency (Fry: 245)\nCan vary but teach /ē/ first'
-  },
-  {
-    week: 4,
-    phonemes: ['/ā/'],
-    graphemes: ['ai'],
-    focusWords: ['rain', 'train', 'main', 'wait', 'paint', 'chain'],
-    decodableText: 'Wait for the rain. The train is on the main track. Paint the chain.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: '/ā/ - ai always in middle of words (Fry: 208)\nVery consistent pattern'
-  },
-  {
-    week: 5,
-    phonemes: ['/ā/'],
-    graphemes: ['ay'],
-    focusWords: ['play', 'day', 'stay', 'way', 'say', 'may'],
-    decodableText: 'May I play all day? Stay this way and say what you may.',
-    assessment: 'Daily quick check: ai vs ay position rule',
-    tips: '/ā/ - ay at word end (Fry: 131)\nPosition rule with ai'
-  },
-  {
-    week: 6,
-    phonemes: ['/ō/'],
-    graphemes: ['oa'],
-    focusWords: ['boat', 'coat', 'road', 'goat', 'soap', 'float'],
-    decodableText: 'The goat in a coat is on the boat. The soap will float down the road.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: '/ō/ - oa very consistent (Fry: 126)\nAlways in middle of words'
-  },
-  {
-    week: 7,
-    phonemes: ['/ō/'],
-    graphemes: ['ow'],
-    focusWords: ['snow', 'grow', 'show', 'yellow', 'window', 'follow'],
-    decodableText: 'The yellow snow will grow. Show me the window and follow.',
-    assessment: 'Daily quick check: ow variability introduction',
-    tips: '/ō/ - ow can say /ō/ (snow) or /ow/ (cow)\nTeach /ō/ first'
-  },
-  {
-    week: 8,
-    phonemes: ['/ar/'],
-    graphemes: ['ar'],
-    focusWords: ['car', 'star', 'park', 'farm', 'start', 'shark'],
-    decodableText: 'Start the car and park at the farm. The star is far from the shark.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: '/ar/ - very consistent (Fry: 474)\nAlways says /ar/'
-  },
-  {
-    week: 9,
-    phonemes: ['Review Vowel Teams'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['teacher', 'freedom', 'birthday', 'railway', 'everywhere'],
-    decodableText: 'The teacher has freedom. The birthday railway goes everywhere we dream.',
-    assessment: 'Daily quick check: mixed vowel team practice',
-    tips: 'Review Vowel Teams - highest frequency patterns\ner, ee, ea, ai, ay'
-  },
-  {
-    week: 10,
-    phonemes: ['All Vowel Teams'],
-    graphemes: ['All Stage 5 Elements'],
-    focusWords: ['railroad', 'teamwork', 'seashore', 'anywhere', 'somewhere'],
-    decodableText: 'The railroad teamwork at the seashore can go anywhere or somewhere.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery of high-frequency vowel teams!'
-  }
-];
-
-
-// FRY+NRP+EHRI Stage 6 Weekly Data (10 weeks)
-// R-Controlled & Diphthongs - 2nd Grade Spring
-const stage6WeeklyData = [
-  {
-    week: 1,
     phonemes: ['/or/'],
-    graphemes: ['or'],
-    focusWords: ['for', 'short', 'corn', 'storm', 'horse', 'north'],
-    decodableText: 'The short horse ran north in the storm for corn.',
-    assessment: 'Daily quick check: or pattern recognition',
-    tips: '/or/ - very consistent (Fry: 321)\nAlways says /or/'
-  },
-  {
-    week: 2,
-    phonemes: ['/ər/'],
-    graphemes: ['ir'],
-    focusWords: ['bird', 'girl', 'first', 'shirt', 'dirt', 'third'],
-    decodableText: 'The girl saw a bird first. The shirt has dirt from third place.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/ər/ - ir sounds like er (Fry: 104)\nSame /ər/ sound'
-  },
-  {
-    week: 3,
-    phonemes: ['/ər/'],
-    graphemes: ['ur'],
-    focusWords: ['turn', 'hurt', 'nurse', 'burn', 'church', 'purple'],
-    decodableText: 'Turn to the nurse if you hurt or burn. The purple church is there.',
-    assessment: 'Daily quick check: ur pattern practice',
-    tips: '/ər/ - ur sounds like er and ir (Fry: 234)\nAll three say /ər/'
+    graphemes: ['or', 'ore'],
+    intensity: ['CORE', 'TEACH'],
+    focusWords: ['for', 'more', 'store', 'horse', 'corn', 'short', 'sport', 'shore', 'score'],
+    decodableText: 'More corn is at the store for the horse. The short sport is on the shore. Score!',
+    assessment: 'Daily: or and ore patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/or/ — or is CORE (high frequency)',
+      'ore is TEACH — same sound, word-final position'
+    ]
   },
   {
     week: 4,
-    phonemes: ['/ou/'],
-    graphemes: ['ou'],
-    focusWords: ['out', 'house', 'cloud', 'about', 'found', 'sound'],
-    decodableText: 'The sound came out of the house. I found a cloud about there.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4', 
-    tips: '/ou/ - can vary (Fry: 227)\nBut /ou/ is most common'
+    phonemes: ['/er/', '/or/'],
+    graphemes: ['oar', 'our'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['roar', 'board', 'soar', 'pour', 'four', 'your', 'court', 'source'],
+    decodableText: 'The lion will roar on the board. Pour four cups for your court. The source will soar!',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'oar says /or/ (roar, board, soar)',
+      'our usually says /or/ (pour, four, your, court) — but can say /ow-er/ (hour, sour) in Stage 6'
+    ]
   },
   {
     week: 5,
-    phonemes: ['/aw/'],
-    graphemes: ['au'],
-    focusWords: ['haul', 'cause', 'autumn', 'because', 'author', 'caught'],
-    decodableText: 'The author was caught in autumn because we haul for a cause.',
-    assessment: 'Daily quick check: au diphthong recognition',
-    tips: '/aw/ - au pattern (Fry: 146)\nMouth glides in diphthong'
+    phonemes: ['/oo/ (long)', '/oo/ (short)'],
+    graphemes: ['oo→/oo/', 'oo→/ʊ/'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['moon', 'soon', 'spoon', 'room', 'food', 'book', 'look', 'good', 'wood', 'foot'],
+    decodableText: 'The moon will soon be in the room. Look at the good book on the wood. Spoon the food with your foot!',
+    assessment: 'Daily: Two sounds of oo',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'oo has TWO sounds: /oo/ (moon, soon, food) and /ʊ/ (book, look, good, wood)',
+      'Teach: try /oo/ first, if it doesn\'t make a word, try /ʊ/. Most words use long /oo/.',
+      'This is a critical flex pattern!'
+    ]
   },
   {
     week: 6,
-    phonemes: ['/oi/'],
-    graphemes: ['oi'],
-    focusWords: ['oil', 'boil', 'coin', 'point', 'voice', 'choice'],
-    decodableText: 'Point to the coin in the oil. I hear a voice. That is my choice.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: '/oi/ - always in middle of words (Fry: 92)\nMouth glides from /o/ to /i/'
+    phonemes: ['/wŏ/', '/wer/'],
+    graphemes: ['wa', 'wor'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['want', 'wash', 'watch', 'was', 'wasp', 'word', 'work', 'world', 'worm', 'worst', 'worth'],
+    decodableText: 'I want to wash and watch. Was the wasp at work? The word is worth the world. The worm is the worst!',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'W-Influence: W changes nearby vowels!',
+      'wa says /wŏ/ (want, wash, watch, was) — NOT short a',
+      'wor says /wer/ (word, work, world, worm) — NOT /wor/'
+    ]
   },
   {
     week: 7,
-    phonemes: ['/aw/'],
-    graphemes: ['aw'],
-    focusWords: ['saw', 'draw', 'claw', 'lawn', 'dawn', 'hawk'],
-    decodableText: 'I saw a hawk draw with its claw on the lawn at dawn.',
-    assessment: 'Daily quick check: au vs aw comparison',
-    tips: '/aw/ - at word end (Fry: 75)\nSame sound as au'
+    phonemes: ['/wor/', '/er/'],
+    graphemes: ['war', 'ear'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['warm', 'war', 'ward', 'warn', 'early', 'earth', 'learn', 'search', 'heard'],
+    decodableText: 'The warm war is on the ward. Warn them early! The earth will learn. Search for what you heard.',
+    assessment: 'Daily: war and ear→/er/',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'war says /wor/ (warm, warn) — another W-influence pattern',
+      'ear says /er/ (early, earth, learn, heard) — one of THREE ear sounds! Others: /ēr/ (hear) and /âr/ (bear)'
+    ]
   },
   {
     week: 8,
-    phonemes: ['/oi/'],
-    graphemes: ['oy'],
-    focusWords: ['boy', 'toy', 'joy', 'enjoy', 'destroy', 'employ'],
-    decodableText: 'The boy will enjoy his toy with joy. Do not destroy or employ it.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: '/oi/ - oy at word end (Fry: 48)\nSame sound as oi, position rule'
+    phonemes: ['/ēr/', '/âr/'],
+    graphemes: ['ear→/ēr/', 'ear→/âr/', 'air', 'are'],
+    intensity: ['TEACH', 'TEACH', 'CORE', 'CORE'],
+    focusWords: ['hear', 'near', 'clear', 'year', 'bear', 'pear', 'wear', 'tear', 'hair', 'fair', 'pair', 'care', 'share', 'stare'],
+    decodableText: 'I hear a clear sound near the bear. The pear will wear and tear. The fair hair is a pair. Care and share at the stare.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'ear has THREE sounds: /er/ (learn), /ēr/ (hear), /âr/ (bear) — flex pattern!',
+      'air says /âr/ (hair, fair) — very consistent',
+      'are says /âr/ (care, share) — consistent word-final pattern'
+    ]
   },
   {
     week: 9,
-    phonemes: ['Review R-Controlled Vowels'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['birthday', 'purple', 'morning', 'circus', 'turkey'],
-    decodableText: 'The purple turkey was at the circus for a birthday morning.',
-    assessment: 'Daily quick check: mixed r-controlled practice',
-    tips: 'Review R-Controlled Vowels - or, ir, ur\nir and ur sound like er'
+    phonemes: ['/ʊ/', 'Review'],
+    graphemes: ['oul', 'All Stage 5'],
+    intensity: ['TEACH', 'CORE'],
+    focusWords: ['could', 'would', 'should', 'starfish', 'airport', 'earring', 'bedroom'],
+    decodableText: 'Could you find the starfish? Would the airport have an earring? You should go to the bedroom.',
+    assessment: 'Daily: oul + mixed review',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'oul says /ʊ/ (could, would, should) — Fry top 100 words, must know!',
+      'Review all r-controlled and /oo/ patterns in compound words'
+    ]
   },
   {
     week: 10,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 6 Elements'],
-    focusWords: ['important', 'turmoil', 'joyful', 'because', 'author'],
-    decodableText: 'The joyful author wrote about important turmoil because of choice.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery of r-controlled vowels and diphthongs!'
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 5'],
+    intensity: ['CORE'],
+    focusWords: ['afternoon', 'understand', 'barefoot', 'homework', 'cardboard'],
+    decodableText: 'In the afternoon, understand the barefoot homework on the cardboard.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess r-controlled vowels, two sounds of oo, W-influence, ear/air/are patterns, and oul words.'
+    ]
   }
 ];
 
-// FRY+NRP+EHRI Stage 7 Weekly Data (10 weeks)
-// Complex Vowel Patterns - 3rd Grade Fall
-const stage7WeeklyData = [
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 6: Diphthongs & Extended Vowel Spellings (v4.1)
+// Grade: 2nd-Spring | Duration: 10 weeks | Phase: Consolidated (Developing)
+// Intensity Profile: 6 ★ CORE | 8 ▲ TEACH | 4 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage6WeeklyData: WeeklyData[] = [
   {
     week: 1,
-    phonemes: ['/oo/ long'],
-    graphemes: ['oo'],
-    focusWords: ['moon', 'soon', 'food', 'cool', 'boot', 'zoo'],
-    decodableText: 'The moon will be seen soon. Cool food at the zoo. Put on your boot.',
-    assessment: 'Daily quick check: long oo pattern',
-    tips: '/oo/ long - as in moon (Fry: 173)\nHigher frequency than short oo'
+    phonemes: ['/ow/'],
+    graphemes: ['ou', 'ow'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['out', 'house', 'cloud', 'sound', 'cow', 'how', 'now', 'down', 'town', 'brown'],
+    decodableText: 'The brown cow ran out of the house now. How did the cloud sound? Go down to town.',
+    assessment: 'Daily: ou and ow→/ow/',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/ow/ diphthong: mouth glides from /a/ to /oo/',
+      'ou in the middle of words (out, house, sound)',
+      'ow can say /ow/ (cow, how, now) OR /ō/ (snow, show) — this week focuses on /ow/'
+    ]
   },
   {
     week: 2,
-    phonemes: ['/oo/ short'],
-    graphemes: ['oo'],
-    focusWords: ['book', 'look', 'good', 'cook', 'foot', 'took'],
-    decodableText: 'Look in the good book. The cook took his foot and stood.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: '/oo/ short - as in book (Fry: 114)\nTeach flexibility with oo'
+    phonemes: ['/oi/'],
+    graphemes: ['oi', 'oy'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['oil', 'boil', 'coin', 'point', 'voice', 'boy', 'toy', 'joy', 'enjoy', 'destroy'],
+    decodableText: 'The boy will enjoy the toy with joy. Point to the coin in the oil. Boil with a voice. Do not destroy it.',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '/oi/ diphthong: mouth glides from /o/ to /i/',
+      'Position rule: oi in the middle (oil, coin, point), oy at the end (boy, toy, joy)'
+    ]
   },
   {
     week: 3,
-    phonemes: ['/ī/'],
-    graphemes: ['igh'],
-    focusWords: ['light', 'night', 'right', 'bright', 'sight', 'flight'],
-    decodableText: 'The bright light at night is right. We might take a flight if the sight is good.',
-    assessment: 'Daily quick check: igh pattern recognition',
-    tips: '/ī/ - igh pattern (Fry: 88)\nThree letters, one sound'
+    phonemes: ['/aw/'],
+    graphemes: ['au', 'aw'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['haul', 'cause', 'autumn', 'author', 'saw', 'draw', 'claw', 'lawn', 'dawn', 'hawk'],
+    decodableText: 'The author saw a hawk draw with its claw on the lawn at dawn. Haul in the autumn because of the cause.',
+    assessment: 'Daily: au and aw patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/aw/ diphthong: mouth opens wide then rounds',
+      'Position rule: au in the middle (haul, cause), aw at the end or before n/l/k (saw, lawn, hawk)'
+    ]
   },
   {
     week: 4,
-    phonemes: ['/ū/'],
-    graphemes: ['ew'],
-    focusWords: ['new', 'few', 'grew', 'flew', 'drew', 'threw'],
-    decodableText: 'A few new birds grew and flew. They drew and threw things.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: '/ū/ - ew pattern (Fry: 60)\nUsually at word end'
+    phonemes: ['/ā/'],
+    graphemes: ['eigh', 'ey'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['eight', 'weigh', 'neighbor', 'sleigh', 'they', 'grey', 'obey', 'prey', 'survey'],
+    decodableText: 'Eight neighbors weigh the sleigh. They survey in grey. The prey will obey.',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'eigh says /ā/ (eight, weigh, neighbor) — less common but important',
+      'ey says /ā/ at word end (they, grey, obey) — also can say /ē/ (key, monkey)'
+    ]
   },
   {
     week: 5,
-    phonemes: ['/ē/'],
-    graphemes: ['ie'],
-    focusWords: ['field', 'piece', 'believe', 'achieve', 'relief', 'brief'],
-    decodableText: 'I believe the piece in the field will achieve relief. It was brief.',
-    assessment: 'Daily quick check: ie variable pattern',
-    tips: '/ē/ - ie can say /ē/ (field) or /ī/ (pie)\nTeach /ē/ first (Fry: 62)'
+    phonemes: ['/ā/', '/ē/'],
+    graphemes: ['ei', 'ey→/ē/'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['vein', 'rein', 'veil', 'ceiling', 'receive', 'key', 'money', 'monkey', 'donkey', 'honey'],
+    decodableText: 'The key is on the ceiling. The monkey with the honey will receive the veil. The donkey has money for the rein.',
+    assessment: 'Daily: ei and ey flexibility',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ei says /ā/ (vein, rein, veil) — "i before e except after c" exception group',
+      'ey says /ē/ at word end (key, money, monkey) — contrasts with /ā/ (they, grey)'
+    ]
   },
   {
     week: 6,
-    phonemes: ['/ū/'],
-    graphemes: ['ue'],
-    focusWords: ['blue', 'true', 'glue', 'clue', 'due', 'value'],
-    decodableText: 'The true blue clue is due. The value of glue is clear.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: '/ū/ - ue pattern (Fry: 27)\nLess common pattern'
+    phonemes: ['/ēr/', '/âr/'],
+    graphemes: ['ere→/ēr/', 'ere→/âr/'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['here', 'severe', 'sincere', 'where', 'there', 'everywhere'],
+    decodableText: 'Here is a severe case. Where is the sincere one? There and everywhere!',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'ere is variable! /ēr/ (here, severe, sincere) vs /âr/ (where, there)',
+      'Flex strategy: try /ēr/ first, if not a word try /âr/'
+    ]
   },
   {
     week: 7,
-    phonemes: ['/s/'],
-    graphemes: ['c'],
-    focusWords: ['city', 'ice', 'face', 'place', 'race', 'space'],
-    decodableText: 'The race took place in the city. We saw ice in space by your face.',
-    assessment: 'Daily quick check: soft c before e, i, y',
-    tips: '/s/ - soft c before e, i, y\nImportant spelling rule'
+    phonemes: ['/oo/'],
+    graphemes: ['ui', 'ew'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['fruit', 'juice', 'suit', 'cruise', 'chew', 'flew', 'drew', 'threw', 'grew', 'stew'],
+    decodableText: 'Chew the fruit juice! The suit flew on the cruise. She threw the stew, then drew and grew.',
+    assessment: 'Daily: ui and ew→/oo/',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ui says /oo/ (fruit, juice, suit, cruise)',
+      'ew says /oo/ (chew, flew, drew) — same sound taught for /ū/ in Stage 4, reinforced here'
+    ]
   },
   {
     week: 8,
-    phonemes: ['/j/'],
-    graphemes: ['g'],
-    focusWords: ['gem', 'giant', 'age', 'stage', 'huge', 'change'],
-    decodableText: 'The huge giant found a gem on stage. The age will change.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: '/j/ - soft g before e, i, y\nParallel to soft c rule'
+    phonemes: ['/ā/', '/ō/', '/oo/'],
+    graphemes: ['ea→/ā/', 'oe', 'eu'],
+    intensity: ['EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
+    focusWords: ['great', 'break', 'steak', 'toe', 'hoe', 'foe', 'feud', 'neutral', 'Europe'],
+    decodableText: 'That is a great break for the steak! My toe hit the hoe and the foe. The neutral feud started in Europe.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'EXPOSURE only — encounter these, don\'t drill',
+      'ea→/ā/ (great, break, steak) — rare but high frequency words',
+      'oe says /ō/ (toe, hoe, foe) — rare',
+      'eu says /oo/ (feud, neutral, Europe) — rare, Greek/French origin'
+    ]
   },
   {
     week: 9,
-    phonemes: ['Review Complex Vowels'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['moonlight', 'newspaper', 'rightful', 'bluebird', 'football'],
-    decodableText: 'The rightful bluebird read the newspaper by moonlight after football.',
-    assessment: 'Daily quick check: mixed complex pattern practice',
-    tips: 'Review Complex Vowels - variable and complex patterns'
+    phonemes: ['/ow/', 'Review'],
+    graphemes: ['ough→/ow/', 'All Stage 6'],
+    intensity: ['EXPOSURE', 'CORE'],
+    focusWords: ['bough', 'drought', 'plough', 'joyful', 'powerful', 'downtown', 'playground'],
+    decodableText: 'The drought hit the bough. Plough the joyful downtown playground. It was powerful.',
+    assessment: 'Daily: ough preview + mixed review',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'ough→/ow/ (bough, drought) — EXPOSURE only, full ough in Stage 7',
+      'Review all diphthongs in compound words'
+    ]
   },
   {
     week: 10,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 7 Elements'],
-    focusWords: ['beautiful', 'thoughtful', 'neighborhood', 'breakthrough', 'viewpoint'],
-    decodableText: 'The beautiful neighborhood had a thoughtful breakthrough at the viewpoint.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery of complex vowel patterns!'
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 6'],
+    intensity: ['CORE'],
+    focusWords: ['throughout', 'appointment', 'enjoyable', 'automobile', 'tournament'],
+    decodableText: 'Throughout the tournament, the automobile appointment was enjoyable.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess diphthongs (ou/ow, oi/oy, au/aw), extended vowels (eigh, ey, ei, ere, ui). EXPOSURE patterns are recognition only.'
+    ]
   }
 ];
 
-// FRY+NRP+EHRI Stage 8 Weekly Data (10 weeks)
-// Advanced Patterns & Morphology - 3rd Grade Spring
-const stage8WeeklyData = [
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 7: Complex & Variable Patterns (v4.1)
+// Grade: 3rd-Fall | Duration: 10 weeks | Phase: Consolidated (Proficient)
+// Intensity Profile: 2 ★ CORE | 9 ▲ TEACH | 5 ○ EXPOSURE
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage7WeeklyData: WeeklyData[] = [
   {
     week: 1,
-    phonemes: ['silent k'],
-    graphemes: ['kn'],
-    focusWords: ['knee', 'know', 'knife', 'knock', 'knight', 'knot'],
-    decodableText: 'I know the knight will knock his knee with a knife. Tie a knot.',
-    assessment: 'Daily quick check: silent k recognition',
-    tips: 'silent k - in kn pattern (Fry: 41)\nk is silent but helps with meaning'
+    phonemes: ['/zh/'],
+    graphemes: ['s→/zh/', 'si→/zh/'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['measure', 'treasure', 'pleasure', 'leisure', 'vision', 'decision', 'television', 'division'],
+    decodableText: 'I take pleasure in the treasure. The vision and decision are on the television. Measure the division with leisure.',
+    assessment: 'Daily: /zh/ phoneme introduction',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '/zh/ is the LAST consonant phoneme — voiced version of /sh/',
+      's says /zh/ in -sure words (measure, treasure, pleasure)',
+      'si says /zh/ in -sion words (vision, decision)'
+    ]
   },
   {
     week: 2,
-    phonemes: ['silent w'],
-    graphemes: ['wr'],
-    focusWords: ['write', 'wrong', 'wrist', 'wrap', 'wreck', 'wrote'],
-    decodableText: 'Write the wrong word on your wrist. Wrap the wreck that I wrote.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 1-2',
-    tips: 'silent w - in wr pattern (Fry: 48)\nw is silent but helps with meaning'
+    phonemes: ['/s/', '/j/'],
+    graphemes: ['soft c (mastery)', 'soft g (mastery)'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['celebrate', 'citizen', 'bicycle', 'decimal', 'generous', 'original', 'giraffe', 'gymnasium'],
+    decodableText: 'The generous citizen will celebrate on the bicycle. The original giraffe ran to the gymnasium with the decimal.',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'Soft c/g MASTERY — introduced in Stage 3, now assessed for automaticity',
+      'c says /s/ before e, i, y (celebrate, citizen, bicycle)',
+      'g says /j/ before e, i, y (generous, giraffe, gymnasium)'
+    ]
   },
   {
     week: 3,
-    phonemes: ['silent b'],
-    graphemes: ['mb'],
-    focusWords: ['lamb', 'thumb', 'climb', 'comb', 'bomb', 'tomb'],
-    decodableText: 'The lamb will climb and comb its thumb. The bomb is in the tomb.',
-    assessment: 'Daily quick check: silent b recognition',
-    tips: 'silent b - in mb pattern (Fry: 27)\nb is silent at word end'
+    phonemes: ['Variable'],
+    graphemes: ['ough (5 sounds!)'],
+    intensity: ['TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE'],
+    focusWords: ['through', 'though', 'thought', 'rough', 'cough', 'bough', 'dough', 'thorough'],
+    decodableText: 'I thought the dough was rough. Through and through, though the bough fell with a cough. Be thorough!',
+    assessment: 'Daily: ough flexibility',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ough has FIVE sounds — teach flex strategy:',
+      '/oo/ — through',
+      '/ō/ — though, dough',
+      '/aw/ — thought, bought',
+      '/ŭf/ — rough, tough, enough',
+      '/ŏf/ — cough (EXPOSURE)',
+      '/ow/ — bough (EXPOSURE)'
+    ]
   },
   {
     week: 4,
-    phonemes: ['silent letters'],
-    graphemes: ['lk', 'lm', 'gn'],
-    focusWords: ['walk', 'calm', 'sign', 'talk', 'palm', 'design'],
-    decodableText: 'Walk and talk in a calm way. Sign your name and design with your palm.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 3-4',
-    tips: 'silent letters - multiple patterns\nlk, lm, gn'
+    phonemes: ['/k/', '/sh/'],
+    graphemes: ['ch→/k/', 'ch→/sh/'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['school', 'stomach', 'orchestra', 'anchor', 'echo', 'chef', 'machine', 'parachute', 'brochure'],
+    decodableText: 'The chef at school made an echo. The machine in the orchestra had an anchor. The brochure showed a parachute in my stomach.',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'ch→/k/ is Greek origin (school, stomach, orchestra, anchor, echo)',
+      'ch→/sh/ is French origin (chef, machine, parachute, brochure)',
+      'Students already know ch→/ch/ — now they have three sounds for this grapheme'
+    ]
   },
   {
     week: 5,
-    phonemes: ['schwa /ə/'],
-    graphemes: ['a', 'e', 'o'],
-    focusWords: ['about', 'taken', 'lemon', 'away', 'alone', 'suppose'],
-    decodableText: 'Suppose the lemon was taken away. I was about to be alone.',
-    assessment: 'Daily quick check: schwa sound recognition',
-    tips: 'schwa /ə/ - unstressed vowel\nVery high frequency in English'
+    phonemes: ['/s/', '/k/'],
+    graphemes: ['sc', 'rh'],
+    intensity: ['TEACH', 'EXPOSURE'],
+    focusWords: ['science', 'scene', 'scent', 'scissors', 'muscle', 'rhinoceros', 'rhythm', 'rhyme'],
+    decodableText: 'The science scene had a scent. The scissors cut the muscle. The rhinoceros had rhythm and rhyme.',
+    assessment: 'Daily: Greek sc and rh',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'sc says /s/ before e, i (science, scene, scent, scissors) — TEACH',
+      'rh says /r/ (rhinoceros, rhythm, rhyme) — Greek origin, EXPOSURE'
+    ]
   },
   {
     week: 6,
-    phonemes: ['prefix un-'],
-    graphemes: ['un-'],
-    focusWords: ['undo', 'unfair', 'unhappy', 'unlock', 'unpack', 'untie'],
-    decodableText: 'It is unfair to be unhappy. Undo, unlock, unpack, and untie.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 5-6',
-    tips: 'prefix un- - most common prefix\nMeans "not" or "opposite"'
+    phonemes: ['/g/'],
+    graphemes: ['gu (hard g protector)', 'ue (hard g)'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['guess', 'guest', 'guide', 'guitar', 'guilty', 'guard', 'tongue', 'league', 'vague'],
+    decodableText: 'I guess the guilty guest will guide the guitar. Guard your tongue in the league. It was vague.',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'gu protects hard /g/ before e/i (guess, guest, guide, guitar, guilty, guard)',
+      'Without u, these would be soft g: *gess, *gest, *gide',
+      'ue after g keeps it hard (tongue, league, vague)'
+    ]
   },
   {
     week: 7,
-    phonemes: ['suffix -ing'],
-    graphemes: ['-ing'],
-    focusWords: ['running', 'jumping', 'playing', 'reading', 'writing', 'thinking'],
-    decodableText: 'I am running, jumping, and playing. We are reading, writing, and thinking.',
-    assessment: 'Daily quick check: -ing suffix recognition',
-    tips: 'suffix -ing - most common suffix\nShows ongoing action'
+    phonemes: ['/v/', '/z/'],
+    graphemes: ['ve (final)', 'se (final)'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['have', 'give', 'live', 'love', 'above', 'house', 'mouse', 'please', 'choose', 'because'],
+    decodableText: 'Have and give some love. Live above the house with the mouse. Please choose because you can.',
+    assessment: 'Daily: ve and se final patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'English words don\'t end in v — silent e is added (have, give, live, love)',
+      'se at word end can say /z/ (house, mouse, please, choose) or /s/ (horse, nurse) — flex!'
+    ]
   },
   {
     week: 8,
-    phonemes: ['suffix -ed'],
-    graphemes: ['-ed'],
-    focusWords: ['played', 'jumped', 'walked', 'wanted', 'needed', 'started'],
-    decodableText: 'We played and jumped. I walked when I wanted, needed, and started.',
-    assessment: 'CHECKPOINT: Formal assessment of weeks 7-8',
-    tips: 'suffix -ed - shows past action\nCan sound like /t/, /d/, or /əd/'
+    phonemes: ['Silent letters'],
+    graphemes: ['kn', 'wr', 'gn', 'mb'],
+    intensity: ['TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE'],
+    focusWords: ['know', 'knife', 'knock', 'knee', 'write', 'wrong', 'wrist', 'wrap', 'gnat', 'gnaw', 'sign', 'lamb', 'climb', 'comb'],
+    decodableText: 'I know the knife is by the knee. Write the wrong sign on your wrist. Wrap the lamb. The gnat will gnaw and climb the comb.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'Silent letter patterns — the first letter is silent:',
+      'kn→/n/ (know, knife, knock, knee) — TEACH',
+      'wr→/r/ (write, wrong, wrist, wrap) — TEACH',
+      'gn→/n/ (gnat, gnaw, sign) — EXPOSURE',
+      'mb→/m/ (lamb, climb, comb) — EXPOSURE'
+    ]
   },
   {
     week: 9,
-    phonemes: ['Review Silent Letters'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['know', 'write', 'lamb', 'walk', 'calm', 'sign', 'design', 'knight'],
-    decodableText: 'I know the knight will write and design a calm sign. Walk to the lamb.',
-    assessment: 'Daily quick check: intensive silent letter practice',
-    tips: 'Review Silent Letters - extensive visual memory practice\nFocus on kn, wr, mb patterns'
+    phonemes: ['Review'],
+    graphemes: ['All Stage 7'],
+    intensity: ['TEACH'],
+    focusWords: ['photographer', 'throughout', 'scholarship', 'championship', 'knowledgeable'],
+    decodableText: 'The knowledgeable photographer won the scholarship. Throughout the championship, she was thorough.',
+    assessment: 'Daily: mixed complex patterns',
+    isCheckpoint: false,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Review all Stage 7 patterns in multisyllabic words'
+    ]
   },
   {
     week: 10,
-    phonemes: ['Review Morphology'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['unfinished', 'unwrapping', 'unlocked', 'unexpected', 'understanding'],
-    decodableText: 'The unfinished unwrapping was unexpected. Understanding means unlocked thinking.',
-    assessment: 'Daily quick check: morphology consolidation',
-    tips: 'Review Morphology - prefixes and suffixes\nBuilding word meaning in complex words'
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 7'],
+    intensity: ['CORE'],
+    focusWords: ['extraordinary', 'circumstances', 'acknowledge', 'measurement', 'gymnasium'],
+    decodableText: 'Under extraordinary circumstances, I acknowledge the measurement at the gymnasium.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess /zh/, soft c/g mastery, ough, Greek/French ch, gu/ue, ve/se, and silent letters. EXPOSURE patterns are recognition only.'
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 8: Morphology, Schwa & Advanced Patterns (v4.1)
+// Grade: 3rd-Spring | Duration: 10 weeks | Phase: Consolidated (Advanced)
+// Intensity Profile: 7 ★ CORE | 35 ▲ TEACH | 11 ○ EXPOSURE
+// Phase 8A (Weeks 1-5): Core Morphology | Phase 8B (Weeks 6-10): Extended Patterns
+// ═══════════════════════════════════════════════════════════════════════════════
+const stage8WeeklyData: WeeklyData[] = [
+  // ─────────────────────────────────────────────────────────────────────────────
+  // PHASE 8A: Core Morphology (Weeks 1-5)
+  // ─────────────────────────────────────────────────────────────────────────────
+  {
+    week: 1,
+    phonemes: ['-ed (3 sounds)'],
+    graphemes: ['-ed→/t/', '-ed→/d/', '-ed→/əd/'],
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['jumped', 'walked', 'played', 'called', 'wanted', 'needed', 'started', 'ended'],
+    decodableText: 'I jumped and walked. She played and called. We wanted and needed to have started and ended.',
+    assessment: 'Daily: -ed suffix (3 pronunciations)',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '-ed has THREE sounds based on final consonant:',
+      '/t/ after voiceless consonants (jumped, walked, stopped)',
+      '/d/ after voiced consonants and vowels (played, called, rained)',
+      '/əd/ after t or d (wanted, needed, started, ended)'
+    ]
   },
   {
-    week: 11,
-    phonemes: ['Integrated Practice'],
-    graphemes: ['Review All Elements'],
-    focusWords: ['unknowing', 'writing', 'designed', 'walking', 'thoughtful', 'climbing'],
-    decodableText: 'The unknowing writer was walking and climbing while designing thoughtful work.',
-    assessment: 'Daily quick check: combined advanced patterns',
-    tips: 'Integrated Practice - all Stage 8 concepts\nSilent letters, schwa, and morphology'
+    week: 2,
+    phonemes: ['-s/-es', '-ing'],
+    graphemes: ['-s', '-es', '-ing'],
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['cats', 'dogs', 'boxes', 'wishes', 'running', 'jumping', 'hopping', 'playing'],
+    decodableText: 'The cats and dogs are running and jumping. The boxes have wishes. Hopping and playing!',
+    assessment: 'CHECKPOINT Weeks 1-2',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '-s/-es plurals: -es after s, x, z, ch, sh (boxes, wishes)',
+      '-ing: progressive tense',
+      'Doubling rule: hop→hopping (double consonant after short vowel)',
+      'Drop e rule: make→making'
+    ]
   },
   {
-    week: 12,
-    phonemes: ['Mastery Check All'],
-    graphemes: ['All Stage 8 Elements'],
-    focusWords: ['unknowingly', 'understanding', 'thoughtfully', 'designed', 'writing', 'walking'],
-    decodableText: 'Unknowingly, the thoughtful understanding was designed for writing and walking.',
-    assessment: 'END-OF-STAGE COMPREHENSIVE ASSESSMENT',
-    tips: 'Celebrate mastery of advanced patterns and morphology! Ready for 4th grade!'
+    week: 3,
+    phonemes: ['un-', 're-'],
+    graphemes: ['un-', 're-'],
+    intensity: ['CORE', 'TEACH'],
+    focusWords: ['undo', 'unfair', 'unhappy', 'unlock', 'redo', 'reread', 'return', 'rebuild'],
+    decodableText: 'It is unfair to be unhappy. Undo and unlock it. Reread, redo, return, and rebuild!',
+    assessment: 'Daily: un- and re- prefixes',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'un- means "not" or "opposite" (CORE — most common prefix)',
+      're- means "again" (TEACH — second most common prefix)',
+      'Fry data: un- and re- together cover 50%+ of all prefixed words!'
+    ]
+  },
+  {
+    week: 4,
+    phonemes: ['pre-', 'dis-', 'mis-'],
+    graphemes: ['pre-', 'dis-', 'mis-'],
+    intensity: ['TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['preview', 'prepay', 'disagree', 'disappear', 'dislike', 'mistake', 'misread', 'misplace'],
+    decodableText: 'Preview and prepay. I disagree and dislike the mistake. It will disappear. Do not misread or misplace.',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'pre- means "before" (preview, prepay, predict)',
+      'dis- means "not" or "opposite" (disagree, disappear, dislike)',
+      'mis- means "wrongly" (mistake, misread, misplace)'
+    ]
+  },
+  {
+    week: 5,
+    phonemes: ['-er', '-est', '-ly', '-y'],
+    graphemes: ['-er', '-est', '-ly', '-y'],
+    intensity: ['CORE', 'TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['faster', 'fastest', 'quickly', 'slowly', 'carefully', 'sunny', 'rainy', 'cloudy'],
+    decodableText: 'Run faster — be the fastest! Go quickly and carefully, not slowly. It is sunny, not rainy or cloudy.',
+    assessment: '8A MASTERY CHECK (End of Phase 8A)',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      '-er comparative (faster, bigger)',
+      '-est superlative (fastest, biggest)',
+      '-ly makes adverbs (quickly, slowly, carefully)',
+      '-y makes adjectives (sunny, rainy, cloudy)',
+      'Phase 8A complete — assess inflectional suffixes and core prefixes'
+    ]
+  },
+  // ─────────────────────────────────────────────────────────────────────────────
+  // PHASE 8B: Extended Patterns (Weeks 6-10)
+  // ─────────────────────────────────────────────────────────────────────────────
+  {
+    week: 6,
+    phonemes: ['/shən/', '/zhən/'],
+    graphemes: ['-tion', '-sion'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['action', 'nation', 'question', 'station', 'vision', 'decision', 'television', 'confusion'],
+    decodableText: 'The action at the nation station was a question. The vision and decision on television caused confusion.',
+    assessment: 'Daily: -tion and -sion suffixes',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      '-tion says /shən/ (action, nation, question) — very high frequency',
+      '-sion can say /shən/ (mission) or /zhən/ (vision, decision)',
+      'If the root ends in a vowel or r: -sion→/zhən/ (vision)',
+      'If the root ends in a consonant: -sion→/shən/ (mission)'
+    ]
+  },
+  {
+    week: 7,
+    phonemes: ['/shən/', 'schwa /ə/'],
+    graphemes: ['-cian', 'schwa'],
+    intensity: ['EXPOSURE', 'TEACH'],
+    focusWords: ['musician', 'magician', 'physician', 'about', 'away', 'alone', 'around', 'again', 'lemon', 'pencil', 'open'],
+    decodableText: 'The musician and magician asked the physician. I am about to go away, alone, around, and again. A lemon, a pencil, and an open door.',
+    assessment: 'CHECKPOINT Weeks 6-7',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '-cian says /shən/ — refers to a person (musician, magician, physician) — EXPOSURE',
+      'Schwa /ə/ is the unstressed vowel sound — MOST common sound in English',
+      'Any vowel can make schwa in unstressed syllables (about, away, lemon, pencil, open)'
+    ]
+  },
+  {
+    week: 8,
+    phonemes: ['/sh/', 'Tier 2 suffixes'],
+    graphemes: ['ti→/sh/', 'ci→/sh/', '-ful', '-less', '-ness', '-ment'],
+    intensity: ['TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['patient', 'partial', 'special', 'official', 'helpful', 'careless', 'kindness', 'movement'],
+    decodableText: 'The patient was partial to the special official. Be helpful, not careless. Show kindness with movement.',
+    assessment: 'Daily: ti/ci→/sh/ and Tier 2 suffixes',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ti says /sh/ before a vowel (patient, partial, nation)',
+      'ci says /sh/ before a vowel (special, official, ancient)',
+      '-ful means "full of" (helpful, careful)',
+      '-less means "without" (careless, homeless)',
+      '-ness makes nouns (kindness, happiness)',
+      '-ment makes nouns (movement, payment)'
+    ]
+  },
+  {
+    week: 9,
+    phonemes: ['Advanced suffixes'],
+    graphemes: ['-ture', '-ous', '-ent/-ant', '-al', '-or'],
+    intensity: ['EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'EXPOSURE'],
+    focusWords: ['picture', 'nature', 'famous', 'dangerous', 'different', 'important', 'natural', 'musical', 'actor', 'inventor'],
+    decodableText: 'The picture of nature is famous but dangerous. It is different and important. The natural, musical actor was an inventor.',
+    assessment: 'CHECKPOINT Weeks 8-9',
+    isCheckpoint: true,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      '-ture says /chər/ (picture, nature) — EXPOSURE',
+      '-ous makes adjectives (famous, dangerous) — TEACH',
+      '-ent/-ant makes adjectives (different, important) — TEACH',
+      '-al makes adjectives (natural, musical) — TEACH',
+      '-or makes nouns for people (actor, inventor) — EXPOSURE'
+    ]
+  },
+  {
+    week: 10,
+    phonemes: ['Mastery'],
+    graphemes: ['All Stage 8'],
+    intensity: ['CORE'],
+    focusWords: ['unbelievable', 'disagreement', 'uncomfortable', 'disappointment', 'unfortunately', 'international'],
+    decodableText: 'The unbelievable disagreement was uncomfortable. What a disappointment! Unfortunately, it was international.',
+    assessment: 'END-OF-STAGE ASSESSMENT',
+    isCheckpoint: false,
+    isMastery: true,
+    teachingTips: [
+      'Assess -ed (3 sounds), -s/-es, -ing, prefixes (un-, re-, pre-, dis-, mis-), and suffixes.',
+      'Students should parse multisyllabic words into morphemes.',
+      'EXPOSURE suffixes (-cian, -ture, -or) are recognition only.',
+      'Celebrate completion of the 8-Stage Phonics Curriculum! Ready for 4th grade vocabulary and reading comprehension focus.'
+    ]
   }
 ];
 
@@ -813,6 +1359,20 @@ export default function StageDetailPage() {
   const [stageInfo, setStageInfo] = useState<StageInfo | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Intensity badge helper function
+  const getIntensityBadge = (intensity: IntensityLevel) => {
+    switch (intensity) {
+      case 'CORE':
+        return { symbol: '★', label: 'Core', bgColor: 'bg-amber-100', borderColor: 'border-amber-400', textColor: 'text-amber-700' };
+      case 'TEACH':
+        return { symbol: '▲', label: 'Teach', bgColor: 'bg-sky-100', borderColor: 'border-sky-400', textColor: 'text-sky-700' };
+      case 'EXPOSURE':
+        return { symbol: '○', label: 'Exposure', bgColor: 'bg-gray-100', borderColor: 'border-gray-400', textColor: 'text-gray-600' };
+      default:
+        return { symbol: '★', label: 'Core', bgColor: 'bg-amber-100', borderColor: 'border-amber-400', textColor: 'text-amber-700' };
+    }
+  };
+
   // Download week resources function
   const handleDownloadWeekResources = (weekNumber: number) => {
     const weekData = weeklyData.find(week => week.week === weekNumber);
@@ -826,50 +1386,86 @@ export default function StageDetailPage() {
     const accentColor: [number, number, number] = [212, 130, 110]; // warmCoral
     const textColor: [number, number, number] = [45, 55, 72]; // deepNavy
     
+    // Determine week type for dynamic labeling
+    const weekType = weekData.isMastery ? 'MASTERY' : weekData.isCheckpoint ? 'CHECKPOINT' : weekData.isReview ? 'REVIEW' : '';
+    const weekLabel = weekType ? `Week ${weekNumber} — ${weekType}` : `Week ${weekNumber}`;
+
     // Page 1 - Teacher Resource Page
-    pdf.setFillColor(...primaryColor);
-    pdf.rect(0, 0, 210, 30, 'F');
-    
+    // Header background - use different colors for special weeks
+    if (weekData.isMastery) {
+      pdf.setFillColor(245, 158, 11); // amber for mastery
+    } else if (weekData.isCheckpoint) {
+      pdf.setFillColor(59, 130, 246); // blue for checkpoint
+    } else {
+      pdf.setFillColor(...primaryColor);
+    }
+    pdf.rect(0, 0, 210, 35, 'F');
+
     pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(20);
+    pdf.setFontSize(18);
     pdf.setFont('helvetica', 'bold');
-    pdf.text(`Stage ${stageNumber} - Week ${weekNumber} Resources`, 105, 20, { align: 'center' });
-    
-    pdf.setFontSize(14);
-    pdf.text(stageInfo?.name || 'Phonics Stage', 105, 28, { align: 'center' });
+    pdf.text(`Stage ${stageNumber} - ${weekLabel}`, 105, 12, { align: 'center' });
+
+    pdf.setFontSize(12);
+    pdf.text(stageInfo?.name || 'Phonics Stage', 105, 20, { align: 'center' });
+
+    // Add week type badge if applicable
+    if (weekType) {
+      pdf.setFontSize(10);
+      pdf.text(`★ ${weekType} WEEK ★`, 105, 28, { align: 'center' });
+    }
+
+    // Stage 8 phase indicator
+    if (stageNumber === 8) {
+      pdf.setFontSize(9);
+      const phaseLabel = weekNumber <= 5 ? 'Phase 8A: Core Morphology' : 'Phase 8B: Extended Patterns';
+      pdf.text(phaseLabel, 105, weekType ? 33 : 28, { align: 'center' });
+    }
     
     // Teacher Section Header
     pdf.setTextColor(...textColor);
     pdf.setFontSize(16);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Teacher Guide', 20, 45);
-    
+    pdf.text('Teacher Guide', 20, 50);
+
     // This Week's Focus
     pdf.setFillColor(...accentColor);
-    pdf.rect(15, 50, 180, 8, 'F');
+    pdf.rect(15, 55, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
-    pdf.text('This Week\'s Focus', 20, 55);
-    
+    pdf.text('This Week\'s Focus', 20, 60);
+
     pdf.setTextColor(...textColor);
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(11);
-    pdf.text(`Phonemes: ${weekData.phonemes.join(', ')}`, 20, 65);
-    pdf.text(`Graphemes: ${weekData.graphemes.join(', ')}`, 20, 72);
-    
+    pdf.text(`Phonemes: ${weekData.phonemes.join(', ')}`, 20, 70);
+
+    // Format graphemes with intensity symbols for PDF
+    const graphemesWithIntensity = weekData.graphemes.map((g, i) => {
+      const intensity = weekData.intensity?.[i] || 'CORE';
+      const symbol = intensity === 'CORE' ? '★' : intensity === 'TEACH' ? '▲' : '○';
+      return `${symbol} ${g}`;
+    }).join(', ');
+    pdf.text(`Graphemes: ${graphemesWithIntensity}`, 20, 78);
+
+    // Intensity Legend
+    pdf.setFontSize(8);
+    pdf.setTextColor(100, 100, 100);
+    pdf.text('Intensity Key:  ★ CORE (drill to automaticity)  |  ▲ TEACH (explicit instruction)  |  ○ EXPOSURE (encounter in reading)', 20, 86);
+
     // Teaching Tips
     pdf.setFillColor(...accentColor);
-    pdf.rect(15, 80, 180, 8, 'F');
+    pdf.rect(15, 90, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Teaching Tips', 20, 85);
-    
+    pdf.text('Teaching Tips', 20, 95);
+
     pdf.setTextColor(...textColor);
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(10);
-    const tips = weekData.tips.split('\n');
-    let yPos = 95;
+    const tips = weekData.teachingTips;
+    let yPos = 105;
     tips.forEach(tip => {
       pdf.text(`• ${tip}`, 20, yPos);
       yPos += 7;
@@ -1438,31 +2034,98 @@ export default function StageDetailPage() {
               </div>
             </div>
 
-            {/* Grid View */}
-            {viewMode === 'timeline' && (
-              <div className={`flex flex-wrap justify-center max-w-full mx-auto px-1 ${stageNumber === 8 ? 'gap-4' : 'gap-8'}`}>
-                {weeklyData.map((week) => (
-                  <button
-                    key={week.week}
-                    onClick={() => setSelectedWeek(week.week)}
-                    className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 border-cyan-400 text-center transition-all duration-300 transform hover:scale-150 hover:z-20 hover:shadow-xl relative overflow-hidden ${
-                      selectedWeek === week.week 
-                        ? 'ring-2 ring-cyan-400 border-cyan-400' 
-                        : 'border-cyan-400 hover:border-cyan-300'
-                    }`}
-                    style={{ 
-                      width: '100px', 
-                      height: '240px',
-                      background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                    }}
-                  >
-                    <div className="h-6 flex items-center justify-center">
-                      <span className="text-sm font-bold text-slate-700">Week {week.week}</span>
-                      {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
-                        <span className="ml-1 text-yellow-500">⭐</span>
-                      )}
+            {/* Intensity Legend */}
+            <div className="flex justify-center mb-4">
+              <div className="bg-white/80 rounded-lg shadow-sm px-4 py-2 border border-gray-200 flex items-center gap-4 text-xs">
+                <span className="font-semibold text-gray-600">Intensity:</span>
+                <span className="flex items-center gap-1">
+                  <span className="text-amber-600 font-bold">★</span>
+                  <span className="bg-amber-100 border border-amber-400 text-amber-700 px-1.5 py-0.5 rounded">CORE</span>
+                  <span className="text-gray-500 ml-1">Drill to automaticity</span>
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="text-sky-600 font-bold">▲</span>
+                  <span className="bg-sky-100 border border-sky-400 text-sky-700 px-1.5 py-0.5 rounded">TEACH</span>
+                  <span className="text-gray-500 ml-1">Explicit instruction</span>
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="text-gray-500 font-bold">○</span>
+                  <span className="bg-gray-100 border border-gray-400 text-gray-600 px-1.5 py-0.5 rounded">EXPOSURE</span>
+                  <span className="text-gray-500 ml-1">Encounter in reading</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Stage 8 Instructional Shift Banner */}
+            {stageNumber === 8 && (
+              <div className="mb-4 bg-gradient-to-r from-violet-100 to-purple-100 border-2 border-violet-400 rounded-lg p-4 shadow-md">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">📚</span>
+                  <div>
+                    <h3 className="font-bold text-violet-800 text-lg mb-1">Instructional Shift: Morphology Focus</h3>
+                    <p className="text-violet-700 text-sm mb-2">
+                      Stage 8 marks a transition from phoneme-grapheme correspondence to <strong>morphological awareness</strong> — understanding how prefixes, suffixes, and roots create meaning.
+                    </p>
+                    <div className="flex gap-4 text-sm">
+                      <div className="bg-violet-200/50 rounded px-3 py-1">
+                        <span className="font-bold text-violet-800">Phase 8A (Weeks 1-5):</span>
+                        <span className="text-violet-700 ml-1">Core Morphology — inflectional suffixes (-ed, -s, -ing) and high-frequency prefixes (un-, re-)</span>
+                      </div>
+                      <div className="bg-purple-200/50 rounded px-3 py-1">
+                        <span className="font-bold text-purple-800">Phase 8B (Weeks 6-10):</span>
+                        <span className="text-purple-700 ml-1">Extended Patterns — derivational suffixes (-tion, -ful, -ness) and schwa</span>
+                      </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Grid View - 2 rows × 5 columns */}
+            {viewMode === 'timeline' && (
+              <div className="max-w-5xl mx-auto px-1">
+                {/* Row 1: Weeks 1-5 */}
+                <div className="grid grid-cols-5 gap-4 mb-4 justify-items-center">
+                  {weeklyData.slice(0, 5).map((week) => {
+                    // Dynamic week label
+                    const getWeekLabel = () => {
+                      if (week.isMastery) return `Week ${week.week} — MASTERY`;
+                      if (week.isCheckpoint) return `Week ${week.week} — CHECKPOINT`;
+                      if (week.isReview) return `Week ${week.week} — REVIEW`;
+                      if (stageNumber === 8 && week.week === 5) return `Week ${week.week} — 8A MASTERY`;
+                      return `Week ${week.week}`;
+                    };
+
+                    return (
+                      <button
+                        key={week.week}
+                        onClick={() => setSelectedWeek(week.week)}
+                        className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 text-center transition-all duration-300 transform hover:scale-110 hover:z-20 hover:shadow-xl relative overflow-hidden ${
+                          selectedWeek === week.week
+                            ? 'ring-2 ring-cyan-400 border-cyan-400'
+                            : 'border-cyan-400 hover:border-cyan-300'
+                        }`}
+                        style={{
+                          width: '140px',
+                          height: '260px',
+                          background: week.isMastery
+                            ? 'linear-gradient(to bottom, #fef08a, #f59e0b)'
+                            : week.isCheckpoint
+                              ? 'linear-gradient(to bottom, #dbeafe, #60a5fa)'
+                              : 'linear-gradient(to bottom, #fef3c7, #fdba74)',
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                        }}
+                      >
+                        <div className="h-8 flex items-center justify-center">
+                          <span className={`text-xs font-bold text-center leading-tight ${
+                            week.isMastery ? 'text-amber-800' : week.isCheckpoint ? 'text-blue-800' : 'text-slate-700'
+                          }`}>
+                            {getWeekLabel()}
+                          </span>
+                          {(week.isMastery || week.isCheckpoint) && (
+                            <span className="ml-1 text-yellow-500">⭐</span>
+                          )}
+                        </div>
                     
                     <div className="mt-2">
                       <div className="h-5 flex items-center justify-center">
@@ -1479,19 +2142,115 @@ export default function StageDetailPage() {
                       <div className="h-5 flex items-center justify-center mt-2">
                         <span className="font-bold text-blue-700 text-xs uppercase tracking-wide">Graphemes</span>
                       </div>
-                      <div className="h-16 flex flex-col gap-0.5 justify-start mt-1">
-                        {week.graphemes.map((grapheme, idx) => (
-                          <span key={idx} className={`bg-blue-100 border border-blue-400 px-1.5 py-0.5 rounded-md text-xs font-semibold text-center leading-tight shadow-sm ${
-                            ['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : 'text-blue-800'
-                          }`}>
-                            {grapheme}
-                          </span>
-                        ))}
+                      <div className="h-20 flex flex-col gap-0.5 justify-start mt-1 overflow-y-auto">
+                        {week.graphemes.map((grapheme, idx) => {
+                          const intensity = week.intensity?.[idx] || 'CORE';
+                          const badge = getIntensityBadge(intensity);
+                          return (
+                            <div key={idx} className="flex items-center gap-1">
+                              <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>
+                                {badge.symbol}
+                              </span>
+                              <span className={`${badge.bgColor} border ${badge.borderColor} px-1.5 py-0.5 rounded-md text-xs font-semibold text-center leading-tight shadow-sm flex-grow ${
+                                ['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor
+                              }`}>
+                                {grapheme}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
-                    
+
                   </button>
-                ))}
+                    );
+                  })}
+                </div>
+
+                {/* Row 2: Weeks 6-10 */}
+                <div className="grid grid-cols-5 gap-4 justify-items-center">
+                  {weeklyData.slice(5, 10).map((week) => {
+                    // Dynamic week label
+                    const getWeekLabel = () => {
+                      if (week.isMastery) return `Week ${week.week} — MASTERY`;
+                      if (week.isCheckpoint) return `Week ${week.week} — CHECKPOINT`;
+                      if (week.isReview) return `Week ${week.week} — REVIEW`;
+                      if (stageNumber === 8 && week.week === 6) return `Week ${week.week} — 8B START`;
+                      return `Week ${week.week}`;
+                    };
+
+                    return (
+                      <button
+                        key={week.week}
+                        onClick={() => setSelectedWeek(week.week)}
+                        className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 text-center transition-all duration-300 transform hover:scale-110 hover:z-20 hover:shadow-xl relative overflow-hidden ${
+                          selectedWeek === week.week
+                            ? 'ring-2 ring-cyan-400 border-cyan-400'
+                            : 'border-cyan-400 hover:border-cyan-300'
+                        }`}
+                        style={{
+                          width: '140px',
+                          height: '260px',
+                          background: week.isMastery
+                            ? 'linear-gradient(to bottom, #fef08a, #f59e0b)'
+                            : week.isCheckpoint
+                              ? 'linear-gradient(to bottom, #dbeafe, #60a5fa)'
+                              : stageNumber === 8 && week.week >= 6
+                                ? 'linear-gradient(to bottom, #ede9fe, #a78bfa)'
+                                : 'linear-gradient(to bottom, #fef3c7, #fdba74)',
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                        }}
+                      >
+                        <div className="h-8 flex items-center justify-center">
+                          <span className={`text-xs font-bold text-center leading-tight ${
+                            week.isMastery ? 'text-amber-800' : week.isCheckpoint ? 'text-blue-800' : stageNumber === 8 && week.week >= 6 ? 'text-violet-800' : 'text-slate-700'
+                          }`}>
+                            {getWeekLabel()}
+                          </span>
+                          {(week.isMastery || week.isCheckpoint) && (
+                            <span className="ml-1 text-yellow-500">⭐</span>
+                          )}
+                        </div>
+
+                        <div className="mt-2">
+                          <div className="h-5 flex items-center justify-center">
+                            <span className="font-bold text-green-700 text-xs uppercase tracking-wide">Phonemes</span>
+                          </div>
+                          <div className="h-16 flex flex-col gap-0.5 justify-start mt-1">
+                            {week.phonemes.map((phoneme, idx) => (
+                              <span key={idx} className="bg-emerald-100 border border-emerald-400 px-2 py-0.5 rounded-md text-xs font-semibold text-emerald-800 text-center leading-tight shadow-sm flex items-center justify-center">
+                                {phoneme}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="h-5 flex items-center justify-center mt-2">
+                            <span className="font-bold text-blue-700 text-xs uppercase tracking-wide">Graphemes</span>
+                          </div>
+                          <div className="h-20 flex flex-col gap-0.5 justify-start mt-1 overflow-y-auto">
+                            {week.graphemes.map((grapheme, idx) => {
+                              const intensity = week.intensity?.[idx] || 'CORE';
+                              const badge = getIntensityBadge(intensity);
+                              return (
+                                <div key={idx} className="flex items-center gap-1">
+                                  <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>
+                                    {badge.symbol}
+                                  </span>
+                                  <span className={`${badge.bgColor} border ${badge.borderColor} px-1.5 py-0.5 rounded-md text-xs font-semibold text-center leading-tight shadow-sm flex-grow ${
+                                    ['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor
+                                  }`}>
+                                    {grapheme}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             )}
 
@@ -1518,14 +2277,21 @@ export default function StageDetailPage() {
                           Week {week.week}: {week.phonemes.join(', ')}
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                          <div className="flex items-baseline">
+                          <div className="flex items-baseline flex-wrap">
                             <span className="text-black/70">Graphemes:</span>
-                            <span className="ml-2 font-medium">
-                              {week.graphemes.map((grapheme, idx) => (
-                                <span key={idx} className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : 'text-black'}>
-                                  {grapheme}{idx < week.graphemes.length - 1 ? ', ' : ''}
-                                </span>
-                              ))}
+                            <span className="ml-2 font-medium flex flex-wrap gap-1">
+                              {week.graphemes.map((grapheme, idx) => {
+                                const intensity = week.intensity?.[idx] || 'CORE';
+                                const badge = getIntensityBadge(intensity);
+                                return (
+                                  <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
+                                    <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
+                                    <span className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor}>
+                                      {grapheme}
+                                    </span>
+                                  </span>
+                                );
+                              })}
                             </span>
                           </div>
                           <div className="flex items-baseline">
@@ -1881,17 +2647,22 @@ export default function StageDetailPage() {
                                   </div>
                                 </div>
                               ) : (
-                                week.phonemes.map((phoneme, i) => (
-                                  <div key={i} className="flex items-center justify-start min-w-0">
-                                    <span className={`text-lg font-bold w-12 text-left font-mono ${
-                                      stageNumber === 1 ? 'text-slate-800' : 'text-forestGreen'
-                                    }`}>{phoneme}</span>
-                                    <span className="text-sm font-medium w-6 text-center">→</span>
-                                    <span className={`text-lg font-bold w-6 text-left ${
-                                      stageNumber === 1 ? (['a', 'e', 'i', 'o', 'u'].includes(week.graphemes[i]?.toLowerCase()) ? 'text-red-600' : 'text-slate-800') : 'text-pineShadow'
-                                    }`}>{week.graphemes[i]}</span>
-                                  </div>
-                                ))
+                                week.phonemes.map((phoneme, i) => {
+                                  const intensity = week.intensity?.[i] || 'CORE';
+                                  const badge = getIntensityBadge(intensity);
+                                  return (
+                                    <div key={i} className="flex items-center justify-start min-w-0 gap-2">
+                                      <span className={`${badge.textColor} text-sm font-bold`} title={badge.label}>{badge.symbol}</span>
+                                      <span className={`text-lg font-bold w-12 text-left font-mono ${
+                                        stageNumber === 1 ? 'text-slate-800' : 'text-forestGreen'
+                                      }`}>{phoneme}</span>
+                                      <span className="text-sm font-medium w-6 text-center">→</span>
+                                      <span className={`text-lg font-bold text-left px-2 py-0.5 rounded ${badge.bgColor} border ${badge.borderColor} ${
+                                        stageNumber === 1 ? (['a', 'e', 'i', 'o', 'u'].includes(week.graphemes[i]?.toLowerCase()) ? 'text-red-600' : badge.textColor) : 'text-pineShadow'
+                                      }`}>{week.graphemes[i]}</span>
+                                    </div>
+                                  );
+                                })
                               )}
                             </div>
                           </div>
@@ -2030,7 +2801,7 @@ export default function StageDetailPage() {
                           <div className={`text-black ${
                             selectedWeek === 10 ? 'text-sm' : ''
                           }`}>
-                            {week.tips.split('\n').map((tip, index) => (
+                            {week.teachingTips.map((tip, index) => (
                               <div key={index} className="mb-1">{tip}</div>
                             ))}
                           </div>

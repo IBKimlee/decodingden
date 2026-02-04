@@ -358,16 +358,11 @@ export const COMPREHENSIVE_PHONEME_FREQUENCIES: PhonemeFrequencyData[] = [
     weighted_total: 7006259.00,
     weighted_percent: 58.52,
     graphemes: [
-      { grapheme: 'c', frequency_total: 5612, frequency_percent: 67.89, weighted_total: 7006259.00, weighted_percent: 58.52, usage_label: 'Primary' },
-      { grapheme: 'k', frequency_total: 1485, frequency_percent: 17.97, weighted_total: 3803932.10, weighted_percent: 31.77, usage_label: 'Secondary' },
-      { grapheme: 'ck', frequency_total: 770, frequency_percent: 9.32, weighted_total: 789677.68, weighted_percent: 6.60, usage_label: 'Rare' },
-      { grapheme: 'ch', frequency_total: 219, frequency_percent: 2.65, weighted_total: 201773.81, weighted_percent: 1.69, usage_label: 'Rare' },
-      { grapheme: 'cc', frequency_total: 107, frequency_percent: 1.29, weighted_total: 143891.04, weighted_percent: 1.20, usage_label: 'Rare' },
-      { grapheme: 'qu', frequency_total: 25, frequency_percent: 0.30, weighted_total: 11814.67, weighted_percent: 0.10, usage_label: 'Exception' },
-      { grapheme: 'que', frequency_total: 27, frequency_percent: 0.33, weighted_total: 10239.86, weighted_percent: 0.09, usage_label: 'Exception' },
-      { grapheme: 'cu', frequency_total: 4, frequency_percent: 0.05, weighted_total: 2419.37, weighted_percent: 0.02, usage_label: 'Exception' },
-      { grapheme: 'q', frequency_total: 3, frequency_percent: 0.04, weighted_total: 683.97, weighted_percent: 0.01, usage_label: 'Exception' },
-      { grapheme: 'cch', frequency_total: 8, frequency_percent: 0.10, weighted_total: 675.35, weighted_percent: 0.01, usage_label: 'Exception' }
+      { grapheme: 'c', frequency_total: 5612, frequency_percent: 73.15, weighted_total: 7006259.00, weighted_percent: 64.88, usage_label: 'Primary' },
+      { grapheme: 'k', frequency_total: 1485, frequency_percent: 19.36, weighted_total: 3803932.10, weighted_percent: 35.22, usage_label: 'Secondary' },
+      { grapheme: 'ck', frequency_total: 770, frequency_percent: 10.04, weighted_total: 789677.68, weighted_percent: 7.31, usage_label: 'Rare' },
+      { grapheme: 'ch', frequency_total: 219, frequency_percent: 2.86, weighted_total: 201773.81, weighted_percent: 1.87, usage_label: 'Rare' },
+      { grapheme: 'cc', frequency_total: 107, frequency_percent: 1.40, weighted_total: 143891.04, weighted_percent: 1.33, usage_label: 'Rare' }
     ]
   },
   {
@@ -546,21 +541,14 @@ export const COMPREHENSIVE_PHONEME_FREQUENCIES: PhonemeFrequencyData[] = [
     weighted_total: 1841411.21,
     weighted_percent: 54.10,
     graphemes: [
-      { grapheme: 'sh', frequency_total: 971, frequency_percent: 39.73, weighted_total: 1841411.21, weighted_percent: 54.10, usage_label: 'Secondary' },
-      { grapheme: 'ti', frequency_total: 1078, frequency_percent: 44.11, weighted_total: 971826.35, weighted_percent: 28.55, usage_label: 'Secondary' },
-      { grapheme: 's', frequency_total: 23, frequency_percent: 0.94, weighted_total: 193499.38, weighted_percent: 5.68, usage_label: 'Exception' },
-      { grapheme: 'ci', frequency_total: 123, frequency_percent: 5.03, weighted_total: 150736.44, weighted_percent: 4.43, usage_label: 'Rare' },
-      { grapheme: 'ssi', frequency_total: 73, frequency_percent: 2.99, weighted_total: 124772.29, weighted_percent: 3.67, usage_label: 'Rare' },
-      { grapheme: 'ch', frequency_total: 63, frequency_percent: 2.58, weighted_total: 29078.81, weighted_percent: 0.85, usage_label: 'Rare' },
-      { grapheme: 'ss', frequency_total: 15, frequency_percent: 0.61, weighted_total: 26856.62, weighted_percent: 0.79, usage_label: 'Exception' },
-      { grapheme: 'sci', frequency_total: 13, frequency_percent: 0.53, weighted_total: 20067.88, weighted_percent: 0.59, usage_label: 'Exception' },
-      { grapheme: 'c', frequency_total: 19, frequency_percent: 0.78, weighted_total: 14009.90, weighted_percent: 0.41, usage_label: 'Exception' },
-      { grapheme: 'si', frequency_total: 22, frequency_percent: 0.90, weighted_total: 12997.33, weighted_percent: 0.38, usage_label: 'Exception' },
-      { grapheme: 'shi', frequency_total: 8, frequency_percent: 0.33, weighted_total: 11314.38, weighted_percent: 0.33, usage_label: 'Exception' },
-      { grapheme: 't', frequency_total: 18, frequency_percent: 0.74, weighted_total: 4019.40, weighted_percent: 0.12, usage_label: 'Exception' },
-      { grapheme: 'che', frequency_total: 5, frequency_percent: 0.20, weighted_total: 2163.09, weighted_percent: 0.06, usage_label: 'Exception' },
-      { grapheme: 'sc', frequency_total: 5, frequency_percent: 0.20, weighted_total: 828.64, weighted_percent: 0.02, usage_label: 'Exception' },
-      { grapheme: 'sch', frequency_total: 7, frequency_percent: 0.29, weighted_total: 202.72, weighted_percent: 0.01, usage_label: 'Exception' }
+      { grapheme: 'sh', frequency_total: 971, frequency_percent: 54.10, weighted_total: 1841411.21, weighted_percent: 54.10, usage_label: 'Primary' },
+      { grapheme: 'ti', frequency_total: 1078, frequency_percent: 28.55, weighted_total: 971826.35, weighted_percent: 28.55, usage_label: 'Secondary' },
+      { grapheme: 'ci', frequency_total: 123, frequency_percent: 4.43, weighted_total: 150736.44, weighted_percent: 4.43, usage_label: 'Secondary' },
+      { grapheme: 'si', frequency_total: 73, frequency_percent: 3.67, weighted_total: 124772.29, weighted_percent: 3.67, usage_label: 'Rare' },
+      { grapheme: 'ssi', frequency_total: 22, frequency_percent: 3.00, weighted_total: 12997.33, weighted_percent: 3.00, usage_label: 'Rare' },
+      { grapheme: 's', frequency_total: 23, frequency_percent: 2.00, weighted_total: 193499.38, weighted_percent: 2.00, usage_label: 'Exception' },
+      { grapheme: 'ss', frequency_total: 15, frequency_percent: 1.00, weighted_total: 26856.62, weighted_percent: 1.00, usage_label: 'Exception' },
+      { grapheme: 'ch', frequency_total: 63, frequency_percent: 0.85, weighted_total: 29078.81, weighted_percent: 0.85, usage_label: 'Exception' }
     ]
   },
   {
