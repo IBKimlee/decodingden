@@ -600,18 +600,65 @@ export default function TeachingStages() {
                 </button>
               </div>
               
-              <div className="px-6 pb-6">
-                <div className="bg-gradient-to-br from-indigo-600/50 via-purple-600/45 to-purple-500/50 rounded-xl p-6 relative overflow-hidden shadow-xl mb-4 border border-purple-400">
+              <div className="px-6 pb-6 space-y-3">
+                {/* Purple phase name header */}
+                <div className="bg-gradient-to-br from-indigo-600/50 via-purple-600/45 to-purple-500/50 rounded-xl p-6 relative overflow-hidden shadow-xl border border-purple-400">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-purple-600"></div>
                   <h3 className="font-bold text-white text-xl drop-shadow-lg">
                     {selectedPhase}
                   </h3>
                 </div>
 
-                <div className="bg-gradient-to-br from-emerald-500/30 to-emerald-600/40 rounded-xl p-6 shadow-lg border border-emerald-500 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-                  <p className="text-black leading-relaxed text-lg">
-                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description || ''}
+                {/* Summary box */}
+                <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-4">
+                  <p className="text-gray-800 leading-relaxed">
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description?.summary || ''}
+                  </p>
+                </div>
+
+                {/* What Students Can Do */}
+                <div className="bg-emerald-50 border-l-4 border-emerald-500 rounded-r-xl p-4">
+                  <h4 className="font-bold text-base mb-2 text-emerald-800">What Students Can Do ✅</h4>
+                  <ul className="list-disc list-inside text-sm leading-relaxed text-gray-700 space-y-1">
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description?.studentCanDo?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Red Flags */}
+                <div className="bg-red-50 border-l-4 border-red-400 rounded-r-xl p-4">
+                  <h4 className="font-bold text-base mb-2 text-red-800">Red Flags 🚩</h4>
+                  <ul className="list-disc list-inside text-sm leading-relaxed text-gray-700 space-y-1">
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description?.redFlags?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* What Students Need */}
+                <div className="bg-amber-50 border-l-4 border-amber-400 rounded-r-xl p-4">
+                  <h4 className="font-bold text-base mb-2 text-amber-800">What Students Need 📋</h4>
+                  <ul className="list-disc list-inside text-sm leading-relaxed text-gray-700 space-y-1">
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description?.studentNeeds?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Brain Connection */}
+                <div className="bg-purple-50 border-l-4 border-purple-400 rounded-r-xl p-4">
+                  <h4 className="font-bold text-base mb-2 text-purple-800">Brain Connection 🧠</h4>
+                  <p className="text-sm leading-relaxed text-gray-700 italic">
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description?.brainConnection || ''}
+                  </p>
+                </div>
+
+                {/* Parent Conference Language */}
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mt-2">
+                  <h4 className="font-bold text-sm mb-2 text-gray-700">💬 Parent Conference Language</h4>
+                  <p className="text-sm leading-relaxed text-gray-600 italic">
+                    &ldquo;{EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description?.parentConferenceLine || ''}&rdquo;
                   </p>
                 </div>
               </div>

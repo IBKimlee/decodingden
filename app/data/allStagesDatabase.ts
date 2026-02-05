@@ -47,7 +47,14 @@ export interface StageInfo {
   };
   science_of_reading_alignment: {
     ehri_phase: string;
-    ehri_phase_description: string;
+    ehri_phase_description: {
+      summary: string;
+      studentCanDo: string[];
+      redFlags: string[];
+      studentNeeds: string[];
+      brainConnection: string;
+      parentConferenceLine: string;
+    };
     research_principle: string;
     orthographic_mapping: string;
   };
@@ -82,7 +89,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Pre-alphabetic to Partial Alphabetic - children use first and last sounds in words",
-      ehri_phase_description: "Students begin their reading journey in the Pre-Alphabetic Phase, where they identify words using visual cues like word shape, distinctive letters, or pictures rather than letter-sound relationships. Through systematic phonics instruction, they transition to the Partial Alphabetic Phase, where they start connecting some letters with their sounds—typically focusing on initial or final letters. This critical transition represents the foundation of reading development, as students move from purely visual word recognition to beginning sound-symbol correspondence. Research by Dr. Linnea Ehri shows this progression is essential for developing the alphabetic principle that underlies all successful reading.",
+      ehri_phase_description: {
+        summary: "Students transition from recognizing words by shape to connecting letters with sounds. This is the foundational shift from visual guessing to phonetic decoding.",
+        studentCanDo: [
+          "Recognize and name most uppercase and lowercase letters",
+          "Identify initial sounds in spoken words",
+          "Connect 10-15 letter-sound pairs with accuracy",
+          "Blend 2-3 sounds to read CVC words (cat, sit, mop)"
+        ],
+        redFlags: [
+          "Guesses words based on pictures or first letter only",
+          "Cannot blend three sounds together even with support",
+          "Confuses visually similar letters (b/d, p/q) after sustained instruction",
+          "Shows no improvement in letter-sound recall after 4+ weeks"
+        ],
+        studentNeeds: [
+          "Explicit, systematic letter-sound instruction (not alphabet songs alone)",
+          "Daily blending practice with corrective feedback",
+          "Decodable texts that match known letter-sounds only",
+          "Multisensory practice: see it, say it, trace it, write it"
+        ],
+        brainConnection: "The brain is building its first pathways between the visual cortex (letter shapes) and language centers (sounds). This 'alphabetic principle' moment is the single most important breakthrough in learning to read.",
+        parentConferenceLine: "Your child is learning that letters represent sounds — we're building the foundation that all reading depends on."
+      },
       research_principle: "Ehri (2005); NRP (2000) - Foundational consonants and short vowels prioritized for transparent mappings",
       orthographic_mapping: "Foundation for connecting letters to sounds in memory"
     }
@@ -109,7 +138,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Partial to Full Alphabetic - ready for two-letter, one-sound patterns",
-      ehri_phase_description: "Students solidify their Partial Alphabetic skills and begin transitioning toward Full Alphabetic reading. They now recognize most single consonants automatically and are ready for two-letter, one-sound patterns (digraphs). Students increasingly use letter-sound knowledge rather than visual guessing, connecting more letters in a word to their sounds. This is a critical bridge—students who master digraphs here develop the pattern-recognition foundation needed for the vowel teams and complex patterns ahead.",
+      ehri_phase_description: {
+        summary: "Students complete their single-letter knowledge and tackle two-letter, one-sound patterns (digraphs). They're moving from sounding out each letter to recognizing common letter pairs as units.",
+        studentCanDo: [
+          "Decode all single consonants automatically",
+          "Read words with digraphs (ch, sh, th, wh)",
+          "Distinguish hard and soft sounds of c and k",
+          "Blend 4-5 sounds fluently in CCVC/CVCC words"
+        ],
+        redFlags: [
+          "Still sounding out individual letters in well-practiced digraphs",
+          "Reads 'sh' as /s/ /h/ instead of /sh/",
+          "Cannot distinguish between similar digraphs (sh vs ch)",
+          "Decoding speed for single consonants is still slow and effortful"
+        ],
+        studentNeeds: [
+          "Digraph instruction as 'two letters, one sound' (not two separate sounds)",
+          "Comparison activities: ship vs sip, chin vs in",
+          "Continued decodable text practice with digraphs included",
+          "Speed drills for automatic consonant recognition"
+        ],
+        brainConnection: "The brain begins chunking—storing 'sh' as one unit instead of two letters. This is the start of orthographic mapping in the left fusiform gyrus, the brain's emerging word dictionary.",
+        parentConferenceLine: "Your child knows individual letter sounds and is now learning that some letter pairs like 'sh' and 'ch' work together to make one sound."
+      },
       research_principle: "Adams (1990); Moats (2020); NRP (2000) - Common digraphs introduced when students master CVC patterns",
       orthographic_mapping: "Two-letter, one-sound patterns build on single letter foundation"
     }
@@ -137,7 +188,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Full Alphabetic – Emerging: ready for complex vowel patterns and spelling generalizations",
-      ehri_phase_description: "Students enter the Full Alphabetic Phase, where they can map all letters in a word to their sounds. They now tackle VCe (magic e) patterns, consonant doublings (FLOSS rule), and begin encountering one sound spelled multiple ways. This is where reading starts to feel 'automatic' for simple words. Dr. Ehri's research shows that Full Alphabetic readers process every letter in sequence, which is why explicit instruction in spelling generalizations at this stage builds lasting decoding accuracy.",
+      ehri_phase_description: {
+        summary: "Students enter the Full Alphabetic Phase. They can now map every letter in a word to its sound and begin learning that one sound can be spelled multiple ways.",
+        studentCanDo: [
+          "Apply the magic e (VCe) pattern across all vowels",
+          "Recognize FLOSS rule doublings (ff, ll, ss, zz)",
+          "Read words with consonant trigraphs (tch, dge)",
+          "Begin flexing between two possible sounds for a pattern"
+        ],
+        redFlags: [
+          "Reads 'cape' as /k/ /a/ /p/ /e/ (not applying VCe rule)",
+          "Cannot explain why a word has a double letter (FLOSS)",
+          "Treats every word as a new puzzle—no pattern transfer",
+          "Spells 'make' as 'mak' consistently"
+        ],
+        studentNeeds: [
+          "Explicit VCe instruction with contrast pairs (tap/tape, kit/kite)",
+          "Spelling generalization rules taught as 'when/why' not just 'what'",
+          "Introduction to the concept that English has spelling choices",
+          "Word sorting activities to discover patterns independently"
+        ],
+        brainConnection: "The brain now processes every letter in sequence, creating precise orthographic representations. VCe and FLOSS are the first 'spelling rules' stored in long-term memory.",
+        parentConferenceLine: "Your child can sound out simple words and is now learning spelling patterns like silent e that unlock hundreds of new words."
+      },
       research_principle: "Adams (1990); Moats (2020) - VCe patterns most consistent long vowel representation; FLOSS rule builds spelling pattern awareness",
       orthographic_mapping: "Silent E influence on vowel sounds; doubled consonants and trigraphs stored as chunks"
     }
@@ -166,7 +239,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Full Alphabetic - systematic vowel team pattern recognition and flexible decoding",
-      ehri_phase_description: "Students are fully in the Full Alphabetic Phase and developing flexibility. They now handle vowel teams, open syllables, and patterns where the same spelling can represent different sounds (like ie→/ē/ vs ie→/ī/). This 'flexing' skill—trying one pronunciation, checking meaning, then trying another—marks a major leap in reading independence. Students begin recognizing larger orthographic patterns rather than decoding letter by letter.",
+      ehri_phase_description: {
+        summary: "Students develop decoding flexibility. When one pronunciation doesn't make a word they know, they try another. This 'flexing' skill marks a major leap toward reading independence.",
+        studentCanDo: [
+          "Read common vowel teams (ai, ea, ee, oa, igh) automatically",
+          "Apply the flex strategy: try one sound, check meaning, try another",
+          "Decode words with open syllables (go, me, spider)",
+          "Recognize that the same spelling can represent different sounds"
+        ],
+        redFlags: [
+          "Reads only the first vowel team pronunciation and gives up",
+          "Cannot flex between two sounds for the same spelling",
+          "Skips vowel teams entirely and guesses from consonants",
+          "Reads 'boat' correctly but struggles with 'road' (no transfer)"
+        ],
+        studentNeeds: [
+          "Vowel team instruction organized by reliability (ee is consistent; ea is not)",
+          "Explicit flex strategy modeling: 'That didn't sound right—try the other sound'",
+          "Extensive reading practice to build automatic vowel team recognition",
+          "Morphological awareness introduction through common word families"
+        ],
+        brainConnection: "The brain activates multiple pronunciations simultaneously and selects based on meaning—coordinating visual, phonological, and semantic networks. This is the neural signature of a skilled decoder.",
+        parentConferenceLine: "Your child is learning to be flexible — when one pronunciation doesn't work, they try another, which is a major sign of reading growth."
+      },
       research_principle: "Fry (2004); NRP (2000); Ehri (2005) - High-frequency vowel teams prioritized; o→/ŭ/ covers 20+ Fry top-100 words",
       orthographic_mapping: "Vowel teams stored as chunks; flexing strategy develops when patterns have multiple sounds"
     }
@@ -195,7 +290,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Emerging: chunking r-controlled patterns and developing flexible decoding",
-      ehri_phase_description: "Students enter the Consolidated Alphabetic Phase, where they process multi-letter patterns as single units. R-controlled vowels, /oo/ patterns, and w-influence spellings become automatic. The 'consolidation' means students chunk familiar patterns instantly—'ar' is one unit, not two separate letters. Dr. Ehri's research shows this chunking dramatically increases reading speed and frees cognitive resources for comprehension.",
+      ehri_phase_description: {
+        summary: "Students enter the Consolidated Phase, processing multi-letter patterns as single chunks rather than individual letters. R-controlled vowels and /oo/ patterns become automatic.",
+        studentCanDo: [
+          "Read r-controlled vowels (ar, er, ir, ur, or) without hesitation",
+          "Distinguish the two sounds of 'oo' (moon vs book)",
+          "Decode w-influence patterns (wa, war, wor)",
+          "Handle the three sounds of 'ear' using flex strategy"
+        ],
+        redFlags: [
+          "Reads 'car' correctly but stumbles on 'park' (not chunking 'ar')",
+          "Still decoding r-controlled vowels letter by letter",
+          "Cannot distinguish er/ir/ur sounds despite instruction",
+          "Avoids multisyllabic words with r-controlled patterns"
+        ],
+        studentNeeds: [
+          "R-controlled vowels taught as 'Bossy R changes the vowel sound'",
+          "Explicit instruction on w-influence as a consistent pattern",
+          "Flex strategy practice for multi-sound patterns (ear, oo)",
+          "Connected text reading at increasing speed to build fluency"
+        ],
+        brainConnection: "Chunking is now primary—'ar' is one unit, not two letters. This consolidation frees working memory for comprehension. Ehri calls this 'sight word reading through phonological mapping.'",
+        parentConferenceLine: "Your child is reading faster because their brain now recognizes common patterns like 'ar' and 'or' instantly, as single units."
+      },
       research_principle: "Fry (2004); NRP (2000); UFLI/Wilson - R-controlled vowels essential; W-influence is consistent pattern; oul words are Fry top-100",
       orthographic_mapping: "R-controlled patterns stored as units; flex strategy for multi-sound spellings (ear)"
     }
@@ -223,7 +340,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Developing: automatic processing of diphthongs and extended vowel patterns",
-      ehri_phase_description: "Students deepen their Consolidated Alphabetic skills with diphthongs and extended vowel patterns. They now process complex vowel combinations (ou, oi, aw, eigh) automatically and handle patterns borrowed from French and other languages. The 'developing' descriptor reflects that students are building an increasingly sophisticated mental dictionary of spelling patterns, approaching the fluency needed for grade-level text.",
+      ehri_phase_description: {
+        summary: "Students deepen consolidated skills with diphthongs (gliding vowels) and patterns borrowed from French and other languages. Their mental dictionary of spelling patterns approaches grade-level fluency.",
+        studentCanDo: [
+          "Read diphthongs (ou/ow, oi/oy, au/aw) automatically",
+          "Decode less common vowel spellings (eigh, ei, ey, eu)",
+          "Handle variable 'ere' patterns using context",
+          "Recognize that some English spellings reflect word origins"
+        ],
+        redFlags: [
+          "Reads diphthongs as two separate vowels instead of a glide",
+          "Cannot attempt unfamiliar words with complex vowel patterns",
+          "Over-relies on context guessing instead of decoding",
+          "Shows frustration or avoidance with grade-level text"
+        ],
+        studentNeeds: [
+          "Diphthong instruction emphasizing the 'gliding' mouth movement",
+          "Comparison of spelling alternatives (ou vs ow in different positions)",
+          "Exposure to etymology: 'This word came from French, which is why it's spelled this way'",
+          "Wide reading to encounter rare patterns in authentic contexts"
+        ],
+        brainConnection: "The orthographic lexicon now holds hundreds of patterns. Diphthongs require processing a vowel that changes mid-production—building neural flexibility for the variable patterns ahead.",
+        parentConferenceLine: "Your child is handling complex vowel sounds and patterns from other languages — they're approaching grade-level reading fluency."
+      },
       research_principle: "Fry (2004); NRP (2000) - Diphthongs essential for grade-level reading; extended spellings require reading exposure",
       orthographic_mapping: "Diphthongs stored as gliding units; rare spellings (ea→/ā/, oe, eu) learned individually"
     }
@@ -253,7 +392,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
-      ehri_phase_description: "Students reach Consolidated Alphabetic proficiency—they can flexibly decode virtually any single-morpheme English word. Variable patterns like 'ough' (5 pronunciations) and etymology-based spellings (Greek ch→/k/, French ch→/sh/) require the flex strategy: try a pronunciation, check meaning, adjust. This is the hallmark of a proficient decoder who understands that English spelling reflects word history and origin, not just sound.",
+      ehri_phase_description: {
+        summary: "Students reach decoding proficiency. They can flexibly decode virtually any single-morpheme English word, including variable patterns like 'ough' (5 sounds) and etymology-based spellings.",
+        studentCanDo: [
+          "Apply flex strategy to variable patterns (ough, ch→/k/ or /sh/)",
+          "Recognize Greek-origin spellings (ch→/k/, ph, rh, sc)",
+          "Recognize French-origin spellings (ch→/sh/, que, gue)",
+          "Decode unfamiliar words by trying multiple pronunciations"
+        ],
+        redFlags: [
+          "Applies only one pronunciation and won't try alternatives",
+          "Cannot identify Greek vs French spelling origins",
+          "Struggles with any word not previously encountered",
+          "Reading comprehension drops on texts with academic vocabulary"
+        ],
+        studentNeeds: [
+          "Etymology awareness: 'Greek words use ch for /k/, French words use ch for /sh/'",
+          "Flex strategy as automatic habit, not conscious effort",
+          "Exposure to academic vocabulary with Greek/French roots",
+          "Word investigation activities: 'Why is school spelled with ch?'"
+        ],
+        brainConnection: "The brain maintains multiple pronunciation candidates simultaneously, selecting by meaning. Brain imaging shows activation patterns similar to skilled adult readers at this stage.",
+        parentConferenceLine: "Your child can decode almost any word by trying different pronunciations and checking meaning — this is what proficient readers do."
+      },
       research_principle: "Fry (2004); Adams (1990) - Variable patterns essential for grade-level vocabulary; etymology awareness supports spelling",
       orthographic_mapping: "Variable patterns require flexible retrieval; Greek/French origins stored with spelling-meaning connections"
     }
@@ -285,7 +446,29 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Advanced: morpheme-based word analysis and schwa awareness",
-      ehri_phase_description: "Students reach the Advanced Consolidated phase, transitioning from phoneme-level decoding to morpheme-based word analysis. They recognize that prefixes change meaning (un-, re-, dis-), suffixes change word function (-tion, -ous, -ment), and roots carry core meaning. Schwa awareness develops as students understand why unstressed syllables sound reduced. This morphological knowledge is the bridge from 'learning to read' to 'reading to learn'—the gateway to academic vocabulary and content-area literacy.",
+      ehri_phase_description: {
+        summary: "Students transition from phoneme-level decoding to morpheme-based word analysis. Prefixes, suffixes, and roots become the primary units of reading, unlocking both pronunciation and meaning simultaneously.",
+        studentCanDo: [
+          "Break multisyllabic words into meaningful morphemes (un-believe-able)",
+          "Use prefix/suffix knowledge to determine word meaning",
+          "Recognize schwa in unstressed syllables and spell through morpheme knowledge",
+          "Read grade-level academic text with fluency and comprehension"
+        ],
+        redFlags: [
+          "Cannot break multisyllabic words into meaningful parts",
+          "Treats prefixes/suffixes as random letter strings",
+          "Spells schwa vowels randomly (does not use related-word strategy)",
+          "Decodes words but cannot use morphemes to infer meaning"
+        ],
+        studentNeeds: [
+          "Explicit morpheme instruction: prefixes change meaning, suffixes change function",
+          "Schwa spelling strategy: 'Find a related word where the vowel is stressed'",
+          "Academic vocabulary instruction through morpheme analysis",
+          "Integration of decoding with comprehension strategies"
+        ],
+        brainConnection: "The brain processes words through dual routes—phonological decoding AND morphological analysis in parallel. This is why morpheme instruction improves both fluency and vocabulary simultaneously.",
+        parentConferenceLine: "Your child is breaking words into meaningful parts — prefixes, suffixes, roots — which builds both reading fluency and vocabulary at the same time."
+      },
       research_principle: "Nagy & Anderson (1984); Treiman (2000); Fry data - un- and re- cover 50%+ of prefixed words; morphology unlocks meaning and spelling",
       orthographic_mapping: "Morphemes stored as meaningful chunks; schwa spelling requires related-word strategy"
     },
