@@ -18,6 +18,7 @@ export default function TeachingStages() {
   const [showModal, setShowModal] = useState(false);
   const [phaseModalVisible, setPhaseModalVisible] = useState(false);
   const [selectedPhase, setSelectedPhase] = useState('');
+  const [selectedPhaseStageNum, setSelectedPhaseStageNum] = useState<number>(1);
   const [showPhonemeModal, setShowPhonemeModal] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedStage, setSelectedStage] = useState(0);
@@ -93,8 +94,9 @@ export default function TeachingStages() {
     }
   };
 
-  const handlePhaseClick = (phase: string) => {
+  const handlePhaseClick = (phase: string, stageNumber: number) => {
     setSelectedPhase(phase);
+    setSelectedPhaseStageNum(stageNumber);
     setShowModal(true);
     // Trigger animation after modal appears
     setTimeout(() => setPhaseModalVisible(true), 10);
@@ -508,7 +510,7 @@ export default function TeachingStages() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handlePhaseClick(stage.studentPhase);
+                    handlePhaseClick(stage.studentPhase, stage.stage);
                   }}
                   className="p-4 rounded-xl border-2 border-cyan-400 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 text-center group h-20 flex flex-col justify-center items-center relative overflow-hidden shadow-lg hover:shadow-2xl"
                   style={{
@@ -602,14 +604,14 @@ export default function TeachingStages() {
                 <div className="bg-gradient-to-br from-indigo-600/50 via-purple-600/45 to-purple-500/50 rounded-xl p-6 relative overflow-hidden shadow-xl mb-4 border border-purple-400">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-purple-600"></div>
                   <h3 className="font-bold text-white text-xl drop-shadow-lg">
-                    Pre-Alphabetic to Partial Alphabetic
+                    {selectedPhase}
                   </h3>
                 </div>
-                
+
                 <div className="bg-gradient-to-br from-emerald-500/30 to-emerald-600/40 rounded-xl p-6 shadow-lg border border-emerald-500 relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
                   <p className="text-black leading-relaxed text-lg">
-                    {ehriPhases[selectedPhase as keyof typeof ehriPhases]?.description}
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase || ''}
                   </p>
                 </div>
               </div>
