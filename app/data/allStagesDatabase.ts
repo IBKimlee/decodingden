@@ -47,6 +47,7 @@ export interface StageInfo {
   };
   science_of_reading_alignment: {
     ehri_phase: string;
+    ehri_phase_description: string;
     research_principle: string;
     orthographic_mapping: string;
   };
@@ -81,6 +82,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Pre-alphabetic to Partial Alphabetic - children use first and last sounds in words",
+      ehri_phase_description: "Students begin their reading journey in the Pre-Alphabetic Phase, where they identify words using visual cues like word shape, distinctive letters, or pictures rather than letter-sound relationships. Through systematic phonics instruction, they transition to the Partial Alphabetic Phase, where they start connecting some letters with their sounds—typically focusing on initial or final letters. This critical transition represents the foundation of reading development, as students move from purely visual word recognition to beginning sound-symbol correspondence. Research by Dr. Linnea Ehri shows this progression is essential for developing the alphabetic principle that underlies all successful reading.",
       research_principle: "Ehri (2005); NRP (2000) - Foundational consonants and short vowels prioritized for transparent mappings",
       orthographic_mapping: "Foundation for connecting letters to sounds in memory"
     }
@@ -107,6 +109,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Partial to Full Alphabetic - ready for two-letter, one-sound patterns",
+      ehri_phase_description: "Students solidify their Partial Alphabetic skills and begin transitioning toward Full Alphabetic reading. They now recognize most single consonants automatically and are ready for two-letter, one-sound patterns (digraphs). Students increasingly use letter-sound knowledge rather than visual guessing, connecting more letters in a word to their sounds. This is a critical bridge—students who master digraphs here develop the pattern-recognition foundation needed for the vowel teams and complex patterns ahead.",
       research_principle: "Adams (1990); Moats (2020); NRP (2000) - Common digraphs introduced when students master CVC patterns",
       orthographic_mapping: "Two-letter, one-sound patterns build on single letter foundation"
     }
@@ -134,6 +137,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Full Alphabetic – Emerging: ready for complex vowel patterns and spelling generalizations",
+      ehri_phase_description: "Students enter the Full Alphabetic Phase, where they can map all letters in a word to their sounds. They now tackle VCe (magic e) patterns, consonant doublings (FLOSS rule), and begin encountering one sound spelled multiple ways. This is where reading starts to feel 'automatic' for simple words. Dr. Ehri's research shows that Full Alphabetic readers process every letter in sequence, which is why explicit instruction in spelling generalizations at this stage builds lasting decoding accuracy.",
       research_principle: "Adams (1990); Moats (2020) - VCe patterns most consistent long vowel representation; FLOSS rule builds spelling pattern awareness",
       orthographic_mapping: "Silent E influence on vowel sounds; doubled consonants and trigraphs stored as chunks"
     }
@@ -162,6 +166,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Full Alphabetic - systematic vowel team pattern recognition and flexible decoding",
+      ehri_phase_description: "Students are fully in the Full Alphabetic Phase and developing flexibility. They now handle vowel teams, open syllables, and patterns where the same spelling can represent different sounds (like ie→/ē/ vs ie→/ī/). This 'flexing' skill—trying one pronunciation, checking meaning, then trying another—marks a major leap in reading independence. Students begin recognizing larger orthographic patterns rather than decoding letter by letter.",
       research_principle: "Fry (2004); NRP (2000); Ehri (2005) - High-frequency vowel teams prioritized; o→/ŭ/ covers 20+ Fry top-100 words",
       orthographic_mapping: "Vowel teams stored as chunks; flexing strategy develops when patterns have multiple sounds"
     }
@@ -190,6 +195,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Emerging: chunking r-controlled patterns and developing flexible decoding",
+      ehri_phase_description: "Students enter the Consolidated Alphabetic Phase, where they process multi-letter patterns as single units. R-controlled vowels, /oo/ patterns, and w-influence spellings become automatic. The 'consolidation' means students chunk familiar patterns instantly—'ar' is one unit, not two separate letters. Dr. Ehri's research shows this chunking dramatically increases reading speed and frees cognitive resources for comprehension.",
       research_principle: "Fry (2004); NRP (2000); UFLI/Wilson - R-controlled vowels essential; W-influence is consistent pattern; oul words are Fry top-100",
       orthographic_mapping: "R-controlled patterns stored as units; flex strategy for multi-sound spellings (ear)"
     }
@@ -217,6 +223,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Developing: automatic processing of diphthongs and extended vowel patterns",
+      ehri_phase_description: "Students deepen their Consolidated Alphabetic skills with diphthongs and extended vowel patterns. They now process complex vowel combinations (ou, oi, aw, eigh) automatically and handle patterns borrowed from French and other languages. The 'developing' descriptor reflects that students are building an increasingly sophisticated mental dictionary of spelling patterns, approaching the fluency needed for grade-level text.",
       research_principle: "Fry (2004); NRP (2000) - Diphthongs essential for grade-level reading; extended spellings require reading exposure",
       orthographic_mapping: "Diphthongs stored as gliding units; rare spellings (ea→/ā/, oe, eu) learned individually"
     }
@@ -246,6 +253,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
+      ehri_phase_description: "Students reach Consolidated Alphabetic proficiency—they can flexibly decode virtually any single-morpheme English word. Variable patterns like 'ough' (5 pronunciations) and etymology-based spellings (Greek ch→/k/, French ch→/sh/) require the flex strategy: try a pronunciation, check meaning, adjust. This is the hallmark of a proficient decoder who understands that English spelling reflects word history and origin, not just sound.",
       research_principle: "Fry (2004); Adams (1990) - Variable patterns essential for grade-level vocabulary; etymology awareness supports spelling",
       orthographic_mapping: "Variable patterns require flexible retrieval; Greek/French origins stored with spelling-meaning connections"
     }
@@ -277,6 +285,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Advanced: morpheme-based word analysis and schwa awareness",
+      ehri_phase_description: "Students reach the Advanced Consolidated phase, transitioning from phoneme-level decoding to morpheme-based word analysis. They recognize that prefixes change meaning (un-, re-, dis-), suffixes change word function (-tion, -ous, -ment), and roots carry core meaning. Schwa awareness develops as students understand why unstressed syllables sound reduced. This morphological knowledge is the bridge from 'learning to read' to 'reading to learn'—the gateway to academic vocabulary and content-area literacy.",
       research_principle: "Nagy & Anderson (1984); Treiman (2000); Fry data - un- and re- cover 50%+ of prefixed words; morphology unlocks meaning and spelling",
       orthographic_mapping: "Morphemes stored as meaningful chunks; schwa spelling requires related-word strategy"
     },

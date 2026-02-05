@@ -611,7 +611,7 @@ export default function TeachingStages() {
                 <div className="bg-gradient-to-br from-emerald-500/30 to-emerald-600/40 rounded-xl p-6 shadow-lg border border-emerald-500 relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
                   <p className="text-black leading-relaxed text-lg">
-                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase || ''}
+                    {EIGHT_STAGE_SYSTEM[selectedPhaseStageNum - 1]?.science_of_reading_alignment?.ehri_phase_description || ''}
                   </p>
                 </div>
               </div>
