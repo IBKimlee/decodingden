@@ -1371,6 +1371,8 @@ export default function StageDetailPage() {
   const [homeConnectionOpen, setHomeConnectionOpen] = useState(false);
   const [showDifferentiationTreeModal, setShowDifferentiationTreeModal] = useState(false);
   const [expandedExposureWeeks, setExpandedExposureWeeks] = useState<Set<number>>(new Set());
+  const [showStudentPhaseModal, setShowStudentPhaseModal] = useState(false);
+  const [studentPhaseModalVisible, setStudentPhaseModalVisible] = useState(false);
 
   // Toggle exposure section for a week
   const toggleExposureSection = (weekNum: number, e: React.MouseEvent) => {
@@ -1844,13 +1846,22 @@ export default function StageDetailPage() {
               <h1 className="text-2xl font-bold text-white drop-shadow-sm">
                 Stage {stageNumber}: {stageInfo.name}
               </h1>
-              <p className="text-sm text-white/90 mt-1">
-                {stageInfo.grade_band} • {stageInfo.duration} • {stageInfo.total_elements} elements
+              <p className="text-sm text-white/90 mt-1 flex items-center">
+                <span>{stageInfo.grade_band} • {stageInfo.duration} • {stageInfo.total_elements} elements</span>
                 {stageNumber === 8 && intensityCounts && (
                   <span className="ml-2 text-white/70">
                     ({intensityCounts.taught} taught · {intensityCounts.exposure} exposure reference)
                   </span>
                 )}
+                <button
+                  onClick={() => {
+                    setShowStudentPhaseModal(true);
+                    setTimeout(() => setStudentPhaseModalVisible(true), 10);
+                  }}
+                  className="bg-purple-500/80 text-white text-xs px-3 py-1 rounded-full cursor-pointer hover:bg-purple-600 transition-colors ml-3"
+                >
+                  Student Phase ▸
+                </button>
               </p>
             </div>
             <div className="relative z-50 pr-4">
@@ -1866,245 +1877,73 @@ export default function StageDetailPage() {
       </header>
 
       <main className="max-w-[90rem] mx-auto px-6 py-4 relative z-10">
-        {/* Stage Overview Card - 4 Section Layout */}
-        <div className="rounded-lg shadow-lg p-4 mb-3 relative overflow-hidden" style={{
-          background: 'radial-gradient(ellipse at center, #ffffff 60%, #f8fafc 85%, #e2e8f0 100%)',
-          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 40px rgba(0, 0, 0, 0.08)'
-        }}>
-          <h2 className="text-xl font-bold mb-2 text-black">Overview</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.05fr] gap-4">
-            {/* Student Phase Section - Full height on left */}
-            <div className="bg-gradient-to-br from-blue-500/30 to-blue-600/40 rounded-lg p-5 border border-blue-400 shadow-xl relative overflow-hidden" >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-blue-600"></div>
-              <h3 className="text-lg mb-2">
-                <span className="text-black font-bold">Student Phase:</span> <span className="text-black">{stageInfo.student_phase}</span>
-              </h3>
-              
-              {/* Definition */}
-              <div className="mb-4">
-                <h4 className="text-sm font-bold text-oceanBlue mb-1">Definition:</h4>
-                <p className="text-deepNavy text-sm">
-                  {stageInfo.student_phase === 'Pre-alphabetic Phase' && 
-                    "Students rely on visual cues or context—not letter-sound knowledge—to identify words."}
-                  {stageInfo.student_phase === 'Pre-Alphabetic to Partial Alphabetic Phase' && 
-                    "Students are transitioning from relying on visual cues to beginning to use letter-sound knowledge, particularly first and last letters in words."}
-                  {stageInfo.student_phase === 'Partial Alphabetic Phase' && 
-                    "Students begin to use some letter-sound knowledge, typically the first or last letter in a word, often relying on context to fill in the rest."}
-                  {stageInfo.student_phase === 'Full Alphabetic Phase - Emerging' && 
-                    "Students begin systematic use of letter-sound relationships but are still developing full mastery of decoding strategies with complex patterns."}
-                  {stageInfo.student_phase === 'Full Alphabetic Phase' && 
-                    "Students can fully decode unfamiliar words by applying letter-sound knowledge across the entire word."}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Emerging' && 
-                    "Students begin efficiently processing multi-letter patterns as single units, focusing on foundational letter combinations like r-controlled vowels."}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Developing' && 
-                    "Students demonstrate increased proficiency with complex multi-letter patterns and advanced syllable structures, including irregular spellings."}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Proficient' && 
-                    "Students demonstrate strong proficiency with complex orthographic patterns and efficiently decode multisyllabic words using known chunks."}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Advanced' && 
-                    "Students exhibit mastery of complex orthographic patterns and sophisticated understanding of morphological structures."}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase' && 
-                    "Students recognize common chunks (e.g., -ight, -tion) and morphemes (e.g., un-, -ed) to read and spell multisyllabic words."}
-                </p>
-              </div>
-              
-              {/* Student Can */}
-              <div className="mb-4">
-                <h4 className="text-sm font-bold text-oceanBlue mb-1">Student Can:</h4>
-                <p className="text-deepNavy text-sm italic">
-                  {stageInfo.student_phase === 'Pre-alphabetic Phase' && 
-                    '"Read" familiar words by shape, color, or logos (e.g., guessing "McDonald\'s" from the golden arches).'}
-                  {stageInfo.student_phase === 'Pre-Alphabetic to Partial Alphabetic Phase' && 
-                    'Begin to notice first letters in words (e.g., recognize "M" starts "Mom") and attempt to write letters for sounds they hear, though not all sounds are represented.'}
-                  {stageInfo.student_phase === 'Partial Alphabetic Phase' && 
-                    'Write "bt" for "boat" or guess words like "cat" from the first letter and the picture.'}
-                  {stageInfo.student_phase === 'Full Alphabetic Phase - Emerging' && 
-                    'Begin systematic decoding of CVC and CVCC words, with emerging skills in vowel pattern recognition and basic blending strategies.'}
-                  {stageInfo.student_phase === 'Full Alphabetic Phase' && 
-                    'Blend and segment CVC and CCVC words like "slip" or "mend" with increasing accuracy.'}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Emerging' && 
-                    'Recognize r-controlled vowel patterns and decode multisyllabic words using familiar chunks with increasing automaticity.'}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Developing' && 
-                    'Efficiently decode words with irregular patterns and apply morphological knowledge to unfamiliar multisyllabic words.'}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Proficient' && 
-                    'Read fluently with complex orthographic patterns including diphthongs and less predictable vowel patterns.'}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Advanced' && 
-                    'Demonstrate mastery with Greek and Latin roots, complex prefixes and suffixes, and read academic texts with confidence.'}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase' && 
-                    'Decode words more automatically and with greater fluency; reading begins to feel smoother and more effortless.'}
-                </p>
-              </div>
-              {/* Teacher Should */}
-              <div>
-                <h4 className="text-sm font-bold text-oceanBlue mb-1">Teacher Should:</h4>
-                <ul className="list-disc list-outside ml-4 text-deepNavy text-sm space-y-1">
-                  {stageInfo.student_phase === 'Pre-alphabetic Phase' && (
-                    <>
-                      <li>Build oral language and vocabulary</li>
-                      <li>Engage in print awareness (pointing to words while reading)</li>
-                      <li>Practice concepts of print (directionality, word boundaries)</li>
-                      <li>Expose students to letter names through alphabet books and songs</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Pre-Alphabetic to Partial Alphabetic Phase' && (
-                    <>
-                      <li>Explicitly teach initial consonant sounds and connect to letter names</li>
-                      <li>Build phonemic awareness with focus on first and last sounds</li>
-                      <li>Practice letter formation alongside sound production</li>
-                      <li>Use environmental print to bridge from logos to letter recognition</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Partial Alphabetic Phase' && (
-                    <>
-                      <li>Teach consonant sounds and short vowels explicitly</li>
-                      <li>Practice blending and segmenting 2–3 sounds</li>
-                      <li>Use Elkonin boxes to reinforce phoneme-grapheme mapping</li>
-                      <li>Provide letter-sound matching practice with real and nonsense words</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Full Alphabetic Phase - Emerging' && (
-                    <>
-                      <li>Introduce complex consonant patterns and silent E rules</li>
-                      <li>Build systematic decoding strategies for longer words</li>
-                      <li>Practice with vowel pattern recognition and application</li>
-                      <li>Support transition from sounding out to pattern recognition</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Full Alphabetic Phase' && (
-                    <>
-                      <li>Continue systematic phonics instruction with blends, digraphs, and vowel patterns</li>
-                      <li>Build decoding fluency with decodable texts</li>
-                      <li>Introduce simple spelling tasks to reinforce sound-symbol connections</li>
-                      <li>Model word solving strategies explicitly</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Emerging' && (
-                    <>
-                      <li>Teach r-controlled vowel patterns systematically (ar, or, er, ir, ur)</li>
-                      <li>Build chunking strategies for multisyllabic word decoding</li>
-                      <li>Practice with known spelling units to decode unfamiliar words</li>
-                      <li>Support orthographic mapping through repeated exposure</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Developing' && (
-                    <>
-                      <li>Teach silent letter patterns and irregular spellings explicitly</li>
-                      <li>Introduce morphological analysis (prefixes, suffixes, roots)</li>
-                      <li>Practice with complex syllable structures and patterns</li>
-                      <li>Build automaticity through fluency-focused activities</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Proficient' && (
-                    <>
-                      <li>Teach complex orthographic patterns including diphthongs</li>
-                      <li>Build advanced decoding strategies for academic vocabulary</li>
-                      <li>Practice with sophisticated vowel patterns and morphemes</li>
-                      <li>Support transition to fluent, automatic word recognition</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase - Advanced' && (
-                    <>
-                      <li>Teach Greek and Latin roots and complex morphological structures</li>
-                      <li>Build expertise with academic vocabulary and technical terms</li>
-                      <li>Practice with advanced orthographic patterns and etymology</li>
-                      <li>Support reading comprehension across complex academic texts</li>
-                    </>
-                  )}
-                  {stageInfo.student_phase === 'Consolidated Alphabetic Phase' && (
-                    <>
-                      <li>Teach syllable types and morphological units</li>
-                      <li>Provide practice with multisyllabic words</li>
-                      <li>Embed fluency work with expressive reading</li>
-                      <li>Support comprehension strategies through connected text</li>
-                    </>
-                  )}
-                </ul>
-              </div>
-            </div>
+        {/* Stage Overview Cards - 3 Column Layout */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          {/* Key Concepts Card */}
+          <div className="bg-stone-50 border border-gray-200 border-l-4 border-l-emerald-400 rounded-xl shadow-sm p-5 h-full">
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Key Concepts</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">{stageInfo.key_concept}</p>
+          </div>
 
-            {/* Right column with three side-by-side boxes */}
-            <div className="flex space-x-3 h-full">
-              {/* Key Concepts Section */}
-              <div className="bg-gradient-to-br from-emerald-300/20 to-emerald-400/25 rounded-lg p-4 border border-emerald-400 flex-1 shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-                <h3 className="text-lg font-bold text-black mb-2">Key Concepts</h3>
-                <p className="text-black text-sm">{stageInfo.key_concept}</p>
-              </div>
+          {/* Instructional Focus Card */}
+          <div className="bg-stone-50 border border-gray-200 border-l-4 border-l-sky-400 rounded-xl shadow-sm p-5 h-full">
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Instructional Focus</h3>
+            <ul className="list-disc list-outside ml-4 space-y-1">
+              {stageInfo.instructional_focus?.map((focus, index) => (
+                <li key={index} className="text-sm text-gray-600 leading-relaxed">{focus}</li>
+              ))}
+            </ul>
+          </div>
 
-              {/* Instructional Focus Section */}
-              <div className="bg-gradient-to-br from-amber-500/30 to-orange-600/40 rounded-lg p-4 border border-amber-400 flex-1 shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-amber-600"></div>
-                <h3 className="text-lg font-bold text-black mb-2">Instructional Focus</h3>
-                <ul className="list-disc list-outside ml-4 text-deepNavy space-y-1">
-                  {stageInfo.instructional_focus?.map((focus, index) => (
-                    <li key={index} className="text-sm text-black">{focus}</li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Useful Strategies Section */}
-              <div className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 rounded-lg p-4 border border-purple-400 flex-1 shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-purple-600"></div>
-                <h3 className="text-lg font-bold text-black mb-2">Useful Strategies</h3>
-                <ul className="list-disc list-outside ml-4 text-black space-y-1">
-                  <li className="text-sm text-black">Systematic introduction of phonemes</li>
-                  <li className="text-sm text-black">Daily quick assessments (1-3 minutes)</li>
-                  <li className="text-sm text-black">Multisensory instruction techniques</li>
-                  <li className="text-sm text-black">Decodable text practice</li>
-                  <li className="text-sm text-black">Progress monitoring every 2 weeks</li>
-                </ul>
-              </div>
-            </div>
+          {/* Useful Strategies Card */}
+          <div className="bg-stone-50 border border-gray-200 border-l-4 border-l-amber-400 rounded-xl shadow-sm p-5 h-full">
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Useful Strategies</h3>
+            <ul className="list-disc list-outside ml-4 space-y-1">
+              <li className="text-sm text-gray-600 leading-relaxed">Systematic introduction of phonemes</li>
+              <li className="text-sm text-gray-600 leading-relaxed">Daily quick assessments (1-3 minutes)</li>
+              <li className="text-sm text-gray-600 leading-relaxed">Multisensory instruction techniques</li>
+              <li className="text-sm text-gray-600 leading-relaxed">Decodable text practice</li>
+              <li className="text-sm text-gray-600 leading-relaxed">Progress monitoring every 2 weeks</li>
+            </ul>
           </div>
         </div>
 
         {hasDetailedData ? (
           <>
-            {/* View Mode Toggle */}
-            <div className="flex justify-center mb-3">
-              <div className="bg-white bg-warm-stripes rounded-lg shadow-sm p-0.5 border border-goldenYellow/20">
+            {/* Controls Row: Intensity Legend + View Toggle */}
+            <div className="flex justify-between items-center py-2 px-4 bg-stone-100 rounded-lg mb-4">
+              {/* Left side: Intensity legend */}
+              <div className="flex items-center gap-4 text-xs text-gray-600">
+                <span className="text-amber-500">★</span>
+                <span>CORE — drill to automaticity</span>
+                <span className="text-sky-500">▲</span>
+                <span>TEACH — explicit instruction</span>
+                <span className="text-gray-400">○</span>
+                <span>EXPOSURE — encounter in reading</span>
+              </div>
+
+              {/* Right side: View toggle */}
+              <div className="flex gap-1">
                 <button
                   onClick={() => setViewMode('timeline')}
-                  className={`px-4 py-1 rounded transition-all text-sm ${
-                    viewMode === 'timeline' 
-                      ? 'bg-oceanBlue text-white shadow-sm' 
-                      : 'text-deepNavy hover:bg-warmCoral/10'
+                  className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
+                    viewMode === 'timeline'
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-100'
                   }`}
                 >
                   Grid View
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`px-4 py-1 rounded transition-all text-sm ${
-                    viewMode === 'list' 
-                      ? 'bg-oceanBlue text-white shadow-sm' 
-                      : 'text-deepNavy hover:bg-warmCoral/10'
+                  className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
+                    viewMode === 'list'
+                      ? 'bg-teal-600 text-white'
+                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-100'
                   }`}
                 >
                   List View
                 </button>
-              </div>
-            </div>
-
-            {/* Intensity Legend */}
-            <div className="flex justify-center mb-4">
-              <div className="bg-white/80 rounded-lg shadow-sm px-4 py-2 border border-gray-200 flex items-center gap-4 text-xs">
-                <span className="font-semibold text-gray-600">Intensity:</span>
-                <span className="flex items-center gap-1">
-                  <span className="text-amber-600 font-bold">★</span>
-                  <span className="bg-amber-100 border border-amber-400 text-amber-700 px-1.5 py-0.5 rounded">CORE</span>
-                  <span className="text-gray-500 ml-1">Drill to automaticity</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="text-sky-600 font-bold">▲</span>
-                  <span className="bg-sky-100 border border-sky-400 text-sky-700 px-1.5 py-0.5 rounded">TEACH</span>
-                  <span className="text-gray-500 ml-1">Explicit instruction</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="text-gray-500 font-bold">○</span>
-                  <span className="bg-gray-100 border border-gray-400 text-gray-600 px-1.5 py-0.5 rounded">EXPOSURE</span>
-                  <span className="text-gray-500 ml-1">Encounter in reading</span>
-                </span>
               </div>
             </div>
 
@@ -2959,37 +2798,37 @@ export default function StageDetailPage() {
 
         {/* Resources Section */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-gradient-to-br from-emerald-500/15 to-emerald-600/20 rounded-lg shadow-xl py-2 px-4 border border-emerald-400 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-            <button 
+          <div className="bg-stone-50 border border-gray-200 border-l-4 border-l-rose-400 rounded-xl overflow-hidden">
+            <button
               onClick={() => setAssessmentToolsOpen(!assessmentToolsOpen)}
-              className="w-full text-left flex items-center justify-between"
+              className="w-full text-left flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-stone-100 transition-colors"
             >
-              <h3 className="font-bold text-lg text-white mb-0">Assessment Tools</h3>
-              <span className={`text-white text-xl transition-transform duration-200 ${assessmentToolsOpen ? 'rotate-180' : ''}`}>▼</span>
+              <h3 className="text-lg font-semibold text-gray-800">Assessment Tools</h3>
+              <span className={`text-gray-400 text-sm transition-transform duration-200 ${assessmentToolsOpen ? 'rotate-180' : ''}`}>▼</span>
             </button>
             {assessmentToolsOpen && (
-              <ul className="space-y-2 text-sm text-white mt-2">
-                <li>• Quick phoneme checks (1-3 min)</li>
-                <li>• Weekly progress monitoring</li>
-                <li>• Formal assessments at weeks 2, 4, 6, 8</li>
-                <li>• Differentiation decision trees</li>
-              </ul>
+              <div className="bg-stone-50 border-t border-gray-200 px-5 py-4">
+                <ul className="space-y-2 text-base text-gray-600 leading-relaxed">
+                  <li>• Quick phoneme checks (1-3 min)</li>
+                  <li>• Weekly progress monitoring</li>
+                  <li>• Formal assessments at weeks 2, 4, 6, 8</li>
+                  <li>• Differentiation decision trees</li>
+                </ul>
+              </div>
             )}
           </div>
-          
-          <div className="bg-gradient-to-br from-emerald-500/15 to-emerald-600/20 rounded-lg shadow-xl py-2 px-4 border border-emerald-400 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-            <button 
+
+          <div className="bg-stone-50 border border-gray-200 border-l-4 border-l-violet-400 rounded-xl overflow-hidden">
+            <button
               onClick={() => setDifferentiationOpen(!differentiationOpen)}
-              className="w-full text-left flex items-center justify-between"
+              className="w-full text-left flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-stone-100 transition-colors"
             >
-              <h3 className="font-bold text-lg text-white mb-0">Differentiation</h3>
-              <span className={`text-white text-xl transition-transform duration-200 ${differentiationOpen ? 'rotate-180' : ''}`}>▼</span>
+              <h3 className="text-lg font-semibold text-gray-800">Differentiation</h3>
+              <span className={`text-gray-400 text-sm transition-transform duration-200 ${differentiationOpen ? 'rotate-180' : ''}`}>▼</span>
             </button>
             {differentiationOpen && (
-              <div className="mt-2">
-                <ul className="space-y-2 text-sm text-white mb-4">
+              <div className="bg-stone-50 border-t border-gray-200 px-5 py-4">
+                <ul className="space-y-2 text-base text-gray-600 leading-relaxed mb-4">
                   <li>• Tier 1: 2-3 days per phoneme</li>
                   <li>• Tier 2: 5-7 days with multisensory</li>
                   <li>• Advanced: Accelerate with mastery checks</li>
@@ -2997,30 +2836,31 @@ export default function StageDetailPage() {
                 </ul>
                 <button
                   onClick={() => setShowDifferentiationTreeModal(true)}
-                  className="bg-white text-emerald-600 px-4 py-2 rounded-lg font-medium text-sm hover:bg-emerald-50 transition-colors shadow-sm"
+                  className="bg-teal-600 text-white text-xs px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors"
                 >
                   View Differentiation Tree
                 </button>
               </div>
             )}
           </div>
-          
-          <div className="bg-gradient-to-br from-emerald-500/15 to-emerald-600/20 rounded-lg shadow-xl py-2 px-4 border border-emerald-400 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-            <button 
+
+          <div className="bg-stone-50 border border-gray-200 border-l-4 border-l-teal-400 rounded-xl overflow-hidden">
+            <button
               onClick={() => setHomeConnectionOpen(!homeConnectionOpen)}
-              className="w-full text-left flex items-center justify-between"
+              className="w-full text-left flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-stone-100 transition-colors"
             >
-              <h3 className="font-bold text-lg text-white mb-0">Home Connection</h3>
-              <span className={`text-white text-xl transition-transform duration-200 ${homeConnectionOpen ? 'rotate-180' : ''}`}>▼</span>
+              <h3 className="text-lg font-semibold text-gray-800">Home Connection</h3>
+              <span className={`text-gray-400 text-sm transition-transform duration-200 ${homeConnectionOpen ? 'rotate-180' : ''}`}>▼</span>
             </button>
             {homeConnectionOpen && (
-              <ul className="space-y-2 text-sm text-white mt-2">
-                <li>• Weekly phoneme practice sheets</li>
-                <li>• Decodable books for home</li>
-                <li>• Parent tips for each phoneme</li>
-                <li>• Progress celebration ideas</li>
-              </ul>
+              <div className="bg-stone-50 border-t border-gray-200 px-5 py-4">
+                <ul className="space-y-2 text-base text-gray-600 leading-relaxed">
+                  <li>• Weekly phoneme practice sheets</li>
+                  <li>• Decodable books for home</li>
+                  <li>• Parent tips for each phoneme</li>
+                  <li>• Progress celebration ideas</li>
+                </ul>
+              </div>
             )}
           </div>
         </div>
@@ -3028,57 +2868,57 @@ export default function StageDetailPage() {
 
       {/* Differentiation Tree Modal */}
       {showDifferentiationTreeModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg pt-3 px-6 pb-3 max-w-4xl w-full max-h-[98vh] overflow-y-auto relative" style={{
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
+          <div className="bg-white rounded-lg pt-2 px-3 pb-2 max-w-4xl w-full max-h-[85vh] overflow-y-auto relative" style={{
             background: 'radial-gradient(ellipse at center, #ffffff 60%, #f8fafc 85%, #e2e8f0 100%)',
             boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 0 40px rgba(0, 0, 0, 0.08)'
           }}>
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-2xl font-bold text-black">Differentiation Decision Tree</h2>
-              <button 
+            <div className="flex justify-between items-center mb-1">
+              <h2 className="text-lg font-bold text-black">Differentiation Decision Tree</h2>
+              <button
                 onClick={() => setShowDifferentiationTreeModal(false)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
+                className="text-gray-500 hover:text-gray-700 text-xl"
               >
                 ×
               </button>
             </div>
-            
-            <div className="space-y-2">
-              <div className="bg-gradient-to-br from-blue-500/30 to-blue-600/40 rounded-lg p-3 border border-blue-400 shadow-xl relative overflow-hidden">
+
+            <div className="space-y-1.5">
+              <div className="bg-gradient-to-br from-blue-500/30 to-blue-600/40 rounded-lg p-2 border border-blue-400 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-blue-600"></div>
-                <h3 className="font-bold text-lg text-black mb-1">Step 1: Initial Assessment</h3>
-                <p className="text-black mb-1">Assess student&apos;s current phonemic awareness level:</p>
-                <ul className="list-disc list-inside text-black space-y-1">
+                <h3 className="font-bold text-sm text-black mb-0.5">Step 1: Initial Assessment</h3>
+                <p className="text-sm text-black mb-0.5">Assess student&apos;s current phonemic awareness level:</p>
+                <ul className="list-disc list-inside text-sm text-black space-y-0.5">
                   <li>Can identify beginning sounds? → <strong>Yes:</strong> Proceed to Step 2 | <strong>No:</strong> Start with Tier 2</li>
                   <li>Can blend 2-3 sounds? → <strong>Yes:</strong> Proceed to Step 2 | <strong>No:</strong> Start with Tier 2</li>
                   <li>Can segment simple words? → <strong>Yes:</strong> Ready for Tier 1 | <strong>No:</strong> Start with Tier 2</li>
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-500/30 to-emerald-600/40 rounded-lg p-3 border border-emerald-400 shadow-xl relative overflow-hidden">
+              <div className="bg-gradient-to-br from-emerald-500/30 to-emerald-600/40 rounded-lg p-2 border border-emerald-400 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-                <h3 className="font-bold text-lg text-black mb-2">Step 2: Placement Decision</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-white/60 rounded p-3">
-                    <h4 className="font-semibold text-black mb-2">Tier 1 (Grade Level)</h4>
-                    <ul className="text-sm text-black space-y-1">
+                <h3 className="font-bold text-sm text-black mb-1">Step 2: Placement Decision</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <div className="bg-white/60 rounded p-2">
+                    <h4 className="font-semibold text-sm text-black mb-1">Tier 1 (Grade Level)</h4>
+                    <ul className="text-xs text-black space-y-0.5">
                       <li>• 80%+ on phoneme assessment</li>
                       <li>• 2-3 days per phoneme</li>
                       <li>• Regular classroom instruction</li>
                     </ul>
                   </div>
-                  <div className="bg-white/60 rounded p-3">
-                    <h4 className="font-semibold text-black mb-2">Tier 2 (Intervention)</h4>
-                    <ul className="text-sm text-black space-y-1">
+                  <div className="bg-white/60 rounded p-2">
+                    <h4 className="font-semibold text-sm text-black mb-1">Tier 2 (Intervention)</h4>
+                    <ul className="text-xs text-black space-y-0.5">
                       <li>• 50-79% on assessment</li>
                       <li>• 5-7 days per phoneme</li>
                       <li>• Multisensory techniques</li>
                       <li>• Small group instruction</li>
                     </ul>
                   </div>
-                  <div className="bg-white/60 rounded p-3">
-                    <h4 className="font-semibold text-black mb-2">Tier 3 (Intensive)</h4>
-                    <ul className="text-sm text-black space-y-1">
+                  <div className="bg-white/60 rounded p-2">
+                    <h4 className="font-semibold text-sm text-black mb-1">Tier 3 (Intensive)</h4>
+                    <ul className="text-xs text-black space-y-0.5">
                       <li>• Below 50% on assessment</li>
                       <li>• 7-10 days per phoneme</li>
                       <li>• 1:1 or very small group</li>
@@ -3088,10 +2928,10 @@ export default function StageDetailPage() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-amber-500/30 to-orange-600/40 rounded-lg p-3 border border-amber-400 shadow-xl relative overflow-hidden">
+              <div className="bg-gradient-to-br from-amber-500/30 to-orange-600/40 rounded-lg p-2 border border-amber-400 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-amber-600"></div>
-                <h3 className="font-bold text-lg text-black mb-1">Step 3: Progress Monitoring / Weekly assessment protocol:</h3>
-                <ul className="list-disc list-inside text-black space-y-1">
+                <h3 className="font-bold text-sm text-black mb-0.5">Step 3: Progress Monitoring / Weekly assessment protocol:</h3>
+                <ul className="list-disc list-inside text-sm text-black space-y-0.5">
                   <li><strong>Making Progress:</strong> Continue current tier placement</li>
                   <li><strong>Struggling:</strong> Move to higher tier or extend timeline</li>
                   <li><strong>Exceeding:</strong> Consider moving to lower tier or acceleration</li>
@@ -3099,22 +2939,22 @@ export default function StageDetailPage() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 rounded-lg p-3 border border-purple-400 shadow-xl relative overflow-hidden">
+              <div className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 rounded-lg p-2 border border-purple-400 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-purple-600"></div>
-                <h3 className="font-bold text-lg text-black mb-2">Special Considerations</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white/60 rounded p-3">
-                    <h4 className="font-semibold text-black mb-2">English Language Learners</h4>
-                    <ul className="text-sm text-black space-y-1">
+                <h3 className="font-bold text-sm text-black mb-1">Special Considerations</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="bg-white/60 rounded p-2">
+                    <h4 className="font-semibold text-sm text-black mb-1">English Language Learners</h4>
+                    <ul className="text-xs text-black space-y-0.5">
                       <li>• Extra oral language support</li>
                       <li>• Visual/gesture connections</li>
                       <li>• L1 language comparisons</li>
                       <li>• Extended vocabulary focus</li>
                     </ul>
                   </div>
-                  <div className="bg-white/60 rounded p-3">
-                    <h4 className="font-semibold text-black mb-2">Advanced Learners</h4>
-                    <ul className="text-sm text-black space-y-1">
+                  <div className="bg-white/60 rounded p-2">
+                    <h4 className="font-semibold text-sm text-black mb-1">Advanced Learners</h4>
+                    <ul className="text-xs text-black space-y-0.5">
                       <li>• Accelerated timeline</li>
                       <li>• Complex word patterns</li>
                       <li>• Morphology connections</li>
@@ -3122,6 +2962,96 @@ export default function StageDetailPage() {
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Student Phase Modal */}
+      {showStudentPhaseModal && (
+        <div className={`fixed inset-0 bg-black flex items-start justify-center z-50 transition-all duration-500 ${studentPhaseModalVisible ? 'bg-opacity-40' : 'bg-opacity-0'}`} style={{paddingTop: '95px'}}>
+          <div className={`bg-white bg-subtle-texture rounded-lg mx-auto w-[95%] max-w-[1600px] max-h-[90vh] overflow-y-auto transition-all duration-700 transform ${studentPhaseModalVisible ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-4'}`} style={{
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 6px 30px rgba(47, 95, 95, 0.3)'
+          }}>
+            <div className="flex justify-between items-center p-4 pb-2">
+              <h2 className="text-xl font-bold text-deepNavy">
+                Student Phase
+              </h2>
+              <button
+                onClick={() => {
+                  setStudentPhaseModalVisible(false);
+                  setShowStudentPhaseModal(false);
+                }}
+                className="text-teal-700 hover:text-teal-800 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="px-4 pb-4 space-y-2">
+              {/* Purple phase name header */}
+              <div className="bg-gradient-to-br from-indigo-600/50 via-purple-600/45 to-purple-500/50 rounded-xl p-4 relative overflow-hidden shadow-xl border border-purple-400">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-purple-600"></div>
+                <h3 className="font-bold text-white text-lg drop-shadow-lg">
+                  {stageInfo.student_phase}
+                </h3>
+              </div>
+
+              {/* Summary box */}
+              <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-3">
+                <p className="text-gray-800 text-base leading-relaxed">
+                  {EIGHT_STAGE_SYSTEM[stageNumber - 1]?.science_of_reading_alignment?.ehri_phase_description?.summary || ''}
+                </p>
+              </div>
+
+              {/* 2x2 Grid for main sections */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* What Students Can Do - Top Left */}
+                <div className="bg-emerald-50 border border-emerald-300 rounded-xl p-4 h-full">
+                  <h4 className="font-bold text-base mb-1 text-emerald-800">What Students Can Do ✅</h4>
+                  <ul className="list-disc list-inside text-sm leading-relaxed text-gray-700 space-y-1">
+                    {EIGHT_STAGE_SYSTEM[stageNumber - 1]?.science_of_reading_alignment?.ehri_phase_description?.studentCanDo?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Red Flags - Top Right */}
+                <div className="bg-red-50 border border-red-300 rounded-xl p-4 h-full">
+                  <h4 className="font-bold text-base mb-1 text-red-800">Red Flags 🚩</h4>
+                  <ul className="list-disc list-inside text-sm leading-relaxed text-gray-700 space-y-1">
+                    {EIGHT_STAGE_SYSTEM[stageNumber - 1]?.science_of_reading_alignment?.ehri_phase_description?.redFlags?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* What Students Need - Bottom Left */}
+                <div className="bg-amber-50 border border-amber-300 rounded-xl p-4 h-full">
+                  <h4 className="font-bold text-base mb-1 text-amber-800">What Students Need 📋</h4>
+                  <ul className="list-disc list-inside text-sm leading-relaxed text-gray-700 space-y-1">
+                    {EIGHT_STAGE_SYSTEM[stageNumber - 1]?.science_of_reading_alignment?.ehri_phase_description?.studentNeeds?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Brain Connection - Bottom Right */}
+                <div className="bg-purple-50 border border-purple-300 rounded-xl p-4 h-full">
+                  <h4 className="font-bold text-base mb-1 text-purple-800">Brain Connection 🧠</h4>
+                  <p className="text-sm leading-relaxed text-gray-700 italic">
+                    {EIGHT_STAGE_SYSTEM[stageNumber - 1]?.science_of_reading_alignment?.ehri_phase_description?.brainConnection || ''}
+                  </p>
+                </div>
+              </div>
+
+              {/* Parent Conference Language */}
+              <div className="bg-gray-50 border border-gray-200 rounded-xl p-3">
+                <h4 className="font-bold text-sm mb-1 text-gray-700">💬 Parent Conference Language</h4>
+                <p className="text-sm leading-relaxed text-gray-600 italic">
+                  &ldquo;{EIGHT_STAGE_SYSTEM[stageNumber - 1]?.science_of_reading_alignment?.ehri_phase_description?.parentConferenceLine || ''}&rdquo;
+                </p>
               </div>
             </div>
           </div>
