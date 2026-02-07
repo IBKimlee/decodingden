@@ -96,7 +96,10 @@
       "Bash(xargs basename:*)",
       "Bash(xargs ls:*)",
       "Bash(git diff:*)",
-      "Bash(git revert:*)"
+      "Bash(git revert:*)",
+      "Bash(sort:*)",
+      "Bash(npx tsx:*)",
+      "Bash(tail:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

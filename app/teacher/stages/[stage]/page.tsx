@@ -1972,52 +1972,32 @@ export default function StageDetailPage() {
               </div>
             )}
 
-            {/* Grid View - 2 rows × 5 columns */}
+            {/* Grid View */}
             {viewMode === 'timeline' && (
-              <div className="max-w-5xl mx-auto px-1">
-                {/* Row 1: Weeks 1-5 */}
-                <div className="grid grid-cols-5 gap-4 mb-4 justify-items-center">
-                  {weeklyData.slice(0, 5).map((week) => {
-                    // Dynamic week label
-                    const getWeekLabel = () => {
-                      if (week.isMastery) return `Week ${week.week} — MASTERY`;
-                      if (week.isCheckpoint) return `Week ${week.week} — CHECKPOINT`;
-                      if (week.isReview) return `Week ${week.week} — REVIEW`;
-                      if (stageNumber === 8 && week.week === 5) return `Week ${week.week} — 8A MASTERY`;
-                      return `Week ${week.week}`;
-                    };
+              <div className={`flex flex-wrap justify-center max-w-full mx-auto px-1 ${stageNumber === 8 ? 'gap-4' : 'gap-8'}`}>
+                {weeklyData.map((week) => (
+                  <button
+                    key={week.week}
+                    onClick={() => setSelectedWeek(week.week)}
+                    className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 border-cyan-400 text-center transition-all duration-300 transform hover:scale-150 hover:z-20 hover:shadow-xl relative overflow-hidden ${
+                      selectedWeek === week.week
+                        ? 'ring-2 ring-cyan-400 border-cyan-400'
+                        : 'border-cyan-400 hover:border-cyan-300'
+                    }`}
+                    style={{
+                      width: '100px',
+                      height: '240px',
+                      background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                    }}
+                  >
+                    <div className="h-6 flex items-center justify-center">
+                      <span className="text-sm font-bold text-slate-700">Week {week.week}</span>
+                      {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
+                        <span className="ml-1 text-yellow-500">⭐</span>
+                      )}
+                    </div>
 
-                    return (
-                      <button
-                        key={week.week}
-                        onClick={() => setSelectedWeek(week.week)}
-                        className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 text-center transition-all duration-300 transform hover:scale-110 hover:z-20 hover:shadow-xl relative overflow-hidden ${
-                          selectedWeek === week.week
-                            ? 'ring-2 ring-cyan-400 border-cyan-400'
-                            : 'border-cyan-400 hover:border-cyan-300'
-                        }`}
-                        style={{
-                          width: '140px',
-                          height: '260px',
-                          background: week.isMastery
-                            ? 'linear-gradient(to bottom, #fef08a, #f59e0b)'
-                            : week.isCheckpoint
-                              ? 'linear-gradient(to bottom, #dbeafe, #60a5fa)'
-                              : 'linear-gradient(to bottom, #fef3c7, #fdba74)',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                        }}
-                      >
-                        <div className="h-8 flex items-center justify-center">
-                          <span className={`text-xs font-bold text-center leading-tight ${
-                            week.isMastery ? 'text-amber-800' : week.isCheckpoint ? 'text-blue-800' : 'text-slate-700'
-                          }`}>
-                            {getWeekLabel()}
-                          </span>
-                          {(week.isMastery || week.isCheckpoint) && (
-                            <span className="ml-1 text-yellow-500">⭐</span>
-                          )}
-                        </div>
-                    
                     <div className="mt-2">
                       <div className="h-5 flex items-center justify-center">
                         <span className="font-bold text-green-700 text-xs uppercase tracking-wide">Phonemes</span>
@@ -2029,245 +2009,77 @@ export default function StageDetailPage() {
                           </span>
                         ))}
                       </div>
-                      
+
                       <div className="h-5 flex items-center justify-center mt-2">
                         <span className="font-bold text-blue-700 text-xs uppercase tracking-wide">Graphemes</span>
                       </div>
-                      <div className="h-20 flex flex-col gap-0.5 justify-start mt-1 overflow-y-auto">
-                        {week.graphemes.map((grapheme, idx) => {
-                          const intensity = week.intensity?.[idx] || 'CORE';
-                          const badge = getIntensityBadge(intensity);
-                          return (
-                            <div key={idx} className="flex items-center gap-1">
-                              <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>
-                                {badge.symbol}
-                              </span>
-                              <span className={`${badge.bgColor} border ${badge.borderColor} px-1.5 py-0.5 rounded-md text-xs font-semibold text-center leading-tight shadow-sm flex-grow ${
-                                ['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor
-                              }`}>
-                                {grapheme}
-                              </span>
-                            </div>
-                          );
-                        })}
+                      <div className="h-16 flex flex-col gap-0.5 justify-start mt-1">
+                        {week.graphemes.map((grapheme, idx) => (
+                          <span key={idx} className={`bg-blue-100 border border-blue-400 px-1.5 py-0.5 rounded-md text-xs font-semibold text-center leading-tight shadow-sm ${
+                            ['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : 'text-blue-800'
+                          }`}>
+                            {grapheme}
+                          </span>
+                        ))}
                       </div>
                     </div>
 
                   </button>
-                    );
-                  })}
-                </div>
-
-                {/* Row 2: Weeks 6-10 */}
-                <div className="grid grid-cols-5 gap-4 justify-items-center">
-                  {weeklyData.slice(5, 10).map((week) => {
-                    // Dynamic week label
-                    const getWeekLabel = () => {
-                      if (week.isMastery) return `Week ${week.week} — MASTERY`;
-                      if (week.isCheckpoint) return `Week ${week.week} — CHECKPOINT`;
-                      if (week.isReview) return `Week ${week.week} — REVIEW`;
-                      if (stageNumber === 8 && week.week === 6) return `Week ${week.week} — 8B START`;
-                      return `Week ${week.week}`;
-                    };
-
-                    return (
-                      <button
-                        key={week.week}
-                        onClick={() => setSelectedWeek(week.week)}
-                        className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 text-center transition-all duration-300 transform hover:scale-110 hover:z-20 hover:shadow-xl relative overflow-hidden ${
-                          selectedWeek === week.week
-                            ? 'ring-2 ring-cyan-400 border-cyan-400'
-                            : 'border-cyan-400 hover:border-cyan-300'
-                        }`}
-                        style={{
-                          width: '140px',
-                          height: '260px',
-                          background: week.isMastery
-                            ? 'linear-gradient(to bottom, #fef08a, #f59e0b)'
-                            : week.isCheckpoint
-                              ? 'linear-gradient(to bottom, #dbeafe, #60a5fa)'
-                              : stageNumber === 8 && week.week >= 6
-                                ? 'linear-gradient(to bottom, #ede9fe, #a78bfa)'
-                                : 'linear-gradient(to bottom, #fef3c7, #fdba74)',
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                        }}
-                      >
-                        <div className="h-8 flex items-center justify-center">
-                          <span className={`text-xs font-bold text-center leading-tight ${
-                            week.isMastery ? 'text-amber-800' : week.isCheckpoint ? 'text-blue-800' : stageNumber === 8 && week.week >= 6 ? 'text-violet-800' : 'text-slate-700'
-                          }`}>
-                            {getWeekLabel()}
-                          </span>
-                          {(week.isMastery || week.isCheckpoint) && (
-                            <span className="ml-1 text-yellow-500">⭐</span>
-                          )}
-                        </div>
-
-                        <div className="mt-2">
-                          <div className="h-5 flex items-center justify-center">
-                            <span className="font-bold text-green-700 text-xs uppercase tracking-wide">Phonemes</span>
-                          </div>
-                          <div className="h-16 flex flex-col gap-0.5 justify-start mt-1">
-                            {week.phonemes.map((phoneme, idx) => (
-                              <span key={idx} className="bg-emerald-100 border border-emerald-400 px-2 py-0.5 rounded-md text-xs font-semibold text-emerald-800 text-center leading-tight shadow-sm flex items-center justify-center">
-                                {phoneme}
-                              </span>
-                            ))}
-                          </div>
-
-                          <div className="h-5 flex items-center justify-center mt-2">
-                            <span className="font-bold text-blue-700 text-xs uppercase tracking-wide">Graphemes</span>
-                          </div>
-                          <div className="h-20 flex flex-col gap-0.5 justify-start mt-1 overflow-y-auto">
-                            {week.graphemes.map((grapheme, idx) => {
-                              const intensity = week.intensity?.[idx] || 'CORE';
-                              const badge = getIntensityBadge(intensity);
-                              return (
-                                <div key={idx} className="flex items-center gap-1">
-                                  <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>
-                                    {badge.symbol}
-                                  </span>
-                                  <span className={`${badge.bgColor} border ${badge.borderColor} px-1.5 py-0.5 rounded-md text-xs font-semibold text-center leading-tight shadow-sm flex-grow ${
-                                    ['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor
-                                  }`}>
-                                    {grapheme}
-                                  </span>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                      </button>
-                    );
-                  })}
-                </div>
+                ))}
               </div>
             )}
 
             {/* List View */}
             {viewMode === 'list' && (
               <div className="space-y-4">
-                {weeklyData.map((week) => {
-                  // For Stage 8, separate CORE/TEACH from EXPOSURE items
-                  const hasExposure = stageNumber === 8 && week.intensity?.some(i => i === 'EXPOSURE');
-                  const coreTeachItems: { grapheme: string; intensity: IntensityLevel; idx: number }[] = [];
-                  const exposureItems: { grapheme: string; intensity: IntensityLevel; idx: number }[] = [];
-
-                  if (stageNumber === 8) {
-                    week.graphemes.forEach((grapheme, idx) => {
-                      const intensity = week.intensity?.[idx] || 'CORE';
-                      if (intensity === 'EXPOSURE') {
-                        exposureItems.push({ grapheme, intensity, idx });
-                      } else {
-                        coreTeachItems.push({ grapheme, intensity, idx });
-                      }
-                    });
-                  }
-
-                  const isExposureExpanded = expandedExposureWeeks.has(week.week);
-
-                  return (
-                    <div
-                      key={week.week}
-                      onClick={() => setSelectedWeek(week.week)}
-                      className={`w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-all text-left border-2 border-cyan-400 cursor-pointer ${
-                        selectedWeek === week.week
-                          ? 'ring-2 ring-cyan-400'
-                          : ''
-                      }`}
-                      style={{
-                        background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                      }}
-                    >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-grow">
-                          <h3 className="font-bold text-xl text-black mb-2">
-                            Week {week.week}: {week.phonemes.join(', ')}
-                          </h3>
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                            <div className="flex items-baseline flex-wrap">
-                              <span className="text-black/70">Graphemes:</span>
-                              <span className="ml-2 font-medium flex flex-wrap gap-1">
-                                {stageNumber === 8 ? (
-                                  // Stage 8: Show only CORE/TEACH items inline
-                                  coreTeachItems.map(({ grapheme, intensity, idx }) => {
-                                    const badge = getIntensityBadge(intensity);
-                                    return (
-                                      <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
-                                        <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
-                                        <span className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor}>
-                                          {grapheme}
-                                        </span>
-                                      </span>
-                                    );
-                                  })
-                                ) : (
-                                  // Other stages: Show all items
-                                  week.graphemes.map((grapheme, idx) => {
-                                    const intensity = week.intensity?.[idx] || 'CORE';
-                                    const badge = getIntensityBadge(intensity);
-                                    return (
-                                      <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
-                                        <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
-                                        <span className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : badge.textColor}>
-                                          {grapheme}
-                                        </span>
-                                      </span>
-                                    );
-                                  })
-                                )}
-                              </span>
-                            </div>
-                            <div className="flex items-baseline">
-                              <span className="text-black/70" style={{minWidth: '90px', display: 'inline-block'}}>Focus Words:</span>
-                              <span className="ml-2 text-black">{week.focusWords.slice(0, 3).join(', ')}...</span>
-                            </div>
-                            <div className="flex items-baseline">
-                              <span className="text-black/70">Assessment:</span>
-                              <span className="ml-2 text-black">{week.assessment.split(':')[0]}</span>
-                            </div>
+                {weeklyData.map((week) => (
+                  <button
+                    key={week.week}
+                    onClick={() => setSelectedWeek(week.week)}
+                    className={`w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-all text-left border-2 border-cyan-400 ${
+                      selectedWeek === week.week
+                        ? 'ring-2 ring-cyan-400'
+                        : ''
+                    }`}
+                    style={{
+                      background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                    }}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-grow">
+                        <h3 className="font-bold text-xl text-black mb-2">
+                          Week {week.week}: {week.phonemes.join(', ')}
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                          <div className="flex items-baseline">
+                            <span className="text-black/70">Graphemes:</span>
+                            <span className="ml-2 font-medium">
+                              {week.graphemes.map((grapheme, idx) => (
+                                <span key={idx} className={['a', 'e', 'i', 'o', 'u'].includes(grapheme.toLowerCase()) ? 'text-red-600' : 'text-black'}>
+                                  {grapheme}{idx < week.graphemes.length - 1 ? ', ' : ''}
+                                </span>
+                              ))}
+                            </span>
                           </div>
-
-                          {/* Collapsible Exposure Reference section for Stage 8 */}
-                          {hasExposure && exposureItems.length > 0 && (
-                            <div className="mt-3 pt-2 border-t border-amber-300/50">
-                              <button
-                                onClick={(e) => toggleExposureSection(week.week, e)}
-                                className="flex items-center gap-2 text-xs text-gray-600 hover:text-gray-800 transition-colors"
-                              >
-                                <span className={`transform transition-transform ${isExposureExpanded ? 'rotate-90' : ''}`}>▶</span>
-                                <span className="font-medium">Exposure Reference</span>
-                                <span className="text-gray-400">({exposureItems.length} {exposureItems.length === 1 ? 'item' : 'items'})</span>
-                              </button>
-                              {isExposureExpanded && (
-                                <div className="mt-2 pl-4 flex flex-wrap gap-1">
-                                  {exposureItems.map(({ grapheme, intensity, idx }) => {
-                                    const badge = getIntensityBadge(intensity);
-                                    return (
-                                      <span key={idx} className={`inline-flex items-center gap-0.5 ${badge.bgColor} ${badge.borderColor} border px-1.5 py-0.5 rounded text-xs`}>
-                                        <span className={`${badge.textColor} text-[10px] font-bold`} title={badge.label}>{badge.symbol}</span>
-                                        <span className={badge.textColor}>
-                                          {grapheme}
-                                        </span>
-                                      </span>
-                                    );
-                                  })}
-                                </div>
-                              )}
-                            </div>
-                          )}
+                          <div className="flex items-baseline">
+                            <span className="text-black/70" style={{minWidth: '90px', display: 'inline-block'}}>Focus Words:</span>
+                            <span className="ml-2 text-black">{week.focusWords.slice(0, 3).join(', ')}...</span>
+                          </div>
+                          <div className="flex items-baseline">
+                            <span className="text-black/70">Assessment:</span>
+                            <span className="ml-2 text-black">{week.assessment.split(':')[0]}</span>
+                          </div>
                         </div>
-                        {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
-                          <span className="ml-4 px-3 py-1 bg-dustyRose/20 text-dustyRose text-sm rounded font-medium">
-                            Assessment
-                          </span>
-                        )}
                       </div>
+                      {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
+                        <span className="ml-4 px-3 py-1 bg-dustyRose/20 text-dustyRose text-sm rounded font-medium">
+                          Assessment
+                        </span>
+                      )}
                     </div>
-                  );
-                })}
+                  </button>
+                ))}
               </div>
             )}
 
