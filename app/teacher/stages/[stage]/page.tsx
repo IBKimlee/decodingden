@@ -1813,21 +1813,23 @@ export default function StageDetailPage() {
                      stageNumber === 8 ? stage8WeeklyData : [];
   const hasDetailedData = weeklyData.length > 0;
 
-  // Calculate taught vs exposure counts for Stage 8 (exclude Week 10 mastery and review weeks)
+  // Calculate core, taught, and exposure counts for Stage 8 (exclude Week 10 mastery and review weeks)
   const intensityCounts = stageNumber === 8 ? weeklyData.reduce((acc, week) => {
     // Skip Week 10 and any week with "All Stage" review graphemes
     if (week.week === 10 || week.graphemes?.some(g => g.startsWith('All Stage'))) {
       return acc;
     }
     week.intensity?.forEach(i => {
-      if (i === 'CORE' || i === 'TEACH') {
+      if (i === 'CORE') {
+        acc.core++;
+      } else if (i === 'TEACH') {
         acc.taught++;
       } else if (i === 'EXPOSURE') {
         acc.exposure++;
       }
     });
     return acc;
-  }, { taught: 0, exposure: 0 }) : null;
+  }, { core: 0, taught: 0, exposure: 0 }) : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-300 to-slate-600 text-deepNavy relative overflow-hidden">
@@ -1850,7 +1852,7 @@ export default function StageDetailPage() {
                 <span>{stageInfo.grade_band} • {stageInfo.duration} • {stageInfo.total_elements} elements</span>
                 {stageNumber === 8 && intensityCounts && (
                   <span className="ml-2 text-white/70">
-                    ({intensityCounts.taught} taught · {intensityCounts.exposure} exposure reference)
+                    ({intensityCounts.core} core · {intensityCounts.taught} taught · {intensityCounts.exposure} exposure)
                   </span>
                 )}
                 <button

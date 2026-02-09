@@ -182,8 +182,8 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Soft c and g introduction"
     ],
     intensity: {
-      core: 9,
-      teach: 6,
+      core: 10,
+      teach: 5,
       exposure: 0
     },
     science_of_reading_alignment: {
@@ -272,7 +272,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "2nd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Emerging",
     duration: "10 weeks",
-    total_elements: 19,
+    total_elements: 21,
     description: "Bossy R changes vowel sounds. The two sounds of 'oo.' W-influence patterns where 'w' changes the expected vowel sound.",
     key_concept: "When r follows a vowel, it changes the sound. The letter w can change how nearby vowels sound. Some spellings have multiple pronunciations — flex and check.",
     instructional_focus: [
@@ -284,8 +284,8 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Could/would/should (oul pattern)"
     ],
     intensity: {
-      core: 9,
-      teach: 10,
+      core: 10,
+      teach: 11,
       exposure: 0
     },
     science_of_reading_alignment: {
@@ -323,7 +323,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "2nd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Developing",
     duration: "10 weeks",
-    total_elements: 17,
+    total_elements: 18,
     description: "Diphthongs (vowel sounds that glide) and the remaining less-common long vowel spellings. Variable 'ere' patterns.",
     key_concept: "Some vowel sounds glide from one position to another. English borrowed spellings from other languages. When a pattern has multiple sounds, try each one and check meaning.",
     instructional_focus: [
@@ -336,7 +336,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     intensity: {
       core: 6,
       teach: 8,
-      exposure: 3
+      exposure: 4
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Developing: automatic processing of diphthongs and extended vowel patterns",
@@ -373,7 +373,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "3rd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Proficient",
     duration: "10 weeks",
-    total_elements: 15,
+    total_elements: 16,
     description: "Variable pronunciation patterns, the last consonant phoneme (/zh/), and Greek and French origin spellings. Develops flexible decoding strategies for etymology-based patterns.",
     key_concept: "English has patterns from Greek, French, and Old English. Skilled readers try multiple pronunciations and check meaning. The same spelling can make different sounds in different words.",
     instructional_focus: [
@@ -386,9 +386,9 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Final position patterns (ve, se)"
     ],
     intensity: {
-      core: 1,
-      teach: 9,
-      exposure: 5
+      core: 2,
+      teach: 8,
+      exposure: 6
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
@@ -425,7 +425,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
     grade_level: "3rd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Advanced",
     duration: "10 weeks",
-    total_elements: 51,
+    total_elements: 53,
     description: "Instruction shifts from phoneme-level decoding to morpheme-based word analysis. Students recognize meaningful word parts that unlock both pronunciation and meaning.",
     key_concept: "Words are built from meaningful parts: prefixes change meaning, suffixes change how words work in sentences, and roots carry core meaning. Unstressed vowels relax to schwa.",
     instructional_focus: [
@@ -440,9 +440,9 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       "Doubled consonants formalized (dd, gg, nn, pp, tt, rr)"
     ],
     intensity: {
-      core: 9,
-      teach: 23,
-      exposure: 19
+      core: 7,
+      teach: 40,
+      exposure: 6
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Advanced: morpheme-based word analysis and schwa awareness",
