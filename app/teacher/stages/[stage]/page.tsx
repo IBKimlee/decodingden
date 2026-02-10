@@ -20,6 +20,18 @@ interface StageInfo {
 // v4.1 Weekly data structure with intensity flags
 type IntensityLevel = "CORE" | "TEACH" | "EXPOSURE";
 
+// Sight Word interface for heart words / high-frequency words
+interface SightWord {
+  word: string;
+  fryRank: number;
+  isHeartWord: boolean;
+  trickyPart: string | null;
+  isNew: boolean;
+  isUpgrade: boolean;
+  isDolch: boolean;
+  dolchLevel?: string;
+}
+
 interface WeeklyData {
   week: number;
   phonemes: string[];
@@ -32,6 +44,7 @@ interface WeeklyData {
   isMastery: boolean;
   isReview?: boolean;
   teachingTips: string[];
+  sightWords?: SightWord[];
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -54,6 +67,10 @@ const stage1WeeklyData: WeeklyData[] = [
       '/m/ — continuous sound (can be held), ideal for blending instruction',
       '/s/ — continuous sound (can be held), ideal for blending instruction',
       '/ă/ — clear open vowel articulation'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
     ]
   },
   {
@@ -69,6 +86,12 @@ const stage1WeeklyData: WeeklyData[] = [
     teachingTips: [
       '/t/ — stop sound (quick release), voiceless',
       '/n/ — continuous nasal, tongue behind teeth'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
     ]
   },
   {
@@ -84,6 +107,13 @@ const stage1WeeklyData: WeeklyData[] = [
     teachingTips: [
       '/p/ — stop sound, voiceless bilabial (visible lip pop)',
       '/ĭ/ — short i, lips slightly spread'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 2" }
     ]
   },
   {
@@ -99,6 +129,13 @@ const stage1WeeklyData: WeeklyData[] = [
     teachingTips: [
       '/d/ — stop sound, voiced (feel throat vibration), pair with /t/',
       '/f/ — continuous fricative, voiceless (teeth on lower lip)'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: true, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" }
     ]
   },
   {
@@ -114,6 +151,14 @@ const stage1WeeklyData: WeeklyData[] = [
     teachingTips: [
       '/ŏ/ — short o, open mouth rounded',
       '/l/ — continuous liquid, tongue tip on ridge'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
+      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
     ]
   },
   {
@@ -129,6 +174,15 @@ const stage1WeeklyData: WeeklyData[] = [
     teachingTips: [
       '/h/ — voiceless glottal fricative (breath sound), initial position only',
       '/b/ — stop sound, voiced bilabial, pair with /p/'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
+      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
     ]
   },
   {
@@ -144,6 +198,16 @@ const stage1WeeklyData: WeeklyData[] = [
     teachingTips: [
       '/ĕ/ — short e, mouth slightly open',
       '/ŭ/ — short u, relaxed central vowel'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
+      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
     ]
   },
   {
@@ -159,6 +223,17 @@ const stage1WeeklyData: WeeklyData[] = [
     isReview: true,
     teachingTips: [
       'Review all consonant sounds — focus on any sounds students are still confusing'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
+      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "you", fryRank: 8, isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
     ]
   },
   {
@@ -174,6 +249,18 @@ const stage1WeeklyData: WeeklyData[] = [
     isReview: true,
     teachingTips: [
       'Focus on vowel discrimination — students often confuse /ĕ/ and /ĭ/, and /ŏ/ and /ŭ/'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
+      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "you", fryRank: 8, isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "was", fryRank: 12, isHeartWord: true, trickyPart: "\"w\" not taught (Stage 2); \"a\" says /ŭ/ (not /ă/); \"s\" says /z/ — three irregular parts", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
     ]
   },
   {
@@ -188,6 +275,19 @@ const stage1WeeklyData: WeeklyData[] = [
     isMastery: true,
     teachingTips: [
       'Assess all 15 GPCs — both reading and spelling. Students should decode CVC words automatically.'
+    ],
+    sightWords: [
+      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
+      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "you", fryRank: 8, isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
+      { word: "was", fryRank: 12, isHeartWord: true, trickyPart: "\"w\" not taught (Stage 2); \"a\" says /ŭ/ (not /ă/); \"s\" says /z/ — three irregular parts", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
+      { word: "it", fryRank: 10, isHeartWord: false, trickyPart: null, isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
     ]
   }
 ];
@@ -1516,15 +1616,50 @@ export default function StageDetailPage() {
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(10);
     pdf.text(weekData.assessment, 20, yPos + 20);
-    
+
+    // Sight Words (if present)
+    let sightWordsHeight = 0;
+    if (weekData.sightWords && weekData.sightWords.length > 0) {
+      pdf.setFillColor(...accentColor);
+      pdf.rect(15, yPos + 30, 180, 8, 'F');
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Sight Words (Heart Words)', 20, yPos + 35);
+
+      pdf.setTextColor(...textColor);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(10);
+
+      let sightWordY = yPos + 45;
+      // Sort: NEW first, then UPGRADE, then REVIEW
+      const sortedSightWords = [...weekData.sightWords].sort((a, b) => {
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+        if (a.isUpgrade && !b.isUpgrade) return -1;
+        if (!a.isUpgrade && b.isUpgrade) return 1;
+        return 0;
+      });
+
+      sortedSightWords.forEach(sw => {
+        const status = sw.isHeartWord ? '❤️' : '✅';
+        const badge = sw.isNew ? '🆕 ' : sw.isUpgrade ? '⬆️ ' : '';
+        const upgradeNote = sw.isUpgrade && !sw.isHeartWord ? ' (Now decodable!)' : '';
+        const trickyNote = sw.trickyPart ? ` — ${sw.trickyPart}` : '';
+        pdf.text(`${badge}${status} ${sw.word} (Fry #${sw.fryRank})${upgradeNote}${trickyNote}`, 20, sightWordY);
+        sightWordY += 6;
+      });
+      sightWordsHeight = 15 + (sortedSightWords.length * 6);
+    }
+
     // Activities
     pdf.setFillColor(...accentColor);
-    pdf.rect(15, yPos + 30, 180, 8, 'F');
+    pdf.rect(15, yPos + 30 + sightWordsHeight, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Quick Activities', 20, yPos + 35);
-    
+    pdf.text('Quick Activities', 20, yPos + 35 + sightWordsHeight);
+
     pdf.setTextColor(...textColor);
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(10);
@@ -1534,7 +1669,7 @@ export default function StageDetailPage() {
       'Word Building: Use letter tiles to build focus words',
       'Reading Practice: Use the decodable text for guided reading'
     ];
-    let activityY = yPos + 45;
+    let activityY = yPos + 45 + sightWordsHeight;
     activities.forEach((activity, index) => {
       pdf.text(`${index + 1}. ${activity}`, 20, activityY);
       activityY += 7;
@@ -2464,51 +2599,53 @@ export default function StageDetailPage() {
                               ))}
                             </div>
                             
-                            {/* Sight Words Section */}
-                            {(() => {
-                              const sightWords = ['the', 'a', 'an', 'is', 'was', 'were', 'are', 'to', 'too', 'two', 'and', 'he', 'she', 'it', 'we', 'they', 'I', 'you', 'me', 'my', 'his', 'her', 'him', 'them', 'us', 'of', 'for', 'from', 'with', 'by', 'on', 'in', 'at', 'up', 'out', 'down', 'off', 'over', 'under', 'into', 'onto', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'can', 'may', 'might', 'must', 'be', 'been', 'being', 'go', 'goes', 'went', 'come', 'came', 'get', 'got', 'see', 'saw', 'look', 'want', 'said', 'say', 'says', 'here', 'there', 'where', 'when', 'what', 'who', 'why', 'how', 'this', 'that', 'these', 'those', 'some', 'all', 'any', 'many', 'much', 'one', 'two', 'three', 'first', 'then', 'now', 'only', 'also', 'but', 'or', 'so', 'if', 'because', 'before', 'after', 'while', 'during', 'about', 'above', 'below', 'between', 'through', 'around', 'near', 'far', 'big', 'little', 'long', 'short', 'high', 'low', 'good', 'bad', 'new', 'old', 'cold', 'fast', 'slow', 'happy', 'sad', 'yes', 'no', 'not'];
-                              
-                              // Extract unique sight words from the decodable text (case-insensitive)
-                              const textWords = week.decodableText.split(' ').map(w => w.replace(/[.,!?;:—]/g, ''));
-                              const sightWordMap = new Map();
-                              
-                              textWords.forEach(word => {
-                                const lowerWord = word.toLowerCase();
-                                if (sightWords.includes(lowerWord) && !sightWordMap.has(lowerWord)) {
-                                  sightWordMap.set(lowerWord, lowerWord); // Store in lowercase
-                                } else if (word.toLowerCase() === 'i' && sightWords.includes('I') && !sightWordMap.has('i')) {
-                                  sightWordMap.set('i', 'I'); // Store "I" as uppercase
-                                }
-                              });
-                              
-                              const foundSightWords = Array.from(sightWordMap.values());
-                              
-                              if (foundSightWords.length > 0) {
-                                return (
-                                  <>
-                                    <h3 className={`font-bold text-lg mb-2 mt-4 ${
-                                      stageNumber === 1 ? 'text-slate-800' : 'text-pineShadow'
-                                    }`}>Sight Words</h3>
-                                    <div className={
-                                      (selectedWeek === 10 && stageNumber === 1) ? "grid grid-cols-5 gap-1" : "grid grid-cols-4 gap-2"
-                                    }>
-                                      {foundSightWords.map((word, i) => (
-                                        <span key={i} className={
-                                          (selectedWeek === 10 && stageNumber === 1)
-                                            ? "px-2 py-1 bg-blue-50 rounded-lg font-medium text-center text-sm border border-blue-200 text-blue-600 min-w-0" 
-                                            : "px-2 py-1 bg-blue-50 rounded-lg font-medium text-center text-sm border border-blue-200 text-blue-600"
-                                        } style={{
-                                          boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)'
-                                        }}>
-                                          {word}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  </>
-                                );
-                              }
-                              return null;
-                            })()}
+                            {/* Sight Words (Heart Words) Section */}
+                            {week.sightWords && week.sightWords.length > 0 && (
+                              <>
+                                <h3 className="font-bold text-lg mb-1 mt-4 text-black">Sight Words (Heart Words)</h3>
+                                <p className="text-xs text-gray-500 mb-2">
+                                  ❤️ = heart word (has irregular parts) &nbsp; ✅ = fully decodable &nbsp; 🆕 = new this week &nbsp; ⬆️ = just upgraded
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                  {/* Sort: NEW first, then UPGRADE, then REVIEW */}
+                                  {[...week.sightWords]
+                                    .sort((a, b) => {
+                                      if (a.isNew && !b.isNew) return -1;
+                                      if (!a.isNew && b.isNew) return 1;
+                                      if (a.isUpgrade && !b.isUpgrade) return -1;
+                                      if (!a.isUpgrade && b.isUpgrade) return 1;
+                                      return 0;
+                                    })
+                                    .map((sw, i) => (
+                                      <div
+                                        key={i}
+                                        className={`px-3 py-2 rounded-lg border text-sm ${
+                                          sw.isHeartWord
+                                            ? 'bg-rose-50 border-rose-200'
+                                            : 'bg-green-50 border-green-200'
+                                        }`}
+                                        style={{
+                                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                                        }}
+                                      >
+                                        <div className="flex items-center gap-1 mb-0.5">
+                                          {sw.isNew && <span className="text-xs bg-amber-100 text-amber-700 px-1 rounded">🆕</span>}
+                                          {sw.isUpgrade && <span className="text-xs bg-blue-100 text-blue-700 px-1 rounded">⬆️</span>}
+                                          <span>{sw.isHeartWord ? '❤️' : '✅'}</span>
+                                          <span className="font-bold text-base">{sw.word}</span>
+                                        </div>
+                                        <div className="text-xs text-gray-500">Fry #{sw.fryRank}</div>
+                                        {sw.trickyPart && (
+                                          <div className="text-xs text-gray-400 mt-0.5 max-w-[140px]">{sw.trickyPart}</div>
+                                        )}
+                                        {sw.isUpgrade && !sw.isHeartWord && (
+                                          <div className="text-xs text-green-600 mt-0.5">Now decodable!</div>
+                                        )}
+                                      </div>
+                                    ))}
+                                </div>
+                              </>
+                            )}
                           </div>
                         </div>
                         
