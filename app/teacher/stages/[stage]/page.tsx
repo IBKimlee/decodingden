@@ -1473,6 +1473,7 @@ export default function StageDetailPage() {
   const [expandedExposureWeeks, setExpandedExposureWeeks] = useState<Set<number>>(new Set());
   const [showStudentPhaseModal, setShowStudentPhaseModal] = useState(false);
   const [studentPhaseModalVisible, setStudentPhaseModalVisible] = useState(false);
+  const [openSightWordPopover, setOpenSightWordPopover] = useState<number | null>(null);
 
   // Toggle exposure section for a week
   const toggleExposureSection = (weekNum: number, e: React.MouseEvent) => {
@@ -1625,7 +1626,7 @@ export default function StageDetailPage() {
       pdf.setTextColor(255, 255, 255);
       pdf.setFontSize(12);
       pdf.setFont('helvetica', 'bold');
-      pdf.text('Sight Words (Heart Words)', 20, yPos + 35);
+      pdf.text('Sight / Heart Words', 20, yPos + 35);
 
       pdf.setTextColor(...textColor);
       pdf.setFont('helvetica', 'normal');
@@ -2223,7 +2224,9 @@ export default function StageDetailPage() {
             {/* Week Detail Modal */}
             {selectedWeek && (
               <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" style={{paddingTop: '50px'}}>
-                <div className="rounded-lg p-6 max-w-3xl w-full max-h-[90vh] bg-white relative overflow-y-auto" style={{
+                <div
+                  onClick={() => setOpenSightWordPopover(null)}
+                  className="rounded-lg p-6 max-w-3xl w-full max-h-[90vh] bg-white relative overflow-y-auto" style={{
                   background: 'radial-gradient(ellipse at center, #ffffff 60%, #f8fafc 85%, #e2e8f0 100%)',
                   boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 0 40px rgba(0, 0, 0, 0.08)'
                 }}>
@@ -2237,10 +2240,10 @@ export default function StageDetailPage() {
                         );
                       })()}
                     </h2>
-                    <button 
-                      onClick={() => setSelectedWeek(null)}
-                      className={stageNumber === 1 
-                        ? 'text-slate-600 hover:text-slate-800 text-2xl' 
+                    <button
+                      onClick={() => { setSelectedWeek(null); setOpenSightWordPopover(null); }}
+                      className={stageNumber === 1
+                        ? 'text-slate-600 hover:text-slate-800 text-2xl'
                         : 'text-mossGray hover:text-pineShadow text-2xl'
                       }
                     >
@@ -2553,17 +2556,16 @@ export default function StageDetailPage() {
                                 </div>
                               ) : (
                                 week.phonemes.map((phoneme, i) => {
-                                  const intensity = week.intensity?.[i] || 'CORE';
-                                  const badge = getIntensityBadge(intensity);
+                                  const grapheme = week.graphemes[i]?.toLowerCase() || '';
+                                  const isVowel = ['a', 'e', 'i', 'o', 'u'].includes(grapheme);
                                   return (
                                     <div key={i} className="flex items-center justify-start min-w-0 gap-2">
-                                      <span className={`${badge.textColor} text-sm font-bold`} title={badge.label}>{badge.symbol}</span>
                                       <span className={`text-lg font-bold w-12 text-left font-mono ${
                                         stageNumber === 1 ? 'text-slate-800' : 'text-forestGreen'
                                       }`}>{phoneme}</span>
                                       <span className="text-sm font-medium w-6 text-center">→</span>
-                                      <span className={`text-lg font-bold text-left px-2 py-0.5 rounded ${badge.bgColor} border ${badge.borderColor} ${
-                                        stageNumber === 1 ? (['a', 'e', 'i', 'o', 'u'].includes(week.graphemes[i]?.toLowerCase()) ? 'text-red-600' : badge.textColor) : 'text-pineShadow'
+                                      <span className={`text-lg font-bold text-center w-10 py-0.5 rounded bg-amber-50 border border-amber-300 ${
+                                        stageNumber === 1 ? (isVowel ? 'text-red-600' : 'text-black') : 'text-pineShadow'
                                       }`}>{week.graphemes[i]}</span>
                                     </div>
                                   );
@@ -2599,14 +2601,15 @@ export default function StageDetailPage() {
                               ))}
                             </div>
                             
-                            {/* Sight Words (Heart Words) Section */}
+                            {/* Sight / Heart Words Section */}
                             {week.sightWords && week.sightWords.length > 0 && (
                               <>
-                                <h3 className="font-bold text-lg mb-1 mt-4 text-black">Sight Words (Heart Words)</h3>
-                                <p className="text-xs text-gray-500 mb-2">
-                                  ❤️ = heart word (has irregular parts) &nbsp; ✅ = fully decodable &nbsp; 🆕 = new this week &nbsp; ⬆️ = just upgraded
-                                </p>
-                                <div className="flex flex-wrap gap-2">
+                                <h3 className="font-bold text-lg mb-2 mt-4 text-black">
+                                  Sight / Heart Words
+                                </h3>
+                                <div className={
+                                  (selectedWeek === 10 && stageNumber === 1) ? "grid grid-cols-5 gap-1" : "grid grid-cols-4 gap-2"
+                                }>
                                   {/* Sort: NEW first, then UPGRADE, then REVIEW */}
                                   {[...week.sightWords]
                                     .sort((a, b) => {
@@ -2617,29 +2620,42 @@ export default function StageDetailPage() {
                                       return 0;
                                     })
                                     .map((sw, i) => (
-                                      <div
-                                        key={i}
-                                        className={`px-3 py-2 rounded-lg border text-sm ${
-                                          sw.isHeartWord
-                                            ? 'bg-rose-50 border-rose-200'
-                                            : 'bg-green-50 border-green-200'
-                                        }`}
-                                        style={{
-                                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-                                        }}
-                                      >
-                                        <div className="flex items-center gap-1 mb-0.5">
-                                          {sw.isNew && <span className="text-xs bg-amber-100 text-amber-700 px-1 rounded">🆕</span>}
-                                          {sw.isUpgrade && <span className="text-xs bg-blue-100 text-blue-700 px-1 rounded">⬆️</span>}
-                                          <span>{sw.isHeartWord ? '❤️' : '✅'}</span>
-                                          <span className="font-bold text-base">{sw.word}</span>
-                                        </div>
-                                        <div className="text-xs text-gray-500">Fry #{sw.fryRank}</div>
-                                        {sw.trickyPart && (
-                                          <div className="text-xs text-gray-400 mt-0.5 max-w-[140px]">{sw.trickyPart}</div>
-                                        )}
-                                        {sw.isUpgrade && !sw.isHeartWord && (
-                                          <div className="text-xs text-green-600 mt-0.5">Now decodable!</div>
+                                      <div key={i} className="relative">
+                                        <button
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            setOpenSightWordPopover(openSightWordPopover === i ? null : i);
+                                          }}
+                                          className={
+                                            (selectedWeek === 10 && stageNumber === 1)
+                                              ? "w-full px-2 py-1 bg-blue-50 rounded-lg font-medium text-center text-sm border border-blue-200 text-blue-600 min-w-0 cursor-pointer hover:bg-blue-100 transition-colors"
+                                              : "w-full px-2 py-1 bg-blue-50 rounded-lg font-medium text-center text-sm border border-blue-200 text-blue-600 cursor-pointer hover:bg-blue-100 transition-colors"
+                                          }
+                                          style={{
+                                            boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)'
+                                          }}
+                                        >
+                                          <span className="text-[10px] mr-0.5">{sw.isHeartWord ? '❤️' : '✅'}</span>
+                                          {sw.word}
+                                        </button>
+                                        {/* Popover on click - positioned to the right */}
+                                        {openSightWordPopover === i && (
+                                          <div className="absolute left-full ml-2 bottom-0 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-50 min-w-[180px] max-w-[250px]">
+                                            <div className="flex items-start gap-1 mb-1">
+                                              <span className="text-sm">{sw.isHeartWord ? '❤️' : '✅'}</span>
+                                              <div>
+                                                <div className="text-xs font-medium">{sw.isHeartWord ? 'Heart word' : 'Fully decodable'}</div>
+                                                {sw.isHeartWord && <div className="text-[10px] text-gray-500">(has irregular parts)</div>}
+                                              </div>
+                                            </div>
+                                            <div className="text-[10px] text-gray-600">Fry #{sw.fryRank}</div>
+                                            {sw.trickyPart && (
+                                              <div className="text-[10px] text-gray-500 mt-1">{sw.trickyPart}</div>
+                                            )}
+                                            {sw.isUpgrade && !sw.isHeartWord && (
+                                              <div className="text-[10px] text-green-600 mt-1 font-medium">Now decodable!</div>
+                                            )}
+                                          </div>
                                         )}
                                       </div>
                                     ))}
