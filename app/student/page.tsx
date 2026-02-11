@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useStudent } from '@/app/contexts/AuthContext';
+import { useStudent, useAuth } from '@/app/contexts/AuthContext';
 import { supabase } from '@/lib/supabase/client';
 import type { StudentAssignment } from '@/lib/supabase/client';
 
@@ -54,6 +54,7 @@ const ACTIVITY_INFO: Record<string, { name: string; icon: string; color: string;
 export default function StudentDenPage() {
   const router = useRouter();
   const { student, isStudent } = useStudent();
+  const { logout } = useAuth();
   const [assignments, setAssignments] = useState<StudentAssignment[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -97,7 +98,19 @@ export default function StudentDenPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100">
 
       {/* Big Welcome Header */}
-      <header className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-8 px-4 shadow-xl">
+      <header className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-8 px-4 shadow-xl relative">
+        {/* Logout Button - Top Right */}
+        <button
+          onClick={async () => {
+            await logout();
+            router.push('/');
+          }}
+          className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-full text-sm font-medium transition-all backdrop-blur-sm border border-white/30 flex items-center gap-2"
+        >
+          <span>Switch User</span>
+          <span>🚪</span>
+        </button>
+
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex items-center justify-center gap-4 mb-2">
             <Link href="/" className="hover:scale-110 transition-transform">
