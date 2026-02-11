@@ -33,7 +33,6 @@
 | 8 | 15 elements | TBD | ⚠️ Verify |
 
 ## Research Foundation ✅
-- Fry (2004) frequency data implemented
 - National Reading Panel (2000) principles applied
 - Ehri's phases properly sequenced
 - All stages research-validated

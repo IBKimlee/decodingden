@@ -115,13 +115,6 @@ export default function ResearchPage() {
                         <em className="block text-sm text-gray-600 mt-1">Most frequent consonants and systematic instruction sequencing</em>
                       </div>
                     </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-oceanBlue font-bold">•</span>
-                      <div>
-                        <strong>Fry, E. (2004).</strong> Phonics: A large phoneme-grapheme frequency count revised. Journal of Literacy Research, 36(1), 85-98.
-                        <em className="block text-sm text-gray-600 mt-1">Phoneme-grapheme frequency data for optimal sequencing</em>
-                      </div>
-                    </li>
                   </ul>
                 </div>
 

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decoding Den Core 400</title>
+  <style>
+    @media print {
+      body { font-size: 10pt; }
+      .page-break { page-break-before: always; }
+      h1 { font-size: 18pt; }
+      h2 { font-size: 14pt; }
+      h3 { font-size: 12pt; }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      line-height: 1.5;
+      color: #333;
+    }
+    h1 {
+      color: #1a365d;
+      border-bottom: 3px solid #4a90a4;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #2c5282;
+      margin-top: 30px;
+      border-bottom: 1px solid #bee3f8;
+      padding-bottom: 5px;
+    }
+    h3 {
+      color: #2b6cb0;
+      margin-top: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.9em;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #edf2f7;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: #f7fafc;
+    }
+    .heart { color: #e53e3e; }
+    .check { color: #38a169; }
+    .upgrade { color: #805ad5; }
+    .citation {
+      background: #f0f4f8;
+      padding: 15px;
+      border-left: 4px solid #4a90a4;
+      margin: 20px 0;
+      font-style: italic;
+    }
+    .summary-box {
+      background: #ebf8ff;
+      border: 2px solid #4a90a4;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+      padding: 10px;
+      background: #f7fafc;
+      border-radius: 5px;
+    }
+    .legend span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    code {
+      background: #edf2f7;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    .stage-header {
+      background: linear-gradient(135deg, #4a90a4, #2c5282);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-top: 30px;
+    }
+    .footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 2px solid #e2e8f0;
+      text-align: center;
+      color: #718096;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Decoding Den Core 400</h1>
+  <p><strong>Structured Literacy-Aligned High-Frequency Word List</strong></p>
+
+  <div class="citation">
+    <strong>Source:</strong> Green, C., Keogh, K., Sun, H., & O'Brien, B. (2023). The Children's Picture Books Lexicon (CPB-Lex): A large-scale lexical database from children's picture books. <em>Behavior Research Methods</em>.
+  </div>
+
+  <div class="summary-box">
+    <h3 style="margin-top: 0;">Summary</h3>
+    <table>
+      <tr>
+        <th>Stage</th><th>Grade</th><th>New Words</th><th>Cumulative</th><th>❤️ Heart</th><th>✅ Decodable</th>
+      </tr>
+      <tr><td>1</td><td>K-Fall</td><td>~42</td><td>42</td><td>12</td><td>30</td></tr>
+      <tr><td>2</td><td>K-Spring</td><td>~41</td><td>83</td><td>6</td><td>35</td></tr>
+      <tr><td>3</td><td>1st-Fall</td><td>~39</td><td>122</td><td>8</td><td>31</td></tr>
+      <tr><td>4</td><td>1st-Spring</td><td>~50</td><td>172</td><td>5</td><td>45</td></tr>
+      <tr><td>5</td><td>2nd-Fall</td><td>~45</td><td>217</td><td>1</td><td>44</td></tr>
+      <tr><td>6</td><td>2nd-Spring</td><td>~35</td><td>252</td><td>4</td><td>31</td></tr>
+      <tr><td>7</td><td>3rd-Fall</td><td>~35</td><td>287</td><td>3</td><td>32</td></tr>
+      <tr><td>8</td><td>3rd-Spring</td><td>~48</td><td>335</td><td>2</td><td>46</td></tr>
+      <tr><td>Extended</td><td>—</td><td>~65</td><td><strong>400</strong></td><td>5</td><td>60</td></tr>
+    </table>
+    <p><strong>Final Totals:</strong> 400 words | ~35 permanently irregular | ~365 fully decodable</p>
+  </div>
+
+  <div class="legend">
+    <span><span class="check">✅</span> = Fully decodable</span>
+    <span><span class="heart">❤️</span> = Heart word (irregular)</span>
+    <span><span class="upgrade">⬆️</span> = Upgrades when GPC taught</span>
+  </div>
+
+  <hr>
+
+  <h2>GPC Reference by Stage</h2>
+
+  <h3>Stage 1 (K-Fall): Core Consonants & Short Vowels</h3>
+  <p><code>m, s, a, t, n, p, i, d, f, o, l, h, b, e, u</code> — 15 letters, short vowels only, CVC words</p>
+
+  <h3>Stage 2 (K-Spring): Remaining Letters & Digraphs</h3>
+  <p><code>r, g, c, k, w, y, v, z, j, x, qu, th, sh, ch, wh, ng, ck</code></p>
+
+  <h3>Stage 3 (1st-Fall): VCe Long Vowels & FLOSS</h3>
+  <p><code>a_e, i_e, o_e, u_e, e_e, ff, ll, ss, zz</code> + open syllables (he, she, we, be, me, no, so, go)</p>
+
+  <h3>Stage 4 (1st-Spring): Vowel Teams</h3>
+  <p><code>ai, ay, ee, ea→/ē/, oa, ow→/ō/, igh, y→/ī/, y→/ē/, o→/ŭ/</code></p>
+
+  <h3>Stage 5 (2nd-Fall): R-Controlled & /oo/</h3>
+  <p><code>ar, er, ir, ur, or, ore, oo, oul, wa, wor, war, our</code></p>
+
+  <h3>Stage 6 (2nd-Spring): Diphthongs</h3>
+  <p><code>ou→/ow/, ow→/ow/, oi, oy, au, aw, eigh, ey→/ā/, ere</code></p>
+
+  <h3>Stage 7 (3rd-Fall): Complex Patterns</h3>
+  <p><code>soft c, soft g, ough, ch→/k/, ch→/sh/, ve, se→/z/</code></p>
+
+  <h3>Stage 8 (3rd-Spring): Morphology & Schwa</h3>
+  <p><code>un-, re-, pre-, dis-, -ed, -s/-es, -ing, -tion, -sion, schwa</code></p>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 1 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 1: K-Fall (Core Consonants & Short Vowels)</h2>
+  </div>
+
+  <h3>✅ Decodable at Stage 1</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th><th>Notes</th></tr>
+    <tr><td>in</td><td>i+n</td><td>CVC</td></tr>
+    <tr><td>it</td><td>i+t</td><td>CVC</td></tr>
+    <tr><td>on</td><td>o+n</td><td>CVC</td></tr>
+    <tr><td>at</td><td>a+t</td><td>CVC</td></tr>
+    <tr><td>up</td><td>u+p</td><td>CVC</td></tr>
+    <tr><td>an</td><td>a+n</td><td>CVC</td></tr>
+    <tr><td>if</td><td>i+f</td><td>CVC</td></tr>
+    <tr><td>us</td><td>u+s</td><td>CVC</td></tr>
+    <tr><td>and</td><td>a+n+d</td><td>After Week 4</td></tr>
+    <tr><td>but</td><td>b+u+t</td><td>CVC</td></tr>
+    <tr><td>not</td><td>n+o+t</td><td>CVC</td></tr>
+    <tr><td>had</td><td>h+a+d</td><td>CVC</td></tr>
+    <tr><td>him</td><td>h+i+m</td><td>CVC</td></tr>
+    <tr><td>did</td><td>d+i+d</td><td>CVC</td></tr>
+    <tr><td>hot</td><td>h+o+t</td><td>CVC</td></tr>
+    <tr><td>lot</td><td>l+o+t</td><td>CVC</td></tr>
+    <tr><td>let</td><td>l+e+t</td><td>CVC</td></tr>
+    <tr><td>set</td><td>s+e+t</td><td>CVC</td></tr>
+    <tr><td>pet</td><td>p+e+t</td><td>CVC</td></tr>
+    <tr><td>bed</td><td>b+e+d</td><td>CVC</td></tr>
+    <tr><td>fun</td><td>f+u+n</td><td>CVC</td></tr>
+    <tr><td>sun</td><td>s+u+n</td><td>CVC</td></tr>
+    <tr><td>bus</td><td>b+u+s</td><td>CVC</td></tr>
+    <tr><td>sat</td><td>s+a+t</td><td>CVC</td></tr>
+    <tr><td>mat</td><td>m+a+t</td><td>CVC</td></tr>
+    <tr><td>man</td><td>m+a+n</td><td>CVC</td></tr>
+    <tr><td>ten</td><td>t+e+n</td><td>CVC</td></tr>
+    <tr><td>hen</td><td>h+e+n</td><td>CVC</td></tr>
+    <tr><td>hid</td><td>h+i+d</td><td>CVC</td></tr>
+  </table>
+
+  <h3>❤️ Heart Words at Stage 1</h3>
+  <table>
+    <tr><th>Word</th><th>Tricky Part</th><th>Upgrades At</th></tr>
+    <tr><td class="heart">the</td><td>th digraph + schwa</td><td>Stage 8</td></tr>
+    <tr><td class="heart">a</td><td>Says /ə/ as article</td><td>Stage 8</td></tr>
+    <tr><td class="heart">to</td><td>o says /ōō/</td><td>Never</td></tr>
+    <tr><td class="heart">I</td><td>Says /ī/ long</td><td>Stage 3</td></tr>
+    <tr><td class="heart">you</td><td>Entirely irregular</td><td>Never</td></tr>
+    <tr><td class="heart">he</td><td>e says /ē/</td><td>Stage 3</td></tr>
+    <tr><td class="heart">of</td><td>o=/ŭ/, f=/v/</td><td>Never</td></tr>
+    <tr><td class="heart">was</td><td>w untaught, a=/ŭ/, s=/z/</td><td>Partial</td></tr>
+    <tr><td class="heart">is</td><td>s says /z/</td><td>Stage 8</td></tr>
+    <tr><td class="heart">she</td><td>sh digraph, e=/ē/</td><td>Stage 3</td></tr>
+    <tr><td class="heart">said</td><td>ai says /ĕ/</td><td>Never</td></tr>
+    <tr><td class="heart">as</td><td>s says /z/</td><td>Stage 8</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 2 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 2: K-Spring (Remaining Letters & Digraphs)</h2>
+  </div>
+
+  <h3>✅ Newly Decodable at Stage 2</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th><th>Notes</th></tr>
+    <tr><td>can</td><td>c+a+n</td><td></td></tr>
+    <tr><td>get</td><td>g+e+t</td><td></td></tr>
+    <tr><td>got</td><td>g+o+t</td><td></td></tr>
+    <tr><td>just</td><td>j+u+s+t</td><td></td></tr>
+    <tr><td>big</td><td>b+i+g</td><td></td></tr>
+    <tr><td>back</td><td>b+a+ck</td><td>ck digraph</td></tr>
+    <tr><td>yes</td><td>y+e+s</td><td></td></tr>
+    <tr><td>yet</td><td>y+e+t</td><td></td></tr>
+    <tr><td>run</td><td>r+u+n</td><td></td></tr>
+    <tr><td>red</td><td>r+e+d</td><td></td></tr>
+    <tr><td>than</td><td>th+a+n</td><td>th digraph</td></tr>
+    <tr><td>that</td><td>th+a+t</td><td>th digraph</td></tr>
+    <tr><td>them</td><td>th+e+m</td><td>th digraph</td></tr>
+    <tr><td>then</td><td>th+e+n</td><td>th digraph</td></tr>
+    <tr><td>this</td><td>th+i+s</td><td>th digraph</td></tr>
+    <tr><td>with</td><td>w+i+th</td><td>th digraph</td></tr>
+    <tr><td>when</td><td>wh+e+n</td><td>wh digraph</td></tr>
+    <tr><td>which</td><td>wh+i+ch</td><td>wh+ch</td></tr>
+    <tr><td>such</td><td>s+u+ch</td><td>ch digraph</td></tr>
+    <tr><td>much</td><td>m+u+ch</td><td>ch digraph</td></tr>
+    <tr><td>ship</td><td>sh+i+p</td><td>sh digraph</td></tr>
+    <tr><td>shop</td><td>sh+o+p</td><td>sh digraph</td></tr>
+    <tr><td>ring</td><td>r+i+ng</td><td>ng digraph</td></tr>
+    <tr><td>sing</td><td>s+i+ng</td><td>ng digraph</td></tr>
+    <tr><td>bring</td><td>b+r+i+ng</td><td>blend + ng</td></tr>
+    <tr><td>thing</td><td>th+i+ng</td><td>th + ng</td></tr>
+    <tr><td>king</td><td>k+i+ng</td><td></td></tr>
+    <tr><td>long</td><td>l+o+ng</td><td></td></tr>
+    <tr><td>song</td><td>s+o+ng</td><td></td></tr>
+    <tr><td>quick</td><td>qu+i+ck</td><td>qu + ck</td></tr>
+    <tr><td>kick</td><td>k+i+ck</td><td></td></tr>
+    <tr><td>pick</td><td>p+i+ck</td><td></td></tr>
+    <tr><td>stick</td><td>s+t+i+ck</td><td>blend + ck</td></tr>
+    <tr><td>trick</td><td>t+r+i+ck</td><td>blend + ck</td></tr>
+  </table>
+
+  <h3>❤️ Heart Words at Stage 2</h3>
+  <table>
+    <tr><th>Word</th><th>Tricky Part</th><th>Upgrades At</th></tr>
+    <tr><td class="heart">all</td><td>a says /aw/ before ll</td><td>Never (positional)</td></tr>
+    <tr><td class="heart">one</td><td>Entirely irregular</td><td>Never</td></tr>
+    <tr><td class="heart">what</td><td>a says /ŭ/</td><td>Never</td></tr>
+    <tr><td class="heart">do</td><td>o says /ōō/</td><td>Never</td></tr>
+    <tr><td class="heart">call</td><td>a says /aw/ before ll</td><td>Never</td></tr>
+    <tr><td class="heart">who</td><td>wh=/h/, o=/ōō/</td><td>Never</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 3 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 3: 1st-Fall (VCe Long Vowels)</h2>
+  </div>
+
+  <h3>⬆️ Upgrades: Heart Word → Decodable</h3>
+  <table>
+    <tr><th>Word</th><th>Was</th><th>Now</th><th>Why</th></tr>
+    <tr><td class="upgrade">I</td><td>❤️</td><td>✅</td><td>Long i concept</td></tr>
+    <tr><td class="upgrade">he</td><td>❤️</td><td>✅</td><td>Open syllable e=/ē/</td></tr>
+    <tr><td class="upgrade">she</td><td>❤️</td><td>✅</td><td>sh + open syllable</td></tr>
+    <tr><td class="upgrade">we</td><td>❤️</td><td>✅</td><td>Open syllable</td></tr>
+    <tr><td class="upgrade">me</td><td>❤️</td><td>✅</td><td>Open syllable</td></tr>
+    <tr><td class="upgrade">be</td><td>❤️</td><td>✅</td><td>Open syllable</td></tr>
+    <tr><td class="upgrade">no</td><td>❤️</td><td>✅</td><td>Open syllable o=/ō/</td></tr>
+    <tr><td class="upgrade">so</td><td>❤️</td><td>✅</td><td>Open syllable</td></tr>
+    <tr><td class="upgrade">go</td><td>❤️</td><td>✅</td><td>Open syllable</td></tr>
+  </table>
+
+  <h3>✅ Newly Decodable at Stage 3 (VCe & FLOSS)</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th><th>Notes</th></tr>
+    <tr><td>will</td><td>w+i+ll</td><td>FLOSS</td></tr>
+    <tr><td>well</td><td>w+e+ll</td><td>FLOSS</td></tr>
+    <tr><td>tell</td><td>t+e+ll</td><td>FLOSS</td></tr>
+    <tr><td>fell</td><td>f+e+ll</td><td>FLOSS</td></tr>
+    <tr><td>like</td><td>l+i_e+k</td><td>VCe</td></tr>
+    <tr><td>make</td><td>m+a_e+k</td><td>VCe</td></tr>
+    <tr><td>made</td><td>m+a_e+d</td><td>VCe</td></tr>
+    <tr><td>take</td><td>t+a_e+k</td><td>VCe</td></tr>
+    <tr><td>came</td><td>c+a_e+m</td><td>VCe</td></tr>
+    <tr><td>name</td><td>n+a_e+m</td><td>VCe</td></tr>
+    <tr><td>same</td><td>s+a_e+m</td><td>VCe</td></tr>
+    <tr><td>game</td><td>g+a_e+m</td><td>VCe</td></tr>
+    <tr><td>time</td><td>t+i_e+m</td><td>VCe</td></tr>
+    <tr><td>home</td><td>h+o_e+m</td><td>VCe</td></tr>
+    <tr><td>hope</td><td>h+o_e+p</td><td>VCe</td></tr>
+    <tr><td>those</td><td>th+o_e+s</td><td>VCe</td></tr>
+    <tr><td>while</td><td>wh+i_e+l</td><td>VCe</td></tr>
+    <tr><td>white</td><td>wh+i_e+t</td><td>VCe</td></tr>
+    <tr><td>use</td><td>u_e+s</td><td>VCe</td></tr>
+    <tr><td>these</td><td>th+e_e+s</td><td>VCe</td></tr>
+  </table>
+
+  <h3>❤️ Heart Words at Stage 3</h3>
+  <table>
+    <tr><th>Word</th><th>Tricky Part</th><th>Upgrades At</th></tr>
+    <tr><td class="heart">come</td><td>o_e says /ŭ/ not /ō/</td><td>Never</td></tr>
+    <tr><td class="heart">some</td><td>o_e says /ŭ/ not /ō/</td><td>Never</td></tr>
+    <tr><td class="heart">love</td><td>o says /ŭ/, ve pattern</td><td>Stage 7 (partial)</td></tr>
+    <tr><td class="heart">give</td><td>i says /ĭ/, ve pattern</td><td>Stage 7</td></tr>
+    <tr><td class="heart">live</td><td>i says /ĭ/, ve pattern</td><td>Stage 7</td></tr>
+    <tr><td class="heart">have</td><td>a says /ă/, ve pattern</td><td>Stage 7</td></tr>
+    <tr><td class="heart">done</td><td>o_e says /ŭ/</td><td>Never</td></tr>
+    <tr><td class="heart">gone</td><td>o_e irregular</td><td>Never</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 4 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 4: 1st-Spring (Vowel Teams)</h2>
+  </div>
+
+  <h3>✅ Newly Decodable at Stage 4</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th><th>Notes</th></tr>
+    <tr><td>my</td><td>m+y(/ī/)</td><td>y as vowel</td></tr>
+    <tr><td>day</td><td>d+ay</td><td>ay team</td></tr>
+    <tr><td>way</td><td>w+ay</td><td></td></tr>
+    <tr><td>say</td><td>s+ay</td><td></td></tr>
+    <tr><td>play</td><td>p+l+ay</td><td></td></tr>
+    <tr><td>stay</td><td>s+t+ay</td><td></td></tr>
+    <tr><td>may</td><td>m+ay</td><td></td></tr>
+    <tr><td>rain</td><td>r+ai+n</td><td>ai team</td></tr>
+    <tr><td>wait</td><td>w+ai+t</td><td></td></tr>
+    <tr><td>see</td><td>s+ee</td><td>ee team</td></tr>
+    <tr><td>tree</td><td>t+r+ee</td><td></td></tr>
+    <tr><td>three</td><td>th+r+ee</td><td></td></tr>
+    <tr><td>green</td><td>g+r+ee+n</td><td></td></tr>
+    <tr><td>keep</td><td>k+ee+p</td><td></td></tr>
+    <tr><td>sleep</td><td>s+l+ee+p</td><td></td></tr>
+    <tr><td>need</td><td>n+ee+d</td><td></td></tr>
+    <tr><td>feel</td><td>f+ee+l</td><td></td></tr>
+    <tr><td>eat</td><td>ea+t</td><td>ea team</td></tr>
+    <tr><td>read</td><td>r+ea+d</td><td></td></tr>
+    <tr><td>sea</td><td>s+ea</td><td></td></tr>
+    <tr><td>boat</td><td>b+oa+t</td><td>oa team</td></tr>
+    <tr><td>road</td><td>r+oa+d</td><td></td></tr>
+    <tr><td>coat</td><td>c+oa+t</td><td></td></tr>
+    <tr><td>grow</td><td>g+r+ow(/ō/)</td><td>ow as /ō/</td></tr>
+    <tr><td>show</td><td>sh+ow(/ō/)</td><td></td></tr>
+    <tr><td>snow</td><td>s+n+ow</td><td></td></tr>
+    <tr><td>slow</td><td>s+l+ow</td><td></td></tr>
+    <tr><td>night</td><td>n+igh+t</td><td>igh pattern</td></tr>
+    <tr><td>right</td><td>r+igh+t</td><td></td></tr>
+    <tr><td>light</td><td>l+igh+t</td><td></td></tr>
+    <tr><td>high</td><td>h+igh</td><td></td></tr>
+    <tr><td>fly</td><td>f+l+y(/ī/)</td><td>y as /ī/</td></tr>
+    <tr><td>try</td><td>t+r+y(/ī/)</td><td></td></tr>
+    <tr><td>why</td><td>wh+y(/ī/)</td><td></td></tr>
+    <tr><td>by</td><td>b+y(/ī/)</td><td></td></tr>
+    <tr><td>sky</td><td>s+k+y(/ī/)</td><td></td></tr>
+    <tr><td>very</td><td>v+e+r+y(/ē/)</td><td>y as /ē/</td></tr>
+    <tr><td>happy</td><td>h+a+pp+y(/ē/)</td><td></td></tr>
+    <tr><td>funny</td><td>f+u+nn+y(/ē/)</td><td></td></tr>
+    <tr><td>from</td><td>f+r+o(/ŭ/)+m</td><td>o as /ŭ/</td></tr>
+  </table>
+
+  <h3>❤️ Heart Words at Stage 4</h3>
+  <table>
+    <tr><th>Word</th><th>Tricky Part</th></tr>
+    <tr><td class="heart">two</td><td>Entirely irregular</td></tr>
+    <tr><td class="heart">been</td><td>ee says /ĭ/</td></tr>
+    <tr><td class="heart">many</td><td>a says /ĕ/</td></tr>
+    <tr><td class="heart">people</td><td>Entirely irregular</td></tr>
+    <tr><td class="heart">only</td><td>Vowel irregularity</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 5 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 5: 2nd-Fall (R-Controlled & /oo/)</h2>
+  </div>
+
+  <h3>✅ Newly Decodable at Stage 5</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th><th>Notes</th></tr>
+    <tr><td>her</td><td>h+er</td><td>er pattern</td></tr>
+    <tr><td>for</td><td>f+or</td><td>or pattern</td></tr>
+    <tr><td>or</td><td>or</td><td></td></tr>
+    <tr><td>are</td><td>ar+e</td><td>ar pattern</td></tr>
+    <tr><td>more</td><td>m+ore</td><td>ore pattern</td></tr>
+    <tr><td>your</td><td>y+our</td><td>our pattern</td></tr>
+    <tr><td>part</td><td>p+ar+t</td><td></td></tr>
+    <tr><td>start</td><td>s+t+ar+t</td><td></td></tr>
+    <tr><td>car</td><td>c+ar</td><td></td></tr>
+    <tr><td>far</td><td>f+ar</td><td></td></tr>
+    <tr><td>star</td><td>s+t+ar</td><td></td></tr>
+    <tr><td>after</td><td>a+f+t+er</td><td></td></tr>
+    <tr><td>water</td><td>wa+t+er</td><td>wa pattern</td></tr>
+    <tr><td>over</td><td>o+v+er</td><td></td></tr>
+    <tr><td>under</td><td>u+n+d+er</td><td></td></tr>
+    <tr><td>number</td><td>n+u+m+b+er</td><td></td></tr>
+    <tr><td>other</td><td>o(/ŭ/)+th+er</td><td></td></tr>
+    <tr><td>first</td><td>f+ir+s+t</td><td>ir pattern</td></tr>
+    <tr><td>girl</td><td>g+ir+l</td><td></td></tr>
+    <tr><td>bird</td><td>b+ir+d</td><td></td></tr>
+    <tr><td>turn</td><td>t+ur+n</td><td>ur pattern</td></tr>
+    <tr><td>work</td><td>wor+k</td><td>wor pattern</td></tr>
+    <tr><td>word</td><td>wor+d</td><td></td></tr>
+    <tr><td>world</td><td>wor+l+d</td><td></td></tr>
+    <tr><td>short</td><td>sh+or+t</td><td></td></tr>
+    <tr><td>story</td><td>s+t+or+y</td><td></td></tr>
+    <tr><td>before</td><td>b+e+f+ore</td><td></td></tr>
+    <tr><td>good</td><td>g+oo+d</td><td>oo as /ʊ/</td></tr>
+    <tr><td>look</td><td>l+oo+k</td><td></td></tr>
+    <tr><td>book</td><td>b+oo+k</td><td></td></tr>
+    <tr><td>took</td><td>t+oo+k</td><td></td></tr>
+    <tr><td>too</td><td>t+oo</td><td>oo as /ōō/</td></tr>
+    <tr><td>room</td><td>r+oo+m</td><td></td></tr>
+    <tr><td>food</td><td>f+oo+d</td><td></td></tr>
+    <tr><td>moon</td><td>m+oo+n</td><td></td></tr>
+    <tr><td>soon</td><td>s+oo+n</td><td></td></tr>
+    <tr><td>could</td><td>c+oul+d</td><td>oul pattern</td></tr>
+    <tr><td>would</td><td>w+oul+d</td><td></td></tr>
+    <tr><td>should</td><td>sh+oul+d</td><td></td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 6 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 6: 2nd-Spring (Diphthongs)</h2>
+  </div>
+
+  <h3>⬆️ Upgrades: Heart Word → Decodable</h3>
+  <table>
+    <tr><th>Word</th><th>Was</th><th>Now</th><th>Why</th></tr>
+    <tr><td class="upgrade">they</td><td>❤️</td><td>✅</td><td>ey→/ā/ taught</td></tr>
+    <tr><td class="upgrade">out</td><td>❤️</td><td>✅</td><td>ou→/ow/ taught</td></tr>
+    <tr><td class="upgrade">down</td><td>❤️</td><td>✅</td><td>ow→/ow/ taught</td></tr>
+    <tr><td class="upgrade">now</td><td>❤️</td><td>✅</td><td>ow→/ow/ taught</td></tr>
+    <tr><td class="upgrade">how</td><td>❤️</td><td>✅</td><td>ow→/ow/ taught</td></tr>
+    <tr><td class="upgrade">where</td><td>❤️</td><td>✅</td><td>ere→/air/ taught</td></tr>
+  </table>
+
+  <h3>✅ Newly Decodable at Stage 6</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th></tr>
+    <tr><td>there</td><td>th+ere(/air/)</td></tr>
+    <tr><td>found</td><td>f+ou+n+d</td></tr>
+    <tr><td>house</td><td>h+ou+s+e</td></tr>
+    <tr><td>town</td><td>t+ow+n</td></tr>
+    <tr><td>brown</td><td>b+r+ow+n</td></tr>
+    <tr><td>owl</td><td>ow+l</td></tr>
+    <tr><td>cow</td><td>c+ow</td></tr>
+    <tr><td>boy</td><td>b+oy</td></tr>
+    <tr><td>toy</td><td>t+oy</td></tr>
+    <tr><td>joy</td><td>j+oy</td></tr>
+    <tr><td>point</td><td>p+oi+n+t</td></tr>
+    <tr><td>oil</td><td>oi+l</td></tr>
+    <tr><td>saw</td><td>s+aw</td></tr>
+    <tr><td>draw</td><td>d+r+aw</td></tr>
+    <tr><td>great</td><td>g+r+ea(/ā/)+t</td></tr>
+    <tr><td>here</td><td>h+ere(/ear/)</td></tr>
+    <tr><td>year</td><td>y+ear</td></tr>
+  </table>
+
+  <h3>❤️ Heart Words at Stage 6</h3>
+  <table>
+    <tr><th>Word</th><th>Tricky Part</th></tr>
+    <tr><td class="heart">thought</td><td>ough=/aw/</td></tr>
+    <tr><td class="heart">through</td><td>ough=/ōō/</td></tr>
+    <tr><td class="heart">enough</td><td>ough=/ŭf/</td></tr>
+    <tr><td class="heart">small</td><td>a=/aw/ before ll</td></tr>
+    <tr><td class="heart">about</td><td>a=schwa (→S8)</td></tr>
+    <tr><td class="heart">around</td><td>a=schwa (→S8)</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 7 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 7: 3rd-Fall (Complex Patterns)</h2>
+  </div>
+
+  <h3>⬆️ Upgrades: Heart Word → Decodable</h3>
+  <table>
+    <tr><th>Word</th><th>Was</th><th>Now</th><th>Why</th></tr>
+    <tr><td class="upgrade">have</td><td>❤️</td><td>✅</td><td>ve pattern taught</td></tr>
+    <tr><td class="upgrade">give</td><td>❤️</td><td>✅</td><td>ve pattern taught</td></tr>
+    <tr><td class="upgrade">live</td><td>❤️</td><td>✅</td><td>ve pattern taught</td></tr>
+  </table>
+
+  <h3>✅ Newly Decodable at Stage 7</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th></tr>
+    <tr><td>place</td><td>pl+a_e+ce(/s/)</td></tr>
+    <tr><td>nice</td><td>n+i_e+ce</td></tr>
+    <tr><td>since</td><td>s+i+n+ce</td></tr>
+    <tr><td>change</td><td>ch+a_e+n+ge</td></tr>
+    <tr><td>large</td><td>l+ar+ge(/j/)</td></tr>
+    <tr><td>page</td><td>p+a_e+ge</td></tr>
+    <tr><td>age</td><td>a_e+ge</td></tr>
+    <tr><td>city</td><td>c(/s/)+i+t+y</td></tr>
+    <tr><td>school</td><td>sch(/sk/)+oo+l</td></tr>
+    <tr><td>close</td><td>cl+o_e+se(/z/)</td></tr>
+  </table>
+
+  <h3>❤️ Heart Words at Stage 7</h3>
+  <table>
+    <tr><th>Word</th><th>Tricky Part</th></tr>
+    <tr><td class="heart">once</td><td>o says /wŭ/</td></tr>
+    <tr><td class="heart">don't</td><td>Contraction</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- STAGE 8 -->
+  <div class="stage-header">
+    <h2 style="margin: 0; color: white;">Stage 8: 3rd-Spring (Morphology & Schwa)</h2>
+  </div>
+
+  <h3>⬆️ SCHWA WAVE — Major Upgrades!</h3>
+  <table>
+    <tr><th>Word</th><th>Was</th><th>Now</th><th>Why</th></tr>
+    <tr><td class="upgrade">the</td><td>❤️</td><td>✅</td><td>Schwa taught! 🎉</td></tr>
+    <tr><td class="upgrade">a</td><td>❤️</td><td>✅</td><td>Schwa taught!</td></tr>
+    <tr><td class="upgrade">about</td><td>❤️</td><td>✅</td><td>a(/ə/) schwa</td></tr>
+    <tr><td class="upgrade">around</td><td>❤️</td><td>✅</td><td>a(/ə/) schwa</td></tr>
+    <tr><td class="upgrade">is</td><td>❤️</td><td>✅</td><td>s→/z/ via -s suffix</td></tr>
+    <tr><td class="upgrade">his</td><td>❤️</td><td>✅</td><td>s→/z/ formalized</td></tr>
+    <tr><td class="upgrade">as</td><td>❤️</td><td>✅</td><td>s→/z/ formalized</td></tr>
+    <tr><td class="upgrade">know</td><td>❤️</td><td>✅</td><td>kn silent taught</td></tr>
+    <tr><td class="upgrade">write</td><td>❤️</td><td>✅</td><td>wr silent taught</td></tr>
+    <tr><td class="upgrade">every</td><td>❤️</td><td>✅</td><td>Schwa resolved</td></tr>
+    <tr><td class="upgrade">different</td><td>❤️</td><td>✅</td><td>Schwa resolved</td></tr>
+  </table>
+
+  <h3>✅ Morphology Words (Prefix/Suffix)</h3>
+  <table>
+    <tr><th>Word</th><th>Pattern</th></tr>
+    <tr><td>unhappy</td><td>un+happy</td></tr>
+    <tr><td>remake</td><td>re+make</td></tr>
+    <tr><td>looking</td><td>look+ing</td></tr>
+    <tr><td>wanted</td><td>want+ed</td></tr>
+    <tr><td>walking</td><td>walk+ing</td></tr>
+    <tr><td>jumped</td><td>jump+ed</td></tr>
+    <tr><td>faster</td><td>fast+er</td></tr>
+    <tr><td>biggest</td><td>big+g+est</td></tr>
+    <tr><td>quickly</td><td>quick+ly</td></tr>
+    <tr><td>careful</td><td>care+ful</td></tr>
+    <tr><td>helpless</td><td>help+less</td></tr>
+    <tr><td>national</td><td>na+tion+al</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- PERMANENTLY IRREGULAR -->
+  <div class="stage-header" style="background: linear-gradient(135deg, #e53e3e, #c53030);">
+    <h2 style="margin: 0; color: white;">❤️ Permanently Irregular Words (~35)</h2>
+  </div>
+  <p>These words have irregularities never resolved by any GPC in the program:</p>
+
+  <table>
+    <tr><th>Word</th><th>Irregular Because</th></tr>
+    <tr><td>of</td><td>o=/ŭ/, f=/v/</td></tr>
+    <tr><td>to</td><td>o=/ōō/</td></tr>
+    <tr><td>you</td><td>Entirely irregular</td></tr>
+    <tr><td>was</td><td>a=/ŭ/, s=/z/ combination</td></tr>
+    <tr><td>do</td><td>o=/ōō/</td></tr>
+    <tr><td>said</td><td>ai=/ĕ/</td></tr>
+    <tr><td>some</td><td>o_e=/ŭ/</td></tr>
+    <tr><td>come</td><td>o_e=/ŭ/</td></tr>
+    <tr><td>all</td><td>a=/aw/ positional</td></tr>
+    <tr><td>call</td><td>a=/aw/ positional</td></tr>
+    <tr><td>many</td><td>a=/ĕ/</td></tr>
+    <tr><td>been</td><td>ee=/ĭ/</td></tr>
+    <tr><td>two</td><td>Entirely irregular</td></tr>
+    <tr><td>people</td><td>Entirely irregular</td></tr>
+    <tr><td>one</td><td>Entirely irregular</td></tr>
+    <tr><td>who</td><td>o=/ōō/</td></tr>
+    <tr><td>don't</td><td>Contraction</td></tr>
+    <tr><td>again</td><td>ai=/ĕ/</td></tr>
+    <tr><td>thought</td><td>ough=/aw/</td></tr>
+    <tr><td>enough</td><td>ough=/ŭf/</td></tr>
+    <tr><td>through</td><td>ough=/ōō/</td></tr>
+    <tr><td>only</td><td>Vowel irregularity</td></tr>
+    <tr><td>also</td><td>a=/aw/ positional</td></tr>
+    <tr><td>small</td><td>a=/aw/ positional</td></tr>
+    <tr><td>once</td><td>o=/wŭ/</td></tr>
+    <tr><td>together</td><td>"to" part</td></tr>
+    <tr><td>because</td><td>Multiple irregularities</td></tr>
+    <tr><td>into</td><td>"to" part</td></tr>
+    <tr><td>both</td><td>o=/ō/ irregular</td></tr>
+    <tr><td>most</td><td>o=/ō/ irregular</td></tr>
+    <tr><td>put</td><td>u=/ʊ/ irregular</td></tr>
+    <tr><td>what</td><td>a=/ŭ/</td></tr>
+    <tr><td>gone</td><td>o_e irregular</td></tr>
+    <tr><td>done</td><td>o_e=/ŭ/</td></tr>
+  </table>
+
+  <div class="footer">
+    <p><strong>Decoding Den Core 400</strong> — v1.0</p>
+    <p>Source: CPB-Lex (Green et al., 2023) • Structure: 8-Stage GPC Alignment</p>
+    <p>© 2025 Decoding Den. All rights reserved.</p>
+    <p><em>To save as PDF: File → Print → Save as PDF</em></p>
+  </div>
+</body>
+</html>

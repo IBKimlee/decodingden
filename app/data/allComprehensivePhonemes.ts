@@ -642,7 +642,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["I like my bike.", "It is time to draw a fine line."],
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Clear long vowel", "Magic e pattern", "High frequency"],
-    research_sources: ["Fry (2004)", "Ehri (2005)"],
+    research_sources: ["Ehri (2005)"],
     articulation_data: {
       phoneme: '/ī/',
       sound_type: 'vowel',
@@ -678,7 +678,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["I see the tree.", "We need to keep it free."],
     assessment_criteria: { daily: "70% accuracy", weekly: "65% accuracy", summative: "75% mastery" },
     teaching_advantages: ["Consistent vowel team", "High frequency", "Clear sound"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/ē/',
       sound_type: 'vowel',
@@ -714,7 +714,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["The car is far.", "We park by the hard star."],
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["Clear r-controlled", "High frequency", "Consistent sound"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/är/',
       sound_type: 'vowel',
@@ -750,7 +750,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["The moon is cool.", "We soon see food by the pool."],
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["Clear long oo", "Consistent in pattern", "High frequency"],
-    research_sources: ["Fry (2004)", "Adams (1990)"],
+    research_sources: ["Adams (1990)"],
     articulation_data: {
       phoneme: '/ōō/',
       sound_type: 'vowel',
@@ -820,7 +820,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       summative: "85% mastery in pattern"
     },
     teaching_advantages: ["Clear /k/ sound", "Final position pattern", "High frequency"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/k/',
       sound_type: 'consonant',
@@ -885,7 +885,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       summative: "85% mastery in digraph pattern"
     },
     teaching_advantages: ["Continuous sound", "High frequency", "Clear auditory distinction from /s/"],
-    research_sources: ["Fry (2004)", "NRP (2000)", "Ehri (2005)"],
+    research_sources: ["NRP (2000)", "Ehri (2005)"],
     articulation_data: {
       phoneme: '/sh/',
       sound_type: 'consonant',
@@ -963,7 +963,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       summative: "80% mastery in pattern"
     },
     teaching_advantages: ["Magic e concept", "Clear vowel contrast", "High frequency"],
-    research_sources: ["Fry (2004)", "Ehri (2005)"],
+    research_sources: ["Ehri (2005)"],
     articulation_data: {
       phoneme: '/ā/',
       sound_type: 'vowel',
@@ -1032,7 +1032,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       summative: "75% mastery in pattern"
     },
     teaching_advantages: ["Most frequent r-controlled", "Clear sound", "High utility"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/ər/',
       sound_type: 'vowel',
@@ -1101,7 +1101,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       summative: "70% mastery in pattern"
     },
     teaching_advantages: ["Clear diphthong", "Two spellings", "High frequency"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/ou/',
       sound_type: 'vowel',
@@ -1445,7 +1445,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["I measure the treasure.", "The garage is beige."],
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["Voiced pair to /sh/", "Less common but important", "Found in multisyllabic words"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/ʒ/',
       sound_type: 'consonant',
@@ -1834,7 +1834,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["I go home.", "The boat can float."],
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Says letter name", "Multiple spelling patterns", "Common words"],
-    research_sources: ["Fry (2004)", "Ehri (2005)"],
+    research_sources: ["Ehri (2005)"],
     articulation_data: {
       phoneme: '/ō/',
       sound_type: 'vowel',
@@ -1869,7 +1869,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["The cube is cute.", "I use music."],
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Says letter name", "Multiple spelling patterns", "Two sounds possible"],
-    research_sources: ["Fry (2004)", "Ehri (2005)"],
+    research_sources: ["Ehri (2005)"],
     articulation_data: {
       phoneme: '/ū/',
       sound_type: 'vowel',
@@ -1904,7 +1904,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["Look at the good book.", "I could put my foot on the wood."],
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["Contrast with long oo", "Common words", "Multiple spellings"],
-    research_sources: ["Fry (2004)", "Adams (1990)"],
+    research_sources: ["Adams (1990)"],
     articulation_data: {
       phoneme: '/ʊ/',
       sound_type: 'vowel',
@@ -1939,7 +1939,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["The boy has a toy.", "Put the coin in the oil."],
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["Clear diphthong", "Two spellings", "Position rule"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/oi/',
       sound_type: 'vowel',
@@ -1974,7 +1974,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["I have more.", "The fork is by the door."],
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["R-controlled vowel", "Multiple spellings", "Common words"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/or/',
       sound_type: 'vowel',
@@ -2009,7 +2009,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["The air is fair.", "I care about my hair."],
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["R-controlled vowel", "Multiple spellings", "Common words"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/air/',
       sound_type: 'vowel',
@@ -2044,7 +2044,7 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     decodable_sentences: ["I can hear with my ear.", "The deer is near here."],
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["R-controlled vowel", "Multiple spellings", "Common words"],
-    research_sources: ["Fry (2004)", "NRP (2000)"],
+    research_sources: ["NRP (2000)"],
     articulation_data: {
       phoneme: '/ear/',
       sound_type: 'vowel',

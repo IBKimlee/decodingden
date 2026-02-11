@@ -192,7 +192,6 @@ VALUES
 (NULL, 'Florida Center for Reading Research (2005)', 'Phoneme awareness activities should progress from easier to more difficult tasks, with explicit instruction in sound-spelling correspondences.', 'https://fcrr.org/', ARRAY['teaching_tips', 'articulation', 'word_lists']),
 (NULL, 'Ehri, L.C. (2005)', 'Phases of word reading development require systematic instruction moving from partial alphabetic to full alphabetic understanding.', NULL, ARRAY['teaching_tips', 'word_lists']),
 (NULL, 'Adams, M.J. (1990)', 'Beginning to Read: Most frequent, consistent consonants should be taught first, with digraphs introduced systematically.', NULL, ARRAY['teaching_tips', 'articulation']),
-(NULL, 'Fry (2004)', 'Phoneme-grapheme frequency data supports optimal sequencing of phonics instruction from high-frequency to low-frequency patterns.', NULL, ARRAY['word_lists', 'teaching_tips']),
 (NULL, 'Moats, L. (2020)', 'Short vowels and early consonants provide the most consistent sound-spelling mappings for beginning readers.', NULL, ARRAY['articulation', 'teaching_tips']),
 (NULL, 'Castles, Rastle, & Nation (2018)', 'High-frequency, consistent sound-spelling patterns should be emphasized in early phonics instruction.', NULL, ARRAY['word_lists', 'teaching_tips']);
 

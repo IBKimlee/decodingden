@@ -50,7 +50,7 @@ function extractStagesData() {
       instructional_focus: ["Complete single letter-sound correspondences", "Simple consonant blends maintaining individual sounds", "CVCC and CCVC word patterns with known letters", "Systematic review of all single letters"],
       science_of_reading_alignment: {
         ehri_phase: "Partial Alphabetic - completing single letter foundation before complex patterns",
-        research_principle: "Fry (2004); NRP (2000) - High-frequency single letters prioritized, digraphs delayed until 1st grade",
+        research_principle: "NRP (2000) - High-frequency single letters prioritized, digraphs delayed until 1st grade",
         orthographic_mapping: "Solid single letter-sound connections before advancing to complex patterns"
       }
     },

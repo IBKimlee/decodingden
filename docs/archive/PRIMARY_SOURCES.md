@@ -31,11 +31,10 @@ These files constitute the single source of truth for Decoding Den's research-va
 
 ## Research Foundation
 
-Our curriculum is built on three primary research pillars:
+Our curriculum is built on two primary research pillars:
 
-1. **Fry (2004)** - Phoneme-grapheme frequency data for optimal sequencing
-2. **National Reading Panel (2000)** - Systematic phonics instruction principles  
-3. **Ehri (2005)** - Four Phases of Word Reading development framework
+1. **National Reading Panel (2000)** - Systematic phonics instruction principles
+2. **Ehri (2005)** - Four Phases of Word Reading development framework
 
 ## File Management Rules
 

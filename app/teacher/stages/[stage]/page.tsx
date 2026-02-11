@@ -23,13 +23,10 @@ type IntensityLevel = "CORE" | "TEACH" | "EXPOSURE";
 // Sight Word interface for heart words / high-frequency words
 interface SightWord {
   word: string;
-  fryRank: number;
   isHeartWord: boolean;
   trickyPart: string | null;
   isNew: boolean;
   isUpgrade: boolean;
-  isDolch: boolean;
-  dolchLevel?: string;
 }
 
 interface WeeklyData {
@@ -69,8 +66,8 @@ const stage1WeeklyData: WeeklyData[] = [
       '/ă/ — clear open vowel articulation'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: true, isUpgrade: false },
+      { word: "and", isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -88,10 +85,10 @@ const stage1WeeklyData: WeeklyData[] = [
       '/n/ — continuous nasal, tongue behind teeth'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: true, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -109,11 +106,11 @@ const stage1WeeklyData: WeeklyData[] = [
       '/ĭ/ — short i, lips slightly spread'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 2" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: true, trickyPart: "\"d\" not yet taught (temporarily irregular)", isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -131,11 +128,11 @@ const stage1WeeklyData: WeeklyData[] = [
       '/f/ — continuous fricative, voiceless (teeth on lower lip)'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: true, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: true },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false }
     ]
   },
   {
@@ -153,12 +150,12 @@ const stage1WeeklyData: WeeklyData[] = [
       '/l/ — continuous liquid, tongue tip on ridge'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
-      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false },
+      { word: "to", isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -176,13 +173,13 @@ const stage1WeeklyData: WeeklyData[] = [
       '/b/ — stop sound, voiced bilabial, pair with /p/'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
-      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false },
+      { word: "to", isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "he", isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -200,14 +197,14 @@ const stage1WeeklyData: WeeklyData[] = [
       '/ŭ/ — short u, relaxed central vowel'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
-      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false },
+      { word: "to", isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "he", isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false },
+      { word: "of", isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -225,15 +222,15 @@ const stage1WeeklyData: WeeklyData[] = [
       'Review all consonant sounds — focus on any sounds students are still confusing'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
-      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "you", fryRank: 8, isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false },
+      { word: "to", isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "he", isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false },
+      { word: "of", isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "you", isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -251,16 +248,16 @@ const stage1WeeklyData: WeeklyData[] = [
       'Focus on vowel discrimination — students often confuse /ĕ/ and /ĭ/, and /ŏ/ and /ŭ/'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
-      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "you", fryRank: 8, isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "was", fryRank: 12, isHeartWord: true, trickyPart: "\"w\" not taught (Stage 2); \"a\" says /ŭ/ (not /ă/); \"s\" says /z/ — three irregular parts", isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false },
+      { word: "to", isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "he", isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false },
+      { word: "of", isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "you", isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: false, isUpgrade: false },
+      { word: "was", isHeartWord: true, trickyPart: "\"w\" not taught (Stage 2); \"a\" says /ŭ/ (not /ă/); \"s\" says /z/ — three irregular parts", isNew: true, isUpgrade: false }
     ]
   },
   {
@@ -277,17 +274,17 @@ const stage1WeeklyData: WeeklyData[] = [
       'Assess all 15 GPCs — both reading and spelling. Students should decode CVC words automatically.'
     ],
     sightWords: [
-      { word: "I", fryRank: 20, isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "and", fryRank: 3, isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "the", fryRank: 1, isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "a", fryRank: 4, isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "is", fryRank: 7, isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 2" },
-      { word: "to", fryRank: 5, isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "he", fryRank: 11, isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "of", fryRank: 6, isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "you", fryRank: 8, isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "Pre-Primer" },
-      { word: "was", fryRank: 12, isHeartWord: true, trickyPart: "\"w\" not taught (Stage 2); \"a\" says /ŭ/ (not /ă/); \"s\" says /z/ — three irregular parts", isNew: false, isUpgrade: false, isDolch: true, dolchLevel: "List 1" },
-      { word: "it", fryRank: 10, isHeartWord: false, trickyPart: null, isNew: true, isUpgrade: false, isDolch: true, dolchLevel: "List 1" }
+      { word: "I", isHeartWord: true, trickyPart: "Says /ī/ (long i), not /ĭ/; always capitalized", isNew: false, isUpgrade: false },
+      { word: "and", isHeartWord: false, trickyPart: null, isNew: false, isUpgrade: false },
+      { word: "the", isHeartWord: true, trickyPart: "\"th\" digraph not taught; \"e\" says /ə/ (schwa)", isNew: false, isUpgrade: false },
+      { word: "a", isHeartWord: true, trickyPart: "Says /ə/ as article, not /ă/", isNew: false, isUpgrade: false },
+      { word: "is", isHeartWord: true, trickyPart: "\"s\" says /z/, not /s/", isNew: false, isUpgrade: false },
+      { word: "to", isHeartWord: true, trickyPart: "\"o\" says /oo/, not /ŏ/ — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "he", isHeartWord: true, trickyPart: "\"e\" says /ē/ (open syllable, long vowel not taught until Stage 3/4)", isNew: false, isUpgrade: false },
+      { word: "of", isHeartWord: true, trickyPart: "\"o\" says /ŭ/ (not /ŏ/); \"f\" says /v/ (not /f/) — permanently irregular", isNew: false, isUpgrade: false },
+      { word: "you", isHeartWord: true, trickyPart: "Entirely irregular — no GPC rule produces /yoo/ from this spelling", isNew: false, isUpgrade: false },
+      { word: "was", isHeartWord: true, trickyPart: "\"w\" not taught (Stage 2); \"a\" says /ŭ/ (not /ă/); \"s\" says /z/ — three irregular parts", isNew: false, isUpgrade: false },
+      { word: "it", isHeartWord: false, trickyPart: null, isNew: true, isUpgrade: false }
     ]
   }
 ];
@@ -682,7 +679,7 @@ const stage4WeeklyData: WeeklyData[] = [
     isMastery: false,
     teachingTips: [
       'ow can say /ō/ (show, grow) — the OTHER sound /ow/ (cow) comes in Stage 6',
-      'o→/ŭ/ is CRITICAL: "o" now has THREE sounds: /ŏ/ (hot), /ō/ (home), /ŭ/ (love, come, some, done, from, mother, other, brother, money). These are Fry top 100 words.'
+      'o→/ŭ/ is CRITICAL: "o" now has THREE sounds: /ŏ/ (hot), /ō/ (home), /ŭ/ (love, come, some, done, from, mother, other, brother, money). These are high-frequency words.'
     ]
   },
   {
@@ -781,8 +778,8 @@ const stage5WeeklyData: WeeklyData[] = [
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '/ar/ — very consistent, always says /ar/ (Fry: 474)',
-      '/er/ — highest frequency r-controlled (Fry: 1,979), "Bossy R changes the vowel sound"'
+      '/ar/ — very consistent, always says /ar/',
+      '/er/ — highest frequency r-controlled vowel, "Bossy R changes the vowel sound"'
     ]
   },
   {
@@ -891,7 +888,7 @@ const stage5WeeklyData: WeeklyData[] = [
       'ear has THREE sounds: /er/ (learn), /ēr/ (hear), /âr/ (bear) — flex pattern!',
       'air says /âr/ (hair, fair) — very consistent',
       'are says /âr/ (care, share) — consistent word-final pattern',
-      'oul says /ʊ/ (could, would, should) — Fry top 100 words, must know!'
+      'oul says /ʊ/ (could, would, should) — high-frequency words, must know!'
     ]
   },
   {
@@ -1318,7 +1315,7 @@ const stage8WeeklyData: WeeklyData[] = [
     teachingTips: [
       'un- means "not" or "opposite" (CORE — most common prefix)',
       're- means "again" (CORE — second most common prefix)',
-      'Fry data: un- and re- together cover 50%+ of all prefixed words!'
+      'Research shows: un- and re- together cover 50%+ of all prefixed words!'
     ]
   },
   {
@@ -1647,7 +1644,7 @@ export default function StageDetailPage() {
         const badge = sw.isNew ? '🆕 ' : sw.isUpgrade ? '⬆️ ' : '';
         const upgradeNote = sw.isUpgrade && !sw.isHeartWord ? ' (Now decodable!)' : '';
         const trickyNote = sw.trickyPart ? ` — ${sw.trickyPart}` : '';
-        pdf.text(`${badge}${status} ${sw.word} (Fry #${sw.fryRank})${upgradeNote}${trickyNote}`, 20, sightWordY);
+        pdf.text(`${badge}${status} ${sw.word}${upgradeNote}${trickyNote}`, 20, sightWordY);
         sightWordY += 6;
       });
       sightWordsHeight = 15 + (sortedSightWords.length * 6);
@@ -2648,7 +2645,6 @@ export default function StageDetailPage() {
                                                 {sw.isHeartWord && <div className="text-[10px] text-gray-500">(has irregular parts)</div>}
                                               </div>
                                             </div>
-                                            <div className="text-[10px] text-gray-600">Fry #{sw.fryRank}</div>
                                             {sw.trickyPart && (
                                               <div className="text-[10px] text-gray-500 mt-1">{sw.trickyPart}</div>
                                             )}

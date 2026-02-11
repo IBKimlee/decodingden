@@ -262,7 +262,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
         brainConnection: "The brain activates multiple pronunciations simultaneously and selects based on meaning—coordinating visual, phonological, and semantic networks. This is the neural signature of a skilled decoder.",
         parentConferenceLine: "Your child is learning to be flexible — when one pronunciation doesn't work, they try another, which is a major sign of reading growth."
       },
-      research_principle: "Fry (2004); NRP (2000); Ehri (2005) - High-frequency vowel teams prioritized; o→/ŭ/ covers 20+ Fry top-100 words",
+      research_principle: "NRP (2000); Ehri (2005) - High-frequency vowel teams prioritized; o→/ŭ/ covers 20+ common words",
       orthographic_mapping: "Vowel teams stored as chunks; flexing strategy develops when patterns have multiple sounds"
     }
   },
@@ -313,7 +313,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
         brainConnection: "Chunking is now primary—'ar' is one unit, not two letters. This consolidation frees working memory for comprehension. Ehri calls this 'sight word reading through phonological mapping.'",
         parentConferenceLine: "Your child is reading faster because their brain now recognizes common patterns like 'ar' and 'or' instantly, as single units."
       },
-      research_principle: "Fry (2004); NRP (2000); UFLI/Wilson - R-controlled vowels essential; W-influence is consistent pattern; oul words are Fry top-100",
+      research_principle: "NRP (2000); UFLI/Wilson - R-controlled vowels essential; W-influence is consistent pattern; oul words are high-frequency",
       orthographic_mapping: "R-controlled patterns stored as units; flex strategy for multi-sound spellings (ear)"
     }
   },
@@ -363,7 +363,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
         brainConnection: "The orthographic lexicon now holds hundreds of patterns. Diphthongs require processing a vowel that changes mid-production—building neural flexibility for the variable patterns ahead.",
         parentConferenceLine: "Your child is handling complex vowel sounds and patterns from other languages — they're approaching grade-level reading fluency."
       },
-      research_principle: "Fry (2004); NRP (2000) - Diphthongs essential for grade-level reading; extended spellings require reading exposure",
+      research_principle: "NRP (2000) - Diphthongs essential for grade-level reading; extended spellings require reading exposure",
       orthographic_mapping: "Diphthongs stored as gliding units; rare spellings (ea→/ā/, oe, eu) learned individually"
     }
   },
@@ -415,7 +415,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
         brainConnection: "The brain maintains multiple pronunciation candidates simultaneously, selecting by meaning. Brain imaging shows activation patterns similar to skilled adult readers at this stage.",
         parentConferenceLine: "Your child can decode almost any word by trying different pronunciations and checking meaning — this is what proficient readers do."
       },
-      research_principle: "Fry (2004); Adams (1990) - Variable patterns essential for grade-level vocabulary; etymology awareness supports spelling",
+      research_principle: "Adams (1990) - Variable patterns essential for grade-level vocabulary; etymology awareness supports spelling",
       orthographic_mapping: "Variable patterns require flexible retrieval; Greek/French origins stored with spelling-meaning connections"
     }
   },
@@ -469,7 +469,7 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
         brainConnection: "The brain processes words through dual routes—phonological decoding AND morphological analysis in parallel. This is why morpheme instruction improves both fluency and vocabulary simultaneously.",
         parentConferenceLine: "Your child is breaking words into meaningful parts — prefixes, suffixes, roots — which builds both reading fluency and vocabulary at the same time."
       },
-      research_principle: "Nagy & Anderson (1984); Treiman (2000); Fry data - un- and re- cover 50%+ of prefixed words; morphology unlocks meaning and spelling",
+      research_principle: "Nagy & Anderson (1984); Treiman (2000) - un- and re- cover 50%+ of prefixed words; morphology unlocks meaning and spelling",
       orthographic_mapping: "Morphemes stored as meaningful chunks; schwa spelling requires related-word strategy"
     },
     phase_split: {
