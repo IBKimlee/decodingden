@@ -5,6 +5,14 @@ import { useRouter, useParams } from 'next/navigation';
 import { EIGHT_STAGE_SYSTEM } from '@/app/data/allStagesDatabase';
 import SimpleAssessmentDownload from '@/app/components/SimpleAssessmentDownload';
 import { jsPDF } from 'jspdf';
+import {
+  getWordsByStage,
+  getHeartWordsByStage,
+  getDecodableWordsByStage,
+  getUpgradesAtStage,
+  getStageSummary,
+  type Core400Word
+} from '@/app/data/core400Words';
 
 // Stage info interface matching TypeScript data structure
 interface StageInfo {
@@ -2041,6 +2049,118 @@ export default function StageDetailPage() {
               <li className="text-sm text-gray-600 leading-relaxed">Progress monitoring every 2 weeks</li>
             </ul>
           </div>
+        </div>
+
+        {/* High-Frequency Words Section - Core 400 Integration */}
+        <div className="bg-white rounded-xl shadow-md border border-gray-200 p-5 mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
+              <span className="text-xl">📚</span>
+              High-Frequency Words for Stage {stageNumber}
+            </h3>
+            <div className="flex items-center gap-4 text-xs text-gray-500">
+              <span><span className="text-green-600">✅</span> Decodable</span>
+              <span><span className="text-red-500">❤️</span> Heart Word</span>
+              <span><span className="text-purple-600">⬆️</span> Upgrade</span>
+            </div>
+          </div>
+
+          {/* Summary Stats */}
+          {(() => {
+            const summary = getStageSummary(stageNumber);
+            const upgrades = getUpgradesAtStage(stageNumber);
+            return (
+              <div className="grid grid-cols-4 gap-3 mb-4">
+                <div className="bg-gray-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-bold text-gray-800">{summary.totalNewWords}</div>
+                  <div className="text-xs text-gray-500">New Words</div>
+                </div>
+                <div className="bg-green-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-bold text-green-700">{summary.decodableCount}</div>
+                  <div className="text-xs text-green-600">Decodable</div>
+                </div>
+                <div className="bg-red-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-bold text-red-600">{summary.heartWordCount}</div>
+                  <div className="text-xs text-red-500">Heart Words</div>
+                </div>
+                <div className="bg-purple-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl font-bold text-purple-700">{upgrades.length}</div>
+                  <div className="text-xs text-purple-600">Upgrades</div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Upgrades Section (if any) */}
+          {getUpgradesAtStage(stageNumber).length > 0 && (
+            <div className="mb-4 p-3 bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg border border-purple-200">
+              <h4 className="text-sm font-bold text-purple-800 mb-2 flex items-center gap-1">
+                <span>⬆️</span> Words That Become Decodable at Stage {stageNumber}
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {getUpgradesAtStage(stageNumber).map((word: Core400Word) => (
+                  <span
+                    key={word.word}
+                    className="inline-flex items-center gap-1 bg-white px-2 py-1 rounded-full text-sm border border-purple-300 text-purple-800"
+                    title={`Was heart word: ${word.trickyPart || 'irregular'}`}
+                  >
+                    <span className="text-purple-500">⬆️</span>
+                    <span className="font-medium">{word.word}</span>
+                    <span className="text-green-500 text-xs">→ ✅</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Decodable Words */}
+          <div className="mb-4">
+            <h4 className="text-sm font-bold text-green-800 mb-2 flex items-center gap-1">
+              <span className="text-green-600">✅</span> Decodable Words ({getDecodableWordsByStage(stageNumber).length})
+            </h4>
+            <div className="flex flex-wrap gap-1.5">
+              {getDecodableWordsByStage(stageNumber).map((word: Core400Word) => (
+                <span
+                  key={word.word}
+                  className="inline-flex items-center bg-green-50 px-2 py-0.5 rounded text-sm border border-green-200 text-green-800 hover:bg-green-100 cursor-default"
+                  title={`Pattern: ${word.pattern}`}
+                >
+                  {word.word}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Heart Words */}
+          {getHeartWordsByStage(stageNumber).length > 0 && (
+            <div>
+              <h4 className="text-sm font-bold text-red-800 mb-2 flex items-center gap-1">
+                <span className="text-red-500">❤️</span> Heart Words ({getHeartWordsByStage(stageNumber).length})
+              </h4>
+              <div className="flex flex-wrap gap-1.5">
+                {getHeartWordsByStage(stageNumber).map((word: Core400Word) => (
+                  <span
+                    key={word.word}
+                    className="group inline-flex items-center bg-red-50 px-2 py-0.5 rounded text-sm border border-red-200 text-red-800 hover:bg-red-100 cursor-help relative"
+                    title={word.trickyPart || 'Irregular spelling'}
+                  >
+                    <span className="mr-1">❤️</span>
+                    {word.word}
+                    {word.upgradesAtStage && (
+                      <span className="ml-1 text-purple-600 text-xs">(→S{word.upgradesAtStage})</span>
+                    )}
+                    {word.isPermanentlyIrregular && (
+                      <span className="ml-1 text-gray-400 text-xs">∞</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                <span className="text-purple-600">(→S#)</span> = upgrades at Stage # |
+                <span className="text-gray-400 ml-1">∞</span> = permanently irregular
+              </p>
+            </div>
+          )}
         </div>
 
         {hasDetailedData ? (
