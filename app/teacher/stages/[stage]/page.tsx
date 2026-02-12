@@ -13,6 +13,11 @@ import {
   getStageSummary,
   type Core400Word
 } from '@/app/data/core400Words';
+import {
+  getLegacySightWordsForWeek,
+  getWeekSummary,
+  type LegacyWeeklySightWord
+} from '@/app/data/core400WeeklyMap';
 
 // Stage info interface matching TypeScript data structure
 interface StageInfo {
@@ -63,7 +68,7 @@ const stage1WeeklyData: WeeklyData[] = [
     phonemes: ['/m/', '/s/', '/ă/'],
     graphemes: ['m', 's', 'a'],
     intensity: ['CORE', 'CORE', 'CORE'],
-    focusWords: ['am', 'Sam', 'as', 'mas'],
+    focusWords: ['am', 'Sam', 'mam'],
     decodableText: 'Mam! Sam! Sam am mas.',
     assessment: 'Daily: letter-sound correspondence',
     isCheckpoint: false,
@@ -83,7 +88,7 @@ const stage1WeeklyData: WeeklyData[] = [
     phonemes: ['/t/', '/n/'],
     graphemes: ['t', 'n'],
     intensity: ['CORE', 'CORE'],
-    focusWords: ['at', 'sat', 'mat', 'man', 'tan', 'ant'],
+    focusWords: ['at', 'sat', 'mat', 'man', 'tan'],
     decodableText: 'The man sat. Sam sat. Sam and the man sat on a tan mat.',
     assessment: 'CHECKPOINT Weeks 1-2',
     isCheckpoint: true,
@@ -148,7 +153,7 @@ const stage1WeeklyData: WeeklyData[] = [
     phonemes: ['/ŏ/', '/l/'],
     graphemes: ['o', 'l'],
     intensity: ['CORE', 'CORE'],
-    focusWords: ['dot', 'pot', 'lot', 'lap', 'lit', 'log', 'flip'],
+    focusWords: ['dot', 'pot', 'lot', 'lap', 'lit', 'log'],
     decodableText: 'I sit by the pot a lot. The pot is hot. Flip the lid.',
     assessment: 'Daily: word chain activity',
     isCheckpoint: false,
@@ -1479,6 +1484,8 @@ export default function StageDetailPage() {
   const [showStudentPhaseModal, setShowStudentPhaseModal] = useState(false);
   const [studentPhaseModalVisible, setStudentPhaseModalVisible] = useState(false);
   const [openSightWordPopover, setOpenSightWordPopover] = useState<number | null>(null);
+  const [highFreqWordsExpanded, setHighFreqWordsExpanded] = useState(false);
+  const [showAllCumulativeWords, setShowAllCumulativeWords] = useState(false);
 
   // Toggle exposure section for a week
   const toggleExposureSection = (weekNum: number, e: React.MouseEvent) => {
@@ -2007,8 +2014,33 @@ export default function StageDetailPage() {
                 </button>
               </p>
             </div>
-            <div className="relative z-50 pr-4">
-              <button 
+            <div className="relative z-50 pr-4 flex items-center gap-3">
+              {/* View Toggle */}
+              {hasDetailedData && (
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => setViewMode('timeline')}
+                    className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
+                      viewMode === 'timeline'
+                        ? 'bg-teal-500 text-white'
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    Grid View
+                  </button>
+                  <button
+                    onClick={() => setViewMode('list')}
+                    className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
+                      viewMode === 'list'
+                        ? 'bg-teal-500 text-white'
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    List View
+                  </button>
+                </div>
+              )}
+              <button
                 onClick={() => router.push('/teacher/stages')}
                 className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg shadow-lg border border-slate-600 transition-all duration-200 font-medium cursor-pointer relative z-50 hover:shadow-xl transform hover:scale-105 hover:-translate-y-0.5"
               >
@@ -2051,156 +2083,101 @@ export default function StageDetailPage() {
           </div>
         </div>
 
-        {/* High-Frequency Words Section - Core 400 Integration */}
-        <div className="bg-white rounded-xl shadow-md border border-gray-200 p-5 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-              <span className="text-xl">📚</span>
-              High-Frequency Words for Stage {stageNumber}
-            </h3>
-            <div className="flex items-center gap-4 text-xs text-gray-500">
-              <span><span className="text-green-600">✅</span> Decodable</span>
-              <span><span className="text-red-500">❤️</span> Heart Word</span>
-              <span><span className="text-purple-600">⬆️</span> Upgrade</span>
-            </div>
-          </div>
-
-          {/* Summary Stats */}
-          {(() => {
-            const summary = getStageSummary(stageNumber);
-            const upgrades = getUpgradesAtStage(stageNumber);
-            return (
-              <div className="grid grid-cols-4 gap-3 mb-4">
-                <div className="bg-gray-50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-gray-800">{summary.totalNewWords}</div>
-                  <div className="text-xs text-gray-500">New Words</div>
-                </div>
-                <div className="bg-green-50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-green-700">{summary.decodableCount}</div>
-                  <div className="text-xs text-green-600">Decodable</div>
-                </div>
-                <div className="bg-red-50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-red-600">{summary.heartWordCount}</div>
-                  <div className="text-xs text-red-500">Heart Words</div>
-                </div>
-                <div className="bg-purple-50 rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold text-purple-700">{upgrades.length}</div>
-                  <div className="text-xs text-purple-600">Upgrades</div>
-                </div>
-              </div>
-            );
-          })()}
-
-          {/* Upgrades Section (if any) */}
-          {getUpgradesAtStage(stageNumber).length > 0 && (
-            <div className="mb-4 p-3 bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg border border-purple-200">
-              <h4 className="text-sm font-bold text-purple-800 mb-2 flex items-center gap-1">
-                <span>⬆️</span> Words That Become Decodable at Stage {stageNumber}
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {getUpgradesAtStage(stageNumber).map((word: Core400Word) => (
-                  <span
-                    key={word.word}
-                    className="inline-flex items-center gap-1 bg-white px-2 py-1 rounded-full text-sm border border-purple-300 text-purple-800"
-                    title={`Was heart word: ${word.trickyPart || 'irregular'}`}
-                  >
-                    <span className="text-purple-500">⬆️</span>
-                    <span className="font-medium">{word.word}</span>
-                    <span className="text-green-500 text-xs">→ ✅</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Decodable Words */}
-          <div className="mb-4">
-            <h4 className="text-sm font-bold text-green-800 mb-2 flex items-center gap-1">
-              <span className="text-green-600">✅</span> Decodable Words ({getDecodableWordsByStage(stageNumber).length})
-            </h4>
-            <div className="flex flex-wrap gap-1.5">
-              {getDecodableWordsByStage(stageNumber).map((word: Core400Word) => (
-                <span
-                  key={word.word}
-                  className="inline-flex items-center bg-green-50 px-2 py-0.5 rounded text-sm border border-green-200 text-green-800 hover:bg-green-100 cursor-default"
-                  title={`Pattern: ${word.pattern}`}
-                >
-                  {word.word}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Heart Words */}
-          {getHeartWordsByStage(stageNumber).length > 0 && (
-            <div>
-              <h4 className="text-sm font-bold text-red-800 mb-2 flex items-center gap-1">
-                <span className="text-red-500">❤️</span> Heart Words ({getHeartWordsByStage(stageNumber).length})
-              </h4>
-              <div className="flex flex-wrap gap-1.5">
-                {getHeartWordsByStage(stageNumber).map((word: Core400Word) => (
-                  <span
-                    key={word.word}
-                    className="group inline-flex items-center bg-red-50 px-2 py-0.5 rounded text-sm border border-red-200 text-red-800 hover:bg-red-100 cursor-help relative"
-                    title={word.trickyPart || 'Irregular spelling'}
-                  >
-                    <span className="mr-1">❤️</span>
-                    {word.word}
-                    {word.upgradesAtStage && (
-                      <span className="ml-1 text-purple-600 text-xs">(→S{word.upgradesAtStage})</span>
+        {/* Heart Words Section - Only irregular words needing memorization (Collapsible) */}
+        <div className="bg-white rounded-xl shadow-md border border-gray-200 mb-6 overflow-hidden">
+          {/* Header - Always Visible */}
+          <button
+            onClick={() => setHighFreqWordsExpanded(!highFreqWordsExpanded)}
+            className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-xl">❤️</span>
+              <h3 className="text-lg font-bold text-gray-800">
+                Heart Words for Stage {stageNumber}
+              </h3>
+              {/* Compact Stats + Intensity Legend */}
+              {(() => {
+                const summary = getStageSummary(stageNumber);
+                const upgrades = getUpgradesAtStage(stageNumber);
+                return (
+                  <div className="flex items-center gap-2 text-sm flex-wrap">
+                    <span className="bg-red-100 px-2 py-0.5 rounded text-red-700">{summary.heartWordCount} heart words</span>
+                    {upgrades.length > 0 && (
+                      <span className="bg-purple-100 px-2 py-0.5 rounded text-purple-700">⬆️ {upgrades.length} upgrade{upgrades.length > 1 ? 's' : ''}</span>
                     )}
-                    {word.isPermanentlyIrregular && (
-                      <span className="ml-1 text-gray-400 text-xs">∞</span>
-                    )}
-                  </span>
-                ))}
-              </div>
-              <p className="text-xs text-gray-500 mt-2">
-                <span className="text-purple-600">(→S#)</span> = upgrades at Stage # |
-                <span className="text-gray-400 ml-1">∞</span> = permanently irregular
-              </p>
+                    <span className="text-xs text-gray-400 hidden sm:inline">|</span>
+                    <span className="text-xs text-gray-500 hidden sm:inline flex items-center gap-1">
+                      <span className="text-amber-500">★</span>CORE
+                      <span className="text-sky-500 ml-2">▲</span>TEACH
+                      <span className="text-gray-400 ml-2">○</span>EXPOSURE
+                    </span>
+                  </div>
+                );
+              })()}
+            </div>
+            <span className={`text-gray-400 text-sm transition-transform duration-200 ${highFreqWordsExpanded ? 'rotate-180' : ''}`}>
+              ▼
+            </span>
+          </button>
+
+          {/* Expanded Content */}
+          {highFreqWordsExpanded && (
+            <div className="p-5 pt-0 border-t border-gray-100">
+              {/* Upgrades Section (if any) */}
+              {getUpgradesAtStage(stageNumber).length > 0 && (
+                <div className="mb-4 p-3 bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg border border-purple-200">
+                  <h4 className="text-sm font-bold text-purple-800 mb-2 flex items-center gap-1">
+                    <span>⬆️</span> Heart Words That Become Decodable at Stage {stageNumber}
+                  </h4>
+                  <p className="text-xs text-purple-600 mb-2">These words were heart words but now can be fully decoded!</p>
+                  <div className="flex flex-wrap gap-2">
+                    {getUpgradesAtStage(stageNumber).map((word: Core400Word) => (
+                      <span
+                        key={word.word}
+                        className="inline-flex items-center gap-1 bg-white px-2 py-1 rounded-full text-sm border border-purple-300 text-purple-800"
+                        title={`Was heart word: ${word.trickyPart || 'irregular'}`}
+                      >
+                        <span className="font-medium">{word.word}</span>
+                        <span className="text-green-500 text-xs">→ decodable!</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Heart Words */}
+              {getHeartWordsByStage(stageNumber).length > 0 && (
+                <div className="pt-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {getHeartWordsByStage(stageNumber).map((word: Core400Word) => (
+                      <span
+                        key={word.word}
+                        className="group inline-flex items-center bg-red-50 px-2 py-0.5 rounded text-sm border border-red-200 text-red-800 hover:bg-red-100 cursor-help relative"
+                        title={word.trickyPart || 'Irregular spelling'}
+                      >
+                        <span className="mr-1">❤️</span>
+                        {word.word}
+                        {word.upgradesAtStage && (
+                          <span className="ml-1 text-purple-600 text-xs">(→S{word.upgradesAtStage})</span>
+                        )}
+                        {word.isPermanentlyIrregular && (
+                          <span className="ml-1 text-gray-400 text-xs">∞</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">
+                    <span className="text-purple-600">(→S#)</span> = becomes decodable at Stage # |
+                    <span className="text-gray-400 ml-1">∞</span> = permanently irregular
+                  </p>
+                </div>
+              )}
             </div>
           )}
         </div>
 
         {hasDetailedData ? (
           <>
-            {/* Controls Row: Intensity Legend + View Toggle */}
-            <div className="flex justify-between items-center py-2 px-4 bg-stone-100 rounded-lg mb-4">
-              {/* Left side: Intensity legend */}
-              <div className="flex items-center gap-4 text-xs text-gray-600">
-                <span className="text-amber-500">★</span>
-                <span>CORE — drill to automaticity</span>
-                <span className="text-sky-500">▲</span>
-                <span>TEACH — explicit instruction</span>
-                <span className="text-gray-400">○</span>
-                <span>EXPOSURE — encounter in reading</span>
-              </div>
-
-              {/* Right side: View toggle */}
-              <div className="flex gap-1">
-                <button
-                  onClick={() => setViewMode('timeline')}
-                  className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
-                    viewMode === 'timeline'
-                      ? 'bg-teal-600 text-white'
-                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-100'
-                  }`}
-                >
-                  Grid View
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={`text-xs px-3 py-1.5 rounded-md transition-colors ${
-                    viewMode === 'list'
-                      ? 'bg-teal-600 text-white'
-                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-100'
-                  }`}
-                >
-                  List View
-                </button>
-              </div>
-            </div>
 
             {/* Stage 8 Instructional Shift Banner */}
             {stageNumber === 8 && (
@@ -2258,11 +2235,17 @@ export default function StageDetailPage() {
                         <span className="font-bold text-green-700 text-xs uppercase tracking-wide">Phonemes</span>
                       </div>
                       <div className="h-16 flex flex-col gap-0.5 justify-start mt-1">
-                        {week.phonemes.map((phoneme, idx) => (
-                          <span key={idx} className="bg-emerald-100 border border-emerald-400 px-2 py-0.5 rounded-md text-xs font-semibold text-emerald-800 text-center leading-tight shadow-sm flex items-center justify-center">
-                            {phoneme}
-                          </span>
-                        ))}
+                        {week.phonemes.map((phoneme, idx) => {
+                          const intensity = week.intensity?.[idx] || 'CORE';
+                          const intensitySymbol = intensity === 'CORE' ? '★' : intensity === 'TEACH' ? '▲' : '○';
+                          const intensityColor = intensity === 'CORE' ? 'text-amber-500' : intensity === 'TEACH' ? 'text-sky-500' : 'text-gray-400';
+                          return (
+                            <span key={idx} className="bg-emerald-100 border border-emerald-400 px-2 py-0.5 rounded-md text-xs font-semibold text-emerald-800 text-center leading-tight shadow-sm flex items-center justify-center gap-1">
+                              <span className={`text-[10px] ${intensityColor}`}>{intensitySymbol}</span>
+                              {phoneme}
+                            </span>
+                          );
+                        })}
                       </div>
 
                       <div className="h-5 flex items-center justify-center mt-2">
@@ -2358,7 +2341,7 @@ export default function StageDetailPage() {
                       })()}
                     </h2>
                     <button
-                      onClick={() => { setSelectedWeek(null); setOpenSightWordPopover(null); }}
+                      onClick={() => { setSelectedWeek(null); setOpenSightWordPopover(null); setShowAllCumulativeWords(false); }}
                       className={stageNumber === 1
                         ? 'text-slate-600 hover:text-slate-800 text-2xl'
                         : 'text-mossGray hover:text-pineShadow text-2xl'
@@ -2675,8 +2658,12 @@ export default function StageDetailPage() {
                                 week.phonemes.map((phoneme, i) => {
                                   const grapheme = week.graphemes[i]?.toLowerCase() || '';
                                   const isVowel = ['a', 'e', 'i', 'o', 'u'].includes(grapheme);
+                                  const intensity = week.intensity?.[i] || 'CORE';
+                                  const intensitySymbol = intensity === 'CORE' ? '★' : intensity === 'TEACH' ? '▲' : '○';
+                                  const intensityColor = intensity === 'CORE' ? 'text-amber-500' : intensity === 'TEACH' ? 'text-sky-500' : 'text-gray-400';
                                   return (
                                     <div key={i} className="flex items-center justify-start min-w-0 gap-2">
+                                      <span className={`text-sm ${intensityColor}`} title={intensity}>{intensitySymbol}</span>
                                       <span className={`text-lg font-bold w-12 text-left font-mono ${
                                         stageNumber === 1 ? 'text-slate-800' : 'text-forestGreen'
                                       }`}>{phoneme}</span>
@@ -2693,91 +2680,160 @@ export default function StageDetailPage() {
                           
                           <div className="bg-gradient-to-br from-emerald-300/20 to-emerald-400/25 rounded-lg p-4 h-full border border-emerald-400 shadow-xl relative overflow-hidden">
                             <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-600"></div>
-                            <h3 className="font-bold text-lg mb-2 text-black">Focus Words</h3>
-                            <div className={
-                              (selectedWeek === 10 && stageNumber === 1) ? "grid grid-cols-5 gap-1" : "grid grid-cols-4 gap-2"
-                            }>
-                              {week.focusWords.map((word, i) => (
-                                <span key={i} className={
-                                  (selectedWeek === 10 && stageNumber === 1)
-                                    ? "px-2 py-1 bg-white rounded-lg font-medium text-center text-sm border border-slate-200 min-w-0" 
-                                    : "px-2 py-1 bg-white rounded-lg font-medium text-center text-sm border border-slate-200"
-                                } style={{
-                                  borderColor: 'rgba(47, 95, 95, 0.2)',
-                                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)'
-                                }}>
-                                  {word.split('').map((letter, idx) => (
-                                    <span key={idx} style={{
-                                      color: ['a', 'e', 'i', 'o', 'u'].includes(letter.toLowerCase()) ? '#dc2626' : '#1e293b'
-                                    }}>
-                                      {letter}
+                            {(() => {
+                              // Get cumulative focus words from week 1 through current week
+                              const cumulativeFocusWords: { word: string; isNew: boolean }[] = [];
+                              const seenWords = new Set<string>();
+
+                              for (let w = 1; w <= week.week; w++) {
+                                const weekData = weeklyData.find(wd => wd.week === w);
+                                if (weekData) {
+                                  weekData.focusWords.forEach(word => {
+                                    if (!seenWords.has(word.toLowerCase())) {
+                                      seenWords.add(word.toLowerCase());
+                                      cumulativeFocusWords.push({
+                                        word,
+                                        isNew: w === week.week
+                                      });
+                                    }
+                                  });
+                                }
+                              }
+
+                              const newCount = cumulativeFocusWords.filter(w => w.isNew).length;
+
+                              return (
+                                <>
+                                  <h3 className="font-bold text-lg mb-2 text-black flex items-center gap-2">
+                                    Decodable Words
+                                    <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-normal">
+                                      {cumulativeFocusWords.length} total
                                     </span>
-                                  ))}
-                                </span>
-                              ))}
-                            </div>
-                            
-                            {/* Sight / Heart Words Section */}
-                            {week.sightWords && week.sightWords.length > 0 && (
-                              <>
-                                <h3 className="font-bold text-lg mb-2 mt-4 text-black">
-                                  Sight / Heart Words
-                                </h3>
-                                <div className={
-                                  (selectedWeek === 10 && stageNumber === 1) ? "grid grid-cols-5 gap-1" : "grid grid-cols-4 gap-2"
-                                }>
-                                  {/* Sort: NEW first, then UPGRADE, then REVIEW */}
-                                  {[...week.sightWords]
-                                    .sort((a, b) => {
-                                      if (a.isNew && !b.isNew) return -1;
-                                      if (!a.isNew && b.isNew) return 1;
-                                      if (a.isUpgrade && !b.isUpgrade) return -1;
-                                      if (!a.isUpgrade && b.isUpgrade) return 1;
-                                      return 0;
-                                    })
-                                    .map((sw, i) => (
-                                      <div key={i} className="relative">
-                                        <button
-                                          onClick={(e) => {
-                                            e.stopPropagation();
-                                            setOpenSightWordPopover(openSightWordPopover === i ? null : i);
-                                          }}
-                                          className={
-                                            (selectedWeek === 10 && stageNumber === 1)
-                                              ? "w-full px-2 py-1 bg-blue-50 rounded-lg font-medium text-center text-sm border border-blue-200 text-blue-600 min-w-0 cursor-pointer hover:bg-blue-100 transition-colors"
-                                              : "w-full px-2 py-1 bg-blue-50 rounded-lg font-medium text-center text-sm border border-blue-200 text-blue-600 cursor-pointer hover:bg-blue-100 transition-colors"
-                                          }
-                                          style={{
-                                            boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)'
-                                          }}
-                                        >
-                                          <span className="text-[10px] mr-0.5">{sw.isHeartWord ? '❤️' : '✅'}</span>
-                                          {sw.word}
-                                        </button>
-                                        {/* Popover on click - positioned to the right */}
-                                        {openSightWordPopover === i && (
-                                          <div className="absolute left-full ml-2 bottom-0 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-50 min-w-[180px] max-w-[250px]">
-                                            <div className="flex items-start gap-1 mb-1">
-                                              <span className="text-sm">{sw.isHeartWord ? '❤️' : '✅'}</span>
-                                              <div>
-                                                <div className="text-xs font-medium">{sw.isHeartWord ? 'Heart word' : 'Fully decodable'}</div>
-                                                {sw.isHeartWord && <div className="text-[10px] text-gray-500">(has irregular parts)</div>}
-                                              </div>
-                                            </div>
-                                            {sw.trickyPart && (
-                                              <div className="text-[10px] text-gray-500 mt-1">{sw.trickyPart}</div>
-                                            )}
-                                            {sw.isUpgrade && !sw.isHeartWord && (
-                                              <div className="text-[10px] text-green-600 mt-1 font-medium">Now decodable!</div>
-                                            )}
-                                          </div>
-                                        )}
-                                      </div>
+                                    {newCount > 0 && (
+                                      <span className="text-xs bg-green-200 text-green-800 px-2 py-0.5 rounded-full font-normal">
+                                        +{newCount} new
+                                      </span>
+                                    )}
+                                  </h3>
+                                  <div className={
+                                    cumulativeFocusWords.length > 20 ? "grid grid-cols-5 gap-1" : "grid grid-cols-4 gap-2"
+                                  }>
+                                    {cumulativeFocusWords.map((item, i) => (
+                                      <span key={i} className={`px-2 py-1 rounded-lg font-medium text-center text-sm border ${
+                                        item.isNew
+                                          ? 'bg-amber-50 border-amber-300'
+                                          : 'bg-white border-slate-200'
+                                      }`} style={{
+                                        boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)'
+                                      }}>
+                                        {item.word.split('').map((letter, idx) => (
+                                          <span key={idx} style={{
+                                            color: ['a', 'e', 'i', 'o', 'u'].includes(letter.toLowerCase()) ? '#dc2626' : '#1e293b'
+                                          }}>
+                                            {letter}
+                                          </span>
+                                        ))}
+                                      </span>
                                     ))}
-                                </div>
-                              </>
-                            )}
+                                  </div>
+                                </>
+                              );
+                            })()}
+                            
+                            {/* Heart Words Section - Only irregular words needing memorization */}
+                            {(() => {
+                              const weekSightWords = getLegacySightWordsForWeek(stageNumber, week.week);
+
+                              // Filter to only heart words (irregular words needing memorization)
+                              const allHeartWords = weekSightWords.filter(w => w.isHeartWord);
+                              if (allHeartWords.length === 0) return null;
+
+                              // Separate new heart words from review heart words
+                              const newHeartWords = allHeartWords.filter(w => w.isNew);
+                              const reviewHeartWords = allHeartWords.filter(w => !w.isNew);
+
+                              // Determine which words to display
+                              const wordsToDisplay = showAllCumulativeWords ? allHeartWords : newHeartWords;
+
+                              return (
+                                <>
+                                  <h3 className="font-bold text-lg mb-2 mt-4 text-black flex items-center gap-2 flex-wrap">
+                                    <span>❤️</span> Heart Words
+                                    {week.week <= 7 && newHeartWords.length > 0 && (
+                                      <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-normal">
+                                        +{newHeartWords.length} new
+                                      </span>
+                                    )}
+                                    {/* Toggle for cumulative heart words */}
+                                    {reviewHeartWords.length > 0 && (
+                                      <button
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setShowAllCumulativeWords(!showAllCumulativeWords);
+                                        }}
+                                        className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-normal hover:bg-gray-200 transition-colors ml-auto"
+                                      >
+                                        {showAllCumulativeWords
+                                          ? 'Show new only'
+                                          : `Show all (${allHeartWords.length})`
+                                        }
+                                      </button>
+                                    )}
+                                  </h3>
+
+                                  {/* Heart Words display */}
+                                  {wordsToDisplay.length > 0 ? (
+                                    <div className="grid grid-cols-4 gap-2">
+                                      {wordsToDisplay.map((sw, i) => (
+                                        <div key={i} className="relative">
+                                          <button
+                                            onClick={(e) => {
+                                              e.stopPropagation();
+                                              setOpenSightWordPopover(openSightWordPopover === i ? null : i);
+                                            }}
+                                            className={`w-full px-2 py-1 rounded-lg font-medium text-center text-sm border cursor-pointer transition-colors ${
+                                              sw.isNew
+                                                ? 'bg-white border-blue-400 text-blue-600 font-bold hover:bg-blue-50'
+                                                : 'bg-white border-blue-200 text-blue-600 hover:bg-blue-50'
+                                            }`}
+                                            style={{
+                                              boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1)'
+                                            }}
+                                          >
+                                            <span className="text-[10px] mr-0.5">❤️</span>
+                                            {sw.word}
+                                          </button>
+                                          {/* Popover on click */}
+                                          {openSightWordPopover === i && (
+                                            <div className="absolute left-full ml-2 bottom-0 bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-50 min-w-[180px] max-w-[250px]">
+                                              <div className="flex items-start gap-1 mb-1">
+                                                <span className="text-sm">❤️</span>
+                                                <div>
+                                                  <div className="text-xs font-medium">Heart word</div>
+                                                  <div className="text-[10px] text-gray-500">(has irregular parts - memorize)</div>
+                                                </div>
+                                              </div>
+                                              {sw.isNew && (
+                                                <div className="text-[10px] text-red-600 mt-1 font-medium">New this week!</div>
+                                              )}
+                                              {sw.trickyPart && (
+                                                <div className="text-[10px] text-gray-600 mt-1 border-t pt-1">
+                                                  <strong>Tricky part:</strong> {sw.trickyPart}
+                                                </div>
+                                              )}
+                                            </div>
+                                          )}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  ) : (
+                                    <p className="text-sm text-gray-500 italic">
+                                      No new heart words this week
+                                    </p>
+                                  )}
+                                </>
+                              );
+                            })()}
                           </div>
                         </div>
                         
