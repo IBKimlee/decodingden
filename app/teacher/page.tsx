@@ -14,15 +14,18 @@ export default function TeacherPortal() {
 
   // Redirect based on auth status
   useEffect(() => {
+    console.log('[TeacherPortal] useEffect check:', { authLoading, isTeacher, teacherApproved: teacher?.is_approved });
     if (authLoading) return;
 
     if (!isTeacher) {
+      console.log('[TeacherPortal] Not a teacher, redirecting to /');
       router.push('/');
       return;
     }
 
     // Check if teacher is approved
     if (teacher && !teacher.is_approved) {
+      console.log('[TeacherPortal] Teacher not approved, redirecting to /pending-approval');
       router.push('/pending-approval');
       return;
     }

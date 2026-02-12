@@ -35,18 +35,23 @@ export default function TwoPortalLogin() {
   const handleTeacherSignIn = async () => {
     if (!email || !password) return;
 
+    console.log('[AUTH] Starting sign in...');
     setIsLoading(true);
     setError(null);
 
     try {
       const { error } = await signInAsTeacher(email, password);
+      console.log('[AUTH] signInAsTeacher result:', { error: error?.message || 'none' });
       if (error) {
+        console.log('[AUTH] Error occurred:', error.message);
         setError(error.message);
         setIsLoading(false);
       } else {
+        console.log('[AUTH] Success! Redirecting to /teacher...');
         router.push('/teacher');
       }
     } catch (err: any) {
+      console.log('[AUTH] Caught exception:', err);
       setError(err.message || 'Sign in failed.');
       setIsLoading(false);
     }
@@ -136,6 +141,7 @@ export default function TwoPortalLogin() {
           ) : activePortal === 'teacher' ? (
             <div className="w-full">
               <button
+                type="button"
                 onClick={() => { setActivePortal(null); resetForms(); }}
                 className="text-[10px] text-white/70 hover:text-white mb-1"
               >
@@ -146,7 +152,7 @@ export default function TwoPortalLogin() {
                 <div className="text-xs text-red-200 mb-1">{error}</div>
               )}
 
-              <div className="space-y-1.5">
+              <form onSubmit={(e) => { e.preventDefault(); handleTeacherSignIn(); }} className="space-y-1.5">
                 <input
                   type="email"
                   value={email}
@@ -164,14 +170,13 @@ export default function TwoPortalLogin() {
                   placeholder="Password"
                 />
                 <button
-                  type="button"
-                  onClick={handleTeacherSignIn}
+                  type="submit"
                   disabled={isLoading || !email || !password}
                   className="w-full py-1.5 bg-white/90 text-emerald-700 rounded-lg font-medium text-sm hover:bg-white transition-colors disabled:opacity-50"
                 >
                   {isLoading ? 'Signing in...' : 'Sign In'}
                 </button>
-              </div>
+              </form>
             </div>
           ) : (
             <div className="w-full">

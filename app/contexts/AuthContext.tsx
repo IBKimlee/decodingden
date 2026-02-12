@@ -149,15 +149,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     email: string,
     password: string
   ): Promise<{ error: Error | null }> => {
+    console.log('[AuthContext] signInAsTeacher starting...');
     setIsLoading(true);
     try {
       const { user: authUser, teacher: teacherData, error } = await signInTeacher(email, password);
+      console.log('[AuthContext] signInTeacher result:', {
+        hasUser: !!authUser,
+        hasTeacher: !!teacherData,
+        teacherApproved: teacherData?.is_approved,
+        error: error?.message
+      });
 
       if (error) {
+        console.log('[AuthContext] Returning error:', error.message);
         return { error: error as Error };
       }
 
       if (authUser) {
+        console.log('[AuthContext] Setting user, teacher, role=teacher');
         setUser(authUser);
         setTeacher(teacherData);
         setUserRole('teacher');
@@ -166,6 +175,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem(STUDENT_STORAGE_KEY);
       }
 
+      console.log('[AuthContext] Returning success');
       return { error: null };
     } finally {
       setIsLoading(false);
