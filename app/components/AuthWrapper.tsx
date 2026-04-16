@@ -32,19 +32,16 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
 
   // Handle redirects after auth loading completes
   useEffect(() => {
-    console.log('[AuthWrapper] useEffect check:', { isLoading, userRole, pathname });
     if (isLoading) return;
 
     // Teacher routes require teacher login
     if (isTeacherRoute(pathname) && userRole !== 'teacher') {
-      console.log('[AuthWrapper] Teacher route but userRole is:', userRole, '- redirecting to /');
       router.push('/');
       return;
     }
 
     // Student routes require student login
     if (isStudentRoute(pathname) && userRole !== 'student') {
-      console.log('[AuthWrapper] Student route but userRole is:', userRole, '- redirecting to /');
       router.push('/');
       return;
     }

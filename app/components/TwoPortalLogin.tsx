@@ -35,23 +35,18 @@ export default function TwoPortalLogin() {
   const handleTeacherSignIn = async () => {
     if (!email || !password) return;
 
-    console.log('[AUTH] Starting sign in...');
     setIsLoading(true);
     setError(null);
 
     try {
       const { error } = await signInAsTeacher(email, password);
-      console.log('[AUTH] signInAsTeacher result:', { error: error?.message || 'none' });
       if (error) {
-        console.log('[AUTH] Error occurred:', error.message);
         setError(error.message);
         setIsLoading(false);
       } else {
-        console.log('[AUTH] Success! Redirecting to /teacher...');
         router.push('/teacher');
       }
     } catch (err: any) {
-      console.log('[AUTH] Caught exception:', err);
       setError(err.message || 'Sign in failed.');
       setIsLoading(false);
     }
