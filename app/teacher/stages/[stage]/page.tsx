@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { EIGHT_STAGE_SYSTEM } from '@/app/data/allStagesDatabase';
 import SimpleAssessmentDownload from '@/app/components/SimpleAssessmentDownload';
 import { jsPDF } from 'jspdf';
+import { registerPdfUnicodeFont, PDF_FONT_FAMILY } from '@/app/utils/pdfFonts';
 import {
   getWordsByStage,
   getHeartWordsByStage,
@@ -1520,12 +1521,13 @@ export default function StageDetailPage() {
   };
 
   // Download week resources function
-  const handleDownloadWeekResources = (weekNumber: number) => {
+  const handleDownloadWeekResources = async (weekNumber: number) => {
     const weekData = weeklyData.find(week => week.week === weekNumber);
     if (!weekData) return;
 
     // Create PDF
     const pdf = new jsPDF();
+    await registerPdfUnicodeFont(pdf);
     
     // Define colors
     const primaryColor: [number, number, number] = [74, 144, 164]; // oceanBlue
@@ -1549,7 +1551,7 @@ export default function StageDetailPage() {
 
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(18);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text(`Stage ${stageNumber} - ${weekLabel}`, 105, 12, { align: 'center' });
 
     pdf.setFontSize(12);
@@ -1571,7 +1573,7 @@ export default function StageDetailPage() {
     // Teacher Section Header
     pdf.setTextColor(...textColor);
     pdf.setFontSize(16);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Teacher Guide', 20, 50);
 
     // This Week's Focus
@@ -1582,7 +1584,7 @@ export default function StageDetailPage() {
     pdf.text('This Week\'s Focus', 20, 60);
 
     pdf.setTextColor(...textColor);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(11);
     pdf.text(`Phonemes: ${weekData.phonemes.join(', ')}`, 20, 70);
 
@@ -1604,11 +1606,11 @@ export default function StageDetailPage() {
     pdf.rect(15, 90, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Teaching Tips', 20, 95);
 
     pdf.setTextColor(...textColor);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(10);
     const tips = weekData.teachingTips;
     let yPos = 105;
@@ -1622,11 +1624,11 @@ export default function StageDetailPage() {
     pdf.rect(15, yPos + 5, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Assessment', 20, yPos + 10);
     
     pdf.setTextColor(...textColor);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(10);
     pdf.text(weekData.assessment, 20, yPos + 20);
 
@@ -1637,11 +1639,11 @@ export default function StageDetailPage() {
       pdf.rect(15, yPos + 30, 180, 8, 'F');
       pdf.setTextColor(255, 255, 255);
       pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'bold');
+      pdf.setFont(PDF_FONT_FAMILY, 'bold');
       pdf.text('Sight / Heart Words', 20, yPos + 35);
 
       pdf.setTextColor(...textColor);
-      pdf.setFont('helvetica', 'normal');
+      pdf.setFont(PDF_FONT_FAMILY, 'normal');
       pdf.setFontSize(10);
 
       let sightWordY = yPos + 45;
@@ -1670,11 +1672,11 @@ export default function StageDetailPage() {
     pdf.rect(15, yPos + 30 + sightWordsHeight, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Quick Activities', 20, yPos + 35 + sightWordsHeight);
 
     pdf.setTextColor(...textColor);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(10);
     const activities = [
       'Sound Hunt: Find objects that start with this week\'s sounds',
@@ -1702,7 +1704,7 @@ export default function StageDetailPage() {
     
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Student Practice Sheet', 105, 11, { align: 'center' });
     pdf.setFontSize(10);
     pdf.text(`Week ${weekNumber}`, 105, 16, { align: 'center' });
@@ -1713,7 +1715,7 @@ export default function StageDetailPage() {
     
     // Name and Date
     pdf.setTextColor(...textColor);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(11);
     pdf.text('Name: ________________________________', 20, currentY);
     pdf.text('Date: _______________', 140, currentY);
@@ -1729,9 +1731,9 @@ export default function StageDetailPage() {
     pdf.rect(15, focusBoxY, 180, focusBoxHeight, 'S');
     
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('This Week I\'m Learning:', 20, focusBoxY + 8);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(11);
     pdf.text(`Sounds: ${weekData.phonemes.join(', ')}`, 20, focusBoxY + 16);
     pdf.text(`Letters: ${weekData.graphemes.join(', ')}`, 20, focusBoxY + 22);
@@ -1754,9 +1756,9 @@ export default function StageDetailPage() {
     pdf.rect(15, goalBoxY, 180, goalBoxHeight, 'S');
     
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('My Learning Goal:', 20, goalBoxY + 8);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(11);
     
     pdf.text(learningGoal, 20, goalBoxY + 16, { maxWidth: 170 });
@@ -1765,7 +1767,7 @@ export default function StageDetailPage() {
     
     // Practice Words
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Practice Words:', 20, currentY);
     
     currentY += 13;
@@ -1803,7 +1805,7 @@ export default function StageDetailPage() {
     let wordY = currentY;
     let maxWordY = wordY;
     
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(fontSize);
     words.forEach((word, index) => {
       if (index > 0 && index % wordsPerRow === 0) {
@@ -1821,7 +1823,7 @@ export default function StageDetailPage() {
     
     // Read This Sentence
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Read This Sentence:', 20, currentY);
     
     currentY += 5;
@@ -1829,7 +1831,7 @@ export default function StageDetailPage() {
     const sentenceBoxY = currentY;
     
     // Set font before calculating text wrap
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(10);
     
     // Split text to fit within box width (170 allows for padding)
@@ -1856,7 +1858,7 @@ export default function StageDetailPage() {
     
     // Write Your Own Words
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Write Your Own Words:', 20, currentY);
     
     currentY += 12;
@@ -1882,19 +1884,19 @@ export default function StageDetailPage() {
     pdf.rect(15, homeConnectionY, 180, 8, 'F');
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('Home Connection', 20, homeConnectionY + 5);
     
     pdf.setTextColor(...textColor);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     pdf.setFontSize(10);
     pdf.text('Dear Families,', 20, homeConnectionY + 13);
     pdf.text(`This week we are working on the sounds ${weekData.phonemes.join(' and ')}`, 20, homeConnectionY + 20);
     pdf.text(`written as ${weekData.graphemes.join(' and ')}.`, 20, homeConnectionY + 27);
     
-    pdf.setFont('helvetica', 'bold');
+    pdf.setFont(PDF_FONT_FAMILY, 'bold');
     pdf.text('At home you can:', 20, homeConnectionY + 35);
-    pdf.setFont('helvetica', 'normal');
+    pdf.setFont(PDF_FONT_FAMILY, 'normal');
     const homeActivities = [
       'Practice the focus words during daily activities',
       'Point out these letters in books and signs',

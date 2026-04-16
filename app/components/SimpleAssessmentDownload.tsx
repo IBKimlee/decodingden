@@ -3,6 +3,7 @@
 import React from 'react';
 import jsPDF from 'jspdf';
 import { getAssessmentByWeek } from '../data/assessmentDatabase';
+import { registerPdfUnicodeFont, PDF_FONT_FAMILY } from '../utils/pdfFonts';
 
 interface SimpleAssessmentDownloadProps {
   week: number;
@@ -19,15 +20,16 @@ export default function SimpleAssessmentDownload({
   const isCheckpointWeek = [2, 4, 6, 8, 10].includes(week);
   const assessment = isCheckpointWeek ? getAssessmentByWeek(week, stageNumber) : null;
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!assessment) return;
 
     try {
       const doc = new jsPDF();
-      
+      await registerPdfUnicodeFont(doc);
+
       // Title
       doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
+      doc.setFont(PDF_FONT_FAMILY, 'bold');
       const weekText = week === 2 ? '(Week 1 and 2)' : 
                        week === 4 ? '(Week 1-4)' : 
                        week === 6 ? '(Week 1-6)' : 
@@ -37,7 +39,7 @@ export default function SimpleAssessmentDownload({
       
       // Student info line
       doc.setFontSize(11);
-      doc.setFont('helvetica', 'normal');
+      doc.setFont(PDF_FONT_FAMILY, 'normal');
       doc.text('Student: __________________________ Date: ___________ Score: ___/' + assessment.total_points, 20, 35);
       
       // Table layout for assessments
@@ -57,13 +59,13 @@ export default function SimpleAssessmentDownload({
         doc.rect(105, yPos, 85, 40);
         
         // Headers
-        doc.setFont('helvetica', 'bold');
+        doc.setFont(PDF_FONT_FAMILY, 'bold');
         doc.setFontSize(12);
         doc.text('Letter Identification', 25, yPos + 10);
         doc.text('Sound Production', 110, yPos + 10);
         
         // Content
-        doc.setFont('helvetica', 'normal');
+        doc.setFont(PDF_FONT_FAMILY, 'normal');
         doc.setFontSize(11);
         const letters = letterIdQuestions.map(q => q.stimulus).join(' , ');
         const sounds = soundQuestions.map(q => q.stimulus).join(' , ');
@@ -85,13 +87,13 @@ export default function SimpleAssessmentDownload({
         doc.rect(105, yPos, 85, tableHeight);
         
         // Headers
-        doc.setFont('helvetica', 'bold');
+        doc.setFont(PDF_FONT_FAMILY, 'bold');
         doc.setFontSize(12);
         doc.text('Segmentation', 25, yPos + 10);
         doc.text('Word Reading', 110, yPos + 10);
         
         // Content
-        doc.setFont('helvetica', 'normal');
+        doc.setFont(PDF_FONT_FAMILY, 'normal');
         doc.setFontSize(9); // Smaller font for 3-column layout
         
         // Segmentation section - 3 columns
@@ -133,12 +135,12 @@ export default function SimpleAssessmentDownload({
         doc.rect(20, yPos, 170, spellingHeight);
         
         // Header
-        doc.setFont('helvetica', 'bold');
+        doc.setFont(PDF_FONT_FAMILY, 'bold');
         doc.setFontSize(12);
         doc.text('Spelling', 25, yPos + 10);
         
         // Content
-        doc.setFont('helvetica', 'normal');
+        doc.setFont(PDF_FONT_FAMILY, 'normal');
         doc.setFontSize(10); // Smaller font for 4 columns
         let spellingY = yPos + 22;
         const columnWidth = 160 / columnsNeeded; // Distribute width evenly
@@ -154,7 +156,7 @@ export default function SimpleAssessmentDownload({
       }
       
       // Notes section - moved up
-      doc.setFont('helvetica', 'bold');
+      doc.setFont(PDF_FONT_FAMILY, 'bold');
       doc.setFontSize(12);
       doc.text('Notes:', 20, yPos + 5);
       

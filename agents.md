@@ -41,11 +41,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Site Access
 
-### Password Protection
-The site is password protected. Users must enter the correct password to access any part of the application.
-- **Site Password**: `177617761314!`
-- Authentication is handled via client-side password verification
-- Session is persisted in localStorage for user convenience
+### Authentication
+The site uses Supabase authentication with two portals:
+- **Teacher portal**: email + password login (accounts require admin approval via `is_approved` flag on the `teachers` table)
+- **Student portal**: 6-digit login code (stored on the `students` table)
+
+Landing page `/` is public. Role-based routing is enforced by `app/components/AuthWrapper.tsx`.
 
 ## Commands
 
