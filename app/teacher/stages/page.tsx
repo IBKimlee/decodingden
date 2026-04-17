@@ -5,6 +5,28 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { EIGHT_STAGE_SYSTEM, STAGE_PHONEME_SAMPLES } from '../../data/allStagesDatabase';
+import {
+  stage1WeeklyData,
+  stage2WeeklyData,
+  stage3WeeklyData,
+  stage4WeeklyData,
+  stage5WeeklyData,
+  stage6WeeklyData,
+  stage7WeeklyData,
+  stage8WeeklyData,
+  type WeeklyData,
+} from '@/app/data/stagesWeeklyData';
+
+const STAGE_WEEKLY_DATA: WeeklyData[][] = [
+  stage1WeeklyData,
+  stage2WeeklyData,
+  stage3WeeklyData,
+  stage4WeeklyData,
+  stage5WeeklyData,
+  stage6WeeklyData,
+  stage7WeeklyData,
+  stage8WeeklyData,
+];
 
 // DD23 CSS Animations for sophisticated tooltips
 const fadeInStyle = {
@@ -129,138 +151,31 @@ export default function TeachingStages() {
     router.push(`/teacher/stages/${stageNumber}`);
   };
 
-  // DD23 getWeeklyPhonemes function for sophisticated duration modal
+  // v4.1: derive Duration modal data from the same weeklyData that powers the stage detail pages
+  // This ensures Duration modal, stage detail page, and header counts are always in sync.
   const getWeeklyPhonemes = (stageNumber: number) => {
-    const stagePhonemes = {
-      1: [
-        // Week 1: First phonemes taught
-        { week: 1, phonemes: ['/m/', '/s/', '/a/'], graphemes: ['m', 's', 'a'], examples: ['mat', 'sad', 'am'], frequency: '90.9%', type: 'foundation' },
-        // Week 2: Next phonemes
-        { week: 2, phonemes: ['/t/', '/n/'], graphemes: ['t', 'n'], examples: ['top', 'nap'], frequency: '93.7%', type: 'foundation' },
-        // Week 3: Continuing sequence
-        { week: 3, phonemes: ['/p/', '/i/'], graphemes: ['p', 'i'], examples: ['pat', 'pit'], frequency: '95.2%', type: 'foundation' },
-        // Week 4: Next pair
-        { week: 4, phonemes: ['/d/', '/f/'], graphemes: ['d', 'f'], examples: ['dad', 'fat'], frequency: '81.9%', type: 'foundation' },
-        // Week 5: Continuing progression
-        { week: 5, phonemes: ['/o/', '/l/'], graphemes: ['o', 'l'], examples: ['dot', 'lap'], frequency: '92.7%', type: 'foundation' },
-        // Week 6: Next pair
-        { week: 6, phonemes: ['/h/', '/b/'], graphemes: ['h', 'b'], examples: ['hat', 'bat'], frequency: '97.1%', type: 'foundation' },
-        // Week 7: Final pair
-        { week: 7, phonemes: ['/e/', '/u/'], graphemes: ['e', 'u'], examples: ['pet', 'hut'], frequency: '61.6%', type: 'foundation' },
-        // Week 8: Review week
-        { week: 8, phonemes: ['Review'], graphemes: ['All'], examples: ['review'], frequency: '100%', type: 'review' }
-      ],
-    2: [
-      { week: 1, phonemes: ['/r/', '/g/'], graphemes: ['r', 'g'], examples: ['run', 'big'], frequency: '91.3%', type: 'foundation' },
-      { week: 2, phonemes: ['/k/', '/j/'], graphemes: ['k', 'j'], examples: ['kit', 'jam'], frequency: '24.9%', type: 'foundation' },
-      { week: 3, phonemes: ['/v/', '/w/'], graphemes: ['v', 'w'], examples: ['van', 'wet'], frequency: '84.1%', type: 'foundation' },
-      { week: 4, phonemes: ['/y/', '/z/'], graphemes: ['y', 's'], examples: ['yes', 'has'], frequency: '70.0%', type: 'foundation' },
-      { week: 5, phonemes: ['/x/', '/kw/'], graphemes: ['x', 'qu'], examples: ['fox', 'quit'], frequency: '95.4%', type: 'foundation' },
-      { week: 6, phonemes: ['/ch/', '/sh/'], graphemes: ['ch', 'sh'], examples: ['chip', 'shop'], frequency: '94.9%', type: 'foundation' },
-      { week: 7, phonemes: ['/th/', '/wh/'], graphemes: ['th', 'wh'], examples: ['thin', 'when'], frequency: '52.6%', type: 'foundation' },
-      { week: 8, phonemes: ['Review'], graphemes: ['All'], examples: ['review'], frequency: '100%', type: 'review' }
-    ],
-    3: [
-      { week: 1, phonemes: ['/th/'], graphemes: ['th'], examples: ['thin'], frequency: '100%', type: 'foundation' },
-      { week: 2, phonemes: ['/sh/'], graphemes: ['sh'], examples: ['shop'], frequency: '39.7%', type: 'foundation' },
-      { week: 3, phonemes: ['/ng/'], graphemes: ['ng'], examples: ['ring'], frequency: '87.1%', type: 'foundation' },
-      { week: 4, phonemes: ['/ch/'], graphemes: ['ch'], examples: ['chip'], frequency: '65.5%', type: 'foundation' },
-      { week: 5, phonemes: ['/kw/'], graphemes: ['qu'], examples: ['quit'], frequency: '94.9%', type: 'foundation' },
-      { week: 6, phonemes: ['/ð/'], graphemes: ['th'], examples: ['the'], frequency: '88.6%', type: 'foundation' },
-      { week: 7, phonemes: ['/wh/'], graphemes: ['wh'], examples: ['when'], frequency: '98.7%', type: 'foundation' },
-      { week: 8, phonemes: ['Review'], graphemes: ['All'], examples: ['review'], frequency: '100%', type: 'review' }
-    ],
-    4: [
-      // Stage 4: Magic E Patterns - Organized by weekly teaching sequence with Grapheme Frequency (%)
-      { week: 1, phonemes: ['/ā/'], graphemes: ['a_e'], examples: ['make', 'cake', 'take'], frequency: '20.84%', type: 'foundation' },
-      { week: 2, phonemes: ['/ī/'], graphemes: ['i_e'], examples: ['bike', 'time', 'ride'], frequency: '24.96%', type: 'foundation' },
-      { week: 3, phonemes: ['/ō/'], graphemes: ['o_e'], examples: ['home', 'bone', 'nose'], frequency: '10.69%', type: 'foundation' },
-      { week: 4, phonemes: ['/ū/'], graphemes: ['u_e'], examples: ['cute', 'use', 'tube'], frequency: '8.82%', type: 'foundation' },
-      { week: 5, phonemes: ['/ē/'], graphemes: ['e_e'], examples: ['these', 'complete', 'athlete'], frequency: '1.19%', type: 'foundation' },
-      { week: 6, phonemes: ['VCe Review'], graphemes: ['_e'], examples: ['bake', 'bike', 'bone'], frequency: '100%', type: 'review' },
-      { week: 7, phonemes: ['Practice'], graphemes: ['All VCe'], examples: ['practice'], frequency: '100%', type: 'practice' },
-      { week: 8, phonemes: ['Assessment'], graphemes: ['All VCe'], examples: ['assessment'], frequency: '100%', type: 'assessment' }
-    ],
-    5: [
-      // Stage 5: High-Frequency Vowel Teams - Organized by weekly teaching sequence with Grapheme Frequency (%)
-      // Week 1: /ər/ er pattern
-      { week: 1, phonemes: ['/ər/'], graphemes: ['er'], examples: ['her', 'fern', 'term', 'tiger', 'sister', 'water'], frequency: '100%', type: 'foundation' },
-      // Week 2: /ē/ ee pattern
-      { week: 2, phonemes: ['/ē/'], graphemes: ['ee'], examples: ['tree', 'see', 'green', 'feet', 'sleep', 'keep'], frequency: '7.99%', type: 'foundation' },
-      // Week 3: /ē/ ea pattern
-      { week: 3, phonemes: ['/ē/'], graphemes: ['ea'], examples: ['eat', 'read', 'team', 'beach', 'clean', 'dream'], frequency: '9.43%', type: 'foundation' },
-      // Week 4: /ā/ ai pattern
-      { week: 4, phonemes: ['/ā/'], graphemes: ['ai'], examples: ['rain', 'train', 'main', 'wait', 'paint', 'chain'], frequency: '13.22%', type: 'foundation' },
-      // Week 5: /ā/ ay pattern
-      { week: 5, phonemes: ['/ā/'], graphemes: ['ay'], examples: ['play', 'day', 'stay', 'way', 'say', 'may'], frequency: '5.71%', type: 'foundation' },
-      // Week 6: /ō/ oa pattern
-      { week: 6, phonemes: ['/ō/'], graphemes: ['oa'], examples: ['boat', 'coat', 'road', 'goat', 'soap', 'float'], frequency: '6.47%', type: 'foundation' },
-      // Week 7: /ō/ ow pattern
-      { week: 7, phonemes: ['/ō/'], graphemes: ['ow'], examples: ['snow', 'grow', 'show', 'yellow', 'window', 'follow'], frequency: '6.21%', type: 'foundation' },
-      // Week 8: /ar/ ar pattern
-      { week: 8, phonemes: ['/ar/'], graphemes: ['ar'], examples: ['car', 'star', 'park', 'farm', 'start', 'shark'], frequency: '100%', type: 'foundation' }
-    ],
-    6: [
-      // Stage 6: R-Controlled & Complex Vowels - Weekly teaching sequence from Dig In
-      // Week 1: /or/ or pattern
-      { week: 1, phonemes: ['/or/'], graphemes: ['or'], examples: ['for', 'corn', 'short'], frequency: '10.52%', type: 'foundation' },
-      // Week 2: /ər/ ir pattern  
-      { week: 2, phonemes: ['/ər/'], graphemes: ['ir'], examples: ['bird', 'girl', 'first'], frequency: '3.63%', type: 'foundation' },
-      // Week 3: /ər/ ur pattern
-      { week: 3, phonemes: ['/ər/'], graphemes: ['ur'], examples: ['hurt', 'turn', 'nurse'], frequency: '7.43%', type: 'foundation' },
-      // Week 4: /ou/ ou pattern
-      { week: 4, phonemes: ['/ou/'], graphemes: ['ou'], examples: ['out', 'house', 'mouse'], frequency: '67.43%', type: 'foundation' },
-      // Week 5: /aw/ au pattern
-      { week: 5, phonemes: ['/aw/'], graphemes: ['au'], examples: ['auto', 'sauce', 'taught'], frequency: '13.37%', type: 'foundation' },
-      // Week 6: /oi/ oi pattern
-      { week: 6, phonemes: ['/oi/'], graphemes: ['oi'], examples: ['oil', 'coin', 'soil'], frequency: '61.72%', type: 'foundation' },
-      // Week 7: /aw/ aw pattern
-      { week: 7, phonemes: ['/aw/'], graphemes: ['aw'], examples: ['law', 'saw', 'draw'], frequency: '8.18%', type: 'foundation' },
-      // Week 8: /oi/ oy pattern
-      { week: 8, phonemes: ['/oi/'], graphemes: ['oy'], examples: ['boy', 'toy', 'joy'], frequency: '38.28%', type: 'foundation' }
-    ],
-    7: [
-      // Stage 7: Advanced Vowel Patterns - Weekly teaching sequence from Dig In
-      // Week 1: /oo/ long sound - oo pattern
-      { week: 1, phonemes: ['/ōō/'], graphemes: ['oo'], examples: ['moon', 'soon', 'food'], frequency: '27.91%', type: 'foundation' },
-      // Week 2: /oo/ short sound - oo pattern
-      { week: 2, phonemes: ['/o͝o/'], graphemes: ['oo'], examples: ['book', 'look', 'took'], frequency: '45.79%', type: 'foundation' },
-      // Week 3: /ī/ - igh pattern
-      { week: 3, phonemes: ['/ī/'], graphemes: ['igh'], examples: ['light', 'night', 'right'], frequency: '7.09%', type: 'foundation' },
-      // Week 4: /ū/ - ew pattern
-      { week: 4, phonemes: ['/ū/'], graphemes: ['ew'], examples: ['new', 'few', 'grew'], frequency: '7.65%', type: 'foundation' },
-      // Week 5: /ē/ - ie pattern
-      { week: 5, phonemes: ['/ē/'], graphemes: ['ie'], examples: ['field', 'piece', 'believe'], frequency: '5.76%', type: 'foundation' },
-      // Week 6: /ū/ - ue pattern
-      { week: 6, phonemes: ['/ū/'], graphemes: ['ue'], examples: ['blue', 'true', 'glue'], frequency: '3.73%', type: 'foundation' },
-      // Week 7: /s/ - c pattern
-      { week: 7, phonemes: ['/s/'], graphemes: ['c'], examples: ['city', 'race', 'face'], frequency: '9.04%', type: 'foundation' },
-      // Week 8: /j/ - g pattern
-      { week: 8, phonemes: ['/j/'], graphemes: ['g'], examples: ['giant', 'gym', 'age'], frequency: '41.40%', type: 'foundation' }
-    ],
-    8: [
-      // Stage 8: Silent Letters & Morphology - Weekly teaching sequence from Dig In
-      // Week 1: Silent k - kn pattern
-      { week: 1, phonemes: ['silent k'], graphemes: ['kn'], examples: ['knee', 'know', 'knife'], frequency: '0.54%', type: 'foundation' },
-      // Week 2: Silent w - wr pattern
-      { week: 2, phonemes: ['silent w'], graphemes: ['wr'], examples: ['write', 'wrong', 'wrist'], frequency: '0.97%', type: 'foundation' },
-      // Week 3: Silent b - mb pattern
-      { week: 3, phonemes: ['silent b'], graphemes: ['mb'], examples: ['lamb', 'thumb', 'climb'], frequency: '0.91%', type: 'foundation' },
-      // Week 4: Silent l - lm pattern
-      { week: 4, phonemes: ['silent l'], graphemes: ['lm'], examples: ['palm', 'calm', 'psalm'], frequency: '0.26%', type: 'foundation' },
-      // Week 5: Schwa /ə/ - unstressed vowel
-      { week: 5, phonemes: ['schwa /ə/'], graphemes: ['a', 'e', 'o'], examples: ['about', 'taken', 'lemon'], frequency: '100%', type: 'foundation' },
-      // Week 6: Prefix un- 
-      { week: 6, phonemes: ['prefix un-'], graphemes: ['un-'], examples: ['unhappy', 'unlock', 'unfair'], frequency: '100%', type: 'morphology' },
-      // Week 7: Suffix -ing
-      { week: 7, phonemes: ['suffix -ing'], graphemes: ['-ing'], examples: ['running', 'jumping', 'playing'], frequency: '100%', type: 'morphology' },
-      // Week 8: Suffix -ed
-      { week: 8, phonemes: ['suffix -ed'], graphemes: ['-ed'], examples: ['walked', 'played', 'wanted'], frequency: '100%', type: 'morphology' }
-    ]
-    };
-    
-    return stagePhonemes[stageNumber as keyof typeof stagePhonemes] || [];
+    const data = STAGE_WEEKLY_DATA[stageNumber - 1] || [];
+    return data.map((week) => ({
+      week: week.week,
+      phonemes: week.phonemes,
+      graphemes: week.graphemes,
+      examples: week.focusWords,
+      frequency: week.isMastery
+        ? 'Mastery'
+        : week.isReview
+        ? 'Review'
+        : week.isCheckpoint
+        ? 'Checkpoint'
+        : `${week.intensity.length} new`,
+      type: (week.isReview || week.isMastery) ? 'review' : 'foundation',
+    }));
   };
+
+  // Legacy pre-v4.1 hardcoded getWeeklyPhonemes block removed on 2026-04-16.
+  // It contained 8 stages × weekly content that was never updated during the v4.1 audit,
+  // causing the Duration modal to show stale content that disagreed with the stage detail pages.
+  // The derivation above reads directly from the v4.1 weeklyData, keeping everything in sync.
+
 
   return (
     <>
@@ -902,7 +817,7 @@ export default function TeachingStages() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-5 gap-3">
                 {getWeeklyPhonemes(selectedStage).map((weekData, index) => {
                   const cardColors = [
                     'bg-gradient-to-br from-emerald-500/30 to-emerald-600/40', 
@@ -954,14 +869,23 @@ export default function TeachingStages() {
                         <div className="bg-white/80 text-darkOcean text-center py-0.5 px-1 rounded shadow-sm border-l-4 border-darkOcean">Examples</div>
                       </div>
                       
-                      {/* Data rows */}
-                      {weekData.phonemes.map((phoneme, idx) => (
-                        <div key={idx} className="grid grid-cols-3 gap-1 text-sm text-deepNavy mb-1 py-1 px-2">
-                          <div className="text-center font-medium">{phoneme}</div>
-                          <div className="text-center font-medium">〈{weekData.graphemes[idx] || ''}〉</div>
-                          <div className="text-center">{weekData.examples[idx] || ''}</div>
-                        </div>
-                      ))}
+                      {/* Data rows — one row per GPC (grapheme-phoneme correspondence).
+                          Iterate over graphemes since a single phoneme can have multiple spellings
+                          (e.g., Stage 2 Week 2: /k/ has three graphemes — k, c, ck). */}
+                      {weekData.graphemes.map((grapheme, idx) => {
+                        // Map each grapheme row to its corresponding phoneme.
+                        // If phonemes array is shorter than graphemes (e.g., one phoneme / multiple spellings),
+                        // reuse the last phoneme for remaining rows.
+                        const phoneme = weekData.phonemes[idx] ?? weekData.phonemes[weekData.phonemes.length - 1] ?? '';
+                        const example = weekData.examples[idx] ?? weekData.examples[weekData.examples.length - 1] ?? '';
+                        return (
+                          <div key={idx} className="grid grid-cols-3 gap-1 text-sm text-deepNavy mb-1 py-1 px-2">
+                            <div className="text-center font-medium">{phoneme}</div>
+                            <div className="text-center font-medium">〈{grapheme}〉</div>
+                            <div className="text-center">{example}</div>
+                          </div>
+                        );
+                      })}
                     </div>
                   );
                 })}
