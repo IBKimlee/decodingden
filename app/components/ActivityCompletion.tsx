@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useStudent } from '@/app/contexts/AuthContext';
+import { useStudent, useAuth } from '@/app/contexts/AuthContext';
 
 interface ActivityCompletionProps {
   activityType: 'elkonin_box' | 'whiteboard' | 'phoneme_keyboard' | 'story_circle' | 'word_work';
@@ -23,6 +23,7 @@ interface Assignment {
 
 export default function ActivityCompletion({ activityType, onComplete }: ActivityCompletionProps) {
   const { student, isStudent } = useStudent();
+  const { isPreviewMode } = useAuth();
   const [assignment, setAssignment] = useState<Assignment | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -33,6 +34,11 @@ export default function ActivityCompletion({ activityType, onComplete }: Activit
   // Fetch active assignment for this activity type
   useEffect(() => {
     async function fetchAssignment() {
+      // In preview mode, never fetch or mark in_progress — teacher is just observing
+      if (isPreviewMode) {
+        setLoading(false);
+        return;
+      }
       if (!student?.id) {
         setLoading(false);
         return;
@@ -76,7 +82,7 @@ export default function ActivityCompletion({ activityType, onComplete }: Activit
 
     fetchAssignment();
     startTimeRef.current = Date.now();
-  }, [student?.id, activityType]);
+  }, [student?.id, activityType, isPreviewMode]);
 
   const handleComplete = async () => {
     if (!assignment || !student?.id) return;
@@ -114,8 +120,8 @@ export default function ActivityCompletion({ activityType, onComplete }: Activit
     }
   };
 
-  // Don't show anything if not a student or no assignment
-  if (!isStudent || loading) {
+  // Don't show anything if not a student, in preview mode, or no assignment
+  if (!isStudent || isPreviewMode || loading) {
     return null;
   }
 

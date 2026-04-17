@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import PreviewBanner from './PreviewBanner';
 
 // Public pages - no login required
 const PUBLIC_ROUTES = ['/login', '/', '/research', '/teaching-tools', '/sound-based-instruction'];
@@ -26,7 +27,7 @@ function isPublicRoute(pathname: string): boolean {
 }
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
-  const { userRole, isLoading } = useAuth();
+  const { userRole, isLoading, isPreviewMode } = useAuth();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -40,12 +41,12 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
       return;
     }
 
-    // Student routes require student login
-    if (isStudentRoute(pathname) && userRole !== 'student') {
+    // Student routes require student login — unless a teacher is previewing
+    if (isStudentRoute(pathname) && userRole !== 'student' && !isPreviewMode) {
       router.push('/');
       return;
     }
-  }, [isLoading, userRole, pathname, router]);
+  }, [isLoading, userRole, pathname, router, isPreviewMode]);
 
   // Public routes - always accessible
   if (isPublicRoute(pathname)) {
@@ -75,8 +76,8 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     );
   }
 
-  // Student route but not logged in as student
-  if (isStudentRoute(pathname) && userRole !== 'student') {
+  // Student route but not logged in as student (and not in preview mode)
+  if (isStudentRoute(pathname) && userRole !== 'student' && !isPreviewMode) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-softSand">
         <div className="text-center">
@@ -86,6 +87,12 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     );
   }
 
-  // Authorized - show content
-  return <>{children}</>;
+  // Authorized — show content. In preview mode on student routes, show a banner above.
+  const showBanner = isPreviewMode && isStudentRoute(pathname);
+  return (
+    <>
+      {showBanner && <PreviewBanner />}
+      {children}
+    </>
+  );
 }

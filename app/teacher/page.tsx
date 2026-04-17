@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useTeacher, useAuth } from '../contexts/AuthContext';
+import StudentViewModal from '../components/StudentViewModal';
 
 export default function TeacherPortal() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showStudentViewModal, setShowStudentViewModal] = useState(false);
   const router = useRouter();
   const { teacher, isTeacher, isLoading: authLoading } = useTeacher();
   const { logout } = useAuth();
@@ -237,7 +239,22 @@ export default function TeacherPortal() {
             <h3 className="font-semibold text-xs sm:text-sm">Intervention Hub</h3>
             <p className="text-xs text-softSand/80 hidden sm:block">Smart alerts & support</p>
           </button>
+
+          <button
+            onClick={() => setShowStudentViewModal(true)}
+            className="bg-indigo-500 text-white p-3 sm:p-4 rounded-xl shadow-md hover:bg-indigo-600 transition group"
+            style={{ minHeight: '44px', WebkitTapHighlightColor: 'transparent' }}
+          >
+            <div className="text-xl sm:text-2xl mb-1 group-hover:scale-110 transition-transform">🎭</div>
+            <h3 className="font-semibold text-xs sm:text-sm">Student View</h3>
+            <p className="text-xs text-white/80 hidden sm:block">Preview what students see</p>
+          </button>
         </div>
+
+        <StudentViewModal
+          isOpen={showStudentViewModal}
+          onClose={() => setShowStudentViewModal(false)}
+        />
 
         {/* Bottom Section - Recent Activity and Insights */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">

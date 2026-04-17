@@ -20,6 +20,10 @@ interface AuthContextType {
   teacher: Teacher | null;     // Teacher profile
   student: Student | null;     // Student profile (code-based login)
 
+  // Preview mode — teacher viewing the student experience (read-only, no progress writes)
+  isPreviewMode: boolean;
+  previewStudent: Student | null;
+
   // Teacher auth methods
   signUpAsTeacher: (email: string, password: string, displayName: string, schoolName?: string) => Promise<{ error: Error | null }>;
   signInAsTeacher: (email: string, password: string) => Promise<{ error: Error | null }>;
@@ -46,6 +50,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [teacher, setTeacher] = useState<Teacher | null>(null);
   const [student, setStudent] = useState<Student | null>(null);
   const [userRole, setUserRole] = useState<UserRole>(null);
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [previewStudent, setPreviewStudent] = useState<Student | null>(null);
 
   // ============================================================================
   // INITIALIZATION
@@ -71,6 +77,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (teacherData) {
             setTeacher(teacherData);
             setUserRole('teacher');
+
+            // Check for preview mode URL params — must happen before setIsLoading(false)
+            // so AuthWrapper does not redirect the teacher away from /student/* routes.
+            if (typeof window !== 'undefined') {
+              const params = new URLSearchParams(window.location.search);
+              const previewParam = params.get('preview');
+              const asStudentId = params.get('as');
+
+              if (previewParam === 'generic') {
+                setPreviewStudent({
+                  id: 'preview-generic',
+                  teacher_id: teacherData.id,
+                  first_name: 'Demo',
+                  display_name: 'Demo Student',
+                  login_code: '000000',
+                  is_active: true,
+                  created_at: new Date().toISOString(),
+                  updated_at: new Date().toISOString(),
+                } as Student);
+                setIsPreviewMode(true);
+              } else if (asStudentId) {
+                const { data } = await supabase
+                  .from('students')
+                  .select('*')
+                  .eq('id', asStudentId)
+                  .eq('teacher_id', teacherData.id)
+                  .maybeSingle();
+                if (data) {
+                  setPreviewStudent(data as Student);
+                  setIsPreviewMode(true);
+                }
+              }
+            }
           }
         } else {
           // Check for student session in localStorage
@@ -115,6 +154,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       subscription.unsubscribe();
     };
   }, []);
+
 
   // ============================================================================
   // TEACHER AUTH METHODS
@@ -257,6 +297,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user,
     teacher,
     student,
+    isPreviewMode,
+    previewStudent,
     signUpAsTeacher,
     signInAsTeacher,
     signInAsStudent,
@@ -297,7 +339,17 @@ export function useTeacher() {
 }
 
 export function useStudent() {
-  const { student, userRole, isLoading } = useAuth();
+  const { student, previewStudent, isPreviewMode, userRole, isLoading } = useAuth();
+
+  // In preview mode (teacher viewing student experience), surface the preview student
+  if (isPreviewMode && previewStudent) {
+    return {
+      student: previewStudent,
+      isStudent: true,
+      isLoading: false,
+    };
+  }
+
   return {
     student,
     isStudent: userRole === 'student',
