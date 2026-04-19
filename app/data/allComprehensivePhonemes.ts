@@ -2703,22 +2703,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Rounded lips", "Clear contrast to /a/", "Common in CVC words"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈o〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ŏ/ (as in octopus or hot).', icon_emoji: '💙' },
+        { content: '/ŏ/ is a short vowel sound — air flows freely with a relaxed, voiced sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ŏ/ is a quick vowel sound made with a rounded, open mouth, which helps distinguish it from other short vowels.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>o</strong> most often spells the /ŏ/ sound in closed syllables (as in hot, top).', icon_emoji: '💚' },
+        { content: '/ŏ/ can appear at the beginning (octopus), middle (hot), or occasionally end (rare in early phonics) of words.', icon_emoji: '💚' },
+        { content: '/ŏ/ can be tricky because it is often confused with /ă/ (cot/cat) or /ŭ/ (cot/cut), depending on dialect.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>octopus</strong> or <strong>hot</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /ŏ/ - /t/ → ot, /h/ - /ŏ/ - /t/ → hot.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students round their lips slightly and drop their jaw (like saying "ah" but more rounded).', icon_emoji: '💛' },
+        { content: 'Contrast with /ă/: cot vs. cat to help students hear the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ŏ/',
       sound_type: 'vowel',
-      place: 'Low back',
-      manner: 'Vowel',
+      place: 'Low-back (tongue is low and toward the back of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Open mouth with rounded lips - "ah" with round lips like "hot"',
+      cue: 'Open mouth with rounded lips. Students should feel a slightly rounded mouth with an open jaw. If the mouth is too flat, the sound may shift toward /ă/.',
       teacher_guidance: 'Mouth open but lips slightly rounded. Tongue low and back. Different from /a/.',
       student_tips: 'Open your mouth and make your lips a little round. Say "ah" with round lips. Hot, pot, dog.',
-      common_substitutions: ['/a/', '/aw/'],
+      common_substitutions: ['/ă/', '/ŭ/'],
       articulation_cues: 'Mouth open, lips slightly rounded, tongue low and back',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Lip rounding"], explicit_instruction: ["Model /ŏ/"], guided_practice: ["Vowel contrast"], independent_practice: ["CVC words"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Mirror practice"], on_level: ["Standard instruction"], advanced: ["Vowel sorts"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to check for slight lip rounding",
+        "Practice isolating and producing: /ŏ/ → o → ot",
+        "Use minimal pairs: cot vs. cat, hot vs. hut",
+        "Provide explicit modeling of mouth shape (rounded + open)"
+      ],
+      on_level: [
+        "Build word chains: hot → hop → mop",
+        "Add word families: -ot, -op, -og",
+        "Practice sentence dictation with multiple /ŏ/ words"
+      ],
+      advanced: [
+        "Build word chains: hot → hop → mop",
+        "Add word families: -ot, -op, -og",
+        "Practice sentence dictation with multiple /ŏ/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Low back rounded vowel", place: "Back", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear short /o/", emphasis: ["Lip rounding"], priorities: ["Back vowel"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Rounded vowel"] }
