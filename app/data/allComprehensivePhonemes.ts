@@ -2028,22 +2028,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["Voiced pair to /sh/", "Less common but important", "Found in multisyllabic words"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈s〉</strong> (as in measure) or <strong>〈si〉</strong>/<strong>〈ti〉</strong> in some words (advanced patterns).', icon_emoji: '💙' },
+        { content: 'The phoneme is /zh/ (as in measure or vision).', icon_emoji: '💙' },
+        { content: '/zh/ is a fricative, voiced consonant — air flows continuously while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /zh/ is a continuous sound, but it is rare in beginning phonics and usually appears in middle positions of words.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The sound /zh/ is often spelled with <strong>s</strong> (measure) or <strong>si</strong>/<strong>ti</strong> (vision, nation — more advanced).', icon_emoji: '💚' },
+        { content: '/zh/ appears most often in the middle (measure) or end (beige) of words, and rarely at the beginning in English.', icon_emoji: '💚' },
+        { content: '/zh/ can be tricky because it is voiced and often confused with /sh/, and its spellings are less predictable.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>measure</strong> or <strong>vision</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: mea-zhure (stretch the /zh/ sound).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students say /sh/, then turn their voice on to feel the difference (/zh/).', icon_emoji: '💛' },
+        { content: 'Contrast with /sh/: /zh/ has voice (vibration); /sh/ is quiet (no voice).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ʒ/',
       sound_type: 'consonant',
-      place: 'Palato-alveolar',
-      manner: 'Fricative',
+      place: 'Postalveolar (tongue just behind the alveolar ridge)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiced',
-      cue: 'Like /sh/ but with voice on - buzzy "zh" sound',
+      cue: 'Like /sh/ but with voice on. Students should feel steady airflow AND vibration in the throat. If there is no vibration, they are producing /sh/.',
       teacher_guidance: 'Same position as /sh/ but voiced. Feel throat vibration. Found in "measure", "vision".',
       student_tips: 'Make the /sh/ sound but turn your voice on. It should buzz. Think of "treasure".',
-      common_substitutions: ['/sh/', '/j/', '/z/'],
+      common_substitutions: ['/sh/'],
       articulation_cues: 'Same position as /sh/, continuous airflow, voiced',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Compare to /sh/"], explicit_instruction: ["Model /ʒ/"], guided_practice: ["/ʒ/ vs /sh/"], independent_practice: ["Word practice"], assessment_checkpoints: ["Weekly checks"] },
     assessment_framework_details: { formative: ["Weekly checks"], summative: ["Unit tests"], mastery_criteria: ["65% accuracy"] },
-    differentiation_protocols: { struggling: ["Voice practice"], on_level: ["Standard instruction"], advanced: ["Etymology study"] },
+    differentiation_protocols: {
+      struggling: [
+        "Start with /sh/, then add voicing to produce /zh/",
+        "Use hand-on-throat to feel vibration",
+        "Practice isolating the sound in known words: mea-zhure",
+        "Use minimal pairs (approximate): pressure vs. measure"
+      ],
+      on_level: [
+        "Explore spelling patterns: s, si, ti representing /zh/",
+        "Build awareness with word study: vision, treasure, measure",
+        "Compare /zh/, /sh/, and /ch/ in sorting activities"
+      ],
+      advanced: [
+        "Explore spelling patterns: s, si, ti representing /zh/",
+        "Build awareness with word study: vision, treasure, measure",
+        "Compare /zh/, /sh/, and /ch/ in sorting activities"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced palato-alveolar fricative", place: "Palato-alveolar", manner: "Fricative", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /ʒ/ with voicing", emphasis: ["Voice on"], priorities: ["Contrast with /sh/"] },
     content_generation_meta: { rules: ["Multisyllabic words"], guidelines: ["Voice contrast"] }
