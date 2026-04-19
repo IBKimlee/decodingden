@@ -336,17 +336,36 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Clear stop sound", "High frequency", "Easy articulation"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈t〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /t/.', icon_emoji: '💙' },
+        { content: '/t/ is a stop (plosive), unvoiced consonant — air is blocked by the tongue, then released in a quick burst.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /t/ is a quick sound (cannot be stretched), so students must produce it cleanly without adding a vowel (avoid "tuh").', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>t</strong> consistently spells the /t/ sound in English.', icon_emoji: '💚' },
+        { content: '/t/ can appear at the beginning (top), middle (water), or end (cat) of words.', icon_emoji: '💚' },
+        { content: '/t/ can be tricky because it is quick and unvoiced, and students may confuse it with /d/ or add an extra vowel sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>top</strong> or <strong>tap</strong>.', icon_emoji: '💛' },
+        { content: 'Use stop blending: /t/ - /a/ - /p/ → tap (keep /t/ crisp, no "tuh").', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students tap the roof of their mouth with their tongue as they say /t/.', icon_emoji: '💛' },
+        { content: 'Contrast with /d/: /t/ is quiet (no voice); /d/ has voice (vibration).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/t/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Stop',
+      place: 'Alveolar (tongue taps just behind the top teeth)',
+      manner: 'Stop/Plosive (air is blocked, then released)',
       voicing: 'voiceless',
-      cue: 'Quick tap sound - tongue taps the roof of your mouth',
-      teacher_guidance: 'This is a quick, sharp sound. Tongue tip touches the ridge behind top teeth then releases.',
+      cue: 'Quick tap sound — tongue taps the roof of your mouth. Students should feel a quick release of air with no throat vibration. If they feel vibration, they may be producing /d/ instead.',
+      teacher_guidance: 'This is a quick, sharp sound. Tongue tip touches the ridge behind top teeth then releases. Watch for students adding "uh" after the sound.',
       student_tips: 'Touch your tongue tip to the bumpy spot behind your top teeth. Let go quickly with a puff of air.',
-      common_substitutions: ['/d/', '/k/'],
-      articulation_cues: 'Tongue tip to alveolar ridge, quick release, puff of air',
+      common_substitutions: ['/d/'],
+      articulation_cues: 'Tongue tip to alveolar ridge, quick release, puff of air, no voice',
       airflow_description: 'oral'
     },
     instructional_sequence: {
@@ -362,9 +381,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["90% accuracy", "Automatic response", "Word application"]
     },
     differentiation_protocols: {
-      struggling: ["Extended modeling", "Tactile cues", "Individual practice"],
-      on_level: ["Group instruction", "Center work", "Partner activities"],
-      advanced: ["Complex patterns", "Blend focus", "Peer tutoring"]
+      struggling: [
+        "Use a mirror to show tongue placement (behind teeth)",
+        "Practice isolating the sound: /t/ → ta → tap",
+        "Use minimal pairs: tap vs. dap, ten vs. den",
+        "Model crisp production to avoid adding /uh/ (no \"tuh\")"
+      ],
+      on_level: [
+        "Build word chains: tap → tip → top",
+        "Add inflectional endings: sit → sits → sitting",
+        "Practice sentence dictation with multiple /t/ words"
+      ],
+      advanced: [
+        "Build word chains: tap → tip → top",
+        "Add inflectional endings: sit → sits → sitting",
+        "Practice sentence dictation with multiple /t/ words"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiceless alveolar stop",
@@ -1409,22 +1441,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Visible articulation", "Voiced pair to /p/", "Common in CVC words"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈b〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /b/.', icon_emoji: '💙' },
+        { content: '/b/ is a stop (plosive), voiced consonant — air is blocked, then released in a quick burst while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /b/ is quick (cannot be stretched), and students must produce it without adding a vowel (avoid "buh").', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>b</strong> consistently spells the /b/ sound in English.', icon_emoji: '💚' },
+        { content: '/b/ can appear at the beginning (bat), middle (orbit), or end (cab) of words.', icon_emoji: '💚' },
+        { content: '/b/ can be tricky because it is voiced, and students may confuse it with /p/ or add an extra vowel sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>bat</strong> or <strong>ball</strong>.', icon_emoji: '💛' },
+        { content: 'Use stop blending: /b/ - /a/ - /t/ → bat (keep /b/ crisp, no "buh").', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their throat to feel the vibration.', icon_emoji: '💛' },
+        { content: 'Contrast with /p/: /b/ has voice (vibration) and less air; /p/ has no voice and a stronger puff of air.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/b/',
       sound_type: 'consonant',
-      place: 'Bilabial',
-      manner: 'Stop',
+      place: 'Bilabial (both lips come together)',
+      manner: 'Stop/Plosive (air is blocked, then released)',
       voicing: 'voiced',
-      cue: 'Lips pop with voice on - feel your throat buzz',
-      teacher_guidance: 'Like /p/ but with voice. Have students feel throat vibration.',
+      cue: 'Lips pop with voice on. Students should feel vibration in their throat. If there is no vibration and a strong puff of air, they may be producing /p/ instead.',
+      teacher_guidance: 'Like /p/ but with voice. Have students feel throat vibration. Watch for students adding "uh" after the sound.',
       student_tips: 'Press your lips together like /p/. Turn your voice on. Feel your throat buzz when you say it.',
-      common_substitutions: ['/p/', '/d/'],
+      common_substitutions: ['/p/'],
       articulation_cues: 'Lips together, quick release, voice on, throat vibrates',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Compare to /p/"], explicit_instruction: ["Model /b/"], guided_practice: ["/b/ vs /p/"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Voice practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use hand-on-throat to feel vibration for /b/",
+        "Practice isolating the sound: /b/ → ba → bat",
+        "Use minimal pairs: bat vs. pat, big vs. pig",
+        "Model clean production to avoid adding /uh/ (no \"buh\")"
+      ],
+      on_level: [
+        "Build word chains: bat → bit → big",
+        "Add inflectional endings: rub → rubs → rubbing",
+        "Practice sentence dictation with multiple /b/ words"
+      ],
+      advanced: [
+        "Build word chains: bat → bit → big",
+        "Add inflectional endings: rub → rubs → rubbing",
+        "Practice sentence dictation with multiple /b/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced bilabial stop", place: "Bilabial", manner: "Stop", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /b/ with voicing", emphasis: ["Voice on"], priorities: ["Voicing contrast"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Voice contrast"] }
