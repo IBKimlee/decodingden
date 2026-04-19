@@ -3511,13 +3511,32 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["R-controlled vowel", "Multiple spellings", "Common words"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈ear〉</strong> (primary spelling) and sometimes <strong>〈eer〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ear/ (as in ear, hear, deer).', icon_emoji: '💙' },
+        { content: '/ear/ is an r-controlled vowel — the r changes the vowel sound, creating a unique sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ear/ is a gliding vowel + /r/ sound that should be taught as a chunk, not separated.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>ear</strong> most commonly represents /ear/ (as in hear, near).', icon_emoji: '💚' },
+        { content: '/ear/ appears at the beginning (ear), middle (beard), or end (near) of words.', icon_emoji: '💚' },
+        { content: '/ear/ can be tricky because it may be confused with /air/ (bear) or /er/ (her).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>ear</strong>, <strong>hear</strong>, <strong>near</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /n/ - /ear/ → near (treat /ear/ as one chunk).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their ear and say "earrr".', icon_emoji: '💛' },
+        { content: 'Contrast with /air/: near vs. nare (nonsense) or hear vs. hair to highlight the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ear/',
       sound_type: 'vowel',
-      place: 'High front',
-      manner: 'R-controlled vowel',
+      place: 'Mid-front moving to central with rhotic influence',
+      manner: 'R-controlled vowel (with slight glide)',
       voicing: 'voiced',
-      cue: 'Smile then add R - like "ear" on your head',
+      cue: 'Smile then add R — like "ear" on your head. Students should feel a slight glide into /r/. Emphasize that /ear/ is one sound unit, even though it may feel like it has two parts.',
       teacher_guidance: 'Start with /ee/ sound (smile), then add r-coloring. Tongue moves from high-front to curled.',
       student_tips: 'Start with a smile like /ee/. Then curl your tongue for R. Ear, hear, deer, here.',
       common_substitutions: ['/air/', '/er/'],
@@ -3526,7 +3545,24 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     instructional_sequence: { pre_teaching: ["Bossy R"], explicit_instruction: ["Model /ear/"], guided_practice: ["Spelling sorts"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["60% accuracy"] },
-    differentiation_protocols: { struggling: ["R practice"], on_level: ["Standard instruction"], advanced: ["Spelling patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach ear as one chunk, not separate sounds",
+        "Use minimal pairs: hear vs. hair, near vs. nurse",
+        "Practice word building: n + ear → near",
+        "Highlight the ear pattern visually in words"
+      ],
+      on_level: [
+        "Build word chains: near → dear → fear",
+        "Sort words by ear vs. air vs. er",
+        "Compare with other r-controlled vowels: ar, er, or, air, ear"
+      ],
+      advanced: [
+        "Build word chains: near → dear → fear",
+        "Sort words by ear vs. air vs. er",
+        "Compare with other r-controlled vowels: ar, er, or, air, ear"
+      ]
+    },
     linguistic_properties_extended: { description: "High front r-colored vowel", place: "Front", manner: "R-controlled", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /ear/ r-controlled", emphasis: ["ee + R"], priorities: ["Spelling awareness"] },
     content_generation_meta: { rules: ["R-controlled"], guidelines: ["Spelling variations"] }
