@@ -2030,22 +2030,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Distinctive sound", "Voiceless pair to /j/", "Common in words"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈ch〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ch/ (as in chip).', icon_emoji: '💙' },
+        { content: '/ch/ is an affricate, unvoiced consonant — it starts as a stop (/t/) and releases into a fricative (/sh/).', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ch/ is a quick sound (not stretchable), made by a stop + release, which can make it feel like two parts to students.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The digraph <strong>ch</strong> spells the /ch/ sound (two letters, one sound).', icon_emoji: '💚' },
+        { content: '/ch/ can appear at the beginning (chip), middle (kitchen), or end (much) of words.', icon_emoji: '💚' },
+        { content: '/ch/ can be tricky because it may be confused with /sh/ or /t/, and sometimes ch can say /k/ (as in school) or /sh/ (as in chef).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>chip</strong> or <strong>chop</strong>.', icon_emoji: '💛' },
+        { content: 'Use stop blending: /ch/ - /i/ - /p/ → chip (keep it crisp, not "chuh").', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students pretend to sneeze or say "choo!" to feel the burst of air.', icon_emoji: '💛' },
+        { content: 'Contrast with /sh/: /ch/ is quick with a burst, while /sh/ is smooth and continuous.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/tʃ/',
       sound_type: 'consonant',
-      place: 'Palato-alveolar',
-      manner: 'Affricate',
+      place: 'Postalveolar (tongue is just behind the alveolar ridge)',
+      manner: 'Affricate (stop + fricative combination)',
       voicing: 'voiceless',
-      cue: 'Starts like /t/ then slides to /sh/ - "ch-ch-ch" like a train',
+      cue: 'Starts like /t/ then slides to /sh/. Students should feel a quick stop and release of air. If the sound is stretched, they may be producing /sh/ instead.',
       teacher_guidance: 'This combines /t/ and /sh/. Tongue starts at roof, releases with friction. No voice.',
       student_tips: 'Start with your tongue on the roof like /t/. Let it slide back with a "sh" sound. Ch-ch-ch!',
-      common_substitutions: ['/sh/', '/t/', '/j/'],
+      common_substitutions: ['/sh/', '/t/'],
       articulation_cues: 'Tongue to palate, stop then fricative release, voiceless',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Train sounds"], explicit_instruction: ["Model /tʃ/"], guided_practice: ["/ch/ vs /sh/"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Break into parts"], on_level: ["Standard instruction"], advanced: ["Spelling patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Model the two-part feel: /t/ + /sh/ → /ch/ (but teach it as one sound)",
+        "Practice isolating the sound: /ch/ → cha → chip",
+        "Use minimal pairs: chip vs. ship, chop vs. top",
+        "Use gesture cues (quick hand clap) to show the stop + release"
+      ],
+      on_level: [
+        "Build word chains: chip → chop → shop",
+        "Add suffixes: much → muches",
+        "Sort words by ch = /ch/ vs. other sounds (advanced exposure)"
+      ],
+      advanced: [
+        "Build word chains: chip → chop → shop",
+        "Add suffixes: much → muches",
+        "Sort words by ch = /ch/ vs. other sounds (advanced exposure)"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiceless palato-alveolar affricate", place: "Palato-alveolar", manner: "Affricate", voicing: "Voiceless" },
     weekly_data_override: { focus: "Clear /ch/ affricate", emphasis: ["Two parts"], priorities: ["Stop + fricative"] },
     content_generation_meta: { rules: ["Digraph patterns"], guidelines: ["ch vs tch spelling"] }
