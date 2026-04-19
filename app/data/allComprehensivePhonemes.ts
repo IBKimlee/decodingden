@@ -302,16 +302,35 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Clear sound", "Visible mouth position", "Foundation vowel"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈a〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ă/ (as in apple).', icon_emoji: '💙' },
+        { content: '/ă/ is a short vowel sound — air flows freely with an open mouth and voiced sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ă/ is a relaxed, quick vowel sound made with the mouth open wide, which helps distinguish it from other short vowels.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>a</strong> most often spells the /ă/ sound in closed syllables (as in cat, map).', icon_emoji: '💚' },
+        { content: '/ă/ can appear in the beginning (apple), middle (cat), or sometimes end (spa — less common) of words.', icon_emoji: '💚' },
+        { content: '/ă/ can be tricky because it is often confused with /ĕ/ or /ŭ/ and may sound slightly different depending on accents.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>apple</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /ă/ - /t/ → at, /c/ - /ă/ - /t/ → cat.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students open their mouth wide like a doctor saying "ahh".', icon_emoji: '💛' },
+        { content: 'Contrast with /ĕ/: bat vs. bet to help students hear the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/a/',
       sound_type: 'vowel',
-      place: 'Low front',
-      manner: 'Vowel',
+      place: 'Low front (tongue is low and forward in the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Open mouth wide like at the doctor - "ah"',
+      cue: 'Open mouth wide like at the doctor — "ahh". Students should feel their jaw drop and mouth open wide. If the mouth is too closed, the sound may shift toward /ĕ/ or /ŭ/.',
       teacher_guidance: 'Have students drop their jaw and keep tongue low and flat. This is the most open vowel.',
       student_tips: 'Open your mouth wide. Drop your jaw down. Say "ah" like at the doctor.',
-      common_substitutions: ['/uh/', '/eh/'],
+      common_substitutions: ['/ĕ/', '/ŭ/'],
       articulation_cues: 'Jaw dropped, tongue low and flat, mouth wide open',
       airflow_description: 'oral'
     },
@@ -328,9 +347,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["90% accurate production", "Consistent recognition", "CVC application"]
     },
     differentiation_protocols: {
-      struggling: ["Mouth position mirrors", "Extended practice", "Tactile cues"],
-      on_level: ["Standard vowel instruction", "Center activities", "Peer practice"],
-      advanced: ["Vowel contrasts", "Complex patterns", "Teaching others"]
+      struggling: [
+        "Use a mirror to check for wide mouth opening",
+        "Practice isolating and producing: /ă/ → a → at",
+        "Use minimal pairs: bat vs. bet, cap vs. cup",
+        "Provide explicit modeling of mouth shape (\"big open mouth\")"
+      ],
+      on_level: [
+        "Build word chains: cat → cap → map",
+        "Add word families: -at, -an, -ap",
+        "Practice sentence dictation with multiple /ă/ words"
+      ],
+      advanced: [
+        "Build word chains: cat → cap → map",
+        "Add word families: -at, -an, -ap",
+        "Practice sentence dictation with multiple /ă/ words"
+      ]
     },
     linguistic_properties_extended: {
       description: "Low front unrounded vowel",
