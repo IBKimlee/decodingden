@@ -1193,22 +1193,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["Clear long oo", "Consistent in pattern", "High frequency"],
     research_sources: ["Adams (1990)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈oo〉</strong>, <strong>〈u_e〉</strong>, <strong>〈ue〉</strong>, <strong>〈ew〉</strong> (common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /oo/ (as in moon, blue, tube).', icon_emoji: '💙' },
+        { content: '/oo/ is a long vowel sound — air flows freely with rounded lips.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /oo/ is a steady (non-gliding) sound with strong lip rounding, which helps students distinguish it from other vowels.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The most common spelling is <strong>oo</strong> (as in moon).', icon_emoji: '💚' },
+        { content: 'Other spellings include <strong>u_e</strong> (tube), <strong>ue</strong> (blue), and <strong>ew</strong> (few).', icon_emoji: '💚' },
+        { content: '/oo/ can be tricky because <strong>oo</strong> can also represent a short sound (/ʊ/ as in book), so students must learn to distinguish.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>moon</strong> and <strong>blue</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /m/ - /oo/ - /n/ → moon.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students round their lips tightly like blowing a kiss.', icon_emoji: '💛' },
+        { content: 'Contrast with short /oo/: moon vs. book to highlight the long vs. short vowel difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ōō/',
       sound_type: 'vowel',
-      place: 'High back',
-      manner: 'Vowel',
+      place: 'High-back (tongue raised toward the back of the mouth)',
+      manner: 'Vowel (steady airflow)',
       voicing: 'voiced',
-      cue: 'Round your lips tight like saying "oo" - "moon", "soon", "cool"',
+      cue: 'Round your lips tight like saying "oo". Students should feel tight lip rounding and a steady sound. If lips are relaxed, the sound may shift toward the short /oo/ sound.',
       teacher_guidance: 'Lips are very rounded and pushed forward. Tongue is high and back. Long oo sound.',
       student_tips: 'Make your lips very round and small like a circle. Say "oo" like in "moon" or "zoo".',
-      common_substitutions: ['short oo', '/ʊ/'],
+      common_substitutions: ['short /oo/ (book)'],
       articulation_cues: 'Lips very rounded and protruded, tongue high and back',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Two oo sounds", "Long oo first"], explicit_instruction: ["Model long oo"], guided_practice: ["oo sorting"], independent_practice: ["Read long oo"], assessment_checkpoints: ["Daily oo", "Weekly pattern"] },
     assessment_framework_details: { formative: ["Pattern checks"], summative: ["Variable tests"], mastery_criteria: ["60% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended oo practice"], on_level: ["Standard oo instruction"], advanced: ["Variable analysis"] },
+    differentiation_protocols: {
+      struggling: [
+        "Start with oo spelling (moon, soon)",
+        "Use a mirror to check for lip rounding",
+        "Practice minimal pairs: moon vs. book, pool vs. pull",
+        "Explicitly teach long vs. short oo"
+      ],
+      on_level: [
+        "Build word chains: moon → soon → spoon",
+        "Add word families: -oon, -ue, -ew",
+        "Sort words by spelling: oo, u_e, ue, ew"
+      ],
+      advanced: [
+        "Build word chains: moon → soon → spoon",
+        "Add word families: -oon, -ue, -ew",
+        "Sort words by spelling: oo, u_e, ue, ew"
+      ]
+    },
     linguistic_properties_extended: { description: "High back rounded vowel", place: "Back", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Long oo pattern", emphasis: ["Vowel length"], priorities: ["Pattern distinction"] },
     content_generation_meta: { rules: ["Long oo emphasis"], guidelines: ["Pattern clarity"] }
