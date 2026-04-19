@@ -873,22 +873,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "70% accuracy", weekly: "65% accuracy", summative: "75% digraph recognition" },
     teaching_advantages: ["High frequency words", "Voiced th", "Sight word connection"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈th〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /th/ (voiced, as in this).', icon_emoji: '💙' },
+        { content: '/th/ is a fricative, voiced consonant — air flows continuously between the tongue and teeth while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /th/ is a continuous sound, but requires tongue placement between the teeth + voicing, which makes it more complex.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The digraph <strong>th</strong> spells the voiced /th/ sound in words like this, them, those.', icon_emoji: '💚' },
+        { content: '/th/ (voiced) often appears at the beginning (this) or middle (mother) of words, and less commonly at the end.', icon_emoji: '💚' },
+        { content: '/th/ can be tricky because it has two sounds (voiced and unvoiced) and students may confuse it with /d/ or /v/.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>this</strong> or <strong>that</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: thhhh-is → this (with voice on).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students place their tongue between their teeth and touch their throat to feel vibration.', icon_emoji: '💛' },
+        { content: 'Contrast with unvoiced /th/: voiced /th/ has vibration, while unvoiced /th/ is quiet (no voice).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ð/',
       sound_type: 'consonant',
-      place: 'Dental',
-      manner: 'Fricative',
+      place: 'Interdental (tongue placed between the teeth)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiced',
-      cue: 'Tongue between teeth with voice - "the", "this", "that"',
-      teacher_guidance: 'Tongue tip sticks out slightly between teeth. Voice is ON. Common in high-frequency words.',
+      cue: 'Tongue between teeth with voice on. Students should feel airflow on the tongue AND vibration in the throat. If there is no vibration, they are producing the unvoiced /th/ (as in thin).',
+      teacher_guidance: 'Tongue tip sticks out slightly between teeth. Voice is ON. Common in high-frequency words. Many students substitute /d/ or /v/.',
       student_tips: 'Stick your tongue out a tiny bit between your teeth. Turn your voice on and push air out. Say "the".',
-      common_substitutions: ['/d/', '/f/', '/v/'],
+      common_substitutions: ['/d/', '/v/'],
       articulation_cues: 'Tongue tip between teeth, voiced, continuous airflow',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Tongue between teeth", "Voice on"], explicit_instruction: ["Model voiced th"], guided_practice: ["Digraph sorting"], independent_practice: ["Read sight words"], assessment_checkpoints: ["Daily digraph", "Weekly sight words"] },
     assessment_framework_details: { formative: ["Digraph checks"], summative: ["Sight word tests"], mastery_criteria: ["70% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended digraph practice"], on_level: ["Standard digraph instruction"], advanced: ["Sight word mastery"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to ensure tongue is visible between teeth",
+        "Practice voicing awareness: hand on throat to feel vibration",
+        "Use minimal pairs: this vs. thin, they vs. day",
+        "Provide explicit modeling, as many students substitute /d/ or /v/"
+      ],
+      on_level: [
+        "Build word chains: this → them → then",
+        "Practice high-frequency words: this, that, they, them",
+        "Sort words by voiced vs. unvoiced th"
+      ],
+      advanced: [
+        "Build word chains: this → them → then",
+        "Practice high-frequency words: this, that, they, them",
+        "Sort words by voiced vs. unvoiced th"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced dental fricative", place: "Dental", manner: "Fricative", voicing: "Voiced" },
     weekly_data_override: { focus: "Voiced th digraph", emphasis: ["Tongue placement"], priorities: ["Digraph recognition"] },
     content_generation_meta: { rules: ["Sight word focus"], guidelines: ["Digraph emphasis"] }
