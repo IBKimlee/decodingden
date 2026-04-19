@@ -7,25 +7,33 @@
 
 ## Approach
 
-Go phoneme by phoneme. For each phoneme, check all 8 sections plus Focus Sound. Mark it done. Move to the next phoneme.
+Go phoneme by phoneme. For each phoneme, check the stage-independent sections first. Stage-dependent sections (word lists, sentences, stories) wait until 8-stage classification is finalized.
 
 ---
 
-## What To Check Per Phoneme
+## Phase 1: Stage-Independent Sections (do now)
 
-Search the phoneme in Decoding Den, then check each section:
+These sections are about the sound itself, not about scope and sequence:
 
 | # | Section | What to check |
 |---|---------|---------------|
 | 1 | **Focus Sound** | Correct phoneme symbol, correct grapheme, anchor word matches grapheme |
 | 2 | **Phoneme Insight** | Articulation (place, manner, voicing), mouth instructions, common errors, teacher tips |
-| 3 | **Let's Learn It** | Explanations accurate, rules correct, tips practical |
-| 4 | **Word List Practice** | Words real and decodable, sorted by position, correct phoneme, all graphemes covered |
-| 5 | **Simple Sentences** | Sentences exist, decodable, use target phoneme, no errors |
-| 6 | **Short Story** | Story exists, uses target phoneme, age-appropriate |
+| 3 | **Let's Learn It** | Explanations accurate and phoneme-specific, rules correct, tips practical |
 | 7 | **Differentiation** | Struggling / on-level / advanced strategies present and practical |
-| 8 | **Word Practice Space** | Loads, content matches phoneme |
-| 9 | **Read Along** | Loads, content matches phoneme |
+| G | **Grapheme Coverage** | All common graphemes listed, no incorrect graphemes, frequency labels accurate |
+
+## Phase 2: Stage-Dependent Sections (do after 8-stage classification is finalized)
+
+These sections depend on which phonemes are taught when:
+
+| # | Section | What to check |
+|---|---------|---------------|
+| 4 | **Word List Practice** | Words decodable using only previously taught phonemes, sorted by position |
+| 5 | **Simple Sentences** | Sentences decodable at the appropriate stage level |
+| 6 | **Short Story** | Story decodable, uses target phoneme, age-appropriate |
+| 8 | **Word Practice Space** | Content matches phoneme and stage scope |
+| 9 | **Read Along** | Content matches phoneme and stage scope |
 
 ---
 
@@ -33,80 +41,89 @@ Search the phoneme in Decoding Den, then check each section:
 
 ### Consonants (1-24)
 
-| # | Phoneme | Search | Status | Issues |
-|---|---------|--------|--------|--------|
-| 1 | /m/ | /m/ | | |
-| 2 | /n/ | /n/ | | |
-| 3 | /p/ | /p/ | | |
-| 4 | /b/ | /b/ | | |
-| 5 | /t/ | /t/ | | |
-| 6 | /d/ | /d/ | | |
-| 7 | /k/ | /k/ | | |
-| 8 | /g/ | /g/ | | |
-| 9 | /f/ | /f/ | | |
-| 10 | /v/ | /v/ | | |
-| 11 | /s/ | /s/ | | |
-| 12 | /z/ | /z/ | | |
-| 13 | /h/ | /h/ | | |
-| 14 | /w/ | /w/ | | |
-| 15 | /y/ | /y/ | | |
-| 16 | /l/ | /l/ | | |
-| 17 | /r/ | /r/ | | |
-| 18 | /ch/ | /ch/ | | |
-| 19 | /sh/ | /sh/ | | |
-| 20 | /th/ voiceless | th → Voiceless | | |
-| 21 | /th/ voiced | th → Voiced | | |
-| 22 | /ng/ | /ng/ | | |
-| 23 | /zh/ | zh | | |
-| 24 | /kw/ | qu | | |
+| # | Phoneme | Search | Phase 1 | Phase 2 | Issues |
+|---|---------|--------|---------|---------|--------|
+| 1 | /m/ | /m/ | IN PROGRESS | BLOCKED | Teaching content is generic, not /m/-specific |
+| 2 | /n/ | /n/ | | | |
+| 3 | /p/ | /p/ | | | |
+| 4 | /b/ | /b/ | | | |
+| 5 | /t/ | /t/ | | | |
+| 6 | /d/ | /d/ | | | |
+| 7 | /k/ | /k/ | | | |
+| 8 | /g/ | /g/ | | | |
+| 9 | /f/ | /f/ | | | |
+| 10 | /v/ | /v/ | | | |
+| 11 | /s/ | /s/ | | | |
+| 12 | /z/ | /z/ | | | |
+| 13 | /h/ | /h/ | | | |
+| 14 | /w/ | /w/ | | | |
+| 15 | /y/ | /y/ | | | |
+| 16 | /l/ | /l/ | | | |
+| 17 | /r/ | /r/ | | | |
+| 18 | /ch/ | /ch/ | | | |
+| 19 | /sh/ | /sh/ | | | |
+| 20 | /th/ voiceless | th → Voiceless | | | |
+| 21 | /th/ voiced | th → Voiced | | | |
+| 22 | /ng/ | /ng/ | | | |
+| 23 | /zh/ | zh | | | |
+| 24 | /kw/ | qu | | | |
 
 ### Short Vowels (25-29)
 
-| # | Phoneme | Search | Status | Issues |
-|---|---------|--------|--------|--------|
-| 25 | /ă/ | short a | | |
-| 26 | /ĕ/ | short e | | |
-| 27 | /ĭ/ | short i | | |
-| 28 | /ŏ/ | short o | | |
-| 29 | /ŭ/ | short u | | |
+| # | Phoneme | Search | Phase 1 | Phase 2 | Issues |
+|---|---------|--------|---------|---------|--------|
+| 25 | /ă/ | short a | | | |
+| 26 | /ĕ/ | short e | | | |
+| 27 | /ĭ/ | short i | | | |
+| 28 | /ŏ/ | short o | | | |
+| 29 | /ŭ/ | short u | | | |
 
 ### Long Vowels (30-34)
 
-| # | Phoneme | Search | Status | Issues |
-|---|---------|--------|--------|--------|
-| 30 | /ā/ | long a | | |
-| 31 | /ē/ | long e | | |
-| 32 | /ī/ | long i | | |
-| 33 | /ō/ | long o | | |
-| 34 | /ū/ | long u | | |
+| # | Phoneme | Search | Phase 1 | Phase 2 | Issues |
+|---|---------|--------|---------|---------|--------|
+| 30 | /ā/ | long a | | | |
+| 31 | /ē/ | long e | | | |
+| 32 | /ī/ | long i | | | |
+| 33 | /ō/ | long o | | | |
+| 34 | /ū/ | long u | | | |
 
 ### Other Vowels & Diphthongs (35-44)
 
-| # | Phoneme | Search | Status | Issues |
-|---|---------|--------|--------|--------|
-| 35 | /ar/ | /ar/ | | |
-| 36 | /er/ | /er/ | | |
-| 37 | /or/ | /or/ | | |
-| 38 | /oi/ | /oi/ | | |
-| 39 | /ow/ | /ow/ | | |
-| 40 | /aw/ | aw | | |
-| 41 | /oo/ long | /oo/ | | |
-| 42 | /oo/ short | /ʊ/ | | |
-| 43 | /air/ | air | | |
-| 44 | /ear/ | ear | | |
+| # | Phoneme | Search | Phase 1 | Phase 2 | Issues |
+|---|---------|--------|---------|---------|--------|
+| 35 | /ar/ | /ar/ | | | |
+| 36 | /er/ | /er/ | | | |
+| 37 | /or/ | /or/ | | | |
+| 38 | /oi/ | /oi/ | | | |
+| 39 | /ow/ | /ow/ | | | |
+| 40 | /aw/ | aw | | | |
+| 41 | /oo/ long | /oo/ | | | |
+| 42 | /oo/ short | /ʊ/ | | | |
+| 43 | /air/ | air | | | |
+| 44 | /ear/ | ear | | | |
+
+---
+
+## Dependencies
+
+- **Phase 1** can proceed now — no blockers
+- **Phase 2** is blocked until the 8-stage classification and counting work is finalized
+- The 8-stage governance track is documented in `docs/8_STAGE_CONSENSUS_GOVERNANCE_PLAN.md`
 
 ---
 
 ## Handoff Rules
 
-1. One phoneme at a time. Check all 8 sections. Mark done. Move to next.
-2. Fix issues as you find them before moving on.
+1. Phase 1 first: check stage-independent sections across all 44 phonemes
+2. Do not start Phase 2 until 8-stage classification is done
 3. Data source: `app/data/allComprehensivePhonemes.ts`
 4. Matching logic: `app/api/decoding-den/route.ts`
-5. Do not touch Teaching Stages, Student Den, Heart Words, or auth during this audit.
+5. Do not touch Teaching Stages data during this audit
+6. Fix issues as you find them before moving to the next phoneme
 
 ---
 
 ## Current Step
 
-**Start with phoneme #1: /m/**
+**Phase 1, phoneme #1: /m/ — fix the Let's Learn It content to be /m/-specific**

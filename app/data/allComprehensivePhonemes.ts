@@ -23,6 +23,7 @@ export interface ComprehensivePhonemeEntry {
   word_lists?: {
     [grapheme: string]: {
       beginning: string[];
+      beginning_by_vowel?: { [vowelSound: string]: string[] };
       medial: string[];
       ending: string[];
     };
@@ -65,8 +66,23 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     complexity_score: 1.0,
     grade_band: "K-Fall",
     introduction_week: 1,
-    word_examples: ["mat", "mad", "man", "mom", "mud"],
-    decodable_sentences: ["I am mad.", "Sam has a mat."],
+    word_examples: ["mat", "mad", "man", "mom", "mud", "ham", "him", "jam", "map", "mop"],
+    decodable_sentences: [
+      "I am mad.",
+      "Sam has a mat.",
+      "Mom had a map.",
+      "The man got a mop.",
+      "I hum and hum.",
+      "The ham is on the mat.",
+      "Mom met a man at the dam."
+    ],
+    word_lists: {
+      'm': {
+        beginning: ["mat", "mad", "man", "map", "met", "men", "mid", "mix", "mit", "mop", "mom", "mud", "mug"],
+        medial: ["camel", "lemon", "comet", "limit", "timber", "simmer"],
+        ending: ["ham", "him", "jam", "gum", "swim", "plum", "stem", "trim", "from"]
+      }
+    },
     assessment_criteria: {
       daily: "90% accuracy in letter-sound correspondence",
       weekly: "85% accuracy in CVC word reading",
@@ -117,7 +133,18 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     content_generation_meta: {
       rules: ["CVC patterns", "High frequency", "95% decodability"],
-      guidelines: ["Simple sentences", "Taught phonemes", "Clear meaning"]
+      guidelines: ["Simple sentences", "Taught phonemes", "Clear meaning"],
+      short_stories: [
+        {
+          title: "Mom and the Map",
+          text: "Mom had a map. The map had a dam on it. Mom and Sam sat on the mat. Mom said, \"I can see the dam on the map.\" Sam said, \"Can I see?\" Mom let him see. Sam put his hand on the map. \"The dam is big!\" said Sam. Mom and Sam had fun with the map."
+        }
+      ],
+      word_ladders: [
+        { words: ["mat", "map", "mop", "mom", "mum"] },
+        { words: ["ham", "him", "hum", "gum", "gam"] },
+        { words: ["mad", "man", "map", "mat", "met"] }
+      ]
     }
   },
 

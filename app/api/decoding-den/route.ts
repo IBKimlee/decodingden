@@ -680,10 +680,14 @@ function generateWordLists(data: any): { [grapheme: string]: { beginning: string
     for (const grapheme of Object.keys(data.word_lists)) {
       const lists = data.word_lists[grapheme];
       wordLists[grapheme] = {
-        beginning: Array.isArray(lists.beginning) ? lists.beginning.slice(0, 5) : [],
-        medial: Array.isArray(lists.medial) ? lists.medial.slice(0, 5) : [],
-        ending: Array.isArray(lists.ending) ? lists.ending.slice(0, 5) : [],
+        beginning: Array.isArray(lists.beginning) ? lists.beginning : [],
+        medial: Array.isArray(lists.medial) ? lists.medial : [],
+        ending: Array.isArray(lists.ending) ? lists.ending : [],
       };
+      // Pass through beginning_by_vowel if it exists
+      if (lists.beginning_by_vowel && typeof lists.beginning_by_vowel === 'object') {
+        wordLists[grapheme].beginning_by_vowel = lists.beginning_by_vowel;
+      }
     }
     return wordLists;
   }

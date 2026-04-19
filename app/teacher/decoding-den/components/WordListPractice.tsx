@@ -226,32 +226,61 @@ export default function WordListPractice({ phonemeData }: WordListPracticeProps)
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Get the maximum length to determine number of rows */}
-                  {Array.from({ 
-                    length: Math.max(
-                      positions.beginning?.length || 0,
-                      positions.medial?.length || 0,
-                      positions.ending?.length || 0
-                    ) 
-                  }).map((_, index) => (
-                    <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="py-2 px-4 border-r border-gray-200">
-                        <strong className="text-deepNavy">
-                          {showBeginning ? (positions.beginning?.[index] || '') : ''}
-                        </strong>
-                      </td>
-                      <td className="py-2 px-4 border-r border-gray-200">
-                        <strong className="text-deepNavy">
-                          {showMedial ? (positions.medial?.[index] || '') : ''}
-                        </strong>
-                      </td>
-                      <td className="py-2 px-4">
-                        <strong className="text-deepNavy">
-                          {showEnding ? (positions.ending?.[index] || '') : ''}
-                        </strong>
-                      </td>
-                    </tr>
-                  ))}
+                  {(() => {
+                    // Split lists into two columns when longer than 5 words
+                    const colSize = 5;
+                    const beg = positions.beginning || [];
+                    const med = positions.medial || [];
+                    const end = positions.ending || [];
+                    const begCol1 = beg.slice(0, colSize);
+                    const begCol2 = beg.slice(colSize);
+                    const medCol1 = med.slice(0, colSize);
+                    const medCol2 = med.slice(colSize);
+                    const endCol1 = end.slice(0, colSize);
+                    const endCol2 = end.slice(colSize);
+                    const maxRows = Math.max(colSize, begCol1.length, medCol1.length, endCol1.length);
+
+                    return Array.from({ length: maxRows }).map((_, index) => (
+                      <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                        <td className="py-2 px-4 border-r border-gray-200">
+                          <div className="flex gap-6">
+                            <strong className="text-deepNavy min-w-[60px]">
+                              {showBeginning ? (begCol1[index] || '') : ''}
+                            </strong>
+                            {begCol2.length > 0 && (
+                              <strong className="text-deepNavy min-w-[60px]">
+                                {showBeginning ? (begCol2[index] || '') : ''}
+                              </strong>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-2 px-4 border-r border-gray-200">
+                          <div className="flex gap-6">
+                            <strong className="text-deepNavy min-w-[60px]">
+                              {showMedial ? (medCol1[index] || '') : ''}
+                            </strong>
+                            {medCol2.length > 0 && (
+                              <strong className="text-deepNavy min-w-[60px]">
+                                {showMedial ? (medCol2[index] || '') : ''}
+                              </strong>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-2 px-4">
+                          <div className="flex gap-6">
+                            <strong className="text-deepNavy min-w-[60px]">
+                              {showEnding ? (endCol1[index] || '') : ''}
+                            </strong>
+                            {endCol2.length > 0 && (
+                              <strong className="text-deepNavy min-w-[60px]">
+                                {showEnding ? (endCol2[index] || '') : ''}
+                              </strong>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ));
+                  })()}
                 </tbody>
               </table>
             </div>
