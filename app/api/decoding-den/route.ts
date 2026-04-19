@@ -1036,6 +1036,49 @@ function logUsage(phonemeId: string, sectionsViewed: string[], userId?: string) 
   console.log('Usage logged:', { phonemeId, sectionsViewed, userId });
 }
 
+// Disambiguation options for bare vowel letter searches
+const VOWEL_DISAMBIGUATION: Record<string, Array<{id: string, label: string, example: string, phoneme: string}>> = {
+  'a': [
+    { id: 'stage1_a', label: 'Short a', example: 'as in "cat"', phoneme: '/a/' },
+    { id: 'stage4_a_e', label: 'Long ā', example: 'as in "cake"', phoneme: '/ā/' },
+  ],
+  'e': [
+    { id: 'vowel_short_e', label: 'Short e', example: 'as in "bed"', phoneme: '/ĕ/' },
+    { id: 'stage5_ee', label: 'Long ē', example: 'as in "tree"', phoneme: '/ē/' },
+  ],
+  'i': [
+    { id: 'vowel_short_i', label: 'Short i', example: 'as in "sit"', phoneme: '/ĭ/' },
+    { id: 'stage4_i_e', label: 'Long ī', example: 'as in "kite"', phoneme: '/ī/' },
+  ],
+  'o': [
+    { id: 'vowel_short_o', label: 'Short o', example: 'as in "hot"', phoneme: '/ŏ/' },
+    { id: 'vowel_long_o', label: 'Long ō', example: 'as in "go"', phoneme: '/ō/' },
+  ],
+  'u': [
+    { id: 'vowel_short_u', label: 'Short u', example: 'as in "cup"', phoneme: '/ŭ/' },
+    { id: 'vowel_long_u', label: 'Long ū', example: 'as in "use"', phoneme: '/ū/' },
+  ],
+};
+
+// Direct lookup for named vowel searches like "short i", "long a", "short e sound"
+const NAMED_VOWEL_MAP: Record<string, string> = {
+  'short a': 'stage1_a',
+  'short e': 'vowel_short_e',
+  'short i': 'vowel_short_i',
+  'short o': 'vowel_short_o',
+  'short u': 'vowel_short_u',
+  'long a': 'stage4_a_e',
+  'long e': 'stage5_ee',
+  'long i': 'stage4_i_e',
+  'long o': 'vowel_long_o',
+  'long u': 'vowel_long_u',
+};
+
+// Named concept lookup
+const CONCEPT_NAME_MAP: Record<string, string> = {
+  'schwa': 'stage8_schwa',
+};
+
 export async function POST(request: NextRequest) {
   try {
     const { phoneme_input, sections_requested, user_id } = await request.json();
@@ -1047,7 +1090,55 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Find the phoneme in TypeScript data (single source of truth)
+    const normalizedInput = phoneme_input.toLowerCase().trim();
+    // Strip "sound" suffix (carries no search value): "short a sound" → "short a"
+    const cleanedInput = normalizedInput.replace(/\s+sound$/i, '');
+
+    // --- Input classification (runs BEFORE the general matching function) ---
+
+    // 1. Bare single vowel letter → disambiguation prompt
+    if (/^[aeiou]$/.test(cleanedInput)) {
+      const options = VOWEL_DISAMBIGUATION[cleanedInput];
+      if (options) {
+        return NextResponse.json({
+          success: true,
+          disambiguation: options,
+          generated_at: new Date().toISOString(),
+        });
+      }
+    }
+
+    // 2. Named vowel ("short i", "long a", "long e sound") → direct lookup
+    const namedId = NAMED_VOWEL_MAP[cleanedInput];
+    if (namedId) {
+      const match = ALL_COMPREHENSIVE_PHONEMES.find(p => p.phoneme_id === namedId);
+      if (match) {
+        const transformedData = transformPhonemeData(match);
+        return NextResponse.json({
+          success: true,
+          phoneme_data: transformedData,
+          correction_message: null,
+          generated_at: new Date().toISOString(),
+        });
+      }
+    }
+
+    // 3. Named concept ("schwa") → direct lookup
+    const conceptId = CONCEPT_NAME_MAP[cleanedInput];
+    if (conceptId) {
+      const match = ALL_COMPREHENSIVE_PHONEMES.find(p => p.phoneme_id === conceptId);
+      if (match) {
+        const transformedData = transformPhonemeData(match);
+        return NextResponse.json({
+          success: true,
+          phoneme_data: transformedData,
+          correction_message: null,
+          generated_at: new Date().toISOString(),
+        });
+      }
+    }
+
+    // 4. Everything else → existing matching logic
     const phonemeData = findPhonemeByInput(phoneme_input);
 
     if (!phonemeData) {

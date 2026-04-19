@@ -182,11 +182,13 @@ export default function DecodingDenPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [correctionMessage, setCorrectionMessage] = useState<string | null>(null);
-    
+  const [disambiguation, setDisambiguation] = useState<Array<{id: string, label: string, example: string, phoneme: string}> | null>(null);
+
   const handlePhonemeSearch = async (phonemeInput: string) => {
     setIsLoading(true);
     setError(null);
     setCorrectionMessage(null);
+    setDisambiguation(null);
     console.log('Search input:', phonemeInput);
 
     try {
@@ -207,6 +209,13 @@ export default function DecodingDenPage() {
         throw new Error(data.message || data.error || 'Failed to fetch phoneme data');
       }
 
+      // Check if API returned disambiguation options instead of a direct result
+      if (data.disambiguation) {
+        setDisambiguation(data.disambiguation);
+        setPhonemeData(null);
+        return;
+      }
+
       console.log('API response data:', data.phoneme_data);
       setPhonemeData(data.phoneme_data);
       setCorrectionMessage(data.correction_message);
@@ -217,6 +226,11 @@ export default function DecodingDenPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleDisambiguationSelect = (id: string) => {
+    setDisambiguation(null);
+    handlePhonemeSearch(id);
   };
 
   const ActiveComponent = activeSection ? 
@@ -256,6 +270,27 @@ export default function DecodingDenPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4" style={{maxWidth: '82rem'}}>
+
+        {/* Disambiguation prompt — shown when a bare vowel letter is searched */}
+        {disambiguation && (
+          <div className="rounded-xl shadow-lg p-4 sm:p-6 mb-4 border-2 border-accentGold/40 bg-gradient-to-br from-amber-50 to-creamyWhite">
+            <h2 className="text-lg sm:text-xl font-bold text-deepNavy mb-3">Which sound did you mean?</h2>
+            <div className="flex flex-wrap gap-3">
+              {disambiguation.map((option) => (
+                <button
+                  type="button"
+                  key={option.id}
+                  onClick={() => handleDisambiguationSelect(option.id)}
+                  className="flex-1 min-w-[140px] px-4 py-4 rounded-xl border-2 border-oceanBlue/30 bg-white hover:bg-oceanBlue/10 active:bg-oceanBlue/20 transition-colors text-left cursor-pointer [-webkit-tap-highlight-color:rgba(74,144,164,0.2)]"
+                >
+                  <p className="text-base sm:text-lg font-bold text-oceanBlue">{option.label}</p>
+                  <p className="text-xl sm:text-2xl font-mono text-deepNavy mt-1">{option.phoneme}</p>
+                  <p className="text-sm text-gray-600 mt-1">{option.example}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Main Content Area */}
         <>
