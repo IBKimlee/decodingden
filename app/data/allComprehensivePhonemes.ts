@@ -1615,22 +1615,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "85% accuracy", weekly: "80% accuracy", summative: "90% mastery" },
     teaching_advantages: ["Voiced pair to /k/", "Back of tongue sound", "Common words"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈g〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /g/ (hard g sound, as in go).', icon_emoji: '💙' },
+        { content: '/g/ is a stop (plosive), voiced consonant — air is blocked in the back of the mouth, then released while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /g/ is quick (cannot be stretched) and is made in the back of the mouth, which can make it harder for students to feel and see.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>g</strong> spells the /g/ sound (hard g) in words like go, gum, bag.', icon_emoji: '💚' },
+        { content: '/g/ can appear at the beginning (go), middle (tiger), or end (bag) of words.', icon_emoji: '💚' },
+        { content: '/g/ can be tricky because it is voiced and may be confused with /k/, and because g can also spell /j/ in other words (soft g).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>go</strong> or <strong>gum</strong>.', icon_emoji: '💛' },
+        { content: 'Use stop blending: /g/ - /o/ → go (keep it crisp, no "guh").', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their throat to feel vibration while noticing the back of the tongue lifting.', icon_emoji: '💛' },
+        { content: 'Contrast with /k/: /g/ has voice (vibration); /k/ is quiet (no voice).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/g/',
       sound_type: 'consonant',
-      place: 'Velar',
-      manner: 'Stop',
+      place: 'Velar (back of the tongue touches the soft palate)',
+      manner: 'Stop/Plosive (air is blocked, then released)',
       voicing: 'voiced',
-      cue: 'Back of tongue pops with voice - like /k/ but buzzy',
-      teacher_guidance: 'Like /k/ but voiced. Back of tongue touches soft palate with voice on.',
+      cue: 'Back of tongue pops with voice on. Because /g/ is made in the back of the mouth, it is less visible — use touch cues (throat for vibration). If there is no vibration, the student may be producing /k/.',
+      teacher_guidance: 'Like /k/ but voiced. Back of tongue touches soft palate with voice on. Use tactile cues since the sound is not visible.',
       student_tips: 'Push the back of your tongue up like /k/. Turn your voice on. Feel your throat buzz.',
-      common_substitutions: ['/k/', '/d/'],
+      common_substitutions: ['/k/'],
       articulation_cues: 'Back of tongue to soft palate, quick release, voiced',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Compare to /k/"], explicit_instruction: ["Model /g/"], guided_practice: ["/g/ vs /k/"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["85% accuracy"] },
-    differentiation_protocols: { struggling: ["Voice practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use hand-on-throat to feel vibration for /g/",
+        "Practice isolating the sound: /g/ → ga → gum",
+        "Use minimal pairs: gap vs. cap, got vs. cot",
+        "Explicitly note hard g only at first to avoid confusion with /j/"
+      ],
+      on_level: [
+        "Build word chains: gap → gas → gum",
+        "Add suffixes: bag → bags → bagging",
+        "Introduce contrast with soft g (/j/) in later lessons"
+      ],
+      advanced: [
+        "Build word chains: gap → gas → gum",
+        "Add suffixes: bag → bags → bagging",
+        "Introduce contrast with soft g (/j/) in later lessons"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced velar stop", place: "Velar", manner: "Stop", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /g/ with voicing", emphasis: ["Voice on"], priorities: ["Voicing contrast"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Voice contrast"] }
