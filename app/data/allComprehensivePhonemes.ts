@@ -1571,16 +1571,35 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Most frequent r-controlled", "Clear sound", "High utility"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈er〉</strong> (also commonly spelled <strong>〈ir〉</strong> and <strong>〈ur〉</strong>).', icon_emoji: '💙' },
+        { content: 'The phoneme is /er/ (as in her).', icon_emoji: '💙' },
+        { content: '/er/ is an r-controlled vowel — the r changes the vowel sound, so it is neither short nor long.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: er, ir, and ur all make the same /er/ sound, so students must learn to connect one sound to multiple spellings.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>er</strong> most commonly represents /er/ (as in her, term), but <strong>ir</strong> (bird) and <strong>ur</strong> (turn) also spell this sound.', icon_emoji: '💚' },
+        { content: '/er/ can appear at the beginning (her), middle (fern), or end (teacher) of words.', icon_emoji: '💚' },
+        { content: '/er/ can be tricky because it has multiple spellings and students may try to apply short vowel sounds instead.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>her</strong>, <strong>bird</strong>, <strong>turn</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /h/ - /er/ → her (treat /er/ as one chunk).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students pretend to think hard and say "errr...".', icon_emoji: '💛' },
+        { content: 'Contrast with /ĕ/: pet vs. pert to show how r changes the vowel sound.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ər/',
       sound_type: 'vowel',
-      place: 'Central',
-      manner: 'R-controlled vowel',
+      place: 'Central with rhotic influence (tongue pulls back slightly for /r/)',
+      manner: 'R-controlled vowel (vowel influenced by /r/)',
       voicing: 'voiced',
-      cue: 'The bossy R changes the vowel - "her", "fern", "verb"',
+      cue: 'The bossy R changes the vowel. Students should feel the tongue pull back slightly and hear a stable, controlled vowel sound. Emphasize that this is one sound, even though it can be spelled multiple ways.',
       teacher_guidance: 'The R controls the vowel sound. Tongue curls back slightly. This is the most common r-controlled vowel.',
       student_tips: 'The R is bossy and changes how the vowel sounds. Curl your tongue back a little. Say "er" like in "her".',
-      common_substitutions: ['/ur/', '/ir/', 'pure vowel'],
+      common_substitutions: ['/ĕ/ + /r/', 'pure vowel'],
       articulation_cues: 'Tongue slightly curled back, lips neutral, continuous sound',
       airflow_description: 'oral'
     },
@@ -1597,9 +1616,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["70% accuracy", "Consistent recognition", "Fluent reading"]
     },
     differentiation_protocols: {
-      struggling: ["Extended r-controlled practice", "Auditory emphasis", "Visual supports"],
-      on_level: ["Standard instruction", "Center work", "Collaborative practice"],
-      advanced: ["Complex r-patterns", "Morphology connections", "Leadership roles"]
+      struggling: [
+        "Teach /er/ as one chunk, not separate vowel + /r/",
+        "Use minimal pairs: pet vs. pert, bed vs. bird",
+        "Introduce one spelling at a time (start with er)",
+        "Use visual cues (highlight er/ir/ur patterns)"
+      ],
+      on_level: [
+        "Build word chains: her → term → germ",
+        "Sort words by spelling: er vs. ir vs. ur",
+        "Compare with other r-controlled vowels: ar, or, er"
+      ],
+      advanced: [
+        "Build word chains: her → term → germ",
+        "Sort words by spelling: er vs. ir vs. ur",
+        "Compare with other r-controlled vowels: ar, or, er"
+      ]
     },
     linguistic_properties_extended: {
       description: "Mid central r-colored vowel",
