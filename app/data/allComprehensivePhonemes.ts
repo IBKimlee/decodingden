@@ -1362,16 +1362,35 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Magic e concept", "Clear vowel contrast", "High frequency"],
     research_sources: ["Ehri (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈a_e〉</strong>, <strong>〈ai〉</strong>, <strong>〈ay〉</strong> (most common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /ā/ (as in cake, rain, play).', icon_emoji: '💙' },
+        { content: '/ā/ is a long vowel sound — it says its letter name.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ā/ can be spelled multiple ways, so students must learn to connect one sound to several graphemes.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The most common spelling is <strong>a_e</strong> (silent e pattern, as in cake).', icon_emoji: '💚' },
+        { content: 'Other common spellings include <strong>ai</strong> (middle of words, rain) and <strong>ay</strong> (end of words, play).', icon_emoji: '💚' },
+        { content: '/ā/ can be tricky because it has multiple spellings and students must learn position-based patterns.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>cake</strong>, <strong>rain</strong>, <strong>play</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /c/ - /ā/ - /k/ → cake.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students say the letter name "A" while tracing the patterns (a_e, ai, ay).', icon_emoji: '💛' },
+        { content: 'Contrast with /ă/: cap vs. cape, mad vs. made to highlight the vowel change.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ā/',
       sound_type: 'vowel',
-      place: 'Mid front',
-      manner: 'Vowel',
+      place: 'Mid-front (tongue is in the middle/front of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Say the letter name A - like in "cake"',
+      cue: 'Say the letter name A. Students should feel a tense vowel sound that "says its name." If the sound is short or relaxed, they may be producing /ă/ instead.',
       teacher_guidance: 'Long a says its name. Mouth is more closed than short a, with a slight smile.',
       student_tips: 'Say the letter A. Your mouth makes a smile shape. Think of "cake" or "make".',
-      common_substitutions: ['/eh/', 'short a'],
+      common_substitutions: ['/ă/'],
       articulation_cues: 'Slight smile, tongue mid-high, mouth less open than short a',
       airflow_description: 'oral'
     },
@@ -1388,9 +1407,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["75% accuracy", "Consistent recognition", "Pattern application"]
     },
     differentiation_protocols: {
-      struggling: ["Extended vowel practice", "Visual pattern supports", "Individual coaching"],
-      on_level: ["Standard VCe instruction", "Center activities", "Partner work"],
-      advanced: ["Complex patterns", "Rule analysis", "Teaching others"]
+      struggling: [
+        "Start with one spelling at a time (usually a_e first)",
+        "Use minimal pairs: cap vs. cape, tap vs. tape",
+        "Practice sorting by spelling: a_e vs. ai vs. ay",
+        "Provide explicit modeling of silent e making the vowel long"
+      ],
+      on_level: [
+        "Build word chains: cap → cape → tape",
+        "Add word families: -ake, -ain, -ay",
+        "Practice sentence dictation using mixed spellings of /ā/"
+      ],
+      advanced: [
+        "Build word chains: cap → cape → tape",
+        "Add word families: -ake, -ain, -ay",
+        "Practice sentence dictation using mixed spellings of /ā/"
+      ]
     },
     linguistic_properties_extended: {
       description: "Long low front vowel (VCe pattern)",
