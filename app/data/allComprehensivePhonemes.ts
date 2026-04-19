@@ -1672,16 +1672,35 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Clear diphthong", "Two spellings", "High frequency"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈ow〉</strong> and <strong>〈ou〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ow/ (as in cow, out).', icon_emoji: '💙' },
+        { content: '/ow/ is a diphthong — the mouth glides from one vowel sound to another within the same syllable.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ow/ is a moving (gliding) sound, so students must feel the mouth change shape as they say it.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>ow</strong> is often found at the end of words (cow, now).', icon_emoji: '💚' },
+        { content: 'The spelling <strong>ou</strong> is often found in the middle of words (out, shout).', icon_emoji: '💚' },
+        { content: '/ow/ can be tricky because <strong>ow</strong> can also say /ō/ (snow), so students must use context and patterns.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>cow</strong> and <strong>out</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /c/ - /ow/ → cow.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students drop their jaw then round their lips to feel the glide.', icon_emoji: '💛' },
+        { content: 'Contrast with /ō/: cow vs. low, how vs. slow to highlight the glide vs. steady vowel.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ou/',
       sound_type: 'vowel',
-      place: 'Low back to high back',
-      manner: 'Diphthong',
+      place: 'Starts low-front and glides to high-back',
+      manner: 'Diphthong (gliding vowel sound)',
       voicing: 'voiced',
-      cue: 'Mouth opens wide then closes to round - "ow!" like something hurts',
+      cue: 'Mouth opens wide then closes to round — "ow!" like something hurts. Students should feel their mouth move during the sound. If the mouth stays still, they may be producing /ō/ instead.',
       teacher_guidance: 'This is a gliding sound. Start with mouth open wide, then glide to a rounded position.',
       student_tips: 'Start with your mouth wide open, then close it to a round shape. Say "ow" like when you stub your toe!',
-      common_substitutions: ['/o/', '/aw/'],
+      common_substitutions: ['/ō/', '/aw/'],
       articulation_cues: 'Mouth starts open, glides to rounded position, continuous movement',
       airflow_description: 'oral'
     },
@@ -1698,9 +1717,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["65% accuracy", "Correct spelling choice", "Fluent reading"]
     },
     differentiation_protocols: {
-      struggling: ["Extended diphthong practice", "Mouth movement cues", "Spelling supports"],
-      on_level: ["Standard instruction", "Pattern work", "Partner activities"],
-      advanced: ["Complex applications", "Rule analysis", "Peer coaching"]
+      struggling: [
+        "Teach the glide explicitly (start sound → end sound)",
+        "Use a mirror to observe mouth movement",
+        "Practice sorting: ow (end) vs. ou (middle)",
+        "Use minimal pairs: cow vs. low, how vs. ho"
+      ],
+      on_level: [
+        "Build word chains: cow → how → now",
+        "Add word families: -ow, -out",
+        "Practice sentence dictation using both ow and ou patterns"
+      ],
+      advanced: [
+        "Build word chains: cow → how → now",
+        "Add word families: -ow, -out",
+        "Practice sentence dictation using both ow and ou patterns"
+      ]
     },
     linguistic_properties_extended: {
       description: "Low back to high back diphthong",
