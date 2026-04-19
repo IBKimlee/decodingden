@@ -2205,22 +2205,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Nasal sound", "Always at end of syllable", "Back of tongue"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈ng〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ng/ (as in ring).', icon_emoji: '💙' },
+        { content: '/ng/ is a nasal, voiced consonant — air flows through the nose while the back of the tongue lifts.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ng/ is made in the back of the mouth and is typically heard at the end of words, which makes it less visible and sometimes harder to isolate.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The digraph <strong>ng</strong> spells the /ng/ sound (two letters, one sound).', icon_emoji: '💚' },
+        { content: '/ng/ most often appears at the end (ring) or middle (finger) of words, but not at the beginning in English.', icon_emoji: '💚' },
+        { content: '/ng/ can be tricky because students may add a /g/ sound (saying /ngg/) or confuse it with /n/.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>ring</strong> or <strong>sing</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: ri-ng → ring (hold the /ng/ sound).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students hum while lifting the back of their tongue (like finishing the word "sing").', icon_emoji: '💛' },
+        { content: 'Contrast with /n/: /ng/ is made in the back of the mouth, while /n/ is made with the tongue at the front.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ŋ/',
       sound_type: 'consonant',
-      place: 'Velar',
-      manner: 'Nasal',
+      place: 'Velar (back of the tongue touches the soft palate)',
+      manner: 'Nasal (air flows through the nose)',
       voicing: 'voiced',
-      cue: 'Back of tongue hum through nose - "ng" at end of "sing"',
+      cue: 'Back of tongue hum through nose. Students should feel vibration in the nose and back of the mouth. If they release a /g/ sound at the end (sing-g), remind them that /ng/ is one sound, not two.',
       teacher_guidance: 'Back of tongue touches soft palate. Air goes through nose. Like humming at back of throat.',
       student_tips: 'Push the back of your tongue up. Hum through your nose. Feel the buzz in your nose, not your lips.',
-      common_substitutions: ['/n/', '/nk/', '/ng/ + /g/'],
+      common_substitutions: ['/n/', '/ng/ + /g/'],
       articulation_cues: 'Back of tongue to soft palate, air through nose, voiced',
       airflow_description: 'nasal'
     },
     instructional_sequence: { pre_teaching: ["Humming games"], explicit_instruction: ["Model /ŋ/"], guided_practice: ["/ng/ vs /n/"], independent_practice: ["Word endings"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Back tongue practice"], on_level: ["Standard instruction"], advanced: ["Spelling patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Model the sound at the end of familiar words: sing, ring, king",
+        "Practice isolating the final sound: si-ng → /ng/",
+        "Use minimal pairs: sin vs. sing, ran vs. rang",
+        "Emphasize no extra /g/ sound at the end"
+      ],
+      on_level: [
+        "Build word chains: sing → sang → song",
+        "Add suffixes: sing → singing",
+        "Practice sorting: /n/ vs. /ng/ words"
+      ],
+      advanced: [
+        "Build word chains: sing → sang → song",
+        "Add suffixes: sing → singing",
+        "Practice sorting: /n/ vs. /ng/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced velar nasal", place: "Velar", manner: "Nasal", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /ng/ nasal", emphasis: ["Back of tongue"], priorities: ["Nasal airflow"] },
     content_generation_meta: { rules: ["Final position"], guidelines: ["Nasal sound"] }
