@@ -1184,17 +1184,36 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Continuous sound", "High frequency", "Clear auditory distinction from /s/"],
     research_sources: ["NRP (2000)", "Ehri (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈sh〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /sh/ (as in ship).', icon_emoji: '💙' },
+        { content: '/sh/ is a fricative, unvoiced consonant — air flows continuously through a narrow space.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /sh/ is a continuous sound, so students can stretch it (shhhhh), which supports blending.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The digraph <strong>sh</strong> spells the /sh/ sound (two letters, one sound).', icon_emoji: '💚' },
+        { content: '/sh/ can appear at the beginning (ship), middle (fishy), or end (dish) of words.', icon_emoji: '💚' },
+        { content: '/sh/ can be tricky because it may be confused with /ch/ (stop + release) or /s/, and sometimes appears in different spellings (like ti in nation — for later instruction).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>ship</strong> or <strong>shoe</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: shhhhh-ip → ship.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students put a finger to their lips and say "shhh" (quiet signal).', icon_emoji: '💛' },
+        { content: 'Contrast with /ch/: /sh/ is smooth and continuous, while /ch/ is quick with a burst.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/sh/',
       sound_type: 'consonant',
-      place: 'Postalveolar',
-      manner: 'Fricative',
+      place: 'Postalveolar (tongue is just behind the alveolar ridge)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiceless',
-      cue: 'Quiet sound - like telling someone to be quiet',
-      teacher_guidance: 'Have students feel the continuous airflow. Compare to /s/ - tongue is further back for /sh/.',
+      cue: 'Quiet sound — like telling someone to be quiet. Students should feel steady airflow with no vibration. If they add a stop or burst, they may be producing /ch/.',
+      teacher_guidance: 'Have students feel the continuous airflow. Compare to /s/ — tongue is further back for /sh/.',
       student_tips: 'Round your lips slightly. Keep your tongue behind your teeth. Push air through quietly like you\'re saying "shh" to be quiet.',
-      common_substitutions: ['/s/', '/ch/', '/t/ + /h/'],
-      articulation_cues: 'Lips slightly rounded, tongue raised near roof of mouth',
+      common_substitutions: ['/ch/', '/s/'],
+      articulation_cues: 'Lips slightly rounded, tongue raised near roof of mouth, continuous airflow',
       airflow_description: 'oral'
     },
     instructional_sequence: {
@@ -1210,9 +1229,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["80% recognition", "Automatic recall", "Word application"]
     },
     differentiation_protocols: {
-      struggling: ["Extended practice", "Visual supports", "Individual coaching"],
-      on_level: ["Standard instruction", "Center activities", "Partner work"],
-      advanced: ["Alternative spellings", "Complex patterns", "Leadership roles"]
+      struggling: [
+        "Use a mirror to observe lip rounding and tongue position",
+        "Practice isolating and stretching: /sh/ → sha → ship",
+        "Use minimal pairs: ship vs. chip, shop vs. sop",
+        "Reinforce with the \"quiet\" gesture (finger to lips)"
+      ],
+      on_level: [
+        "Build word chains: ship → shop → chop",
+        "Add suffixes: fish → fishes",
+        "Sort words by /sh/ vs. /ch/ sounds"
+      ],
+      advanced: [
+        "Build word chains: ship → shop → chop",
+        "Add suffixes: fish → fishes",
+        "Sort words by /sh/ vs. /ch/ sounds"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiceless postalveolar fricative",
