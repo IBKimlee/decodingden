@@ -769,22 +769,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "80% accuracy", weekly: "75% accuracy", summative: "85% letter-sound" },
     teaching_advantages: ["Voiced pair to /s/", "Distinctive sound", "Clear contrast"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈z〉</strong> (also <strong>〈zz〉</strong> or sometimes <strong>〈s〉</strong> in certain words).', icon_emoji: '💙' },
+        { content: 'The phoneme is /z/.', icon_emoji: '💙' },
+        { content: '/z/ is a fricative, voiced consonant — air flows continuously while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /z/ is a continuous sound, so students can stretch it (zzzzz) to support blending.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>z</strong> spells the /z/ sound (as in zoo), and <strong>zz</strong> often appears at the end of short vowel words (like buzz).', icon_emoji: '💚' },
+        { content: '/z/ can appear at the beginning (zip), middle (lizard), or end (buzz) of words.', icon_emoji: '💚' },
+        { content: '/z/ can be tricky because it is voiced and often confused with /s/, and sometimes <strong>s</strong> spells /z/ (like is, has).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>zoo</strong> or <strong>zip</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: zzzzz-ip → zip.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students buzz like a bee while touching their throat to feel vibration.', icon_emoji: '💛' },
+        { content: 'Contrast with /s/: /z/ has voice (vibration); /s/ is quiet (no voice).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/z/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Fricative',
+      place: 'Alveolar (tongue is close to the ridge behind the top teeth)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiced',
-      cue: 'Buzzing bee sound - like /s/ but with your voice on',
+      cue: 'Buzzing bee sound — like /s/ but with your voice on. Students should feel vibration in their throat along with steady airflow. If there is no vibration, they are likely producing /s/.',
       teacher_guidance: 'Like /s/ but voiced. Have students feel throat vibration. Compare /s/ (voiceless) to /z/ (voiced).',
       student_tips: 'Make the /s/ sound but turn your voice on. It should buzz like a bee. Feel your throat vibrate.',
       common_substitutions: ['/s/'],
-      articulation_cues: 'Same position as /s/, but with voice - teeth close, tongue behind top teeth',
+      articulation_cues: 'Same position as /s/, but with voice — teeth close, tongue behind top teeth',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Buzzing bee", "Voice on"], explicit_instruction: ["Model /z/ with voice"], guided_practice: ["/z/ vs /s/ contrast"], independent_practice: ["Find /z/ words"], assessment_checkpoints: ["Daily voicing", "Weekly words"] },
     assessment_framework_details: { formative: ["Voice checks"], summative: ["Voice tests"], mastery_criteria: ["80% voicing"] },
-    differentiation_protocols: { struggling: ["Voice practice"], on_level: ["Standard instruction"], advanced: ["Voice contrasts"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to show tongue and teeth position",
+        "Practice isolating and stretching: /z/ → za → zip",
+        "Use minimal pairs: zip vs. sip, buzz vs. bus",
+        "Provide explicit modeling with throat touch to feel voicing"
+      ],
+      on_level: [
+        "Build word chains: zip → zap → map",
+        "Add suffixes: buzz → buzzing",
+        "Sort words where s spells /z/ vs. z spells /z/"
+      ],
+      advanced: [
+        "Build word chains: zip → zap → map",
+        "Add suffixes: buzz → buzzing",
+        "Sort words where s spells /z/ vs. z spells /z/"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced alveolar fricative", place: "Alveolar", manner: "Fricative", voicing: "Voiced" },
     weekly_data_override: { focus: "Voiced /z/ fricative", emphasis: ["Voice quality"], priorities: ["Voicing accuracy"] },
     content_generation_meta: { rules: ["Voice emphasis"], guidelines: ["Voicing focus"] }
