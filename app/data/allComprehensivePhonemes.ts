@@ -3445,22 +3445,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Clear diphthong", "Position rule: aw at end/before n,l,k; au in middle", "High-frequency words"],
     research_sources: ["NRP (2000)", "Adams (1990)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈aw〉</strong> and <strong>〈au〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /aw/ (as in saw, sauce).', icon_emoji: '💙' },
+        { content: '/aw/ is a vowel team — two vowels work together to make one sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /aw/ is a stable (non-gliding) vowel sound, unlike diphthongs, so the mouth stays more steady.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>aw</strong> is often found at the end of words (saw, claw).', icon_emoji: '💚' },
+        { content: 'The spelling <strong>au</strong> is often found in the middle of words (sauce, haul).', icon_emoji: '💚' },
+        { content: '/aw/ can be tricky because it may be confused with /ŏ/ or /ă/ depending on dialect.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>saw</strong> and <strong>sauce</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /s/ - /aw/ → saw.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students open their mouth slightly and round lips (like saying "awww").', icon_emoji: '💛' },
+        { content: 'Contrast with /ŏ/: cot vs. caught to highlight the difference in vowel sound.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/aw/',
       sound_type: 'vowel',
-      place: 'Low back',
-      manner: 'Diphthong',
+      place: 'Low-back (tongue is low and toward the back of the mouth)',
+      manner: 'Vowel team (steady vowel sound)',
       voicing: 'voiced',
-      cue: 'Open mouth wide then round lips — like the "aw" in "awesome"',
+      cue: 'Open mouth slightly and round lips — like saying "awww". Students should feel a steady mouth position (not gliding). If the sound moves, they may be producing a diphthong like /ow/.',
       teacher_guidance: 'Mouth opens wide then rounds slightly. Position rule: aw at end of words or before n, l, k; au in middle of words.',
       student_tips: 'Open your mouth wide and round your lips. Think of saying "awww" when you see something cute.',
-      common_substitutions: ['/ŏ/', '/ō/'],
-      articulation_cues: 'Wide open mouth, lips slightly rounded',
+      common_substitutions: ['/ŏ/', '/ă/'],
+      articulation_cues: 'Wide open mouth, lips slightly rounded, steady position',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Vowel teams"], explicit_instruction: ["Model /aw/"], guided_practice: ["Position sorts: aw vs au"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Focus on aw first"], on_level: ["Standard instruction"], advanced: ["Position rule mastery"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach aw and au separately, then connect them",
+        "Use a mirror to check for steady mouth shape",
+        "Practice sorting: aw (end) vs. au (middle)",
+        "Use minimal pairs: cot vs. caught, not vs. naught"
+      ],
+      on_level: [
+        "Build word chains: saw → paw → law",
+        "Add word families: -aw, -au",
+        "Practice sentence dictation using both aw and au patterns"
+      ],
+      advanced: [
+        "Build word chains: saw → paw → law",
+        "Add word families: -aw, -au",
+        "Practice sentence dictation using both aw and au patterns"
+      ]
+    },
     linguistic_properties_extended: { description: "Low back rounded vowel", place: "Back", manner: "Diphthong", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /aw/ diphthong", emphasis: ["Position rule"], priorities: ["aw vs au"] },
     content_generation_meta: { rules: ["Diphthong"], guidelines: ["Position sorting"] }
