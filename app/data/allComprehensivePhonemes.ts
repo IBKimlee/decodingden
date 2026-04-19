@@ -2632,22 +2632,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Clear contrast to /e/", "Frequent in CVC words", "High front position"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈i〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ĭ/ (as in igloo or sit).', icon_emoji: '💙' },
+        { content: '/ĭ/ is a short vowel sound — air flows freely with a relaxed, voiced sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ĭ/ is a quick, relaxed vowel made with a slightly open mouth, and it is often easily confused with /ĕ/.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>i</strong> most often spells the /ĭ/ sound in closed syllables (as in sit, pin).', icon_emoji: '💚' },
+        { content: '/ĭ/ can appear at the beginning (igloo), middle (sit), or sometimes end (rare in early phonics) of words.', icon_emoji: '💚' },
+        { content: '/ĭ/ can be tricky because it is often confused with /ĕ/ (pen/pin) or /ē/ in some dialects.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>igloo</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /ĭ/ - /t/ → it, /s/ - /ĭ/ - /t/ → sit.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students make a "short, quick" sound with a small mouth opening (like a quick "ih").', icon_emoji: '💛' },
+        { content: 'Contrast with /ĕ/: sit vs. set to help students hear the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ĭ/',
       sound_type: 'vowel',
-      place: 'High front',
-      manner: 'Vowel',
+      place: 'High-front (tongue is raised toward the front of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Small smile, tongue high - quick "ih" sound like in "sit"',
+      cue: 'Small smile, tongue high — quick "ih" sound. Students should feel a smaller mouth opening than /ĕ/. If the mouth opens too wide, the sound may shift toward /ĕ/.',
       teacher_guidance: 'Tongue is high and forward. Lips slightly spread. Short, quick sound.',
       student_tips: 'Make a small smile. Keep your tongue high. Say a quick "ih" like in "sit" or "pig".',
-      common_substitutions: ['/e/', '/ee/'],
+      common_substitutions: ['/ĕ/', '/ē/'],
       articulation_cues: 'Tongue high and front, lips slightly spread, short duration',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Mouth position"], explicit_instruction: ["Model /ĭ/"], guided_practice: ["Vowel contrast"], independent_practice: ["CVC words"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Mirror practice"], on_level: ["Standard instruction"], advanced: ["Vowel sorts"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to compare mouth shape with /ĕ/",
+        "Practice isolating and producing: /ĭ/ → i → it",
+        "Use minimal pairs: sit vs. set, pin vs. pen",
+        "Provide explicit modeling of \"quick, small mouth\" sound"
+      ],
+      on_level: [
+        "Build word chains: sit → sip → tip",
+        "Add word families: -it, -in, -ip",
+        "Practice sentence dictation with multiple /ĭ/ words"
+      ],
+      advanced: [
+        "Build word chains: sit → sip → tip",
+        "Add word families: -it, -in, -ip",
+        "Practice sentence dictation with multiple /ĭ/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "High front unrounded vowel", place: "Front", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear short /i/", emphasis: ["Tongue position"], priorities: ["Short duration"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["High vowel"] }
