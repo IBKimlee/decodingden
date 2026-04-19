@@ -1927,14 +1927,33 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Simple breath sound", "Only occurs at syllable beginning", "Easy articulation"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈h〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /h/.', icon_emoji: '💙' },
+        { content: '/h/ is a fricative, unvoiced consonant — air flows freely out of the mouth without vocal cord vibration.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /h/ is a breathy sound made with open airflow, not much mouth obstruction, which can make it harder for students to "feel."', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>h</strong> spells the /h/ sound (as in hat).', icon_emoji: '💚' },
+        { content: '/h/ appears at the beginning (hat) and sometimes middle (ahead) of words, but rarely at the end.', icon_emoji: '💚' },
+        { content: '/h/ can be tricky because it is quiet and breathy, and some students may omit it or replace it with no sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>hat</strong> or <strong>hot</strong>.', icon_emoji: '💛' },
+        { content: 'Use gentle blending: hhh-at → hat (light, airy sound).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students put a hand in front of their mouth to feel warm air.', icon_emoji: '💛' },
+        { content: 'Contrast with vowel-only onset (e.g., at vs. hat) to highlight that /h/ adds a breathy beginning sound.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/h/',
       sound_type: 'consonant',
-      place: 'Glottal',
-      manner: 'Fricative',
+      place: 'Glottal (sound is produced in the throat)',
+      manner: 'Fricative (air flows freely through the vocal tract)',
       voicing: 'voiceless',
-      cue: 'Breath sound - like fogging up a mirror or panting',
-      teacher_guidance: 'This is just a puff of breath. Mouth is open, ready for the next vowel. Like panting.',
+      cue: 'Breath sound — like fogging up a mirror or panting. Students should feel warm air on their hand with no throat vibration. If the sound disappears, they may be dropping the /h/ (common error).',
+      teacher_guidance: 'This is just a puff of breath. Mouth is open, ready for the next vowel. Like panting. Watch for /h/ dropping.',
       student_tips: 'Open your mouth and push out a puff of air. Like you are fogging up a window. Ha!',
       common_substitutions: ['omission'],
       articulation_cues: 'Mouth open, puff of breath, voiceless',
@@ -1942,7 +1961,24 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     instructional_sequence: { pre_teaching: ["Breathing games"], explicit_instruction: ["Model /h/"], guided_practice: ["Panting sounds"], independent_practice: ["Word building"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Breath practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a hand-in-front-of-mouth cue to feel the breath",
+        "Practice contrast pairs: at vs. hat, it vs. hit",
+        "Model exaggerated breathy /h/ to make the sound more noticeable",
+        "Practice isolating and blending: /h/ → ha → hat"
+      ],
+      on_level: [
+        "Build word chains: hat → hot → hop",
+        "Add simple phrases: hot ham, his hat",
+        "Practice sentence dictation with multiple /h/ words"
+      ],
+      advanced: [
+        "Build word chains: hat → hot → hop",
+        "Add simple phrases: hot ham, his hat",
+        "Practice sentence dictation with multiple /h/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiceless glottal fricative", place: "Glottal", manner: "Fricative", voicing: "Voiceless" },
     weekly_data_override: { focus: "Clear /h/ breath", emphasis: ["Puff of air"], priorities: ["Beginning position"] },
     content_generation_meta: { rules: ["Initial position only"], guidelines: ["Breath sound"] }
