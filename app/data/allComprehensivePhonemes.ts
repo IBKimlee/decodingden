@@ -601,13 +601,32 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% letter-sound" },
     teaching_advantages: ["Continuous sound", "Frequent usage", "Clear articulation"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈n〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /n/.', icon_emoji: '💙' },
+        { content: '/n/ is a nasal, continuous consonant — air flows through the nose while the tongue touches the roof of the mouth.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /n/ can be stretched (nnnnn), which makes it easier for blending and phoneme isolation.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>n</strong> consistently spells the /n/ sound in English.', icon_emoji: '💚' },
+        { content: '/n/ can appear at the beginning (net), middle (sunny), or end (pan) of words.', icon_emoji: '💚' },
+        { content: '/n/ is generally easy due to its continuous nature, but may be confused with /m/ or /ng/ in some contexts.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>net</strong> or <strong>nose</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: nnnn-et → net.', icon_emoji: '💛' },
+        { content: 'Add movement: have students tap their nose while saying /n/ to feel the nasal sound.', icon_emoji: '💛' },
+        { content: 'Contrast with /m/ (lips closed) to highlight that /n/ uses the tongue, not lips.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/n/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Nasal',
+      place: 'Alveolar (tongue touches just behind the top teeth)',
+      manner: 'Nasal (air flows through the nose)',
       voicing: 'voiced',
-      cue: 'Humming sound with tongue up - air through your nose',
+      cue: 'Tongue tip touches the ridge behind top teeth. Air goes through the nose, not the mouth. Students should feel vibration in their nose, not their lips.',
       teacher_guidance: 'Tongue tip touches the ridge behind top teeth. Air goes through the nose, not the mouth.',
       student_tips: 'Touch your tongue to the spot behind your top teeth. Hum through your nose. Feel the buzz in your nose.',
       common_substitutions: ['/m/', '/d/'],
@@ -616,7 +635,24 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     instructional_sequence: { pre_teaching: ["Nose connection", "Tongue tip"], explicit_instruction: ["Model /n/", "Show position"], guided_practice: ["Sound sorting", "Building"], independent_practice: ["Find words", "Complete families"], assessment_checkpoints: ["Daily production", "Weekly reading"] },
     assessment_framework_details: { formative: ["Daily checks", "Weekly reviews"], summative: ["Unit tests", "Benchmarks"], mastery_criteria: ["90% accuracy", "Automatic recall"] },
-    differentiation_protocols: { struggling: ["Extended practice", "Tactile cues"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to show tongue placement (behind teeth, not lips)",
+        "Have students touch their nose to feel vibration while producing /n/",
+        "Practice isolating and stretching: nnnn → na → nap",
+        "Use minimal pairs: nap vs. map, net vs. met"
+      ],
+      on_level: [
+        "Build word chains: nap → nip → pin",
+        "Add inflectional endings: run → runs → running",
+        "Practice sentence dictation using multiple /n/ words"
+      ],
+      advanced: [
+        "Build word chains: nap → nip → pin",
+        "Add inflectional endings: run → runs → running",
+        "Practice sentence dictation using multiple /n/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced alveolar nasal", place: "Alveolar", manner: "Nasal", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /n/ nasal", emphasis: ["Nasal quality"], priorities: ["Sound clarity"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Nasal emphasis"] }
