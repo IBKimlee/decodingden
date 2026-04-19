@@ -3229,22 +3229,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["R-controlled vowel", "Multiple spellings", "Common words"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈or〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /or/ (as in fork).', icon_emoji: '💙' },
+        { content: '/or/ is an r-controlled vowel — the r changes the vowel sound, so it is neither short nor long.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: the /r/ "bosses the vowel", creating a new, controlled sound that students must learn as one unit.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>or</strong> makes the /or/ sound (as in for, corn, fork).', icon_emoji: '💚' },
+        { content: '/or/ can appear at the beginning (or), middle (corn), or end (for) of words.', icon_emoji: '💚' },
+        { content: '/or/ can be tricky because students may try to read it as /ŏ/ + /r/ instead of recognizing it as a single r-controlled sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>fork</strong> or <strong>corn</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /f/ - /or/ - /k/ → fork (treat /or/ as one chunk).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students pretend to open a door and say "orrrr".', icon_emoji: '💛' },
+        { content: 'Contrast with /ŏ/: cot vs. cord, hop vs. horn to show how r changes the vowel.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/or/',
       sound_type: 'vowel',
-      place: 'Mid back',
-      manner: 'R-controlled vowel',
+      place: 'Mid-back with rhotic influence (tongue pulls back slightly for /r/)',
+      manner: 'R-controlled vowel (vowel influenced by /r/)',
       voicing: 'voiced',
-      cue: 'Round lips then curl tongue for R - "or" like in "for"',
+      cue: 'Round lips then curl tongue for R. Students should feel the tongue pull back slightly and hear a controlled, rounded vowel sound. Emphasize that /or/ is one sound, not two separate sounds.',
       teacher_guidance: 'Start with rounded /o/, then add the r-coloring. Tongue curls back.',
       student_tips: 'Start with round lips like /o/. Then curl your tongue back for the R. For, more, store.',
-      common_substitutions: ['/er/', '/ar/'],
+      common_substitutions: ['/ŏ/ + /r/', '/er/'],
       articulation_cues: 'Lips rounded, then tongue curls back for R',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Bossy R"], explicit_instruction: ["Model /or/"], guided_practice: ["R-controlled sorts"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["65% accuracy"] },
-    differentiation_protocols: { struggling: ["R practice"], on_level: ["Standard instruction"], advanced: ["Spelling patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach /or/ as one chunk, not separate sounds",
+        "Use minimal pairs: cot vs. cord, hop vs. horn",
+        "Practice word building: c + or + n → corn",
+        "Use visual cues (highlight or pattern in words)"
+      ],
+      on_level: [
+        "Build word chains: for → fork → form",
+        "Add word families: -or, -orn, -ork",
+        "Compare with other r-controlled vowels: ar, or, er"
+      ],
+      advanced: [
+        "Build word chains: for → fork → form",
+        "Add word families: -or, -orn, -ork",
+        "Compare with other r-controlled vowels: ar, or, er"
+      ]
+    },
     linguistic_properties_extended: { description: "Mid back r-colored vowel", place: "Back", manner: "R-controlled", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /or/ r-controlled", emphasis: ["Lip rounding + R"], priorities: ["Multiple spellings"] },
     content_generation_meta: { rules: ["R-controlled"], guidelines: ["Bossy R"] }
