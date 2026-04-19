@@ -2561,22 +2561,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "85% accuracy", weekly: "80% accuracy", summative: "90% mastery" },
     teaching_advantages: ["Mid-position between /i/ and /a/", "Common in CVC words", "Clear mouth position"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈e〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ĕ/ (as in egg).', icon_emoji: '💙' },
+        { content: '/ĕ/ is a short vowel sound — air flows freely with a relaxed, voiced sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ĕ/ is a quick, relaxed vowel made with a slightly open mouth, which can sound similar to other short vowels.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>e</strong> most often spells the /ĕ/ sound in closed syllables (as in bed, pen).', icon_emoji: '💚' },
+        { content: '/ĕ/ can appear at the beginning (egg), middle (bed), or sometimes end (rare) of words.', icon_emoji: '💚' },
+        { content: '/ĕ/ can be tricky because it is often confused with /ĭ/ or /ă/, especially for early readers.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>egg</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /ĕ/ - /d/ → ed, /b/ - /ĕ/ - /d/ → bed.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students open their mouth slightly and say "eh" like reacting ("eh?").', icon_emoji: '💛' },
+        { content: 'Contrast with /ĭ/: pen vs. pin to help students hear the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ĕ/',
       sound_type: 'vowel',
-      place: 'Mid front',
-      manner: 'Vowel',
+      place: 'Mid-front (tongue is in the middle/front of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Mouth slightly open, tongue in middle - "eh" like in "bed"',
+      cue: 'Mouth slightly open, tongue in middle. Students should feel a relaxed mouth with slight opening. If the mouth is too closed, the sound may shift toward /ĭ/.',
       teacher_guidance: 'Mouth is slightly open, less than /a/. Tongue is mid-height and forward.',
       student_tips: 'Open your mouth a little bit. Not as wide as /a/. Say "eh" like in "bed" or "pet".',
-      common_substitutions: ['/i/', '/a/'],
+      common_substitutions: ['/ĭ/', '/ă/'],
       articulation_cues: 'Mouth slightly open, tongue mid-front, lips relaxed',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Mouth position"], explicit_instruction: ["Model /ĕ/"], guided_practice: ["Vowel contrast"], independent_practice: ["CVC words"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["85% accuracy"] },
-    differentiation_protocols: { struggling: ["Mirror practice"], on_level: ["Standard instruction"], advanced: ["Vowel sorts"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to check mouth position (slight opening)",
+        "Practice isolating and producing: /ĕ/ → e → ed",
+        "Use minimal pairs: pen vs. pin, bed vs. bad",
+        "Provide explicit modeling of mouth shape and sound"
+      ],
+      on_level: [
+        "Build word chains: bed → bet → let",
+        "Add word families: -ed, -en, -et",
+        "Practice sentence dictation with multiple /ĕ/ words"
+      ],
+      advanced: [
+        "Build word chains: bed → bet → let",
+        "Add word families: -ed, -en, -et",
+        "Practice sentence dictation with multiple /ĕ/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Mid front unrounded vowel", place: "Front", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear short /e/", emphasis: ["Mouth position"], priorities: ["Vowel contrast"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Mid vowel"] }
