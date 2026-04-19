@@ -631,13 +631,32 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Clear lip rounding", "Glide sound", "High-frequency words"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈w〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /w/.', icon_emoji: '💙' },
+        { content: '/w/ is a glide (semivowel), voiced sound — the mouth moves quickly from a rounded position into the vowel.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /w/ is a quick, smooth sound that slides into the vowel, which helps with blending but can be subtle for students to hear.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>w</strong> spells the /w/ sound (as in web).', icon_emoji: '💚' },
+        { content: '/w/ appears at the beginning (wet) and sometimes middle (awake) of words, but not typically at the end.', icon_emoji: '💚' },
+        { content: '/w/ can be tricky because it is quick and blends into the vowel, and may be confused with /wh/ or vowel sounds.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>web</strong> or <strong>wig</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: wwww-et → wet (slide into the vowel).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students round their lips like blowing a bubble, then say the word.', icon_emoji: '💛' },
+        { content: 'Contrast with /wh/ or vowel-only onset (et vs. wet) to highlight the lip rounding and glide.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/w/',
       sound_type: 'consonant',
-      place: 'Labio-velar',
-      manner: 'Approximant',
+      place: 'Labio-velar (lips round while the back of the tongue lifts slightly)',
+      manner: 'Glide (quick movement into the vowel)',
       voicing: 'voiced',
-      cue: 'Round your lips like blowing a candle - then open to the vowel',
+      cue: 'Round your lips like blowing a candle, then open to the vowel. Students should feel lip rounding and voice vibration. If lips are not rounded, the /w/ may be dropped or sound like a vowel.',
       teacher_guidance: 'Lips start very rounded (like /oo/) then glide open to the following vowel.',
       student_tips: 'Make your lips very round like you are going to whistle. Then open your mouth to say the next sound.',
       common_substitutions: ['/v/', 'omission'],
@@ -657,9 +676,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["85% accuracy", "Smooth gliding", "Word recognition"]
     },
     differentiation_protocols: {
-      struggling: ["Extended glide practice", "Lip rounding cues", "Mirror feedback"],
-      on_level: ["Standard glide instruction", "Center activities", "Partner work"],
-      advanced: ["Complex words", "Sight word focus", "Teaching others"]
+      struggling: [
+        "Use a mirror to check for lip rounding",
+        "Practice isolating and blending: /w/ → wa → wet",
+        "Use contrast pairs: et vs. wet, ill vs. will",
+        "Exaggerate the lip movement to make the sound more visible"
+      ],
+      on_level: [
+        "Build word chains: wet → win → wig",
+        "Add phrases: wet wig, big web",
+        "Practice sentence dictation with multiple /w/ words"
+      ],
+      advanced: [
+        "Build word chains: wet → win → wig",
+        "Add phrases: wet wig, big web",
+        "Practice sentence dictation with multiple /w/ words"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiced labio-velar approximant",
