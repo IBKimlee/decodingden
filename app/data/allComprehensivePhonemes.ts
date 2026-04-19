@@ -2171,22 +2171,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "85% accuracy", weekly: "80% accuracy", summative: "90% mastery" },
     teaching_advantages: ["High frequency", "Enables blends", "Important for r-controlled vowels"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈r〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /r/.', icon_emoji: '💙' },
+        { content: '/r/ is a liquid, voiced consonant — the sound is shaped by the tongue without blocking airflow completely.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /r/ is a distorted (non-stretchable) sound — it cannot be held cleanly like /m/ or /s/, which makes it harder for students to produce and hear.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>r</strong> spells the /r/ sound (as in red).', icon_emoji: '💚' },
+        { content: '/r/ can appear at the beginning (run), middle (carrot), or end (car) of words.', icon_emoji: '💚' },
+        { content: '/r/ can be tricky because it changes nearby vowel sounds (r-controlled vowels like ar, er, or) and is often difficult for students to articulate.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>red</strong> or <strong>run</strong>.', icon_emoji: '💛' },
+        { content: 'Use quick blending: /r/ - /e/ - /d/ → red (don\'t try to stretch /r/).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students pull lips back slightly or "growl like a puppy" to feel the sound.', icon_emoji: '💛' },
+        { content: 'Contrast with /w/: /r/ has no lip rounding and a tighter tongue position, while /w/ uses rounded lips.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/r/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Liquid',
+      place: 'Postalveolar (tongue is raised toward the back of the alveolar ridge, not touching)',
+      manner: 'Liquid (air flows around the tongue)',
       voicing: 'voiced',
-      cue: 'Curl your tongue back - growl like a dog "rrr"',
-      teacher_guidance: 'Tongue curls back, sides touch upper molars. Lips may be slightly rounded. Voiced.',
-      student_tips: 'Curl your tongue back. Growl like a dog or a lion. Rrrrr!',
+      cue: 'Tongue may be bunched or slightly curled, depending on the speaker. Students should feel tension in the tongue, not relaxed airflow like /l/. If lips round, they may be producing /w/.',
+      teacher_guidance: 'Tongue curls back or bunches, sides touch upper molars. Lips should NOT be rounded. Voiced.',
+      student_tips: 'Curl your tongue back. Growl like a dog or a lion. Rrrrr! Keep your lips pulled back, not rounded.',
       common_substitutions: ['/w/', '/l/'],
-      articulation_cues: 'Tongue curled back, lips may round slightly, voiced',
+      articulation_cues: 'Tongue curled back or bunched, lips not rounded, voiced',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Growling games"], explicit_instruction: ["Model /r/"], guided_practice: ["Tongue curling"], independent_practice: ["Word building"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["85% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended practice"], on_level: ["Standard instruction"], advanced: ["Blends practice"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to check that lips are not rounded (to avoid /w/)",
+        "Practice isolating briefly: /r/ → ra → red (keep it quick)",
+        "Use minimal pairs: red vs. wed, rip vs. lip",
+        "Provide explicit modeling of tongue position (bunched or slightly curled)"
+      ],
+      on_level: [
+        "Build word chains: red → rid → rib",
+        "Add r-controlled vowels: car, her, for",
+        "Practice sentence dictation with /r/ words"
+      ],
+      advanced: [
+        "Build word chains: red → rid → rib",
+        "Add r-controlled vowels: car, her, for",
+        "Practice sentence dictation with /r/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced alveolar approximant", place: "Alveolar", manner: "Liquid", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /r/ production", emphasis: ["Tongue curl"], priorities: ["Consistent production"] },
     content_generation_meta: { rules: ["All positions"], guidelines: ["Growling cue"] }
