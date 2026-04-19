@@ -407,7 +407,7 @@ export default function SoundOfTheDay({ phonemeData }: SoundOfTheDayProps) {
               </div>
               {showAlternatives && (
                 <div className="space-y-1.5 max-h-[46px] overflow-y-auto">
-                  {graphemes.slice(1).map((grapheme) => (
+                  {[...graphemes.slice(1)].sort((a, b) => (b.percentage ?? 0) - (a.percentage ?? 0)).map((grapheme) => (
                     <div key={grapheme.id} className="flex items-center bg-white/80 rounded-lg px-3 py-1.5 border border-oceanBlue/20">
                       <div className="w-32 flex items-center">
                         <span className="text-base font-bold text-deepNavy">〈{grapheme.grapheme}〉</span>

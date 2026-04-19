@@ -310,9 +310,9 @@ function transformPhonemeData(tsData: any): PhonemeData {
       lip_shape: safeString(articulation.lip_shape),
     } : null,
     teaching_content: {
-      explanations: generateTeachingExplanations(normalizedData),
-      rules: generateTeachingRules(normalizedData),
-      tips: generateTeachingTips(normalizedData),
+      explanations: tsData.teaching_content_override?.explanations || generateTeachingExplanations(normalizedData),
+      rules: tsData.teaching_content_override?.rules || generateTeachingRules(normalizedData),
+      tips: tsData.teaching_content_override?.tips || generateTeachingTips(normalizedData),
     },
     word_lists: generateWordLists(normalizedData),
     practice_texts: {

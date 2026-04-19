@@ -40,6 +40,13 @@ export interface ComprehensivePhonemeEntry {
   teaching_advantages: string[];
   research_sources: string[];
   
+  // Phoneme-specific teaching content (overrides generic generators when present)
+  teaching_content_override?: {
+    explanations: Array<{ content: string; icon_emoji: string }>;
+    rules: Array<{ content: string; icon_emoji: string }>;
+    tips: Array<{ content: string; icon_emoji: string }>;
+  };
+
   // Extended comprehensive fields
   articulation_data: any;
   instructional_sequence: any;
@@ -90,17 +97,36 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Visible articulation", "Continuous sound", "High frequency"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈m〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /m/.', icon_emoji: '💙' },
+        { content: '/m/ is a nasal consonant — air flows through the nose while the lips are closed.', icon_emoji: '💙' },
+        { content: 'It is a continuous sound, meaning it can be stretched: mmmmmm.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>m</strong> consistently spells the /m/ sound in English.', icon_emoji: '💚' },
+        { content: '/m/ can appear at the beginning (map), middle (camel), or end (ham) of words.', icon_emoji: '💚' },
+        { content: '/m/ is often easy for students to blend because it is continuous and voiced.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>map</strong> or <strong>mom</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: mmmm-ap → map.', icon_emoji: '💛' },
+        { content: 'Pair with motion: have students rub their tummy and hum "mmm".', icon_emoji: '💛' },
+        { content: 'Contrast with stop sounds (like /b/) to highlight that /m/ can be stretched.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/m/',
       sound_type: 'consonant',
-      place: 'Bilabial',
-      manner: 'Nasal',
+      place: 'Bilabial (both lips come together)',
+      manner: 'Nasal (air flows through the nose, not the mouth)',
       voicing: 'voiced',
-      cue: 'Humming sound - lips together, sound through nose',
-      teacher_guidance: 'Have students hum with lips closed. They should feel vibration in their nose.',
-      student_tips: 'Close your lips. Hum like you are saying "mmm" when food tastes good. Feel the buzz in your nose.',
-      common_substitutions: ['/n/', 'omission'],
-      articulation_cues: 'Lips together, air through nose',
+      cue: 'Humming sound - lips together, sound through nose. Students should feel vibration in their lips and nose. If they don\'t, they may be producing /b/ instead (common substitution).',
+      teacher_guidance: 'Have students hum with lips closed. They should feel vibration in their nose and lips.',
+      student_tips: 'Close your lips. Hum like you are saying "mmm" when food tastes good. Feel the buzz in your nose and lips.',
+      common_substitutions: ['/b/', '/n/'],
+      articulation_cues: 'Lips together, air through nose, vocal cords vibrate',
       airflow_description: 'nasal'
     },
     instructional_sequence: {
@@ -116,9 +142,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["90% accuracy", "Automatic recall", "Application evidence"]
     },
     differentiation_protocols: {
-      struggling: ["Extended practice", "Multisensory approaches", "Individual support"],
-      on_level: ["Standard activities", "Enrichment options", "Peer collaboration"],
-      advanced: ["Acceleration", "Extension activities", "Leadership roles"]
+      struggling: [
+        "Use a mirror so students can see lips closed",
+        "Have students touch their nose or lips to feel vibration",
+        "Practice isolating and sustaining /m/ before blending (mmmm → ma → map)",
+        "Use minimal pairs: map vs. nap, mat vs. bat"
+      ],
+      on_level: [
+        "Build word chains: map → mop → mom",
+        "Add simple suffixes: ham → hams",
+        "Practice sentence dictation with /m/ words"
+      ],
+      advanced: [
+        "Build word chains: map → mop → mom",
+        "Add simple suffixes: ham → hams",
+        "Practice sentence dictation with /m/ words"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiced bilabial nasal",
