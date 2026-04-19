@@ -3440,13 +3440,32 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["R-controlled vowel", "Multiple spellings", "Common words"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈air〉</strong>, <strong>〈are〉</strong>, <strong>〈ear〉</strong> (common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /air/ (as in air, care, bear).', icon_emoji: '💙' },
+        { content: '/air/ is an r-controlled vowel — the r changes the vowel sound, creating a unique sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /air/ is a gliding vowel + /r/ combination, and students must learn it as a chunk rather than separate sounds.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>air</strong> is common (air, fair), along with <strong>are</strong> (care, share) and <strong>ear</strong> (bear, pear).', icon_emoji: '💚' },
+        { content: '/air/ appears at the beginning (air), middle (fair), or end (care) of words.', icon_emoji: '💚' },
+        { content: '/air/ can be tricky because it has multiple spellings and may be confused with /er/ or /ar/.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>air</strong>, <strong>care</strong>, <strong>bear</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /c/ - /air/ → care (treat /air/ as one chunk).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students point to the air and say "airrr".', icon_emoji: '💛' },
+        { content: 'Contrast with /er/: her vs. hair to highlight the vowel difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/air/',
       sound_type: 'vowel',
-      place: 'Mid front',
-      manner: 'R-controlled vowel',
+      place: 'Mid-front with rhotic influence (tongue moves slightly up and back)',
+      manner: 'R-controlled vowel (vowel influenced by /r/)',
       voicing: 'voiced',
-      cue: 'Open mouth then add R - like "air" you breathe',
+      cue: 'Open mouth then add R — like "air" you breathe. Students should feel a slight glide into /r/. Emphasize that /air/ is one sound chunk, even though it may sound like two parts.',
       teacher_guidance: 'Start with mouth open like /e/ or /a/, then add r-coloring. Multiple spelling patterns.',
       student_tips: 'Open your mouth, then curl your tongue for R. Air, fair, care, bear all have this sound.',
       common_substitutions: ['/er/', '/ar/'],
@@ -3455,7 +3474,24 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     instructional_sequence: { pre_teaching: ["Bossy R"], explicit_instruction: ["Model /air/"], guided_practice: ["Spelling sorts"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["60% accuracy"] },
-    differentiation_protocols: { struggling: ["R practice"], on_level: ["Standard instruction"], advanced: ["Spelling patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach one spelling at a time (start with are like care)",
+        "Use minimal pairs: her vs. hair, far vs. fair",
+        "Practice word building: c + are → care",
+        "Highlight patterns visually (underline air, are, ear)"
+      ],
+      on_level: [
+        "Build word chains: care → dare → bare",
+        "Sort words by spelling: air vs. are vs. ear",
+        "Compare with other r-controlled vowels: ar, er, or, air"
+      ],
+      advanced: [
+        "Build word chains: care → dare → bare",
+        "Sort words by spelling: air vs. are vs. ear",
+        "Compare with other r-controlled vowels: ar, er, or, air"
+      ]
+    },
     linguistic_properties_extended: { description: "Mid front r-colored vowel", place: "Front", manner: "R-controlled", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /air/ r-controlled", emphasis: ["Multiple spellings"], priorities: ["Spelling awareness"] },
     content_generation_meta: { rules: ["R-controlled"], guidelines: ["Spelling variations"] }
