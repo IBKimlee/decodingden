@@ -205,17 +205,36 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Continuous sound", "High frequency", "Clear airflow"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈s〉</strong> (also <strong>〈ss〉</strong> in some positions).', icon_emoji: '💙' },
+        { content: 'The phoneme is /s/.', icon_emoji: '💙' },
+        { content: '/s/ is a fricative, unvoiced consonant — air flows continuously through a narrow space between the tongue and teeth.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /s/ is a continuous sound, so students can stretch it (ssssss) to support blending.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>s</strong> most often spells the /s/ sound (as in sun), with <strong>ss</strong> often used at the end of short vowel words (like miss).', icon_emoji: '💚' },
+        { content: '/s/ can appear at the beginning (sun), middle (basket), or end (bus) of words.', icon_emoji: '💚' },
+        { content: '/s/ can be tricky because it may be confused with /z/ (its voiced pair), and sometimes s can say /z/ in words like is or has.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>sun</strong> or <strong>snake</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: ssss-un → sun.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students hiss like a snake while keeping teeth close together.', icon_emoji: '💛' },
+        { content: 'Contrast with /z/: /s/ is quiet (no voice); /z/ has voice (vibration).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/s/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Fricative',
+      place: 'Alveolar (tongue is close to the ridge behind the top teeth)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiceless',
-      cue: 'Snake sound - air hisses through teeth',
-      teacher_guidance: 'Have students feel the airflow on their hand. Tongue tip is behind top teeth.',
+      cue: 'Snake sound — air hisses through teeth. Students should feel air flowing over the tongue and through the teeth with no throat vibration. If they feel vibration, they may be producing /z/.',
+      teacher_guidance: 'Have students feel the airflow on their hand. Tongue tip is behind top teeth. No voice.',
       student_tips: 'Put your tongue behind your top teeth. Push air out and make a hissing sound like a snake.',
-      common_substitutions: ['/th/', '/sh/', 'lisp'],
-      articulation_cues: 'Teeth close together, tongue behind top teeth, continuous airflow',
+      common_substitutions: ['/z/', '/th/', '/sh/'],
+      articulation_cues: 'Teeth close together, tongue behind top teeth, continuous airflow, voiceless',
       airflow_description: 'oral'
     },
     instructional_sequence: {
@@ -231,9 +250,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["90% accuracy", "Automatic recall", "Word application"]
     },
     differentiation_protocols: {
-      struggling: ["Extended practice", "Visual supports", "Individual coaching"],
-      on_level: ["Standard instruction", "Center activities", "Partner work"],
-      advanced: ["Acceleration", "Complex patterns", "Leadership roles"]
+      struggling: [
+        "Use a mirror to show teeth close together and tongue position",
+        "Practice isolating and stretching: /s/ → sa → sun",
+        "Use minimal pairs: sip vs. zip, bus vs. buzz",
+        "Provide explicit modeling of airflow (long snake sound)"
+      ],
+      on_level: [
+        "Build word chains: sat → sit → sip",
+        "Add suffixes: bus → buses",
+        "Sort words by /s/ vs. /z/ sound spelled with s"
+      ],
+      advanced: [
+        "Build word chains: sat → sit → sip",
+        "Add suffixes: bus → buses",
+        "Sort words by /s/ vs. /z/ sound spelled with s"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiceless alveolar fricative",
