@@ -101,6 +101,7 @@ const ANCHOR_WORDS: Record<string, string> = {
   '/ks/': 'box',
   '/kw/': 'queen',
   '/zh/': 'treasure',
+  '/ʒ/': 'treasure',
   '/qu/': 'queen',
 
   // ===== SILENT LETTER PATTERNS (Stage 8) =====
@@ -120,6 +121,9 @@ const GRAPHEME_ANCHOR_WORDS: Record<string, string> = {
   'j': 'jump',
   'dge': 'bridge',
   's': 'sun',
+  'si': 'vision',
+  's(ure)': 'measure',
+  'ge': 'beige',
 };
 
 function getAnchorWord(phonemeSymbol: string, displayedGrapheme?: string): string | null {

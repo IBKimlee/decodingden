@@ -379,6 +379,33 @@ function getPhonemeCommonName(phoneme: string, stageId: number): string {
     return shortVowelNames[p];
   }
 
+  // IPA symbols that need teacher-friendly names
+  const ipaNames: { [key: string]: string } = {
+    '/ʒ/': 'zh sound',
+    '/ʃ/': 'sh sound',
+    '/tʃ/': 'ch sound',
+    '/dʒ/': 'j sound',
+    '/ŋ/': 'ng sound',
+    '/θ/': 'th sound (voiceless)',
+    '/ð/': 'th sound (voiced)',
+    '/j/': 'y sound',
+    '/ə/': 'schwa sound',
+    '/ĕ/': 'short e sound',
+    '/ĭ/': 'short i sound',
+    '/ŏ/': 'short o sound',
+    '/ŭ/': 'short u sound',
+    '/ā/': 'long a sound',
+    '/ē/': 'long e sound',
+    '/ī/': 'long i sound',
+    '/ō/': 'long o sound',
+    '/ū/': 'long u sound',
+    '/ʊ/': 'short oo sound',
+  };
+
+  if (ipaNames[p]) {
+    return ipaNames[p];
+  }
+
   // Default: strip slashes and add "sound"
   return phoneme.replace(/[\/]/g, '') + ' sound';
 }
@@ -432,6 +459,10 @@ function getPhonemeType(data: any): string {
   if (rControlledVowels.includes(phoneme)) {
     return 'vowel_r_controlled';
   }
+
+  // Check phoneme_id prefix for consonants that might be in later stages
+  const phonemeId = data.phoneme_id?.toLowerCase() || '';
+  if (phonemeId.startsWith('consonant_')) return 'consonant';
 
   // Check by stage for other patterns
   if (stageId === 3) return 'consonant_digraph';

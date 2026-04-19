@@ -2016,9 +2016,9 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
 
   {
     phoneme_id: "consonant_zh",
-    stage: 5,
+    stage: 7,
     phoneme: "/ʒ/",
-    graphemes: ["si", "su", "ge"],
+    graphemes: ["si", "s(ure)", "ge"],
     frequency_rank: 35,
     complexity_score: 3.5,
     grade_band: "2nd-Fall",
@@ -2962,14 +2962,33 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "80% accuracy", weekly: "75% accuracy", summative: "85% mastery" },
     teaching_advantages: ["Q and U always together", "Distinctive sound", "Consistent pattern"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈qu〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /kw/ (as in quick).', icon_emoji: '💙' },
+        { content: '/kw/ is a consonant blend (cluster) — it combines two sounds: /k/ (stop, unvoiced) + /w/ (glide, voiced).', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /kw/ is not one sound, but a blend of two phonemes said closely together, which students must learn to sequence smoothly.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>qu</strong> represents the /kw/ sound in most English words (as in quit, queen).', icon_emoji: '💚' },
+        { content: '/kw/ appears at the beginning (quick) or middle (liquid) of words, but rarely at the end.', icon_emoji: '💚' },
+        { content: '/kw/ can be tricky because students may omit one part (saying /k/ or /w/ only) or not recognize that qu always works together.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>queen</strong> or <strong>quick</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /k/ + /w/ + /i/ → kwi → quick.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students tap twice (for /k/ and /w/) and then blend smoothly.', icon_emoji: '💛' },
+        { content: 'Contrast with /k/ alone: cap vs. quap (nonsense) to highlight the added /w/ glide.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/kw/',
       sound_type: 'consonant',
-      place: 'Velar + Bilabial',
-      manner: 'Stop + Glide',
-      voicing: 'voiceless',
-      cue: 'Quick /k/ followed immediately by /w/ with rounded lips — "kw" as one unit',
-      teacher_guidance: 'Teach as one unit: Q and U are best friends and always go together. The sound is /kw/ not /k/ then /w/ separately.',
+      place: 'Velar + Labio-velar (/k/ = back of tongue to soft palate, /w/ = lips round)',
+      manner: 'Stop + Glide (two sounds blended)',
+      voicing: 'voiceless + voiced (/k/ is voiceless, /w/ is voiced)',
+      cue: 'Quick /k/ followed immediately by lip rounding for /w/. Students should produce both parts — if one is missing, the blend will sound incomplete.',
+      teacher_guidance: 'Teach as a blend: Q and U always go together. The sound is /kw/, two sounds produced quickly together.',
       student_tips: 'Q always has U with it. Say /k/ and /w/ quickly together as one sound. Round your lips for the /w/ part.',
       common_substitutions: ['/k/'],
       articulation_cues: 'Back of tongue hits roof for /k/, then lips round for /w/',
@@ -2977,7 +2996,24 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     instructional_sequence: { pre_teaching: ["/k/ sound"], explicit_instruction: ["Model /kw/"], guided_practice: ["qu word building"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["80% accuracy"] },
-    differentiation_protocols: { struggling: ["Focus on qu as unit"], on_level: ["Standard instruction"], advanced: ["Multi-syllable qu words"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach the sounds separately first: /k/ + /w/",
+        "Use finger tapping for each sound before blending",
+        "Practice slow blending: /k/.../w/.../ĭ/ → quick",
+        "Use contrast pairs: kit vs. quit, cap vs. quap (to hear both sounds)"
+      ],
+      on_level: [
+        "Build word chains: quit → quick → quack",
+        "Add multisyllabic words: liquid, equal",
+        "Sort words by qu vs. other /k/ spellings"
+      ],
+      advanced: [
+        "Build word chains: quit → quick → quack",
+        "Add multisyllabic words: liquid, equal",
+        "Sort words by qu vs. other /k/ spellings"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiceless velar stop plus labial-velar glide", place: "Velar+Bilabial", manner: "Stop+Glide", voicing: "Voiceless" },
     weekly_data_override: { focus: "/kw/ as single unit", emphasis: ["qu always together"], priorities: ["Letter pair awareness"] },
     content_generation_meta: { rules: ["Consonant blend"], guidelines: ["qu partnership"] }
