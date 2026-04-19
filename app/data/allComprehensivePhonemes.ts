@@ -3020,22 +3020,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Says letter name", "Multiple spelling patterns", "Two sounds possible"],
     research_sources: ["Ehri (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈u_e〉</strong>, <strong>〈u〉</strong>, <strong>〈ew〉</strong>, <strong>〈ue〉</strong>, <strong>〈ui〉</strong> (most common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /ū/ (as in mule, music, few, blue).', icon_emoji: '💙' },
+        { content: '/ū/ is a long vowel sound — it says its letter name (often pronounced /yū/).', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ū/ often includes a glide /y/ at the beginning (/yū/), which makes it more complex than other long vowels.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The most common spelling is <strong>u_e</strong> (silent e pattern, as in mule).', icon_emoji: '💚' },
+        { content: 'Other spellings include <strong>u</strong> (music), <strong>ew</strong> (few), <strong>ue</strong> (blue), and <strong>ui</strong> (fruit).', icon_emoji: '💚' },
+        { content: '/ū/ can be tricky because it has multiple spellings and two pronunciations: /yū/ (mule) and /ū/ (blue).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>mule</strong>, <strong>music</strong>, <strong>blue</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /m/ - /yū/ - /l/ → mule.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students start with a /y/ glide (like "you") and then round lips.', icon_emoji: '💛' },
+        { content: 'Contrast with /ŭ/: cut vs. cute, tub vs. tube to highlight the vowel change.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ū/',
       sound_type: 'vowel',
-      place: 'High back',
-      manner: 'Vowel',
+      place: 'High-back (tongue is raised toward the back of the mouth, with lip rounding)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Say the letter U - "yoo" sound like in "cube" and "cute"',
+      cue: 'Say the letter U — "yoo" sound. Students should feel lip rounding and a smooth glide. If the glide is missing, they may produce only /ū/ (as in blue) instead of /yū/ (as in mule).',
       teacher_guidance: 'Long u says its name "yoo". It can also sound like /oo/ after certain consonants (rule, tube). Focus on the /yoo/ sound first.',
-      student_tips: 'Say the letter U - it sounds like "you"! Think of "cube" or "cute". Your lips make a small circle.',
-      common_substitutions: ['short u', '/oo/'],
+      student_tips: 'Say the letter U — it sounds like "you"! Think of "cube" or "cute". Your lips make a small circle.',
+      common_substitutions: ['/ŭ/', '/oo/'],
       articulation_cues: 'Starts with /y/ glide, then rounded lips like /oo/',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Letter name"], explicit_instruction: ["Model /ū/"], guided_practice: ["Spelling patterns"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Pattern focus"], on_level: ["Standard instruction"], advanced: ["Two pronunciations"] },
+    differentiation_protocols: {
+      struggling: [
+        "Start with the u_e pattern first (cube, mule)",
+        "Teach the two sounds explicitly: /yū/ vs. /ū/",
+        "Use minimal pairs: cut vs. cute, tub vs. tube",
+        "Provide explicit modeling of the /y/ glide at the beginning"
+      ],
+      on_level: [
+        "Build word chains: tub → tube → cube",
+        "Add word families: -ube, -ute, -ew",
+        "Practice sorting words by /yū/ vs. /ū/ pronunciations"
+      ],
+      advanced: [
+        "Build word chains: tub → tube → cube",
+        "Add word families: -ube, -ute, -ew",
+        "Practice sorting words by /yū/ vs. /ū/ pronunciations"
+      ]
+    },
     linguistic_properties_extended: { description: "High back rounded vowel with glide", place: "Back", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear long /u/", emphasis: ["Y glide"], priorities: ["Letter name sound"] },
     content_generation_meta: { rules: ["VCe patterns"], guidelines: ["Letter name yoo"] }
