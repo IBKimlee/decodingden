@@ -502,16 +502,35 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Voiced pair to /f/", "Continuous sound", "Sight word connection"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈v〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /v/.', icon_emoji: '💙' },
+        { content: '/v/ is a fricative, voiced consonant — air flows continuously while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /v/ is a continuous sound, so students can stretch it (vvvvv) to support blending.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>v</strong> spells the /v/ sound (as in van).', icon_emoji: '💚' },
+        { content: '/v/ can appear at the beginning (van), middle (seven), or end (have) of words.', icon_emoji: '💚' },
+        { content: '/v/ can be tricky because it is voiced and easily confused with /f/, and English words typically do not end in v alone (often followed by silent e, like have).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>van</strong> or <strong>vet</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: vvvvv-an → van.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their throat and feel vibration while their teeth rest on their lip.', icon_emoji: '💛' },
+        { content: 'Contrast with /f/: /v/ has voice (vibration); /f/ is quiet (no voice).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/v/',
       sound_type: 'consonant',
-      place: 'Labiodental',
-      manner: 'Fricative',
+      place: 'Labiodental (bottom lip touches top teeth)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiced',
-      cue: 'Buzzing sound - top teeth on bottom lip with voice',
+      cue: 'Buzzing sound — top teeth on bottom lip with voice. Students should feel vibration in their throat and lips. If there is no vibration, they are likely producing /f/.',
       teacher_guidance: 'Like /f/ but with voice. Have students feel throat vibration while making the sound.',
       student_tips: 'Gently bite your bottom lip with your top teeth. Turn your voice on and make a buzzing sound.',
-      common_substitutions: ['/f/', '/b/'],
+      common_substitutions: ['/f/'],
       articulation_cues: 'Top teeth on bottom lip, continuous airflow, voiced',
       airflow_description: 'oral'
     },
@@ -528,9 +547,22 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
       mastery_criteria: ["85% voicing", "Consistent production", "Word accuracy"]
     },
     differentiation_protocols: {
-      struggling: ["Voice practice", "Tactile feedback", "Mirror work"],
-      on_level: ["Standard fricative instruction", "Center work", "Partner practice"],
-      advanced: ["Complex patterns", "Sight word mastery", "Peer tutoring"]
+      struggling: [
+        "Use a mirror to check lip-to-teeth placement",
+        "Practice isolating and stretching: /v/ → va → van",
+        "Use minimal pairs: van vs. fan, vet vs. fet",
+        "Provide explicit modeling of voicing (hand on throat to feel vibration)"
+      ],
+      on_level: [
+        "Build word chains: van → vin → fin",
+        "Add suffixes: have → having",
+        "Sort words by spelling patterns (final ve pattern)"
+      ],
+      advanced: [
+        "Build word chains: van → vin → fin",
+        "Add suffixes: have → having",
+        "Sort words by spelling patterns (final ve pattern)"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiced labiodental fricative",
