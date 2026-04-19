@@ -3227,22 +3227,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "60% accuracy", weekly: "55% accuracy", summative: "65% mastery" },
     teaching_advantages: ["Contrast with long oo", "Common words", "Multiple spellings"],
     research_sources: ["Adams (1990)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈oo〉</strong> and sometimes <strong>〈u〉</strong> (less common).', icon_emoji: '💙' },
+        { content: 'The phoneme is /ŏŏ/ (as in book, push).', icon_emoji: '💙' },
+        { content: '/ŏŏ/ is a short vowel sound — air flows freely with a relaxed, slightly rounded mouth.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ŏŏ/ is a short, relaxed sound, not tense like long /oo/, and the lips are less tightly rounded.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>oo</strong> can represent the short /ŏŏ/ sound (as in book, foot).', icon_emoji: '💚' },
+        { content: '/ŏŏ/ appears most often in the middle (book) or end (push) of words.', icon_emoji: '💚' },
+        { content: '/ŏŏ/ can be tricky because <strong>oo</strong> has two sounds (long and short), and students may confuse them.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>book</strong> and <strong>foot</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /b/ - /ŏŏ/ - /k/ → book.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students round lips slightly (not tight) and make a quick, relaxed sound.', icon_emoji: '💛' },
+        { content: 'Contrast with long /oo/: book vs. moon, pull vs. pool to highlight the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ʊ/',
       sound_type: 'vowel',
-      place: 'High back',
-      manner: 'Vowel',
+      place: 'High-back (tongue raised toward the back of the mouth)',
+      manner: 'Vowel (steady airflow)',
       voicing: 'voiced',
-      cue: 'Relaxed round lips - short "oo" like in "book" not "moon"',
+      cue: 'Relaxed round lips — short "oo" like in "book" not "moon". Students should feel less lip tension than long /oo/. If lips are too tight, they may produce /oo/ (as in moon).',
       teacher_guidance: 'Lips rounded but relaxed. Shorter than long oo. Think "book" vs "moon".',
-      student_tips: 'Round your lips a little bit - not as tight as long oo. Quick sound. Book, look, good.',
-      common_substitutions: ['/oo/ (long)', '/u/'],
+      student_tips: 'Round your lips a little bit — not as tight as long oo. Quick sound. Book, look, good.',
+      common_substitutions: ['long /oo/ (moon)'],
       articulation_cues: 'Lips loosely rounded, tongue high-back, short duration',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Two oo sounds"], explicit_instruction: ["Model short oo"], guided_practice: ["oo sorts"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["60% accuracy"] },
-    differentiation_protocols: { struggling: ["Contrast practice"], on_level: ["Standard instruction"], advanced: ["Spelling patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Explicitly teach long vs. short oo side-by-side",
+        "Use a mirror to compare lip rounding (tight vs. relaxed)",
+        "Practice minimal pairs: book vs. moon, pull vs. pool",
+        "Start with high-frequency words: book, look, good"
+      ],
+      on_level: [
+        "Build word chains: book → look → cook",
+        "Add word families: -ook, -ush",
+        "Sort words by long oo vs. short oo"
+      ],
+      advanced: [
+        "Build word chains: book → look → cook",
+        "Add word families: -ook, -ush",
+        "Sort words by long oo vs. short oo"
+      ]
+    },
     linguistic_properties_extended: { description: "High back rounded lax vowel", place: "Back", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Short vs long oo", emphasis: ["Duration"], priorities: ["Contrast"] },
     content_generation_meta: { rules: ["oo patterns"], guidelines: ["Short duration"] }
