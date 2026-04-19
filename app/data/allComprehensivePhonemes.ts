@@ -1921,22 +1921,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Visible tongue position", "Voiceless pair to voiced th", "Common words"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈th〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /th/ (unvoiced, as in thin).', icon_emoji: '💙' },
+        { content: '/th/ is a fricative, unvoiced consonant — air flows continuously between the tongue and teeth with no voice.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /th/ is a continuous sound, but it requires precise tongue placement (between the teeth), which makes it more challenging.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The digraph <strong>th</strong> spells the /th/ sound (two letters, one sound).', icon_emoji: '💚' },
+        { content: '/th/ can appear at the beginning (thin), middle (author), or end (bath) of words.', icon_emoji: '💚' },
+        { content: '/th/ can be tricky because it has two sounds (/th/ unvoiced and /th/ voiced) and is often confused with /f/ or /s/.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>thin</strong> or <strong>thumb</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: thhhh-in → thin.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students stick their tongue gently between their teeth and blow air.', icon_emoji: '💛' },
+        { content: 'Contrast with /f/: /th/ uses the tongue between teeth, while /f/ uses the lip and teeth.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/θ/',
       sound_type: 'consonant',
-      place: 'Dental',
-      manner: 'Fricative',
+      place: 'Interdental (tongue placed between the teeth)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiceless',
-      cue: 'Tongue between teeth, blow air - no voice, like a quiet lisp',
-      teacher_guidance: 'Tongue tip sticks out slightly between teeth. Air flows over tongue. No voice.',
+      cue: 'Tongue between teeth, blow air — no voice. Students should feel air on their tongue with no throat vibration. If they feel vibration, they may be producing the voiced /th/ (as in this).',
+      teacher_guidance: 'Tongue tip sticks out slightly between teeth. Air flows over tongue. No voice. Many students need to be explicitly told to stick their tongue out.',
       student_tips: 'Stick your tongue out a tiny bit between your teeth. Blow air out quietly. No buzzing.',
-      common_substitutions: ['/f/', '/t/', '/s/'],
+      common_substitutions: ['/f/', '/s/'],
       articulation_cues: 'Tongue tip between teeth, continuous airflow, voiceless',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Tongue placement"], explicit_instruction: ["Model /θ/"], guided_practice: ["vs /f/ contrast"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Mirror practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to clearly show tongue between teeth",
+        "Practice isolating and stretching: /th/ → tha → thin",
+        "Use minimal pairs: thin vs. fin, thank vs. sank",
+        "Provide explicit modeling — many students need to be told to stick their tongue out"
+      ],
+      on_level: [
+        "Build word chains: thin → then → them",
+        "Add suffixes: bath → baths",
+        "Sort words by voiced vs. unvoiced th"
+      ],
+      advanced: [
+        "Build word chains: thin → then → them",
+        "Add suffixes: bath → baths",
+        "Sort words by voiced vs. unvoiced th"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiceless dental fricative", place: "Dental", manner: "Fricative", voicing: "Voiceless" },
     weekly_data_override: { focus: "Clear voiceless th", emphasis: ["Tongue between teeth"], priorities: ["No voice"] },
     content_generation_meta: { rules: ["Digraph patterns"], guidelines: ["Tongue visibility"] }
