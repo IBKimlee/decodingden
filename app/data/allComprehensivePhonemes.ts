@@ -2774,22 +2774,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "80% accuracy", weekly: "75% accuracy", summative: "85% mastery" },
     teaching_advantages: ["Completes five short vowels", "Central position", "Common words"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈u〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ŭ/ (as in umbrella or cup).', icon_emoji: '💙' },
+        { content: '/ŭ/ is a short vowel sound — air flows freely with a relaxed, voiced sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ŭ/ is a very relaxed, neutral vowel (similar to a schwa), which can make it harder for students to hear clearly.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>u</strong> most often spells the /ŭ/ sound in closed syllables (as in cup, sun).', icon_emoji: '💚' },
+        { content: '/ŭ/ can appear at the beginning (umbrella), middle (cup), or occasionally end (rare in early phonics) of words.', icon_emoji: '💚' },
+        { content: '/ŭ/ can be tricky because it is often confused with /ŏ/ or /ă/ and may sound reduced or unclear in connected speech.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>umbrella</strong> or <strong>cup</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /ŭ/ - /p/ → up, /c/ - /ŭ/ - /p/ → cup.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students keep their mouth relaxed and slightly open, like a quick "uh."', icon_emoji: '💛' },
+        { content: 'Contrast with /ŏ/: cup vs. cop to help students hear the difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ŭ/',
       sound_type: 'vowel',
-      place: 'Central',
-      manner: 'Vowel',
+      place: 'Mid-central (tongue is relaxed and centered in the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Relaxed mouth, lazy "uh" - like being surprised "uh!"',
+      cue: 'Relaxed mouth, lazy "uh". Students should feel a relaxed mouth with minimal movement. If the mouth rounds, the sound may shift toward /ŏ/.',
       teacher_guidance: 'Mouth relaxed, slightly open. Tongue in central position. Quick, short sound.',
       student_tips: 'Relax your mouth. Say a quick "uh" like when you are surprised. Cup, mud, sun.',
-      common_substitutions: ['/o/', '/a/'],
+      common_substitutions: ['/ŏ/', '/ă/'],
       articulation_cues: 'Mouth relaxed, tongue central, short duration',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Relaxed mouth"], explicit_instruction: ["Model /ŭ/"], guided_practice: ["Vowel contrast"], independent_practice: ["CVC words"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["80% accuracy"] },
-    differentiation_protocols: { struggling: ["Mirror practice"], on_level: ["Standard instruction"], advanced: ["Vowel sorts"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to ensure a relaxed mouth (not rounded or wide)",
+        "Practice isolating and producing: /ŭ/ → u → up",
+        "Use minimal pairs: cup vs. cop, sun vs. son",
+        "Provide explicit modeling of the \"relaxed, quick\" sound"
+      ],
+      on_level: [
+        "Build word chains: cup → pup → pup",
+        "Add word families: -up, -un, -ug",
+        "Practice sentence dictation with multiple /ŭ/ words"
+      ],
+      advanced: [
+        "Build word chains: cup → pup → pup",
+        "Add word families: -up, -un, -ug",
+        "Practice sentence dictation with multiple /ŭ/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Central unrounded vowel", place: "Central", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear short /u/", emphasis: ["Central position"], priorities: ["Relaxed mouth"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Central vowel"] }
