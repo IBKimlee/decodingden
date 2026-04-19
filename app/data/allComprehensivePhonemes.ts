@@ -955,35 +955,67 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     teaching_advantages: ["Clear /k/ sound", "Final position pattern", "High frequency"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈c〉</strong> and <strong>〈k〉</strong> (also <strong>〈ck〉</strong> in some positions).', icon_emoji: '💙' },
+        { content: 'The phoneme is /k/.', icon_emoji: '💙' },
+        { content: '/k/ is a stop (plosive), unvoiced consonant — air is blocked in the back of the mouth, then released.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /k/ is a quick sound (cannot be stretched), and it is made in the back of the mouth, unlike many early sounds.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The phoneme /k/ can be spelled <strong>c</strong>, <strong>k</strong>, or <strong>ck</strong> (most common spellings).', icon_emoji: '💚' },
+        { content: '/k/ can appear at the beginning (cat, kit), middle (bucket), or end (back) of words.', icon_emoji: '💚' },
+        { content: '/k/ can be tricky because it has multiple spellings and students may confuse it with /g/ (voiced pair).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>cat</strong> (c), <strong>kit</strong> (k), <strong>back</strong> (ck).', icon_emoji: '💛' },
+        { content: 'Use stop blending: /k/ - /a/ - /t/ → cat (keep it crisp, no "kuh").', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their throat lightly and notice no vibration, while focusing on the back of the tongue lifting.', icon_emoji: '💛' },
+        { content: 'Contrast with /g/: /k/ is quiet (no voice); /g/ has voice (vibration).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/k/',
       sound_type: 'consonant',
-      place: 'Velar',
-      manner: 'Stop',
+      place: 'Velar (back of the tongue touches the soft palate)',
+      manner: 'Stop/Plosive (air is blocked, then released)',
       voicing: 'voiceless',
-      cue: 'Back of tongue pops against the soft palate - quick sound',
-      teacher_guidance: 'The back of the tongue touches the soft palate (back roof of mouth) and releases with a puff of air.',
+      cue: 'Back of tongue pops against the soft palate. Students may not "see" this sound easily since it is made in the back of the mouth — use tactile cues and modeling. If they feel vibration, they may be producing /g/.',
+      teacher_guidance: 'The back of the tongue touches the soft palate (back roof of mouth) and releases with a puff of air. Exaggerate mouth opening for modeling.',
       student_tips: 'Push the back of your tongue up to the back of your mouth. Let go quickly with a puff of air.',
-      common_substitutions: ['/t/', '/g/'],
+      common_substitutions: ['/g/'],
       articulation_cues: 'Back of tongue to soft palate, quick release, voiceless',
       airflow_description: 'oral'
     },
     instructional_sequence: {
-      pre_teaching: ["Connect to /k/ sound", "Two letters one sound", "Final position focus"],
-      explicit_instruction: ["Model 'ck' pattern", "Show letter combination", "Practice blending"],
-      guided_practice: ["Digraph identification", "Word building", "Pattern sorting"],
-      independent_practice: ["Find 'ck' words", "Complete patterns", "Read word lists"],
-      assessment_checkpoints: ["Daily digraph ID", "Weekly reading", "Monthly pattern check"]
+      pre_teaching: ["Connect to /k/ sound", "Multiple spellings intro", "Final position focus"],
+      explicit_instruction: ["Model /k/ sound", "Show c/k/ck patterns", "Practice blending"],
+      guided_practice: ["Spelling pattern sorts", "Word building", "Pattern identification"],
+      independent_practice: ["Sort c/k/ck words", "Complete patterns", "Read word lists"],
+      assessment_checkpoints: ["Daily pattern ID", "Weekly reading", "Monthly pattern check"]
     },
     assessment_framework_details: {
       formative: ["Daily pattern check", "Weekly assessment", "Progress monitoring"],
-      summative: ["Digraph test", "Reading benchmark", "Pattern mastery"],
+      summative: ["Spelling test", "Reading benchmark", "Pattern mastery"],
       mastery_criteria: ["80% recognition", "Automatic reading", "Pattern application"]
     },
     differentiation_protocols: {
-      struggling: ["Extended pattern practice", "Visual supports", "Individual coaching"],
-      on_level: ["Standard digraph instruction", "Center work", "Partner activities"],
-      advanced: ["Complex patterns", "Rule exploration", "Peer tutoring"]
+      struggling: [
+        "Use a mirror + modeling (exaggerate mouth opening even though sound is hard to see)",
+        "Practice isolating the sound: /k/ → ka → cat",
+        "Use minimal pairs: cap vs. gap, cot vs. got",
+        "Explicitly teach spelling patterns: c vs. k vs. ck (start simple: c before a/o/u, k before e/i)"
+      ],
+      on_level: [
+        "Build word chains: cat → cot → cop",
+        "Add suffixes: pack → packs → packing",
+        "Practice sorting by spelling: c, k, ck words"
+      ],
+      advanced: [
+        "Build word chains: cat → cot → cop",
+        "Add suffixes: pack → packs → packing",
+        "Practice sorting by spelling: c, k, ck words"
+      ]
     },
     linguistic_properties_extended: {
       description: "Voiceless velar stop (ck spelling)",
@@ -1512,22 +1544,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Voiced pair to /t/", "High frequency", "Clear tongue position"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈d〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /d/.', icon_emoji: '💙' },
+        { content: '/d/ is a stop (plosive), voiced consonant — air is blocked by the tongue, then released quickly while the voice is on.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /d/ is quick (cannot be stretched), so students must produce it cleanly without adding a vowel (avoid "duh").', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>d</strong> consistently spells the /d/ sound in English.', icon_emoji: '💚' },
+        { content: '/d/ can appear at the beginning (dog), middle (ladder), or end (sad) of words.', icon_emoji: '💚' },
+        { content: '/d/ can be tricky because it is voiced, and students may confuse it with /t/ or add an extra vowel sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>dog</strong> or <strong>dad</strong>.', icon_emoji: '💛' },
+        { content: 'Use stop blending: /d/ - /a/ - /d/ → dad (keep /d/ crisp, no "duh").', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their throat to feel the vibration.', icon_emoji: '💛' },
+        { content: 'Contrast with /t/: /d/ has voice (vibration); /t/ is quiet (no voice).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/d/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Stop',
+      place: 'Alveolar (tongue touches just behind the top teeth)',
+      manner: 'Stop/Plosive (air is blocked, then released)',
       voicing: 'voiced',
-      cue: 'Tongue taps with voice on - like /t/ but buzzy',
-      teacher_guidance: 'Like /t/ but voiced. Tongue tip touches ridge behind top teeth with voice on.',
+      cue: 'Tongue taps with voice on. Students should feel vibration in their throat. If there is no vibration, they may be producing /t/ instead.',
+      teacher_guidance: 'Like /t/ but voiced. Tongue tip touches ridge behind top teeth with voice on. Watch for students adding "uh" after the sound.',
       student_tips: 'Touch your tongue behind your top teeth like /t/. Turn your voice on. Feel the buzz.',
-      common_substitutions: ['/t/', '/g/'],
+      common_substitutions: ['/t/'],
       articulation_cues: 'Tongue tip to alveolar ridge, quick release, voiced',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Compare to /t/"], explicit_instruction: ["Model /d/"], guided_practice: ["/d/ vs /t/"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Voice practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use hand-on-throat to feel vibration for /d/",
+        "Practice isolating the sound: /d/ → da → dad",
+        "Use minimal pairs: dog vs. tog, den vs. ten",
+        "Model clean production to avoid adding /uh/ (no \"duh\")"
+      ],
+      on_level: [
+        "Build word chains: dad → did → dig",
+        "Add inflectional endings: mad → mads → madding",
+        "Practice sentence dictation with multiple /d/ words"
+      ],
+      advanced: [
+        "Build word chains: dad → did → dig",
+        "Add inflectional endings: mad → mads → madding",
+        "Practice sentence dictation with multiple /d/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced alveolar stop", place: "Alveolar", manner: "Stop", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /d/ with voicing", emphasis: ["Voice on"], priorities: ["Voicing contrast"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Voice contrast"] }
