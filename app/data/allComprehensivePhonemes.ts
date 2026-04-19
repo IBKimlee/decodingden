@@ -1338,14 +1338,33 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Visible lip closure", "Clear release", "Voiceless pair to /b/"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈p〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /p/.', icon_emoji: '💙' },
+        { content: '/p/ is a stop (plosive), unvoiced consonant — air is blocked, then released in a small burst.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /p/ is a quick sound (cannot be stretched), so students must learn to produce it cleanly without adding a vowel (avoid "puh").', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>p</strong> consistently spells the /p/ sound in English.', icon_emoji: '💚' },
+        { content: '/p/ can appear at the beginning (pen), middle (apple), or end (cap) of words.', icon_emoji: '💚' },
+        { content: '/p/ can be tricky because it is unvoiced and quick, and students may confuse it with /b/ or add a vowel sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>pig</strong> or <strong>pen</strong>.', icon_emoji: '💛' },
+        { content: 'Use stop blending: say sounds cleanly — /p/ - /a/ - /t/ → pat (no "puh").', icon_emoji: '💛' },
+        { content: 'Add movement: have students put a hand in front of their mouth to feel the puff of air.', icon_emoji: '💛' },
+        { content: 'Contrast with /b/ to show that /p/ is quiet (no voice) and has a stronger puff of air.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/p/',
       sound_type: 'consonant',
-      place: 'Bilabial',
-      manner: 'Stop',
+      place: 'Bilabial (both lips come together)',
+      manner: 'Stop/Plosive (air is blocked then released)',
       voicing: 'voiceless',
-      cue: 'Pop your lips - like a small explosion of air',
-      teacher_guidance: 'Both lips come together and release with a puff of air. No voice - just air.',
+      cue: 'Pop your lips — like a small explosion of air. No voice, just air. Students should feel a puff of air on their hand.',
+      teacher_guidance: 'Both lips come together and release with a puff of air. No voice — just air. Watch for students adding "uh" after the sound.',
       student_tips: 'Press your lips together. Pop them open with a puff of air. Feel the air on your hand.',
       common_substitutions: ['/b/'],
       articulation_cues: 'Lips together, quick release, puff of air, no voice',
@@ -1353,7 +1372,24 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     },
     instructional_sequence: { pre_teaching: ["Popping sounds"], explicit_instruction: ["Model /p/"], guided_practice: ["Sound sorts"], independent_practice: ["Word building"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a tissue or hand test to feel the air puff for /p/",
+        "Practice isolating the sound: /p/ → pa → pan",
+        "Provide explicit contrast practice: pat vs. bat, pig vs. big",
+        "Model crisp production to avoid adding /uh/ (no \"puh\")"
+      ],
+      on_level: [
+        "Build word chains: pat → pit → sip",
+        "Add suffixes: tap → taps → tapping",
+        "Practice sentence dictation with multiple /p/ words"
+      ],
+      advanced: [
+        "Build word chains: pat → pit → sip",
+        "Add suffixes: tap → taps → tapping",
+        "Practice sentence dictation with multiple /p/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiceless bilabial stop", place: "Bilabial", manner: "Stop", voicing: "Voiceless" },
     weekly_data_override: { focus: "Clear /p/ production", emphasis: ["Lip closure"], priorities: ["Clear release"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["High frequency"] }
