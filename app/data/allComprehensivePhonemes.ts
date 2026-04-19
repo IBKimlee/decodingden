@@ -2100,22 +2100,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Continuous sound", "Visible tongue tip", "High frequency"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈l〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /l/.', icon_emoji: '💙' },
+        { content: '/l/ is a liquid, voiced consonant — air flows around the sides of the tongue.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /l/ is a continuous sound, so it can be stretched (lllll), which supports blending.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>l</strong> consistently spells the /l/ sound in English.', icon_emoji: '💚' },
+        { content: '/l/ can appear at the beginning (lip), middle (melon), or end (ball) of words.', icon_emoji: '💚' },
+        { content: '/l/ can be tricky because tongue placement matters, and students may produce a distorted or "w-like" sound if the tongue is not lifted correctly.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>lip</strong> or <strong>lamp</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: lllll-ip → lip.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch the tip of their tongue to the ridge behind their teeth while saying /l/.', icon_emoji: '💛' },
+        { content: 'Contrast with /w/: /l/ uses the tongue lifted, while /w/ uses rounded lips.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/l/',
       sound_type: 'consonant',
-      place: 'Alveolar',
-      manner: 'Liquid',
+      place: 'Alveolar (tongue touches just behind the top teeth)',
+      manner: 'Liquid (air flows around the sides of the tongue)',
       voicing: 'voiced',
-      cue: 'Tongue tip up, air flows around the sides - "la la la"',
+      cue: 'Tongue tip up, air flows around the sides. Students should feel their tongue lift and touch the alveolar ridge. If the tongue stays low, the sound may shift toward /w/.',
       teacher_guidance: 'Tongue tip touches ridge behind top teeth. Air flows around the sides of the tongue. Voiced.',
       student_tips: 'Touch your tongue tip to the bumpy spot behind your top teeth. Let air flow around the sides. La la la!',
-      common_substitutions: ['/w/', '/r/', '/y/'],
+      common_substitutions: ['/w/', '/r/'],
       articulation_cues: 'Tongue tip to alveolar ridge, lateral airflow, voiced',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Singing la la"], explicit_instruction: ["Model /l/"], guided_practice: ["Tongue tip up"], independent_practice: ["Word building"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Tongue tip practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to check tongue placement (tip up behind teeth)",
+        "Practice isolating and stretching: /l/ → la → lip",
+        "Use minimal pairs: lip vs. whip, led vs. red",
+        "Provide explicit modeling of tongue lift (you may need to exaggerate)"
+      ],
+      on_level: [
+        "Build word chains: lip → lap → sap",
+        "Add suffixes: fill → fills → filling",
+        "Practice sentence dictation with multiple /l/ words"
+      ],
+      advanced: [
+        "Build word chains: lip → lap → sap",
+        "Add suffixes: fill → fills → filling",
+        "Practice sentence dictation with multiple /l/ words"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced alveolar lateral approximant", place: "Alveolar", manner: "Liquid", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /l/ production", emphasis: ["Tongue tip"], priorities: ["Lateral airflow"] },
     content_generation_meta: { rules: ["All positions"], guidelines: ["Continuous sound"] }
