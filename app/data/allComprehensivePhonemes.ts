@@ -2064,6 +2064,89 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     linguistic_properties_extended: { description: "High front r-colored vowel", place: "Front", manner: "R-controlled", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /ear/ r-controlled", emphasis: ["ee + R"], priorities: ["Spelling awareness"] },
     content_generation_meta: { rules: ["R-controlled"], guidelines: ["Spelling variations"] }
+  },
+
+  // ============================================
+  // DIPHTHONG: /aw/ (as in "saw", "caught")
+  // ============================================
+  {
+    phoneme_id: "vowel_aw",
+    stage: 6,
+    phoneme: "/aw/",
+    graphemes: ["aw", "au", "al", "augh"],
+    frequency_rank: 55,
+    complexity_score: 3.0,
+    grade_band: "2nd-Spring",
+    introduction_week: 3,
+    word_examples: ["saw", "draw", "claw", "lawn", "cause", "haul", "autumn", "caught", "daughter", "taught"],
+    decodable_sentences: ["I saw a hawk on the lawn.", "The author will draw at dawn.", "She caught the ball and taught her daughter."],
+    word_lists: {
+      'aw': { beginning: [], medial: ["lawn", "dawn", "fawn", "hawk", "crawl", "shawl"], ending: ["saw", "draw", "claw", "raw", "jaw", "straw"] },
+      'au': { beginning: ["author", "autumn", "August"], medial: ["cause", "haul", "fault", "launch", "sauce", "pause"], ending: [] },
+    },
+    assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
+    teaching_advantages: ["Clear diphthong", "Position rule: aw at end/before n,l,k; au in middle", "High-frequency words"],
+    research_sources: ["NRP (2000)", "Adams (1990)"],
+    articulation_data: {
+      phoneme: '/aw/',
+      sound_type: 'vowel',
+      place: 'Low back',
+      manner: 'Diphthong',
+      voicing: 'voiced',
+      cue: 'Open mouth wide then round lips — like the "aw" in "awesome"',
+      teacher_guidance: 'Mouth opens wide then rounds slightly. Position rule: aw at end of words or before n, l, k; au in middle of words.',
+      student_tips: 'Open your mouth wide and round your lips. Think of saying "awww" when you see something cute.',
+      common_substitutions: ['/ŏ/', '/ō/'],
+      articulation_cues: 'Wide open mouth, lips slightly rounded',
+      airflow_description: 'oral'
+    },
+    instructional_sequence: { pre_teaching: ["Vowel teams"], explicit_instruction: ["Model /aw/"], guided_practice: ["Position sorts: aw vs au"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
+    assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
+    differentiation_protocols: { struggling: ["Focus on aw first"], on_level: ["Standard instruction"], advanced: ["Position rule mastery"] },
+    linguistic_properties_extended: { description: "Low back rounded vowel", place: "Back", manner: "Diphthong", voicing: "Voiced" },
+    weekly_data_override: { focus: "Clear /aw/ diphthong", emphasis: ["Position rule"], priorities: ["aw vs au"] },
+    content_generation_meta: { rules: ["Diphthong"], guidelines: ["Position sorting"] }
+  },
+
+  // ============================================
+  // CONSONANT: /kw/ (as in "queen", "quick")
+  // ============================================
+  {
+    phoneme_id: "consonant_kw",
+    stage: 2,
+    phoneme: "/kw/",
+    graphemes: ["qu"],
+    frequency_rank: 56,
+    complexity_score: 2.1,
+    grade_band: "K-Spring",
+    introduction_week: 6,
+    word_examples: ["queen", "quick", "quiet", "quit", "quiz", "quest", "quack", "quite", "square", "squeeze"],
+    decodable_sentences: ["The queen is quick and quiet.", "Quit the quiz and go on a quest.", "The duck can quack in the square."],
+    word_lists: {
+      'qu': { beginning: ["queen", "quick", "quiet", "quit", "quiz", "quest", "quack", "quite", "quote", "quilt"], medial: ["square", "squeeze", "liquid", "sequel", "equal", "request"], ending: [] },
+    },
+    assessment_criteria: { daily: "80% accuracy", weekly: "75% accuracy", summative: "85% mastery" },
+    teaching_advantages: ["Q and U always together", "Distinctive sound", "Consistent pattern"],
+    research_sources: ["Adams (1990)", "FCRR (2005)"],
+    articulation_data: {
+      phoneme: '/kw/',
+      sound_type: 'consonant',
+      place: 'Velar + Bilabial',
+      manner: 'Stop + Glide',
+      voicing: 'voiceless',
+      cue: 'Quick /k/ followed immediately by /w/ with rounded lips — "kw" as one unit',
+      teacher_guidance: 'Teach as one unit: Q and U are best friends and always go together. The sound is /kw/ not /k/ then /w/ separately.',
+      student_tips: 'Q always has U with it. Say /k/ and /w/ quickly together as one sound. Round your lips for the /w/ part.',
+      common_substitutions: ['/k/'],
+      articulation_cues: 'Back of tongue hits roof for /k/, then lips round for /w/',
+      airflow_description: 'oral'
+    },
+    instructional_sequence: { pre_teaching: ["/k/ sound"], explicit_instruction: ["Model /kw/"], guided_practice: ["qu word building"], independent_practice: ["Word practice"], assessment_checkpoints: ["Daily checks"] },
+    assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["80% accuracy"] },
+    differentiation_protocols: { struggling: ["Focus on qu as unit"], on_level: ["Standard instruction"], advanced: ["Multi-syllable qu words"] },
+    linguistic_properties_extended: { description: "Voiceless velar stop plus labial-velar glide", place: "Velar+Bilabial", manner: "Stop+Glide", voicing: "Voiceless" },
+    weekly_data_override: { focus: "/kw/ as single unit", emphasis: ["qu always together"], priorities: ["Letter pair awareness"] },
+    content_generation_meta: { rules: ["Consonant blend"], guidelines: ["qu partnership"] }
   }
 
   // NOTE: This represents the systematic approach for all 44 core phonemes

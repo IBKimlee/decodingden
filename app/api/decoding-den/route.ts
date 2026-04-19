@@ -77,28 +77,48 @@ interface DecodingDenResponse {
  * Find phoneme in TypeScript data sources
  * TypeScript is the single source of truth
  */
+// Common teacher-friendly aliases → phoneme IDs
+const PHONEME_ALIAS_MAP: Record<string, string> = {
+  'zh': 'consonant_zh',
+  'schwa': 'stage8_schwa',
+};
+
 function findPhonemeInTypeScript(input: string): ComprehensivePhonemeEntry | null {
   const normalizedInput = input.toLowerCase().trim();
   const withoutSlashes = normalizedInput.replace(/^\/|\/$/g, '');
   const withSlashes = withoutSlashes.startsWith('/') ? withoutSlashes : `/${withoutSlashes}/`;
 
-  // Search ALL_COMPREHENSIVE_PHONEMES first (has full articulation data)
-  let match = ALL_COMPREHENSIVE_PHONEMES.find(p => {
+  // --- Pass 1: Exact phoneme ID match (highest priority) ---
+  let match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    p.phoneme_id.toLowerCase() === normalizedInput
+  );
+  if (match) return match;
+
+  // --- Pass 2: Alias lookup ---
+  const aliasId = PHONEME_ALIAS_MAP[withoutSlashes] || PHONEME_ALIAS_MAP[normalizedInput];
+  if (aliasId) {
+    match = ALL_COMPREHENSIVE_PHONEMES.find(p => p.phoneme_id === aliasId);
+    if (match) return match;
+  }
+
+  // --- Pass 3: Phoneme symbol match (before grapheme match to prevent ordering bugs) ---
+  match = ALL_COMPREHENSIVE_PHONEMES.find(p => {
     const pNormalized = p.phoneme.replace(/^\/|\/$/g, '').toLowerCase();
     return pNormalized === withoutSlashes ||
            p.phoneme.toLowerCase() === withSlashes ||
-           p.phoneme.toLowerCase() === normalizedInput ||
-           p.phoneme_id.toLowerCase() === normalizedInput ||
-           p.graphemes.some(g => g.toLowerCase() === withoutSlashes);
+           p.phoneme.toLowerCase() === normalizedInput;
   });
-
   if (match) return match;
 
-  // Try searching by common name patterns
+  // --- Pass 4: Grapheme match (only after phoneme match fails) ---
+  match = ALL_COMPREHENSIVE_PHONEMES.find(p =>
+    p.graphemes.some(g => g.toLowerCase() === withoutSlashes)
+  );
+  if (match) return match;
+
+  // --- Pass 5: Pattern variations (strip "sound" suffix, remove spaces) ---
   const patterns = [
     normalizedInput.replace(/\s+sound$/i, ''),
-    normalizedInput.replace(/^long\s+/i, ''),
-    normalizedInput.replace(/^short\s+/i, ''),
     normalizedInput.replace(/\s+/g, ''),
   ];
 
@@ -111,7 +131,7 @@ function findPhonemeInTypeScript(input: string): ComprehensivePhonemeEntry | nul
     if (match) return match;
   }
 
-  // Also search STAGE_PHONEME_SAMPLES as fallback (but prefer ALL_COMPREHENSIVE_PHONEMES)
+  // --- Pass 6: STAGE_PHONEME_SAMPLES fallback ---
   const stageSample = STAGE_PHONEME_SAMPLES.find(p => {
     const pNormalized = p.phoneme.replace(/^\/|\/$/g, '').toLowerCase();
     return pNormalized === withoutSlashes ||
@@ -119,7 +139,6 @@ function findPhonemeInTypeScript(input: string): ComprehensivePhonemeEntry | nul
            p.graphemes.some(g => g.toLowerCase() === withoutSlashes);
   });
 
-  // If found in STAGE_PHONEME_SAMPLES, try to find matching entry in ALL_COMPREHENSIVE_PHONEMES
   if (stageSample) {
     const comprehensiveMatch = ALL_COMPREHENSIVE_PHONEMES.find(p =>
       p.phoneme.toLowerCase() === stageSample.phoneme.toLowerCase()
@@ -1036,8 +1055,9 @@ function logUsage(phonemeId: string, sectionsViewed: string[], userId?: string) 
   console.log('Usage logged:', { phonemeId, sectionsViewed, userId });
 }
 
-// Disambiguation options for bare vowel letter searches
-const VOWEL_DISAMBIGUATION: Record<string, Array<{id: string, label: string, example: string, phoneme: string}>> = {
+// Disambiguation options for ambiguous searches
+const SEARCH_DISAMBIGUATION: Record<string, Array<{id: string, label: string, example: string, phoneme: string}>> = {
+  // Bare vowel letters
   'a': [
     { id: 'stage1_a', label: 'Short a', example: 'as in "cat"', phoneme: '/a/' },
     { id: 'stage4_a_e', label: 'Long ā', example: 'as in "cake"', phoneme: '/ā/' },
@@ -1058,6 +1078,21 @@ const VOWEL_DISAMBIGUATION: Record<string, Array<{id: string, label: string, exa
     { id: 'vowel_short_u', label: 'Short u', example: 'as in "cup"', phoneme: '/ŭ/' },
     { id: 'vowel_long_u', label: 'Long ū', example: 'as in "use"', phoneme: '/ū/' },
   ],
+  // th has two sounds
+  'th': [
+    { id: 'consonant_th_voiceless', label: 'Voiceless th', example: 'as in "thin"', phoneme: '/θ/' },
+    { id: 'stage3_th_voiced', label: 'Voiced th', example: 'as in "this"', phoneme: '/ð/' },
+  ],
+  // c has two sounds
+  'c': [
+    { id: 'stage3_ck', label: 'Hard c', example: 'as in "cat"', phoneme: '/k/' },
+    { id: 'stage1_s', label: 'Soft c', example: 'as in "city"', phoneme: '/s/' },
+  ],
+  // g has two sounds
+  'g': [
+    { id: 'consonant_g', label: 'Hard g', example: 'as in "go"', phoneme: '/g/' },
+    { id: 'stage2_j', label: 'Soft g', example: 'as in "giant"', phoneme: '/dʒ/' },
+  ],
 };
 
 // Direct lookup for named vowel searches like "short i", "long a", "short e sound"
@@ -1074,9 +1109,13 @@ const NAMED_VOWEL_MAP: Record<string, string> = {
   'long u': 'vowel_long_u',
 };
 
-// Named concept lookup
+// Named concept lookup (also includes aliases for sounds with non-obvious IPA symbols)
 const CONCEPT_NAME_MAP: Record<string, string> = {
   'schwa': 'stage8_schwa',
+  'zh': 'consonant_zh',
+  'aw': 'vowel_aw',
+  'kw': 'consonant_kw',
+  'qu': 'consonant_kw',
 };
 
 export async function POST(request: NextRequest) {
@@ -1096,16 +1135,14 @@ export async function POST(request: NextRequest) {
 
     // --- Input classification (runs BEFORE the general matching function) ---
 
-    // 1. Bare single vowel letter → disambiguation prompt
-    if (/^[aeiou]$/.test(cleanedInput)) {
-      const options = VOWEL_DISAMBIGUATION[cleanedInput];
-      if (options) {
-        return NextResponse.json({
-          success: true,
-          disambiguation: options,
-          generated_at: new Date().toISOString(),
-        });
-      }
+    // 1. Ambiguous input → disambiguation prompt (bare vowels, "th")
+    const disambigOptions = SEARCH_DISAMBIGUATION[cleanedInput];
+    if (disambigOptions) {
+      return NextResponse.json({
+        success: true,
+        disambiguation: disambigOptions,
+        generated_at: new Date().toISOString(),
+      });
     }
 
     // 2. Named vowel ("short i", "long a", "long e sound") → direct lookup

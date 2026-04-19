@@ -111,8 +111,24 @@ const ANCHOR_WORDS: Record<string, string> = {
   '/gh/': 'ghost',
 };
 
-function getAnchorWord(phonemeSymbol: string): string | null {
+// When a specific grapheme is displayed, the anchor word should match that grapheme
+const GRAPHEME_ANCHOR_WORDS: Record<string, string> = {
+  'c': 'cat',
+  'k': 'kite',
+  'ck': 'duck',
+  'g': 'goat',
+  'j': 'jump',
+  'dge': 'bridge',
+  's': 'sun',
+};
+
+function getAnchorWord(phonemeSymbol: string, displayedGrapheme?: string): string | null {
   if (!phonemeSymbol) return null;
+  // If a specific grapheme is shown, use a grapheme-appropriate anchor word
+  if (displayedGrapheme) {
+    const graphemeAnchor = GRAPHEME_ANCHOR_WORDS[displayedGrapheme.toLowerCase().trim()];
+    if (graphemeAnchor) return graphemeAnchor;
+  }
   const normalized = phonemeSymbol.toLowerCase().trim();
   return ANCHOR_WORDS[normalized] || ANCHOR_WORDS[`/${normalized}/`] || null;
 }
@@ -318,12 +334,18 @@ export default function DecodingDenPage() {
                 </div>
                 
                 {/* Anchor Word Display */}
-                {phonemeData && getAnchorWord(phonemeData.phoneme.ipa_symbol) && (
-                  <div className="mt-3 pt-1.5 border-t border-oceanBlue/30">
-                    <p className="text-xs text-gray-500 uppercase">Anchor Word</p>
-                    <p className="text-lg font-bold text-deepNavy">{getAnchorWord(phonemeData.phoneme.ipa_symbol)}</p>
-                  </div>
-                )}
+                {phonemeData && (() => {
+                  const displayedGrapheme = phonemeData.show_specific_grapheme && phonemeData.requested_specific_grapheme
+                    ? phonemeData.requested_specific_grapheme
+                    : phonemeData.graphemes[0]?.grapheme;
+                  const anchor = getAnchorWord(phonemeData.phoneme.ipa_symbol, displayedGrapheme);
+                  return anchor ? (
+                    <div className="mt-3 pt-1.5 border-t border-oceanBlue/30">
+                      <p className="text-xs text-gray-500 uppercase">Anchor Word</p>
+                      <p className="text-lg font-bold text-deepNavy">{anchor}</p>
+                    </div>
+                  ) : null;
+                })()}
               </div>
                 
                 {/* Button Grid - Responsive Layout */}
