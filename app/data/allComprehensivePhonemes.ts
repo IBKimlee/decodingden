@@ -977,22 +977,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Clear long vowel", "Magic e pattern", "High frequency"],
     research_sources: ["Ehri (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈i_e〉</strong>, <strong>〈igh〉</strong>, <strong>〈y〉</strong>, <strong>〈ie〉</strong> (most common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /ī/ (as in bike, light, my, pie).', icon_emoji: '💙' },
+        { content: '/ī/ is a long vowel sound — it says its letter name.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ī/ has multiple spellings, so students must learn to connect one sound to several graphemes.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The most common spelling is <strong>i_e</strong> (silent e pattern, as in bike).', icon_emoji: '💚' },
+        { content: 'Other common spellings include <strong>igh</strong> (light), <strong>y</strong> at the end (my), and <strong>ie</strong> (pie).', icon_emoji: '💚' },
+        { content: '/ī/ can be tricky because of its many spellings and because students may confuse it with /ĭ/.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>bike</strong>, <strong>light</strong>, <strong>my</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /b/ - /ī/ - /k/ → bike.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students point to their eye and say "I" (connecting to the letter name).', icon_emoji: '💛' },
+        { content: 'Contrast with /ĭ/: bit vs. bite, rid vs. ride to highlight the vowel change.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ī/',
       sound_type: 'vowel',
-      place: 'High front',
-      manner: 'Vowel',
+      place: 'High-front (tongue is raised toward the front of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Say the letter name I - like in "bike" or "time"',
+      cue: 'Say the letter name I. Students should feel a tense vowel that says its name. If the sound is shorter or more relaxed, they may be producing /ĭ/.',
       teacher_guidance: 'Long i says its name. The magic e makes the vowel say its name.',
       student_tips: 'Say the letter I. It starts with your mouth open and ends with a smile. Think of "bike" or "like".',
-      common_substitutions: ['short i', '/ee/'],
+      common_substitutions: ['/ĭ/'],
       articulation_cues: 'Mouth opens then closes to smile position, gliding sound',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Magic e review", "Long vs short"], explicit_instruction: ["Model i_e pattern"], guided_practice: ["VCe building"], independent_practice: ["Read i_e words"], assessment_checkpoints: ["Daily long vowel", "Weekly VCe"] },
     assessment_framework_details: { formative: ["Long vowel checks"], summative: ["VCe tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended VCe practice"], on_level: ["Standard VCe instruction"], advanced: ["Pattern analysis"] },
+    differentiation_protocols: {
+      struggling: [
+        "Introduce one spelling at a time (start with i_e)",
+        "Use minimal pairs: bit vs. bite, rid vs. ride",
+        "Practice sorting words by spelling patterns (i_e vs. igh vs. y)",
+        "Provide explicit modeling of silent e making the vowel long"
+      ],
+      on_level: [
+        "Build word chains: bit → bite → kite",
+        "Add word families: -ike, -igh, -y",
+        "Practice sentence dictation with mixed /ī/ spellings"
+      ],
+      advanced: [
+        "Build word chains: bit → bite → kite",
+        "Add word families: -ike, -igh, -y",
+        "Practice sentence dictation with mixed /ī/ spellings"
+      ]
+    },
     linguistic_properties_extended: { description: "Long high front vowel", place: "Front", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Long /ī/ with silent e", emphasis: ["VCe pattern"], priorities: ["Long vowel clarity"] },
     content_generation_meta: { rules: ["VCe emphasis"], guidelines: ["Long vowel focus"] }
