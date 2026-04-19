@@ -2170,22 +2170,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "85% accuracy", weekly: "80% accuracy", summative: "90% mastery" },
     teaching_advantages: ["Glide sound", "Only at syllable beginning as consonant", "Clear tongue position"],
     research_sources: ["Adams (1990)", "FCRR (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈y〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /y/ (as in yes).', icon_emoji: '💙' },
+        { content: '/y/ is a glide (semivowel), voiced sound — the tongue moves quickly into the vowel sound.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /y/ is a quick, sliding sound that blends immediately into a vowel, which can make it harder for students to isolate.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>y</strong> spells the /y/ sound at the beginning of words (as in yes).', icon_emoji: '💚' },
+        { content: '/y/ appears most often at the beginning (yes) or middle (beyond) of words, but not at the end when it says /y/.', icon_emoji: '💚' },
+        { content: '/y/ can be tricky because the letter y has multiple sounds (it can also act as a vowel: my, happy).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>yes</strong> or <strong>yo-yo</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: yyyy-es → yes (slide into the vowel).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students smile slightly and feel their tongue move forward as they say /y/.', icon_emoji: '💛' },
+        { content: 'Contrast with vowel-only onset (es vs. yes) to highlight the quick glide at the start.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/j/',
       sound_type: 'consonant',
-      place: 'Palatal',
-      manner: 'Glide',
+      place: 'Palatal (middle of the tongue lifts toward the roof of the mouth)',
+      manner: 'Glide (quick movement into the vowel)',
       voicing: 'voiced',
-      cue: 'Tongue high and front, glide to the vowel - "y-y-yes"',
+      cue: 'Tongue high and front, glide to the vowel. Students should feel a quick tongue movement and voice vibration. If the sound is missing, they may drop the /y/ and start with a vowel instead.',
       teacher_guidance: 'Tongue is high and forward (like /ee/), then glides to the following vowel. Voiced.',
       student_tips: 'Start with your tongue high like you are going to say "ee". Then slide to the next sound. Yes!',
-      common_substitutions: ['/j/ (as in jam)', '/ee/'],
+      common_substitutions: ['/j/ (as in jam)', 'omission'],
       articulation_cues: 'Tongue high and front, glide movement, voiced',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Glide practice"], explicit_instruction: ["Model /y/"], guided_practice: ["Glide to vowels"], independent_practice: ["Word building"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["85% accuracy"] },
-    differentiation_protocols: { struggling: ["Glide practice"], on_level: ["Standard instruction"], advanced: ["Y as vowel vs consonant"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to observe mouth movement (slight smile, tongue forward)",
+        "Practice isolating and blending: /y/ → ya → yes",
+        "Use contrast pairs: es vs. yes, ell vs. yell",
+        "Explicitly teach that y can be a consonant or a vowel, but focus first on /y/ at the beginning"
+      ],
+      on_level: [
+        "Build word chains: yes → yet → yen",
+        "Add phrases: yes, you, yellow yam",
+        "Sort words where y is a consonant (/y/) vs. a vowel (long i or long e)"
+      ],
+      advanced: [
+        "Build word chains: yes → yet → yen",
+        "Add phrases: yes, you, yellow yam",
+        "Sort words where y is a consonant (/y/) vs. a vowel (long i or long e)"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiced palatal glide", place: "Palatal", manner: "Glide", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /y/ glide", emphasis: ["Glide movement"], priorities: ["Initial position"] },
     content_generation_meta: { rules: ["Initial position"], guidelines: ["Glide sound"] }
