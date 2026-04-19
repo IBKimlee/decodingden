@@ -1121,22 +1121,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["Clear r-controlled", "High frequency", "Consistent sound"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is <strong>〈ar〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /ar/ (as in car).', icon_emoji: '💙' },
+        { content: '/ar/ is an r-controlled vowel — the r changes the vowel sound, so it is no longer short or long.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: the /r/ "bosses the vowel", making a new, unique sound that students must learn as a unit.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>ar</strong> makes the /ar/ sound (as in car, star, park).', icon_emoji: '💚' },
+        { content: '/ar/ can appear at the beginning (art), middle (farm), or end (car) of words.', icon_emoji: '💚' },
+        { content: '/ar/ can be tricky because students may try to read it as /ă/ + /r/ instead of recognizing it as one controlled sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>car</strong> or <strong>star</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /c/ - /ar/ → car (treat /ar/ as one chunk).', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students pretend to drive a car and say "arrrr" like a pirate.', icon_emoji: '💛' },
+        { content: 'Contrast with /ă/: cap vs. carp, hat vs. hart to show how r changes the vowel.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/är/',
       sound_type: 'vowel',
-      place: 'Low back',
-      manner: 'R-controlled vowel',
+      place: 'Central with rhotic influence (tongue pulls back slightly for /r/)',
+      manner: 'R-controlled vowel (vowel influenced by /r/)',
       voicing: 'voiced',
-      cue: 'Open mouth then add R - "car", "star", "far"',
+      cue: 'Open mouth then add R. Students should feel the tongue pull back slightly for the /r/. The vowel is not short or long — it is a new sound controlled by r.',
       teacher_guidance: 'Start with an open /ah/ sound, then curl tongue back for the R. The R changes the vowel.',
       student_tips: 'Open your mouth wide like /ah/, then curl your tongue back for the R sound. Say "car".',
-      common_substitutions: ['/er/', 'pure /a/'],
+      common_substitutions: ['/er/', '/ă/ + /r/'],
       articulation_cues: 'Mouth opens wide, then tongue curls back for R',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["R-controlled review", "Bossy r"], explicit_instruction: ["Model ar pattern"], guided_practice: ["R-controlled sorting"], independent_practice: ["Read ar words"], assessment_checkpoints: ["Daily r-controlled", "Weekly reading"] },
     assessment_framework_details: { formative: ["R-controlled checks"], summative: ["Pattern tests"], mastery_criteria: ["65% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended r-practice"], on_level: ["Standard r-instruction"], advanced: ["R-pattern analysis"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach /ar/ as one unit (chunking), not separate sounds",
+        "Use minimal pairs: cap vs. carp, hat vs. hart",
+        "Practice word building: c + ar → car",
+        "Provide visual cues (underline \"ar\" to show it works together)"
+      ],
+      on_level: [
+        "Build word chains: car → card → hard",
+        "Add word families: -ar, -ark, -art",
+        "Compare with other r-controlled vowels: ar vs. or vs. er"
+      ],
+      advanced: [
+        "Build word chains: car → card → hard",
+        "Add word families: -ar, -ark, -art",
+        "Compare with other r-controlled vowels: ar vs. or vs. er"
+      ]
+    },
     linguistic_properties_extended: { description: "Low back r-colored vowel", place: "Back", manner: "R-controlled", voicing: "Voiced" },
     weekly_data_override: { focus: "ar r-controlled", emphasis: ["R-control"], priorities: ["Pattern mastery"] },
     content_generation_meta: { rules: ["R-controlled emphasis"], guidelines: ["Bossy r focus"] }
