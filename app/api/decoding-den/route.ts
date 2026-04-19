@@ -357,6 +357,21 @@ function formatPhonemeSymbol(phoneme: string, stageId: number): string {
     return shortVowelMap[p];
   }
 
+  // IPA symbols that should display as teacher-friendly symbols
+  const ipaDisplayMap: { [key: string]: string } = {
+    '/ʒ/': '/zh/',
+    '/ʃ/': '/sh/',
+    '/tʃ/': '/ch/',
+    '/dʒ/': '/j/',
+    '/ŋ/': '/ng/',
+    '/θ/': '/th/',
+    '/ð/': '/th/',
+  };
+
+  if (ipaDisplayMap[p]) {
+    return ipaDisplayMap[p];
+  }
+
   return phoneme;
 }
 
