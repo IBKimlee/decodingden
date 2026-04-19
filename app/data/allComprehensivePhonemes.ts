@@ -3194,22 +3194,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "65% accuracy", weekly: "60% accuracy", summative: "70% mastery" },
     teaching_advantages: ["Clear diphthong", "Two spellings", "Position rule"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈oi〉</strong> and <strong>〈oy〉</strong>.', icon_emoji: '💙' },
+        { content: 'The phoneme is /oi/ (as in coin, boy).', icon_emoji: '💙' },
+        { content: '/oi/ is a diphthong — the mouth glides from one vowel sound to another within the same syllable.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /oi/ is a moving sound (gliding), not steady like a pure vowel, which helps students feel the change.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The spelling <strong>oi</strong> is usually found in the middle of words (coin, soil).', icon_emoji: '💚' },
+        { content: 'The spelling <strong>oy</strong> is usually found at the end of words (boy, toy).', icon_emoji: '💚' },
+        { content: '/oi/ can be tricky because students may try to separate it into two sounds instead of recognizing it as one gliding sound.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>coin</strong> and <strong>boy</strong>.', icon_emoji: '💛' },
+        { content: 'Use smooth blending: /k/ - /oi/ - /n/ → coin.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students open their mouth wide then round lips (showing the glide).', icon_emoji: '💛' },
+        { content: 'Contrast with /ō/: coat vs. coit (nonsense) to highlight the glide vs. steady vowel.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/oi/',
       sound_type: 'vowel',
-      place: 'Mid back to high front',
-      manner: 'Diphthong',
+      place: 'Starts mid-back and glides to high-front',
+      manner: 'Diphthong (gliding vowel sound)',
       voicing: 'voiced',
-      cue: 'Start with round lips, end with a smile - "oy!" like when annoyed',
+      cue: 'Start with round lips, end with a smile. Students should feel the mouth move during the sound. If the mouth stays still, they may not be producing the glide correctly.',
       teacher_guidance: 'Glides from /aw/ position to /ee/ position. Lips go from round to spread.',
       student_tips: 'Start with round lips and end with a smile. Say "oy" like when something annoys you!',
-      common_substitutions: ['/ow/', '/o/'],
+      common_substitutions: ['/ow/', '/ō/'],
       articulation_cues: 'Mouth starts round, glides to spread, continuous movement',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Glide practice"], explicit_instruction: ["Model /oi/"], guided_practice: ["oi vs oy"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["65% accuracy"] },
-    differentiation_protocols: { struggling: ["Glide practice"], on_level: ["Standard instruction"], advanced: ["Spelling rules"] },
+    differentiation_protocols: {
+      struggling: [
+        "Teach the glide explicitly (start sound → end sound)",
+        "Use mirror work to show mouth movement",
+        "Practice sorting: oi (middle) vs. oy (end)",
+        "Use minimal pairs: coat vs. coit (to hear glide vs. long vowel)"
+      ],
+      on_level: [
+        "Build word chains: coin → join → joint",
+        "Add word families: -oin, -oy",
+        "Practice sentence dictation using both oi and oy patterns"
+      ],
+      advanced: [
+        "Build word chains: coin → join → joint",
+        "Add word families: -oin, -oy",
+        "Practice sentence dictation using both oi and oy patterns"
+      ]
+    },
     linguistic_properties_extended: { description: "Diphthong from mid-back to high-front", place: "Back to front", manner: "Diphthong", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear /oi/ diphthong", emphasis: ["Glide motion"], priorities: ["oi vs oy spelling"] },
     content_generation_meta: { rules: ["Position spelling"], guidelines: ["oi middle, oy end"] }
