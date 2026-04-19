@@ -2949,22 +2949,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "75% accuracy", weekly: "70% accuracy", summative: "80% mastery" },
     teaching_advantages: ["Says letter name", "Multiple spelling patterns", "Common words"],
     research_sources: ["Ehri (2005)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈o_e〉</strong>, <strong>〈oa〉</strong>, <strong>〈ow〉</strong> (most common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /ō/ (as in home, boat, snow).', icon_emoji: '💙' },
+        { content: '/ō/ is a long vowel sound — it says its letter name.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ō/ has multiple spellings, so students must learn to connect one sound to several graphemes.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The most common spelling is <strong>o_e</strong> (silent e pattern, as in home).', icon_emoji: '💚' },
+        { content: 'Other common spellings include <strong>oa</strong> (boat) and <strong>ow</strong> (snow, often at the end).', icon_emoji: '💚' },
+        { content: '/ō/ can be tricky because of its multiple spellings and because <strong>ow</strong> can represent different sounds (/ō/ as in snow vs. /ow/ as in cow).', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>home</strong>, <strong>boat</strong>, <strong>snow</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /h/ - /ō/ - /m/ → home.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students round their lips into an "O" shape while saying the sound.', icon_emoji: '💛' },
+        { content: 'Contrast with /ŏ/: hop vs. hope, not vs. note to highlight the vowel change.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ō/',
       sound_type: 'vowel',
-      place: 'Mid back',
-      manner: 'Vowel',
+      place: 'Mid-back (tongue is in the middle/back of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Say the letter O - round your lips like a circle',
-      teacher_guidance: 'Long o says its name. Lips are rounded. This is a diphthong - glides from /o/ to /oo/.',
+      cue: 'Say the letter O — round your lips like a circle. Students should feel lip rounding and a tense vowel sound. If the sound is short or relaxed, they may be producing /ŏ/.',
+      teacher_guidance: 'Long o says its name. Lips are rounded. This is a diphthong — glides from /o/ to /oo/.',
       student_tips: 'Say the letter O. Make your lips round like a circle. Think of "home" or "boat".',
-      common_substitutions: ['short o', '/aw/'],
+      common_substitutions: ['/ŏ/'],
       articulation_cues: 'Lips rounded, glides slightly, tongue mid-back',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Letter name"], explicit_instruction: ["Model /ō/"], guided_practice: ["Spelling patterns"], independent_practice: ["Word sorts"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["75% accuracy"] },
-    differentiation_protocols: { struggling: ["Pattern focus"], on_level: ["Standard instruction"], advanced: ["Spelling analysis"] },
+    differentiation_protocols: {
+      struggling: [
+        "Introduce one spelling at a time (start with o_e)",
+        "Use minimal pairs: hop vs. hope, not vs. note",
+        "Practice sorting words by spelling patterns (o_e vs. oa vs. ow)",
+        "Provide explicit modeling of silent e making the vowel long"
+      ],
+      on_level: [
+        "Build word chains: hop → hope → rope",
+        "Add word families: -ope, -oat, -ow",
+        "Practice sentence dictation with mixed /ō/ spellings"
+      ],
+      advanced: [
+        "Build word chains: hop → hope → rope",
+        "Add word families: -ope, -oat, -ow",
+        "Practice sentence dictation with mixed /ō/ spellings"
+      ]
+    },
     linguistic_properties_extended: { description: "Mid back rounded vowel", place: "Back", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "Clear long /o/", emphasis: ["Lip rounding"], priorities: ["Multiple spellings"] },
     content_generation_meta: { rules: ["VCe, vowel teams"], guidelines: ["Letter name"] }
