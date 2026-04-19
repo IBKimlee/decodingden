@@ -1013,22 +1013,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "70% accuracy", weekly: "65% accuracy", summative: "75% mastery" },
     teaching_advantages: ["Consistent vowel team", "High frequency", "Clear sound"],
     research_sources: ["NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The graphemes are <strong>〈ee〉</strong>, <strong>〈ea〉</strong>, <strong>〈e〉</strong>, <strong>〈y〉</strong> (most common spellings).', icon_emoji: '💙' },
+        { content: 'The phoneme is /ē/ (as in bee, seat, me, happy).', icon_emoji: '💙' },
+        { content: '/ē/ is a long vowel sound — it says its letter name.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /ē/ has multiple common spellings, so students must learn to map one sound to several graphemes.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'Common spellings include <strong>ee</strong> (bee), <strong>ea</strong> (seat), <strong>e</strong> (me), and <strong>y</strong> at the end (happy).', icon_emoji: '💚' },
+        { content: '<strong>ee</strong> and <strong>ea</strong> are often found in the middle of words, while <strong>y</strong> and <strong>e</strong> often appear at the end.', icon_emoji: '💚' },
+        { content: '/ē/ can be tricky because of its many spellings and because students may confuse it with /ĭ/ or /ĕ/.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with keywords: <strong>bee</strong>, <strong>seat</strong>, <strong>me</strong>.', icon_emoji: '💛' },
+        { content: 'Use clear blending: /b/ - /ē/ → be, /s/ - /ē/ - /t/ → seat.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students smile wide while saying /ē/ (stretched lips).', icon_emoji: '💛' },
+        { content: 'Contrast with /ĭ/: sit vs. seat to highlight the vowel difference.', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/ē/',
       sound_type: 'vowel',
-      place: 'High front',
-      manner: 'Vowel',
+      place: 'High-front (tongue is raised toward the front of the mouth)',
+      manner: 'Vowel (air flows freely)',
       voicing: 'voiced',
-      cue: 'Big smile sound - say the letter E like in "see" or "tree"',
+      cue: 'Big smile sound — say the letter E. Students should feel a tense, smiling mouth shape. If the sound is shorter or more relaxed, they may be producing /ĭ/.',
       teacher_guidance: 'Long e says its name. Lips are spread in a smile, tongue is high and forward.',
       student_tips: 'Make a big smile. Say the letter E. Think of "see", "tree", "bee".',
-      common_substitutions: ['short e', '/i/'],
+      common_substitutions: ['/ĭ/', '/ĕ/'],
       articulation_cues: 'Lips spread wide in smile, tongue high and forward',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Vowel team concept", "Two letters one sound"], explicit_instruction: ["Model ee team"], guided_practice: ["Team sorting"], independent_practice: ["Read ee words"], assessment_checkpoints: ["Daily team", "Weekly reading"] },
     assessment_framework_details: { formative: ["Team checks"], summative: ["Vowel team tests"], mastery_criteria: ["70% accuracy"] },
-    differentiation_protocols: { struggling: ["Extended team practice"], on_level: ["Standard team instruction"], advanced: ["Team patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Introduce one spelling at a time (start with ee)",
+        "Use minimal pairs: sit vs. seat, bit vs. beat",
+        "Practice sorting words by spelling patterns (ee vs. ea)",
+        "Provide explicit modeling of the \"smiling\" mouth shape"
+      ],
+      on_level: [
+        "Build word chains: be → bee → beef",
+        "Add word families: -ee, -ea, -y",
+        "Practice sentence dictation with mixed /ē/ spellings"
+      ],
+      advanced: [
+        "Build word chains: be → bee → beef",
+        "Add word families: -ee, -ea, -y",
+        "Practice sentence dictation with mixed /ē/ spellings"
+      ]
+    },
     linguistic_properties_extended: { description: "Long high front vowel", place: "Front", manner: "Vowel", voicing: "Voiced" },
     weekly_data_override: { focus: "ee vowel team", emphasis: ["Team concept"], priorities: ["Team recognition"] },
     content_generation_meta: { rules: ["Team emphasis"], guidelines: ["Vowel team focus"] }
