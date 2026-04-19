@@ -1686,22 +1686,58 @@ export const ALL_COMPREHENSIVE_PHONEMES: ComprehensivePhonemeEntry[] = [
     assessment_criteria: { daily: "90% accuracy", weekly: "85% accuracy", summative: "95% mastery" },
     teaching_advantages: ["Continuous sound", "Visible lip-teeth contact", "Voiceless pair to /v/"],
     research_sources: ["Ehri (2005)", "NRP (2000)"],
+    teaching_content_override: {
+      explanations: [
+        { content: 'The grapheme is most commonly <strong>〈f〉</strong> (also <strong>〈ff〉</strong> or <strong>〈ph〉</strong> in some words).', icon_emoji: '💙' },
+        { content: 'The phoneme is /f/.', icon_emoji: '💙' },
+        { content: '/f/ is a fricative, unvoiced consonant — air flows continuously through a small opening between the teeth and lip.', icon_emoji: '💙' },
+        { content: 'A key teaching feature: /f/ is a continuous sound, so students can stretch it (fffff) to support blending.', icon_emoji: '💙' }
+      ],
+      rules: [
+        { content: 'The letter <strong>f</strong> most often spells the /f/ sound (as in fan), with <strong>ff</strong> at the end of short vowel words (like off).', icon_emoji: '💚' },
+        { content: '/f/ can appear at the beginning (fan), middle (after), or end (if) of words.', icon_emoji: '💚' },
+        { content: '/f/ can be tricky because it may be confused with /v/ (its voiced pair) or spelled with <strong>ph</strong> in some words.', icon_emoji: '💚' }
+      ],
+      tips: [
+        { content: 'Anchor with a keyword: <strong>fan</strong> or <strong>fish</strong>.', icon_emoji: '💛' },
+        { content: 'Use continuous blending: fffff-an → fan.', icon_emoji: '💛' },
+        { content: 'Use a multi-sensory cue: have students touch their bottom lip to their top teeth and blow air.', icon_emoji: '💛' },
+        { content: 'Contrast with /v/: /f/ is quiet (no voice); /v/ has voice (vibration).', icon_emoji: '💛' }
+      ]
+    },
     articulation_data: {
       phoneme: '/f/',
       sound_type: 'consonant',
-      place: 'Labiodental',
-      manner: 'Fricative',
+      place: 'Labiodental (bottom lip touches top teeth)',
+      manner: 'Fricative (air flows continuously through a narrow space)',
       voicing: 'voiceless',
-      cue: 'Blow air through your teeth and lip - like blowing out a candle gently',
-      teacher_guidance: 'Top teeth rest on bottom lip. Air flows continuously. No voice.',
-      student_tips: 'Gently bite your bottom lip with your top teeth. Blow air out. No voice - just air.',
-      common_substitutions: ['/v/', '/p/'],
+      cue: 'Blow air through your teeth and lip. Students should feel air on their lip but no vibration in their throat. If they feel vibration, they are likely producing /v/.',
+      teacher_guidance: 'Top teeth rest on bottom lip. Air flows continuously. No voice. Model airflow visually.',
+      student_tips: 'Gently bite your bottom lip with your top teeth. Blow air out. No voice — just air.',
+      common_substitutions: ['/v/'],
       articulation_cues: 'Top teeth on bottom lip, continuous airflow, voiceless',
       airflow_description: 'oral'
     },
     instructional_sequence: { pre_teaching: ["Feel airflow"], explicit_instruction: ["Model /f/"], guided_practice: ["Continuous sound"], independent_practice: ["Word building"], assessment_checkpoints: ["Daily checks"] },
     assessment_framework_details: { formative: ["Daily checks"], summative: ["Unit tests"], mastery_criteria: ["90% accuracy"] },
-    differentiation_protocols: { struggling: ["Airflow practice"], on_level: ["Standard instruction"], advanced: ["Complex patterns"] },
+    differentiation_protocols: {
+      struggling: [
+        "Use a mirror to check lip-to-teeth placement",
+        "Practice isolating and stretching: /f/ → fa → fan",
+        "Use minimal pairs: fan vs. van, fine vs. vine",
+        "Provide explicit modeling of airflow (blowing gently while making /f/)"
+      ],
+      on_level: [
+        "Build word chains: fan → fin → fit",
+        "Add suffixes: off → offs → offing",
+        "Sort words by spelling: f vs. ff vs. ph"
+      ],
+      advanced: [
+        "Build word chains: fan → fin → fit",
+        "Add suffixes: off → offs → offing",
+        "Sort words by spelling: f vs. ff vs. ph"
+      ]
+    },
     linguistic_properties_extended: { description: "Voiceless labiodental fricative", place: "Labiodental", manner: "Fricative", voicing: "Voiceless" },
     weekly_data_override: { focus: "Clear /f/ with airflow", emphasis: ["Continuous sound"], priorities: ["Lip-teeth contact"] },
     content_generation_meta: { rules: ["CVC patterns"], guidelines: ["Continuous sound"] }
