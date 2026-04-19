@@ -32,11 +32,11 @@ export default function PhonemeSearch({
   };
 
   const quickSearchOptions = [
-    { label: '/sh/', value: '/sh/' },
+    { label: 'sh', value: 'sh' },
     { label: 'long a', value: 'long a' },
-    { label: '/ch/', value: '/ch/' },
+    { label: 'ch', value: 'ch' },
     { label: 'short e', value: 'short e' },
-    { label: '/th/', value: '/th/' },
+    { label: 'th', value: 'th' },
     { label: 'long o', value: 'long o' },
   ];
 
@@ -50,7 +50,7 @@ export default function PhonemeSearch({
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Search phonemes (e.g., /sh/, long a)..."
+                placeholder="Search a sound or spelling (e.g., sh, long a, th)..."
                 className="w-full px-3 py-2 border border-white/20 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-transparent text-sm bg-white/10 text-white placeholder-white/70"
                 disabled={isLoading}
               />
@@ -114,7 +114,7 @@ export default function PhonemeSearch({
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter phoneme (e.g., /sh/, long a, ch sound)..."
+              placeholder="Enter a sound or spelling (e.g., sh, long a, th)..."
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-oceanBlue focus:border-transparent text-lg"
               disabled={isLoading}
             />
@@ -175,11 +175,11 @@ export default function PhonemeSearch({
               <p className="text-red-800 font-medium">Search Error:</p>
               <p className="text-red-700 text-sm mt-1">{error}</p>
               <div className="mt-2">
-                <p className="text-red-600 text-xs">Try using:</p>
+                <p className="text-red-600 text-xs">Try searching for:</p>
                 <ul className="text-red-600 text-xs mt-1 ml-4">
-                  <li>• IPA notation: /sh/, /eɪ/, /ɪ/</li>
-                  <li>• Common names: &quot;sh sound&quot;, &quot;long a&quot;, &quot;short i&quot;</li>
-                  <li>• Graphemes: sh, ay, ch</li>
+                  <li>• A spelling: sh, ch, th, ai, oa</li>
+                  <li>• A sound name: &quot;long a&quot;, &quot;short i&quot;, &quot;schwa&quot;</li>
+                  <li>• A single letter: m, s, t (will show options for vowels)</li>
                 </ul>
               </div>
             </div>
@@ -191,10 +191,10 @@ export default function PhonemeSearch({
       <div className="text-xs text-gray-500 mt-4">
         <p><strong>Search Tips:</strong></p>
         <ul className="mt-1 ml-4 space-y-1">
-          <li>• Use IPA symbols like /sh/ or /eɪ/</li>
-          <li>• Try common names like &quot;long a&quot; or &quot;ch sound&quot;</li>
-          <li>• Enter just the grapheme like &quot;sh&quot; or &quot;ay&quot;</li>
-          <li>• The system will auto-correct common mistakes</li>
+          <li>• Type a spelling: sh, ch, th, ai, oa, igh</li>
+          <li>• Type a sound name: &quot;long a&quot;, &quot;short i&quot;, &quot;schwa&quot;</li>
+          <li>• Type a single letter: m, s, t (vowels will show options)</li>
+          <li>• Type a digraph: sh, ch, th, ng, wh</li>
         </ul>
       </div>
     </div>

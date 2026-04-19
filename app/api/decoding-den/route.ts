@@ -1143,20 +1143,51 @@ const SEARCH_DISAMBIGUATION: Record<string, Array<{id: string, label: string, ex
     { id: 'consonant_g', label: 'Hard g', example: 'as in "go"', phoneme: '/g/' },
     { id: 'stage2_j', label: 'Soft g', example: 'as in "giant"', phoneme: '/dʒ/' },
   ],
+  // Long vowel spellings
+  'long a': [
+    { id: 'stage4_a_e', label: 'a_e', example: 'as in "cake"', phoneme: '/ā/' },
+    { id: 'stage4_a_e', label: 'ai', example: 'as in "rain"', phoneme: '/ā/' },
+    { id: 'stage4_a_e', label: 'ay', example: 'as in "play"', phoneme: '/ā/' },
+    { id: 'stage4_a_e', label: 'eigh', example: 'as in "eight"', phoneme: '/ā/' },
+    { id: 'stage4_a_e', label: 'ey', example: 'as in "they"', phoneme: '/ā/' },
+    { id: 'stage4_a_e', label: 'ei', example: 'as in "vein"', phoneme: '/ā/' },
+    { id: 'stage4_a_e', label: 'ea', example: 'as in "great"', phoneme: '/ā/' },
+  ],
+  'long e': [
+    { id: 'stage5_ee', label: 'ee', example: 'as in "tree"', phoneme: '/ē/' },
+    { id: 'stage5_ee', label: 'ea', example: 'as in "eat"', phoneme: '/ē/' },
+    { id: 'stage5_ee', label: 'e_e', example: 'as in "these"', phoneme: '/ē/' },
+    { id: 'stage5_ee', label: 'ie', example: 'as in "chief"', phoneme: '/ē/' },
+    { id: 'stage5_ee', label: 'ey', example: 'as in "key"', phoneme: '/ē/' },
+    { id: 'stage5_ee', label: 'y', example: 'as in "happy"', phoneme: '/ē/' },
+  ],
+  'long i': [
+    { id: 'stage4_i_e', label: 'i_e', example: 'as in "kite"', phoneme: '/ī/' },
+    { id: 'stage4_i_e', label: 'igh', example: 'as in "light"', phoneme: '/ī/' },
+    { id: 'stage4_i_e', label: 'y', example: 'as in "fly"', phoneme: '/ī/' },
+    { id: 'stage4_i_e', label: 'ie', example: 'as in "pie"', phoneme: '/ī/' },
+  ],
+  'long o': [
+    { id: 'vowel_long_o', label: 'o_e', example: 'as in "home"', phoneme: '/ō/' },
+    { id: 'vowel_long_o', label: 'oa', example: 'as in "boat"', phoneme: '/ō/' },
+    { id: 'vowel_long_o', label: 'ow', example: 'as in "snow"', phoneme: '/ō/' },
+    { id: 'vowel_long_o', label: 'oe', example: 'as in "toe"', phoneme: '/ō/' },
+  ],
+  'long u': [
+    { id: 'vowel_long_u', label: 'u_e', example: 'as in "cute"', phoneme: '/ū/' },
+    { id: 'vowel_long_u', label: 'ue', example: 'as in "blue"', phoneme: '/ū/' },
+    { id: 'vowel_long_u', label: 'ew', example: 'as in "new"', phoneme: '/ū/' },
+    { id: 'vowel_long_u', label: 'eu', example: 'as in "feud"', phoneme: '/ū/' },
+  ],
 };
 
-// Direct lookup for named vowel searches like "short i", "long a", "short e sound"
+// Direct lookup for named vowel searches like "short i", "short e sound"
 const NAMED_VOWEL_MAP: Record<string, string> = {
   'short a': 'stage1_a',
   'short e': 'vowel_short_e',
   'short i': 'vowel_short_i',
   'short o': 'vowel_short_o',
   'short u': 'vowel_short_u',
-  'long a': 'stage4_a_e',
-  'long e': 'stage5_ee',
-  'long i': 'stage4_i_e',
-  'long o': 'vowel_long_o',
-  'long u': 'vowel_long_u',
 };
 
 // Named concept lookup (also includes aliases for sounds with non-obvious IPA symbols)
@@ -1231,13 +1262,12 @@ export async function POST(request: NextRequest) {
     if (!phonemeData) {
       return NextResponse.json(
         {
-          error: 'Phoneme not found',
-          message: `Could not find phoneme for input: "${phoneme_input}". Try using IPA notation (e.g., "/sh/") or common names (e.g., "sh").`,
+          error: 'Sound not found',
+          message: `Could not find a sound or spelling for: "${phoneme_input}". Try a spelling like "sh" or a sound name like "long a".`,
           suggestions: [
-            'Try "/sh/" for the sh sound',
-            'Use "/m/" for the m sound',
-            'Use "ai" for the ai vowel team',
-            'Use stage and phoneme like "stage1_m"'
+            'Try a spelling: sh, ch, th, ai, oa',
+            'Try a sound name: long a, short i, schwa',
+            'Try a single letter: m, s, t'
           ]
         } as DecodingDenResponse,
         { status: 404 }

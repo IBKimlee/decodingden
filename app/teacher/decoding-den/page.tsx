@@ -324,16 +324,16 @@ export default function DecodingDenPage() {
                 </h1>
                 <div className="space-y-1">
                   <p className="text-sm sm:text-xl font-semibold text-deepNavy">
-                    <strong>Phoneme:</strong> {phonemeData ? <span className="text-lg sm:text-2xl">{phonemeData.phoneme.ipa_symbol}</span> : ''}
-                  </p>
-                  <p className="text-sm sm:text-xl font-semibold text-deepNavy">
                     <strong>Grapheme:</strong>{phonemeData ? (
                       <span className="text-lg sm:text-2xl">
-                        〈 {phonemeData.show_specific_grapheme && phonemeData.requested_specific_grapheme 
-                          ? phonemeData.requested_specific_grapheme 
+                        〈 {phonemeData.show_specific_grapheme && phonemeData.requested_specific_grapheme
+                          ? phonemeData.requested_specific_grapheme
                           : phonemeData.graphemes[0].grapheme} 〉
                       </span>
                     ) : ''}
+                  </p>
+                  <p className="text-sm sm:text-xl font-semibold text-deepNavy">
+                    <strong>Phoneme:</strong> {phonemeData ? <span className="text-lg sm:text-2xl">{phonemeData.phoneme.ipa_symbol}</span> : ''}
                   </p>
                 </div>
                 
