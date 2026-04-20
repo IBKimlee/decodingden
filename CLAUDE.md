@@ -196,6 +196,68 @@ This pattern ensures consistent alignment across all phoneme teaching content.
 ### Project Tech Specifics
 - My project uses Next.js 14 with App Router, TypeScript with strict mode, Tailwind CSS with custom educational colors, and Supabase for the database
 
+---
+
+## 8-Stage Restructuring Plan (LOCKED — Approved 2026-04-19)
+
+### Context
+The original 8-stage system had 171 items with Stage 8 carrying 51 items (mostly morphology crammed into one stage). After consensus review by three AIs (Claude, ChatGPT, GPT) against Science of Reading research (Ehri, Moats, LETRS), the stages were rebalanced to distribute morphology earlier and fit realistic school calendar constraints.
+
+### Key Principles
+- Structured interleaving: GPCs are the anchor, morphology is layered on top
+- Morphology starts in Stage 4 (1st-Spring), not Stage 8
+- Blends added to Stage 2 (were missing entirely)
+- Stage 8 extends into Grade 4 for advanced/rare items
+- Each stage fits its semester (Fall: 11-12 weeks, Spring: 9-11 weeks)
+- Heart words run as a parallel track across all stages
+
+### Final Locked Layout
+
+| Stage | Grade | Weeks | Items | Key Content |
+|-------|-------|-------|-------|-------------|
+| 1 | K-Fall | 12 | 15 | Core consonants + short vowels (no changes) |
+| 2 | K-Spring | 11 | 25 | Remaining letters + digraphs + blends (blends restored) |
+| 3 | 1st-Fall | 11 | 17 | VCe + FLOSS + tch/dge + bridge blends (ph removed to Stage 7, e_e demoted to EXPOSURE) |
+| 4 | 1st-Spring | 10 | 14 | Core vowel teams + light morphology: -s, -ing (o→/ŭ/ removed, ie→/ē/ delayed) |
+| 5 | 2nd-Fall | 11 | 18 | R-controlled + oo + long-u variants + soft c/g + morphology: -es, -ed |
+| 6 | 2nd-Spring | 10 | 21 | Diphthongs + complex r-controlled + silent letters (kn, wr, mb) + morphology: un-, re- |
+| 7 | 3rd-Fall | 11 | 21 | Variable patterns (ough, ch variants) + ph + o→/ŭ/ + morphology: pre-, dis-, mis-, -ful, -less, -ly |
+| 8 | 3rd-Spring | 9 | 12 core | Advanced morphology: in-/im-, -er, -est, -tion, -sion, -ment, -ness + ti/ci→/sh/ + schwa + doubling rule |
+| 8+ | Grade 4 | ongoing | ~10 | Deferred: -ture, -ous, -ent, -ant, -al, -or, rare GPCs (eau, augh, que, ssi, sci, gh→/f/, x→/gz/) |
+
+### Items Moved Between Stages
+- **ph**: Stage 3 → Stage 7 (Greek origin, not 1st grade appropriate)
+- **e_e**: Stage 3 TEACH → EXPOSURE (very low frequency)
+- **o→/ŭ/**: Stage 4 → Stage 7 (schwa-adjacent, not a teachable GPC at 1st grade)
+- **ie→/ē/**: Stage 4 → Stage 5 (delayed, teach ie→/ī/ first)
+- **-s, -ing**: Stage 8 → Stage 4 (inflectional morphology starts in 1st grade)
+- **-es, -ed**: Stage 8 → Stage 5 (inflectional morphology continues in 2nd grade)
+- **un-, re-**: Stage 8 → Stage 6 (most common prefixes, 2nd grade appropriate)
+- **pre-, dis-, mis-, -ful, -less, -ly**: Stage 8 → Stage 7 (derivational morphology begins 3rd grade)
+- **kn, wr, mb**: Stage 8 → Stage 6 (silent letters are late 2nd grade per LETRS)
+- **Blends (st, sp, bl, cr, etc.)**: Missing → Stage 2 (critical gap fixed)
+- **Doubled consonants (dd, gg, nn, pp, tt, rr)**: 6 items → 1 concept (doubling rule)
+
+### What Has NOT Been Built Yet
+- The `stagesWeeklyData.ts` file has NOT been updated to reflect this plan
+- The current file still has the old layout (Stage 8 = 51 items)
+- Building the new weekly data is the next step
+
+### Implementation Rules
+1. Do NOT change `allComprehensivePhonemes.ts` during this restructure — Phase 1 teaching content is done
+2. Only change `stagesWeeklyData.ts` and related stage display files
+3. Build one stage at a time, verify it compiles, then move to next
+4. Heart words track uses existing `core400Words.ts` system
+5. Stage 8 Grade 4 extension items should be documented but not removed from the system
+
+### Data Files Involved
+- `app/data/stagesWeeklyData.ts` — primary file to restructure
+- `app/data/allStagesDatabase.ts` — stage metadata (names, descriptions, total_elements) needs updating
+- `app/teacher/stages/page.tsx` — stage list display needs updated counts
+- `app/teacher/stages/[stage]/page.tsx` — stage detail pages
+
+---
+
 ## Claude Guidelines
 
 ### Implementation Principles
