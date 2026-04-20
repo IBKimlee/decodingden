@@ -819,9 +819,12 @@ export const stage4WeeklyData: WeeklyData[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 5: R-Controlled Vowels, /oo/ Patterns & W-Influence (v4.1)
-// Grade: 2nd-Fall | Duration: 10 weeks | Phase: Consolidated (Emerging)
-// Intensity Profile: 9 ★ CORE | 12 ▲ TEACH | 0 ○ EXPOSURE
+// STAGE 5: R-Controlled Vowels, /oo/, Soft C/G & Morphology (v5.0 — Restructured)
+// Grade: 2nd-Fall | Duration: 11 weeks | Phase: Consolidated (Emerging)
+// Intensity Profile: 11 ★ CORE | 7 ▲ TEACH | 0 ○ EXPOSURE
+// Key changes from v4.1: ie→/ē/ added from Stage 4, soft c/g added from Stage 3,
+//   -es and -ed morphology added from Stage 8, W-influence patterns deferred
+// Items: 8 r-controlled + 2 oo + 1 ie→/ē/ + 2 soft c/g + 2 morphology + 3 additional = 18
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage5WeeklyData: WeeklyData[] = [
   {
@@ -829,14 +832,14 @@ export const stage5WeeklyData: WeeklyData[] = [
     phonemes: ['/ar/', '/er/'],
     graphemes: ['ar', 'er'],
     intensity: ['CORE', 'CORE'],
-    focusWords: ['car', 'star', 'park', 'farm', 'her', 'fern', 'term', 'sister', 'water'],
-    decodableText: 'Her sister parked the car by the farm. Start near the fern for the term. The water is far from the star.',
+    focusWords: ['car', 'star', 'park', 'farm', 'dark', 'her', 'fern', 'after', 'sister', 'water'],
+    decodableText: 'Her sister parked the car by the dark farm. The fern is after the star. The water is far.',
     assessment: 'Daily: ar and er recognition',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '/ar/ — very consistent, always says /ar/',
-      '/er/ — highest frequency r-controlled vowel, "Bossy R changes the vowel sound"'
+      '/ar/ — very consistent, always says /ar/. "Bossy R changes the vowel sound."',
+      '/er/ — highest frequency r-controlled vowel. er, ir, ur all make this same sound — er is taught first.'
     ]
   },
   {
@@ -844,14 +847,14 @@ export const stage5WeeklyData: WeeklyData[] = [
     phonemes: ['/er/'],
     graphemes: ['ir', 'ur'],
     intensity: ['CORE', 'CORE'],
-    focusWords: ['bird', 'first', 'girl', 'shirt', 'hurt', 'turn', 'burn', 'church', 'nurse'],
-    decodableText: 'The girl in the shirt hurt her first bird. The nurse will turn and burn at the church.',
+    focusWords: ['bird', 'first', 'girl', 'shirt', 'dirt', 'hurt', 'turn', 'burn', 'fur', 'church'],
+    decodableText: 'The first girl in the shirt got dirt on her fur. The bird hurt its turn at the church. Burn it!',
     assessment: 'CHECKPOINT Weeks 1-2',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
       'ir, er, and ur all make the same sound /er/ — teach as "same sound, different spelling"',
-      'ir is most common in -ird, -irt, -irst words'
+      'ir is most common in -ird, -irt, -irst words; ur appears in burn, turn, church, nurse'
     ]
   },
   {
@@ -859,29 +862,30 @@ export const stage5WeeklyData: WeeklyData[] = [
     phonemes: ['/or/'],
     graphemes: ['or', 'ore'],
     intensity: ['CORE', 'TEACH'],
-    focusWords: ['for', 'more', 'store', 'horse', 'corn', 'short', 'sport', 'shore', 'score'],
-    decodableText: 'More corn is at the store for the horse. The short sport is on the shore. Score!',
+    focusWords: ['for', 'more', 'store', 'horse', 'corn', 'short', 'sport', 'shore', 'score', 'north'],
+    decodableText: 'More corn is at the store for the horse. The short sport is on the north shore. Score!',
     assessment: 'Daily: or and ore patterns',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '/or/ — or is CORE (high frequency)',
-      'ore is TEACH — same sound, word-final position'
+      '/or/ — or is CORE (high frequency): for, horse, corn, short, sport, north',
+      'ore is TEACH — same sound, word-final position: more, store, shore, score'
     ]
   },
   {
     week: 4,
-    phonemes: ['/er/', '/or/'],
-    graphemes: ['oar', 'our'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['roar', 'board', 'soar', 'pour', 'four', 'your', 'court', 'source'],
-    decodableText: 'The lion will roar on the board. Pour four cups for your court. The source will soar!',
+    phonemes: ['/âr/'],
+    graphemes: ['air', 'are'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['hair', 'fair', 'pair', 'stair', 'chair', 'care', 'share', 'stare', 'bare', 'dare'],
+    decodableText: 'The fair hair is a pair. Share the chair on the stair. Care to dare and stare? Bare feet!',
     assessment: 'CHECKPOINT Weeks 3-4',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'oar says /or/ (roar, board, soar)',
-      'our usually says /or/ (pour, four, your, court) — but can say /ow-er/ (hour, sour) in Stage 6'
+      'air says /âr/ (hair, fair, pair, stair, chair) — very consistent',
+      'are says /âr/ (care, share, stare, bare, dare) — consistent word-final pattern',
+      'Both make the same sound — air in the middle, are at the end'
     ]
   },
   {
@@ -891,7 +895,7 @@ export const stage5WeeklyData: WeeklyData[] = [
     intensity: ['CORE', 'CORE'],
     focusWords: ['moon', 'soon', 'spoon', 'room', 'food', 'book', 'look', 'good', 'wood', 'foot'],
     decodableText: 'The moon will soon be in the room. Look at the good book on the wood. Spoon the food with your foot!',
-    assessment: 'Daily: Two sounds of oo',
+    assessment: 'Daily: two sounds of oo',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
@@ -901,81 +905,106 @@ export const stage5WeeklyData: WeeklyData[] = [
     ]
   },
   {
+    // ie→/ē/ delayed from Stage 4; ear→/ēr/ kept from old Stage 5
     week: 6,
-    phonemes: ['/wŏ/', '/wer/'],
-    graphemes: ['wa', 'wor'],
+    phonemes: ['/ē/', '/ēr/'],
+    graphemes: ['ie→/ē/', 'ear→/ēr/'],
     intensity: ['TEACH', 'TEACH'],
-    focusWords: ['want', 'wash', 'watch', 'was', 'wasp', 'word', 'work', 'world', 'worm', 'worst', 'worth'],
-    decodableText: 'I want to wash and watch. Was the wasp at work? The word is worth the world. The worm is the worst!',
+    focusWords: ['chief', 'field', 'piece', 'shield', 'grief', 'hear', 'near', 'clear', 'year', 'dear'],
+    decodableText: 'The chief heard a clear sound near the field. A dear piece of the shield. Grief this year!',
     assessment: 'CHECKPOINT Weeks 5-6',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'W-Influence: W changes nearby vowels!',
-      'wa says /wŏ/ (want, wash, watch, was) — NOT short a',
-      'wor says /wer/ (word, work, world, worm) — NOT /wor/'
+      'ie says /ē/ in the middle of words (chief, field, piece, shield, grief)',
+      'Students learned ie→/ī/ at the END of words in Stage 4 (pie, tie) — now teach ie→/ē/ in the MIDDLE',
+      'ear says /ēr/ (hear, near, clear, year, dear) — note: ear can also say /er/ (learn, earth) — flex!'
     ]
   },
   {
+    // Soft c/g added from Stage 3 per locked plan
     week: 7,
-    phonemes: ['/wor/', '/er/'],
-    graphemes: ['war', 'ear'],
+    phonemes: ['/s/', '/j/'],
+    graphemes: ['soft c', 'soft g'],
     intensity: ['TEACH', 'TEACH'],
-    focusWords: ['warm', 'war', 'ward', 'warn', 'early', 'earth', 'learn', 'search', 'heard'],
-    decodableText: 'The warm war is on the ward. Warn them early! The earth will learn. Search for what you heard.',
-    assessment: 'Daily: war and ear→/er/',
+    focusWords: ['city', 'cent', 'circle', 'ice', 'place', 'gem', 'giant', 'gym', 'age', 'stage'],
+    decodableText: 'The giant in the city had a gem on stage. The ice is a cent in the circle. She ran at the gym. What a nice place!',
+    assessment: 'Daily: soft c and soft g patterns',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'war says /wor/ (warm, warn) — another W-influence pattern',
-      'ear says /er/ (early, earth, learn, heard) — one of THREE ear sounds! Others: /ēr/ (hear) and /âr/ (bear)'
+      'Soft c: c says /s/ before e, i, y (city, cent, circle, ice, place, nice)',
+      'Soft g: g says /j/ before e, i, y (gem, giant, gym, age, stage)',
+      'Students already know hard c (/k/) and hard g (/g/) from Stage 2 — now they learn the soft sounds'
     ]
   },
   {
+    // oar/our and oul kept from old Stage 5
     week: 8,
-    phonemes: ['/ēr/', '/âr/', '/ʊ/'],
-    graphemes: ['ear→/ēr/', 'ear→/âr/', 'air', 'are', 'oul'],
-    intensity: ['TEACH', 'TEACH', 'CORE', 'CORE', 'TEACH'],
-    focusWords: ['hear', 'near', 'clear', 'year', 'bear', 'pear', 'wear', 'tear', 'hair', 'fair', 'pair', 'care', 'share', 'stare', 'could', 'would', 'should'],
-    decodableText: 'I hear a clear sound near the bear. The pear will wear and tear. The fair hair is a pair. Care and share at the stare. Could you? Would you? Should you!',
+    phonemes: ['/or/', '/ʊ/'],
+    graphemes: ['oar/our', 'oul'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['board', 'roar', 'soar', 'pour', 'four', 'your', 'court', 'could', 'would', 'should'],
+    decodableText: 'The board will roar and soar! Pour four cups for your court. Could you? Would you? Should you!',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'ear has THREE sounds: /er/ (learn), /ēr/ (hear), /âr/ (bear) — flex pattern!',
-      'air says /âr/ (hair, fair) — very consistent',
-      'are says /âr/ (care, share) — consistent word-final pattern',
-      'oul says /ʊ/ (could, would, should) — high-frequency words, must know!'
+      'oar says /or/ (board, roar, soar) — less common spelling of /or/',
+      'our usually says /or/ (pour, four, your, court)',
+      'oul says /ʊ/ (could, would, should) — only three words, but very high frequency. Must memorize!'
     ]
   },
   {
+    // NEW — Morphology: -es (inflectional suffix, moved from Stage 8)
     week: 9,
-    phonemes: ['Review'],
-    graphemes: ['All Stage 5'],
+    phonemes: ['-es inflectional suffix'],
+    graphemes: ['-es'],
     intensity: ['CORE'],
-    focusWords: ['starfish', 'airport', 'earring', 'bedroom', 'could', 'would', 'should'],
-    decodableText: 'Could you find the starfish? Would the airport have an earring? You should go to the bedroom.',
-    assessment: 'Daily: mixed review',
+    focusWords: ['boxes', 'foxes', 'dishes', 'wishes', 'watches', 'catches', 'misses', 'dresses', 'buzzes', 'churches'],
+    decodableText: 'She watches and catches the boxes. He wishes for dresses and dishes. The foxes buzz near the churches. She misses them!',
+    assessment: 'Daily: when to use -es vs -s',
     isCheckpoint: false,
     isMastery: false,
-    isReview: true,
     teachingTips: [
-      'Review all r-controlled and /oo/ patterns in compound words',
-      'Reinforce oul words (could, would, should) from Week 8'
+      '-es is used when the base word ends in s, x, z, ch, sh — you NEED the extra syllable to say the word',
+      '-es says /ĭz/ and adds a syllable: dish→dish-es, box→box-es, watch→watch-es',
+      'Connect to -s from Stage 4: cats needs just -s, but dishes needs -es. Why? Try saying "dishs" — you can\'t!',
+      'Base word identification: watches = watch + es, foxes = fox + es'
     ]
   },
   {
+    // NEW — Morphology: -ed (inflectional suffix, moved from Stage 8)
     week: 10,
+    phonemes: ['-ed inflectional suffix'],
+    graphemes: ['-ed'],
+    intensity: ['CORE'],
+    focusWords: ['jumped', 'helped', 'wished', 'played', 'rained', 'called', 'wanted', 'melted', 'painted', 'started'],
+    decodableText: 'She jumped and helped. He wished it rained. They played and called. She wanted and started. The paint melted.',
+    assessment: 'CHECKPOINT Weeks 9-10',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '-ed means the action ALREADY HAPPENED (past tense)',
+      '-ed has THREE sounds: /t/ after voiceless sounds (jumped, helped, wished), /d/ after voiced sounds (played, rained, called), /ĭd/ after t or d (wanted, melted, painted, started)',
+      'Teach the "tap test": say the base word, feel your throat — if it vibrates (voiced), -ed says /d/; if not, /t/; if the word ends in t or d, say /ĭd/',
+      'CVC words like "hop" need doubling (hopped) — that spelling rule is taught formally in Stage 8. For now, focus on hearing the three -ed sounds.'
+    ]
+  },
+  {
+    week: 11,
     phonemes: ['Mastery'],
     graphemes: ['All Stage 5'],
     intensity: ['CORE'],
-    focusWords: ['afternoon', 'understand', 'barefoot', 'homework', 'cardboard'],
-    decodableText: 'In the afternoon, understand the barefoot homework on the cardboard.',
+    focusWords: ['afternoon', 'starfish', 'barefoot', 'bedroom', 'churches', 'painted', 'rooftop', 'cardboard'],
+    decodableText: 'In the afternoon, she painted the barefoot starfish on the cardboard. The churches near the bedroom rooftop looked good.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess r-controlled vowels, two sounds of oo, W-influence, ear/air/are patterns, and oul words.'
+      'Assess all 18 Stage 5 items: r-controlled (ar, er, ir, ur, or, ore, air, are), oo (long/short), ie→/ē/, ear→/ēr/, soft c/g, oar/our, oul, and morphology (-es, -ed)',
+      'Three sounds of -ed: /t/, /d/, /ĭd/ — all three should be assessed',
+      'Include Stage 1-4 GPCs, blends, vowel teams, and -s/-ing in cumulative assessment'
     ]
   }
 ];
