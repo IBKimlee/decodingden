@@ -1011,9 +1011,13 @@ export const stage5WeeklyData: WeeklyData[] = [
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 6: Diphthongs & Extended Vowel Spellings (v4.1)
+// STAGE 6: Diphthongs, Silent Letters & Prefix Morphology (v5.0 — Restructured)
 // Grade: 2nd-Spring | Duration: 10 weeks | Phase: Consolidated (Developing)
-// Intensity Profile: 6 ★ CORE | 8 ▲ TEACH | 4 ○ EXPOSURE
+// Intensity Profile: 10 ★ CORE | 8 ▲ TEACH | 3 ○ EXPOSURE
+// Key changes from v4.1: silent letters kn/wr/mb added from Stage 8,
+//   un-/re- prefix morphology added from Stage 8, W-influence added from Stage 5
+// Items: 6 diphthongs + 6 extended vowels + 3 silent letters + 2 prefixes
+//   + 1 W-influence + 3 exposure = 21
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage6WeeklyData: WeeklyData[] = [
   {
@@ -1064,8 +1068,8 @@ export const stage6WeeklyData: WeeklyData[] = [
   },
   {
     week: 4,
-    phonemes: ['/ā/'],
-    graphemes: ['eigh', 'ey'],
+    phonemes: ['/ā/', '/ā/'],
+    graphemes: ['eigh', 'ey→/ā/'],
     intensity: ['TEACH', 'TEACH'],
     focusWords: ['eight', 'weigh', 'neighbor', 'sleigh', 'they', 'grey', 'obey', 'prey', 'survey'],
     decodableText: 'Eight neighbors weigh the sleigh. They survey in grey. The prey will obey.',
@@ -1074,69 +1078,77 @@ export const stage6WeeklyData: WeeklyData[] = [
     isMastery: false,
     teachingTips: [
       'eigh says /ā/ (eight, weigh, neighbor) — less common but important',
-      'ey says /ā/ at word end (they, grey, obey) — also can say /ē/ (key, monkey)'
+      'ey says /ā/ at word end (they, grey, obey) — also can say /ē/ (key, monkey) — that flex is next week'
     ]
   },
   {
     week: 5,
-    phonemes: ['/ā/', '/ē/'],
-    graphemes: ['ei', 'ey→/ē/'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['vein', 'rein', 'veil', 'ceiling', 'receive', 'key', 'money', 'monkey', 'donkey', 'honey'],
-    decodableText: 'The key is on the ceiling. The monkey with the honey will receive the veil. The donkey has money for the rein.',
-    assessment: 'Daily: ei and ey flexibility',
+    phonemes: ['/ā/', '/ē/', 'ere flex'],
+    graphemes: ['ei', 'ey→/ē/', 'ere'],
+    intensity: ['TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['vein', 'rein', 'veil', 'key', 'money', 'monkey', 'honey', 'here', 'where', 'there'],
+    decodableText: 'The key to the veil is money and honey. The monkey found a vein and a rein. Here, where, and there!',
+    assessment: 'Daily: ei, ey, and ere flexibility',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'ei says /ā/ (vein, rein, veil) — "i before e except after c" exception group',
-      'ey says /ē/ at word end (key, money, monkey) — contrasts with /ā/ (they, grey)'
+      'ei says /ā/ (vein, rein, veil) — "i before e except after c" exception',
+      'ey says /ē/ at word end (key, money, monkey) — contrasts with /ā/ (they, grey) from last week',
+      'ere is variable! /ēr/ (here, severe) vs /âr/ (where, there) — flex strategy: try both!'
     ]
   },
   {
     week: 6,
-    phonemes: ['/ēr/', '/âr/'],
-    graphemes: ['ere→/ēr/', 'ere→/âr/'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['here', 'severe', 'sincere', 'where', 'there', 'everywhere'],
-    decodableText: 'Here is a severe case. Where is the sincere one? There and everywhere!',
+    phonemes: ['/oo/', '/ā/', '/ō/', '/oo/'],
+    graphemes: ['ui', 'ea→/ā/', 'oe', 'eu'],
+    intensity: ['TEACH', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
+    focusWords: ['fruit', 'juice', 'suit', 'cruise', 'great', 'break', 'steak', 'toe', 'hoe', 'feud'],
+    decodableText: 'Chew the fruit juice in the suit on the cruise! That is a great break for the steak. My toe hit the hoe. What a feud!',
     assessment: 'CHECKPOINT Weeks 5-6',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'ere is variable! /ēr/ (here, severe, sincere) vs /âr/ (where, there)',
-      'Flex strategy: try /ēr/ first, if not a word try /âr/'
+      'ui says /oo/ (fruit, juice, suit, cruise) — TEACH level',
+      'EXPOSURE only for these rare patterns — encounter, don\'t drill:',
+      'ea→/ā/ (great, break, steak) — rare but high frequency',
+      'oe says /ō/ (toe, hoe, foe) — rare',
+      'eu says /oo/ (feud) — rare, Greek/French origin'
     ]
   },
   {
+    // NEW — Silent letters moved from Stage 8 (late 2nd grade per LETRS)
     week: 7,
-    phonemes: ['/oo/'],
-    graphemes: ['ui', 'ew'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['fruit', 'juice', 'suit', 'cruise', 'chew', 'flew', 'drew', 'threw', 'grew', 'stew'],
-    decodableText: 'Chew the fruit juice! The suit flew on the cruise. She threw the stew, then drew and grew.',
-    assessment: 'Daily: ui and ew→/oo/',
+    phonemes: ['/n/', '/r/', '/m/'],
+    graphemes: ['kn', 'wr', 'mb'],
+    intensity: ['CORE', 'CORE', 'TEACH'],
+    focusWords: ['knee', 'knife', 'knock', 'know', 'knot', 'write', 'wrong', 'wrap', 'wrist', 'lamb', 'climb', 'comb', 'thumb'],
+    decodableText: 'I know the knight with the knife will knock on the door. Write the wrong word and wrap your wrist. The lamb will climb with a comb and a thumb.',
+    assessment: 'Daily: silent letter recognition',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'ui says /oo/ (fruit, juice, suit, cruise)',
-      'ew says /oo/ (chew, flew, drew) — same sound taught for /ū/ in Stage 4, reinforced here'
+      'Silent k in kn: the k is silent, only say /n/ (knee, knife, knock, know, knot, knight, knit)',
+      'Silent w in wr: the w is silent, only say /r/ (write, wrong, wrap, wrist, wreck, wren)',
+      'Silent b in mb: the b is silent at the end, only say /m/ (lamb, climb, comb, thumb, dumb, crumb)',
+      'These are old English or Germanic spellings — the silent letter was once pronounced!'
     ]
   },
   {
+    // NEW — Prefix morphology: un-, re- (most common prefixes, moved from Stage 8)
     week: 8,
-    phonemes: ['/ā/', '/ō/', '/oo/'],
-    graphemes: ['ea→/ā/', 'oe', 'eu'],
-    intensity: ['EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
-    focusWords: ['great', 'break', 'steak', 'toe', 'hoe', 'foe', 'feud', 'neutral', 'Europe'],
-    decodableText: 'That is a great break for the steak! My toe hit the hoe and the foe. The neutral feud started in Europe.',
+    phonemes: ['un- prefix', 're- prefix', 'W-influence'],
+    graphemes: ['un-', 're-', 'wa/wor/war'],
+    intensity: ['CORE', 'CORE', 'TEACH'],
+    focusWords: ['undo', 'unfair', 'unhappy', 'unlock', 'unkind', 'redo', 'reread', 'replay', 'retell', 'rebuild', 'want', 'wash', 'word', 'work', 'warm'],
+    decodableText: 'It is unfair and unkind to undo the lock. She is unhappy. Redo and reread the work. Replay and retell it. Rebuild! I want to wash in warm water. That word is worth the work.',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'EXPOSURE only — encounter these, don\'t drill',
-      'ea→/ā/ (great, break, steak) — rare but high frequency words',
-      'oe says /ō/ (toe, hoe, foe) — rare',
-      'eu says /oo/ (feud, neutral, Europe) — rare, Greek/French origin'
+      'un- means "not" or "opposite": unfair = not fair, undo = reverse doing, unlock = reverse locking',
+      're- means "again": redo = do again, reread = read again, rebuild = build again',
+      'Prefix + base word: students should identify both parts (un + happy, re + play)',
+      'W-influence on vowels: wa says /wŏ/ (want, wash, watch), wor says /wer/ (word, work, world), war says /wor/ (warm, warn) — W changes nearby vowels!'
     ]
   },
   {
@@ -1144,15 +1156,15 @@ export const stage6WeeklyData: WeeklyData[] = [
     phonemes: ['Review'],
     graphemes: ['All Stage 6'],
     intensity: ['CORE'],
-    focusWords: ['joyful', 'powerful', 'downtown', 'playground', 'bough', 'drought'],
-    decodableText: 'The drought hit the bough. The joyful downtown playground was powerful.',
-    assessment: 'Daily: mixed review',
-    isCheckpoint: false,
+    focusWords: ['joyful', 'downtown', 'unknown', 'rewrite', 'unkind', 'playground', 'knocking', 'unwrap'],
+    decodableText: 'The unknown, unkind boy went downtown to the playground. Rewrite and unwrap! She is knocking joyfully.',
+    assessment: 'CHECKPOINT Weeks 9-10: mixed review',
+    isCheckpoint: true,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      'Review all diphthongs in compound words',
-      'ough→/ow/ (bough, drought) previewed here — full ough instruction in Stage 7'
+      'Review all diphthongs, silent letters, and prefixes in compound and multisyllabic words',
+      'Practice prefix identification: un + known = unknown, re + write = rewrite, un + wrap = unwrap'
     ]
   },
   {
@@ -1160,13 +1172,15 @@ export const stage6WeeklyData: WeeklyData[] = [
     phonemes: ['Mastery'],
     graphemes: ['All Stage 6'],
     intensity: ['CORE'],
-    focusWords: ['throughout', 'appointment', 'enjoyable', 'automobile', 'tournament'],
-    decodableText: 'Throughout the tournament, the automobile appointment was enjoyable.',
+    focusWords: ['throughout', 'enjoyable', 'appointment', 'unknown', 'rewrite', 'knowledgeable', 'unwrapped', 'thumbprint'],
+    decodableText: 'Throughout the appointment, the enjoyable and knowledgeable author rewritten the unknown story. She unwrapped the thumbprint.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess diphthongs (ou/ow, oi/oy, au/aw), extended vowels (eigh, ey, ei, ere, ui). EXPOSURE patterns are recognition only.'
+      'Assess all 21 Stage 6 items: diphthongs (ou/ow, oi/oy, au/aw), extended vowels (eigh, ey, ei, ere, ui), silent letters (kn, wr, mb), prefixes (un-, re-), W-influence',
+      'EXPOSURE patterns (ea→/ā/, oe, eu) are recognition only — do not assess for mastery',
+      'Include Stage 1-5 cumulative assessment with morphology (-s, -ing, -es, -ed, un-, re-)'
     ]
   }
 ];
