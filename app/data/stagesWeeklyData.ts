@@ -465,9 +465,12 @@ export const stage2WeeklyData: WeeklyData[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 3: VCe Patterns & Consonant Complexities (v4.1)
-// Grade: 1st-Fall | Duration: 10 weeks | Phase: Full Alphabetic (Emerging)
-// Intensity Profile: 9 ★ CORE | 6 ▲ TEACH | 0 ○ EXPOSURE
+// STAGE 3: VCe, FLOSS, Trigraphs & Bridge Blends (v5.0 — Restructured)
+// Grade: 1st-Fall | Duration: 11 weeks | Phase: Full Alphabetic (Emerging)
+// Intensity Profile: 14 ★ CORE | 2 ▲ TEACH | 1 ○ EXPOSURE
+// Key changes from v4.1: ph → Stage 7, soft c/g → Stage 5, e_e → EXPOSURE,
+//   5 bridge blend groups added (connect Stage 2 blend skills to Stage 3 patterns)
+// Items: 5 VCe + 4 FLOSS + 2 trigraphs + 1 nk + 5 bridge blends = 17
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage3WeeklyData: WeeklyData[] = [
   {
@@ -500,10 +503,11 @@ export const stage3WeeklyData: WeeklyData[] = [
     ]
   },
   {
+    // e_e demoted from TEACH to EXPOSURE per locked plan (very low frequency)
     week: 3,
     phonemes: ['/ū/', '/ē/'],
     graphemes: ['u_e', 'e_e'],
-    intensity: ['CORE', 'TEACH'],
+    intensity: ['CORE', 'EXPOSURE'],
     focusWords: ['cute', 'use', 'tube', 'huge', 'rule', 'theme', 'these'],
     decodableText: 'The cute cat will use the huge tube. These kids like the theme and the rule.',
     assessment: 'Daily: u_e and e_e patterns',
@@ -511,7 +515,7 @@ export const stage3WeeklyData: WeeklyData[] = [
     isMastery: false,
     teachingTips: [
       'u_e is CORE — high frequency',
-      'e_e is TEACH — far fewer words use this pattern (theme, these, Steve, eve). Teach explicitly but don\'t drill as heavily.'
+      'e_e is EXPOSURE — very few words use this pattern (theme, these, eve). Expose students to it but do not drill or assess.'
     ]
   },
   {
@@ -555,67 +559,92 @@ export const stage3WeeklyData: WeeklyData[] = [
     teachingTips: [
       'tch and dge are trigraphs — three letters, one sound',
       'They appear after short vowels: catch (short a), bridge (short i)',
-      'Students already know ch and j — these are positional variants'
+      'Students already know ch and j from Stage 2 — these are positional variants'
     ]
   },
   {
+    // ph removed → Stage 7; replaced with CCVCE bridge blends
     week: 7,
-    phonemes: ['/ngk/', '/f/'],
-    graphemes: ['nk', 'ph'],
+    phonemes: ['/ngk/', 'CCVCE bridge blends'],
+    graphemes: ['nk', 'blend + VCe'],
     intensity: ['CORE', 'CORE'],
-    focusWords: ['think', 'drink', 'bank', 'pink', 'thank', 'phone', 'graph', 'photo'],
-    decodableText: 'Think and drink at the bank. Thank the pink phone for the photo and graph.',
-    assessment: 'Daily: nk and ph patterns',
+    focusWords: ['think', 'drink', 'bank', 'pink', 'thank', 'brave', 'crane', 'drive', 'flame', 'globe'],
+    decodableText: 'Think brave! Drink at the bank and thank the pink crane. Drive past the flame and the globe.',
+    assessment: 'Daily: nk pattern + blends meet VCe',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
       'nk always makes /ngk/ — the n borrows the ng sound before k',
-      'ph makes /f/ — Greek origin (phone, photo, graph, elephant)'
+      'CCVCE bridge blends: students combine Stage 2 blend skills with VCe — brave, crane, drive, flame, globe, pride, stroke, flute',
+      'Contrast CVC→CVCE (mad→made) with CCVC→CCVCE (plan→plane, grad→grade)'
     ]
   },
   {
+    // NEW — Bridge blends: CCVCC + digraph-blend onsets (thr, shr)
     week: 8,
-    phonemes: ['/s/', '/j/'],
-    graphemes: ['soft c', 'soft g'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['city', 'cent', 'circle', 'ice', 'gem', 'giant', 'gym', 'age', 'stage'],
-    decodableText: 'The giant in the city had a gem on stage. The ice is a cent in the circle. She ran at the gym.',
+    phonemes: ['CCVCC bridge blends', 'Digraph-blend onsets'],
+    graphemes: ['blend + vowel + blend', 'thr, shr'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['brand', 'crisp', 'clamp', 'frost', 'stump', 'drift', 'three', 'throw', 'shred', 'shrub', 'shrimp'],
+    decodableText: 'Three crisp chips fell off the stump. Throw the brand on the frost. Shred the shrub and clamp it. The shrimp will drift.',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'Soft c: c says /s/ before e, i, y (city, cent, circle)',
-      'Soft g: g says /j/ before e, i, y (gem, giant, gym)',
-      'INTRODUCTION only — mastery expected by Stage 7'
+      'CCVCC: blends on BOTH sides of the vowel — brand (br-a-nd), crisp (cr-i-sp), clamp (cl-a-mp)',
+      'thr = th + r (digraph + blend): three, throw, throb, thrill, thrash',
+      'shr = sh + r (digraph + blend): shred, shrub, shrimp, shrink, shrug',
+      'Students already know th, sh (Stage 2) and r-blends (Stage 2) — now combine them'
     ]
   },
   {
+    // NEW — Bridge blends: blend + digraph endings + multi-syllable blend words
     week: 9,
-    phonemes: ['Review'],
-    graphemes: ['All Stage 3'],
-    intensity: ['CORE'],
-    focusWords: ['sunshine', 'himself', 'napkin', 'mistake', 'pancake'],
-    decodableText: 'He made a mistake with the pancake. The napkin fell in the sunshine. He did it himself.',
-    assessment: 'Daily: mixed pattern practice',
+    phonemes: ['Blend + digraph endings', 'Multi-syllable blend words'],
+    graphemes: ['-nch, -nge, blend + sh/ch/th', 'two-syllable blend words'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['bench', 'ranch', 'lunch', 'crunch', 'brush', 'crush', 'fresh', 'stretch', 'pumpkin', 'sunset', 'napkin', 'sandstorm'],
+    decodableText: 'Crunch the fresh lunch on the bench at the ranch. Crush and brush at sunset. The pumpkin is in the sandstorm. Stretch the napkin!',
+    assessment: 'Daily: complex blend patterns in context',
     isCheckpoint: false,
     isMastery: false,
-    isReview: true,
     teachingTips: [
-      'Review VCe + FLOSS + trigraphs in multisyllabic words'
+      'Blend + digraph ending: bench (b-e-nch), crush (cr-u-sh), stretch (str-e-tch)',
+      'Multi-syllable: break at the syllable boundary — pump-kin, sun-set, nap-kin, sand-storm',
+      'These words combine ALL Stage 2-3 skills: blends, digraphs, FLOSS, and VCe in longer words'
     ]
   },
   {
     week: 10,
+    phonemes: ['Review'],
+    graphemes: ['All Stage 3'],
+    intensity: ['CORE'],
+    focusWords: ['sunshine', 'himself', 'mistake', 'pancake', 'splendid', 'friendship', 'bathrobe', 'lunchtime'],
+    decodableText: 'He made a splendid pancake at lunchtime. The sunshine and friendship felt like no mistake. He put on his bathrobe himself.',
+    assessment: 'CHECKPOINT Weeks 9-10',
+    isCheckpoint: true,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Review VCe + FLOSS + trigraphs + bridge blends in multisyllabic words',
+      'Focus on syllable segmentation: sun-shine, him-self, mis-take, pan-cake'
+    ]
+  },
+  {
+    week: 11,
     phonemes: ['Mastery'],
     graphemes: ['All Stage 3'],
     intensity: ['CORE'],
-    focusWords: ['cupcake', 'lunchtime', 'bathrobe', 'lifeline', 'homesick'],
-    decodableText: 'She felt homesick at lunchtime. The cupcake was a lifeline. She put on her bathrobe.',
+    focusWords: ['cupcake', 'lunchtime', 'lifeline', 'homesick', 'drumstick', 'springtime', 'craftsman', 'thrilling'],
+    decodableText: 'She felt homesick at lunchtime. The cupcake was a lifeline. The thrilling craftsman made a drumstick in springtime.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess VCe patterns, FLOSS doubles, tch/dge, nk, ph. Soft c/g is awareness only — not assessed for mastery yet.'
+      'Assess all 17 Stage 3 items: VCe (a_e, i_e, o_e, u_e), FLOSS (ff, ll, ss, zz), trigraphs (tch, dge), nk, and 5 bridge blend groups',
+      'e_e is EXPOSURE only — do NOT assess for mastery',
+      'Soft c/g and ph are NOT in this stage — do not assess',
+      'Include Stage 1-2 GPCs and blends in cumulative assessment'
     ]
   }
 ];
