@@ -276,9 +276,11 @@ export const stage1WeeklyData: WeeklyData[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 2: Remaining Letters & Digraphs (v4.1)
-// Grade: K-Spring | Duration: 10 weeks | Phase: Partial → Full Alphabetic
-// Intensity Profile: 18 ★ CORE | 0 ▲ TEACH | 0 ○ EXPOSURE
+// STAGE 2: Remaining Letters, Digraphs & Blends (v5.0 — Restructured)
+// Grade: K-Spring | Duration: 11 weeks | Phase: Partial → Full Alphabetic
+// Intensity Profile: 25 ★ CORE | 0 ▲ TEACH | 0 ○ EXPOSURE
+// Key change from v4.1: Blends restored (were missing entirely)
+// Items: 18 GPCs (letters/digraphs) + 7 blend groups = 25
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage2WeeklyData: WeeklyData[] = [
   {
@@ -387,47 +389,77 @@ export const stage2WeeklyData: WeeklyData[] = [
     ]
   },
   {
+    // Merged from old weeks 8+9: th (both) + ng now in one week
     week: 8,
-    phonemes: ['/th/ (voiceless)', '/th/ (voiced)'],
-    graphemes: ['th', 'th'],
-    intensity: ['CORE', 'CORE'],
-    focusWords: ['thin', 'math', 'path', 'thick', 'this', 'that', 'them', 'then'],
-    decodableText: 'A thin path. This is thick. That math is fun. Then them sat.',
+    phonemes: ['/th/ (voiceless)', '/th/ (voiced)', '/ng/'],
+    graphemes: ['th', 'th', 'ng'],
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['thin', 'math', 'path', 'thick', 'this', 'that', 'them', 'then', 'ring', 'sing', 'long', 'king'],
+    decodableText: 'A thin path. This king can sing a long song. That math is fun.',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
       'th has two sounds — voiceless (thin, math) and voiced (this, that)',
-      'Voiceless: air only. Voiced: feel throat vibration.'
+      'Voiceless: air only. Voiced: feel throat vibration.',
+      '/ng/ — nasal sound, back of tongue, always at end of syllable',
+      'Digraph review: ch, sh, th, ng — two letters, one sound'
     ]
   },
   {
+    // NEW — Blends were missing entirely from v4.1; restored per locked plan
     week: 9,
-    phonemes: ['/ng/', 'Review'],
-    graphemes: ['ng'],
-    intensity: ['CORE'],
-    focusWords: ['ring', 'sing', 'long', 'king', 'hang', 'wing', 'song', 'thing'],
-    decodableText: 'The king can sing a long song. Hang the ring on the thing.',
-    assessment: 'Daily: final digraph + mixed review',
+    phonemes: ['Initial L-blends', 'Initial R-blends', 'Initial S-blends'],
+    graphemes: ['bl, cl, fl, gl, pl, sl', 'br, cr, dr, fr, gr, pr, tr', 'sc, sk, sm, sn, sp, st, sw'],
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['flag', 'clap', 'sled', 'plan', 'grab', 'drip', 'frog', 'trip', 'stop', 'spin', 'snap', 'skip'],
+    decodableText: 'Grab the flag and clap! The frog can skip and stop. Spin the sled on the trip.',
+    assessment: 'Daily: initial blend production and reading',
     isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'Blends vs. digraphs: in a blend, you hear BOTH sounds (s-t-op); in a digraph, two letters make ONE sound (sh-op)',
+      'L-blends: bl, cl, fl, gl, pl, sl — second sound is always /l/',
+      'R-blends: br, cr, dr, fr, gr, pr, tr — second sound is always /r/',
+      'S-blends: sc, sk, sm, sn, sp, st, sw — first sound is always /s/',
+      'Teach continuous blending: sssss-t-op → stop'
+    ]
+  },
+  {
+    // NEW — Final blends + three-letter blends + review
+    week: 10,
+    phonemes: ['Final nasal blends', 'Final stop/liquid blends', 'Final S-blends', 'Three-letter blends'],
+    graphemes: ['-mp, -nd, -nk, -nt', '-ft, -ld, -lk, -lp, -lt', '-sk, -sp, -st', 'scr, spl, spr, str'],
+    intensity: ['CORE', 'CORE', 'CORE', 'CORE'],
+    focusWords: ['jump', 'hand', 'tank', 'tent', 'belt', 'milk', 'help', 'fast', 'desk', 'string', 'spring', 'splash'],
+    decodableText: 'Jump and grab the belt! Help the fast fish splash in the spring. The string is on the desk.',
+    assessment: 'CHECKPOINT Weeks 9-10',
+    isCheckpoint: true,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      '/ng/ — nasal sound, back of tongue, always at end of syllable'
+      'Final nasal blends (-mp, -nd, -nk, -nt): the nasal sound comes first, then the stop',
+      'Final stop/liquid blends (-ft, -ld, -lk, -lp, -lt): /l/ often precedes the final consonant',
+      'Final S-blends (-sk, -sp, -st): mirror initial S-blends but at the end of the word',
+      'Three-letter blends (scr, spl, spr, str): build on known two-letter blends — str = s + tr',
+      'Review all digraphs and initial blends alongside final blends'
     ]
   },
   {
-    week: 10,
+    week: 11,
     phonemes: ['Mastery'],
     graphemes: ['All Stage 2'],
     intensity: ['CORE'],
-    focusWords: ['strong', 'fresh', 'church', 'thinking', 'quickly', 'spring', 'bring', 'which'],
-    decodableText: 'The strong spring church is fresh. We are quickly thinking about which long path to bring.',
+    focusWords: ['strong', 'fresh', 'church', 'spring', 'bring', 'which', 'splash', 'string', 'think', 'clamp', 'shrub', 'quest'],
+    decodableText: 'The strong spring church is fresh. Which long path did the king bring? Think fast and splash!',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess all 18 new GPCs plus all Stage 1 GPCs. Students should decode CCVC and CVCC words.'
+      'Assess all 25 Stage 2 items: 18 GPCs (letters + digraphs) plus 7 blend groups',
+      'Students should decode CCVC, CVCC, and CCVCC words with automaticity',
+      'Verify blend vs. digraph distinction is clear (st-op vs. sh-op)',
+      'Include Stage 1 GPCs in cumulative assessment'
     ]
   }
 ];
