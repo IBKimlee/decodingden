@@ -805,16 +805,6 @@ export default function StageDetailPage() {
                       {(week.assessment.includes('CHECKPOINT') || week.assessment.includes('ASSESSMENT')) && (
                         <span className="text-yellow-500">⭐</span>
                       )}
-                      {/* Count badge: shows how many new GPCs this week adds. Matches the stage header count. */}
-                      <span className={`text-[10px] px-1.5 py-px rounded-full font-bold ${
-                        week.isMastery
-                          ? 'bg-gray-200 text-gray-600'
-                          : week.isReview
-                          ? 'bg-pink-100 text-pink-700'
-                          : 'bg-emerald-100 text-emerald-700'
-                      }`}>
-                        {week.isMastery ? 'Mastery' : week.isReview ? `+${week.intensity.length} R` : `+${week.intensity.length}`}
-                      </span>
                     </div>
 
                     <div className="mt-2">
