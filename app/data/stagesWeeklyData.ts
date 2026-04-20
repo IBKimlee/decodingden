@@ -650,9 +650,12 @@ export const stage3WeeklyData: WeeklyData[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 4: Common Vowel Teams & Vowel Discrimination (v4.1)
+// STAGE 4: Core Vowel Teams & Light Morphology (v5.0 — Restructured)
 // Grade: 1st-Spring | Duration: 10 weeks | Phase: Full Alphabetic
-// Intensity Profile: 10 ★ CORE | 5 ▲ TEACH | 0 ○ EXPOSURE
+// Intensity Profile: 11 ★ CORE | 3 ▲ TEACH | 0 ○ EXPOSURE
+// Key changes from v4.1: o→/ŭ/ → Stage 7, ie→/ē/ → Stage 5,
+//   -s and -ing morphology added from Stage 8 (inflectional morphology starts 1st grade)
+// Items: 12 vowel teams/patterns + 2 morphology = 14
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage4WeeklyData: WeeklyData[] = [
   {
@@ -715,18 +718,19 @@ export const stage4WeeklyData: WeeklyData[] = [
     ]
   },
   {
+    // o→/ŭ/ removed → Stage 7; ie→/ī/ kept, ie→/ē/ delayed → Stage 5
     week: 5,
-    phonemes: ['/ō/', '/ŭ/'],
-    graphemes: ['ow→/ō/', 'o→/ŭ/'],
-    intensity: ['CORE', 'CORE'],
-    focusWords: ['show', 'grow', 'snow', 'slow', 'know', 'love', 'come', 'some', 'done', 'from', 'mother'],
-    decodableText: 'I know the snow will grow. Come from the show. My mother has some love. We are done!',
-    assessment: 'Daily: ow→/ō/ and o→/ŭ/ (critical)',
+    phonemes: ['/ō/', '/ī/'],
+    graphemes: ['ow→/ō/', 'ie→/ī/'],
+    intensity: ['CORE', 'TEACH'],
+    focusWords: ['show', 'grow', 'snow', 'slow', 'know', 'pie', 'tie', 'lie', 'die', 'dried'],
+    decodableText: 'I know the snow will grow slow. Show me the pie! Tie it and lie down. The paint dried.',
+    assessment: 'Daily: ow→/ō/ and ie→/ī/',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
       'ow can say /ō/ (show, grow) — the OTHER sound /ow/ (cow) comes in Stage 6',
-      'o→/ŭ/ is CRITICAL: "o" now has THREE sounds: /ŏ/ (hot), /ō/ (home), /ŭ/ (love, come, some, done, from, mother, other, brother, money). These are high-frequency words.'
+      'ie says /ī/ at the end of words (pie, tie, lie, die) — ie→/ē/ (chief, field) comes in Stage 5'
     ]
   },
   {
@@ -745,36 +749,39 @@ export const stage4WeeklyData: WeeklyData[] = [
     ]
   },
   {
+    // NEW — Morphology begins: -s (inflectional suffix, moved from Stage 8)
     week: 7,
-    phonemes: ['/ē/', '/ī/', 'Open syllable'],
-    graphemes: ['ie→/ē/', 'ie→/ī/', 'open syllable'],
-    intensity: ['TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['chief', 'field', 'piece', 'pie', 'tie', 'lie', 'me', 'go', 'baby', 'music'],
-    decodableText: 'The chief found a piece in the field. The baby will tie the pie. Go play me some music!',
-    assessment: 'Daily: ie flexibility + open syllable',
+    phonemes: ['-s inflectional suffix'],
+    graphemes: ['-s'],
+    intensity: ['CORE'],
+    focusWords: ['cats', 'dogs', 'hats', 'runs', 'sits', 'hops', 'trains', 'plays', 'reads', 'sleeps'],
+    decodableText: 'The cats and dogs play. She runs and hops. He reads and sleeps on the trains. She sits in the boats.',
+    assessment: 'Daily: base word + -s identification',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'ie says /ē/ in the middle of words (chief, field, piece)',
-      'ie says /ī/ at the end of words (pie, tie, lie)',
-      'Open syllable: when a syllable ends in a vowel, it usually says its long sound (me, go, ba-by, mu-sic)'
+      'FIRST MORPHOLOGY LESSON: introduce the concept of base word + suffix',
+      '-s makes nouns plural (cat→cats) and marks third-person verbs (run→runs)',
+      '-s says /s/ after voiceless sounds (cats, hops, sits) and /z/ after voiced sounds (dogs, runs, plays)',
+      'Have students find the base word inside the longer word: cats = cat + s'
     ]
   },
   {
+    // NEW — Morphology: -ing (inflectional suffix, moved from Stage 8)
     week: 8,
-    phonemes: ['Long vowel exceptions'],
-    graphemes: ['-ind', '-ild', '-old', '-olt', '-oll', '-ost'],
-    intensity: ['TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['find', 'kind', 'mind', 'wild', 'child', 'old', 'cold', 'gold', 'hold', 'bold', 'roll', 'most', 'post'],
-    decodableText: 'Find the kind, wild child. The old, cold gold is bold. Hold and roll to the most far post.',
+    phonemes: ['-ing inflectional suffix'],
+    graphemes: ['-ing'],
+    intensity: ['CORE'],
+    focusWords: ['jumping', 'helping', 'singing', 'thinking', 'raining', 'playing', 'sleeping', 'dreaming', 'reading', 'waiting'],
+    decodableText: 'She is jumping and singing in the rain. He is reading and dreaming. We are playing and waiting. They are helping and thinking.',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'Long Vowel Exception Patterns (UFLI/Wilson "Welded Sounds")',
-      'Before -nd, -ild, -old, -olt, -oll, -ost, the vowel is often LONG despite being in a closed syllable',
-      'Teach: try the long vowel first, then short. If it makes a real word, you got it!',
-      'Very high frequency: find, kind, old, cold, gold, told, hold, most'
+      '-ing means the action is happening RIGHT NOW (present progressive)',
+      'Just add -ing to the base word when it ends in a consonant cluster or vowel team: jump→jumping, rain→raining, play→playing',
+      'CVC words like "run" and "hop" need the doubling rule (run→running) — that rule is taught formally in Stage 8',
+      'For now, focus on words where -ing simply attaches with no spelling change'
     ]
   },
   {
@@ -782,14 +789,15 @@ export const stage4WeeklyData: WeeklyData[] = [
     phonemes: ['Review'],
     graphemes: ['All Stage 4'],
     intensity: ['CORE'],
-    focusWords: ['rainbow', 'nightlight', 'toaster', 'snowflake', 'daydream'],
-    decodableText: 'The rainbow shone on the nightlight. The snowflake fell on the toaster. What a daydream!',
-    assessment: 'Daily: mixed vowel team practice',
-    isCheckpoint: false,
+    focusWords: ['rainbow', 'nightlight', 'toaster', 'snowflake', 'daydream', 'playing', 'waiting', 'sleeping'],
+    decodableText: 'The rainbow is shining on the nightlight. The snowflake is falling on the toaster. She is playing and daydreaming while waiting.',
+    assessment: 'CHECKPOINT Weeks 9-10: mixed vowel team + morphology practice',
+    isCheckpoint: true,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      'Review all vowel teams in compound and multisyllabic words'
+      'Review all vowel teams and -s/-ing in compound and multisyllabic words',
+      'Practice finding base words: playing = play + ing, trains = train + s'
     ]
   },
   {
@@ -797,13 +805,15 @@ export const stage4WeeklyData: WeeklyData[] = [
     phonemes: ['Mastery'],
     graphemes: ['All Stage 4'],
     intensity: ['CORE'],
-    focusWords: ['sailboat', 'blindfold', 'sunshine', 'bluebird', 'meanwhile'],
-    decodableText: 'The bluebird sailed the sailboat in the sunshine. Meanwhile she wore a blindfold.',
+    focusWords: ['sailboat', 'sunshine', 'bluebird', 'reading', 'sleeping', 'trains', 'boats', 'dreams'],
+    decodableText: 'The bluebird is sailing the sailboat in the sunshine. She is reading about trains and boats and sleeping dreams.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess all vowel teams, o→/ŭ/, and long vowel exception patterns. Welded sounds are TEACH — assess for recognition, not timed automaticity.'
+      'Assess all 14 Stage 4 items: vowel teams (ai, ay, ee, ea, y→/ē/, igh, y→/ī/, oa, ow→/ō/, ie→/ī/, ew, ue) plus morphology (-s, -ing)',
+      'o→/ŭ/ and ie→/ē/ are NOT in this stage — do not assess',
+      'Include Stage 1-3 GPCs and blends in cumulative assessment'
     ]
   }
 ];
