@@ -1186,170 +1186,200 @@ export const stage6WeeklyData: WeeklyData[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 7: Complex & Variable Patterns (v4.1)
-// Grade: 3rd-Fall | Duration: 10 weeks | Phase: Consolidated (Proficient)
-// Intensity Profile: 1 ★ CORE | 8 ▲ TEACH | 3 ○ EXPOSURE
-// Note: Silent letters (kn, wr, gn, mb) moved to Stage 8 for morphological context
+// STAGE 7: Variable Patterns, Deferred GPCs & Derivational Morphology (v5.0 — Restructured)
+// Grade: 3rd-Fall | Duration: 11 weeks | Phase: Consolidated (Proficient)
+// Intensity Profile: 8 ★ CORE | 10 ▲ TEACH | 3 ○ EXPOSURE
+// Key changes from v4.1: ph added from Stage 3, o→/ŭ/ added from Stage 4,
+//   derivational morphology (pre-, dis-, mis-, -ful, -less, -ly) added from Stage 8,
+//   silent letters (kn, wr, mb) already moved to Stage 6
+// Items: 2 deferred GPCs + 10 variable patterns + 3 exposure + 6 morphology = 21
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage7WeeklyData: WeeklyData[] = [
   {
+    // ph and o→/ŭ/ deferred from earlier stages per locked plan
     week: 1,
-    phonemes: ['/zh/'],
-    graphemes: ['s→/zh/', 'si→/zh/'],
-    intensity: ['CORE', 'TEACH'],
-    focusWords: ['measure', 'treasure', 'pleasure', 'leisure', 'vision', 'decision', 'television', 'division'],
-    decodableText: 'I take pleasure in the treasure. The vision and decision are on the television. Measure the division with leisure.',
-    assessment: 'Daily: /zh/ phoneme introduction',
+    phonemes: ['/f/', '/ŭ/'],
+    graphemes: ['ph', 'o→/ŭ/'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['phone', 'photo', 'graph', 'elephant', 'dolphin', 'alphabet', 'love', 'come', 'some', 'done', 'mother', 'brother'],
+    decodableText: 'My mother and brother love the elephant and dolphin photo. Come graph some of the alphabet on the phone. Done!',
+    assessment: 'Daily: ph and o→/ŭ/ recognition',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '/zh/ is the LAST consonant phoneme — voiced version of /sh/',
-      's says /zh/ in -sure words (measure, treasure, pleasure)',
-      'si says /zh/ in -sion words (vision, decision)'
+      'ph makes /f/ — Greek origin (phone, photo, graph, elephant, dolphin, alphabet, phantom, phrase)',
+      'Students already know /f/ spelled "f" (Stage 1) and "ff" (Stage 3) — ph is the third spelling',
+      'o→/ŭ/: "o" says /ŭ/ in many high-frequency words (love, come, some, done, from, mother, brother, money, month, front, none)',
+      'This is NOT short o (/ŏ/) — contrast: hot (short o) vs. love (o→/ŭ/)'
     ]
   },
   {
     week: 2,
-    phonemes: ['Review'],
-    graphemes: [],
-    intensity: [],
-    focusWords: ['celebrate', 'citizen', 'bicycle', 'decimal', 'generous', 'original', 'giraffe', 'gymnasium'],
-    decodableText: 'The generous citizen will celebrate on the bicycle. The original giraffe ran to the gymnasium with the decimal.',
+    phonemes: ['/zh/', '/k/'],
+    graphemes: ['s→/zh/ / si→/zh/', 'ch→/k/'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['measure', 'treasure', 'pleasure', 'vision', 'decision', 'television', 'school', 'stomach', 'orchestra', 'anchor', 'echo'],
+    decodableText: 'I take pleasure in the treasure. The vision and decision are on the television. The school orchestra had an anchor and an echo in the stomach.',
     assessment: 'CHECKPOINT Weeks 1-2',
     isCheckpoint: true,
     isMastery: false,
-    isReview: true,
     teachingTips: [
-      'Soft c/g MASTERY REVIEW — introduced in Stage 3, assessed here for automaticity (not counted as new GPCs)',
-      'c says /s/ before e, i, y (celebrate, citizen, bicycle)',
-      'g says /j/ before e, i, y (generous, giraffe, gymnasium)'
+      '/zh/ is the LAST consonant phoneme — voiced version of /sh/',
+      's says /zh/ in -sure words (measure, treasure, pleasure); si says /zh/ in -sion words (vision, decision)',
+      'ch→/k/ is Greek origin (school, stomach, orchestra, anchor, echo, character, chorus)'
     ]
   },
   {
     week: 3,
-    phonemes: ['/ō/', '/oo/', '/aw/', '/ŭf/', '/ow/'],
-    graphemes: ['ough→/ō/', 'ough→/oo/', 'ough→/aw/', 'ough→/ŭf/', 'ough→/ow/'],
-    intensity: ['TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE'],
-    focusWords: ['through', 'though', 'thought', 'rough', 'cough', 'bough', 'dough', 'thorough'],
-    decodableText: 'I thought the dough was rough. Through and through, though the bough fell with a cough. Be thorough!',
-    assessment: 'Daily: ough flexibility',
+    phonemes: ['/sh/', '/s/', '/r/'],
+    graphemes: ['ch→/sh/', 'sc', 'rh'],
+    intensity: ['TEACH', 'TEACH', 'EXPOSURE'],
+    focusWords: ['chef', 'machine', 'parachute', 'brochure', 'science', 'scene', 'scent', 'scissors', 'rhinoceros', 'rhythm', 'rhyme'],
+    decodableText: 'The chef used the machine and parachute. The science scene had a scent. The scissors cut with rhythm and rhyme near the rhinoceros. Read the brochure!',
+    assessment: 'Daily: French ch, Greek sc, and rh',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'ough has FIVE sounds — teach flex strategy:',
-      'ough→/oo/ — through (TEACH)',
-      'ough→/ō/ — though, dough (TEACH)',
-      'ough→/aw/ — thought, bought (TEACH)',
-      'ough→/ŭf/ — rough, tough, enough (EXPOSURE)',
-      'ough→/ow/ — bough (EXPOSURE)'
+      'ch→/sh/ is French origin (chef, machine, parachute, brochure)',
+      'Students now know THREE sounds for ch: /ch/ (chip), /k/ (school), /sh/ (chef)',
+      'sc says /s/ before e, i (science, scene, scent, scissors) — TEACH',
+      'rh says /r/ (rhinoceros, rhythm, rhyme) — Greek origin, EXPOSURE only'
     ]
   },
   {
     week: 4,
-    phonemes: ['/k/', '/sh/'],
-    graphemes: ['ch→/k/', 'ch→/sh/'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['school', 'stomach', 'orchestra', 'anchor', 'echo', 'chef', 'machine', 'parachute', 'brochure'],
-    decodableText: 'The chef at school made an echo. The machine in the orchestra had an anchor. The brochure showed a parachute in my stomach.',
+    phonemes: ['/ō/', '/oo/', '/aw/'],
+    graphemes: ['ough→/ō/', 'ough→/oo/', 'ough→/aw/'],
+    intensity: ['TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['though', 'dough', 'although', 'through', 'thought', 'bought', 'brought', 'fought', 'sought'],
+    decodableText: 'I thought the dough was bought, although the fight was fought and sought. Through and through, though!',
     assessment: 'CHECKPOINT Weeks 3-4',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'ch→/k/ is Greek origin (school, stomach, orchestra, anchor, echo)',
-      'ch→/sh/ is French origin (chef, machine, parachute, brochure)',
-      'Students already know ch→/ch/ — now they have three sounds for this grapheme'
+      'ough has FIVE sounds — teach the three most common first:',
+      'ough→/ō/ — though, dough, although',
+      'ough→/oo/ — through',
+      'ough→/aw/ — thought, bought, brought, fought, sought',
+      'Remaining two sounds (rough, bough) come next week as EXPOSURE'
     ]
   },
   {
     week: 5,
-    phonemes: ['/s/', '/k/'],
-    graphemes: ['sc', 'rh'],
-    intensity: ['TEACH', 'EXPOSURE'],
-    focusWords: ['science', 'scene', 'scent', 'scissors', 'muscle', 'rhinoceros', 'rhythm', 'rhyme'],
-    decodableText: 'The science scene had a scent. The scissors cut the muscle. The rhinoceros had rhythm and rhyme.',
-    assessment: 'Daily: Greek sc and rh',
+    phonemes: ['/ŭf/', '/ow/'],
+    graphemes: ['ough→/ŭf/', 'ough→/ow/'],
+    intensity: ['EXPOSURE', 'EXPOSURE'],
+    focusWords: ['rough', 'tough', 'enough', 'bough', 'plough', 'guess', 'guest', 'guide', 'guitar', 'guard', 'tongue', 'league'],
+    decodableText: 'The rough, tough bough is enough. I guess the guilty guest will guide the guitar. Guard your tongue in the league near the plough.',
+    assessment: 'Daily: ough EXPOSURE + gu/ue patterns',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'sc says /s/ before e, i (science, scene, scent, scissors) — TEACH',
-      'rh says /r/ (rhinoceros, rhythm, rhyme) — Greek origin, EXPOSURE'
-    ]
-  },
-  {
-    week: 6,
-    phonemes: ['/g/'],
-    graphemes: ['gu (hard g protector)', 'ue (hard g)'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['guess', 'guest', 'guide', 'guitar', 'guilty', 'guard', 'tongue', 'league', 'vague'],
-    decodableText: 'I guess the guilty guest will guide the guitar. Guard your tongue in the league. It was vague.',
-    assessment: 'CHECKPOINT Weeks 5-6',
-    isCheckpoint: true,
-    isMastery: false,
-    teachingTips: [
-      'gu protects hard /g/ before e/i (guess, guest, guide, guitar, guilty, guard)',
-      'Without u, these would be soft g: *gess, *gest, *gide',
+      'ough→/ŭf/ — rough, tough, enough (EXPOSURE — encounter, don\'t drill)',
+      'ough→/ow/ — bough, plough (EXPOSURE — very rare)',
+      'gu protects hard /g/ before e/i (guess, guest, guide, guitar, guard) — without u, these would be soft g',
       'ue after g keeps it hard (tongue, league, vague)'
     ]
   },
   {
-    week: 7,
-    phonemes: ['/v/', '/z/'],
-    graphemes: ['ve (final)', 'se (final)'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['have', 'give', 'live', 'love', 'above', 'house', 'mouse', 'please', 'choose', 'because'],
-    decodableText: 'Have and give some love. Live above the house with the mouse. Please choose because you can.',
-    assessment: 'Daily: ve and se final patterns',
-    isCheckpoint: false,
+    week: 6,
+    phonemes: ['/g/', '/v/', '/z/'],
+    graphemes: ['gu/ue', 've (final)', 'se (final)'],
+    intensity: ['TEACH', 'TEACH', 'TEACH'],
+    focusWords: ['guess', 'guide', 'guard', 'league', 'have', 'give', 'live', 'love', 'above', 'house', 'mouse', 'please', 'choose'],
+    decodableText: 'Have and give some love. Live above the house with the mouse. Please choose to guess and guide the guard in the league.',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'English words don\'t end in v — silent e is added (have, give, live, love)',
+      'gu protects hard /g/ before e/i (guess, guide, guard); ue keeps g hard (league, tongue, vague)',
+      'English words don\'t end in v — silent e is added (have, give, live, love, above, twelve)',
       'se at word end can say /z/ (house, mouse, please, choose) or /s/ (horse, nurse) — flex!'
     ]
   },
   {
-    week: 8,
-    phonemes: ['Review'],
-    graphemes: ['All Stage 7 patterns'],
-    intensity: ['CORE'],
-    focusWords: ['measure', 'treasure', 'school', 'stomach', 'through', 'though', 'thought', 'guess', 'guard', 'have', 'give', 'please'],
-    decodableText: 'I will measure the treasure at school. My stomach felt strange through the thought. I guess the guard will have and give, please.',
-    assessment: 'CHECKPOINT Weeks 7-8',
-    isCheckpoint: true,
+    // NEW — Derivational morphology: prefixes (moved from Stage 8)
+    week: 7,
+    phonemes: ['pre- prefix', 'dis- prefix'],
+    graphemes: ['pre-', 'dis-'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['preview', 'preschool', 'preheat', 'prefix', 'predict', 'disagree', 'disappear', 'discover', 'dislike', 'dishonest'],
+    decodableText: 'Preview the preschool prefix. Preheat and predict! I disagree and dislike the dishonest one. The rabbit will disappear and we will discover it.',
+    assessment: 'Daily: prefix identification and meaning',
+    isCheckpoint: false,
     isMastery: false,
-    isReview: true,
     teachingTips: [
-      'Review all Stage 7 patterns: /zh/, soft c/g mastery, ough (5 sounds), Greek/French ch, gu/ue protectors, ve/se finals',
-      'Focus on flex strategies for variable patterns',
-      'Silent letters (kn, wr, gn, mb) moved to Stage 8 for morphological instruction'
+      'pre- means "before": preview = view before, preschool = before school, preheat = heat before, predict = say before',
+      'dis- means "not" or "opposite": disagree = not agree, disappear = opposite of appear, dislike = not like',
+      'Derivational morphology: these prefixes CHANGE the meaning of the base word'
     ]
   },
   {
+    // NEW — Derivational morphology: mis- prefix + -ful suffix
+    week: 8,
+    phonemes: ['mis- prefix', '-ful suffix'],
+    graphemes: ['mis-', '-ful'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['mistake', 'misread', 'misspell', 'misplace', 'misunderstand', 'helpful', 'thankful', 'cheerful', 'powerful', 'careful'],
+    decodableText: 'It is a mistake to misread and misspell. Do not misplace or misunderstand! Be helpful, thankful, cheerful, powerful, and careful.',
+    assessment: 'CHECKPOINT Weeks 7-8',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'mis- means "wrong" or "badly": mistake = wrong take, misread = read wrong, misspell = spell wrong',
+      '-ful means "full of": helpful = full of help, thankful = full of thanks, cheerful = full of cheer',
+      'Connect to un-/re- from Stage 6: students now know 5 prefixes (un-, re-, pre-, dis-, mis-) and 1 suffix (-ful)'
+    ]
+  },
+  {
+    // NEW — Derivational morphology: -less and -ly suffixes
     week: 9,
-    phonemes: ['Review'],
-    graphemes: ['All Stage 7'],
-    intensity: ['TEACH'],
-    focusWords: ['photographer', 'throughout', 'scholarship', 'championship', 'knowledgeable'],
-    decodableText: 'The knowledgeable photographer won the scholarship. Throughout the championship, she was thorough.',
-    assessment: 'Daily: mixed complex patterns',
+    phonemes: ['-less suffix', '-ly suffix'],
+    graphemes: ['-less', '-ly'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['helpless', 'careless', 'endless', 'hopeless', 'fearless', 'slowly', 'quickly', 'sadly', 'carefully', 'kindly'],
+    decodableText: 'The helpless, careless child slowly and sadly walked. The endless, hopeless road went on. She quickly, carefully, and kindly helped the fearless dog.',
+    assessment: 'Daily: -less and -ly suffix identification',
     isCheckpoint: false,
     isMastery: false,
-    isReview: true,
     teachingTips: [
-      'Review all Stage 7 patterns in multisyllabic words'
+      '-less means "without": helpless = without help, careless = without care, hopeless = without hope',
+      '-ly means "in a ___ way": slowly = in a slow way, carefully = in a careful way, kindly = in a kind way',
+      'Contrast -ful and -less: helpful (full of help) vs. helpless (without help) — opposites!',
+      'Students now know 3 derivational suffixes (-ful, -less, -ly) plus 4 inflectional suffixes (-s, -ing, -es, -ed)'
     ]
   },
   {
     week: 10,
+    phonemes: ['Review'],
+    graphemes: ['All Stage 7'],
+    intensity: ['CORE'],
+    focusWords: ['photographer', 'throughout', 'scholarship', 'disagreement', 'misunderstanding', 'hopelessly', 'carefully', 'powerful'],
+    decodableText: 'The photographer carefully took a powerful photo throughout the scholarship. The disagreement was a hopelessly sad misunderstanding.',
+    assessment: 'CHECKPOINT Weeks 9-10',
+    isCheckpoint: true,
+    isMastery: false,
+    isReview: true,
+    teachingTips: [
+      'Review all Stage 7 patterns in multisyllabic words',
+      'Practice morpheme analysis: dis + agree + ment, mis + understand + ing, hope + less + ly',
+      'Focus on flex strategies for variable patterns (ough, ch, se/ve finals)'
+    ]
+  },
+  {
+    week: 11,
     phonemes: ['Mastery'],
     graphemes: ['All Stage 7'],
     intensity: ['CORE'],
-    focusWords: ['extraordinary', 'circumstances', 'acknowledge', 'measurement', 'gymnasium'],
-    decodableText: 'Under extraordinary circumstances, I acknowledge the measurement at the gymnasium.',
+    focusWords: ['extraordinary', 'circumstances', 'measurement', 'disagreeable', 'misspelling', 'thoughtfully', 'delightful', 'powerlessly'],
+    decodableText: 'Under extraordinary circumstances, the measurement was disagreeable. The misspelling was thoughtfully corrected. What a delightful but powerlessly difficult day.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess /zh/, soft c/g mastery, ough, Greek/French ch, gu/ue, ve/se, and silent letters. EXPOSURE patterns are recognition only.'
+      'Assess all 21 Stage 7 items: ph, o→/ŭ/, /zh/, ch variants (3 sounds), ough (5 sounds), sc, gu/ue, ve/se finals, and 6 derivational affixes (pre-, dis-, mis-, -ful, -less, -ly)',
+      'EXPOSURE patterns (ough→/ŭf/, ough→/ow/, rh) are recognition only',
+      'Include Stage 1-6 cumulative assessment with all morphology'
     ]
   }
 ];
