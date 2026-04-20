@@ -1385,204 +1385,197 @@ export const stage7WeeklyData: WeeklyData[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// STAGE 8: Morphology, Schwa & Advanced Patterns (v4.1)
-// Grade: 3rd-Spring | Duration: 10 weeks | Phase: Consolidated (Advanced)
-// Intensity Profile: 9 ★ CORE | 22 ▲ TEACH | 19 ○ EXPOSURE
-// Phase 8A (Weeks 1-5): Core Morphology | Phase 8B (Weeks 6-10): Extended Patterns
+// STAGE 8: Advanced Morphology, Schwa & Doubling Rule (v5.0 — Restructured)
+// Grade: 3rd-Spring | Duration: 9 weeks | Phase: Consolidated (Advanced)
+// Intensity Profile: 12 ★ CORE | 0 ▲ TEACH | 0 ○ EXPOSURE
+// Key changes from v4.1: Most morphology distributed to Stages 4-7.
+//   Stage 8 now focuses on remaining advanced items only.
+//   Old Stage 8 had 51 items crammed in; now 12 core items.
+//   Deferred items (Grade 4+) documented in Stage 8+ block below.
+// Items: in-/im- + -er + -est + -tion + -sion + -ment + -ness
+//   + ti→/sh/ + ci→/sh/ + schwa + doubling rule = 12
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage8WeeklyData: WeeklyData[] = [
-  // ─────────────────────────────────────────────────────────────────────────────
-  // PHASE 8A: Core Morphology (Weeks 1-5)
-  // ─────────────────────────────────────────────────────────────────────────────
   {
     week: 1,
-    phonemes: ['-ed (3 sounds)', 'Silent letters'],
-    graphemes: ['-ed→/t/', '-ed→/d/', '-ed→/əd/', 'kn', 'wr'],
-    intensity: ['CORE', 'CORE', 'CORE', 'TEACH', 'TEACH'],
-    focusWords: ['jumped', 'walked', 'played', 'called', 'wanted', 'needed', 'know', 'knife', 'knock', 'knee', 'write', 'wrong', 'wrist', 'wrap'],
-    decodableText: 'I jumped and walked. She played and called. We wanted and needed it. I know the knife is by the knee. Write the wrong word on your wrist. Wrap it up!',
-    assessment: 'Daily: -ed suffix + silent letters kn/wr',
+    phonemes: ['in- prefix', 'im- prefix'],
+    graphemes: ['in-', 'im-'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['inside', 'incorrect', 'incomplete', 'invisible', 'informal', 'impossible', 'impatient', 'impolite', 'immature', 'imperfect'],
+    decodableText: 'It is incorrect and incomplete. The invisible, informal one went inside. It is impossible to be impatient and impolite! The immature child was imperfect.',
+    assessment: 'Daily: in-/im- prefix identification',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '-ed has THREE sounds based on final consonant:',
-      '/t/ after voiceless consonants (jumped, walked, stopped)',
-      '/d/ after voiced consonants and vowels (played, called, rained)',
-      '/əd/ after t or d (wanted, needed, started, ended)',
-      'kn→/n/ — k is silent (know, knife, knock, knee)',
-      'wr→/r/ — w is silent (write, wrong, wrist, wrap)'
+      'in- means "not" or "into": incorrect = not correct, inside = in + side, invisible = not visible',
+      'im- is the SAME prefix, used before m, p, b: impossible, impatient, impolite, immature',
+      'Connect to all prefixes learned so far: un- (Stage 6), re- (Stage 6), pre-/dis-/mis- (Stage 7), in-/im- (now)'
     ]
   },
   {
     week: 2,
-    phonemes: ['-s/-es', '-ing', 'Silent letters'],
-    graphemes: ['-s', '-es', '-ing', 'mb', 'gn'],
-    intensity: ['CORE', 'CORE', 'CORE', 'EXPOSURE', 'EXPOSURE'],
-    focusWords: ['cats', 'dogs', 'boxes', 'wishes', 'running', 'jumping', 'hopping', 'playing', 'lamb', 'climb', 'comb', 'thumb', 'gnat', 'gnaw', 'sign', 'design'],
-    decodableText: 'The cats and dogs are running and jumping. The boxes have wishes. Hopping and playing! The lamb will climb. Use the comb and thumb. The gnat will gnaw at the sign. What a design!',
+    phonemes: ['-er comparative', '-est superlative'],
+    graphemes: ['-er', '-est'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['faster', 'biggest', 'taller', 'strongest', 'smarter', 'darkest', 'lighter', 'coldest', 'warmer', 'brightest'],
+    decodableText: 'She is faster and taller. He is the biggest and strongest. The smarter one chose the lighter and warmer path. The brightest star is the coldest and darkest.',
     assessment: 'CHECKPOINT Weeks 1-2',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      '-s/-es plurals: -es after s, x, z, ch, sh (boxes, wishes)',
-      '-ing: progressive tense',
-      'Doubling rule: hop→hopping (double consonant after short vowel)',
-      'Drop e rule: make→making',
-      'mb→/m/ — b is silent at word end (lamb, climb, comb, thumb) — EXPOSURE',
-      'gn→/n/ — g is silent (gnat, gnaw, sign, design) — EXPOSURE'
+      '-er means "more": faster = more fast, taller = more tall, smarter = more smart',
+      '-est means "most": biggest = most big, strongest = most strong, brightest = most bright',
+      'Spelling changes: big→bigger (doubling — taught formally in Week 7), happy→happier (y→i rule)',
+      'Connect to -er/-est with the doubling rule later this stage'
     ]
   },
   {
     week: 3,
-    phonemes: ['un-', 're-'],
-    graphemes: ['un-', 're-'],
-    intensity: ['CORE', 'CORE'],
-    focusWords: ['undo', 'unfair', 'unhappy', 'unlock', 'redo', 'reread', 'return', 'rebuild'],
-    decodableText: 'It is unfair to be unhappy. Undo and unlock it. Reread, redo, return, and rebuild!',
-    assessment: 'Daily: un- and re- prefixes',
-    isCheckpoint: false,
-    isMastery: false,
-    teachingTips: [
-      'un- means "not" or "opposite" (CORE — most common prefix)',
-      're- means "again" (CORE — second most common prefix)',
-      'Research shows: un- and re- together cover 50%+ of all prefixed words!'
-    ]
-  },
-  {
-    week: 4,
-    phonemes: ['pre-', 'dis-', 'mis-'],
-    graphemes: ['pre-', 'dis-', 'mis-'],
-    intensity: ['TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['preview', 'prepay', 'disagree', 'disappear', 'dislike', 'mistake', 'misread', 'misplace'],
-    decodableText: 'Preview and prepay. I disagree and dislike the mistake. It will disappear. Do not misread or misplace.',
-    assessment: 'CHECKPOINT Weeks 3-4',
-    isCheckpoint: true,
-    isMastery: false,
-    teachingTips: [
-      'pre- means "before" (preview, prepay, predict)',
-      'dis- means "not" or "opposite" (disagree, disappear, dislike)',
-      'mis- means "wrongly" (mistake, misread, misplace)'
-    ]
-  },
-  {
-    week: 5,
-    phonemes: ['-er', '-est', '-ly', '-y', 'in-/im-'],
-    graphemes: ['-er', '-est', '-ly', '-y', 'in-', 'im-'],
-    intensity: ['CORE', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['faster', 'fastest', 'quickly', 'slowly', 'carefully', 'sunny', 'rainy', 'cloudy', 'inside', 'incorrect', 'impossible', 'impatient'],
-    decodableText: 'Run faster — be the fastest! Go quickly and carefully, not slowly. It is sunny, not rainy or cloudy. Go inside. That is incorrect and impossible! Do not be impatient.',
-    assessment: '8A MASTERY CHECK (End of Phase 8A)',
-    isCheckpoint: false,
-    isMastery: true,
-    teachingTips: [
-      '-er comparative (faster, bigger)',
-      '-est superlative (fastest, biggest)',
-      '-ly makes adverbs (quickly, slowly, carefully)',
-      '-y makes adjectives (sunny, rainy, cloudy)',
-      'in- means "not" or "into" (inside, incorrect) — im- before m, p, b (impossible, impatient)',
-      'Phase 8A complete — assess inflectional suffixes and core prefixes'
-    ]
-  },
-  // ─────────────────────────────────────────────────────────────────────────────
-  // PHASE 8B: Extended Patterns (Weeks 6-10)
-  // ─────────────────────────────────────────────────────────────────────────────
-  {
-    week: 6,
-    phonemes: ['/shən/', '/zhən/'],
+    phonemes: ['-tion suffix', '-sion suffix'],
     graphemes: ['-tion', '-sion'],
-    intensity: ['TEACH', 'TEACH'],
-    focusWords: ['action', 'nation', 'question', 'station', 'vision', 'decision', 'television', 'confusion'],
-    decodableText: 'The action at the nation station was a question. The vision and decision on television caused confusion.',
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['action', 'nation', 'question', 'station', 'attention', 'direction', 'vision', 'decision', 'television', 'confusion'],
+    decodableText: 'The action at the nation station was a question. Pay attention to the direction! The vision and decision on television caused confusion.',
     assessment: 'Daily: -tion and -sion suffixes',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '-tion says /shən/ (action, nation, question) — very high frequency',
-      '-sion can say /shən/ (mission) or /zhən/ (vision, decision)',
-      'If the root ends in a vowel or r: -sion→/zhən/ (vision)',
-      'If the root ends in a consonant: -sion→/shən/ (mission)'
+      '-tion says /shən/ — very high frequency (action, nation, question, attention, direction, education)',
+      '-sion can say /shən/ (mission, permission) or /zhən/ (vision, decision, confusion)',
+      'Both turn verbs/adjectives into nouns: act→action, decide→decision, confuse→confusion',
+      'Students already know /zh/ from Stage 7 (measure, treasure) — -sion→/zhən/ connects to that'
+    ]
+  },
+  {
+    week: 4,
+    phonemes: ['-ment suffix', '-ness suffix'],
+    graphemes: ['-ment', '-ness'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['movement', 'payment', 'statement', 'excitement', 'agreement', 'kindness', 'happiness', 'darkness', 'sadness', 'weakness'],
+    decodableText: 'The movement and excitement brought happiness and kindness. The payment and agreement ended the sadness and darkness. What a statement of weakness!',
+    assessment: 'CHECKPOINT Weeks 3-4',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      '-ment turns verbs into nouns: move→movement, pay→payment, state→statement, excite→excitement',
+      '-ness turns adjectives into nouns: kind→kindness, happy→happiness, dark→darkness, sad→sadness',
+      'Spelling: happy→happiness (y→i before -ness), excite→excitement (drop e before -ment)',
+      'Students now know 7 noun/adjective suffixes: -ful, -less, -ly (Stage 7), -tion, -sion, -ment, -ness (now)'
+    ]
+  },
+  {
+    week: 5,
+    phonemes: ['/sh/', '/sh/'],
+    graphemes: ['ti→/sh/', 'ci→/sh/'],
+    intensity: ['CORE', 'CORE'],
+    focusWords: ['patient', 'partial', 'initial', 'essential', 'caution', 'special', 'official', 'social', 'ancient', 'artificial'],
+    decodableText: 'The patient, partial, initial caution was essential. The special, official, social event was ancient and artificial.',
+    assessment: 'Daily: ti and ci making /sh/',
+    isCheckpoint: false,
+    isMastery: false,
+    teachingTips: [
+      'ti says /sh/ before a vowel: patient, partial, initial, essential, caution, nation (connects to -tion!)',
+      'ci says /sh/ before a vowel: special, official, social, ancient, artificial',
+      'This explains WHY -tion says /shən/: it is t + i + on, and ti→/sh/ + on = /shən/',
+      'Similarly, -cian (musician, magician) = ci→/sh/ + an'
+    ]
+  },
+  {
+    week: 6,
+    phonemes: ['Schwa /ə/'],
+    graphemes: ['schwa'],
+    intensity: ['CORE'],
+    focusWords: ['about', 'away', 'alone', 'around', 'again', 'banana', 'lemon', 'pencil', 'problem', 'children', 'animal', 'natural'],
+    decodableText: 'About a banana and a lemon: the children walked away, alone, and around again. The animal had a problem. It was natural.',
+    assessment: 'CHECKPOINT Weeks 5-6',
+    isCheckpoint: true,
+    isMastery: false,
+    teachingTips: [
+      'Schwa /ə/ is the MOST common vowel sound in English — the unstressed "uh"',
+      'ANY vowel letter can make schwa in an unstressed syllable:',
+      'a→/ə/: about, away, alone, around, again, banana',
+      'o→/ə/: lemon, bottom, freedom',
+      'e→/ə/: pencil, problem, children, open',
+      'i→/ə/: animal, pencil',
+      'u→/ə/: natural, medium',
+      'Schwa explains many spelling "mysteries" — the vowel is hard to hear because it is unstressed'
     ]
   },
   {
     week: 7,
-    phonemes: ['/shən/', 'schwa /ə/'],
-    graphemes: ['-cian', 'schwa'],
-    intensity: ['EXPOSURE', 'TEACH'],
-    focusWords: ['musician', 'magician', 'physician', 'about', 'away', 'alone', 'around', 'again', 'lemon', 'pencil', 'open'],
-    decodableText: 'The musician and magician asked the physician. I am about to go away, alone, around, and again. A lemon, a pencil, and an open door.',
-    assessment: 'CHECKPOINT Weeks 6-7',
-    isCheckpoint: true,
+    phonemes: ['Doubling rule'],
+    graphemes: ['CVC + doubling'],
+    intensity: ['CORE'],
+    focusWords: ['hopping', 'hopped', 'running', 'runner', 'sitting', 'biggest', 'swimming', 'stopped', 'thinner', 'thinnest'],
+    decodableText: 'She was hopping and running. The biggest swimmer stopped and started sitting. The runner was thinner — the thinnest of all!',
+    assessment: 'Daily: doubling rule application',
+    isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      '-cian says /shən/ — refers to a person (musician, magician, physician) — EXPOSURE',
-      'Schwa /ə/ is the unstressed vowel sound — MOST common sound in English',
-      'Any vowel can make schwa in unstressed syllables (about, away, lemon, pencil, open)'
+      'Doubling rule: when a one-syllable word ends CVC, DOUBLE the final consonant before adding a vowel suffix (-ing, -ed, -er, -est)',
+      'hop→hopping (not *hoping), run→running, sit→sitting, swim→swimming, stop→stopped, big→biggest, thin→thinner',
+      'WHY: without doubling, the vowel would look long — hoping vs. hopping, tapping vs. taping',
+      'This connects ALL vowel suffixes taught across stages: -ing (Stage 4), -ed (Stage 5), -er/-est (this stage)',
+      'Exception: words ending in w, x, y do NOT double (playing, boxing, staying)'
     ]
   },
   {
     week: 8,
-    phonemes: ['/sh/', 'Tier 2 suffixes'],
-    graphemes: ['ti→/sh/', 'ci→/sh/', 'ssi→/sh/', 'sci→/sh/', '-ful', '-less', '-ness', '-ment'],
-    intensity: ['TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'TEACH'],
-    focusWords: ['patient', 'partial', 'special', 'official', 'mission', 'permission', 'conscience', 'conscious', 'helpful', 'careless', 'kindness', 'movement'],
-    decodableText: 'The patient was partial to the special official. The mission needs permission. Be conscious of your conscience. Be helpful, not careless. Show kindness with movement.',
-    assessment: 'Daily: ti/ci/ssi/sci→/sh/ and Tier 2 suffixes',
-    isCheckpoint: false,
-    isMastery: false,
-    teachingTips: [
-      'ti says /sh/ before a vowel (patient, partial, nation)',
-      'ci says /sh/ before a vowel (special, official, ancient)',
-      'ssi says /sh/ (mission, permission) — EXPOSURE',
-      'sci says /sh/ (conscience, conscious) — EXPOSURE',
-      '-ful means "full of" (helpful, careful)',
-      '-less means "without" (careless, homeless)',
-      '-ness makes nouns (kindness, happiness)',
-      '-ment makes nouns (movement, payment)'
-    ]
-  },
-  {
-    week: 9,
-    phonemes: ['Advanced suffixes', 'Rare patterns', 'Doubled consonants'],
-    graphemes: ['-ture', '-ous', '-ent', '-ant', '-al', '-or', 'augh', 'eau', 'que', 'gh→/f/', 'x→/gz/', 'wh→/h/', 'dd', 'gg', 'nn', 'pp', 'tt', 'rr'],
-    intensity: ['EXPOSURE', 'TEACH', 'TEACH', 'TEACH', 'TEACH', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE', 'EXPOSURE'],
-    focusWords: ['picture', 'nature', 'famous', 'dangerous', 'different', 'important', 'natural', 'musical', 'actor', 'inventor', 'daughter', 'caught', 'beautiful', 'unique', 'enough', 'laugh', 'exam', 'exact', 'who', 'whole', 'added', 'bigger', 'dinner', 'happy', 'butter', 'carry'],
-    decodableText: 'The picture of nature is famous but dangerous. It is different and important. The natural, musical actor was an inventor. My daughter caught a beautiful, unique thing. Enough! She will laugh. The exam was exact. Who ate the whole dinner? I added bigger butter. I am happy to carry it.',
-    assessment: 'CHECKPOINT Weeks 8-9',
+    phonemes: ['Review'],
+    graphemes: ['All Stage 8'],
+    intensity: ['CORE'],
+    focusWords: ['unbelievable', 'disagreement', 'uncomfortable', 'disappointment', 'unfortunately', 'international', 'impatiently', 'incorrectly'],
+    decodableText: 'The unbelievable disagreement was uncomfortable. What a disappointment! Unfortunately, the international event was handled impatiently and incorrectly.',
+    assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      '-ture says /chər/ (picture, nature) — EXPOSURE',
-      '-ous makes adjectives (famous, dangerous) — TEACH',
-      '-ent makes adjectives (different, confident) — TEACH',
-      '-ant makes adjectives (important, pleasant) — TEACH',
-      '-al makes adjectives (natural, musical) — TEACH',
-      '-or makes nouns for people (actor, inventor) — EXPOSURE',
-      'augh says /aw/ (daughter, caught) — EXPOSURE',
-      'eau says /ō/ (beautiful) — French origin, EXPOSURE',
-      'que says /k/ (unique) — French origin, EXPOSURE',
-      'gh says /f/ (enough, laugh) — EXPOSURE',
-      'x says /gz/ before stressed vowel (exam, exact) — EXPOSURE',
-      'wh says /h/ (who, whole) — EXPOSURE',
-      'Doubled consonants (dd, gg, nn, pp, tt, rr) mark short vowels — EXPOSURE'
+      'Practice morpheme analysis on long words: un + believe + able, dis + agree + ment, un + comfort + able',
+      'Review all 12 Stage 8 items in context',
+      'Students should now parse any multisyllabic word into prefix + base + suffix(es)',
+      'Connect schwa to morpheme boundaries — unstressed syllables often contain schwa'
     ]
   },
   {
-    week: 10,
+    week: 9,
     phonemes: ['Mastery'],
     graphemes: ['All Stage 8'],
     intensity: ['CORE'],
-    focusWords: ['unbelievable', 'disagreement', 'uncomfortable', 'disappointment', 'unfortunately', 'international'],
-    decodableText: 'The unbelievable disagreement was uncomfortable. What a disappointment! Unfortunately, it was international.',
+    focusWords: ['extraordinary', 'circumstances', 'international', 'disappointment', 'unfortunately', 'uncomfortable'],
+    decodableText: 'Under extraordinary circumstances, the international disappointment was unfortunately uncomfortable.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess -ed (3 sounds), -s/-es, -ing, prefixes (un-, re-, pre-, dis-, mis-), and suffixes.',
-      'Students should parse multisyllabic words into morphemes.',
-      'EXPOSURE suffixes (-cian, -ture, -or) are recognition only.',
-      'Celebrate completion of the 8-Stage Phonics Curriculum! Ready for 4th grade vocabulary and reading comprehension focus.'
+      'Assess all 12 Stage 8 core items: in-/im-, -er, -est, -tion, -sion, -ment, -ness, ti→/sh/, ci→/sh/, schwa, doubling rule',
+      'Students should parse multisyllabic words into morphemes with automaticity',
+      'Cumulative assessment includes ALL Stages 1-8 skills',
+      'Celebrate completion of the 8-Stage Phonics Curriculum! Students are ready for Grade 4 vocabulary and comprehension focus.'
     ]
   }
 ];
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STAGE 8+ (Grade 4 Extension) — DEFERRED ITEMS
+// These items are documented but not built into weekly data.
+// They extend into Grade 4 as ongoing instruction (~10 items).
+// ═══════════════════════════════════════════════════════════════════════════════
+// Advanced suffixes (deferred):
+//   -ture says /chər/ (picture, nature, adventure, creature)
+//   -ous makes adjectives (famous, dangerous, curious, enormous)
+//   -ent makes adjectives (different, confident, independent, excellent)
+//   -ant makes adjectives (important, pleasant, elegant, brilliant)
+//   -al makes adjectives (natural, musical, magical, historical)
+//   -or makes agent nouns (actor, inventor, editor, visitor)
+//
+// Rare GPCs (deferred):
+//   eau says /ō/ (beautiful, plateau, bureau) — French origin
+//   augh says /aw/ (daughter, caught, taught, naughty)
+//   que says /k/ (unique, antique, technique, boutique) — French origin
+//   ssi says /sh/ (mission, permission, expression) — rare spelling
+//   sci says /sh/ (conscience, conscious, fascinate) — rare spelling
+//   gh→/f/ (enough, laugh, rough, tough, cough)
+//   x→/gz/ before stressed vowel (exam, exact, exist, exhaust)
+// ═══════════════════════════════════════════════════════════════════════════════
 
