@@ -661,7 +661,7 @@ export default function StageDetailPage() {
         </div>
 
         {/* Heart Words Section - Only irregular words needing memorization (Collapsible) */}
-        <div className="bg-white rounded-xl shadow-md border border-gray-200 mb-6 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-md border border-gray-200 mb-2 overflow-hidden">
           {/* Header - Always Visible */}
           <button
             onClick={() => setHighFreqWordsExpanded(!highFreqWordsExpanded)}
@@ -783,19 +783,19 @@ export default function StageDetailPage() {
 
             {/* Grid View */}
             {viewMode === 'timeline' && (
-              <div className={`flex flex-wrap justify-center max-w-full mx-auto px-1 ${stageNumber === 8 ? 'gap-4' : 'gap-8'}`}>
+              <div className="flex flex-nowrap justify-between w-full py-20 -my-20" style={{ overflow: 'visible' }}>
                 {weeklyData.map((week) => (
                   <button
                     key={week.week}
                     onClick={() => setSelectedWeek(week.week)}
-                    className={`rounded-lg shadow-md px-2 pb-2 pt-px border-2 border-cyan-400 text-center transition-all duration-300 transform hover:scale-150 hover:z-20 hover:shadow-xl relative overflow-hidden ${
+                    className={`flex-shrink-0 rounded-lg shadow-md px-2 pb-2 pt-px border-2 border-cyan-400 text-center transition-all duration-300 transform hover:scale-150 hover:z-50 hover:shadow-xl relative overflow-hidden ${
                       selectedWeek === week.week
                         ? 'ring-2 ring-cyan-400 border-cyan-400'
                         : 'border-cyan-400 hover:border-cyan-300'
                     }`}
                     style={{
                       width: '100px',
-                      height: '240px',
+                      height: '300px',
                       background: 'linear-gradient(to bottom, #fef3c7, #fdba74)',
                       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                     }}
