@@ -280,7 +280,7 @@ export const stage1WeeklyData: WeeklyData[] = [
 // Grade: K-Spring | Duration: 11 weeks | Phase: Partial → Full Alphabetic
 // Intensity Profile: 25 ★ CORE | 0 ▲ TEACH | 0 ○ EXPOSURE
 // Key change from v4.1: Blends restored (were missing entirely)
-// Items: 18 GPCs (letters/digraphs) + 7 blend groups = 25
+// Items: 18 GPCs + 3 initial blend groups + 4 final blend items = 25
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage2WeeklyData: WeeklyData[] = [
   {
@@ -407,41 +407,41 @@ export const stage2WeeklyData: WeeklyData[] = [
     ]
   },
   {
-    // NEW — Blends were missing entirely from v4.1; restored per locked plan
+    // Blends restored per locked plan — K-appropriate initial blends only
     week: 9,
     phonemes: ['Initial L-blends', 'Initial R-blends', 'Initial S-blends'],
-    graphemes: ['bl, cl, fl, gl, pl, sl', 'br, cr, dr, fr, gr, pr, tr', 'sc, sk, sm, sn, sp, st, sw'],
+    graphemes: ['l-blends (bl, cl, fl, pl)', 'r-blends (br, cr, dr, tr)', 's-blends (sk, sl, sm, sn, sp, st)'],
     intensity: ['CORE', 'CORE', 'CORE'],
-    focusWords: ['flag', 'clap', 'sled', 'plan', 'grab', 'drip', 'frog', 'trip', 'stop', 'spin', 'snap', 'skip'],
-    decodableText: 'Grab the flag and clap! The frog can skip and stop. Spin the sled on the trip.',
+    focusWords: ['flag', 'clap', 'plan', 'block', 'drip', 'crab', 'trip', 'brim', 'stop', 'spin', 'snap', 'skip'],
+    decodableText: 'Clap for the flag and plan! The crab can skip and stop. Spin and snap on the trip. Block the drip!',
     assessment: 'Daily: initial blend production and reading',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
       'Blends vs. digraphs: in a blend, you hear BOTH sounds (s-t-op); in a digraph, two letters make ONE sound (sh-op)',
-      'L-blends: bl, cl, fl, gl, pl, sl — second sound is always /l/',
-      'R-blends: br, cr, dr, fr, gr, pr, tr — second sound is always /r/',
-      'S-blends: sc, sk, sm, sn, sp, st, sw — first sound is always /s/',
+      'L-blends: bl, cl, fl, pl — second sound is always /l/',
+      'R-blends: br, cr, dr, tr — second sound is always /r/',
+      'S-blends: sk, sl, sm, sn, sp, st — first sound is always /s/',
       'Teach continuous blending: sssss-t-op → stop'
     ]
   },
   {
-    // NEW — Final blends + three-letter blends + review
+    // 4 final blend items: -mp, -nd, -nk, -nt (each counted separately = 4 items)
     week: 10,
-    phonemes: ['Final nasal blends', 'Final stop/liquid blends', 'Final S-blends', 'Three-letter blends'],
-    graphemes: ['-mp, -nd, -nk, -nt', '-ft, -ld, -lk, -lp, -lt', '-sk, -sp, -st', 'scr, spl, spr, str'],
+    phonemes: ['-mp', '-nd', '-nk', '-nt'],
+    graphemes: ['-mp', '-nd', '-nk', '-nt'],
     intensity: ['CORE', 'CORE', 'CORE', 'CORE'],
-    focusWords: ['jump', 'hand', 'tank', 'tent', 'belt', 'milk', 'help', 'fast', 'desk', 'string', 'spring', 'splash'],
-    decodableText: 'Jump and grab the belt! Help the fast fish splash in the spring. The string is on the desk.',
+    focusWords: ['jump', 'bump', 'lamp', 'hand', 'band', 'sand', 'tank', 'blank', 'drink', 'tent', 'bent', 'hunt'],
+    decodableText: 'Jump and bump by the lamp! The band is on the sand. The blank tank had a drink. The tent bent in the hunt.',
     assessment: 'CHECKPOINT Weeks 9-10',
     isCheckpoint: true,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      'Final nasal blends (-mp, -nd, -nk, -nt): the nasal sound comes first, then the stop',
-      'Final stop/liquid blends (-ft, -ld, -lk, -lp, -lt): /l/ often precedes the final consonant',
-      'Final S-blends (-sk, -sp, -st): mirror initial S-blends but at the end of the word',
-      'Three-letter blends (scr, spl, spr, str): build on known two-letter blends — str = s + tr',
+      '-mp: nasal /m/ + stop /p/ (jump, bump, lamp, stamp, camp)',
+      '-nd: nasal /n/ + stop /d/ (hand, band, sand, blend, spend)',
+      '-nk: nasal /ng/ + stop /k/ (tank, blank, drink, think, trunk)',
+      '-nt: nasal /n/ + stop /t/ (tent, bent, hunt, plant, spent)',
       'Review all digraphs and initial blends alongside final blends'
     ]
   },
@@ -450,14 +450,14 @@ export const stage2WeeklyData: WeeklyData[] = [
     phonemes: ['Mastery'],
     graphemes: ['All Stage 2'],
     intensity: ['CORE'],
-    focusWords: ['strong', 'fresh', 'church', 'spring', 'bring', 'which', 'splash', 'string', 'think', 'clamp', 'shrub', 'quest'],
-    decodableText: 'The strong spring church is fresh. Which long path did the king bring? Think fast and splash!',
+    focusWords: ['stamp', 'blend', 'trunk', 'fresh', 'church', 'bring', 'which', 'think', 'spent', 'clamp'],
+    decodableText: 'Stamp the blend and bring the fresh trunk. Which church did the king think of? He spent the clamp.',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess all 25 Stage 2 items: 18 GPCs (letters + digraphs) plus 7 blend groups',
-      'Students should decode CCVC, CVCC, and CCVCC words with automaticity',
+      'Assess all 25 Stage 2 items: 18 GPCs + 3 initial blend groups + 4 final blend items',
+      'Students should decode CCVC and CVCC words with automaticity',
       'Verify blend vs. digraph distinction is clear (st-op vs. sh-op)',
       'Include Stage 1 GPCs in cumulative assessment'
     ]
@@ -467,10 +467,9 @@ export const stage2WeeklyData: WeeklyData[] = [
 // ═══════════════════════════════════════════════════════════════════════════════
 // STAGE 3: VCe, FLOSS, Trigraphs & Bridge Blends (v5.0 — Restructured)
 // Grade: 1st-Fall | Duration: 11 weeks | Phase: Full Alphabetic (Emerging)
-// Intensity Profile: 14 ★ CORE | 2 ▲ TEACH | 1 ○ EXPOSURE
-// Key changes from v4.1: ph → Stage 7, soft c/g → Stage 5, e_e → EXPOSURE,
-//   5 bridge blend groups added (connect Stage 2 blend skills to Stage 3 patterns)
-// Items: 5 VCe + 4 FLOSS + 2 trigraphs + 1 nk + 5 bridge blends = 17
+// Intensity Profile: 11 ★ CORE | 4 ▲ TEACH | 1 ○ EXPOSURE (soft c = TEACH, soft g = TEACH restored)
+// Key changes from v4.1: ph → Stage 7, e_e → EXPOSURE
+// Items: 5 VCe + 4 FLOSS + 2 trigraphs + 1 nk + 2 soft c/g + 3 bridge blends = 17
 // ═══════════════════════════════════════════════════════════════════════════════
 export const stage3WeeklyData: WeeklyData[] = [
   {
@@ -563,55 +562,55 @@ export const stage3WeeklyData: WeeklyData[] = [
     ]
   },
   {
-    // ph removed → Stage 7; replaced with CCVCE bridge blends
+    // ph removed → Stage 7; nk stands alone
     week: 7,
-    phonemes: ['/ngk/', 'CCVCE bridge blends'],
-    graphemes: ['nk', 'blend + VCe'],
-    intensity: ['CORE', 'CORE'],
-    focusWords: ['think', 'drink', 'bank', 'pink', 'thank', 'brave', 'crane', 'drive', 'flame', 'globe'],
-    decodableText: 'Think brave! Drink at the bank and thank the pink crane. Drive past the flame and the globe.',
-    assessment: 'Daily: nk pattern + blends meet VCe',
+    phonemes: ['/ngk/'],
+    graphemes: ['nk'],
+    intensity: ['CORE'],
+    focusWords: ['think', 'drink', 'bank', 'pink', 'thank', 'blank', 'trunk', 'skunk', 'plank', 'shrink'],
+    decodableText: 'Think and drink at the bank. Thank the pink skunk on the plank. The blank trunk will shrink.',
+    assessment: 'Daily: nk pattern',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
       'nk always makes /ngk/ — the n borrows the ng sound before k',
-      'CCVCE bridge blends: students combine Stage 2 blend skills with VCe — brave, crane, drive, flame, globe, pride, stroke, flute',
-      'Contrast CVC→CVCE (mad→made) with CCVC→CCVCE (plan→plane, grad→grade)'
+      'High-frequency words: think, drink, bank, thank, blank, trunk'
     ]
   },
   {
-    // NEW — Bridge blends: CCVCC + digraph-blend onsets (thr, shr)
+    // Soft c/g restored to Stage 3 (introduced at TEACH, mastery in Stage 5)
     week: 8,
-    phonemes: ['CCVCC bridge blends', 'Digraph-blend onsets'],
-    graphemes: ['blend + vowel + blend', 'thr, shr'],
-    intensity: ['CORE', 'CORE'],
-    focusWords: ['brand', 'crisp', 'clamp', 'frost', 'stump', 'drift', 'three', 'throw', 'shred', 'shrub', 'shrimp'],
-    decodableText: 'Three crisp chips fell off the stump. Throw the brand on the frost. Shred the shrub and clamp it. The shrimp will drift.',
+    phonemes: ['/s/', '/j/'],
+    graphemes: ['soft c', 'soft g'],
+    intensity: ['TEACH', 'TEACH'],
+    focusWords: ['city', 'cent', 'circle', 'ice', 'place', 'gem', 'giant', 'gym', 'age', 'stage'],
+    decodableText: 'The giant in the city had a gem on stage. The ice is a cent in the circle. She ran at the gym. What a nice place!',
     assessment: 'CHECKPOINT Weeks 7-8',
     isCheckpoint: true,
     isMastery: false,
     teachingTips: [
-      'CCVCC: blends on BOTH sides of the vowel — brand (br-a-nd), crisp (cr-i-sp), clamp (cl-a-mp)',
-      'thr = th + r (digraph + blend): three, throw, throb, thrill, thrash',
-      'shr = sh + r (digraph + blend): shred, shrub, shrimp, shrink, shrug',
-      'Students already know th, sh (Stage 2) and r-blends (Stage 2) — now combine them'
+      'Soft c: c says /s/ before e, i, y (city, cent, circle, ice, place)',
+      'Soft g: g says /j/ before e, i, y (gem, giant, gym, age, stage)',
+      'INTRODUCTION only — mastery expected by Stage 5'
     ]
   },
   {
-    // NEW — Bridge blends: blend + digraph endings + multi-syllable blend words
+    // 3 bridge blend items: applying Stage 2 blends to VCe words
     week: 9,
-    phonemes: ['Blend + digraph endings', 'Multi-syllable blend words'],
-    graphemes: ['-nch, -nge, blend + sh/ch/th', 'two-syllable blend words'],
-    intensity: ['CORE', 'CORE'],
-    focusWords: ['bench', 'ranch', 'lunch', 'crunch', 'brush', 'crush', 'fresh', 'stretch', 'pumpkin', 'sunset', 'napkin', 'sandstorm'],
-    decodableText: 'Crunch the fresh lunch on the bench at the ranch. Crush and brush at sunset. The pumpkin is in the sandstorm. Stretch the napkin!',
-    assessment: 'Daily: complex blend patterns in context',
+    phonemes: ['Blends + a_e', 'Blends + i_e', 'Blends + o_e'],
+    graphemes: ['CCVCE with /ā/', 'CCVCE with /ī/', 'CCVCE with /ō/'],
+    intensity: ['CORE', 'CORE', 'CORE'],
+    focusWords: ['brave', 'crane', 'flame', 'grade', 'plane', 'drive', 'pride', 'slide', 'spine', 'broke', 'globe', 'smoke', 'spoke', 'stove'],
+    decodableText: 'The brave crane slid on the flame. She drove with pride and spoke on the plane. The smoke broke the globe on the stove. What a grade!',
+    assessment: 'Daily: blends meet VCe patterns',
     isCheckpoint: false,
     isMastery: false,
     teachingTips: [
-      'Blend + digraph ending: bench (b-e-nch), crush (cr-u-sh), stretch (str-e-tch)',
-      'Multi-syllable: break at the syllable boundary — pump-kin, sun-set, nap-kin, sand-storm',
-      'These words combine ALL Stage 2-3 skills: blends, digraphs, FLOSS, and VCe in longer words'
+      'Bridge blends connect Stage 2 blends to Stage 3 VCe patterns',
+      'Blends + a_e: brave, crane, flame, grade, plane (bl+a_e, cr+a_e, fl+a_e, gr+a_e, pl+a_e)',
+      'Blends + i_e: drive, pride, slide, spine (dr+i_e, pr+i_e, sl+i_e, sp+i_e)',
+      'Blends + o_e: broke, globe, smoke, spoke, stove (br+o_e, gl+o_e, sm+o_e, sp+o_e, st+o_e)',
+      'Contrast CVC→CVCE (plan→plane, slid→slide) with CCVC→CCVCE'
     ]
   },
   {
@@ -619,14 +618,14 @@ export const stage3WeeklyData: WeeklyData[] = [
     phonemes: ['Review'],
     graphemes: ['All Stage 3'],
     intensity: ['CORE'],
-    focusWords: ['sunshine', 'himself', 'mistake', 'pancake', 'splendid', 'crunchtime', 'bathrobe', 'lunchtime'],
-    decodableText: 'He made a splendid pancake at lunchtime. The sunshine felt like no mistake. He put on his bathrobe himself at crunchtime.',
+    focusWords: ['sunshine', 'himself', 'mistake', 'pancake', 'cupcake', 'bathrobe', 'lunchtime', 'eggshell'],
+    decodableText: 'He made a mistake with the pancake at lunchtime. The sunshine felt nice. He put on his bathrobe himself. The cupcake was in the eggshell.',
     assessment: 'CHECKPOINT Weeks 9-10',
     isCheckpoint: true,
     isMastery: false,
     isReview: true,
     teachingTips: [
-      'Review VCe + FLOSS + trigraphs + bridge blends in multisyllabic words',
+      'Review VCe + FLOSS + trigraphs + nk + soft c/g + bridge blends in multisyllabic words',
       'Focus on syllable segmentation: sun-shine, him-self, mis-take, pan-cake'
     ]
   },
@@ -635,15 +634,16 @@ export const stage3WeeklyData: WeeklyData[] = [
     phonemes: ['Mastery'],
     graphemes: ['All Stage 3'],
     intensity: ['CORE'],
-    focusWords: ['cupcake', 'lunchtime', 'lifeline', 'homesick', 'drumstick', 'springtime', 'craftsman', 'eggshell'],
-    decodableText: 'She felt homesick at lunchtime. The cupcake was a lifeline. The craftsman made a drumstick and an eggshell cup in springtime.',
+    focusWords: ['cupcake', 'lunchtime', 'lifeline', 'homesick', 'brave', 'crane', 'drove', 'smoke', 'stage', 'place'],
+    decodableText: 'She felt homesick at lunchtime. The cupcake was a lifeline. The brave crane drove past the smoke on stage. What a nice place!',
     assessment: 'END-OF-STAGE ASSESSMENT',
     isCheckpoint: false,
     isMastery: true,
     teachingTips: [
-      'Assess all 17 Stage 3 items: VCe (a_e, i_e, o_e, u_e), FLOSS (ff, ll, ss, zz), trigraphs (tch, dge), nk, and 5 bridge blend groups',
+      'Assess all 17 Stage 3 items: VCe (a_e, i_e, o_e, u_e), FLOSS (ff, ll, ss, zz), trigraphs (tch, dge), nk, soft c/g (TEACH), and 3 bridge blend items (blends + VCe)',
       'e_e is EXPOSURE only — do NOT assess for mastery',
-      'Soft c/g and ph are NOT in this stage — do not assess',
+      'Soft c/g is TEACH — assess for recognition, not automaticity',
+      'ph is NOT in this stage — do not assess',
       'Include Stage 1-2 GPCs and blends in cumulative assessment'
     ]
   }
