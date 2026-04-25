@@ -410,7 +410,7 @@ export const stage2WeeklyData: WeeklyData[] = [
     // Blends restored per locked plan — K-appropriate initial blends only
     week: 9,
     phonemes: ['Initial L-blends', 'Initial R-blends', 'Initial S-blends'],
-    graphemes: ['l-blends (bl, cl, fl, pl)', 'r-blends (br, cr, dr, tr)', 's-blends (sk, sl, sm, sn, sp, st)'],
+    graphemes: ['l-blends', 'r-blends', 's-blends'],
     intensity: ['CORE', 'CORE', 'CORE'],
     focusWords: ['flag', 'clap', 'plan', 'block', 'drip', 'crab', 'trip', 'brim', 'stop', 'spin', 'snap', 'skip'],
     decodableText: 'Clap for the flag and plan! The crab can skip and stop. Spin and snap on the trip. Block the drip!',
