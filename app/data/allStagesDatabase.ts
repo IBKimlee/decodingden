@@ -118,21 +118,23 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 2,
-    stage_name: "Remaining Letters & Digraphs",
+    stage_name: "Remaining Letters, Digraphs & Blends",
     grade_level: "Kindergarten – Spring Semester",
     student_phase: "Partial to Full Alphabetic Phase",
-    duration: "10 weeks",
-    total_elements: 18,
-    description: "Students complete single-letter knowledge and learn consonant digraphs. Students can now decode any CVC word and begin CCVC/CVCC words.",
-    key_concept: "Some sounds need two letters working together (digraphs). The same sound can sometimes be spelled different ways.",
+    duration: "11 weeks",
+    total_elements: 25,
+    description: "Students complete single-letter knowledge, learn consonant digraphs, and begin blending consonants in initial and final positions.",
+    key_concept: "Some sounds need two letters working together (digraphs). In blends, you hear both sounds. The same sound can sometimes be spelled different ways.",
     instructional_focus: [
       "Complete alphabetic code",
       "Consonant digraph mastery (ch, sh, th, ng)",
       "C/K/CK spelling pattern",
-      "Question words with wh"
+      "Question words with wh",
+      "Initial blends (l-blends, r-blends, s-blends)",
+      "Simple final blends (-mp, -nd, -nk, -nt)"
     ],
     intensity: {
-      core: 18,
+      core: 25,
       teach: 0,
       exposure: 0
     },
@@ -167,24 +169,25 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 3,
-    stage_name: "VCe Patterns & Consonant Complexities",
+    stage_name: "VCe, FLOSS, Trigraphs & Bridge Blends",
     grade_level: "1st Grade – Fall Semester",
     student_phase: "Full Alphabetic Phase – Emerging",
-    duration: "10 weeks",
-    total_elements: 15,
-    description: "The magic e (VCe) pattern, FLOSS rule doubles, and common complex consonant spellings. Students learn that one sound can be spelled multiple ways.",
-    key_concept: "Silent e changes the vowel sound. Some patterns use doubled letters or three-letter combinations.",
+    duration: "11 weeks",
+    total_elements: 17,
+    description: "The magic e (VCe) pattern, FLOSS rule doubles, trigraphs, and soft c/g introduction. Bridge blends connect Stage 2 blend skills to VCe words.",
+    key_concept: "Silent e changes the vowel sound. Some patterns use doubled letters or three-letter combinations. Blends combine with VCe patterns in longer words.",
     instructional_focus: [
       "VCe (magic e) patterns for all 5 vowels",
       "FLOSS rule (ff, ll, ss, zz)",
       "Trigraphs (tch, dge)",
-      "Complex consonants (nk, ph)",
-      "Soft c and g introduction"
+      "nk pattern",
+      "Soft c and g introduction (TEACH)",
+      "Bridge blends (blends + VCe patterns)"
     ],
     intensity: {
-      core: 10,
-      teach: 5,
-      exposure: 0
+      core: 12,
+      teach: 4,
+      exposure: 1
     },
     science_of_reading_alignment: {
       ehri_phase: "Full Alphabetic – Emerging: ready for complex vowel patterns and spelling generalizations",
@@ -217,24 +220,24 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 4,
-    stage_name: "Common Vowel Teams & Vowel Discrimination",
+    stage_name: "Core Vowel Teams & Light Morphology",
     grade_level: "1st Grade – Spring Semester",
     student_phase: "Full Alphabetic Phase",
     duration: "10 weeks",
-    total_elements: 15,
-    description: "The most common vowel team spellings of long vowels, the critical o→/ŭ/ pattern, and long vowel exception patterns. Heavy emphasis on vowel flexing.",
-    key_concept: "Two vowels can work as a team to make one sound. The letter 'o' can make three different sounds. Some words break the short vowel rule.",
+    total_elements: 14,
+    description: "The most common vowel team spellings of long vowels. First morphology: -s and -ing inflectional suffixes introduced.",
+    key_concept: "Two vowels can work as a team to make one sound. Words can be built from a base word plus a suffix (-s, -ing).",
     instructional_focus: [
       "Common vowel teams (ai, ay, ee, ea, oa, ow, igh)",
       "y as a vowel (two sounds)",
-      "o→/ŭ/ exception pattern (love, come, some)",
-      "Long vowel exception patterns (-ind, -ild, -old, -olt, -oll)",
-      "Open syllable awareness",
-      "Vowel flexing strategy"
+      "ie→/ī/ at word end (pie, tie)",
+      "ew and ue for /ū/",
+      "-s inflectional suffix (plurals and verbs)",
+      "-ing inflectional suffix (progressive tense)"
     ],
     intensity: {
-      core: 10,
-      teach: 5,
+      core: 11,
+      teach: 3,
       exposure: 0
     },
     science_of_reading_alignment: {
@@ -268,24 +271,25 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 5,
-    stage_name: "R-Controlled Vowels, /oo/ Patterns & W-Influence",
+    stage_name: "R-Controlled Vowels, /oo/, Soft C/G & Morphology",
     grade_level: "2nd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Emerging",
-    duration: "10 weeks",
-    total_elements: 21,
-    description: "Bossy R changes vowel sounds. The two sounds of 'oo.' W-influence patterns where 'w' changes the expected vowel sound.",
-    key_concept: "When r follows a vowel, it changes the sound. The letter w can change how nearby vowels sound. Some spellings have multiple pronunciations — flex and check.",
+    duration: "11 weeks",
+    total_elements: 18,
+    description: "Bossy R changes vowel sounds. The two sounds of 'oo.' Soft c/g mastery. Morphology continues with -es and -ed suffixes.",
+    key_concept: "When r follows a vowel, it changes the sound. Some spellings have multiple pronunciations — flex and check. -es and -ed change how words work in sentences.",
     instructional_focus: [
-      "Core r-controlled vowels (ar, er, ir, ur, or)",
-      "Extended r-controlled (air, are, ear, oar, our, ore)",
+      "Core r-controlled vowels (ar, er, ir, ur, or, ore)",
+      "Air and are patterns for /âr/",
       "Two sounds of oo (moon vs book)",
-      "W-influence patterns (wa, wor, war)",
-      "Ear has THREE sounds (critical flex pattern)",
-      "Could/would/should (oul pattern)"
+      "ie→/ē/ (chief, field) and ear→/ēr/ (hear, near)",
+      "Soft c/g mastery (introduced Stage 3)",
+      "oar/our and oul (could/would/should)",
+      "-es and -ed inflectional suffixes"
     ],
     intensity: {
-      core: 10,
-      teach: 11,
+      core: 11,
+      teach: 7,
       exposure: 0
     },
     science_of_reading_alignment: {
@@ -319,24 +323,25 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 6,
-    stage_name: "Diphthongs & Extended Vowel Spellings",
+    stage_name: "Diphthongs, Silent Letters & Prefix Morphology",
     grade_level: "2nd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Developing",
     duration: "10 weeks",
-    total_elements: 18,
-    description: "Diphthongs (vowel sounds that glide) and the remaining less-common long vowel spellings. Variable 'ere' patterns.",
-    key_concept: "Some vowel sounds glide from one position to another. English borrowed spellings from other languages. When a pattern has multiple sounds, try each one and check meaning.",
+    total_elements: 21,
+    description: "Diphthongs (vowel sounds that glide), extended vowel spellings, silent letters (kn, wr, mb), and prefix morphology (un-, re-). W-influence patterns.",
+    key_concept: "Some vowel sounds glide from one position to another. Some letters are silent. Prefixes change the meaning of base words.",
     instructional_focus: [
       "Diphthongs (ou/ow for /ow/, oi/oy for /oi/, au/aw for /aw/)",
-      "Extended long vowel spellings (eigh, ey, ei)",
-      "Variable ere patterns (where vs here)",
-      "ui vowel team (fruit, juice)",
-      "Position rules (oi middle, oy end; au middle, aw end)"
+      "Extended long vowel spellings (eigh, ey, ei, ere, ui)",
+      "Silent letters (kn, wr, mb)",
+      "Prefix morphology (un-, re-)",
+      "W-influence patterns (wa, wor, war)",
+      "Exposure patterns (ea→/ā/, oe, eu)"
     ],
     intensity: {
-      core: 6,
+      core: 10,
       teach: 8,
-      exposure: 4
+      exposure: 3
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Developing: automatic processing of diphthongs and extended vowel patterns",
@@ -369,26 +374,27 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 7,
-    stage_name: "Complex & Variable Patterns",
+    stage_name: "Variable Patterns, Deferred GPCs & Derivational Morphology",
     grade_level: "3rd Grade – Fall Semester",
     student_phase: "Consolidated Alphabetic Phase – Proficient",
-    duration: "10 weeks",
-    total_elements: 16,
-    description: "Variable pronunciation patterns, the last consonant phoneme (/zh/), and Greek and French origin spellings. Develops flexible decoding strategies for etymology-based patterns.",
-    key_concept: "English has patterns from Greek, French, and Old English. Skilled readers try multiple pronunciations and check meaning. The same spelling can make different sounds in different words.",
+    duration: "11 weeks",
+    total_elements: 21,
+    description: "Deferred GPCs (ph, o→/ŭ/), variable pronunciation patterns, Greek/French origin spellings, and derivational morphology (pre-, dis-, mis-, -ful, -less, -ly).",
+    key_concept: "English has patterns from Greek, French, and Old English. Prefixes and suffixes change meaning and function. Skilled readers try multiple pronunciations and check meaning.",
     instructional_focus: [
+      "Deferred GPCs: ph→/f/, o→/ŭ/",
       "/zh/ phoneme (measure, vision)",
-      "Soft c and g mastery review (introduced Stage 3, assessed here — not counted as new GPCs)",
-      "Variable ough (5 distinct GPCs: /ō/, /oo/, /aw/, /ŭf/, /ow/)",
+      "Variable ough (5 sounds)",
       "Greek origin (ch→/k/, sc, rh)",
       "French origin (ch→/sh/)",
-      "Hard-g protector (gu→/g/)",
-      "Final position patterns (ve, se)"
+      "Hard-g protector (gu/ue), final patterns (ve, se)",
+      "Derivational prefixes (pre-, dis-, mis-)",
+      "Derivational suffixes (-ful, -less, -ly)"
     ],
     intensity: {
-      core: 2,
-      teach: 8,
-      exposure: 6
+      core: 8,
+      teach: 10,
+      exposure: 3
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Proficient: flexible decoding of variable and etymology-based patterns",
@@ -421,28 +427,25 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
   },
   {
     stage_number: 8,
-    stage_name: "Morphology, Schwa & Advanced Patterns",
+    stage_name: "Advanced Morphology, Schwa & Doubling Rule",
     grade_level: "3rd Grade – Spring Semester",
     student_phase: "Consolidated Alphabetic Phase – Advanced",
-    duration: "10 weeks",
-    total_elements: 53,
-    description: "Instruction shifts from phoneme-level decoding to morpheme-based word analysis. Students recognize meaningful word parts that unlock both pronunciation and meaning.",
-    key_concept: "Words are built from meaningful parts: prefixes change meaning, suffixes change how words work in sentences, and roots carry core meaning. Unstressed vowels relax to schwa.",
+    duration: "9 weeks",
+    total_elements: 12,
+    description: "Remaining advanced morphology (in-/im-, -er, -est, -tion, -sion, -ment, -ness), ti/ci→/sh/, schwa awareness, and the doubling rule. Most morphology was distributed to Stages 4-7.",
+    key_concept: "Words are built from meaningful parts. Unstressed vowels relax to schwa. The doubling rule controls spelling when adding vowel suffixes.",
     instructional_focus: [
-      "Silent letter patterns (kn, wr, mb, gn)",
-      "Inflectional suffixes (-ed, -s/-es, -ing) with spelling change rules",
-      "Derivational prefixes (un-, re-, pre-, dis-, mis-, in-/im-)",
-      "Tier 1 suffixes (-er, -est, -ly, -y, -ful, -less, -ness, -ment)",
-      "Tier 2 suffixes (-tion, -sion, -cian, -ture, -ous, -ent, -ant, -al, -or)",
-      "Schwa vowel patterns",
-      "/sh/ alternate spellings (ti, ci, ssi, sci)",
-      "Advanced and rare spellings (augh, eau, que, gh→/f/, x→/gz/, wh→/h/)",
-      "Doubled consonants formalized (dd, gg, nn, pp, tt, rr)"
+      "Prefix: in-/im- (not, into)",
+      "Comparative/superlative: -er, -est",
+      "Noun-forming suffixes: -tion, -sion, -ment, -ness",
+      "ti→/sh/ and ci→/sh/ (patient, special)",
+      "Schwa /ə/ (unstressed vowel sound)",
+      "Doubling rule (CVC + vowel suffix)"
     ],
     intensity: {
-      core: 7,
-      teach: 40,
-      exposure: 6
+      core: 12,
+      teach: 0,
+      exposure: 0
     },
     science_of_reading_alignment: {
       ehri_phase: "Consolidated Alphabetic – Advanced: morpheme-based word analysis and schwa awareness",
@@ -472,10 +475,6 @@ export const EIGHT_STAGE_SYSTEM: StageInfo[] = [
       research_principle: "Nagy & Anderson (1984); Treiman (2000) - un- and re- cover 50%+ of prefixed words; morphology unlocks meaning and spelling",
       orthographic_mapping: "Morphemes stored as meaningful chunks; schwa spelling requires related-word strategy"
     },
-    phase_split: {
-      phase_a: { weeks: "1-5", name: "Core Morphology" },
-      phase_b: { weeks: "6-10", name: "Extended Patterns" }
-    }
   }
 ];
 
